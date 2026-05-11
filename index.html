@@ -1,1 +1,827 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NeoDat Consultores | Datos, Finanzas y Tecnología</title>
+  <meta name="description" content="NeoDat Consultores ofrece consultoría profesional en análisis de datos, finanzas, creación de proyectos, dashboards, páginas web, control de gestión y soluciones empresariales." />
+
+  <style>
+    :root {
+      --azul: #142b4f;
+      --azul-profundo: #07172d;
+      --naranja: #ff9f00;
+      --gris: #f4f6fa;
+      --gris-2: #e7ecf3;
+      --texto: #26364a;
+      --texto-suave: #697789;
+      --blanco: #ffffff;
+      --sombra: 0 22px 55px rgba(7, 23, 45, 0.12);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      color: var(--texto);
+      background: var(--blanco);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .contenedor {
+      width: min(1180px, 92%);
+      margin: auto;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(20, 43, 79, 0.09);
+    }
+
+    .barra-navegacion {
+      height: 84px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .logo img {
+      width: 245px;
+      display: block;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--azul);
+    }
+
+    nav a:hover {
+      color: var(--naranja);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 24px;
+      border-radius: 999px;
+      font-weight: 800;
+      transition: 0.25s ease;
+      border: 1px solid transparent;
+      white-space: nowrap;
+    }
+
+    .btn-principal {
+      background: var(--naranja);
+      color: var(--blanco);
+      box-shadow: 0 14px 28px rgba(255, 159, 0, 0.28);
+    }
+
+    .btn-principal:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 34px rgba(255, 159, 0, 0.36);
+    }
+
+    .btn-linea {
+      color: var(--azul);
+      border-color: rgba(20, 43, 79, 0.24);
+      background: var(--blanco);
+    }
+
+    .btn-linea:hover {
+      border-color: var(--naranja);
+      color: var(--naranja);
+    }
+
+    .hero {
+      min-height: 100vh;
+      padding: 148px 0 80px;
+      display: flex;
+      align-items: center;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.91) 46%, rgba(244,246,250,0.82) 100%),
+        radial-gradient(circle at 85% 25%, rgba(255,159,0,0.18), transparent 33%),
+        linear-gradient(135deg, #ffffff 0%, #f7f9fc 100%);
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      align-items: center;
+      gap: 70px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 15px;
+      border-radius: 999px;
+      background: rgba(255, 159, 0, 0.12);
+      color: var(--azul);
+      font-size: 13px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 24px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--naranja);
+    }
+
+    h1 {
+      font-size: clamp(42px, 5.4vw, 72px);
+      line-height: 1.02;
+      letter-spacing: -2.6px;
+      color: var(--azul-profundo);
+      margin-bottom: 24px;
+    }
+
+    h1 span {
+      color: var(--naranja);
+    }
+
+    .hero-texto p {
+      max-width: 660px;
+      color: var(--texto-suave);
+      font-size: 19px;
+      margin-bottom: 34px;
+    }
+
+    .acciones {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 42px;
+    }
+
+    .metricas {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      max-width: 680px;
+    }
+
+    .metrica {
+      padding: 20px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.82);
+      border: 1px solid var(--gris-2);
+      box-shadow: 0 10px 24px rgba(7, 23, 45, 0.05);
+    }
+
+    .metrica strong {
+      display: block;
+      color: var(--azul);
+      font-size: 28px;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .metrica span {
+      color: var(--texto-suave);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .visual {
+      position: relative;
+    }
+
+    .visual::before {
+      content: "";
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      right: -60px;
+      top: -40px;
+      border-radius: 50%;
+      border: 48px solid rgba(255, 159, 0, 0.16);
+      z-index: 0;
+    }
+
+    .panel {
+      position: relative;
+      z-index: 1;
+      background: var(--blanco);
+      border: 1px solid var(--gris-2);
+      border-radius: 34px;
+      padding: 32px;
+      box-shadow: var(--sombra);
+    }
+
+    .panel-cabecera {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 28px;
+      gap: 18px;
+    }
+
+    .panel-cabecera h2 {
+      font-size: 22px;
+      color: var(--azul);
+    }
+
+    .badge {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,159,0,0.12);
+      color: var(--naranja);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .grafico {
+      height: 245px;
+      padding: 22px;
+      border-radius: 26px;
+      background: linear-gradient(180deg, #f7f9fc, #ffffff);
+      border: 1px solid var(--gris-2);
+      display: flex;
+      align-items: end;
+      gap: 13px;
+      margin-bottom: 24px;
+    }
+
+    .barra {
+      flex: 1;
+      border-radius: 16px 16px 7px 7px;
+      background: linear-gradient(180deg, var(--naranja), #ffc266);
+      min-height: 42px;
+    }
+
+    .barra:nth-child(1) { height: 38%; }
+    .barra:nth-child(2) { height: 54%; }
+    .barra:nth-child(3) { height: 46%; }
+    .barra:nth-child(4) { height: 74%; }
+    .barra:nth-child(5) { height: 63%; }
+    .barra:nth-child(6) { height: 90%; background: linear-gradient(180deg, var(--azul), #294b78); }
+    .barra:nth-child(7) { height: 78%; }
+
+    .panel-datos {
+      display: grid;
+      gap: 12px;
+    }
+
+    .dato {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--gris-2);
+      font-size: 14px;
+      color: var(--texto-suave);
+      font-weight: 700;
+    }
+
+    .dato:last-child {
+      border-bottom: 0;
+    }
+
+    .dato strong {
+      color: var(--azul);
+    }
+
+    section {
+      padding: 96px 0;
+    }
+
+    .encabezado-seccion {
+      max-width: 760px;
+      margin-bottom: 46px;
+    }
+
+    .encabezado-seccion.centro {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .subtitulo {
+      color: var(--naranja);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 13px;
+      font-weight: 900;
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      font-size: clamp(31px, 3.6vw, 49px);
+      line-height: 1.1;
+      letter-spacing: -1.2px;
+      color: var(--azul-profundo);
+      margin-bottom: 16px;
+    }
+
+    .encabezado-seccion p {
+      color: var(--texto-suave);
+      font-size: 17px;
+    }
+
+    .servicios-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .servicio {
+      padding: 31px;
+      background: var(--blanco);
+      border: 1px solid var(--gris-2);
+      border-radius: 30px;
+      transition: 0.25s ease;
+    }
+
+    .servicio:hover {
+      transform: translateY(-7px);
+      box-shadow: var(--sombra);
+      border-color: rgba(255,159,0,0.38);
+    }
+
+    .numero {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      background: rgba(255,159,0,0.12);
+      color: var(--naranja);
+      font-weight: 900;
+      margin-bottom: 22px;
+    }
+
+    .servicio h3 {
+      color: var(--azul);
+      font-size: 21px;
+      margin-bottom: 10px;
+    }
+
+    .servicio p {
+      color: var(--texto-suave);
+      font-size: 15px;
+    }
+
+    .metodo {
+      background: var(--azul-profundo);
+      color: var(--blanco);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .metodo::after {
+      content: "";
+      position: absolute;
+      right: -180px;
+      bottom: -220px;
+      width: 520px;
+      height: 520px;
+      border-radius: 50%;
+      background: rgba(255,159,0,0.12);
+    }
+
+    .metodo-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .metodo h2,
+    .metodo .encabezado-seccion p {
+      color: var(--blanco);
+    }
+
+    .pasos {
+      display: grid;
+      gap: 18px;
+    }
+
+    .paso {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 18px;
+      padding: 25px;
+      border-radius: 26px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.14);
+    }
+
+    .paso-numero {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 17px;
+      background: var(--naranja);
+      color: var(--blanco);
+      font-weight: 900;
+    }
+
+    .paso h3 {
+      font-size: 20px;
+      margin-bottom: 6px;
+    }
+
+    .paso p {
+      color: rgba(255,255,255,0.74);
+      font-size: 15px;
+    }
+
+    .ambitos {
+      background: var(--gris);
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .chip {
+      padding: 13px 18px;
+      border-radius: 999px;
+      background: var(--blanco);
+      border: 1px solid var(--gris-2);
+      color: var(--azul);
+      font-weight: 800;
+      box-shadow: 0 8px 20px rgba(7, 23, 45, 0.04);
+    }
+
+    .contacto {
+      background: linear-gradient(135deg, var(--azul-profundo), var(--azul));
+      color: var(--blanco);
+    }
+
+    .contacto-grid {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .contacto h2 {
+      color: var(--blanco);
+      margin-bottom: 12px;
+    }
+
+    .contacto p {
+      color: rgba(255,255,255,0.76);
+      max-width: 740px;
+      font-size: 17px;
+    }
+
+    footer {
+      padding: 44px 0;
+      background: #061225;
+      color: rgba(255,255,255,0.72);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 26px;
+      align-items: center;
+    }
+
+    .footer-grid strong {
+      color: var(--blanco);
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .footer-links a:hover {
+      color: var(--naranja);
+    }
+
+    @media (max-width: 980px) {
+      nav ul {
+        display: none;
+      }
+
+      .hero-grid,
+      .metodo-grid,
+      .contacto-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .servicios-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 680px) {
+      .barra-navegacion {
+        height: 76px;
+      }
+
+      .logo img {
+        width: 185px;
+      }
+
+      .hero {
+        padding-top: 122px;
+      }
+
+      .metricas,
+      .servicios-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .panel {
+        padding: 22px;
+        border-radius: 26px;
+      }
+
+      .paso {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 72px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="contenedor barra-navegacion">
+      <a href="#inicio" class="logo" aria-label="NeoDat Consultores">
+        <img src="Neo2.png" alt="NeoDat Consultores" />
+      </a>
+
+      <nav aria-label="Navegación principal">
+        <ul>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#metodo">Método</a></li>
+          <li><a href="#ambitos">Ámbitos</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <a class="btn btn-principal" href="mailto:neodatconsultores@gmail.com">Contactar</a>
+    </div>
+  </header>
+
+  <main id="inicio">
+    <section class="hero">
+      <div class="contenedor hero-grid">
+        <div class="hero-texto">
+          <div class="eyebrow">Consultoría empresarial y analítica</div>
+          <h1>Datos, finanzas y tecnología para <span>decidir mejor</span>.</h1>
+          <p>
+            NeoDat Consultores ayuda a empresas y equipos directivos a ordenar información, controlar indicadores, evaluar resultados financieros, crear proyectos, desarrollar dashboards y construir soluciones digitales profesionales.
+          </p>
+
+          <div class="acciones">
+            <a class="btn btn-principal" href="#servicios">Explorar servicios</a>
+            <a class="btn btn-linea" href="mailto:neodatconsultores@gmail.com">Solicitar asesoría</a>
+          </div>
+
+          <div class="metricas">
+            <div class="metrica">
+              <strong>BI</strong>
+              <span>Dashboards e indicadores</span>
+            </div>
+            <div class="metrica">
+              <strong>360°</strong>
+              <span>Diagnóstico integral</span>
+            </div>
+            <div class="metrica">
+              <strong>ROI</strong>
+              <span>Enfoque financiero</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="visual">
+          <aside class="panel" aria-label="Panel de gestión NeoDat">
+            <div class="panel-cabecera">
+              <h2>Control ejecutivo</h2>
+              <span class="badge">Monitoreo activo</span>
+            </div>
+
+            <div class="grafico" aria-hidden="true">
+              <div class="barra"></div>
+              <div class="barra"></div>
+              <div class="barra"></div>
+              <div class="barra"></div>
+              <div class="barra"></div>
+              <div class="barra"></div>
+              <div class="barra"></div>
+            </div>
+
+            <div class="panel-datos">
+              <div class="dato">
+                <span>Automatización de reportes</span>
+                <strong>Alta</strong>
+              </div>
+              <div class="dato">
+                <span>Visibilidad financiera</span>
+                <strong>Integral</strong>
+              </div>
+              <div class="dato">
+                <span>Seguimiento de proyectos</span>
+                <strong>Continuo</strong>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="servicios">
+      <div class="contenedor">
+        <div class="encabezado-seccion">
+          <div class="subtitulo">Servicios</div>
+          <h2>Soluciones profesionales para gestión, análisis y crecimiento.</h2>
+          <p>
+            Estructuramos herramientas y procesos que permiten convertir datos dispersos en información clara, medible y útil para la toma de decisiones.
+          </p>
+        </div>
+
+        <div class="servicios-grid">
+          <article class="servicio">
+            <div class="numero">01</div>
+            <h3>Análisis de datos</h3>
+            <p>Limpieza, consolidación, modelado y análisis de información para identificar patrones, desviaciones, riesgos y oportunidades.</p>
+          </article>
+
+          <article class="servicio">
+            <div class="numero">02</div>
+            <h3>Consultoría financiera</h3>
+            <p>Evaluación de costos, rentabilidad, presupuestos, flujos de caja, proyecciones y estructuras de control financiero.</p>
+          </article>
+
+          <article class="servicio">
+            <div class="numero">03</div>
+            <h3>Dashboards</h3>
+            <p>Diseño de tableros ejecutivos y operativos para seguimiento de indicadores clave, desempeño y resultados del negocio.</p>
+          </article>
+
+          <article class="servicio">
+            <div class="numero">04</div>
+            <h3>Creación de proyectos</h3>
+            <p>Formulación, planificación, documentación, seguimiento y control de proyectos empresariales, financieros y tecnológicos.</p>
+          </article>
+
+          <article class="servicio">
+            <div class="numero">05</div>
+            <h3>Páginas web</h3>
+            <p>Diseño y desarrollo de sitios corporativos, páginas profesionales, landing pages y soluciones digitales orientadas a resultados.</p>
+          </article>
+
+          <article class="servicio">
+            <div class="numero">06</div>
+            <h3>Control de gestión</h3>
+            <p>Implementación de indicadores, reportes, matrices de seguimiento, tableros de control y sistemas de medición empresarial.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="metodo" id="metodo">
+      <div class="contenedor metodo-grid">
+        <div class="encabezado-seccion">
+          <div class="subtitulo">Método NeoDat</div>
+          <h2>Trabajo ordenado, medible y orientado a resultados.</h2>
+          <p>
+            Cada solución se construye desde el diagnóstico real del negocio. No entregamos únicamente archivos o reportes; instalamos herramientas de control y decisión.
+          </p>
+        </div>
+
+        <div class="pasos">
+          <div class="paso">
+            <div class="paso-numero">1</div>
+            <div>
+              <h3>Diagnóstico</h3>
+              <p>Revisión de información, procesos, necesidades, brechas y objetivos estratégicos.</p>
+            </div>
+          </div>
+
+          <div class="paso">
+            <div class="paso-numero">2</div>
+            <div>
+              <h3>Diseño</h3>
+              <p>Definición de indicadores, estructura de datos, modelo financiero, entregables y hoja de ruta.</p>
+            </div>
+          </div>
+
+          <div class="paso">
+            <div class="paso-numero">3</div>
+            <div>
+              <h3>Implementación</h3>
+              <p>Construcción de dashboards, reportes, páginas web, modelos, herramientas y controles.</p>
+            </div>
+          </div>
+
+          <div class="paso">
+            <div class="paso-numero">4</div>
+            <div>
+              <h3>Seguimiento</h3>
+              <p>Ajuste de resultados, validación de indicadores y mejora continua de la solución.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ambitos" id="ambitos">
+      <div class="contenedor">
+        <div class="encabezado-seccion centro">
+          <div class="subtitulo">Ámbitos</div>
+          <h2>Consultoría para áreas críticas del negocio.</h2>
+          <p>
+            Apoyamos procesos de dirección, administración, finanzas, operaciones, comercial, tecnología y gestión de proyectos.
+          </p>
+        </div>
+
+        <div class="chips">
+          <span class="chip">Análisis financiero</span>
+          <span class="chip">Business Intelligence</span>
+          <span class="chip">Control presupuestario</span>
+          <span class="chip">Automatización de reportes</span>
+          <span class="chip">Planeación estratégica</span>
+          <span class="chip">Gestión operativa</span>
+          <span class="chip">Modelos de negocio</span>
+          <span class="chip">Desarrollo web</span>
+          <span class="chip">Indicadores KPI</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="contacto" id="contacto">
+      <div class="contenedor contacto-grid">
+        <div>
+          <h2>Convirtamos sus datos en decisiones útiles.</h2>
+          <p>
+            Para análisis de datos, consultoría financiera, dashboards, creación de proyectos, páginas web o control de gestión, contacte a NeoDat Consultores.
+          </p>
+        </div>
+        <a class="btn btn-principal" href="mailto:neodatconsultores@gmail.com">neodatconsultores@gmail.com</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="contenedor footer-grid">
+      <div>
+        <strong>NeoDat Consultores</strong>
+        <span>Datos, finanzas, proyectos, dashboards, páginas web y control de gestión.</span>
+      </div>
+      <div class="footer-links">
+        <a href="#servicios">Servicios</a>
+        <a href="#metodo">Método</a>
+        <a href="#ambitos">Ámbitos</a>
+        <a href="mailto:neodatconsultores@gmail.com">Contacto</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
 
