@@ -58,6 +58,7 @@
     }
 
     .barra-navegacion {
+      position: relative;
       height: 84px;
       display: flex;
       align-items: center;
@@ -65,9 +66,25 @@
       gap: 28px;
     }
 
+    .logo {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+      opacity: 0.08;
+      pointer-events: none;
+    }
+
     .logo img {
-      width: 245px;
+      width: 320px;
       display: block;
+    }
+
+    nav,
+    .btn {
+      position: relative;
+      z-index: 2;
     }
 
     nav ul {
@@ -560,8 +577,12 @@
         height: 76px;
       }
 
+      .logo {
+        opacity: 0.06;
+      }
+
       .logo img {
-        width: 185px;
+        width: 220px;
       }
 
       .hero {
@@ -824,4 +845,3 @@
   </footer>
 </body>
 </html>
-
