@@ -93,17 +93,28 @@
     }
 
       .btn-principal {
-      background:#25D366;
-      color:#ffffff;
+      background:var(--azul);
+      color:var(--blanco);
       box-shadow:
-      0 16px 34px rgba(37,211,102,.28);
+      0 16px 34px rgba(22,43,78,.18);
       }
-
+      
       .btn-principal:hover {
-      background:#1ebe5d;
+      background:var(--azul-oscuro);
       transform:translateY(-2px);
       }
 
+      .btn-whatsapp{
+      background:#25D366;
+      color:#ffffff;
+      box-shadow:none;
+      }
+      
+      .btn-whatsapp:hover{
+      background:#1ebe5d;
+      transform:translateY(-2px);
+      }
+    
     .btn-secundario {
       background: var(--blanco);
       color: var(--azul);
@@ -1090,7 +1101,7 @@ color:var(--naranja);
       </nav>
 
       <a
-        class="btn btn-principal"
+        class="btn btn-whatsapp"
         href="https://wa.me/593988200116?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20los%20servicios%20de%20NeoDat%20Consultores."
         target="_blank"
         rel="noopener"
