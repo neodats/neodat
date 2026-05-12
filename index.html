@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>NeoDat Consultores | Datos, Finanzas y Tecnología</title>
   <meta name="description" content="NeoDat Consultores ofrece consultoría profesional en análisis de datos, finanzas, creación de proyectos, dashboards, páginas web, control de gestión y soluciones empresariales." />
 
@@ -11,7 +12,9 @@
       --azul: #162b4e;
       --azul-900: #07172d;
       --azul-800: #102342;
+      --azul-700: #203b66;
       --azul-100: #edf2f8;
+      --azul-50: #f6f8fc;
       --naranja: #ffa500;
       --blanco: #ffffff;
       --gris-50: #f8fafc;
@@ -21,7 +24,7 @@
       --texto-suave: #617082;
       --borde: rgba(22, 43, 78, 0.12);
       --sombra: 0 18px 45px rgba(7, 23, 45, 0.10);
-      --sombra-fuerte: 0 28px 70px rgba(7, 23, 45, 0.16);
+      --sombra-fuerte: 0 28px 70px rgba(7, 23, 45, 0.14);
       --radio: 24px;
     }
 
@@ -113,11 +116,6 @@
       gap: 30px;
     }
 
-    .logo {
-      display: inline-flex;
-      align-items: center;
-    }
-
     .logo img {
       width: 148px;
     }
@@ -154,8 +152,8 @@
       position: absolute;
       inset: 0;
       background-image:
-        linear-gradient(rgba(22,43,78,0.045) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(22,43,78,0.045) 1px, transparent 1px);
+        linear-gradient(rgba(22,43,78,0.042) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(22,43,78,0.042) 1px, transparent 1px);
       background-size: 48px 48px;
       mask-image: linear-gradient(180deg, black, transparent 78%);
       pointer-events: none;
@@ -251,103 +249,81 @@
       font-weight: 700;
     }
 
-    .powerbi-shell {
+    .dashboard-wrap {
       position: relative;
-      border-radius: 30px;
-      background: var(--azul);
-      padding: 16px;
+      padding: 12px;
+      border-radius: 32px;
+      background:
+        linear-gradient(135deg, rgba(22,43,78,0.95), rgba(7,23,45,0.98)),
+        var(--azul);
       box-shadow: var(--sombra-fuerte);
       overflow: hidden;
     }
 
-    .powerbi-shell::before {
+    .dashboard-wrap::before {
       content: "";
       position: absolute;
-      right: -90px;
-      top: -110px;
-      width: 260px;
-      height: 260px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.10);
+      inset: 1px;
+      border-radius: 31px;
+      border: 1px solid rgba(255,255,255,0.12);
+      pointer-events: none;
     }
 
-    .powerbi {
+    .dashboard-wrap::after {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      right: -85px;
+      top: -95px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+    }
+
+    .dashboard {
       position: relative;
       z-index: 1;
-      overflow: hidden;
       border-radius: 24px;
-      background: #f6f8fb;
-      border: 1px solid rgba(255,255,255,0.22);
+      background: var(--gris-50);
+      border: 1px solid rgba(255,255,255,0.20);
+      overflow: hidden;
     }
 
-    .powerbi-topbar {
+    .dashboard-top {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 14px;
-      padding: 16px 18px;
-      background: var(--blanco);
+      gap: 16px;
+      padding: 18px 20px;
+      background: rgba(255,255,255,0.96);
       border-bottom: 1px solid var(--gris-200);
     }
 
-    .powerbi-title strong {
+    .dashboard-title strong {
       display: block;
       color: var(--azul-900);
       font-size: 17px;
       letter-spacing: -0.3px;
     }
 
-    .powerbi-title span {
+    .dashboard-title span {
       display: block;
       color: var(--texto-suave);
       font-size: 12px;
-      font-weight: 700;
+      font-weight: 750;
     }
 
-    .powerbi-status {
-      padding: 7px 10px;
+    .dashboard-badge {
+      padding: 7px 11px;
       border-radius: 999px;
       background: var(--azul-100);
       color: var(--azul);
       font-size: 11px;
-      font-weight: 850;
+      font-weight: 900;
       white-space: nowrap;
     }
 
-    .powerbi-layout {
-      display: grid;
-      grid-template-columns: 86px 1fr;
-      min-height: 430px;
-    }
-
-    .powerbi-sidebar {
-      background: #ffffff;
-      border-right: 1px solid var(--gris-200);
-      padding: 14px 10px;
-      display: grid;
-      gap: 10px;
-      align-content: start;
-    }
-
-    .powerbi-icon {
-      height: 58px;
-      border-radius: 16px;
-      background: var(--gris-50);
-      border: 1px solid var(--gris-200);
-      display: grid;
-      place-items: center;
-      color: var(--azul);
-      font-size: 11px;
-      font-weight: 900;
-    }
-
-    .powerbi-icon.activo {
-      background: var(--azul);
-      color: var(--blanco);
-      border-color: var(--azul);
-    }
-
-    .powerbi-canvas {
+    .dashboard-body {
       padding: 18px;
       display: grid;
       gap: 14px;
@@ -359,12 +335,16 @@
       gap: 12px;
     }
 
-    .kpi-card {
-      padding: 16px;
+    .kpi-card,
+    .bi-card {
       border-radius: 18px;
       background: var(--blanco);
       border: 1px solid var(--gris-200);
       box-shadow: 0 8px 20px rgba(7,23,45,0.04);
+    }
+
+    .kpi-card {
+      padding: 16px;
     }
 
     .kpi-card span {
@@ -398,11 +378,7 @@
     }
 
     .bi-card {
-      border-radius: 18px;
-      background: var(--blanco);
-      border: 1px solid var(--gris-200);
       padding: 16px;
-      box-shadow: 0 8px 20px rgba(7,23,45,0.04);
     }
 
     .bi-card h3 {
@@ -412,7 +388,7 @@
     }
 
     .bi-chart {
-      height: 180px;
+      height: 178px;
       display: flex;
       align-items: end;
       gap: 10px;
@@ -679,10 +655,26 @@
       font-size: 17px;
     }
 
+    .contacto-acciones {
+      display: grid;
+      gap: 10px;
+      justify-items: stretch;
+    }
+
     .contacto .btn-principal {
       background: var(--blanco);
       color: var(--azul);
       box-shadow: none;
+    }
+
+    .contacto .btn-secundario {
+      background: transparent;
+      color: var(--blanco);
+      border-color: rgba(255,255,255,0.28);
+    }
+
+    .contacto .btn-secundario:hover {
+      background: rgba(255,255,255,0.08);
     }
 
     footer {
@@ -817,40 +809,22 @@
         margin: 0;
       }
 
-      .powerbi-shell {
-        padding: 10px;
+      .dashboard-wrap {
+        padding: 8px;
         border-radius: 24px;
+        box-shadow: 0 18px 45px rgba(7, 23, 45, 0.14);
       }
 
-      .powerbi {
-        border-radius: 19px;
+      .dashboard {
+        border-radius: 18px;
       }
 
-      .powerbi-topbar {
-        align-items: flex-start;
+      .dashboard-top {
         padding: 14px;
+        align-items: flex-start;
       }
 
-      .powerbi-layout {
-        grid-template-columns: 1fr;
-        min-height: auto;
-      }
-
-      .powerbi-sidebar {
-        display: flex;
-        overflow-x: auto;
-        border-right: 0;
-        border-bottom: 1px solid var(--gris-200);
-        padding: 10px;
-      }
-
-      .powerbi-icon {
-        min-width: 58px;
-        height: 44px;
-        border-radius: 13px;
-      }
-
-      .powerbi-canvas {
+      .dashboard-body {
         padding: 12px;
         gap: 12px;
       }
@@ -923,10 +897,10 @@
       }
 
       .contacto {
-        padding-bottom: 98px;
+        padding-bottom: 108px;
       }
 
-      .contacto .btn {
+      .contacto-acciones .btn {
         width: 100%;
       }
 
@@ -958,6 +932,12 @@
   </style>
 </head>
 <body>
+  <!--
+    IMPORTANTE:
+    Reemplace 593TU_NUMERO por su número real en formato internacional, sin +, sin espacios y sin guiones.
+    Ejemplo Ecuador: 593987654321
+  -->
+
   <header>
     <div class="contenedor barra-navegacion">
       <a href="#inicio" class="logo" aria-label="NeoDat Consultores">
@@ -973,9 +953,12 @@
         </ul>
       </nav>
 
-      <a class="btn btn-principal"
-         href="https://wa.me/593TU_NUMERO"
-         target="_blank">
+      <a
+        class="btn btn-principal"
+        href="https://wa.me/593TU_NUMERO?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20los%20servicios%20de%20NeoDat%20Consultores."
+        target="_blank"
+        rel="noopener"
+      >
         WhatsApp
       </a>
     </div>
@@ -993,7 +976,17 @@
 
           <div class="acciones">
             <a class="btn btn-principal" href="#servicios">Explorar servicios</a>
-            <a class="btn btn-secundario" href="mailto:neodatconsultores@gmail.com">Solicitar asesoría</a>
+            <a
+              class="btn btn-secundario"
+              href="https://wa.me/593TU_NUMERO?text=Hola,%20quiero%20solicitar%20una%20asesor%C3%ADa%20con%20NeoDat%20Consultores."
+              target="_blank"
+              rel="noopener"
+            >
+              Solicitar asesoría
+            </a>
+            <a class="btn btn-secundario" href="mailto:neodatconsultores@gmail.com">
+              Correo empresarial
+            </a>
           </div>
 
           <div class="confianza">
@@ -1012,100 +1005,92 @@
           </div>
         </div>
 
-        <div class="powerbi-shell" aria-label="Visualización tipo Power BI de NeoDat">
-          <div class="powerbi">
-            <div class="powerbi-topbar">
-              <div class="powerbi-title">
+        <div class="dashboard-wrap" aria-label="Visualización tipo Power BI de NeoDat">
+          <div class="dashboard">
+            <div class="dashboard-top">
+              <div class="dashboard-title">
                 <strong>Panel ejecutivo NeoDat</strong>
                 <span>Ventas · Finanzas · Operaciones</span>
               </div>
-              <div class="powerbi-status">Actualizado</div>
+              <div class="dashboard-badge">Actualizado</div>
             </div>
 
-            <div class="powerbi-layout">
-              <aside class="powerbi-sidebar" aria-hidden="true">
-                <div class="powerbi-icon activo">KPI</div>
-                <div class="powerbi-icon">BI</div>
-                <div class="powerbi-icon">ROI</div>
-                <div class="powerbi-icon">OPS</div>
-              </aside>
-
-              <div class="powerbi-canvas">
-                <div class="kpi-row">
-                  <div class="kpi-card">
-                    <span>Ingresos</span>
-                    <strong>$84.2K</strong>
-                    <small>+12.4% mensual</small>
-                  </div>
-                  <div class="kpi-card">
-                    <span>Margen</span>
-                    <strong>31.8%</strong>
-                    <small>+4.1% vs. meta</small>
-                  </div>
-                  <div class="kpi-card">
-                    <span>Eficiencia</span>
-                    <strong>92%</strong>
-                    <small>Control estable</small>
-                  </div>
+            <div class="dashboard-body">
+              <div class="kpi-row">
+                <div class="kpi-card">
+                  <span>Ingresos</span>
+                  <strong>$84.2K</strong>
+                  <small>+12.4% mensual</small>
                 </div>
+                <div class="kpi-card">
+                  <span>Margen</span>
+                  <strong>31.8%</strong>
+                  <small>+4.1% vs. meta</small>
+                </div>
+                <div class="kpi-card">
+                  <span>Eficiencia</span>
+                  <strong>92%</strong>
+                  <small>Control estable</small>
+                </div>
+              </div>
 
-                <div class="bi-grid">
-                  <div class="bi-card">
-                    <h3>Resultados por periodo</h3>
-                    <div class="bi-chart" aria-hidden="true">
-                      <div class="bi-bar"></div>
-                      <div class="bi-bar"></div>
-                      <div class="bi-bar"></div>
-                      <div class="bi-bar"></div>
-                      <div class="bi-bar"></div>
-                      <div class="bi-bar"></div>
-                      <div class="bi-bar"></div>
-                    </div>
-                  </div>
-
-                  <div class="bi-card">
-                    <h3>Indicadores clave</h3>
-                    <div class="indicadores">
-                      <div class="indicador">
-                        <div class="indicador-top"><span>Rentabilidad</span><strong>86%</strong></div>
-                        <div class="progreso"><span style="width:86%"></span></div>
-                      </div>
-                      <div class="indicador">
-                        <div class="indicador-top"><span>Reportes</span><strong>94%</strong></div>
-                        <div class="progreso naranja"><span style="width:94%"></span></div>
-                      </div>
-                      <div class="indicador">
-                        <div class="indicador-top"><span>Proyectos</span><strong>78%</strong></div>
-                        <div class="progreso"><span style="width:78%"></span></div>
-                      </div>
-                    </div>
+              <div class="bi-grid">
+                <div class="bi-card">
+                  <h3>Resultados por periodo</h3>
+                  <div class="bi-chart" aria-hidden="true">
+                    <div class="bi-bar"></div>
+                    <div class="bi-bar"></div>
+                    <div class="bi-bar"></div>
+                    <div class="bi-bar"></div>
+                    <div class="bi-bar"></div>
+                    <div class="bi-bar"></div>
+                    <div class="bi-bar"></div>
                   </div>
                 </div>
 
                 <div class="bi-card">
-                  <h3>Resumen de gestión</h3>
-                  <div class="bi-table">
-                    <div class="bi-row">
-                      <span>Automatización de reportes</span>
-                      <span>Prioridad</span>
-                      <strong>Alta</strong>
+                  <h3>Indicadores clave</h3>
+                  <div class="indicadores">
+                    <div class="indicador">
+                      <div class="indicador-top"><span>Rentabilidad</span><strong>86%</strong></div>
+                      <div class="progreso"><span style="width:86%"></span></div>
                     </div>
-                    <div class="bi-row">
-                      <span>Visibilidad financiera</span>
-                      <span>Cobertura</span>
-                      <strong>Integral</strong>
+                    <div class="indicador">
+                      <div class="indicador-top"><span>Reportes</span><strong>94%</strong></div>
+                      <div class="progreso naranja"><span style="width:94%"></span></div>
                     </div>
-                    <div class="bi-row">
-                      <span>Seguimiento de proyectos</span>
-                      <span>Estado</span>
-                      <strong>Continuo</strong>
+                    <div class="indicador">
+                      <div class="indicador-top"><span>Proyectos</span><strong>78%</strong></div>
+                      <div class="progreso"><span style="width:78%"></span></div>
                     </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bi-card">
+                <h3>Resumen de gestión</h3>
+                <div class="bi-table">
+                  <div class="bi-row">
+                    <span>Automatización de reportes</span>
+                    <span>Prioridad</span>
+                    <strong>Alta</strong>
+                  </div>
+                  <div class="bi-row">
+                    <span>Visibilidad financiera</span>
+                    <span>Cobertura</span>
+                    <strong>Integral</strong>
+                  </div>
+                  <div class="bi-row">
+                    <span>Seguimiento de proyectos</span>
+                    <span>Estado</span>
+                    <strong>Continuo</strong>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+
       </div>
     </section>
 
@@ -1234,10 +1219,24 @@
         <div>
           <h2>Convirtamos sus datos en decisiones útiles.</h2>
           <p>
-            Para análisis de datos, consultoría financiera, dashboards, creación de proyectos, páginas web o control de gestión, contacte a NeoDat Consultores.
+            Puede contactar a NeoDat Consultores por WhatsApp para una respuesta rápida o por correo para solicitudes formales, propuestas y documentación.
           </p>
         </div>
-        <a class="btn btn-principal" href="mailto:neodatconsultores@gmail.com">neodatconsultores@gmail.com</a>
+
+        <div class="contacto-acciones">
+          <a
+            class="btn btn-principal"
+            href="https://wa.me/593TU_NUMERO?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20los%20servicios%20de%20NeoDat%20Consultores."
+            target="_blank"
+            rel="noopener"
+          >
+            Contactar por WhatsApp
+          </a>
+
+          <a class="btn btn-secundario" href="mailto:neodatconsultores@gmail.com">
+            neodatconsultores@gmail.com
+          </a>
+        </div>
       </div>
     </section>
   </main>
@@ -1252,13 +1251,21 @@
         <a href="#servicios">Servicios</a>
         <a href="#metodo">Método</a>
         <a href="#ambitos">Ámbitos</a>
-        <a href="mailto:neodatconsultores@gmail.com">Contacto</a>
+        <a href="https://wa.me/593988200116?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20NeoDat%20Consultores." target="_blank" rel="noopener">WhatsApp</a>
+        <a href="mailto:neodatconsultores@gmail.com">Correo</a>
       </div>
     </div>
   </footer>
 
   <div class="cta-movil">
-    <a class="btn btn-principal" href="mailto:neodatconsultores@gmail.com">Solicitar asesoría</a>
+    <a
+      class="btn btn-principal"
+      href="https://wa.me/593TU_NUMERO?text=Hola,%20quiero%20solicitar%20una%20asesor%C3%ADa%20con%20NeoDat%20Consultores."
+      target="_blank"
+      rel="noopener"
+    >
+      Solicitar asesoría por WhatsApp
+    </a>
   </div>
 </body>
 </html>
