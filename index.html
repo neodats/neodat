@@ -8,15 +8,21 @@
 
   <style>
     :root {
-      --azul: #142b4f;
-      --azul-profundo: #07172d;
-      --naranja: #ff9f00;
-      --gris: #f4f6fa;
-      --gris-2: #e7ecf3;
-      --texto: #26364a;
-      --texto-suave: #697789;
+      --azul: #162b4e;
+      --azul-900: #07172d;
+      --azul-800: #102342;
+      --azul-100: #edf2f8;
+      --naranja: #ffa500;
       --blanco: #ffffff;
-      --sombra: 0 22px 55px rgba(7, 23, 45, 0.12);
+      --gris-50: #f8fafc;
+      --gris-100: #eef2f7;
+      --gris-200: #dfe6ef;
+      --texto: #1f2d3d;
+      --texto-suave: #617082;
+      --borde: rgba(22, 43, 78, 0.12);
+      --sombra: 0 18px 45px rgba(7, 23, 45, 0.10);
+      --sombra-fuerte: 0 28px 70px rgba(7, 23, 45, 0.16);
+      --radio: 24px;
     }
 
     * {
@@ -30,10 +36,11 @@
     }
 
     body {
-      font-family: "Segoe UI", Arial, sans-serif;
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
       color: var(--texto);
       background: var(--blanco);
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
     a {
@@ -41,303 +48,460 @@
       text-decoration: none;
     }
 
-    .contenedor {
-      width: min(1180px, 92%);
-      margin: auto;
-    }
-
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 10;
-      background: rgba(255, 255, 255, 0.94);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(20, 43, 79, 0.09);
-    }
-
-    .barra-navegacion {
-      position: relative;
-      height: 84px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 28px;
-    }
-
-    .logo {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 1;
-      opacity: 1;
-      pointer-events: none;
-    }
-
-    .logo img {
-      width: 200px;
+    img {
+      max-width: 100%;
       display: block;
     }
 
-    nav,
-    .btn {
-      position: relative;
-      z-index: 2;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      align-items: center;
-      gap: 30px;
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--azul);
-    }
-
-    nav a:hover {
-      color: var(--naranja);
+    .contenedor {
+      width: min(1160px, calc(100% - 40px));
+      margin: auto;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 14px 24px;
+      min-height: 48px;
+      padding: 13px 22px;
       border-radius: 999px;
       font-weight: 800;
-      transition: 0.25s ease;
+      font-size: 14px;
       border: 1px solid transparent;
+      transition: 0.2s ease;
       white-space: nowrap;
     }
 
     .btn-principal {
-      background: var(--naranja);
+      background: var(--azul);
       color: var(--blanco);
-      box-shadow: 0 14px 28px rgba(255, 159, 0, 0.28);
+      box-shadow: 0 14px 30px rgba(22, 43, 78, 0.22);
     }
 
     .btn-principal:hover {
+      background: var(--azul-900);
       transform: translateY(-2px);
-      box-shadow: 0 18px 34px rgba(255, 159, 0, 0.36);
     }
 
-    .btn-linea {
-      color: var(--azul);
-      border-color: rgba(20, 43, 79, 0.24);
+    .btn-secundario {
       background: var(--blanco);
+      color: var(--azul);
+      border-color: var(--borde);
     }
 
-    .btn-linea:hover {
-      border-color: var(--naranja);
-      color: var(--naranja);
+    .btn-secundario:hover {
+      border-color: rgba(255, 165, 0, 0.55);
+      box-shadow: 0 12px 24px rgba(7, 23, 45, 0.08);
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 50;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--borde);
+    }
+
+    .barra-navegacion {
+      height: 78px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .logo img {
+      width: 148px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      color: var(--azul);
+      font-size: 14px;
+      font-weight: 750;
+    }
+
+    nav a {
+      display: inline-flex;
+      padding: 10px 14px;
+      border-radius: 999px;
+    }
+
+    nav a:hover {
+      background: var(--azul-100);
     }
 
     .hero {
-      min-height: 100vh;
-      padding: 148px 0 80px;
-      display: flex;
-      align-items: center;
-      background:
-        linear-gradient(90deg, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.91) 46%, rgba(244,246,250,0.82) 100%),
-        radial-gradient(circle at 85% 25%, rgba(255,159,0,0.18), transparent 33%),
-        linear-gradient(135deg, #ffffff 0%, #f7f9fc 100%);
+      position: relative;
+      padding: 148px 0 90px;
+      background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
       overflow: hidden;
     }
 
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(22,43,78,0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(22,43,78,0.045) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: linear-gradient(180deg, black, transparent 78%);
+      pointer-events: none;
+    }
+
     .hero-grid {
+      position: relative;
+      z-index: 1;
       display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 58px;
       align-items: center;
-      gap: 70px;
     }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      padding: 9px 15px;
+      margin-bottom: 22px;
+      padding: 8px 13px;
+      border: 1px solid var(--borde);
       border-radius: 999px;
-      background: rgba(255, 159, 0, 0.12);
+      background: rgba(255, 255, 255, 0.78);
       color: var(--azul);
-      font-size: 13px;
-      font-weight: 900;
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: 0.7px;
       text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 24px;
     }
 
     .eyebrow::before {
       content: "";
-      width: 9px;
-      height: 9px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
       background: var(--naranja);
     }
 
     h1 {
-      font-size: clamp(42px, 5.4vw, 72px);
-      line-height: 1.02;
-      letter-spacing: -2.6px;
-      color: var(--azul-profundo);
+      max-width: 760px;
       margin-bottom: 24px;
+      color: var(--azul-900);
+      font-size: clamp(42px, 5.2vw, 70px);
+      line-height: 1;
+      letter-spacing: -2.7px;
     }
 
     h1 span {
-      color: var(--naranja);
+      color: var(--azul);
     }
 
     .hero-texto p {
-      max-width: 660px;
+      max-width: 650px;
+      margin-bottom: 32px;
       color: var(--texto-suave);
-      font-size: 19px;
-      margin-bottom: 34px;
+      font-size: 18.5px;
     }
 
     .acciones {
       display: flex;
       flex-wrap: wrap;
-      gap: 14px;
-      margin-bottom: 42px;
+      gap: 12px;
+      margin-bottom: 34px;
     }
 
-    .metricas {
+    .confianza {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      max-width: 680px;
+      gap: 12px;
+      max-width: 690px;
     }
 
-    .metrica {
-      padding: 20px;
-      border-radius: 22px;
-      background: rgba(255,255,255,0.82);
-      border: 1px solid var(--gris-2);
-      box-shadow: 0 10px 24px rgba(7, 23, 45, 0.05);
+    .confianza-item {
+      padding: 16px;
+      border: 1px solid var(--borde);
+      border-radius: 18px;
+      background: rgba(255,255,255,0.76);
+      box-shadow: 0 10px 24px rgba(7,23,45,0.05);
     }
 
-    .metrica strong {
+    .confianza-item strong {
       display: block;
       color: var(--azul);
-      font-size: 28px;
-      line-height: 1;
-      margin-bottom: 8px;
+      font-size: 22px;
+      line-height: 1.1;
+      margin-bottom: 6px;
+      letter-spacing: -0.5px;
     }
 
-    .metrica span {
+    .confianza-item span {
       color: var(--texto-suave);
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 700;
     }
 
-    .visual {
+    .powerbi-shell {
       position: relative;
+      border-radius: 30px;
+      background: var(--azul);
+      padding: 16px;
+      box-shadow: var(--sombra-fuerte);
+      overflow: hidden;
     }
 
-    .visual::before {
+    .powerbi-shell::before {
       content: "";
       position: absolute;
-      width: 420px;
-      height: 420px;
-      right: -60px;
-      top: -40px;
+      right: -90px;
+      top: -110px;
+      width: 260px;
+      height: 260px;
       border-radius: 50%;
-      border: 48px solid rgba(255, 159, 0, 0.16);
-      z-index: 0;
+      background: rgba(255,255,255,0.10);
     }
 
-    .panel {
+    .powerbi {
       position: relative;
       z-index: 1;
-      background: var(--blanco);
-      border: 1px solid var(--gris-2);
-      border-radius: 34px;
-      padding: 32px;
-      box-shadow: var(--sombra);
+      overflow: hidden;
+      border-radius: 24px;
+      background: #f6f8fb;
+      border: 1px solid rgba(255,255,255,0.22);
     }
 
-    .panel-cabecera {
+    .powerbi-topbar {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      margin-bottom: 28px;
-      gap: 18px;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 16px 18px;
+      background: var(--blanco);
+      border-bottom: 1px solid var(--gris-200);
     }
 
-    .panel-cabecera h2 {
-      font-size: 22px;
-      color: var(--azul);
+    .powerbi-title strong {
+      display: block;
+      color: var(--azul-900);
+      font-size: 17px;
+      letter-spacing: -0.3px;
     }
 
-    .badge {
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(255,159,0,0.12);
-      color: var(--naranja);
+    .powerbi-title span {
+      display: block;
+      color: var(--texto-suave);
       font-size: 12px;
+      font-weight: 700;
+    }
+
+    .powerbi-status {
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: var(--azul-100);
+      color: var(--azul);
+      font-size: 11px;
+      font-weight: 850;
+      white-space: nowrap;
+    }
+
+    .powerbi-layout {
+      display: grid;
+      grid-template-columns: 86px 1fr;
+      min-height: 430px;
+    }
+
+    .powerbi-sidebar {
+      background: #ffffff;
+      border-right: 1px solid var(--gris-200);
+      padding: 14px 10px;
+      display: grid;
+      gap: 10px;
+      align-content: start;
+    }
+
+    .powerbi-icon {
+      height: 58px;
+      border-radius: 16px;
+      background: var(--gris-50);
+      border: 1px solid var(--gris-200);
+      display: grid;
+      place-items: center;
+      color: var(--azul);
+      font-size: 11px;
       font-weight: 900;
     }
 
-    .grafico {
-      height: 245px;
-      padding: 22px;
-      border-radius: 26px;
-      background: linear-gradient(180deg, #f7f9fc, #ffffff);
-      border: 1px solid var(--gris-2);
-      display: flex;
-      align-items: end;
-      gap: 13px;
-      margin-bottom: 24px;
+    .powerbi-icon.activo {
+      background: var(--azul);
+      color: var(--blanco);
+      border-color: var(--azul);
     }
 
-    .barra {
-      flex: 1;
-      border-radius: 16px 16px 7px 7px;
-      background: linear-gradient(180deg, var(--naranja), #ffc266);
-      min-height: 42px;
-    }
-
-    .barra:nth-child(1) { height: 38%; }
-    .barra:nth-child(2) { height: 54%; }
-    .barra:nth-child(3) { height: 46%; }
-    .barra:nth-child(4) { height: 74%; }
-    .barra:nth-child(5) { height: 63%; }
-    .barra:nth-child(6) { height: 90%; background: linear-gradient(180deg, var(--azul), #294b78); }
-    .barra:nth-child(7) { height: 78%; }
-
-    .panel-datos {
+    .powerbi-canvas {
+      padding: 18px;
       display: grid;
+      gap: 14px;
+    }
+
+    .kpi-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
       gap: 12px;
     }
 
-    .dato {
-      display: flex;
-      justify-content: space-between;
-      gap: 18px;
-      padding: 14px 0;
-      border-bottom: 1px solid var(--gris-2);
-      font-size: 14px;
-      color: var(--texto-suave);
-      font-weight: 700;
+    .kpi-card {
+      padding: 16px;
+      border-radius: 18px;
+      background: var(--blanco);
+      border: 1px solid var(--gris-200);
+      box-shadow: 0 8px 20px rgba(7,23,45,0.04);
     }
 
-    .dato:last-child {
+    .kpi-card span {
+      display: block;
+      color: var(--texto-suave);
+      font-size: 12px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .kpi-card strong {
+      display: block;
+      color: var(--azul-900);
+      font-size: 27px;
+      line-height: 1;
+      letter-spacing: -1px;
+    }
+
+    .kpi-card small {
+      display: block;
+      margin-top: 8px;
+      color: #24724d;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .bi-grid {
+      display: grid;
+      grid-template-columns: 1.35fr 0.75fr;
+      gap: 12px;
+    }
+
+    .bi-card {
+      border-radius: 18px;
+      background: var(--blanco);
+      border: 1px solid var(--gris-200);
+      padding: 16px;
+      box-shadow: 0 8px 20px rgba(7,23,45,0.04);
+    }
+
+    .bi-card h3 {
+      color: var(--azul-900);
+      font-size: 14px;
+      margin-bottom: 14px;
+    }
+
+    .bi-chart {
+      height: 180px;
+      display: flex;
+      align-items: end;
+      gap: 10px;
+      padding-top: 8px;
+      border-bottom: 1px solid var(--gris-200);
+    }
+
+    .bi-bar {
+      flex: 1;
+      min-height: 24px;
+      border-radius: 10px 10px 0 0;
+      background: linear-gradient(180deg, var(--azul), var(--azul-800));
+    }
+
+    .bi-bar:nth-child(1) { height: 42%; opacity: .54; }
+    .bi-bar:nth-child(2) { height: 55%; opacity: .62; }
+    .bi-bar:nth-child(3) { height: 48%; opacity: .70; }
+    .bi-bar:nth-child(4) { height: 75%; opacity: .80; }
+    .bi-bar:nth-child(5) { height: 66%; opacity: .88; }
+    .bi-bar:nth-child(6) { height: 92%; background: linear-gradient(180deg, var(--naranja), #ffc766); }
+    .bi-bar:nth-child(7) { height: 80%; opacity: .94; }
+
+    .indicadores {
+      display: grid;
+      gap: 11px;
+    }
+
+    .indicador {
+      display: grid;
+      gap: 7px;
+    }
+
+    .indicador-top {
+      display: flex;
+      justify-content: space-between;
+      color: var(--texto-suave);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .progreso {
+      height: 9px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: var(--gris-100);
+    }
+
+    .progreso span {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: var(--azul);
+    }
+
+    .progreso.naranja span {
+      background: var(--naranja);
+    }
+
+    .bi-table {
+      display: grid;
+      gap: 8px;
+    }
+
+    .bi-row {
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--gris-200);
+      color: var(--texto-suave);
+      font-size: 12.5px;
+      font-weight: 750;
+    }
+
+    .bi-row:last-child {
       border-bottom: 0;
     }
 
-    .dato strong {
+    .bi-row strong {
       color: var(--azul);
     }
 
     section {
-      padding: 96px 0;
+      padding: 92px 0;
     }
 
     .encabezado-seccion {
       max-width: 760px;
-      margin-bottom: 46px;
+      margin-bottom: 42px;
     }
 
     .encabezado-seccion.centro {
@@ -349,18 +513,18 @@
     .subtitulo {
       color: var(--naranja);
       text-transform: uppercase;
-      letter-spacing: 2px;
-      font-size: 13px;
+      letter-spacing: 1.8px;
+      font-size: 12px;
       font-weight: 900;
       margin-bottom: 12px;
     }
 
     h2 {
-      font-size: clamp(31px, 3.6vw, 49px);
+      margin-bottom: 15px;
+      color: var(--azul-900);
+      font-size: clamp(30px, 3.3vw, 48px);
       line-height: 1.1;
-      letter-spacing: -1.2px;
-      color: var(--azul-profundo);
-      margin-bottom: 16px;
+      letter-spacing: -1.3px;
     }
 
     .encabezado-seccion p {
@@ -371,39 +535,42 @@
     .servicios-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
+      gap: 18px;
     }
 
     .servicio {
-      padding: 31px;
+      min-height: 260px;
+      padding: 28px;
+      border: 1px solid var(--borde);
+      border-radius: var(--radio);
       background: var(--blanco);
-      border: 1px solid var(--gris-2);
-      border-radius: 30px;
-      transition: 0.25s ease;
+      box-shadow: 0 10px 28px rgba(7,23,45,0.045);
+      transition: 0.2s ease;
     }
 
     .servicio:hover {
-      transform: translateY(-7px);
+      transform: translateY(-5px);
       box-shadow: var(--sombra);
-      border-color: rgba(255,159,0,0.38);
+      border-color: rgba(22,43,78,0.20);
     }
 
     .numero {
-      width: 52px;
-      height: 52px;
+      width: 46px;
+      height: 46px;
       display: grid;
       place-items: center;
-      border-radius: 18px;
-      background: rgba(255,159,0,0.12);
-      color: var(--naranja);
+      margin-bottom: 20px;
+      border-radius: 15px;
+      background: var(--azul-100);
+      color: var(--azul);
       font-weight: 900;
-      margin-bottom: 22px;
     }
 
     .servicio h3 {
-      color: var(--azul);
-      font-size: 21px;
       margin-bottom: 10px;
+      color: var(--azul);
+      font-size: 20px;
+      letter-spacing: -0.3px;
     }
 
     .servicio p {
@@ -412,29 +579,14 @@
     }
 
     .metodo {
-      background: var(--azul-profundo);
+      background: var(--azul-900);
       color: var(--blanco);
-      overflow: hidden;
-      position: relative;
-    }
-
-    .metodo::after {
-      content: "";
-      position: absolute;
-      right: -180px;
-      bottom: -220px;
-      width: 520px;
-      height: 520px;
-      border-radius: 50%;
-      background: rgba(255,159,0,0.12);
     }
 
     .metodo-grid {
-      position: relative;
-      z-index: 1;
       display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
-      gap: 60px;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 58px;
       align-items: start;
     }
 
@@ -443,66 +595,69 @@
       color: var(--blanco);
     }
 
+    .metodo .encabezado-seccion p {
+      opacity: .78;
+    }
+
     .pasos {
       display: grid;
-      gap: 18px;
+      gap: 14px;
     }
 
     .paso {
       display: grid;
-      grid-template-columns: 56px 1fr;
+      grid-template-columns: 52px 1fr;
       gap: 18px;
-      padding: 25px;
-      border-radius: 26px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.14);
+      padding: 22px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 22px;
+      background: rgba(255,255,255,0.055);
     }
 
     .paso-numero {
-      width: 48px;
-      height: 48px;
+      width: 44px;
+      height: 44px;
       display: grid;
       place-items: center;
-      border-radius: 17px;
-      background: var(--naranja);
-      color: var(--blanco);
+      border-radius: 14px;
+      background: var(--blanco);
+      color: var(--azul);
       font-weight: 900;
     }
 
     .paso h3 {
-      font-size: 20px;
-      margin-bottom: 6px;
+      margin-bottom: 5px;
+      font-size: 19px;
     }
 
     .paso p {
-      color: rgba(255,255,255,0.74);
+      color: rgba(255,255,255,0.72);
       font-size: 15px;
     }
 
     .ambitos {
-      background: var(--gris);
+      background: var(--gris-50);
     }
 
     .chips {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
       gap: 14px;
-      margin-top: 34px;
+      margin-top: 30px;
     }
 
     .chip {
-      padding: 13px 18px;
-      border-radius: 999px;
+      padding: 16px 18px;
+      border: 1px solid var(--borde);
+      border-radius: 18px;
       background: var(--blanco);
-      border: 1px solid var(--gris-2);
       color: var(--azul);
       font-weight: 800;
       box-shadow: 0 8px 20px rgba(7, 23, 45, 0.04);
     }
 
     .contacto {
-      background: linear-gradient(135deg, var(--azul-profundo), var(--azul));
+      background: linear-gradient(135deg, var(--azul), var(--azul-900));
       color: var(--blanco);
     }
 
@@ -519,13 +674,19 @@
     }
 
     .contacto p {
-      color: rgba(255,255,255,0.76);
-      max-width: 740px;
+      color: rgba(255,255,255,0.78);
+      max-width: 760px;
       font-size: 17px;
     }
 
+    .contacto .btn-principal {
+      background: var(--blanco);
+      color: var(--azul);
+      box-shadow: none;
+    }
+
     footer {
-      padding: 44px 0;
+      padding: 42px 0;
       background: #061225;
       color: rgba(255,255,255,0.72);
     }
@@ -538,15 +699,15 @@
     }
 
     .footer-grid strong {
-      color: var(--blanco);
       display: block;
       margin-bottom: 5px;
+      color: var(--blanco);
     }
 
     .footer-links {
       display: flex;
-      gap: 18px;
       flex-wrap: wrap;
+      gap: 18px;
       font-size: 14px;
       font-weight: 700;
     }
@@ -555,9 +716,22 @@
       color: var(--naranja);
     }
 
+    .cta-movil {
+      display: none;
+    }
+
     @media (max-width: 980px) {
-      nav ul {
+      .barra-navegacion {
+        grid-template-columns: auto auto;
+        justify-content: space-between;
+      }
+
+      nav {
         display: none;
+      }
+
+      .hero {
+        padding-top: 124px;
       }
 
       .hero-grid,
@@ -570,41 +744,215 @@
       .servicios-grid {
         grid-template-columns: repeat(2, 1fr);
       }
+
+      .chips {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
     @media (max-width: 680px) {
-      .barra-navegacion {
-        height: 76px;
+      .contenedor {
+        width: min(100% - 30px, 1160px);
       }
 
-      .logo {
-        opacity: 0.06;
+      header {
+        background: rgba(255,255,255,0.96);
+      }
+
+      .barra-navegacion {
+        height: 66px;
       }
 
       .logo img {
-        width: 220px;
+        width: 124px;
+      }
+
+      .barra-navegacion > .btn {
+        min-height: 40px;
+        padding: 10px 14px;
+        font-size: 13px;
       }
 
       .hero {
-        padding-top: 122px;
+        padding: 112px 0 58px;
       }
 
-      .metricas,
-      .servicios-grid {
+      .hero::before {
+        background-size: 34px 34px;
+      }
+
+      h1 {
+        font-size: clamp(38px, 11vw, 52px);
+        letter-spacing: -2px;
+      }
+
+      .hero-texto p {
+        font-size: 16.5px;
+        margin-bottom: 26px;
+      }
+
+      .acciones {
+        display: grid;
+        grid-template-columns: 1fr;
+        margin-bottom: 28px;
+      }
+
+      .acciones .btn {
+        width: 100%;
+        min-height: 52px;
+      }
+
+      .confianza {
         grid-template-columns: 1fr;
       }
 
-      .panel {
-        padding: 22px;
-        border-radius: 26px;
+      .confianza-item {
+        display: flex;
+        align-items: center;
+        gap: 16px;
       }
 
-      .paso {
+      .confianza-item strong {
+        min-width: 72px;
+        margin: 0;
+      }
+
+      .powerbi-shell {
+        padding: 10px;
+        border-radius: 24px;
+      }
+
+      .powerbi {
+        border-radius: 19px;
+      }
+
+      .powerbi-topbar {
+        align-items: flex-start;
+        padding: 14px;
+      }
+
+      .powerbi-layout {
         grid-template-columns: 1fr;
+        min-height: auto;
+      }
+
+      .powerbi-sidebar {
+        display: flex;
+        overflow-x: auto;
+        border-right: 0;
+        border-bottom: 1px solid var(--gris-200);
+        padding: 10px;
+      }
+
+      .powerbi-icon {
+        min-width: 58px;
+        height: 44px;
+        border-radius: 13px;
+      }
+
+      .powerbi-canvas {
+        padding: 12px;
+        gap: 12px;
+      }
+
+      .kpi-row,
+      .bi-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .kpi-card {
+        padding: 14px;
+      }
+
+      .kpi-card strong {
+        font-size: 24px;
+      }
+
+      .bi-chart {
+        height: 150px;
+        gap: 7px;
+      }
+
+      .bi-row {
+        grid-template-columns: 1fr auto;
+      }
+
+      .bi-row span:nth-child(2) {
+        display: none;
       }
 
       section {
-        padding: 72px 0;
+        padding: 68px 0;
+      }
+
+      .encabezado-seccion {
+        margin-bottom: 30px;
+      }
+
+      h2 {
+        font-size: clamp(29px, 8.8vw, 38px);
+      }
+
+      .encabezado-seccion p {
+        font-size: 15.5px;
+      }
+
+      .servicios-grid,
+      .chips {
+        grid-template-columns: 1fr;
+      }
+
+      .servicio {
+        min-height: auto;
+        padding: 24px;
+      }
+
+      .servicio:hover {
+        transform: none;
+      }
+
+      .paso {
+        grid-template-columns: 44px 1fr;
+        gap: 14px;
+        padding: 18px;
+      }
+
+      .paso-numero {
+        width: 40px;
+        height: 40px;
+      }
+
+      .contacto {
+        padding-bottom: 98px;
+      }
+
+      .contacto .btn {
+        width: 100%;
+      }
+
+      .footer-links {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .cta-movil {
+        position: fixed;
+        left: 14px;
+        right: 14px;
+        bottom: 14px;
+        z-index: 70;
+        display: block;
+        padding: 8px;
+        border: 1px solid var(--borde);
+        border-radius: 22px;
+        background: rgba(255,255,255,0.92);
+        backdrop-filter: blur(16px);
+        box-shadow: 0 18px 40px rgba(7, 23, 45, 0.20);
+      }
+
+      .cta-movil .btn {
+        width: 100%;
+        min-height: 50px;
       }
     }
   </style>
@@ -634,64 +982,125 @@
       <div class="contenedor hero-grid">
         <div class="hero-texto">
           <div class="eyebrow">Consultoría empresarial y analítica</div>
-          <h1>Datos, finanzas y tecnología para <span>decidir mejor</span>.</h1>
+          <h1>Información clara para dirigir, controlar y <span>decidir mejor</span>.</h1>
           <p>
-            NeoDat Consultores ayuda a empresas y equipos directivos a ordenar información, controlar indicadores, evaluar resultados financieros, crear proyectos, desarrollar dashboards y construir soluciones digitales profesionales.
+            NeoDat Consultores estructura datos, finanzas, proyectos y soluciones digitales para que las empresas trabajen con indicadores confiables, reportes claros y decisiones basadas en evidencia.
           </p>
 
           <div class="acciones">
             <a class="btn btn-principal" href="#servicios">Explorar servicios</a>
-            <a class="btn btn-linea" href="mailto:neodatconsultores@gmail.com">Solicitar asesoría</a>
+            <a class="btn btn-secundario" href="mailto:neodatconsultores@gmail.com">Solicitar asesoría</a>
           </div>
 
-          <div class="metricas">
-            <div class="metrica">
+          <div class="confianza">
+            <div class="confianza-item">
               <strong>BI</strong>
-              <span>Dashboards e indicadores</span>
+              <span>Dashboards e indicadores ejecutivos</span>
             </div>
-            <div class="metrica">
+            <div class="confianza-item">
               <strong>360°</strong>
-              <span>Diagnóstico integral</span>
+              <span>Diagnóstico financiero y operativo</span>
             </div>
-            <div class="metrica">
+            <div class="confianza-item">
               <strong>ROI</strong>
-              <span>Enfoque financiero</span>
+              <span>Enfoque en rentabilidad y control</span>
             </div>
           </div>
         </div>
 
-        <div class="visual">
-          <aside class="panel" aria-label="Panel de gestión NeoDat">
-            <div class="panel-cabecera">
-              <h2>Control ejecutivo</h2>
-              <span class="badge">Monitoreo activo</span>
+        <div class="powerbi-shell" aria-label="Visualización tipo Power BI de NeoDat">
+          <div class="powerbi">
+            <div class="powerbi-topbar">
+              <div class="powerbi-title">
+                <strong>Panel ejecutivo NeoDat</strong>
+                <span>Ventas · Finanzas · Operaciones</span>
+              </div>
+              <div class="powerbi-status">Actualizado</div>
             </div>
 
-            <div class="grafico" aria-hidden="true">
-              <div class="barra"></div>
-              <div class="barra"></div>
-              <div class="barra"></div>
-              <div class="barra"></div>
-              <div class="barra"></div>
-              <div class="barra"></div>
-              <div class="barra"></div>
-            </div>
+            <div class="powerbi-layout">
+              <aside class="powerbi-sidebar" aria-hidden="true">
+                <div class="powerbi-icon activo">KPI</div>
+                <div class="powerbi-icon">BI</div>
+                <div class="powerbi-icon">ROI</div>
+                <div class="powerbi-icon">OPS</div>
+              </aside>
 
-            <div class="panel-datos">
-              <div class="dato">
-                <span>Automatización de reportes</span>
-                <strong>Alta</strong>
-              </div>
-              <div class="dato">
-                <span>Visibilidad financiera</span>
-                <strong>Integral</strong>
-              </div>
-              <div class="dato">
-                <span>Seguimiento de proyectos</span>
-                <strong>Continuo</strong>
+              <div class="powerbi-canvas">
+                <div class="kpi-row">
+                  <div class="kpi-card">
+                    <span>Ingresos</span>
+                    <strong>$84.2K</strong>
+                    <small>+12.4% mensual</small>
+                  </div>
+                  <div class="kpi-card">
+                    <span>Margen</span>
+                    <strong>31.8%</strong>
+                    <small>+4.1% vs. meta</small>
+                  </div>
+                  <div class="kpi-card">
+                    <span>Eficiencia</span>
+                    <strong>92%</strong>
+                    <small>Control estable</small>
+                  </div>
+                </div>
+
+                <div class="bi-grid">
+                  <div class="bi-card">
+                    <h3>Resultados por periodo</h3>
+                    <div class="bi-chart" aria-hidden="true">
+                      <div class="bi-bar"></div>
+                      <div class="bi-bar"></div>
+                      <div class="bi-bar"></div>
+                      <div class="bi-bar"></div>
+                      <div class="bi-bar"></div>
+                      <div class="bi-bar"></div>
+                      <div class="bi-bar"></div>
+                    </div>
+                  </div>
+
+                  <div class="bi-card">
+                    <h3>Indicadores clave</h3>
+                    <div class="indicadores">
+                      <div class="indicador">
+                        <div class="indicador-top"><span>Rentabilidad</span><strong>86%</strong></div>
+                        <div class="progreso"><span style="width:86%"></span></div>
+                      </div>
+                      <div class="indicador">
+                        <div class="indicador-top"><span>Reportes</span><strong>94%</strong></div>
+                        <div class="progreso naranja"><span style="width:94%"></span></div>
+                      </div>
+                      <div class="indicador">
+                        <div class="indicador-top"><span>Proyectos</span><strong>78%</strong></div>
+                        <div class="progreso"><span style="width:78%"></span></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="bi-card">
+                  <h3>Resumen de gestión</h3>
+                  <div class="bi-table">
+                    <div class="bi-row">
+                      <span>Automatización de reportes</span>
+                      <span>Prioridad</span>
+                      <strong>Alta</strong>
+                    </div>
+                    <div class="bi-row">
+                      <span>Visibilidad financiera</span>
+                      <span>Cobertura</span>
+                      <strong>Integral</strong>
+                    </div>
+                    <div class="bi-row">
+                      <span>Seguimiento de proyectos</span>
+                      <span>Estado</span>
+                      <strong>Continuo</strong>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-          </aside>
+          </div>
         </div>
       </div>
     </section>
@@ -843,5 +1252,9 @@
       </div>
     </div>
   </footer>
+
+  <div class="cta-movil">
+    <a class="btn btn-principal" href="mailto:neodatconsultores@gmail.com">Solicitar asesoría</a>
+  </div>
 </body>
 </html>
