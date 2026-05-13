@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+   <title>Servicios | NeoDat Consultores</title>
+
+   <link rel="icon" type="image/png" sizes="32x32" href="Neo1.png">
+
+   <link rel="preconnect" href="https://fonts.googleapis.com" />
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+   <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+   />
+
+   <style>
+
+      :root{
+         --azul:#162b4e;
+         --azul-oscuro:#07172d;
+         --azul-claro:#edf2f8;
+         --naranja:#ffa500;
+         --blanco:#ffffff;
+         --gris:#f6f8fb;
+         --gris-2:#e1e7f0;
+         --texto:#243447;
+         --texto-suave:#66788a;
+      }
+
+      *{
+         margin:0;
+         padding:0;
+         box-sizing:border-box;
+      }
+
+      html{
+         scroll-behavior:smooth;
+      }
+
+      body{
+         font-family:"Inter", Arial, sans-serif;
+         background:#ffffff;
+         color:var(--texto);
+         line-height:1.6;
+         overflow-x:hidden;
+      }
+
+      a{
+         text-decoration:none;
+         color:inherit;
+      }
+
+      .contenedor{
+         width:min(1160px, calc(100% - 40px));
+         margin:auto;
+      }
+
+      header{
+         position:fixed;
+         top:0;
+         left:0;
+         z-index:100;
+         width:100%;
+         background:rgba(255,255,255,.94);
+         backdrop-filter:blur(18px);
+         border-bottom:1px solid rgba(22,43,78,.08);
+      }
+
+      .navbar{
+         height:78px;
+         display:flex;
+         align-items:center;
+         justify-content:space-between;
+         gap:28px;
+      }
+
+      .logo{
+         display:flex;
+         align-items:center;
+      }
+
+      .logo-icono{
+         width:160px;
+         height:160px;
+         object-fit:contain;
+      }
+
+      nav ul{
+         list-style:none;
+         display:flex;
+         align-items:center;
+         gap:8px;
+      }
+
+      nav a{
+         display:inline-flex;
+         padding:10px 15px;
+         border-radius:999px;
+         font-size:14px;
+         font-weight:750;
+         color:var(--azul);
+         transition:.2s ease;
+      }
+
+      nav a:hover{
+         background:var(--azul-claro);
+      }
+
+      .btn{
+         display:inline-flex;
+         align-items:center;
+         justify-content:center;
+         min-height:48px;
+         padding:13px 22px;
+         border-radius:999px;
+         border:0;
+         font-size:14px;
+         font-weight:800;
+         cursor:pointer;
+         transition:.2s ease;
+      }
+
+      .btn-whatsapp{
+         background:#25D366;
+         color:#ffffff;
+      }
+
+      .btn-whatsapp:hover{
+         background:#1ebe5d;
+         transform:translateY(-2px);
+      }
+
+      .menu-toggle{
+         display:none;
+         width:46px;
+         height:46px;
+         border:1px solid var(--gris-2);
+         border-radius:14px;
+         background:#ffffff;
+         color:var(--azul);
+         font-size:26px;
+         font-weight:900;
+         cursor:pointer;
+      }
+
+      .hero{
+         position:relative;
+         padding:145px 0 70px;
+         background:linear-gradient(180deg,#ffffff 0%,#f8fbff 100%);
+         overflow:hidden;
+      }
+
+      .hero::before{
+         content:"";
+         position:absolute;
+         inset:0;
+         background-image:
+         linear-gradient(rgba(22,43,78,.04) 1px, transparent 1px),
+         linear-gradient(90deg, rgba(22,43,78,.04) 1px, transparent 1px);
+         background-size:44px 44px;
+         mask-image:linear-gradient(180deg, black, transparent 76%);
+      }
+
+      .hero-contenido{
+         position:relative;
+         z-index:2;
+         max-width:860px;
+         margin:auto;
+         text-align:center;
+      }
+
+      .eyebrow{
+         display:inline-flex;
+         align-items:center;
+         gap:10px;
+         margin-bottom:22px;
+         padding:8px 14px;
+         border:1px solid rgba(22,43,78,.1);
+         border-radius:999px;
+         background:#ffffff;
+         color:var(--azul);
+         font-size:12px;
+         font-weight:900;
+         letter-spacing:1px;
+         text-transform:uppercase;
+      }
+
+      .eyebrow::before{
+         content:"";
+         width:8px;
+         height:8px;
+         border-radius:50%;
+         background:var(--naranja);
+      }
+
+      h1{
+         margin-bottom:24px;
+         color:var(--azul-oscuro);
+         font-size:clamp(44px,5vw,72px);
+         line-height:.98;
+         letter-spacing:-3px;
+      }
+
+      h1 span{
+         color:var(--azul);
+      }
+
+      .hero p{
+         max-width:760px;
+         margin:0 auto;
+         color:var(--texto-suave);
+         font-size:18px;
+      }
+
+      .servicios-section{
+         padding:70px 0 95px;
+      }
+
+      .encabezado{
+         max-width:860px;
+         margin:0 auto 54px;
+         text-align:center;
+      }
+
+      .subtitulo{
+         margin-bottom:12px;
+         color:var(--naranja);
+         font-size:12px;
+         font-weight:900;
+         letter-spacing:2px;
+         text-transform:uppercase;
+      }
+
+      h2{
+         margin-bottom:18px;
+         color:var(--azul-oscuro);
+         font-size:clamp(30px,4vw,48px);
+         line-height:1.08;
+         letter-spacing:-1.5px;
+      }
+
+      .encabezado p{
+         color:var(--texto-suave);
+         font-size:17px;
+      }
+
+      .servicios-grid{
+         display:grid;
+         grid-template-columns:repeat(2, 1fr);
+         gap:24px;
+      }
+
+      .servicio{
+         padding:36px;
+         border:1px solid var(--gris-2);
+         border-radius:32px;
+         background:#ffffff;
+         transition:.25s ease;
+         box-shadow:0 10px 25px rgba(7,23,45,.04);
+      }
+
+      .servicio:hover{
+         transform:translateY(-4px);
+         box-shadow:0 18px 45px rgba(7,23,45,.08);
+      }
+
+      .servicio-num{
+         width:54px;
+         height:54px;
+         display:grid;
+         place-items:center;
+         margin-bottom:24px;
+         border-radius:16px;
+         background:var(--azul-claro);
+         color:var(--azul);
+         font-size:18px;
+         font-weight:900;
+      }
+
+      .servicio h3{
+         margin-bottom:14px;
+         color:var(--azul-oscuro);
+         font-size:28px;
+         line-height:1.08;
+         letter-spacing:-1px;
+      }
+
+      .servicio p{
+         margin-bottom:22px;
+         color:var(--texto-suave);
+         font-size:15.5px;
+         line-height:1.75;
+      }
+
+      .servicio ul{
+         display:grid;
+         gap:12px;
+         padding-left:18px;
+      }
+
+      .servicio li{
+         color:var(--texto);
+         font-size:14.8px;
+         line-height:1.7;
+      }
+
+      .extra-box{
+         margin-top:80px;
+         padding:54px;
+         border-radius:34px;
+         background:
+         linear-gradient(
+         135deg,
+         rgba(22,43,78,.03),
+         rgba(255,165,0,.04)
+         );
+         border:1px solid var(--gris-2);
+         text-align:center;
+      }
+
+      .extra-box h2{
+         max-width:760px;
+         margin:0 auto 20px;
+      }
+
+      .extra-box p{
+         max-width:820px;
+         margin:0 auto;
+         color:var(--texto-suave);
+         font-size:17px;
+         line-height:1.8;
+      }
+
+      .capacidades{
+         display:grid;
+         grid-template-columns:repeat(4,1fr);
+         gap:18px;
+         margin-top:42px;
+      }
+
+      .capacidad{
+         padding:26px 22px;
+         border-radius:24px;
+         background:#ffffff;
+         border:1px solid var(--gris-2);
+         box-shadow:0 10px 25px rgba(7,23,45,.04);
+      }
+
+      .capacidad strong{
+         display:block;
+         margin-bottom:10px;
+         color:var(--azul);
+         font-size:19px;
+      }
+
+      .capacidad span{
+         color:var(--texto-suave);
+         font-size:14.5px;
+         line-height:1.6;
+      }
+
+      .site-footer{
+         background:#07172d;
+         color:rgba(255,255,255,.72);
+         padding:10px 0;
+      }
+
+      .footer-bottom{
+         display:flex;
+         justify-content:center;
+         align-items:center;
+         text-align:center;
+         font-size:12.5px;
+         color:rgba(255,255,255,.52);
+      }
+
+      @media (max-width:980px){
+
+         .navbar{
+            height:72px;
+         }
+
+         .logo-icono{
+            width:130px;
+            height:130px;
+         }
+
+         .menu-toggle{
+            display:flex;
+            align-items:center;
+            justify-content:center;
+         }
+
+         .whatsapp-desktop{
+            display:none;
+         }
+
+         nav.menu{
+            position:absolute;
+            top:72px;
+            left:0;
+            width:100%;
+            display:none;
+            background:#ffffff;
+            border-bottom:1px solid rgba(22,43,78,.08);
+            box-shadow:0 18px 40px rgba(7,23,45,.10);
+         }
+
+         nav.menu.activo{
+            display:block;
+         }
+
+         nav.menu ul{
+            width:min(1160px, calc(100% - 40px));
+            margin:auto;
+            padding:18px 0;
+            display:grid;
+            grid-template-columns:1fr;
+            gap:8px;
+         }
+
+         nav.menu a{
+            width:100%;
+            padding:14px 16px;
+            border-radius:16px;
+            background:var(--gris);
+         }
+
+         .servicios-grid{
+            grid-template-columns:1fr;
+         }
+
+         .capacidades{
+            grid-template-columns:1fr 1fr;
+         }
+
+      }
+
+      @media (max-width:680px){
+
+         .contenedor{
+            width:min(100% - 30px, 1160px);
+         }
+
+         .hero{
+            padding:125px 0 56px;
+         }
+
+         h1{
+            font-size:48px;
+            letter-spacing:-2px;
+         }
+
+         .hero p{
+            font-size:16px;
+         }
+
+         .servicios-section{
+            padding:48px 0 75px;
+         }
+
+         .servicio{
+            padding:28px;
+         }
+
+         .extra-box{
+            padding:34px 24px;
+         }
+
+         .capacidades{
+            grid-template-columns:1fr;
+         }
+
+      }
+
+   </style>
+
+</head>
+
+<body>
+
+   <header>
+
+      <div class="contenedor navbar">
+
+         <a href="index.html" class="logo" aria-label="NeoDat Consultores">
+            <img src="Neo1.png" class="logo-icono">
+         </a>
+
+         <button class="menu-toggle" type="button" aria-label="Abrir menú">
+            ☰
+         </button>
+
+         <nav class="menu" aria-label="Navegación principal">
+
+            <ul>
+               <li><a href="index.html">Inicio</a></li>
+               <li><a href="servicios.html">Servicios</a></li>
+               <li><a href="metodo.html">Método</a></li>
+               <li><a href="ambitos.html">Ámbitos</a></li>
+               <li><a href="quienes-somos.html">Quiénes somos</a></li>
+               <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+
+         </nav>
+
+         <a
+            class="btn btn-whatsapp whatsapp-desktop"
+            href="https://wa.me/593988200116?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20NeoDat%20Consultores."
+            target="_blank"
+            rel="noopener"
+         >
+            WhatsApp
+         </a>
+
+      </div>
+
+   </header>
+
+   <main>
+
+      <section class="hero">
+
+         <div class="contenedor hero-contenido">
+
+            <div class="eyebrow">
+               Servicios NeoDat
+            </div>
+
+            <h1>
+               Soluciones para <span>gestión empresarial</span>.
+            </h1>
+
+            <p>
+               NeoDat Consultores desarrolla herramientas analíticas,
+               financieras y tecnológicas para fortalecer el control,
+               la toma de decisiones y el crecimiento empresarial.
+            </p>
+
+         </div>
+
+      </section>
+
+      <section class="servicios-section">
+
+         <div class="contenedor">
+
+            <div class="encabezado">
+
+               <div class="subtitulo">
+                  Servicios
+               </div>
+
+               <h2>
+                  Soluciones integrales para gestionar, analizar y crecer.
+               </h2>
+
+               <p>
+                  NeoDat Consultores acompaña a empresas en la organización
+                  de información, control financiero, automatización de reportes,
+                  gestión de proyectos, desarrollo tecnológico y toma de decisiones basada en datos.
+               </p>
+
+            </div>
+
+            <div class="servicios-grid">
+
+               <article class="servicio">
+
+                  <div class="servicio-num">01</div>
+
+                  <h3>
+                     Análisis de datos
+                  </h3>
+
+                  <p>
+                     Transformamos información dispersa en datos estructurados,
+                     confiables y útiles para la gestión empresarial.
+                  </p>
+
+                  <ul>
+                     <li>Limpieza y consolidación de bases de datos.</li>
+                     <li>Análisis descriptivo y exploratorio.</li>
+                     <li>Indicadores de gestión y desempeño.</li>
+                     <li>Reportes para dirección y gerencia.</li>
+                  </ul>
+
+               </article>
+
+               <article class="servicio">
+
+                  <div class="servicio-num">02</div>
+
+                  <h3>
+                     Consultoría financiera
+                  </h3>
+
+                  <p>
+                     Apoyamos la lectura financiera del negocio para mejorar control,
+                     planificación y decisiones económicas.
+                  </p>
+
+                  <ul>
+                     <li>Presupuestos y proyecciones financieras.</li>
+                     <li>Análisis de ingresos, costos y rentabilidad.</li>
+                     <li>Evaluación financiera de proyectos.</li>
+                     <li>Control financiero y seguimiento de resultados.</li>
+                  </ul>
+
+               </article>
+
+               <article class="servicio">
+
+                  <div class="servicio-num">03</div>
+
+                  <h3>
+                     Dashboards y KPI
+                  </h3>
+
+                  <p>
+                     Diseñamos tableros ejecutivos para visualizar información clave
+                     de forma clara, dinámica y accionable.
+                  </p>
+
+                  <ul>
+                     <li>Dashboards comerciales, financieros y operativos.</li>
+                     <li>Indicadores KPI personalizados.</li>
+                     <li>Visualización estratégica de datos.</li>
+                     <li>Automatización de reportes recurrentes.</li>
+                  </ul>
+
+               </article>
+
+               <article class="servicio">
+
+                  <div class="servicio-num">04</div>
+
+                  <h3>
+                     Desarrollo web empresarial
+                  </h3>
+
+                  <p>
+                     Creamos soluciones digitales para fortalecer la presencia,
+                     comunicación y operación de las empresas.
+                  </p>
+
+                  <ul>
+                     <li>Páginas web corporativas.</li>
+                     <li>Formularios y captación de clientes.</li>
+                     <li>Diseño alineado a identidad empresarial.</li>
+                     <li>Optimización visual y experiencia de usuario.</li>
+                  </ul>
+
+               </article>
+
+               <article class="servicio">
+
+                  <div class="servicio-num">05</div>
+
+                  <h3>
+                     Gestión de proyectos
+                  </h3>
+
+                  <p>
+                     Estructuramos proyectos desde la planificación hasta el seguimiento,
+                     con enfoque técnico y orientación a resultados.
+                  </p>
+
+                  <ul>
+                     <li>Formulación y documentación de proyectos.</li>
+                     <li>Diseño de hojas de ruta y cronogramas.</li>
+                     <li>Seguimiento de avances y entregables.</li>
+                     <li>Soporte en PMO y gestión institucional.</li>
+                  </ul>
+
+               </article>
+
+               <article class="servicio">
+
+                  <div class="servicio-num">06</div>
+
+                  <h3>
+                     Business Intelligence
+                  </h3>
+
+                  <p>
+                     Integramos datos, procesos y análisis para construir herramientas
+                     de inteligencia de negocios.
+                  </p>
+
+                  <ul>
+                     <li>Modelos de información empresarial.</li>
+                     <li>Automatización de procesos analíticos.</li>
+                     <li>Reportería ejecutiva y gerencial.</li>
+                     <li>Soporte para decisiones estratégicas.</li>
+                  </ul>
+
+               </article>
+
+            </div>
+
+            <div class="extra-box">
+
+               <div class="subtitulo">
+                  Capacidades
+               </div>
+
+               <h2>
+                  Información clara para tomar mejores decisiones.
+               </h2>
+
+               <p>
+                  Nuestro trabajo combina análisis técnico, automatización,
+                  estructura financiera y herramientas digitales para construir
+                  soluciones empresariales modernas, medibles y sostenibles.
+               </p>
+
+               <div class="capacidades">
+
+                  <div class="capacidad">
+                     <strong>Automatización</strong>
+
+                     <span>
+                        Optimización de procesos y reducción de trabajo manual.
+                     </span>
+                  </div>
+
+                  <div class="capacidad">
+                     <strong>Visualización</strong>
+
+                     <span>
+                        Información clara mediante dashboards y reportes ejecutivos.
+                     </span>
+                  </div>
+
+                  <div class="capacidad">
+                     <strong>Control</strong>
+
+                     <span>
+                        Seguimiento financiero, operativo y estratégico del negocio.
+                     </span>
+                  </div>
+
+                  <div class="capacidad">
+                     <strong>Escalabilidad</strong>
+
+                     <span>
+                        Soluciones preparadas para crecer junto a la organización.
+                     </span>
+                  </div>
+
+               </div>
+
+            </div>
+
+         </div>
+
+      </section>
+
+   </main>
+
+   <footer class="site-footer">
+
+      <div class="contenedor footer-bottom">
+         <span>
+            © 2026 NeoDat Consultores. Todos los derechos reservados.
+         </span>
+      </div>
+
+   </footer>
+
+   <script>
+
+      const menuToggle = document.querySelector(".menu-toggle");
+      const menu = document.querySelector(".menu");
+
+      menuToggle.addEventListener("click", () => {
+         menu.classList.toggle("activo");
+      });
+
+   </script>
+
+</body>
+</html>
