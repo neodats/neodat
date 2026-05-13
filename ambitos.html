@@ -1,24 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-
    <meta charset="UTF-8" />
    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
    <title>Ámbitos | NeoDat Consultores</title>
 
    <link rel="icon" type="image/png" sizes="32x32" href="Neo1.png">
-
    <link rel="preconnect" href="https://fonts.googleapis.com" />
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-   <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
-   />
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
    <style>
-
       :root{
          --azul:#162b4e;
          --azul-oscuro:#07172d;
@@ -30,11 +23,7 @@
          --texto-suave:#66788a;
       }
 
-      *{
-         margin:0;
-         padding:0;
-         box-sizing:border-box;
-      }
+      *{margin:0;padding:0;box-sizing:border-box;}
 
       body{
          font-family:"Inter", Arial, sans-serif;
@@ -44,10 +33,7 @@
          overflow-x:hidden;
       }
 
-      a{
-         text-decoration:none;
-         color:inherit;
-      }
+      a{text-decoration:none;color:inherit;}
 
       .contenedor{
          width:min(1180px, calc(100% - 40px));
@@ -73,10 +59,7 @@
          gap:28px;
       }
 
-      .logo{
-         display:flex;
-         align-items:center;
-      }
+      .logo{display:flex;align-items:center;}
 
       .logo-icono{
          width:160px;
@@ -101,9 +84,7 @@
          transition:.2s ease;
       }
 
-      nav a:hover{
-         background:var(--azul-claro);
-      }
+      nav a:hover{background:var(--azul-claro);}
 
       .btn{
          display:inline-flex;
@@ -119,16 +100,6 @@
          transition:.2s ease;
       }
 
-      .btn-whatsapp{
-         background:#25D366;
-         color:#ffffff;
-      }
-
-      .btn-whatsapp:hover{
-         background:#1ebe5d;
-         transform:translateY(-2px);
-      }
-
       .btn-principal{
          background:var(--azul);
          color:#ffffff;
@@ -136,6 +107,16 @@
 
       .btn-principal:hover{
          background:var(--azul-oscuro);
+         transform:translateY(-2px);
+      }
+
+      .btn-whatsapp{
+         background:#25D366;
+         color:#ffffff;
+      }
+
+      .btn-whatsapp:hover{
+         background:#1ebe5d;
          transform:translateY(-2px);
       }
 
@@ -155,12 +136,7 @@
       .hero{
          position:relative;
          padding:150px 0 90px;
-         background:
-         linear-gradient(
-         180deg,
-         #ffffff 0%,
-         #f8fbff 100%
-         );
+         background:linear-gradient(180deg,#ffffff 0%,#f8fbff 100%);
          overflow:hidden;
       }
 
@@ -168,35 +144,31 @@
          content:"";
          position:absolute;
          inset:0;
-
          background-image:
          linear-gradient(rgba(22,43,78,.04) 1px, transparent 1px),
          linear-gradient(90deg, rgba(22,43,78,.04) 1px, transparent 1px);
-
          background-size:44px 44px;
-
-         mask-image:
-         linear-gradient(
-         180deg,
-         black,
-         transparent 76%
-         );
+         mask-image:linear-gradient(180deg, black, transparent 76%);
       }
 
-      .hero-contenido{
+      .hero-grid{
          position:relative;
          z-index:2;
-         max-width:980px;
-         margin:auto;
-         text-align:center;
+         display:grid;
+         grid-template-columns:1.05fr .95fr;
+         gap:58px;
+         align-items:center;
       }
 
       .marca-seccion{
          display:flex;
          align-items:center;
-         justify-content:center;
          gap:14px;
          margin-bottom:22px;
+      }
+
+      .marca-seccion.centro{
+         justify-content:center;
       }
 
       .marca-seccion span{
@@ -216,37 +188,78 @@
       h1{
          margin-bottom:26px;
          color:var(--azul-oscuro);
-         font-size:clamp(48px, 5.6vw, 80px);
+         font-size:clamp(48px,5.4vw,78px);
          line-height:.95;
          letter-spacing:-4px;
       }
 
-      h1 span{
-         color:var(--azul);
-      }
+      h1 span{color:var(--azul);}
 
       .hero p{
-         max-width:840px;
-         margin:0 auto 34px;
+         max-width:700px;
+         margin-bottom:34px;
          color:var(--texto-suave);
          font-size:19px;
-         line-height:1.9;
+         line-height:1.85;
       }
 
       .hero-acciones{
          display:flex;
-         justify-content:center;
-         gap:14px;
          flex-wrap:wrap;
+         gap:14px;
+      }
+
+      .hero-panel{
+         padding:34px;
+         border-radius:36px;
+         background:#ffffff;
+         border:1px solid var(--gris-2);
+         box-shadow:0 24px 70px rgba(7,23,45,.10);
+      }
+
+      .hero-panel h2{
+         margin-bottom:22px;
+         color:var(--azul-oscuro);
+         font-size:30px;
+         line-height:1.12;
+         letter-spacing:-1px;
+      }
+
+      .panel-lista{
+         display:grid;
+         gap:14px;
+      }
+
+      .panel-item{
+         padding:18px;
+         border-radius:20px;
+         background:var(--gris);
+         border:1px solid var(--gris-2);
+      }
+
+      .panel-item strong{
+         display:block;
+         margin-bottom:4px;
+         color:var(--azul);
+         font-size:16px;
+      }
+
+      .panel-item span{
+         color:var(--texto-suave);
+         font-size:14.5px;
       }
 
       .section{
          padding:90px 0;
       }
 
+      .section.alt{
+         background:var(--gris);
+      }
+
       .encabezado{
          max-width:900px;
-         margin:0 auto 68px;
+         margin:0 auto 64px;
          text-align:center;
       }
 
@@ -266,15 +279,16 @@
 
       .ambitos-grid{
          display:grid;
-         grid-template-columns:repeat(3, 1fr);
-         gap:26px;
+         grid-template-columns:repeat(3,1fr);
+         gap:24px;
       }
 
       .ambito{
-         overflow:hidden;
+         min-height:330px;
+         padding:34px;
          border-radius:34px;
-         border:1px solid var(--gris-2);
          background:#ffffff;
+         border:1px solid var(--gris-2);
          box-shadow:0 10px 28px rgba(7,23,45,.05);
          transition:.28s ease;
       }
@@ -284,118 +298,91 @@
          box-shadow:0 28px 70px rgba(7,23,45,.10);
       }
 
-      .ambito-img{
-         height:220px;
-         overflow:hidden;
-      }
-
-      .ambito-img img{
-         width:100%;
-         height:100%;
-         object-fit:cover;
-         transition:.4s ease;
-      }
-
-      .ambito:hover .ambito-img img{
-         transform:scale(1.06);
-      }
-
-      .ambito-body{
-         padding:32px;
-      }
-
-      .ambito-tag{
-         display:inline-flex;
-         margin-bottom:16px;
+      .ambito-num{
+         margin-bottom:24px;
          color:var(--naranja);
-         font-size:12px;
+         font-size:13px;
          font-weight:900;
-         letter-spacing:1px;
-         text-transform:uppercase;
+         letter-spacing:1.5px;
       }
 
-      .ambito-body h3{
-         margin-bottom:14px;
+      .ambito h3{
+         margin-bottom:16px;
          color:var(--azul-oscuro);
          font-size:28px;
          line-height:1.08;
          letter-spacing:-1px;
       }
 
-      .ambito-body p{
+      .ambito p{
          margin-bottom:22px;
          color:var(--texto-suave);
          font-size:15.5px;
          line-height:1.8;
       }
 
-      .ambito-body ul{
+      .ambito ul{
          display:grid;
-         gap:10px;
+         gap:9px;
          padding-left:18px;
       }
 
-      .ambito-body li{
+      .ambito li{
          color:var(--texto);
-         font-size:14.6px;
+         font-size:14.5px;
          line-height:1.7;
       }
 
+      .casos-grid{
+         display:grid;
+         grid-template-columns:repeat(2,1fr);
+         gap:24px;
+      }
+
+      .caso{
+         padding:36px;
+         border-radius:34px;
+         background:#ffffff;
+         border:1px solid var(--gris-2);
+         box-shadow:0 10px 28px rgba(7,23,45,.05);
+      }
+
+      .caso strong{
+         display:block;
+         margin-bottom:12px;
+         color:var(--azul);
+         font-size:22px;
+         line-height:1.2;
+      }
+
+      .caso span{
+         color:var(--texto-suave);
+         font-size:15.5px;
+         line-height:1.8;
+      }
+
       .impacto{
-         margin-top:90px;
-         padding:70px;
-         border-radius:40px;
-         background:
-         linear-gradient(
-         135deg,
-         var(--azul),
-         var(--azul-oscuro)
-         );
+         padding:72px 0;
+         background:linear-gradient(135deg,var(--azul),var(--azul-oscuro));
+         color:#ffffff;
          text-align:center;
       }
 
       .impacto h2{
-         max-width:820px;
+         max-width:860px;
          margin:0 auto 22px;
          color:#ffffff;
-         font-size:clamp(36px,4vw,56px);
+         font-size:clamp(34px,4vw,56px);
          line-height:1.05;
          letter-spacing:-2px;
       }
 
       .impacto p{
-         max-width:860px;
+         max-width:820px;
          margin:0 auto 34px;
          color:rgba(255,255,255,.76);
          font-size:18px;
          line-height:1.9;
-      }
-
-      .impacto-grid{
-         display:grid;
-         grid-template-columns:repeat(4, 1fr);
-         gap:20px;
-         margin-top:42px;
-      }
-
-      .impacto-item{
-         padding:28px 24px;
-         border-radius:24px;
-         background:rgba(255,255,255,.08);
-         border:1px solid rgba(255,255,255,.08);
-      }
-
-      .impacto-item strong{
-         display:block;
-         margin-bottom:10px;
-         color:#ffffff;
-         font-size:20px;
-      }
-
-      .impacto-item span{
-         color:rgba(255,255,255,.72);
-         font-size:14.5px;
-         line-height:1.7;
       }
 
       .site-footer{
@@ -413,11 +400,8 @@
          color:rgba(255,255,255,.52);
       }
 
-      @media (max-width:980px){
-
-         .navbar{
-            height:72px;
-         }
+      @media(max-width:980px){
+         .navbar{height:72px;}
 
          .logo-icono{
             width:130px;
@@ -430,9 +414,7 @@
             justify-content:center;
          }
 
-         .whatsapp-desktop{
-            display:none;
-         }
+         .whatsapp-desktop{display:none;}
 
          nav.menu{
             position:absolute;
@@ -445,12 +427,10 @@
             box-shadow:0 18px 40px rgba(7,23,45,.10);
          }
 
-         nav.menu.activo{
-            display:block;
-         }
+         nav.menu.activo{display:block;}
 
          nav.menu ul{
-            width:min(1160px, calc(100% - 40px));
+            width:min(1160px,calc(100% - 40px));
             margin:auto;
             padding:18px 0;
             display:grid;
@@ -465,20 +445,19 @@
             background:var(--gris);
          }
 
+         .hero-grid,
+         .casos-grid{
+            grid-template-columns:1fr;
+         }
+
          .ambitos-grid{
             grid-template-columns:1fr 1fr;
          }
-
-         .impacto-grid{
-            grid-template-columns:1fr 1fr;
-         }
-
       }
 
-      @media (max-width:680px){
-
+      @media(max-width:680px){
          .contenedor{
-            width:min(100% - 28px, 1180px);
+            width:min(100% - 28px,1180px);
          }
 
          .hero{
@@ -501,7 +480,8 @@
             grid-template-columns:1fr;
          }
 
-         .hero-acciones .btn{
+         .hero-acciones .btn,
+         .impacto .btn{
             width:100%;
          }
 
@@ -509,41 +489,37 @@
             padding:58px 0;
          }
 
-         .ambitos-grid,
-         .impacto-grid{
+         .ambitos-grid{
             grid-template-columns:1fr;
          }
 
-         .impacto{
-            padding:42px 24px;
+         .ambito{
+            min-height:auto;
+            padding:28px;
          }
 
-         .ambito-body{
-            padding:26px;
+         .hero-panel,
+         .caso{
+            padding:28px;
          }
-
       }
-
    </style>
-
 </head>
 
 <body>
 
    <header>
-
       <div class="contenedor navbar">
 
-         <a href="index.html" class="logo">
+         <a href="index.html" class="logo" aria-label="NeoDat Consultores">
             <img src="Neo1.png" class="logo-icono">
          </a>
 
-         <button class="menu-toggle">
+         <button class="menu-toggle" type="button" aria-label="Abrir menú">
             ☰
          </button>
 
-         <nav class="menu">
-
+         <nav class="menu" aria-label="Navegación principal">
             <ul>
                <li><a href="index.html">Inicio</a></li>
                <li><a href="servicios.html">Servicios</a></li>
@@ -552,7 +528,6 @@
                <li><a href="quienes-somos.html">Quiénes somos</a></li>
                <li><a href="contacto.html">Contacto</a></li>
             </ul>
-
          </nav>
 
          <a
@@ -565,344 +540,263 @@
          </a>
 
       </div>
-
    </header>
 
    <main>
 
       <section class="hero">
+         <div class="contenedor hero-grid">
 
-         <div class="contenedor hero-contenido">
+            <div>
+               <div class="marca-seccion">
+                  <span></span>
+                  <strong>Ámbitos de intervención</strong>
+               </div>
 
-            <div class="marca-seccion">
-               <span></span>
-               <strong>Ámbitos de trabajo</strong>
-               <span></span>
+               <h1>
+                  Intervenimos donde la información afecta la <span>gestión del negocio</span>.
+               </h1>
+
+               <p>
+                  NeoDat trabaja en áreas donde la falta de control, datos dispersos,
+                  reportes manuales o procesos poco claros limitan la capacidad de decidir,
+                  ejecutar y crecer.
+               </p>
+
+               <div class="hero-acciones">
+                  <a class="btn btn-principal" href="contacto.html">
+                     Solicitar análisis
+                  </a>
+
+                  <a class="btn btn-whatsapp" href="https://wa.me/593988200116" target="_blank" rel="noopener">
+                     Contactar por WhatsApp
+                  </a>
+               </div>
             </div>
 
-            <h1>
-               Soluciones aplicadas a
-               <span>gestión, análisis y crecimiento</span>.
-            </h1>
+            <aside class="hero-panel">
+               <h2>
+                  ¿Cuándo tiene sentido intervenir?
+               </h2>
 
-            <p>
-               Trabajamos con empresas, instituciones y equipos que necesitan
-               organizar información, mejorar control, automatizar procesos y
-               tomar decisiones con mayor claridad.
-            </p>
+               <div class="panel-lista">
+                  <div class="panel-item">
+                     <strong>Cuando hay datos, pero no claridad.</strong>
+                     <span>La información existe, pero no se traduce en decisiones.</span>
+                  </div>
 
-            <div class="hero-acciones">
+                  <div class="panel-item">
+                     <strong>Cuando los reportes dependen de trabajo manual.</strong>
+                     <span>La empresa pierde tiempo preparando información repetitiva.</span>
+                  </div>
 
-               <a class="btn btn-principal" href="contacto.html">
-                  Solicitar asesoría
-               </a>
-
-               <a
-                  class="btn btn-whatsapp"
-                  href="https://wa.me/593988200116"
-                  target="_blank"
-                  rel="noopener"
-               >
-                  Contactar por WhatsApp
-               </a>
-
-            </div>
+                  <div class="panel-item">
+                     <strong>Cuando la gerencia no tiene visibilidad suficiente.</strong>
+                     <span>Ventas, costos, proyectos o resultados no se monitorean con oportunidad.</span>
+                  </div>
+               </div>
+            </aside>
 
          </div>
-
       </section>
 
       <section class="section">
-
          <div class="contenedor">
 
             <div class="encabezado">
-
-               <div class="marca-seccion">
+               <div class="marca-seccion centro">
                   <span></span>
                   <strong>Dónde generamos valor</strong>
                   <span></span>
                </div>
 
                <h2>
-                  Áreas donde la información y la gestión hacen diferencia.
+                  Áreas donde ordenamos información, control y ejecución.
                </h2>
 
                <p>
-                  Nuestros servicios se adaptan a distintos entornos empresariales,
-                  operativos y estratégicos donde la organización de datos y el control
-                  son fundamentales.
+                  Estos son los frentes empresariales donde NeoDat puede aportar análisis,
+                  estructura y herramientas para mejorar la gestión.
                </p>
-
             </div>
 
             <div class="ambitos-grid">
 
                <article class="ambito">
-
-                  <div class="ambito-img">
-                     <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=1200&auto=format&fit=crop" alt="">
-                  </div>
-
-                  <div class="ambito-body">
-
-                     <span class="ambito-tag">
-                        Finanzas y control
-                     </span>
-
-                     <h3>
-                        Gestión financiera empresarial
-                     </h3>
-
-                     <p>
-                        Ayudamos a estructurar información económica para mejorar
-                        control financiero, análisis y seguimiento de resultados.
-                     </p>
-
-                     <ul>
-                        <li>Control presupuestario.</li>
-                        <li>Seguimiento de ingresos y costos.</li>
-                        <li>Análisis de rentabilidad.</li>
-                        <li>Indicadores financieros.</li>
-                     </ul>
-
-                  </div>
-
+                  <div class="ambito-num">01 / Finanzas</div>
+                  <h3>Finanzas y rentabilidad</h3>
+                  <p>
+                     Para empresas que necesitan entender mejor ingresos, costos,
+                     márgenes, presupuestos y resultados económicos.
+                  </p>
+                  <ul>
+                     <li>Rentabilidad por línea, cliente o unidad.</li>
+                     <li>Control de ingresos, gastos y márgenes.</li>
+                     <li>Seguimiento presupuestario.</li>
+                  </ul>
                </article>
 
                <article class="ambito">
-
-                  <div class="ambito-img">
-                     <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop" alt="">
-                  </div>
-
-                  <div class="ambito-body">
-
-                     <span class="ambito-tag">
-                        Inteligencia de negocios
-                     </span>
-
-                     <h3>
-                        Dashboards y análisis estratégico
-                     </h3>
-
-                     <p>
-                        Construimos herramientas visuales y modelos analíticos
-                        para monitorear indicadores y apoyar decisiones.
-                     </p>
-
-                     <ul>
-                        <li>Dashboards ejecutivos.</li>
-                        <li>Visualización de KPI.</li>
-                        <li>Reportes automatizados.</li>
-                        <li>Seguimiento gerencial.</li>
-                     </ul>
-
-                  </div>
-
+                  <div class="ambito-num">02 / Gerencia</div>
+                  <h3>Dirección y toma de decisiones</h3>
+                  <p>
+                     Para equipos directivos que requieren indicadores claros,
+                     reportes ejecutivos y lectura rápida del desempeño.
+                  </p>
+                  <ul>
+                     <li>Paneles gerenciales.</li>
+                     <li>Indicadores de gestión.</li>
+                     <li>Visibilidad ejecutiva del negocio.</li>
+                  </ul>
                </article>
 
                <article class="ambito">
-
-                  <div class="ambito-img">
-                     <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop" alt="">
-                  </div>
-
-                  <div class="ambito-body">
-
-                     <span class="ambito-tag">
-                        Tecnología
-                     </span>
-
-                     <h3>
-                        Desarrollo web y herramientas digitales
-                     </h3>
-
-                     <p>
-                        Diseñamos soluciones tecnológicas orientadas a presencia,
-                        automatización y soporte empresarial.
-                     </p>
-
-                     <ul>
-                        <li>Páginas web corporativas.</li>
-                        <li>Formularios empresariales.</li>
-                        <li>Automatización de procesos.</li>
-                        <li>Integración de información.</li>
-                     </ul>
-
-                  </div>
-
+                  <div class="ambito-num">03 / Operación</div>
+                  <h3>Operaciones y procesos</h3>
+                  <p>
+                     Para organizaciones con procesos manuales, información fragmentada
+                     o baja trazabilidad en su operación diaria.
+                  </p>
+                  <ul>
+                     <li>Mapeo de procesos críticos.</li>
+                     <li>Automatización de reportes.</li>
+                     <li>Seguimiento operativo.</li>
+                  </ul>
                </article>
 
                <article class="ambito">
-
-                  <div class="ambito-img">
-                     <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1200&auto=format&fit=crop" alt="">
-                  </div>
-
-                  <div class="ambito-body">
-
-                     <span class="ambito-tag">
-                        Gestión institucional
-                     </span>
-
-                     <h3>
-                        Proyectos y planificación
-                     </h3>
-
-                     <p>
-                        Acompañamos la estructuración y seguimiento de proyectos
-                        empresariales e institucionales.
-                     </p>
-
-                     <ul>
-                        <li>Planificación estratégica.</li>
-                        <li>Seguimiento de proyectos.</li>
-                        <li>Control de avances.</li>
-                        <li>Soporte PMO.</li>
-                     </ul>
-
-                  </div>
-
+                  <div class="ambito-num">04 / Comercial</div>
+                  <h3>Comercial y ventas</h3>
+                  <p>
+                     Para negocios que necesitan analizar ventas, clientes,
+                     cumplimiento de metas y oportunidades comerciales.
+                  </p>
+                  <ul>
+                     <li>Seguimiento de ventas.</li>
+                     <li>Indicadores comerciales.</li>
+                     <li>Análisis de clientes y desempeño.</li>
+                  </ul>
                </article>
 
                <article class="ambito">
-
-                  <div class="ambito-img">
-                     <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=1200&auto=format&fit=crop" alt="">
-                  </div>
-
-                  <div class="ambito-body">
-
-                     <span class="ambito-tag">
-                        Analítica
-                     </span>
-
-                     <h3>
-                        Ciencia de datos y modelado
-                     </h3>
-
-                     <p>
-                        Transformamos datos en estructuras analíticas útiles
-                        para entender comportamientos y tendencias.
-                     </p>
-
-                     <ul>
-                        <li>Consolidación de bases de datos.</li>
-                        <li>Análisis descriptivo.</li>
-                        <li>Modelos analíticos.</li>
-                        <li>Reportería técnica.</li>
-                     </ul>
-
-                  </div>
-
+                  <div class="ambito-num">05 / Proyectos</div>
+                  <h3>Proyectos e instituciones</h3>
+                  <p>
+                     Para iniciativas que requieren planificación, seguimiento,
+                     documentación, control de avances y medición de resultados.
+                  </p>
+                  <ul>
+                     <li>Control de hitos y entregables.</li>
+                     <li>Gestión PMO.</li>
+                     <li>Reportes de avance.</li>
+                  </ul>
                </article>
 
                <article class="ambito">
-
-                  <div class="ambito-img">
-                     <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1200&auto=format&fit=crop" alt="">
-                  </div>
-
-                  <div class="ambito-body">
-
-                     <span class="ambito-tag">
-                        Dirección estratégica
-                     </span>
-
-                     <h3>
-                        Control y toma de decisiones
-                     </h3>
-
-                     <p>
-                        Diseñamos herramientas que permiten monitorear resultados,
-                        reducir incertidumbre y mejorar decisiones.
-                     </p>
-
-                     <ul>
-                        <li>Indicadores de desempeño.</li>
-                        <li>Control ejecutivo.</li>
-                        <li>Seguimiento operativo.</li>
-                        <li>Planeación basada en datos.</li>
-                     </ul>
-
-                  </div>
-
+                  <div class="ambito-num">06 / Datos</div>
+                  <h3>Tecnología y datos</h3>
+                  <p>
+                     Para empresas que buscan ordenar información, conectar herramientas
+                     digitales y convertir datos en activos de gestión.
+                  </p>
+                  <ul>
+                     <li>Estructuración de bases de datos.</li>
+                     <li>Integración de información.</li>
+                     <li>Herramientas digitales de control.</li>
+                  </ul>
                </article>
 
             </div>
 
-            <div class="impacto">
+         </div>
+      </section>
+
+      <section class="section alt">
+         <div class="contenedor">
+
+            <div class="encabezado">
+               <div class="marca-seccion centro">
+                  <span></span>
+                  <strong>Casos donde aportamos</strong>
+                  <span></span>
+               </div>
 
                <h2>
-                  Nuestro trabajo conecta información, estrategia y ejecución.
+                  Situaciones donde una intervención técnica cambia la gestión.
                </h2>
+            </div>
 
-               <p>
-                  Integramos finanzas, tecnología, analítica y gestión para construir
-                  soluciones que ayuden a las empresas a trabajar con mayor claridad,
-                  control y capacidad de decisión.
-               </p>
+            <div class="casos-grid">
 
-               <div class="impacto-grid">
+               <div class="caso">
+                  <strong>La empresa vende, pero no sabe qué tan rentable es.</strong>
+                  <span>
+                     Ordenamos la información financiera para identificar márgenes,
+                     costos, líneas rentables y puntos críticos.
+                  </span>
+               </div>
 
-                  <div class="impacto-item">
-                     <strong>Información clara</strong>
-                     <span>
-                        Datos organizados y útiles para gestión empresarial.
-                     </span>
-                  </div>
+               <div class="caso">
+                  <strong>La gerencia recibe reportes tarde o incompletos.</strong>
+                  <span>
+                     Automatizamos información clave para que los indicadores estén disponibles
+                     con mayor oportunidad y consistencia.
+                  </span>
+               </div>
 
-                  <div class="impacto-item">
-                     <strong>Procesos eficientes</strong>
-                     <span>
-                        Menos trabajo manual y mayor automatización.
-                     </span>
-                  </div>
+               <div class="caso">
+                  <strong>Los proyectos avanzan, pero no existe control claro.</strong>
+                  <span>
+                     Diseñamos estructuras de seguimiento, hitos, responsables, cronogramas
+                     y reportes de avance.
+                  </span>
+               </div>
 
-                  <div class="impacto-item">
-                     <strong>Control ejecutivo</strong>
-                     <span>
-                        Seguimiento continuo de indicadores y resultados.
-                     </span>
-                  </div>
-
-                  <div class="impacto-item">
-                     <strong>Decisiones estratégicas</strong>
-                     <span>
-                        Herramientas orientadas a crecimiento y planificación.
-                     </span>
-                  </div>
-
+               <div class="caso">
+                  <strong>La información está repartida en varios archivos.</strong>
+                  <span>
+                     Consolidamos datos y construimos modelos que permiten analizar,
+                     comparar y decidir con mayor precisión.
+                  </span>
                </div>
 
             </div>
 
          </div>
+      </section>
 
+      <section class="impacto">
+         <div class="contenedor">
+            <h2>
+               No trabajamos sobre áreas aisladas. Conectamos información, gestión y decisión.
+            </h2>
+
+            <p>
+               El valor de NeoDat está en integrar finanzas, datos, procesos, proyectos
+               y tecnología para que la empresa pueda operar con mayor claridad.
+            </p>
+
+            <a class="btn btn-whatsapp" href="contacto.html">
+               Solicitar una evaluación
+            </a>
+         </div>
       </section>
 
    </main>
 
    <footer class="site-footer">
-
       <div class="contenedor footer-bottom">
-         <span>
-            © 2026 NeoDat Consultores. Todos los derechos reservados.
-         </span>
+         <span>© 2026 NeoDat Consultores. Todos los derechos reservados.</span>
       </div>
-
    </footer>
 
    <script>
-
       const menuToggle = document.querySelector(".menu-toggle");
       const menu = document.querySelector(".menu");
 
       menuToggle.addEventListener("click", () => {
          menu.classList.toggle("activo");
       });
-
    </script>
 
 </body>
