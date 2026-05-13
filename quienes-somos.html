@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+   <title>Quiénes Somos | NeoDat Consultores</title>
+
+   <link rel="icon" type="image/png" sizes="32x32" href="Neo1.png">
+
+   <link rel="preconnect" href="https://fonts.googleapis.com" />
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+   <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+   />
+
+   <style>
+
+      :root {
+         --azul: #162b4e;
+         --azul-oscuro: #07172d;
+         --azul-medio: #27456f;
+         --azul-claro: #edf2f8;
+         --naranja: #ffa500;
+         --blanco: #ffffff;
+         --gris: #f6f8fb;
+         --gris-2: #e1e7f0;
+         --texto: #243447;
+         --texto-suave: #66788a;
+         --sombra: 0 18px 45px rgba(7, 23, 45, 0.08);
+      }
+
+      *{
+         margin:0;
+         padding:0;
+         box-sizing:border-box;
+      }
+
+      body{
+         font-family:"Inter", Arial, sans-serif;
+         background:#ffffff;
+         color:var(--texto);
+         line-height:1.6;
+      }
+
+      a{
+         text-decoration:none;
+         color:inherit;
+      }
+
+      .contenedor{
+         width:min(1160px, calc(100% - 40px));
+         margin:auto;
+      }
+
+      header{
+         position:fixed;
+         top:0;
+         left:0;
+         z-index:100;
+         width:100%;
+         background:rgba(255,255,255,.92);
+         backdrop-filter:blur(18px);
+         border-bottom:1px solid rgba(22,43,78,.08);
+      }
+
+      .navbar{
+         height:78px;
+         display:flex;
+         align-items:center;
+         justify-content:space-between;
+         gap:28px;
+      }
+
+      .logo{
+         display:flex;
+         align-items:center;
+      }
+
+      .logo-icono{
+         width:160px;
+         height:160px;
+         object-fit:contain;
+      }
+
+      nav ul{
+         list-style:none;
+         display:flex;
+         align-items:center;
+         gap:8px;
+      }
+
+      nav a{
+         display:inline-flex;
+         padding:10px 15px;
+         border-radius:999px;
+         font-size:14px;
+         font-weight:750;
+         color:var(--azul);
+         transition:.2s ease;
+      }
+
+      nav a:hover{
+         background:var(--azul-claro);
+      }
+
+      .btn{
+         display:inline-flex;
+         align-items:center;
+         justify-content:center;
+         min-height:48px;
+         padding:13px 22px;
+         border-radius:999px;
+         border:0;
+         font-size:14px;
+         font-weight:800;
+      }
+
+      .btn-whatsapp{
+         background:#25D366;
+         color:#ffffff;
+      }
+
+      .hero{
+         position:relative;
+         padding:170px 0 100px;
+         background:linear-gradient(180deg,#ffffff 0%,#f8fbff 100%);
+         overflow:hidden;
+      }
+
+      .hero::before{
+         content:"";
+         position:absolute;
+         inset:0;
+         background-image:
+         linear-gradient(rgba(22,43,78,.04) 1px, transparent 1px),
+         linear-gradient(90deg, rgba(22,43,78,.04) 1px, transparent 1px);
+         background-size:44px 44px;
+         mask-image:linear-gradient(180deg, black, transparent 76%);
+      }
+
+      .hero-contenido{
+         position:relative;
+         z-index:2;
+         max-width:850px;
+      }
+
+      .eyebrow{
+         display:inline-flex;
+         align-items:center;
+         gap:10px;
+         margin-bottom:22px;
+         padding:8px 14px;
+         border:1px solid rgba(22,43,78,.1);
+         border-radius:999px;
+         background:var(--blanco);
+         color:var(--azul);
+         font-size:12px;
+         font-weight:900;
+         letter-spacing:1px;
+         text-transform:uppercase;
+      }
+
+      .eyebrow::before{
+         content:"";
+         width:8px;
+         height:8px;
+         border-radius:50%;
+         background:var(--naranja);
+      }
+
+      h1{
+         margin-bottom:26px;
+         color:var(--azul-oscuro);
+         font-size:clamp(44px, 5vw, 72px);
+         line-height:.98;
+         letter-spacing:-3px;
+      }
+
+      h1 span{
+         color:var(--azul);
+      }
+
+      .hero p{
+         margin-bottom:24px;
+         color:var(--texto-suave);
+         font-size:18px;
+      }
+
+      .bloque{
+         padding:90px 0;
+      }
+
+      .grid{
+         display:grid;
+         grid-template-columns:1fr 1fr;
+         gap:50px;
+         align-items:start;
+      }
+
+      .card{
+         padding:34px;
+         border:1px solid var(--gris-2);
+         border-radius:28px;
+         background:#ffffff;
+         box-shadow:var(--sombra);
+      }
+
+      .card h2{
+         margin-bottom:18px;
+         color:var(--azul);
+         font-size:30px;
+         font-weight:850;
+      }
+
+      .card p{
+         color:var(--texto-suave);
+         font-size:16px;
+         margin-bottom:16px;
+      }
+
+      .valores{
+         display:grid;
+         gap:16px;
+      }
+
+      .valor{
+         padding:18px 20px;
+         border-radius:18px;
+         background:var(--gris);
+         border:1px solid var(--gris-2);
+      }
+
+      .valor strong{
+         display:block;
+         margin-bottom:6px;
+         color:var(--azul);
+         font-size:17px;
+      }
+
+      .valor span{
+         color:var(--texto-suave);
+         font-size:14px;
+      }
+
+      .site-footer{
+         background:#07172d;
+         color:rgba(255,255,255,.72);
+         padding:10px 0;
+      }
+
+      .footer-bottom{
+         display:flex;
+         justify-content:center;
+         align-items:center;
+         text-align:center;
+         font-size:12.5px;
+         color:rgba(255,255,255,.52);
+      }
+
+      @media (max-width:980px){
+
+         nav{
+            display:none;
+         }
+
+         .grid{
+            grid-template-columns:1fr;
+         }
+
+      }
+
+      @media (max-width:680px){
+
+         .navbar{
+            height:68px;
+         }
+
+         .hero{
+            padding:130px 0 70px;
+         }
+
+         h1{
+            font-size:48px;
+            letter-spacing:-2px;
+         }
+
+         .hero p{
+            font-size:16px;
+         }
+
+      }
+
+   </style>
+</head>
+
+<body>
+
+   <header>
+      <div class="contenedor navbar">
+
+         <a href="index.html" class="logo">
+            <img src="Neo1.png" class="logo-icono">
+         </a>
+
+         <nav>
+            <ul>
+               <li><a href="servicios.html">Servicios</a></li>
+               <li><a href="metodo.html">Método</a></li>
+               <li><a href="ambitos.html">Ámbitos</a></li>
+               <li><a href="quienes-somos.html">Quiénes somos</a></li>
+               <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+         </nav>
+
+         <a
+            class="btn btn-whatsapp"
+            href="https://wa.me/593988200116"
+            target="_blank"
+         >
+            WhatsApp
+         </a>
+
+      </div>
+   </header>
+
+   <main>
+
+      <section class="hero">
+
+         <div class="contenedor hero-contenido">
+
+            <div class="eyebrow">
+               NeoDat Consultores
+            </div>
+
+            <h1>
+               Quiénes <span>somos</span>.
+            </h1>
+
+            <p>
+               NeoDat Consultores nace con el objetivo de ayudar a empresas
+               a trabajar con información clara, procesos organizados y herramientas
+               que permitan tomar decisiones con mayor precisión.
+            </p>
+
+            <p>
+               Integramos análisis de datos, control financiero, dashboards,
+               automatización y soluciones digitales para fortalecer la gestión
+               empresarial y mejorar la visibilidad operativa.
+            </p>
+
+         </div>
+
+      </section>
+
+      <section class="bloque">
+
+         <div class="contenedor grid">
+
+            <div class="card">
+
+               <h2>
+                  Nuestra visión
+               </h2>
+
+               <p>
+                  Construir soluciones empresariales modernas que permitan
+                  transformar datos y procesos en información útil, medible
+                  y accionable.
+               </p>
+
+               <p>
+                  Buscamos que cada organización tenga mayor control,
+                  claridad financiera y capacidad de análisis para crecer
+                  de manera sostenible.
+               </p>
+
+            </div>
+
+            <div class="card">
+
+               <h2>
+                  Valores
+               </h2>
+
+               <div class="valores">
+
+                  <div class="valor">
+                     <strong>Precisión</strong>
+                     <span>Información clara y estructurada para decisiones confiables.</span>
+                  </div>
+
+                  <div class="valor">
+                     <strong>Orden</strong>
+                     <span>Procesos organizados y soluciones empresariales sostenibles.</span>
+                  </div>
+
+                  <div class="valor">
+                     <strong>Innovación</strong>
+                     <span>Herramientas modernas orientadas a resultados reales.</span>
+                  </div>
+
+                  <div class="valor">
+                     <strong>Compromiso</strong>
+                     <span>Acompañamiento profesional y enfoque estratégico.</span>
+                  </div>
+
+               </div>
+
+            </div>
+
+         </div>
+
+      </section>
+
+   </main>
+
+   <footer class="site-footer">
+      <div class="contenedor footer-bottom">
+         <span>© 2026 NeoDat Consultores. Todos los derechos reservados.</span>
+      </div>
+   </footer>
+
+</body>
+</html>
