@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+   <title>Método | NeoDat Consultores</title>
+
+   <link rel="icon" type="image/png" sizes="32x32" href="Neo1.png">
+
+   <link rel="preconnect" href="https://fonts.googleapis.com" />
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+   <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+   />
+
+   <style>
+
+      :root{
+         --azul:#162b4e;
+         --azul-oscuro:#07172d;
+         --azul-claro:#edf2f8;
+         --naranja:#f4a100;
+         --blanco:#ffffff;
+         --gris:#f6f8fb;
+         --gris-2:#e1e7f0;
+         --texto:#243447;
+         --texto-suave:#66788a;
+      }
+
+      *{
+         margin:0;
+         padding:0;
+         box-sizing:border-box;
+      }
+
+      html{
+         scroll-behavior:smooth;
+      }
+
+      body{
+         font-family:"Inter", Arial, sans-serif;
+         background:#ffffff;
+         color:var(--texto);
+         line-height:1.6;
+         overflow-x:hidden;
+      }
+
+      a{
+         text-decoration:none;
+         color:inherit;
+      }
+
+      .contenedor{
+         width:min(1180px, calc(100% - 40px));
+         margin:auto;
+      }
+
+      header{
+         position:fixed;
+         top:0;
+         left:0;
+         z-index:100;
+         width:100%;
+         background:rgba(255,255,255,.94);
+         backdrop-filter:blur(18px);
+         border-bottom:1px solid rgba(22,43,78,.08);
+      }
+
+      .navbar{
+         height:78px;
+         display:flex;
+         align-items:center;
+         justify-content:space-between;
+         gap:28px;
+      }
+
+      .logo{
+         display:flex;
+         align-items:center;
+      }
+
+      .logo-icono{
+         width:160px;
+         height:160px;
+         object-fit:contain;
+      }
+
+      nav ul{
+         list-style:none;
+         display:flex;
+         align-items:center;
+         gap:8px;
+      }
+
+      nav a{
+         display:inline-flex;
+         padding:10px 15px;
+         border-radius:999px;
+         font-size:14px;
+         font-weight:750;
+         color:var(--azul);
+         transition:.2s ease;
+      }
+
+      nav a:hover{
+         background:var(--azul-claro);
+      }
+
+      .btn{
+         display:inline-flex;
+         align-items:center;
+         justify-content:center;
+         min-height:48px;
+         padding:13px 22px;
+         border-radius:999px;
+         border:0;
+         font-size:14px;
+         font-weight:800;
+         cursor:pointer;
+         transition:.2s ease;
+      }
+
+      .btn-whatsapp{
+         background:#25D366;
+         color:#ffffff;
+      }
+
+      .btn-whatsapp:hover{
+         background:#1ebe5d;
+         transform:translateY(-2px);
+      }
+
+      .menu-toggle{
+         display:none;
+         width:46px;
+         height:46px;
+         border:1px solid var(--gris-2);
+         border-radius:14px;
+         background:#ffffff;
+         color:var(--azul);
+         font-size:26px;
+         font-weight:900;
+         cursor:pointer;
+      }
+
+      .hero{
+         position:relative;
+         padding:155px 0 90px;
+         background:
+         linear-gradient(
+         180deg,
+         #ffffff 0%,
+         #f8fbff 100%
+         );
+         overflow:hidden;
+      }
+
+      .hero::before{
+         content:"";
+         position:absolute;
+         inset:0;
+
+         background-image:
+         linear-gradient(rgba(22,43,78,.04) 1px, transparent 1px),
+         linear-gradient(90deg, rgba(22,43,78,.04) 1px, transparent 1px);
+
+         background-size:44px 44px;
+
+         mask-image:
+         linear-gradient(
+         180deg,
+         black,
+         transparent 76%
+         );
+      }
+
+      .hero-contenido{
+         position:relative;
+         z-index:2;
+         max-width:980px;
+         margin:auto;
+         text-align:center;
+      }
+
+      .marca-seccion{
+         display:flex;
+         align-items:center;
+         justify-content:center;
+         gap:14px;
+         margin-bottom:22px;
+      }
+
+      .marca-seccion span{
+         width:46px;
+         height:2px;
+         background:var(--naranja);
+      }
+
+      .marca-seccion strong{
+         color:var(--azul);
+         font-size:12px;
+         font-weight:900;
+         letter-spacing:2px;
+         text-transform:uppercase;
+      }
+
+      h1{
+         margin-bottom:26px;
+         color:var(--azul-oscuro);
+         font-size:clamp(50px, 6vw, 82px);
+         line-height:.95;
+         letter-spacing:-4px;
+      }
+
+      h1 span{
+         color:var(--azul);
+      }
+
+      .hero p{
+         max-width:860px;
+         margin:0 auto;
+         color:var(--texto-suave);
+         font-size:20px;
+         line-height:1.8;
+      }
+
+      .metodo-section{
+         padding:90px 0 100px;
+      }
+
+      .encabezado{
+         max-width:900px;
+         margin:0 auto 70px;
+         text-align:center;
+      }
+
+      .encabezado h2{
+         margin-bottom:20px;
+         color:var(--azul-oscuro);
+         font-size:clamp(34px, 4vw, 54px);
+         line-height:1.06;
+         letter-spacing:-2px;
+      }
+
+      .encabezado p{
+         color:var(--texto-suave);
+         font-size:18px;
+         line-height:1.9;
+      }
+
+      .pasos{
+         display:grid;
+         gap:30px;
+      }
+
+      .paso{
+         display:grid;
+         grid-template-columns:120px 1fr;
+         gap:34px;
+         align-items:start;
+         padding:38px;
+         border:1px solid var(--gris-2);
+         border-radius:34px;
+         background:#ffffff;
+         box-shadow:0 10px 28px rgba(7,23,45,.05);
+         transition:.28s ease;
+      }
+
+      .paso:hover{
+         transform:translateY(-5px);
+         box-shadow:0 28px 70px rgba(7,23,45,.10);
+      }
+
+      .numero{
+         width:92px;
+         height:92px;
+         display:grid;
+         place-items:center;
+         border-radius:24px;
+         background:
+         linear-gradient(
+         135deg,
+         var(--azul),
+         var(--azul-oscuro)
+         );
+         color:#ffffff;
+         font-size:32px;
+         font-weight:900;
+      }
+
+      .paso-contenido h3{
+         margin-bottom:14px;
+         color:var(--azul-oscuro);
+         font-size:34px;
+         line-height:1.08;
+         letter-spacing:-1.5px;
+      }
+
+      .paso-contenido p{
+         margin-bottom:20px;
+         color:var(--texto-suave);
+         font-size:16px;
+         line-height:1.9;
+      }
+
+      .paso-contenido ul{
+         display:grid;
+         gap:12px;
+         padding-left:18px;
+      }
+
+      .paso-contenido li{
+         color:var(--texto);
+         font-size:15px;
+         line-height:1.8;
+      }
+
+      .bloque-final{
+         margin-top:90px;
+         padding:68px;
+         border-radius:38px;
+         background:
+         linear-gradient(
+         135deg,
+         var(--azul),
+         var(--azul-oscuro)
+         );
+         text-align:center;
+      }
+
+      .bloque-final h2{
+         max-width:760px;
+         margin:0 auto 22px;
+         color:#ffffff;
+         font-size:clamp(34px, 4vw, 52px);
+         line-height:1.08;
+         letter-spacing:-2px;
+      }
+
+      .bloque-final p{
+         max-width:820px;
+         margin:0 auto 34px;
+         color:rgba(255,255,255,.76);
+         font-size:18px;
+         line-height:1.9;
+      }
+
+      .site-footer{
+         background:#07172d;
+         color:rgba(255,255,255,.72);
+         padding:12px 0;
+      }
+
+      .footer-bottom{
+         display:flex;
+         justify-content:center;
+         align-items:center;
+         text-align:center;
+         font-size:12.5px;
+         color:rgba(255,255,255,.52);
+      }
+
+      @media (max-width:980px){
+
+         .navbar{
+            height:72px;
+         }
+
+         .logo-icono{
+            width:130px;
+            height:130px;
+         }
+
+         .menu-toggle{
+            display:flex;
+            align-items:center;
+            justify-content:center;
+         }
+
+         .whatsapp-desktop{
+            display:none;
+         }
+
+         nav.menu{
+            position:absolute;
+            top:72px;
+            left:0;
+            width:100%;
+            display:none;
+            background:#ffffff;
+            border-bottom:1px solid rgba(22,43,78,.08);
+            box-shadow:0 18px 40px rgba(7,23,45,.10);
+         }
+
+         nav.menu.activo{
+            display:block;
+         }
+
+         nav.menu ul{
+            width:min(1160px, calc(100% - 40px));
+            margin:auto;
+            padding:18px 0;
+            display:grid;
+            grid-template-columns:1fr;
+            gap:8px;
+         }
+
+         nav.menu a{
+            width:100%;
+            padding:14px 16px;
+            border-radius:16px;
+            background:var(--gris);
+         }
+
+         .paso{
+            grid-template-columns:1fr;
+         }
+
+      }
+
+      @media (max-width:680px){
+
+         .contenedor{
+            width:min(100% - 28px, 1160px);
+         }
+
+         .hero{
+            padding:128px 0 60px;
+         }
+
+         h1{
+            font-size:50px;
+            letter-spacing:-2px;
+         }
+
+         .hero p{
+            font-size:16px;
+         }
+
+         .metodo-section{
+            padding:52px 0 78px;
+         }
+
+         .paso{
+            padding:28px;
+         }
+
+         .numero{
+            width:74px;
+            height:74px;
+            font-size:28px;
+         }
+
+         .paso-contenido h3{
+            font-size:28px;
+         }
+
+         .bloque-final{
+            padding:42px 24px;
+         }
+
+      }
+
+   </style>
+
+</head>
+
+<body>
+
+   <header>
+
+      <div class="contenedor navbar">
+
+         <a href="index.html" class="logo">
+            <img src="Neo1.png" class="logo-icono">
+         </a>
+
+         <button class="menu-toggle">
+            ☰
+         </button>
+
+         <nav class="menu">
+
+            <ul>
+               <li><a href="index.html">Inicio</a></li>
+               <li><a href="servicios.html">Servicios</a></li>
+               <li><a href="metodo.html">Método</a></li>
+               <li><a href="ambitos.html">Ámbitos</a></li>
+               <li><a href="quienes-somos.html">Quiénes somos</a></li>
+               <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+
+         </nav>
+
+         <a
+            class="btn btn-whatsapp whatsapp-desktop"
+            href="https://wa.me/593988200116"
+            target="_blank"
+            rel="noopener"
+         >
+            WhatsApp
+         </a>
+
+      </div>
+
+   </header>
+
+   <main>
+
+      <section class="hero">
+
+         <div class="contenedor hero-contenido">
+
+            <div class="marca-seccion">
+               <span></span>
+               <strong>Método NeoDat</strong>
+               <span></span>
+            </div>
+
+            <h1>
+               Un enfoque basado en
+               <span>análisis, estructura y ejecución</span>.
+            </h1>
+
+            <p>
+               Nuestro método combina diagnóstico empresarial, análisis técnico,
+               automatización y seguimiento estratégico para construir soluciones
+               reales, medibles y sostenibles.
+            </p>
+
+         </div>
+
+      </section>
+
+      <section class="metodo-section">
+
+         <div class="contenedor">
+
+            <div class="encabezado">
+
+               <div class="marca-seccion">
+                  <span></span>
+                  <strong>Cómo trabajamos</strong>
+                  <span></span>
+               </div>
+
+               <h2>
+                  Un proceso diseñado para transformar información en decisiones.
+               </h2>
+
+               <p>
+                  Cada proyecto sigue una metodología clara que permite identificar
+                  necesidades, estructurar soluciones y generar resultados útiles
+                  para la gestión empresarial.
+               </p>
+
+            </div>
+
+            <div class="pasos">
+
+               <article class="paso">
+
+                  <div class="numero">
+                     01
+                  </div>
+
+                  <div class="paso-contenido">
+
+                     <h3>
+                        Diagnóstico y levantamiento de información
+                     </h3>
+
+                     <p>
+                        Analizamos la situación actual de la empresa, sus procesos,
+                        fuentes de información, necesidades y objetivos estratégicos.
+                     </p>
+
+                     <ul>
+                        <li>Identificación de problemas y oportunidades.</li>
+                        <li>Revisión de procesos e indicadores.</li>
+                        <li>Evaluación de herramientas actuales.</li>
+                        <li>Levantamiento de requerimientos empresariales.</li>
+                     </ul>
+
+                  </div>
+
+               </article>
+
+               <article class="paso">
+
+                  <div class="numero">
+                     02
+                  </div>
+
+                  <div class="paso-contenido">
+
+                     <h3>
+                        Estructuración y análisis
+                     </h3>
+
+                     <p>
+                        Organizamos la información para construir modelos de análisis,
+                        indicadores y estructuras útiles para la toma de decisiones.
+                     </p>
+
+                     <ul>
+                        <li>Consolidación y limpieza de datos.</li>
+                        <li>Modelos financieros y analíticos.</li>
+                        <li>Diseño de KPI y métricas estratégicas.</li>
+                        <li>Visualización ejecutiva de información.</li>
+                     </ul>
+
+                  </div>
+
+               </article>
+
+               <article class="paso">
+
+                  <div class="numero">
+                     03
+                  </div>
+
+                  <div class="paso-contenido">
+
+                     <h3>
+                        Desarrollo e implementación
+                     </h3>
+
+                     <p>
+                        Diseñamos herramientas tecnológicas y operativas alineadas
+                        a las necesidades reales del negocio.
+                     </p>
+
+                     <ul>
+                        <li>Dashboards y reportes automatizados.</li>
+                        <li>Desarrollo web empresarial.</li>
+                        <li>Automatización de procesos.</li>
+                        <li>Implementación de soluciones analíticas.</li>
+                     </ul>
+
+                  </div>
+
+               </article>
+
+               <article class="paso">
+
+                  <div class="numero">
+                     04
+                  </div>
+
+                  <div class="paso-contenido">
+
+                     <h3>
+                        Seguimiento y mejora continua
+                     </h3>
+
+                     <p>
+                        Acompañamos el uso de las herramientas implementadas para
+                        asegurar resultados sostenibles y mejoras progresivas.
+                     </p>
+
+                     <ul>
+                        <li>Monitoreo de indicadores.</li>
+                        <li>Optimización de procesos.</li>
+                        <li>Capacitación y acompañamiento.</li>
+                        <li>Actualización y mejora de soluciones.</li>
+                     </ul>
+
+                  </div>
+
+               </article>
+
+            </div>
+
+            <div class="bloque-final">
+
+               <h2>
+                  Convertimos datos y procesos en herramientas de gestión empresarial.
+               </h2>
+
+               <p>
+                  Nuestro enfoque prioriza claridad, control y utilidad práctica,
+                  permitiendo que cada solución aporte valor real a la operación y
+                  estrategia de la empresa.
+               </p>
+
+               <a class="btn btn-whatsapp" href="contacto.html">
+                  Solicitar una asesoría
+               </a>
+
+            </div>
+
+         </div>
+
+      </section>
+
+   </main>
+
+   <footer class="site-footer">
+
+      <div class="contenedor footer-bottom">
+         <span>
+            © 2026 NeoDat Consultores. Todos los derechos reservados.
+         </span>
+      </div>
+
+   </footer>
+
+   <script>
+
+      const menuToggle = document.querySelector(".menu-toggle");
+      const menu = document.querySelector(".menu");
+
+      menuToggle.addEventListener("click", () => {
+         menu.classList.toggle("activo");
+      });
+
+   </script>
+
+</body>
+</html>
