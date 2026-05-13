@@ -227,11 +227,12 @@
          font-size:17px;
       }
 
-      .equipo-grid{
-         display:grid;
-         grid-template-columns:repeat(2, 1fr);
-         gap:22px;
-      }
+.equipo-grid{
+   display:grid;
+   grid-template-columns:repeat(2, 1fr);
+   gap:22px;
+   align-items:stretch;
+}
 .valores-box{
    margin-top:80px;
    padding:50px;
@@ -294,16 +295,17 @@
    }
 
 }
-      .miembro{
-         position:relative;
-         padding:34px;
-         border:1px solid var(--gris-2);
-         border-radius:30px;
-         background:#ffffff;
-         overflow:hidden;
-         transition:.25s ease;
-         box-shadow:0 10px 25px rgba(7,23,45,.04);
-      }
+.miembro{
+   position:relative;
+   min-height:265px;
+   padding:34px;
+   border:1px solid var(--gris-2);
+   border-radius:30px;
+   background:#ffffff;
+   overflow:hidden;
+   transition:.25s ease;
+   box-shadow:0 10px 25px rgba(7,23,45,.04);
+}
 
       .miembro:hover{
          transform:translateY(-4px);
