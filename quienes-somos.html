@@ -232,7 +232,68 @@
          grid-template-columns:repeat(2, 1fr);
          gap:22px;
       }
+.valores-box{
+   margin-top:80px;
+   padding:50px;
+   border-radius:34px;
+   background:
+   linear-gradient(
+   135deg,
+   rgba(22,43,78,.03),
+   rgba(255,165,0,.04)
+   );
+   border:1px solid var(--gris-2);
+}
 
+.valores-header{
+   margin-bottom:34px;
+}
+
+.valores-grid{
+   display:grid;
+   grid-template-columns:repeat(4,1fr);
+   gap:18px;
+}
+
+.valor-item{
+   padding:24px;
+   border-radius:22px;
+   background:#ffffff;
+   border:1px solid var(--gris-2);
+}
+
+.valor-item strong{
+   display:block;
+   margin-bottom:10px;
+   color:var(--azul);
+   font-size:18px;
+}
+
+.valor-item p{
+   color:var(--texto-suave);
+   font-size:14.5px;
+   line-height:1.7;
+}
+
+@media (max-width:980px){
+
+   .valores-grid{
+      grid-template-columns:1fr 1fr;
+   }
+
+}
+
+@media (max-width:680px){
+
+   .valores-box{
+      padding:28px;
+   }
+
+   .valores-grid{
+      grid-template-columns:1fr;
+   }
+
+}
       .miembro{
          position:relative;
          padding:34px;
@@ -540,6 +601,64 @@
 
                </article>
 
+
+<div class="valores-box">
+
+   <div class="valores-header">
+
+      <div class="subtitulo">
+         Valores
+      </div>
+
+      <h2>
+         Cómo trabajamos.
+      </h2>
+
+   </div>
+
+   <div class="valores-grid">
+
+      <div class="valor-item">
+         <strong>Precisión</strong>
+
+         <p>
+            Trabajamos con información estructurada,
+            análisis técnico y métricas confiables.
+         </p>
+      </div>
+
+      <div class="valor-item">
+         <strong>Claridad</strong>
+
+         <p>
+            Convertimos procesos complejos en herramientas
+            comprensibles y útiles para decidir.
+         </p>
+      </div>
+
+      <div class="valor-item">
+         <strong>Innovación</strong>
+
+         <p>
+            Integramos tecnología, automatización y analítica
+            para optimizar la gestión empresarial.
+         </p>
+      </div>
+
+      <div class="valor-item">
+         <strong>Visión estratégica</strong>
+
+         <p>
+            Cada solución está orientada a resultados,
+            control y crecimiento sostenible.
+         </p>
+      </div>
+
+   </div>
+
+</div>
+
+               
             </div>
 
          </div>
