@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-
    <meta charset="UTF-8" />
    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -18,11 +17,9 @@
    />
 
    <style>
-
       :root{
          --azul:#162b4e;
          --azul-oscuro:#07172d;
-         --azul-medio:#27456f;
          --azul-claro:#edf2f8;
          --naranja:#ffa500;
          --blanco:#ffffff;
@@ -30,7 +27,6 @@
          --gris-2:#e1e7f0;
          --texto:#243447;
          --texto-suave:#66788a;
-         --sombra:0 18px 45px rgba(7,23,45,.08);
       }
 
       *{
@@ -67,7 +63,7 @@
          left:0;
          z-index:100;
          width:100%;
-         background:rgba(255,255,255,.9);
+         background:rgba(255,255,255,.94);
          backdrop-filter:blur(18px);
          border-bottom:1px solid rgba(22,43,78,.08);
       }
@@ -131,7 +127,7 @@
 
       .hero{
          position:relative;
-         padding:170px 0 100px;
+         padding:145px 0 64px;
          background:linear-gradient(180deg,#ffffff 0%,#f8fbff 100%);
          overflow:hidden;
       }
@@ -150,7 +146,9 @@
       .hero-contenido{
          position:relative;
          z-index:2;
-         max-width:860px;
+         max-width:900px;
+         margin:auto;
+         text-align:center;
       }
 
       .eyebrow{
@@ -178,7 +176,7 @@
       }
 
       h1{
-         margin-bottom:26px;
+         margin-bottom:24px;
          color:var(--azul-oscuro);
          font-size:clamp(44px,5vw,72px);
          line-height:.98;
@@ -190,20 +188,21 @@
       }
 
       .hero p{
-         margin-bottom:24px;
+         max-width:820px;
+         margin:0 auto 18px;
          color:var(--texto-suave);
          font-size:18px;
       }
 
-.bloque{
-   padding:40px 0 90px;
-}
+      .bloque{
+         padding:54px 0 90px;
+      }
 
-.encabezado{
-   max-width:820px;
-   margin:0 auto 50px;
-   text-align:center;
-}
+      .encabezado{
+         max-width:820px;
+         margin:0 auto 44px;
+         text-align:center;
+      }
 
       .subtitulo{
          margin-bottom:12px;
@@ -227,85 +226,24 @@
          font-size:17px;
       }
 
-.equipo-grid{
-   display:grid;
-   grid-template-columns:repeat(2, 1fr);
-   gap:22px;
-   align-items:stretch;
-}
-.valores-box{
-   margin-top:80px;
-   padding:50px;
-   border-radius:34px;
-   background:
-   linear-gradient(
-   135deg,
-   rgba(22,43,78,.03),
-   rgba(255,165,0,.04)
-   );
-   border:1px solid var(--gris-2);
-}
+      .equipo-grid{
+         display:grid;
+         grid-template-columns:repeat(2, 1fr);
+         gap:22px;
+         align-items:stretch;
+      }
 
-.valores-header{
-   margin-bottom:34px;
-}
-
-.valores-grid{
-   display:grid;
-   grid-template-columns:repeat(4,1fr);
-   gap:18px;
-}
-
-.valor-item{
-   padding:24px;
-   border-radius:22px;
-   background:#ffffff;
-   border:1px solid var(--gris-2);
-}
-
-.valor-item strong{
-   display:block;
-   margin-bottom:10px;
-   color:var(--azul);
-   font-size:18px;
-}
-
-.valor-item p{
-   color:var(--texto-suave);
-   font-size:14.5px;
-   line-height:1.7;
-}
-
-@media (max-width:980px){
-
-   .valores-grid{
-      grid-template-columns:1fr 1fr;
-   }
-
-}
-
-@media (max-width:680px){
-
-   .valores-box{
-      padding:28px;
-   }
-
-   .valores-grid{
-      grid-template-columns:1fr;
-   }
-
-}
-.miembro{
-   position:relative;
-   min-height:265px;
-   padding:34px;
-   border:1px solid var(--gris-2);
-   border-radius:30px;
-   background:#ffffff;
-   overflow:hidden;
-   transition:.25s ease;
-   box-shadow:0 10px 25px rgba(7,23,45,.04);
-}
+      .miembro{
+         position:relative;
+         min-height:265px;
+         padding:34px;
+         border:1px solid var(--gris-2);
+         border-radius:30px;
+         background:#ffffff;
+         overflow:hidden;
+         transition:.25s ease;
+         box-shadow:0 10px 25px rgba(7,23,45,.04);
+      }
 
       .miembro:hover{
          transform:translateY(-4px);
@@ -331,6 +269,7 @@
          width:42px;
          height:2px;
          background:var(--naranja);
+         flex:0 0 auto;
       }
 
       .miembro h3{
@@ -356,6 +295,52 @@
          );
       }
 
+      .valores-box{
+         max-width:980px;
+         margin:72px auto 0;
+         text-align:center;
+      }
+
+      .valores-header{
+         margin-bottom:34px;
+      }
+
+      .valores-grid{
+         display:grid;
+         grid-template-columns:repeat(4, 1fr);
+         gap:18px;
+      }
+
+      .valor-item{
+         min-height:150px;
+         padding:30px 24px;
+         border:1px solid var(--gris-2);
+         border-radius:26px;
+         background:#ffffff;
+         box-shadow:0 10px 25px rgba(7,23,45,.04);
+         transition:.2s ease;
+      }
+
+      .valor-item:hover{
+         transform:translateY(-3px);
+         box-shadow:0 18px 45px rgba(7,23,45,.08);
+      }
+
+      .valor-item strong{
+         display:block;
+         margin-bottom:10px;
+         color:var(--azul);
+         font-size:22px;
+         line-height:1.1;
+      }
+
+      .valor-item span{
+         display:block;
+         color:var(--texto-suave);
+         font-size:14.5px;
+         line-height:1.6;
+      }
+
       .site-footer{
          background:#07172d;
          color:rgba(255,255,255,.72);
@@ -372,7 +357,6 @@
       }
 
       @media (max-width:980px){
-
          nav{
             display:none;
          }
@@ -381,16 +365,18 @@
             grid-template-columns:1fr;
          }
 
+         .valores-grid{
+            grid-template-columns:1fr 1fr;
+         }
       }
 
       @media (max-width:680px){
-
          .navbar{
             height:68px;
          }
 
          .hero{
-            padding:130px 0 70px;
+            padding:125px 0 54px;
          }
 
          h1{
@@ -402,7 +388,12 @@
             font-size:16px;
          }
 
+         .bloque{
+            padding:42px 0 70px;
+         }
+
          .miembro{
+            min-height:auto;
             padding:26px;
          }
 
@@ -410,24 +401,23 @@
             font-size:24px;
          }
 
+         .valores-grid{
+            grid-template-columns:1fr;
+         }
       }
-
    </style>
-
 </head>
 
 <body>
 
    <header>
-
       <div class="contenedor navbar">
 
-         <a href="index.html" class="logo">
+         <a href="index.html" class="logo" aria-label="NeoDat Consultores">
             <img src="Neo1.png" class="logo-icono">
          </a>
 
-         <nav>
-
+         <nav aria-label="Navegación principal">
             <ul>
                <li><a href="servicios.html">Servicios</a></li>
                <li><a href="metodo.html">Método</a></li>
@@ -435,25 +425,23 @@
                <li><a href="quienes-somos.html">Quiénes somos</a></li>
                <li><a href="contacto.html">Contacto</a></li>
             </ul>
-
          </nav>
 
          <a
             class="btn btn-whatsapp"
-            href="https://wa.me/593988200116"
+            href="https://wa.me/593988200116?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20NeoDat%20Consultores."
             target="_blank"
+            rel="noopener"
          >
             WhatsApp
          </a>
 
       </div>
-
    </header>
 
    <main>
 
       <section class="hero">
-
          <div class="contenedor hero-contenido">
 
             <div class="eyebrow">
@@ -465,29 +453,24 @@
             </h1>
 
             <p>
-               NeoDat Consultores integra experiencia financiera,
-               tecnológica y analítica para ayudar a empresas a
-               trabajar con información clara, control estratégico
+               NeoDat Consultores integra experiencia financiera, tecnológica y analítica
+               para ayudar a empresas a trabajar con información clara, control estratégico
                y herramientas modernas de gestión.
             </p>
 
             <p>
-               Nuestro enfoque combina economía, desarrollo de software,
-               dirección de proyectos, Business Intelligence y ciencia
-               de datos para construir soluciones empresariales reales
-               y medibles.
+               Nuestro enfoque combina economía, desarrollo de software, dirección de proyectos,
+               Business Intelligence y ciencia de datos para construir soluciones empresariales
+               reales y medibles.
             </p>
 
          </div>
-
       </section>
 
       <section class="bloque">
-
          <div class="contenedor">
 
             <div class="encabezado">
-
                <div class="subtitulo">
                   Equipo NeoDat
                </div>
@@ -497,186 +480,123 @@
                </h2>
 
                <p>
-                  Combinamos experiencia en economía, finanzas,
-                  desarrollo tecnológico, gestión de proyectos y
-                  ciencia de datos para construir soluciones
+                  Combinamos experiencia en economía, finanzas, desarrollo tecnológico,
+                  gestión de proyectos y ciencia de datos para construir soluciones
                   empresariales modernas y orientadas a resultados.
                </p>
-
             </div>
 
             <div class="equipo-grid">
 
                <article class="miembro">
-
                   <div class="miembro-top">
-
                      <div class="linea"></div>
-
-                     <span>
-                        Finanzas y estrategia comercial
-                     </span>
-
+                     <span>Finanzas y estrategia comercial</span>
                   </div>
 
-                  <h3>
-                     Alfonso Abad Alvarez
-                  </h3>
+                  <h3>Alfonso Abad Alvarez</h3>
 
                   <p>
-                     Especialista financiero con experiencia en banca
-                     y ventas, enfocado en análisis empresarial,
-                     gestión financiera y visión estratégica de negocio.
+                     Especialista financiero con experiencia en banca y ventas,
+                     enfocado en análisis empresarial, gestión financiera y
+                     visión estratégica de negocio.
                   </p>
-
                </article>
 
                <article class="miembro">
-
                   <div class="miembro-top">
-
                      <div class="linea"></div>
-
-                     <span>
-                        Tecnología y software
-                     </span>
-
+                     <span>Tecnología y software</span>
                   </div>
 
-                  <h3>
-                     Roberto Jácome Galarza
-                  </h3>
+                  <h3>Roberto Jácome Galarza</h3>
 
                   <p>
                      Especialista en programación y desarrollo de software,
                      orientado a automatización, soluciones digitales y
                      construcción de herramientas tecnológicas empresariales.
                   </p>
-
                </article>
 
                <article class="miembro">
-
                   <div class="miembro-top">
-
                      <div class="linea"></div>
-
-                     <span>
-                        Dirección de proyectos
-                     </span>
-
+                     <span>Dirección de proyectos</span>
                   </div>
 
-                  <h3>
-                     Sara Guamán Jaramillo
-                  </h3>
+                  <h3>Sara Guamán Jaramillo</h3>
 
                   <p>
-                     Ingeniera en Administración de Empresas y Magíster
-                     en Dirección de Proyectos, especializada en gestión PMO,
+                     Ingeniera en Administración de Empresas y Magíster en
+                     Dirección de Proyectos, especializada en gestión PMO,
                      desarrollo institucional y levantamiento de fondos.
                   </p>
-
                </article>
 
                <article class="miembro destacado">
-
                   <div class="miembro-top">
-
                      <div class="linea"></div>
-
-                     <span>
-                        Economía, Big Data e inteligencia de negocios
-                     </span>
-
+                     <span>Economía, Big Data e inteligencia de negocios</span>
                   </div>
 
-                  <h3>
-                     Darío Hurtado Cuenca
-                  </h3>
+                  <h3>Darío Hurtado Cuenca</h3>
 
                   <p>
                      Economista y especialista en Big Data, ciencia de datos,
                      inteligencia de negocios y economía aplicada, enfocado
                      en análisis estratégico y toma de decisiones basadas en datos.
                   </p>
-
                </article>
 
+            </div>
 
-<div class="valores-box">
+            <div class="valores-box">
 
-   <div class="valores-header">
+               <div class="valores-header">
+                  <div class="subtitulo">
+                     Valores
+                  </div>
 
-      <div class="subtitulo">
-         Valores
-      </div>
+                  <h2>
+                     Cómo trabajamos.
+                  </h2>
+               </div>
 
-      <h2>
-         Cómo trabajamos.
-      </h2>
+               <div class="valores-grid">
 
-   </div>
+                  <div class="valor-item">
+                     <strong>Precisión</strong>
+                     <span>Análisis claro y decisiones confiables.</span>
+                  </div>
 
-   <div class="valores-grid">
+                  <div class="valor-item">
+                     <strong>Claridad</strong>
+                     <span>Información útil y fácil de interpretar.</span>
+                  </div>
 
-      <div class="valor-item">
-         <strong>Precisión</strong>
+                  <div class="valor-item">
+                     <strong>Innovación</strong>
+                     <span>Tecnología aplicada a resultados reales.</span>
+                  </div>
 
-         <p>
-            Trabajamos con información estructurada,
-            análisis técnico y métricas confiables.
-         </p>
-      </div>
+                  <div class="valor-item">
+                     <strong>Estrategia</strong>
+                     <span>Soluciones orientadas al crecimiento.</span>
+                  </div>
 
-      <div class="valor-item">
-         <strong>Claridad</strong>
+               </div>
 
-         <p>
-            Convertimos procesos complejos en herramientas
-            comprensibles y útiles para decidir.
-         </p>
-      </div>
-
-      <div class="valor-item">
-         <strong>Innovación</strong>
-
-         <p>
-            Integramos tecnología, automatización y analítica
-            para optimizar la gestión empresarial.
-         </p>
-      </div>
-
-      <div class="valor-item">
-         <strong>Visión estratégica</strong>
-
-         <p>
-            Cada solución está orientada a resultados,
-            control y crecimiento sostenible.
-         </p>
-      </div>
-
-   </div>
-
-</div>
-
-               
             </div>
 
          </div>
-
       </section>
 
    </main>
 
    <footer class="site-footer">
-
       <div class="contenedor footer-bottom">
-         <span>
-            © 2026 NeoDat Consultores. Todos los derechos reservados.
-         </span>
+         <span>© 2026 NeoDat Consultores. Todos los derechos reservados.</span>
       </div>
-
    </footer>
 
 </body>
