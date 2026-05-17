@@ -1,689 +1,742 @@
 <!DOCTYPE html>
 <html lang="es">
-   <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>NeoDat Consultores</title>
-      <link rel="icon" type="image/png" sizes="32x32" href="Neo1.png">
-      <meta name="description" content="NeoDat Consultores offers solutions in analysis of data, dashboards, finanzas, control de gestión, proyectos y desarrollo web empresarial." />
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-      <style>
-         :root {
-            --azul: #162b4e;
-            --azul-oscuro: #07172d;
-            --azul-medio: #27456f;
-            --azul-claro: #edf2f8;
-            --naranja: #ffa500;
-            --blanco: #ffffff;
-            --gris: #f8fafc;
-            --gris-2: rgba(22, 43, 78, 0.06); 
-            --gris-3: #f0f4f8;
-            --texto: #243447;
-            --texto-suave: #66788a;
-            --sombra: 0 10px 30px rgba(7, 23, 45, 0.04);
-            --sombra-fuerte: 0 20px 50px rgba(7, 23, 45, 0.08);
-            --exito: #10b981;
-         }
-         
-         /* CONFIGURACIÓN ESTRUCTURAL */
-         html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-         }
-         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-         }
-         html {
-            scroll-behavior: smooth;
-         }
-         body {
-            font-family: "Inter", Arial, sans-serif;
-            background: #ffffff;
-            color: var(--texto);
-            line-height: 1.5;
-            overflow-x: hidden;
-            display: flex;
-            flex-direction: column;
-         }
-         main {
-            flex: 1 0 auto;
-         }
-         a {
-            text-decoration: none;
-            color: inherit;
-         }
-         button {
-            font: inherit;
-         }
-         .contenedor {
-            width: min(1160px, calc(100% - 40px));
-            margin: auto;
-         }
+<head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>Servicios | NeoDat Consultores</title>
 
-         /* BOTONES PREMIUM */
-         .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            min-height: 46px;
-            padding: 12px 24px;
-            border-radius: 12px;
-            font-size: 13.5px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            white-space: nowrap;
-         }
-         .btn-principal {
-            background: var(--azul);
-            color: var(--blanco);
-            border: 1px solid var(--azul);
-            box-shadow: 0 4px 12px rgba(22, 43, 78, 0.12);
-         }
-         .btn-principal:hover {
-            background: var(--azul-oscuro);
-            border-color: var(--azul-oscuro);
-            transform: translateY(-1px);
-            box-shadow: 0 6px 20px rgba(22, 43, 78, 0.18);
-         }
-         .btn-principal span {
-            transition: transform 0.2s ease;
-         }
-         .btn-principal:hover span {
-            transform: translateX(3px);
-         }
-         .btn-whatsapp {
-            background: rgba(37, 211, 102, 0.1);
-            color: #1ebe5d;
-            border: 1px solid rgba(37, 211, 102, 0.25);
-            box-shadow: none;
-         }
-         .btn-whatsapp:hover {
-            background: #25D366;
-            color: #ffffff;
-            border-color: #25D366;
-            transform: translateY(-1px);
-            box-shadow: 0 6px 16px rgba(37, 211, 102, 0.2);
-         }
-         .btn-secundario {
-            background: transparent;
-            color: var(--azul);
-            border: 1px solid rgba(22, 43, 78, 0.15);
-         }
-         .btn-secundario:hover {
-            background: var(--azul-claro);
-            border-color: rgba(22, 43, 78, 0.3);
-            color: var(--azul-oscuro);
-            transform: translateY(-1px);
-         }
+   <link rel="icon" type="image/png" sizes="32x32" href="Neo1.png">
+   <link rel="preconnect" href="https://fonts.googleapis.com" />
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
-         /* ESTILOS DE LA INTERFAZ */
-         header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 100;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--gris-2);
-         }
-         .navbar {
-            height: 70px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 28px;
-         }
-         .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-         }
-         .logo-icono {
-            width: 140px;
-            height: 140px;
-            object-fit: contain;
-         }
-         nav ul {
-            list-style: none;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-         }
-         nav a {
-            display: inline-flex;
-            padding: 8px 12px;
-            border-radius: 999px;
-            font-size: 13px;
-            font-weight: 750;
-            color: var(--azul);
-            transition: 0.2s ease;
-         }
-         nav a:hover {
-            background: var(--azul-claro);
-         }
-         
-         .hero {
-            position: relative;
-            padding: 110px 0 40px; 
-            background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            margin-bottom: 0;
-         }
-         .hero::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background-image:
-               linear-gradient(rgba(22, 43, 78, 0.03) 1px, transparent 1px),
-               linear-gradient(90deg, rgba(22, 43, 78, 0.03) 1px, transparent 1px);
-            background-size: 44px 44px;
-            mask-image: linear-gradient(180deg, black, transparent 85%);
-            pointer-events: none;
-         }
-         .hero-grid {
-            position: relative;
-            z-index: 2;
-            display: grid;
-            grid-template-columns: 1fr 1.15fr;
-            gap: 40px;
-            align-items: center;
-         }
-         
-         h1 {
-            max-width: 720px;
-            margin-bottom: 20px;
-            color: var(--azul-oscuro);
-            font-size: clamp(24px, 3.1vw, 34px);
-            line-height: 1.3;
-            letter-spacing: -0.3px;
-         }
-         
-         .hero p {
-            max-width: 640px;
-            margin-bottom: 28px;
-            color: var(--texto-suave);
-            font-size: 15px;
-         }
-         .acciones {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-         }
+   <style>
+      :root{
+         --azul:#162b4e;
+         --azul-oscuro:#07172d;
+         --azul-claro:#edf2f8;
+         --naranja:#ffa500;
+         --blanco:#ffffff;
+         --gris:#f6f8fb;
+         --gris-2:#e1e7f0;
+         --texto:#243447;
+         --texto-suave:#66788a;
+      }
 
-         /* ==========================================================================
-            DASHBOARD CORPORATIVO INTELLIGENT BI
-            ========================================================================== */
-         .dashboard-shell {
-            padding: 10px;
-            border-radius: 24px; 
-            background: linear-gradient(145deg, rgba(22, 43, 78, 0.03), rgba(7, 23, 45, 0.05));
-            border: 1px solid var(--gris-2); 
-            position: relative;
-         }
-         .dashboard {
-            overflow: hidden;
-            border-radius: 16px;
-            background: #ffffff;
-            box-shadow: var(--sombra-fuerte);
-            border: 1px solid rgba(22, 43, 78, 0.08);
-         }
-         .dashboard-top {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 16px;
-            padding: 14px 20px;
-            background: #ffffff;
-            border-bottom: 1px solid var(--gris-2);
-         }
-         
-         .dashboard-top div:first-child {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-         }
-         
-         .dashboard-top strong {
-            color: var(--azul-oscuro);
-            font-size: 13px;
-            font-weight: 800;
-            white-space: nowrap;
-         }
-         .live-dot {
-            width: 8px;
-            height: 8px;
-            background-color: var(--exito);
-            border-radius: 50%;
-            display: inline-block;
-            flex-shrink: 0;
-            animation: pulsoLive 1.8s infinite;
-         }
-         @keyframes pulsoLive {
-            0% { transform: scale(0.9); opacity: 0.6; }
-            50% { transform: scale(1.3); opacity: 1; }
-            100% { transform: scale(0.9); opacity: 0.6; }
-         }
-         .badge-live {
-            padding: 4px 10px;
-            border-radius: 999px;
-            background: rgba(22, 43, 78, 0.05);
-            color: var(--azul-medio);
-            font-size: 10px;
-            font-weight: 800;
-         }
-         .dashboard-body {
-            padding: 20px;
-            background: var(--gris);
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-         }
+      *{margin:0;padding:0;box-sizing:border-box;}
 
-         /* SECCIÓN KPIS */
-         .kpis {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-         }
-         .kpi {
-            padding: 14px;
-            background: #ffffff;
-            border-radius: 12px;
-            border: 1px solid var(--gris-2); 
-         }
-         .kpi small {
-            display: block;
-            margin-bottom: 4px;
-            color: var(--texto-suave);
-            font-size: 10px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
-         }
-         .kpi strong {
-            display: block;
-            color: var(--azul-oscuro);
-            font-size: 18px;
-            font-weight: 900;
-            line-height: 1.1;
-         }
-         .kpi-trend {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            font-size: 10px;
-            font-weight: 700;
-            margin-top: 4px;
-         }
-         .trend-up { color: var(--exito); }
-         .trend-orange { color: var(--naranja); }
+      body{
+         font-family:"Inter",Arial,sans-serif;
+         background:#ffffff;
+         color:var(--texto);
+         line-height:1.6;
+         overflow-x:hidden;
+      }
 
-         /* NUEVO COMPONENTE: GRÁFICO DE LÍNEA ANALÍTICO AVANZADO */
-         .chart-container {
-            background: #ffffff;
-            border-radius: 12px;
-            padding: 16px;
-            border: 1px solid var(--gris-2);
-         }
-         .chart-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 12px;
-         }
-         .chart-title {
-            font-size: 11.5px;
-            font-weight: 800;
-            color: var(--azul-oscuro);
-         }
-         .chart-legend {
-            display: flex;
-            gap: 12px;
-            font-size: 10px;
-            font-weight: 600;
-            color: var(--texto-suave);
-         }
-         .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-         }
-         .legend-azul::before { content: ""; width: 8px; height: 8px; background: var(--azul); border-radius: 50%; display: inline-block; }
-         .legend-naranja::before { content: ""; width: 8px; height: 8px; background: var(--naranja); border-radius: 50%; display: inline-block; }
+      a{text-decoration:none;color:inherit;}
 
-         .bi-graph-wrapper {
-            position: relative;
-            width: 100%;
-            height: 120px;
-            margin-top: 6px;
-         }
-         .bi-svg {
-            width: 100%;
-            height: 100%;
-            overflow: visible;
-         }
-         /* Animación sutil de respiración para el nodo activo de datos */
-         .live-node {
-            animation: pulseActiveNode 2s infinite ease-in-out;
-         }
-         @keyframes pulseActiveNode {
-            0% { r: 4; opacity: 1; }
-            50% { r: 7; opacity: 0.4; }
-            100% { r: 4; opacity: 1; }
-         }
+      .contenedor{
+         width:min(1160px,calc(100% - 40px));
+         margin:auto;
+      }
 
-         /* DISTRIBUCIÓN INFERIOR */
-         .analytics-grid-bottom {
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 14px;
-         }
-         .small-analytics-card {
-            background: #ffffff;
-            border-radius: 12px;
-            padding: 14px;
-            border: 1px solid var(--gris-2);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-         }
-         .funnel-container {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            margin-top: 8px;
-         }
-         .funnel-stage {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 6px 12px;
-            color: #ffffff;
-            font-size: 10px;
-            font-weight: 700;
-            border-radius: 6px;
-         }
-         .funnel-1 { background: var(--azul-oscuro); width: 100%; }
-         .funnel-2 { background: var(--azul); width: 85%; }
-         .funnel-3 { background: var(--azul-medio); width: 68%; }
+      header{
+         position:fixed;
+         top:0;
+         left:0;
+         z-index:100;
+         width:100%;
+         background:rgba(255,255,255,.94);
+         backdrop-filter:blur(18px);
+         border-bottom:1px solid rgba(22,43,78,.08);
+      }
 
-         .donut-box {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            margin-top: 4px;
-         }
-         .donut-svg-wrapper {
-            width: 55px;
-            height: 55px;
-            flex-shrink: 0;
-         }
-         .donut-legends {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-         }
-         .donut-legend-item {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 10px;
-            font-weight: 600;
-            color: var(--texto-suave);
-         }
-         .bullet-dot { width: 7px; height: 7px; border-radius: 50%; }
+      .navbar{
+         height:78px;
+         display:flex;
+         align-items:center;
+         justify-content:space-between;
+         gap:28px;
+      }
 
-         /* RESPONSIVO */
-         .menu-toggle {
-            display: none;
-            width: 42px;
-            height: 42px;
-            border: 1px solid var(--gris-2);
-            border-radius: 12px;
-            background: #ffffff;
-            color: var(--azul);
-            font-size: 22px;
-            font-weight: 900;
-            cursor: pointer;
-         }
-         .site-footer {
-            background: #07172d;
-            color: rgba(255,255,255,.72);
-            padding: 24px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            width: 100%;
-            flex-shrink: 0;
-         }
-         .footer-bottom {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            font-size: 11.5px;
-            color: rgba(255,255,255,.52);
-         }
-         
-         @media (max-width: 980px) {
-            .navbar { height: 64px; }
-            .logo-icono { width: 120px; height: 120px; }
-            .menu-toggle { display: flex; align-items: center; justify-content: center; }
-            .whatsapp-desktop { display: none; }
-            nav.menu {
-               position: absolute;
-               top: 64px;
-               left: 0;
-               width: 100%;
-               display: none;
-               background: #ffffff;
-               border-bottom: 1px solid rgba(22,43,78,.08);
-               box-shadow: 0 18px 40px rgba(7,23,45,.10);
-            }
-            nav.menu.activo { display: block; }
-            nav.menu ul {
-               width: min(1160px, calc(100% - 40px));
-               margin: auto;
-               padding: 14px 0;
-               display: grid;
-               grid-template-columns: 1fr;
-               gap: 6px;
-            }
-            nav.menu a {
-               width: 100%;
-               padding: 12px 14px;
-               border-radius: 12px;
-               background: var(--gris);
-               font-size: 13px;
-            }
-            .hero-grid { grid-template-columns: 1fr; gap: 40px; }
-         }
-         @media (max-width: 680px) {
-            .hero { padding: 100px 0 30px; }
-            .kpis { grid-template-columns: 1fr; gap: 10px; }
-            .analytics-grid-bottom { grid-template-columns: 1fr; gap: 12px; }
-            h1 { font-size: clamp(20px, 5.5vw, 26px); line-height: 1.3; letter-spacing: normal; }
-            .acciones { display: grid; grid-template-columns: 1fr; width: 100%; gap: 10px; }
-            .acciones .btn { width: 100%; }
-         }
-      </style>
-   </head>
-   <body>
-      <header>
-         <div class="contenedor navbar">
-            <a href="index.html" class="logo" aria-label="NeoDat Consultores">
-               <img src="Neo1.png" class="logo-icono" alt="Logo NeoDat">
-            </a>
-            <button class="menu-toggle" type="button" aria-label="Abrir menú"> ☰ </button>
-            <nav class="menu" aria-label="Navegación principal">
-               <ul>
-                  <li><a href="servicios.html">Servicios</a></li>
-                  <li><a href="metodo.html">Método</a></li>
-                  <li><a href="ambitos.html">Ámbitos</a></li>
-                  <li><a href="quienes-somos.html">Quiénes somos</a></li>
-                  <li><a href="contacto.html">Contacto</a></li>
-               </ul>
-            </nav>
-            <a class="btn btn-whatsapp whatsapp-desktop" href="https://wa.me/593988200116?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20NeoDat%20Consultores." target="_blank" rel="noopener">
-               WhatsApp
-            </a>
-         </div>
-      </header>
+      .logo{display:flex;align-items:center;}
 
-      <main>
-         <section class="hero">
-            <div class="contenedor hero-grid">
-               <div>
-                  <h1>Transformamos la incertidumbre de su empresa en decisiones respaldadas por datos precisos.</h1>
-                  <p>NeoDat Consultores estructura datos, finanzas, dashboards y procesos para que las empresas trabajen con información clara, indicadores confiables y control ejecutivo.</p>
-                  <div class="acciones">
-                     <a class="btn btn-principal" href="servicios.html">Ver servicios <span>→</span></a>
-                     <a class="btn btn-whatsapp" href="https://wa.me/593988200116?text=Hola,%20quiero%20solicitar%20una%20asesor%C3%ADa%20con%20NeoDat." target="_blank" rel="noopener">Solicitar asesoría</a>
-                     <a class="btn btn-secundario" href="contacto.html">Agendar reunión</a>
-                  </div>
-               </div>
+      .logo-icono{
+         width:160px;
+         height:160px;
+         object-fit:contain;
+      }
 
-               <div class="dashboard-shell">
-                  <div class="dashboard">
-                     <div class="dashboard-top">
-                        <div>
-                           <span class="live-dot"></span>
-                           <strong>Panel de Control Corporativo</strong>
-                        </div>
-                     </div>
-                     <div class="dashboard-body">
-                        
-                        <div class="kpis">
-                           <div class="kpi">
-                              <small>Margen Neto</small>
-                              <strong id="kpi-stream">34.2%</strong>
-                              <span class="kpi-trend trend-up">▲ +2.4% vs mes ant.</span>
-                           </div>
-                           <div class="kpi">
-                              <small>Ebitda Anual</small>
-                              <strong id="kpi-eficiencia">$428K</strong>
-                              <span class="kpi-trend trend-up">▲ Optimizado</span>
-                           </div>
-                           <div class="kpi">
-                              <small>Calidad de Datos</small>
-                              <strong id="kpi-procesos">99.8%</strong>
-                              <span class="kpi-trend trend-orange">● Confiable</span>
-                           </div>
-                        </div>
+      nav ul{
+         list-style:none;
+         display:flex;
+         align-items:center;
+         gap:8px;
+      }
 
-                        <div class="chart-container">
-                           <div class="chart-header">
-                              <span class="chart-title">Evolución de Ingresos</span>
-                              <div class="chart-legend">
-                                 <span class="legend-item legend-azul">Ingresos</span>
-                                 <span class="legend-item legend-naranja">Meta</span>
-                              </div>
-                           </div>
-                           <div class="bi-graph-wrapper">
-                              <svg class="bi-svg" viewBox="0 0 500 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-                                 <defs>
-                                    <linearGradient id="bi-area-grad" x1="0" y1="0" x2="0" y2="1">
-                                       <stop offset="0%" stop-color="#162b4e" stop-opacity="0.15"/>
-                                       <stop offset="100%" stop-color="#162b4e" stop-opacity="0.0"/>
-                                    </linearGradient>
-                                 </defs>
-                                 
-                                 <line x1="0" y1="30" x2="500" y2="30" stroke="rgba(22,43,78,0.05)" stroke-width="1" />
-                                 <line x1="0" y1="60" x2="500" y2="60" stroke="rgba(22,43,78,0.05)" stroke-width="1" />
-                                 <line x1="0" y1="90" x2="500" y2="90" stroke="rgba(22,43,78,0.05)" stroke-width="1" />
-                                 
-                                 <text x="5" y="116" fill="#66788a" font-size="9" font-weight="600">Ene</text>
-                                 <text x="100" y="116" fill="#66788a" font-size="9" font-weight="600">Feb</text>
-                                 <text x="200" y="116" fill="#66788a" font-size="9" font-weight="600">Mar</text>
-                                 <text x="300" y="116" fill="#66788a" font-size="9" font-weight="600">Abr</text>
-                                 <text x="400" y="116" fill="#66788a" font-size="9" font-weight="600">May</text>
-                                 <text x="475" y="116" fill="#66788a" font-size="9" font-weight="600">Jun</text>
+      nav a{
+         display:inline-flex;
+         padding:10px 15px;
+         border-radius:999px;
+         font-size:14px;
+         font-weight:750;
+         color:var(--azul);
+         transition:.2s ease;
+      }
 
-                                 <line x1="0" y1="85" x2="500" y2="35" stroke="var(--naranja)" stroke-width="1.5" stroke-dasharray="4,4" />
+      nav a:hover{background:var(--azul-claro);}
 
-                                 <path id="graph-area" d="M 0 95 L 100 80 L 200 45 L 300 75 L 400 35 L 500 50 L 500 100 L 0 100 Z" fill="url(#bi-area-grad)" />
+      .btn{
+         display:inline-flex;
+         align-items:center;
+         justify-content:center;
+         min-height:48px;
+         padding:13px 22px;
+         border-radius:999px;
+         border:0;
+         font-size:14px;
+         font-weight:800;
+         cursor:pointer;
+         transition:.2s ease;
+      }
 
-                                 <polyline id="graph-line" fill="none" stroke="var(--azul)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
-                                    points="0,95 100,80 200,45 300,75 400,35 500,50" />
+      .btn-whatsapp{
+         background:#25D366;
+         color:#ffffff;
+      }
 
-                                 <circle cx="100" cy="80" r="3" fill="var(--azul)" />
-                                 <circle cx="200" cy="45" r="3" fill="var(--azul)" />
-                                 <circle cx="300" cy="75" r="3" fill="var(--azul)" />
-                                 <circle cx="400" cy="35" r="3" fill="var(--azul)" />
+      .btn-whatsapp:hover{
+         background:#1ebe5d;
+         transform:translateY(-2px);
+      }
 
-                                 <circle id="live-tracker-outer" cx="500" cy="50" r="6" fill="var(--azul)" opacity="0.25" class="live-node" />
-                                 <circle id="live-tracker-inner" cx="500" cy="50" r="3.5" fill="var(--azul)" />
-                              </svg>
-                           </div>
-                        </div>                        
-                     </div>
-                  </div>
-               </div>
+      .btn-principal{
+         background:var(--azul);
+         color:#ffffff;
+      }
 
-            </div>
-         </section>
-      </main>
+      .btn-principal:hover{
+         background:var(--azul-oscuro);
+         transform:translateY(-2px);
+      }
 
-      <footer class="site-footer">
-         <div class="contenedor footer-bottom">
-            <span>© 2026 NeoDat Consultores. Todos los derechos reservados.</span>
-         </div>
-      </footer>
+      .menu-toggle{
+         display:none;
+         width:46px;
+         height:46px;
+         border:1px solid var(--gris-2);
+         border-radius:14px;
+         background:#ffffff;
+         color:var(--azul);
+         font-size:26px;
+         font-weight:900;
+         cursor:pointer;
+      }
 
-      <script>
-         // Menú móvil
-         const menuToggle = document.querySelector(".menu-toggle");
-         const menu = document.querySelector(".menu");
-         menuToggle.addEventListener("click", () => {
-            menu.classList.toggle("activo");
-         });
+      .hero{
+         position:relative;
+         padding:145px 0 76px;
+         background:linear-gradient(180deg,#ffffff 0%,#f8fbff 100%);
+         overflow:hidden;
+      }
 
-         // Elementos del KPI y del Gráfico Premium
-         const margenTxt = document.getElementById("kpi-stream");
-         const ebitdaTxt = document.getElementById("kpi-eficiencia");
-         const calidadTxt = document.getElementById("kpi-procesos");
-         
-         const graphLine = document.getElementById("graph-line");
-         const graphArea = document.getElementById("graph-area");
-         const trackerOuter = document.getElementById("live-tracker-outer");
-         const trackerInner = document.getElementById("live-tracker-inner");
+      .hero::before{
+         content:"";
+         position:absolute;
+         inset:0;
+         background-image:
+         linear-gradient(rgba(22,43,78,.04) 1px,transparent 1px),
+         linear-gradient(90deg,rgba(22,43,78,.04) 1px,transparent 1px);
+         background-size:44px 44px;
+         mask-image:linear-gradient(180deg,black,transparent 76%);
+      }
 
-         // Fluctuación en tiempo real para simular un feed de BI real
-         setInterval(() => {
-            // 1. Actualización de textos numéricos
-            const vMargen = (33 + Math.random() * 2).toFixed(1);
-            margenTxt.textContent = `${vMargen}%`;
+      .hero-contenido{
+         position:relative;
+         z-index:2;
+         max-width:900px;
+         margin:auto;
+         text-align:center;
+      }
 
-            const vEbitda = (420 + Math.floor(Math.random() * 12));
-            ebitdaTxt.textContent = `$${vEbitda}K`;
+      .eyebrow{
+         display:inline-flex;
+         align-items:center;
+         gap:10px;
+         margin-bottom:22px;
+         padding:8px 14px;
+         border:1px solid rgba(22,43,78,.1);
+         border-radius:999px;
+         background:#ffffff;
+         color:var(--azul);
+         font-size:12px;
+         font-weight:900;
+         letter-spacing:1px;
+         text-transform:uppercase;
+      }
 
-            const vCalidad = (99.5 + Math.random() * 0.4).toFixed(1);
-            calidadTxt.textContent = `${vCalidad}%`;
+      .eyebrow::before{
+         content:"";
+         width:8px;
+         height:8px;
+         border-radius:50%;
+         background:var(--naranja);
+      }
 
-            // 2. Movimiento fluido del último nodo del gráfico (Mes de Junio)
-            // Genera una coordenada Y aleatoria y elegante entre 25 y 65 para mantener la consistencia financiera
-            const nuevaYJunio = Math.floor(25 + Math.random() * 40); 
-            
-            // Actualizar la polilínea del gráfico
-            graphLine.setAttribute("points", `0,95 100,80 200,45 300,75 400,35 500,${nuevaYJunio}`);
-            
-            // Actualizar el polígono del área sombreada para que coincida perfectamente
-            graphArea.setAttribute("d", `M 0 95 L 100 80 L 200 45 L 300 75 L 400 35 L 500 ${nuevaYJunio} L 500 100 L 0 100 Z`);
-            
-            // Reposicionar el punto dinámico final (nodos de tracking)
-            trackerOuter.setAttribute("cy", nuevaYJunio);
-            trackerInner.setAttribute("cy", nuevaYJunio);
+      h1{
+         margin-bottom:24px;
+         color:var(--azul-oscuro);
+         font-size:clamp(44px,5vw,72px);
+         line-height:.98;
+         letter-spacing:-3px;
+      }
 
-         }, 2500);
-      </script>
-   </body>
+      h1 span{color:var(--azul);}
+
+      .hero p{
+         max-width:780px;
+         margin:0 auto 28px;
+         color:var(--texto-suave);
+         font-size:18px;
+      }
+
+      .servicios-section{
+         padding:70px 0 95px;
+      }
+
+      .encabezado{
+         max-width:860px;
+         margin:0 auto 54px;
+         text-align:center;
+      }
+
+      .subtitulo{
+         margin-bottom:12px;
+         color:var(--naranja);
+         font-size:12px;
+         font-weight:900;
+         letter-spacing:2px;
+         text-transform:uppercase;
+      }
+
+      h2{
+         margin-bottom:18px;
+         color:var(--azul-oscuro);
+         font-size:clamp(30px,4vw,48px);
+         line-height:1.08;
+         letter-spacing:-1.5px;
+      }
+
+      .encabezado p{
+         color:var(--texto-suave);
+         font-size:17px;
+      }
+
+      .servicios-grid{
+         display:grid;
+         grid-template-columns:repeat(3,1fr);
+         gap:24px;
+      }
+
+      .servicio-card{
+         overflow:hidden;
+         border:1px solid var(--gris-2);
+         border-radius:32px;
+         background:#ffffff;
+         box-shadow:0 10px 25px rgba(7,23,45,.04);
+         transition:.25s ease;
+      }
+
+      .servicio-card:hover{
+         transform:translateY(-5px);
+         box-shadow:0 22px 55px rgba(7,23,45,.10);
+      }
+
+      .servicio-img{
+         height:210px;
+         overflow:hidden;
+      }
+
+      .servicio-img img{
+         width:100%;
+         height:100%;
+         object-fit:cover;
+         display:block;
+         transition:.35s ease;
+      }
+
+      .servicio-card:hover .servicio-img img{
+         transform:scale(1.05);
+      }
+
+      .servicio-body{
+         padding:30px;
+      }
+
+      .servicio-body span{
+         display:inline-flex;
+         margin-bottom:14px;
+         color:var(--naranja);
+         font-size:12px;
+         font-weight:900;
+         letter-spacing:1px;
+         text-transform:uppercase;
+      }
+
+      .servicio-body h3{
+         margin-bottom:14px;
+         color:var(--azul-oscuro);
+         font-size:25px;
+         line-height:1.1;
+         letter-spacing:-1px;
+      }
+
+      .servicio-body p{
+         margin-bottom:18px;
+         color:var(--texto-suave);
+         font-size:15px;
+         line-height:1.75;
+      }
+
+      .servicio-body ul{
+         display:grid;
+         gap:9px;
+         padding-left:18px;
+      }
+
+      .servicio-body li{
+         color:var(--texto);
+         font-size:14.3px;
+      }
+
+      .bloque-final{
+         margin-top:78px;
+         padding:58px;
+         border-radius:36px;
+         background:linear-gradient(135deg,var(--azul),var(--azul-oscuro));
+         color:#ffffff;
+         text-align:center;
+      }
+
+      .bloque-final h2{
+         color:#ffffff;
+         max-width:760px;
+         margin:0 auto 18px;
+      }
+
+      .bloque-final p{
+         max-width:780px;
+         margin:0 auto 30px;
+         color:rgba(255,255,255,.76);
+         font-size:17px;
+      }
+
+      .site-footer{
+         background:#07172d;
+         color:rgba(255,255,255,.72);
+         padding:10px 0;
+      }
+
+      .footer-bottom{
+         display:flex;
+         justify-content:center;
+         align-items:center;
+         text-align:center;
+         font-size:12.5px;
+         color:rgba(255,255,255,.52);
+      }
+
+      @media(max-width:980px){
+         .navbar{height:72px;}
+
+         .logo-icono{
+            width:130px;
+            height:130px;
+         }
+
+         .menu-toggle{
+            display:flex;
+            align-items:center;
+            justify-content:center;
+         }
+
+         .whatsapp-desktop{display:none;}
+
+         nav.menu{
+            position:absolute;
+            top:72px;
+            left:0;
+            width:100%;
+            display:none;
+            background:#ffffff;
+            border-bottom:1px solid rgba(22,43,78,.08);
+            box-shadow:0 18px 40px rgba(7,23,45,.10);
+         }
+
+         nav.menu.activo{display:block;}
+
+         nav.menu ul{
+            width:min(1160px,calc(100% - 40px));
+            margin:auto;
+            padding:18px 0;
+            display:grid;
+            grid-template-columns:1fr;
+            gap:8px;
+         }
+
+         nav.menu a{
+            width:100%;
+            padding:14px 16px;
+            border-radius:16px;
+            background:var(--gris);
+         }
+
+         .servicios-grid{
+            grid-template-columns:1fr 1fr;
+         }
+      }
+
+      @media(max-width:680px){
+         .contenedor{
+            width:min(100% - 30px,1160px);
+         }
+
+         .hero{
+            padding:125px 0 56px;
+         }
+
+         h1{
+            font-size:46px;
+            letter-spacing:-2px;
+         }
+
+         .hero p{
+            font-size:16px;
+         }
+
+         .servicios-section{
+            padding:48px 0 75px;
+         }
+
+         .servicios-grid{
+            grid-template-columns:1fr;
+         }
+
+         .servicio-img{
+            height:190px;
+         }
+
+         .servicio-body{
+            padding:26px;
+         }
+
+         .bloque-final{
+            padding:38px 26px;
+         }
+      }
+   </style>
+</head>
+
+<body>
+
+   <header>
+      <div class="contenedor navbar">
+
+         <a href="index.html" class="logo" aria-label="NeoDat Consultores">
+            <img src="Neo1.png" class="logo-icono">
+         </a>
+
+         <button class="menu-toggle" type="button" aria-label="Abrir menú">
+            ☰
+         </button>
+
+         <nav class="menu" aria-label="Navegación principal">
+            <ul>
+               <li><a href="index.html">Inicio</a></li>
+               <li><a href="servicios.html">Servicios</a></li>
+               <li><a href="metodo.html">Método</a></li>
+               <li><a href="ambitos.html">Ámbitos</a></li>
+               <li><a href="quienes-somos.html">Quiénes somos</a></li>
+               <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+         </nav>
+
+         <a
+            class="btn btn-whatsapp whatsapp-desktop"
+            href="https://wa.me/593988200116?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20NeoDat%20Consultores."
+            target="_blank"
+            rel="noopener"
+         >
+            WhatsApp
+         </a>
+
+      </div>
+   </header>
+
+   <main>
+
+      <section class="hero">
+         <div class="contenedor hero-contenido">
+
+            <h1>
+               Soluciones empresariales con <span>datos, finanzas y tecnología</span>.
+            </h1>
+
+            <p>
+               Diseñamos herramientas de gestión, análisis y automatización para que las empresas
+               trabajen con información clara, procesos ordenados y decisiones mejor sustentadas.
+            </p>
+
+            <a class="btn btn-principal" href="contacto.html">
+               Solicitar una asesoría
+            </a>
+
+         </div>
+      </section>
+
+      <section class="servicios-section">
+         <div class="contenedor">
+
+            <div class="encabezado">
+            
+               <h2>
+                  Servicios orientados a control, crecimiento y toma de decisiones.
+               </h2>
+
+               <p>
+                  Nuestra oferta combina consultoría financiera, inteligencia de negocios,
+                  desarrollo tecnológico, gestión de proyectos y análisis estratégico.
+               </p>
+            </div>
+
+            <div class="servicios-grid">
+
+               <article class="servicio-card">
+                  <div class="servicio-img">
+                     <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=900&q=80" alt="Consultoría financiera empresarial">
+                  </div>
+
+                  <div class="servicio-body">
+                     <span>Finanzas</span>
+                     <h3>Consultoría financiera</h3>
+                     <p>
+                        Evaluamos la situación económica del negocio y estructuramos herramientas
+                        para mejorar planificación, control y rentabilidad.
+                     </p>
+                     <ul>
+                        <li>Presupuestos y proyecciones.</li>
+                        <li>Análisis de rentabilidad y costos.</li>
+                        <li>Evaluación financiera de proyectos.</li>
+                        <li>Control de ingresos, gastos y márgenes.</li>
+                     </ul>
+                  </div>
+               </article>
+
+               <article class="servicio-card">
+                  <div class="servicio-img">
+                     <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80" alt="Dashboard empresarial con indicadores">
+                  </div>
+
+                  <div class="servicio-body">
+                     <span>Business Intelligence</span>
+                     <h3>Dashboards y KPI</h3>
+                     <p>
+                        Construimos tableros ejecutivos para visualizar información clave
+                        y monitorear resultados financieros, comerciales y operativos.
+                     </p>
+                     <ul>
+                        <li>Indicadores KPI personalizados.</li>
+                        <li>Dashboards ejecutivos.</li>
+                        <li>Reportes automatizados.</li>
+                        <li>Visualización clara para gerencia.</li>
+                     </ul>
+                  </div>
+               </article>
+
+               <article class="servicio-card">
+                  <div class="servicio-img">
+                     <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=900&q=80" alt="Análisis de datos y trabajo empresarial">
+                  </div>
+
+                  <div class="servicio-body">
+                     <span>Analítica</span>
+                     <h3>Análisis de datos</h3>
+                     <p>
+                        Convertimos bases de datos, reportes y archivos dispersos en información
+                        estructurada para análisis, seguimiento y toma de decisiones.
+                     </p>
+                     <ul>
+                        <li>Limpieza y consolidación de datos.</li>
+                        <li>Análisis descriptivo y exploratorio.</li>
+                        <li>Modelos de información empresarial.</li>
+                        <li>Reportes técnicos y gerenciales.</li>
+                     </ul>
+                  </div>
+               </article>
+
+               <article class="servicio-card">
+                  <div class="servicio-img">
+                     <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80" alt="Desarrollo web empresarial">
+                  </div>
+
+                  <div class="servicio-body">
+                     <span>Tecnología</span>
+                     <h3>Desarrollo web empresarial</h3>
+                     <p>
+                        Diseñamos páginas y soluciones digitales para mejorar presencia,
+                        comunicación, captación de clientes y operación empresarial.
+                     </p>
+                     <ul>
+                        <li>Páginas web corporativas.</li>
+                        <li>Formularios de contacto.</li>
+                        <li>Diseño responsive.</li>
+                        <li>Estructura visual profesional.</li>
+                     </ul>
+                  </div>
+               </article>
+
+               <article class="servicio-card">
+                  <div class="servicio-img">
+                     <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80" alt="Gestión de proyectos empresariales">
+                  </div>
+
+                  <div class="servicio-body">
+                     <span>Proyectos</span>
+                     <h3>Gestión de proyectos</h3>
+                     <p>
+                        Estructuramos proyectos empresariales e institucionales con enfoque
+                        técnico, seguimiento de entregables y orientación a resultados.
+                     </p>
+                     <ul>
+                        <li>Formulación de proyectos.</li>
+                        <li>Hojas de ruta y cronogramas.</li>
+                        <li>Seguimiento de avances.</li>
+                        <li>Soporte PMO.</li>
+                     </ul>
+                  </div>
+               </article>
+
+               <article class="servicio-card">
+                  <div class="servicio-img">
+                     <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=80" alt="Planeación estratégica empresarial">
+                  </div>
+
+                  <div class="servicio-body">
+                     <span>Estrategia</span>
+                     <h3>Planeación y control de gestión</h3>
+                     <p>
+                        Acompañamos la organización de objetivos, indicadores y procesos
+                        para mejorar seguimiento, control y desempeño empresarial.
+                     </p>
+                     <ul>
+                        <li>Indicadores de gestión.</li>
+                        <li>Control presupuestario.</li>
+                        <li>Seguimiento operativo.</li>
+                        <li>Tableros de control gerencial.</li>
+                     </ul>
+                  </div>
+               </article>
+
+               <article class="servicio-card">
+                  <div class="servicio-img">
+                     <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=900&q=80" alt="Automatización de procesos empresariales">
+                  </div>
+
+                  <div class="servicio-body">
+                     <span>Automatización</span>
+                     <h3>Automatización de reportes</h3>
+                     <p>
+                        Reducimos trabajo manual mediante procesos automatizados para generar
+                        información periódica, ordenada y disponible.
+                     </p>
+                     <ul>
+                        <li>Automatización de archivos y reportes.</li>
+                        <li>Integración de fuentes de información.</li>
+                        <li>Optimización de procesos repetitivos.</li>
+                        <li>Flujos de trabajo más eficientes.</li>
+                     </ul>
+                  </div>
+               </article>
+
+               <article class="servicio-card">
+                  <div class="servicio-img">
+                     <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=900&q=80" alt="Consultoría empresarial y reuniones estratégicas">
+                  </div>
+
+                  <div class="servicio-body">
+                     <span>Consultoría</span>
+                     <h3>Diagnóstico empresarial</h3>
+                     <p>
+                        Revisamos procesos, información, indicadores y necesidades para
+                        proponer una ruta clara de mejora y ejecución.
+                     </p>
+                     <ul>
+                        <li>Diagnóstico financiero y operativo.</li>
+                        <li>Identificación de brechas.</li>
+                        <li>Priorización de soluciones.</li>
+                        <li>Plan de acción ejecutivo.</li>
+                     </ul>
+                  </div>
+               </article>
+
+               <article class="servicio-card">
+                  <div class="servicio-img">
+                     <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80" alt="Capacitación empresarial y equipos de trabajo">
+                  </div>
+
+                  <div class="servicio-body">
+                     <span>Formación</span>
+                     <h3>Capacitación y acompañamiento</h3>
+                     <p>
+                        Transferimos conocimiento para que los equipos comprendan,
+                        utilicen y sostengan las herramientas implementadas.
+                     </p>
+                     <ul>
+                        <li>Capacitación en dashboards.</li>
+                        <li>Uso de reportes gerenciales.</li>
+                        <li>Acompañamiento en implementación.</li>
+                        <li>Mejora continua de herramientas.</li>
+                     </ul>
+                  </div>
+               </article>
+
+            </div>
+
+            <div class="bloque-final">
+               <h2>
+                  Diseñamos soluciones según la necesidad real de cada empresa.
+               </h2>
+
+               <p>
+                  Podemos iniciar con un diagnóstico, construir una herramienta específica
+                  o desarrollar una solución integral que conecte datos, finanzas,
+                  procesos, proyectos y tecnología.
+               </p>
+
+               <a class="btn btn-whatsapp" href="contacto.html">
+                  Solicitar información
+               </a>
+            </div>
+
+         </div>
+      </section>
+
+   </main>
+
+   <footer class="site-footer">
+      <div class="contenedor footer-bottom">
+         <span>© 2026 NeoDat Consultores. Todos los derechos reservados.</span>
+      </div>
+   </footer>
+
+   <script>
+      const menuToggle = document.querySelector(".menu-toggle");
+      const menu = document.querySelector(".menu");
+
+      menuToggle.addEventListener("click", () => {
+         menu.classList.toggle("activo");
+      });
+   </script>
+
+</body>
 </html>
