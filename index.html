@@ -45,9 +45,9 @@
             inset: 0;
             z-index: 1;
             background: 
-               radial-gradient(circle at 80% 20%, rgba(30, 58, 138, 0.3) 0%, transparent 60%),
-               radial-gradient(circle at 15% 85%, rgba(249, 115, 22, 0.03) 0%, transparent 40%),
-               linear-gradient(160deg, #070d1e 0%, #02050d 100%);
+               radial-gradient(circle at 80% 20%, rgba(30, 58, 138, 0.25) 0%, transparent 60%),
+               radial-gradient(circle at 15% 85%, rgba(249, 115, 22, 0.02) 0%, transparent 40%),
+               linear-gradient(160deg, #060b1a 0%, #02050d 100%);
             overflow: hidden;
          }
 
@@ -57,8 +57,8 @@
             position: absolute;
             inset: 0;
             background-image: 
-               linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-               linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+               linear-gradient(rgba(255, 255, 255, 0.012) 1px, transparent 1px),
+               linear-gradient(90deg, rgba(255, 255, 255, 0.012) 1px, transparent 1px);
             background-size: 40px 40px;
             mask-image: radial-gradient(circle at 50% 50%, black 50%, transparent 95%);
             -webkit-mask-image: radial-gradient(circle at 50% 50%, black 50%, transparent 95%);
@@ -73,7 +73,7 @@
             height: 320px;
             border: 1px solid rgba(255, 255, 255, 0.03);
             transform: rotate(45deg);
-            background: linear-gradient(135deg, rgba(30, 58, 138, 0.1), transparent);
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.08), transparent);
             pointer-events: none;
          }
          
@@ -96,37 +96,36 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            padding: 24px 0;
+            padding: 20px 0;
          }
 
          .contenedor {
-            width: min(1280px, calc(100% - 40px));
+            width: min(1200px, calc(100% - 40px));
             margin: 0 auto;
          }
 
-         /* --- ENCABEZADO MEJORADO (SIN RECUADRO CERRADO) --- */
+         /* --- ENCABEZADO --- */
          .top-bar {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 16px 0;
+            padding: 12px 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.04);
             margin-bottom: 20px;
          }
 
-         /* Logo con fondo blanco limpio e institucional */
          .logo-contenedor {
             background-color: var(--blanco-puro);
-            padding: 8px 18px;
-            border-radius: 12px;
+            padding: 6px 14px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
          }
 
          .logo-contenedor img {
-            height: 32px;
+            height: 26px;
             width: auto;
             display: block;
          }
@@ -134,15 +133,15 @@
          .menu-estricto ul {
             list-style: none;
             display: flex;
-            gap: 40px;
+            gap: 32px;
          }
 
          .menu-estricto a {
             color: var(--texto-secundario);
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 500;
             text-decoration: none;
-            transition: color 0.2s ease, transform 0.2s ease;
+            transition: color 0.2s ease;
          }
 
          .menu-estricto a:hover {
@@ -152,76 +151,76 @@
          .badge-interactivo {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            border: 1px solid rgba(34, 197, 94, 0.3);
-            background: rgba(34, 197, 94, 0.05);
+            gap: 6px;
+            border: 1px solid rgba(34, 197, 94, 0.25);
+            background: rgba(34, 197, 94, 0.04);
             color: #4ade80;
-            padding: 6px 16px;
+            padding: 5px 12px;
             border-radius: 30px;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 600;
             letter-spacing: 0.5px;
          }
 
          .badge-interactivo::before {
             content: "";
-            width: 6px;
-            height: 6px;
+            width: 5px;
+            height: 5px;
             background-color: #22c55e;
             border-radius: 50%;
-            box-shadow: 0 0 10px #22c55e;
+            box-shadow: 0 0 8px #22c55e;
          }
 
          /* --- GRID PRINCIPAL --- */
          .grid-principal {
             display: grid;
-            grid-template-columns: 1.15fr 0.85fr;
-            gap: 50px;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 48px;
             align-items: center;
             margin: auto 0;
-            padding: 30px 0;
+            padding: 20px 0;
          }
 
          .tagline {
             color: var(--naranja-acento);
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 16px;
+            letter-spacing: 1.2px;
+            margin-bottom: 12px;
             display: block;
          }
 
          h1 {
-            font-size: clamp(36px, 4.5vw, 56px);
+            font-size: clamp(28px, 3.5vw, 42px);
             font-weight: 800;
-            line-height: 1.12;
-            letter-spacing: -1.5px;
-            margin-bottom: 24px;
+            line-height: 1.2;
+            letter-spacing: -0.8px;
+            margin-bottom: 16px;
             color: var(--blanco-puro);
          }
 
          p.introduccion {
-            font-size: 16px;
+            font-size: 15px;
             color: var(--texto-secundario);
-            line-height: 1.65;
-            margin-bottom: 36px;
-            max-width: 540px;
+            line-height: 1.6;
+            margin-bottom: 28px;
+            max-width: 500px;
          }
 
          .caja-botones {
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 14px;
          }
 
          .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 14px 32px;
-            border-radius: 8px;
-            font-size: 14px;
+            padding: 11px 24px;
+            border-radius: 6px;
+            font-size: 13.5px;
             font-weight: 600;
             cursor: pointer;
             text-decoration: none;
@@ -231,105 +230,105 @@
          .btn-azul {
             background-color: #1d4ed8;
             color: var(--blanco-puro);
-            box-shadow: 0 4px 20px rgba(29, 78, 216, 0.35);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 15px rgba(29, 78, 216, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.08);
          }
 
          .btn-azul:hover { background-color: #2563eb; transform: translateY(-1px); }
-         .btn-vacio { background-color: transparent; color: var(--blanco-cristal); border: 1px solid rgba(255,255,255,0.15); }
-         .btn-vacio:hover { background-color: rgba(255, 255, 255, 0.03); border-color: rgba(255,255,255,0.3); }
+         .btn-vacio { background-color: transparent; color: var(--blanco-cristal); border: 1px solid rgba(255,255,255,0.12); }
+         .btn-vacio:hover { background-color: rgba(255, 255, 255, 0.03); border-color: rgba(255,255,255,0.25); }
 
-         /* --- RECUADRO NEODAT ANALÍTICA INTERACTIVO --- */
+         /* --- RECUADRO NEODAT ANALÍTICA --- */
          .dashboard-marco {
-            background: linear-gradient(145deg, rgba(15, 23, 42, 0.6) 0%, rgba(8, 13, 28, 0.8) 100%);
+            background: linear-gradient(145deg, rgba(15, 23, 42, 0.55) 0%, rgba(8, 13, 28, 0.75) 100%);
             border: 1px solid var(--borde-glass);
-            border-radius: 20px;
-            padding: 28px;
+            border-radius: 16px;
+            padding: 24px;
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35);
          }
 
          .dashboard-top {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 28px;
+            margin-bottom: 20px;
          }
 
          .dashboard-meta strong {
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 700;
             display: block;
             color: var(--blanco-puro);
          }
 
          .dashboard-meta span {
-            font-size: 12px;
+            font-size: 11px;
             color: var(--texto-secundario);
             display: block;
             margin-top: 2px;
          }
 
          .dashboard-badge {
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 700;
             color: var(--naranja-acento);
             text-transform: uppercase;
             letter-spacing: 0.5px;
          }
 
-         /* Layout Dinámico de KPIs */
+         /* KPIs */
          .dashboard-metricas {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-            margin-bottom: 24px;
+            gap: 14px;
+            margin-bottom: 20px;
          }
 
          .tarjeta-kpi {
-            background: rgba(2, 6, 23, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            border-radius: 12px;
-            padding: 16px;
-            transition: transform 0.2s ease, border-color 0.2s ease;
+            background: rgba(2, 6, 23, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.02);
+            border-radius: 10px;
+            padding: 14px;
+            transition: border-color 0.2s ease;
          }
 
          .tarjeta-kpi:hover {
-            border-color: rgba(255, 255, 255, 0.08);
-            transform: translateY(-2px);
+            border-color: rgba(255, 255, 255, 0.06);
          }
 
          .tarjeta-kpi small {
-            font-size: 11px;
+            font-size: 10px;
             color: var(--texto-secundario);
-            font-weight: 500;
+            font-weight: 600;
             display: block;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
+            letter-spacing: 0.2px;
          }
 
          .tarjeta-kpi .kpi-valor {
-            font-size: 26px;
+            font-size: 22px;
             font-weight: 700;
             color: var(--blanco-puro);
             display: flex;
             align-items: baseline;
-            gap: 8px;
+            gap: 6px;
          }
 
          .tarjeta-kpi .kpi-cambio {
-            font-size: 12px;
+            font-size: 11px;
             color: #4ade80;
             font-weight: 600;
          }
 
-         /* Contenedor Gráfico tipo Power BI / Metrics */
+         /* Gráfico */
          .contenedor-serie-tiempo {
-            background: rgba(2, 6, 23, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            border-radius: 12px;
-            padding: 16px 12px 8px 12px;
-            height: 140px;
+            background: rgba(2, 6, 23, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.02);
+            border-radius: 10px;
+            padding: 14px 12px 6px 12px;
+            height: 120px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -337,7 +336,7 @@
 
          .svg-grafico-fijo {
             width: 100%;
-            height: 85%;
+            height: 80%;
          }
 
          .area-grafico {
@@ -347,41 +346,41 @@
          .linea-tendencia {
             fill: none;
             stroke: var(--blanco-cristal);
-            stroke-width: 2;
+            stroke-width: 1.5;
             stroke-linecap: round;
          }
 
          .eje-fechas {
             display: flex;
             justify-content: space-between;
-            font-size: 10px;
+            font-size: 9.5px;
             color: var(--texto-secundario);
             font-weight: 600;
             padding-top: 4px;
-            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
          }
 
-         /* --- FOOTER Y FEATURES --- */
+         /* --- FOOTER --- */
          .footer-bloque {
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-top: 1px solid rgba(255, 255, 255, 0.04);
-            padding-top: 20px;
-            font-size: 13px;
+            padding-top: 16px;
+            font-size: 12px;
             color: var(--texto-secundario);
          }
 
          .features-lista {
             display: flex;
-            gap: 24px;
+            gap: 20px;
          }
 
          .feature-item {
             display: flex;
             align-items: center;
-            gap: 6px;
-            font-size: 12px;
+            gap: 5px;
+            font-size: 11.5px;
             font-weight: 500;
          }
 
@@ -393,7 +392,7 @@
 
          /* RESPONSIVE */
          @media (max-width: 992px) {
-            .grid-principal { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+            .grid-principal { grid-template-columns: 1fr; text-align: center; gap: 32px; }
             p.introduccion { margin-left: auto; margin-right: auto; }
             .caja-botones { justify-content: center; }
             .menu-estricto, .badge-interactivo, .features-lista { display: none; }
@@ -465,7 +464,7 @@
                   <svg class="svg-grafico-fijo" viewBox="0 0 400 100" preserveAspectRatio="none">
                      <defs>
                         <linearGradient id="gradienteArea" x1="0" y1="0" x2="0" y2="1">
-                           <stop offset="0%" stop-color="#1e3a8a" stop-opacity="0.6"/>
+                           <stop offset="0%" stop-color="#1e3a8a" stop-opacity="0.5"/>
                            <stop offset="100%" stop-color="#1e3a8a" stop-opacity="0.0"/>
                         </linearGradient>
                      </defs>
@@ -473,10 +472,10 @@
                      <path class="area-grafico" d="M 0,80 Q 60,30 110,65 T 230,25 T 320,70 T 400,15 L 400,100 L 0,100 Z" />
                      <path class="linea-tendencia" d="M 0,80 Q 60,30 110,65 T 230,25 T 320,70 T 400,15" />
                      
-                     <circle cx="110" cy="65" r="4" fill="var(--naranja-acento)" />
-                     <circle cx="170" cy="45" r="4" fill="var(--naranja-acento)" />
-                     <circle cx="230" cy="25" r="4" fill="var(--naranja-acento)" />
-                     <circle cx="320" cy="70" r="4" fill="var(--naranja-acento)" />
+                     <circle cx="110" cy="65" r="3.5" fill="var(--naranja-acento)" />
+                     <circle cx="170" cy="45" r="3.5" fill="var(--naranja-acento)" />
+                     <circle cx="230" cy="25" r="3.5" fill="var(--naranja-acento)" />
+                     <circle cx="320" cy="70" r="3.5" fill="var(--naranja-acento)" />
                   </svg>
 
                   <div class="eje-fechas">
