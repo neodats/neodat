@@ -35,7 +35,7 @@
          padding: 0;
          box-sizing: border-box;
       }
-      *, *::before, *::after {
+      * {
          margin: 0;
          padding: 0;
          box-sizing: border-box;
@@ -513,11 +513,10 @@
          box-shadow: 0 10px 24px rgba(0,0,0,0.15);
       }
 
-      /* FOOTER */
+      /* FOOTER - ADAPTADO EXACTAMENTE A TU IMAGEN */
       .site-footer {
          background: var(--azul-oscuro);
-         color: rgba(255, 255, 255, 0.7);
-         padding: 20px 0;
+         padding: 24px 0;
          border-top: 1px solid rgba(255, 255, 255, 0.05);
       }
       .footer-bottom {
@@ -525,8 +524,10 @@
          justify-content: center;
          align-items: center;
          text-align: center;
-         font-size: 13px;
-         color: rgba(255, 255, 255, 0.5);
+         font-size: 11px;
+         font-weight: 400;
+         color: rgba(255, 255, 255, 0.4);
+         letter-spacing: 0.2px;
       }
 
       /* DISPOSITIVOS MEDIANOS (RESPONSIVE) */
@@ -665,7 +666,6 @@
    </header>
 
    <main>
-      <!-- HERO -->
       <section class="hero">
          <div class="contenedor hero-grid">
             <div>
@@ -728,7 +728,6 @@
          </div>
       </section>
 
-      <!-- RESULTADOS -->
       <section class="section">
          <div class="contenedor">
             <div class="encabezado">
@@ -764,7 +763,6 @@
          </div>
       </section>
 
-      <!-- PROCESO / INTERVENCIÓN -->
       <section class="section alt">
          <div class="contenedor">
             <div class="encabezado">
@@ -851,7 +849,6 @@
          </div>
       </section>
 
-      <!-- ENTREGABLES -->
       <section class="section">
          <div class="contenedor">
             <div class="encabezado">
@@ -891,7 +888,6 @@
          </div>
       </section>
 
-      <!-- CTA -->
       <section class="cta">
          <div class="contenedor">
             <h2>Si su empresa tiene datos, pero no claridad, ahí empieza nuestro trabajo.</h2>
