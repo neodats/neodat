@@ -3,736 +3,193 @@
    <head>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>NeoDat Consultores | Business Intelligence & Consultoría Corporativa</title>
+      <title>Método Corporativo | NeoDat Consultores</title>
       <link rel="icon" type="image/png" sizes="32x32" href="Neo1.png">
-      <meta
-         name="description"
-         content="Soluciones corporativas en análisis de datos, Business Intelligence, consultoría financiera y control de gestión para organizaciones."
-         />
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-      <link
-         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-         rel="stylesheet"
-         />
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
       <style>
          :root {
-         --azul-primario: #0f213d;
-         --azul-corporativo: #1a365d;
+         --azul: #162b4e;
+         --azul-oscuro: #07172d;
+         --azul-claro: #edf2f8;
          --azul-acento: #2b6cb0;
-         --gris-fondo: #f8fafc;
-         --gris-borde: #e2e8f0;
-         --texto-principal: #1e293b;
-         --texto-secundario: #475569;
          --blanco: #ffffff;
-         --ancho-maximo: 1200px;
+         --gris: #f6f8fb;
+         --gris-2: #e2e8f0;
+         --texto: #1e293b;
+         --texto-suave: #475569;
          }
-
-         * {
-         margin: 0;
-         padding: 0;
-         box-sizing: border-box;
-         }
-
-         body {
-         font-family: "Inter", sans-serif;
-         background-color: var(--blanco);
-         color: var(--texto-principal);
-         line-height: 1.7;
-         -webkit-font-smoothing: antialiased;
-         }
-
-         /* Estructura Global Corporativa */
-         .wrapper {
-         width: min(var(--ancho-maximo), calc(100% - 48px));
-         margin: 0 auto;
-         }
-
-         header {
-         position: fixed;
-         top: 0;
-         width: 100%;
-         background: rgba(255, 255, 255, 0.95);
-         border-bottom: 1px solid var(--gris-borde);
-         z-index: 1000;
-         backdrop-filter: blur(8px);
-         }
-
-         .navbar {
-         display: flex;
-         align-items: center;
-         justify-content: space-between;
-         height: 80px;
-         }
-
-         .logo img {
-         height: 38px;
-         width: auto;
-         display: block;
-         }
-
-         nav ul {
-         display: flex;
-         list-style: none;
-         gap: 32px;
-         }
-
-         nav a {
-         font-size: 14px;
-         font-weight: 500;
-         color: var(--texto-secundario);
-         text-decoration: none;
-         transition: color 0.2s ease;
-         }
-
-         nav a:hover, nav a.active {
-         color: var(--azul-primario);
-         }
-
-         .nav-cta {
-         background: var(--azul-primario);
-         color: var(--blanco);
-         padding: 10px 20px;
-         border-radius: 4px;
-         font-size: 13px;
-         font-weight: 600;
-         text-decoration: none;
-         transition: background 0.2s ease;
-         }
-
-         .nav-cta:hover {
-         background: var(--azul-corporativo);
-         }
-
-         /* HERO SECCIÓN: Rediseño Institucional Sobrio */
-         .hero-section {
-         padding-top: 180px;
-         padding-bottom: 110px;
-         background: linear-gradient(180deg, #f1f5f9 0%, #ffffff 100%);
-         border-bottom: 1px solid var(--gris-borde);
-         }
-
-         .hero-container {
-         display: grid;
-         grid-template-columns: 1.1fr 0.9fr;
-         gap: 64px;
-         align-items: center;
-         }
-
-         .hero-content .tagline {
-         font-size: 12px;
-         text-transform: uppercase;
-         letter-spacing: 1.5px;
-         color: var(--azul-acento);
-         font-weight: 700;
-         margin-bottom: 16px;
-         display: block;
-         }
-
-         .hero-content h1 {
-         font-size: clamp(32px, 3.2vw, 42px);
-         color: var(--azul-primario);
-         line-height: 1.25;
-         font-weight: 700;
-         letter-spacing: -0.5px;
-         margin-bottom: 24px;
-         }
-
-         .hero-content p {
-         font-size: 16px;
-         color: var(--texto-secundario);
-         margin-bottom: 32px;
-         max-width: 540px;
-         }
-
-         .hero-actions {
-         display: flex;
-         gap: 16px;
-         }
-
-         .btn-corp {
-         padding: 12px 24px;
-         font-size: 14px;
-         font-weight: 600;
-         border-radius: 4px;
-         text-decoration: none;
-         cursor: pointer;
-         transition: all 0.2s ease;
-         display: inline-flex;
-         align-items: center;
-         }
-
-         .btn-primary {
-         background: var(--azul-primario);
-         color: var(--blanco);
-         border: 1px solid var(--azul-primario);
-         }
-
-         .btn-primary:hover {
-         background: var(--azul-corporativo);
-         }
-
-         .btn-secondary {
-         background: transparent;
-         color: var(--azul-primario);
-         border: 1px solid var(--gris-borde);
-         }
-
-         .btn-secondary:hover {
-         background: #f1f5f9;
-         border-color: var(--texto-secundario);
-         }
-
-         /* ECOSISTEMA NEODAT: Visualización Profesional con Movimiento */
-         .ecosistema-viewport {
-         background: #0b1528;
-         border-radius: 8px;
-         padding: 40px;
-         position: relative;
-         box-shadow: 0 20px 40px rgba(15, 33, 61, 0.08);
-         border: 1px solid rgba(255, 255, 255, 0.05);
-         overflow: hidden;
-         height: 380px;
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         }
-
-         /* Fondo de Red Analítica Alternante */
-         .ecosistema-viewport::before {
-         content: '';
-         position: absolute;
-         width: 150%;
-         height: 150%;
-         background-image: radial-gradient(rgba(43, 108, 176, 0.15) 1px, transparent 0);
-         background-size: 24px 24px;
-         transform: rotate(15deg);
-         animation: networkShift 20s infinite linear;
-         }
-
-         .sistema-central {
-         position: relative;
-         z-index: 5;
-         text-align: center;
-         }
-
-         .nucleo-dat {
-         background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
-         border: 2px solid var(--azul-acento);
-         padding: 24px;
-         border-radius: 50%;
-         width: 140px;
-         height: 140px;
-         display: flex;
-         flex-direction: column;
-         align-items: center;
-         justify-content: center;
-         margin: 0 auto;
-         box-shadow: 0 0 30px rgba(43, 108, 176, 0.3);
-         animation: pulseCore 3s infinite ease-in-out;
-         }
-
-         .nucleo-dat span {
-         font-size: 11px;
-         color: #93c5fd;
-         text-transform: uppercase;
-         letter-spacing: 1px;
-         font-weight: 700;
-         }
-
-         .nucleo-dat strong {
-         color: var(--blanco);
-         font-size: 16px;
-         font-weight: 600;
-         margin-top: 2px;
-         }
-
-         /* Flujos de datos periféricos */
-         .data-node {
-         position: absolute;
-         background: rgba(15, 23, 42, 0.8);
-         border: 1px solid rgba(255, 255, 255, 0.1);
-         padding: 8px 16px;
-         border-radius: 4px;
-         font-size: 11px;
-         color: #e2e8f0;
-         font-weight: 500;
-         display: flex;
-         align-items: center;
-         gap: 8px;
-         backdrop-filter: blur(4px);
-         }
-
-         .data-node::before {
-         content: '';
-         width: 6px;
-         height: 6px;
-         background: #34d399;
-         border-radius: 50%;
-         }
-
-         .node-1 { top: 40px; left: 40px; animation: floatNode 4s infinite ease-in-out; }
-         .node-2 { top: 40px; right: 40px; animation: floatNode 4s infinite ease-in-out 1s; }
-         .node-3 { bottom: 40px; left: 40px; animation: floatNode 4s infinite ease-in-out 2s; }
-         .node-4 { bottom: 40px; right: 40px; animation: floatNode 4s infinite ease-in-out 3s; }
-
-         /* Líneas de conexión animadas */
-         .laser-stream {
-         position: absolute;
-         background: linear-gradient(90deg, transparent, var(--azul-acento), transparent);
-         height: 1px;
-         width: 100px;
-         opacity: 0.6;
-         }
-
-         .stream-left { top: 50%; left: 15%; width: 25%; animation: streamFlow 3s infinite linear; }
-         .stream-right { top: 50%; right: 15%; width: 25%; animation: streamFlow 3s infinite linear reverse; }
-
-         /* ANIMACIONES CSS */
-         @keyframes networkShift {
-         0% { background-position: 0 0; }
-         100% { background-position: 48px 48px; }
-         }
-         @keyframes pulseCore {
-         0%, 100% { transform: scale(1); box-shadow: 0 0 30px rgba(43, 108, 176, 0.2); }
-         50% { transform: scale(1.04); box-shadow: 0 0 45px rgba(43, 108, 176, 0.45); border-color: #60a5fa; }
-         }
-         @keyframes floatNode {
-         0%, 100% { transform: translateY(0); }
-         50% { transform: translateY(-6px); border-color: rgba(96, 165, 250, 0.3); }
-         }
-         @keyframes streamFlow {
-         0% { background-position: -100px 0; }
-         100% { background-position: 200px 0; }
-         }
-
-         /* SECCIONES MATRICIALES CORPORATIVAS */
-         section class="corp-section" {
-         padding: 100px 0;
-         border-bottom: 1px solid var(--gris-borde);
-         }
+         * { margin: 0; padding: 0; box-sizing: border-box; }
+         body { font-family: "Inter", sans-serif; background: var(--blanco); color: var(--texto); line-height: 1.6; }
+         a { text-decoration: none; color: inherit; }
+         .contenedor { width: min(1160px, calc(100% - 40px)); margin: auto; }
          
-         .section-bg {
-         background-color: var(--gris-fondo);
-         }
+         header { position: fixed; top: 0; left: 0; z-index: 100; width: 100%; background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(18px); border-bottom: 1px solid rgba(22, 43, 78, 0.08); }
+         .navbar { height: 78px; display: flex; align-items: center; justify-content: space-between; }
+         .logo-icono { width: 140px; height: auto; }
+         nav ul { list-style: none; display: flex; gap: 4px; }
+         nav a { display: inline-flex; padding: 10px 18px; border-radius: 4px; font-size: 14px; font-weight: 600; color: var(--texto-suave); }
+         nav a:hover, nav a.active { color: var(--azul); background: var(--azul-claro); }
 
-         .grid-split {
-         display: grid;
-         grid-template-columns: 0.8fr 1.2fr;
-         gap: 64px;
-         }
+         .page-header { padding: 160px 0 60px; background: var(--azul-oscuro); color: var(--blanco); }
+         .page-header h1 { font-size: 38px; font-weight: 800; }
+         .page-header p { color: rgba(255,255,255,0.75); font-size: 18px; margin-top: 8px; }
 
-         .section-title h2 {
-         font-size: 28px;
-         color: var(--azul-primario);
-         font-weight: 700;
-         letter-spacing: -0.5px;
-         line-height: 1.3;
-         margin-bottom: 16px;
-         }
+         .methodology { padding: 80px 0; }
+         .grid-method { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-bottom: 60px; }
+         .step-card { background: var(--gris); border: 1px solid var(--gris-2); padding: 24px; border-radius: 4px; }
+         .step-card span { font-size: 12px; font-weight: 700; color: var(--azul-acento); display: block; margin-bottom: 12px; }
+         .step-card h3 { font-size: 16px; color: var(--azul-oscuro); margin-bottom: 8px; }
+         .step-card p { font-size: 13.5px; color: var(--texto-suave); }
 
-         .section-title p {
-         color: var(--texto-secundario);
-         font-size: 15px;
-         }
+         /* Centrado UI Formulario */
+         .form-container-box { max-width: 650px; margin: 0 auto; border: 1px solid var(--gris-2); padding: 40px; border-radius: 6px; background: var(--blanco); box-shadow: 0 4px 12px rgba(0,0,0,0.02); }
+         .form-container-box h2 { font-size: 22px; color: var(--azul-oscuro); margin-bottom: 6px; }
+         .form-container-box p { font-size: 14px; color: var(--texto-suave); margin-bottom: 24px; }
+         
+         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+         .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+         .form-group.full { grid-column: span 2; }
+         .form-group label { font-size: 12px; font-weight: 600; color: var(--texto-suave); }
+         .form-group input, .form-group select, .form-group textarea { border: 1px solid var(--gris-2); padding: 11px; font-size: 14px; border-radius: 4px; outline: none; background: #ffffff; }
+         .form-group input:focus, .form-group textarea:focus { border-color: var(--azul-acento); }
 
-         .corp-grid-services {
-         display: grid;
-         grid-template-columns: repeat(2, 1fr);
-         gap: 32px;
-         }
+         .btn-submit { background: var(--azul); color: var(--blanco); border: none; padding: 14px; font-size: 14px; font-weight: 600; border-radius: 4px; cursor: pointer; width: 100%; transition: background 0.2s; }
+         .btn-submit:hover { background: var(--azul-oscuro); }
 
-         .service-entry {
-         border-left: 2px solid var(--gris-borde);
-         padding-left: 24px;
-         transition: border-color 0.3s ease;
-         }
-
-         .service-entry:hover {
-         border-left-color: var(--azul-primario);
-         }
-
-         .service-entry h3 {
-         font-size: 16px;
-         font-weight: 600;
-         color: var(--azul-primario);
-         margin-bottom: 8px;
-         }
-
-         .service-entry p {
-         font-size: 14px;
-         color: var(--texto-secundario);
-         }
-
-         /* Bloque del Método Operativo */
-         .methodology-flow {
-         display: grid;
-         grid-template-columns: repeat(4, 1fr);
-         gap: 24px;
-         margin-top: 40px;
-         }
-
-         .method-step {
-         background: var(--blanco);
-         border: 1px solid var(--gris-borde);
-         padding: 24px;
-         border-radius: 4px;
-         }
-
-         .method-step .step-num {
-         font-size: 12px;
-         font-weight: 700;
-         color: var(--azul-acento);
-         display: block;
-         margin-bottom: 12px;
-         }
-
-         .method-step h4 {
-         font-size: 15px;
-         color: var(--azul-primario);
-         margin-bottom: 8px;
-         }
-
-         .method-step p {
-         font-size: 13.5px;
-         color: var(--texto-secundario);
-         line-height: 1.6;
-         }
-
-         /* Panel de Ámbitos Especializados */
-         .ambitos-panel {
-         display: flex;
-         flex-wrap: wrap;
-         gap: 12px;
-         }
-
-         .scope-tag {
-         background: var(--blanco);
-         border: 1px solid var(--gris-borde);
-         padding: 8px 16px;
-         font-size: 13.5px;
-         font-weight: 500;
-         color: var(--texto-secundario);
-         border-radius: 4px;
-         }
-
-         /* Footer Ejecutivo */
-         footer {
-         background: var(--azul-primario);
-         color: #94a3b8;
-         padding: 40px 0;
-         font-size: 13px;
-         border-top: 4px solid var(--azul-corporativo);
-         }
-
-         .footer-container {
-         display: flex;
-         justify-content: space-between;
-         align-items: center;
-         }
-
-         /* MODAL FORMULARIO INSTITUCIONAL */
-         .modal-overlay {
-         position: fixed;
-         inset: 0;
-         background: rgba(15, 23, 42, 0.6);
-         backdrop-filter: blur(4px);
-         z-index: 2000;
-         display: none;
-         align-items: center;
-         justify-content: center;
-         padding: 20px;
-         }
-
-         .modal-overlay.open { display: flex; }
-
-         .modal-window {
-         background: var(--blanco);
-         width: min(600px, 100%);
-         border-radius: 6px;
-         box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-         overflow: hidden;
-         }
-
-         .modal-header {
-         padding: 24px 32px;
-         border-bottom: 1px solid var(--gris-borde);
-         display: flex;
-         justify-content: space-between;
-         align-items: center;
-         }
-
-         .modal-header h3 { font-size: 18px; color: var(--azul-primario); }
-
-         .close-btn {
-         background: transparent;
-         border: none;
-         font-size: 20px;
-         cursor: pointer;
-         color: var(--texto-secundario);
-         }
-
-         .modal-body { padding: 32px; }
-
-         .form-row {
-         display: grid;
-         grid-template-columns: 1fr 1fr;
-         gap: 16px;
-         margin-bottom: 16px;
-         }
-
-         .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px;}
-         .form-group.full-width { grid-column: span 2; }
-
-         .form-group label { font-size: 12px; font-weight: 600; color: var(--texto-secundario); }
-
-         .form-group input, .form-group select, .form-group textarea {
-         border: 1px solid var(--gris-borde);
-         padding: 10px;
-         font-size: 14px;
-         border-radius: 4px;
-         outline: none;
-         }
-
-         .form-group input:focus, .form-group textarea:focus {
-         border-color: var(--azul-acento);
-         }
-
-         .menu-toggle { display: none; }
-
-         /* Ajustes de Responsividad */
-         @media (max-width: 968px) {
-         .hero-container, .grid-split { grid-template-columns: 1fr; gap: 40px; }
-         .methodology-flow { grid-template-columns: repeat(2, 1fr); }
-         nav ul { display: none; }
-         .menu-toggle { display: block; background: transparent; border: 0; font-size: 24px; cursor: pointer; }
-         }
-
-         @media (max-width: 640px) {
-         .corp-grid-services, .methodology-flow, .form-row { grid-template-columns: 1fr; }
-         .form-group.full-width { grid-column: span 1; }
-         .footer-container { flex-direction: column; gap: 16px; text-align: center; }
-         }
+         .site-footer { background: var(--azul-oscuro); color: rgba(255,255,255,.6); padding: 40px 0; font-size: 14px; }
+         @media (max-width: 980px) { .grid-method { grid-template-columns: repeat(2, 1fr); } nav { display: none; } }
+         @media (max-width: 640px) { .grid-method { grid-template-columns: 1fr; } .form-row { grid-template-columns: 1fr; } }
       </style>
    </head>
    <body>
 
       <header>
-         <div class="wrapper navbar">
-            <a href="index.html" class="logo">
-               <img src="Neo1.png" alt="NeoDat Consultores">
-            </a>
+         <div class="contenedor navbar">
+            <a href="index.html" class="logo"><img src="Neo1.png" class="logo-icono" alt="NeoDat"></a>
             <nav>
                <ul>
-                  <li><a href="#servicios">Servicios</a></li>
-                  <li><a href="#metodo">Método Operativo</a></li>
-                  <li><a href="#ambitos">Ámbitos Especializados</a></li>
+                  <li><a href="index.html">Inicio</a></li>
+                  <li><a href="servicios.html">Servicios</a></li>
+                  <li><a href="metodo.html" class="active">Método Corporativo</a></li>
                </ul>
             </nav>
-            <button class="menu-toggle" type="button" aria-label="Menu">☰</button>
-            <a class="nav-cta" href="https://wa.me/593988200116" target="_blank" rel="noopener">Consultoría Directa</a>
          </div>
       </header>
 
       <main>
-         <section class="hero-section">
-            <div class="wrapper hero-container">
-               <div class="hero-content">
-                  <span class="tagline">Firma de Consultoría e Inteligencia de Negocios</span>
-                  <h1>Gobernanza corporativa e integración de datos analíticos para la alta dirección.</h1>
-                  <p>Estructuramos ecosistemas de Business Intelligence, modelos financieros de precisión y cuadros de mando integrales que permiten mitigar el riesgo operativo y fundamentar las decisiones críticas de su organización.</p>
-                  <div class="hero-actions">
-                     <a href="#servicios" class="btn-corp btn-primary">Ver Servicios Corporativos</a>
-                     <button class="btn-corp btn-secondary" data-trigger-modal>Solicitud de Apertura</button>
+         <div class="page-header">
+            <div class="contenedor">
+               <h1>Marco Metodológico de Intervención</h1>
+               <p>Un proceso auditable, ordenado y estructurado orientado a la transferencia real de capacidades.</p>
+            </div>
+         </div>
+
+         <section class="methodology">
+            <div class="contenedor">
+               <div class="grid-method">
+                  <div class="step-card">
+                     <span>FASE I</span>
+                     <h3>Diagnóstico Técnico</h3>
+                     <p>Evaluación inicial del estado de la información, consistencia de las bases informativas y análisis de brechas funcionales.</p>
+                  </div>
+                  <div class="step-card">
+                     <span>FASE II</span>
+                     <h3>Diseño Lógico</h3>
+                     <p>Definición analítica de los indicadores de gestión (KPIs), modelado de datos y diseño del ecosistema de reportabilidad.</p>
+                  </div>
+                  <div class="step-card">
+                     <span>FASE III</span>
+                     <h3>Implementación</h3>
+                     <p>Despliegue integral de las arquitecturas de software, dashboards ejecutivos automatizados y herramientas financieras.</p>
+                  </div>
+                  <div class="step-card">
+                     <span>FASE IV</span>
+                     <h3>Auditoría y Traspaso</h3>
+                     <p>Calibración final del entorno montado, validación técnica cruzada y entrega de documentación formal institucional.</p>
                   </div>
                </div>
 
-               <div class="ecosistema-viewport">
-                  <div class="data-node node-1">Estructura Financiera</div>
-                  <div class="data-node node-2">Modelos de Datos BI</div>
-                  
-                  <div class="laser-stream stream-left"></div>
-                  <div class="sistema-central">
-                     <div class="nucleo-dat">
-                        <span>Ecosistema</span>
-                        <strong>NeoDat</strong>
+               <div class="form-container-box">
+                  <h2>Solicitud de Requerimiento Técnico</h2>
+                  <p>Inicie un proceso formal de evaluación completando los datos institucionales solicitados a continuación.</p>
+                  <form id="contactForm">
+                     <div class="form-row">
+                        <div class="form-group">
+                           <label for="name">Nombre Completo</label>
+                           <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                           <label for="company">Empresa / Organización</label>
+                           <input type="text" id="company" required>
+                        </div>
                      </div>
-                  </div>
-                  <div class="laser-stream stream-right"></div>
+                     <div class="form-row">
+                        <div class="form-group">
+                           <label for="email">Correo Corporativo</label>
+                           <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                           <label for="phone">Teléfono de Contacto</label>
+                           <input type="tel" id="phone" required>
+                        </div>
+                     </div>
+                     <div class="form-group full">
+                        <label for="scope">Área de Intervención Solicitada</label>
+                        <select id="scope">
+                           <option value="Business Intelligence">Business Intelligence & Dashboards</option>
+                           <option value="Modelado Financiero">Modelación Financiera y Costos</option>
+                           <option value="Control de Gestion">Control de Gestión e Indicadores</option>
+                           <option value="Infraestructura TI">Infraestructura y Proyectos de TI</option>
+                        </select>
+                     </div>
+                     <div class="form-group full">
+                        <label for="description">Descripción del Requerimiento Organizacional</label>
+                        <textarea id="description" rows="4" required></textarea>
+                     </div>
+                     <button type="submit" class="btn-submit">Enviar Requerimiento Formal</button>
+                  </form>
+               </div>
 
-                  <div class="data-node node-3">Control de Gestión</div>
-                  <div class="data-node node-4">Arquitectura B2B</div>
-               </div>
-            </div>
-         </section>
-
-         <section id="servicios" style="padding: 100px 0;">
-            <div class="wrapper grid-split">
-               <div class="section-title">
-                  <h2>Soluciones y servicios corporativos estructurados</h2>
-                  <p>Modelos de intervención desarrollados bajo rigurosos estándares técnicos y financieros.</p>
-               </div>
-               <div class="corp-grid-services">
-                  <div class="service-entry">
-                     <h3>Análisis Avanzado de Datos</h3>
-                     <p>Consolidación y auditoría de bases informativas complejas para la extracción de patrones de rendimiento.</p>
-                  </div>
-                  <div class="service-entry">
-                     <h3>Consultoría de Finanzas Corporativas</h3>
-                     <p>Desarrollo de presupuestos dinámicos, valoraciones estructuradas y control analítico de costes.</p>
-                  </div>
-                  <div class="service-entry">
-                     <h3>Business Intelligence & Dashboards</h3>
-                     <p>Despliegue de arquitecturas de visualización ejecutiva para el monitoreo de indicadores clave (KPIs).</p>
-                  </div>
-                  <div class="service-entry">
-                     <h3>Estructuración de Proyectos de TI</h3>
-                     <p>Planificación de infraestructura técnica, documentación institucional e integración sistémica.</p>
-                  </div>
-               </div>
-            </div>
-         </section>
-
-         <section id="metodo" style="padding: 100px 0; background-color: var(--gris-fondo);">
-            <div class="wrapper">
-               <div class="section-title" style="margin-bottom: 48px;">
-                  <h2>Metodología de intervención por fases</h2>
-                  <p>Garantizamos un proceso auditable que asegura la transferencia de capacidades operativas a su organización.</p>
-               </div>
-               <div class="methodology-flow">
-                  <div class="method-step">
-                     <span class="step-num">FASE I</span>
-                     <h4>Diagnóstico Técnico</h4>
-                     <p>Evaluación de consistencia informativa, sistemas core vigentes y levantamiento de brechas.</p>
-                  </div>
-                  <div class="method-step">
-                     <span class="step-num">FASE II</span>
-                     <h4>Arquitectura de Modelos</h4>
-                     <p>Modelado matemático financiero y diseño lógico de estructuras analíticas integradas.</p>
-                  </div>
-                  <div class="method-step">
-                     <span class="step-num">FASE III</span>
-                     <h4>Despliegue e Integración</h4>
-                     <p>Implementación técnica en entorno seguro de tableros de control y automatizaciones.</p>
-                  </div>
-                  <div class="method-step">
-                     <span class="step-num">FASE IV</span>
-                     <h4>Auditoría y Cierre</h4>
-                     <p>Calibración fina del ecosistema montado y entrega de documentación técnica formal.</p>
-                  </div>
-               </div>
-            </div>
-         </section>
-
-         <section id="ambitos" style="padding: 100px 0;">
-            <div class="wrapper grid-split">
-               <div class="section-title">
-                  <h2>Ámbitos institucionales de especialización técnica</h2>
-                  <p>Proveemos soporte técnico y analítico transversal a las gerencias críticas que gobiernan la organización.</p>
-               </div>
-               <div class="ambitos-panel">
-                  <span class="scope-tag">Dirección General</span>
-                  <span class="scope-tag">Finanzas Corporativas</span>
-                  <span class="scope-tag">Control de Gestión Interno</span>
-                  <span class="scope-tag">Planificación Operativa</span>
-                  <span class="scope-tag">Tecnologías de Información</span>
-                  <span class="scope-tag">Administración de Riesgos</span>
-               </div>
             </div>
          </section>
       </main>
 
       <footer>
-         <div class="wrapper footer-container">
-            <p>© 2026 NeoDat Consultores. Todos los derechos reservados. Uso Confidencial.</p>
-            <p>Servicios de Consultoría de Alta Fidelidad</p>
+         <div class="contenedor">
+            <p>© 2026 NeoDat Consultores. Todos los derechos reservados.</p>
          </div>
       </footer>
 
-      <div class="modal-overlay" id="formModal">
-         <div class="modal-window">
-            <div class="modal-header">
-               <h3>Formulario de Requerimiento Técnico</h3>
-               <button class="close-btn" data-close-modal>×</button>
-            </div>
-            <div class="modal-body">
-               <form id="corpRequestForm">
-                  <div class="form-row">
-                     <div class="form-group">
-                        <label for="f_name">Nombre del Solicitante</label>
-                        <input type="text" id="f_name" required>
-                     </div>
-                     <div class="form-group">
-                        <label for="f_company">Organización / Empresa</label>
-                        <input type="text" id="f_company" required>
-                     </div>
-                  </div>
-                  <div class="form-row">
-                     <div class="form-group">
-                        <label for="f_email">Correo Electrónico Institucional</label>
-                        <input type="email" id="f_email" required>
-                     </div>
-                     <div class="form-group">
-                        <label for="f_phone">Teléfono de Contacto</label>
-                        <input type="tel" id="f_phone" required>
-                     </div>
-                  </div>
-                  <div class="form-group full-width">
-                     <label for="f_scope">Área Crítica de Intervención</label>
-                     <select id="f_scope">
-                        <option value="Business Intelligence">Business Intelligence & Dashboards</option>
-                        <option value="Modelos Financieros">Modelos Financieros avanzados</option>
-                        <option value="Control de Gestion">Control de Gestión / KPIs</option>
-                     </select>
-                  </div>
-                  <div class="form-group full-width">
-                     <label for="f_desc">Descripción Breve del Requerimiento Institucional</label>
-                     <textarea id="f_desc" rows="4" required></textarea>
-                  </div>
-                  <button type="submit" class="btn-corp btn-primary" style="width: 100%; justify-content: center;">Enviar Solicitud de Consultoría</button>
-               </form>
-            </div>
-         </div>
-      </div>
-
       <script>
-         // Manejo de Modal
-         const modal = document.getElementById('formModal');
-         const openTrigger = document.querySelector('[data-trigger-modal]');
-         const closeTrigger = document.querySelector('[data-close-modal]');
-
-         openTrigger.addEventListener('click', () => modal.classList.add('open'));
-         closeTrigger.addEventListener('click', () => modal.classList.remove('open'));
-
-         // Envió Formal de Correo de Negocio
-         document.getElementById('corpRequestForm').addEventListener('submit', function(e) {
+         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            
-            const clientName = document.getElementById('f_name').value;
-            const company = document.getElementById('f_company').value;
-            const email = document.getElementById('f_email').value;
-            const phone = document.getElementById('f_phone').value;
-            const area = document.getElementById('f_scope').value;
-            const desc = document.getElementById('f_desc').value;
+            const name = document.getElementById('name').value;
+            const company = document.getElementById('company').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const scope = document.getElementById('scope').value;
+            const desc = document.getElementById('description').value;
 
-            const messageBody = [
-               `Estimado Equipo de Consultoría de NeoDat,`,
+            const formalBody = [
+               `Estimada Mesa Técnica de NeoDat Consultores,`,
                ``,
-               `Se ha registrado una solicitud formal de servicio corporativo:`,
-               `- Organización: ${company}`,
-               `- Representante: ${clientName}`,
-               `- Correo Institucional: ${email}`,
-               `- Teléfono de Contacto: ${phone}`,
-               `- Área de Intervención: ${area}`,
+               `Se ha generado un requerimiento formal de servicios de consultoría:`,
+               `- Organización solicitante: ${company}`,
+               `- Profesional de contacto: ${name}`,
+               `- Correo Electrónico: ${email}`,
+               `- Teléfono de Enlace: ${phone}`,
+               `- Eje de Intervención: ${scope}`,
                ``,
-               `Descripción de la necesidad:`,
+               `Descripción de la necesidad institucional:`,
                `"${desc}"`,
                ``,
                `Saludos cordiales.`
             ].join('\n');
 
-            const subject = encodeURIComponent(`Solicitud de Consultoría Técnica - ${company}`);
-            window.location.href = `mailto:neodatconsultores@gmail.com?subject=${subject}&body=${encodeURIComponent(messageBody)}`;
+            const subject = encodeURIComponent(`Apertura de Requerimiento Técnico - ${company}`);
+            window.location.href = `mailto:neodatconsultores@gmail.com?subject=${subject}&body=${encodeURIComponent(formalBody)}`;
          });
       </script>
    </body>
