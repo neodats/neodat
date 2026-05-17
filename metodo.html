@@ -95,6 +95,7 @@
             box-shadow: 0 6px 20px rgba(22, 43, 78, 0.18);
          }
          .btn-principal span {
+            display: inline-block;
             transition: transform 0.2s ease;
          }
          .btn-principal:hover span {
@@ -112,17 +113,6 @@
             border-color: #25D366;
             transform: translateY(-1px);
             box-shadow: 0 6px 16px rgba(37, 211, 102, 0.2);
-         }
-         .btn-secundario {
-            background: transparent;
-            color: var(--azul);
-            border: 1px solid rgba(22, 43, 78, 0.15);
-         }
-         .btn-secundario:hover {
-            background: var(--azul-claro);
-            border-color: rgba(22, 43, 78, 0.3);
-            color: var(--azul-oscuro);
-            transform: translateY(-1px);
          }
 
          /* INTERFAZ GENERAL */
@@ -161,17 +151,18 @@
          }
          nav a {
             display: inline-flex;
-            padding: 8px 12px;
+            padding: 8px 16px;
             border-radius: 999px;
-            font-size: 13px;
-            font-weight: 750;
+            font-size: 13.5px;
+            font-weight: 700;
             color: var(--azul);
-            transition: 0.2s ease;
+            background: transparent;
+            transition: all 0.2s ease-in-out;
          }
          nav a:hover,
          nav a.actual {
-            background: var(--azul-claro);
-            color: var(--azul-oscuro);
+            background: var(--azul-claro) !important;
+            color: var(--azul-oscuro) !important;
          }
          .menu-toggle {
             display: none;
@@ -501,12 +492,19 @@
             menu.classList.toggle("activo");
          });
 
-         // Autodetección de página activa para resaltar el menú
-         const ubicacionActual = window.location.pathname.split("/").pop() || "index.html";
+         // Sistema robusto de autodetección para iluminar la pestaña activa
+         const rutaLimpia = window.location.pathname.toLowerCase();
          const enlacesMenu = document.querySelectorAll("nav.menu a");
 
+         // Si la ruta raíz es vacía o termina en barra diagonal, asumimos index.html por defecto
+         const esRaiz = rutaLimpia === "" || rutaLimpia === "/" || rutaLimpia.endsWith("/");
+
          enlacesMenu.forEach(enlace => {
-            if (enlace.getAttribute("href") === ubicacionActual) {
+            const hrefOriginal = enlace.getAttribute("href").toLowerCase();
+            
+            if (esRaiz && hrefOriginal === "index.html") {
+               enlace.classList.add("actual");
+            } else if (!esRaiz && rutaLimpia.endsWith(hrefOriginal)) {
                enlace.classList.add("actual");
             }
          });
