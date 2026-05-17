@@ -1,563 +1,588 @@
 <!DOCTYPE html>
 <html lang="es">
-   <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>NeoDat Consultores | Ingeniería de Gestión & BI</title>
-      <link rel="icon" type="image/png" sizes="32x32" href="Neo1.png">
-      <meta name="description" content="Estructuramos ecosistemas de datos avanzados y modelos financieros de alta precisión para dotar a su organización de un control ejecutivo permanente." />
-      
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-      
-      <style>
-         :root {
-            --bg-base: #020712;
-            --azul-premium: #0052cc;
-            --azul-glow: rgba(0, 82, 204, 0.2);
-            --naranja-acento: #ff9900;
-            --blanco: #ffffff;
-            --texto-secundario: #a1b3cb;
-            --borde-glass: rgba(255, 255, 255, 0.08);
-            --borde-active: rgba(0, 255, 102, 0.25);
-         }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NeoDat Consultores</title>
+  <link rel="icon" type="image/png" href="Neo1.png" />
 
-         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-         }
+  <style>
+    :root{
+      --bg:#030814;
+      --bg2:#071426;
+      --blue:#0b63e5;
+      --blue2:#4aa3ff;
+      --gold:#f5a623;
+      --text:#f4f8ff;
+      --muted:#9fb2c8;
+      --line:rgba(255,255,255,.14);
+      --glass:rgba(255,255,255,.08);
+      --green:#33e681;
+    }
 
-         html, body {
-            width: 100%;
-            height: 100%;
-            background-color: var(--bg-base);
-            font-family: 'Inter', system-ui, sans-serif;
-            color: var(--blanco);
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-         }
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
 
-         /* --- ENTORNO CINÉTICO Y CAPAS DE FONDO --- */
-         .capa-universo {
-            position: absolute;
-            inset: 0;
-            z-index: 1;
-            background: 
-               radial-gradient(circle at 85% 20%, rgba(0, 82, 204, 0.18) 0%, transparent 50%),
-               radial-gradient(circle at 50% 90%, rgba(255, 153, 0, 0.04) 0%, transparent 40%),
-               linear-gradient(140deg, #051226 0%, #01040a 100%);
-            overflow: hidden;
-         }
+    body{
+      min-height:100vh;
+      font-family:Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at 62% 12%, rgba(52,134,255,.26), transparent 26%),
+        radial-gradient(circle at 88% 38%, rgba(245,166,35,.16), transparent 24%),
+        linear-gradient(115deg, #020611 0%, #071426 48%, #020611 100%);
+      color:var(--text);
+      overflow-x:hidden;
+    }
 
-         /* Cuadrícula técnica */
-         .capa-universo::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background-image: 
-               linear-gradient(rgba(255, 255, 255, 0.01) 1px, transparent 1px),
-               linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
-            background-size: 55px 55px;
-            pointer-events: none;
-         }
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+      background-size:42px 42px;
+      mask-image:linear-gradient(90deg, black, transparent 82%);
+      pointer-events:none;
+    }
 
-         /* Flujo sutil de micro-partículas */
-         .capa-universo::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background-image: 
-               radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 0),
-               radial-gradient(rgba(161, 179, 203, 0.08) 1.5px, transparent 0);
-            background-size: 140px 140px;
-            animation: flujoDatos 45s linear infinite;
-            opacity: 0.5;
-         }
+    body::after{
+      content:"";
+      position:fixed;
+      inset:0;
+      background:
+        radial-gradient(circle at 18% 34%, rgba(74,163,255,.14) 0 1px, transparent 2px),
+        radial-gradient(circle at 78% 22%, rgba(255,255,255,.35) 0 1px, transparent 2px),
+        radial-gradient(circle at 90% 72%, rgba(245,166,35,.32) 0 1px, transparent 2px);
+      background-size:110px 110px;
+      opacity:.7;
+      pointer-events:none;
+    }
 
-         @keyframes flujoDatos {
-            from { background-position: 0 0; }
-            to { background-position: 0 -1000px; }
-         }
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
 
-         /* Estructuras en suspensión de fondo */
-         .red-esferica-abstracta {
-            position: absolute;
-            top: -2%;
-            right: 22%;
-            width: 440px;
-            height: 440px;
-            border: 1px dashed rgba(0, 82, 204, 0.12);
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(0, 82, 204, 0.02) 0%, transparent 75%);
-            animation: flotarEjeA 14s ease-in-out infinite alternate;
-         }
+    .page{
+      position:relative;
+      z-index:2;
+      width:min(1180px, calc(100% - 44px));
+      min-height:100vh;
+      margin:auto;
+      display:flex;
+      flex-direction:column;
+      padding:22px 0 18px;
+    }
 
-         .hipercubo-abstracto {
-            position: absolute;
-            bottom: -8%;
-            right: 38%;
-            width: 350px;
-            height: 350px;
-            border: 1px solid rgba(161, 179, 203, 0.06);
-            transform: rotate(20deg);
-            background: linear-gradient(135deg, rgba(0, 82, 204, 0.02), transparent);
-            animation: flotarEjeB 10s ease-in-out infinite alternate-reverse;
-         }
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
 
-         @keyframes flotarEjeA {
-            0% { transform: translateY(0) rotate(0deg); }
-            100% { transform: translateY(-20px) rotate(8deg); }
-         }
+    .logo img{
+      width:128px;
+      height:auto;
+      display:block;
+      filter:drop-shadow(0 0 18px rgba(74,163,255,.38));
+    }
 
-         @keyframes flotarEjeB {
-            0% { transform: translateY(0) rotate(20deg); }
-            100% { transform: translateY(-15px) rotate(15deg); }
-         }
+    nav{
+      display:flex;
+      align-items:center;
+      gap:6px;
+      padding:8px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:rgba(2,8,20,.44);
+      backdrop-filter:blur(18px);
+    }
 
-         /* --- NAVEGACIÓN Y PROTECCIÓN DEL LOGO --- */
-         .pantalla-portada {
-            position: relative;
-            z-index: 2;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 32px 0;
-         }
+    nav a{
+      padding:10px 14px;
+      border-radius:999px;
+      color:#c8d7ea;
+      font-size:13px;
+      font-weight:700;
+    }
 
-         .contenedor {
-            width: min(1280px, calc(100% - 48px));
-            margin: 0 auto;
-         }
+    nav a:hover{
+      background:rgba(255,255,255,.08);
+      color:#fff;
+    }
 
-         .top-bar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding-bottom: 24px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-         }
+    .status{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 18px;
+      border:1px solid rgba(51,230,129,.28);
+      border-radius:999px;
+      background:rgba(51,230,129,.12);
+      box-shadow:0 0 28px rgba(51,230,129,.25);
+      color:#fff;
+      font-size:12px;
+      font-weight:900;
+      letter-spacing:.5px;
+      white-space:nowrap;
+    }
 
-         /* CONTENEDOR PROFESIONAL PARA GARANTIZAR VISIBILIDAD DEL LOGO */
-         .logo-contenedor {
-            display: inline-flex;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.95); /* Fondo sólido claro para contrastar el logo oscuro */
-            padding: 8px 16px;
-            border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1);
-            transition: transform 0.2s ease;
-         }
+    .status span{
+      width:9px;
+      height:9px;
+      border-radius:50%;
+      background:var(--green);
+      box-shadow:0 0 16px var(--green);
+    }
 
-         .logo-contenedor:hover {
-            transform: scale(1.02);
-         }
+    main{
+      flex:1;
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      align-items:center;
+      gap:64px;
+      padding:68px 0 48px;
+    }
 
-         .logo-contenedor img {
-            height: 38px;
-            width: auto;
-            display: block;
-         }
+    .tag{
+      margin-bottom:22px;
+      color:var(--gold);
+      font-size:13px;
+      font-weight:900;
+      letter-spacing:2.6px;
+      text-transform:uppercase;
+    }
 
-         .menu-estricto ul {
-            list-style: none;
-            display: flex;
-            gap: 36px;
-         }
+    h1{
+      max-width:690px;
+      margin-bottom:24px;
+      font-size:clamp(48px, 6vw, 82px);
+      line-height:.96;
+      letter-spacing:-4px;
+      font-weight:900;
+      color:#fff;
+      text-shadow:0 0 28px rgba(74,163,255,.22);
+    }
 
-         .menu-estricto a {
-            color: var(--texto-secundario);
-            font-size: 14px;
-            font-weight: 600;
-            letter-spacing: -0.2px;
-            text-decoration: none;
-            transition: color 0.25s ease;
-         }
+    h1 span{
+      display:block;
+      color:#cfe2ff;
+    }
 
-         .menu-estricto a:hover {
-            color: var(--blanco);
-         }
+    .lead{
+      max-width:610px;
+      margin-bottom:34px;
+      color:var(--muted);
+      font-size:19px;
+      line-height:1.55;
+    }
 
-         .badge-interactivo {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(0, 255, 102, 0.02);
-            border: 1px solid var(--borde-active);
-            padding: 8px 18px;
-            border-radius: 999px;
-            font-size: 11px;
-            font-weight: 800;
-            letter-spacing: 1px;
-         }
+    .actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:16px;
+    }
 
-         .badge-interactivo::before {
-            content: "";
-            width: 7px;
-            height: 7px;
-            background-color: #00ff66;
-            border-radius: 50%;
-            box-shadow: 0 0 10px #00ff66;
-         }
+    .btn{
+      min-width:184px;
+      padding:17px 24px;
+      border-radius:9px;
+      border:1px solid transparent;
+      font-size:14px;
+      font-weight:900;
+      text-align:center;
+      transition:.2s ease;
+    }
 
-         /* --- ESTRUCTURA GRID Y TIPOGRAFÍA --- */
-         .grid-principal {
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 64px;
-            align-items: center;
-            margin: auto 0;
-            padding: 50px 0;
-         }
+    .btn-primary{
+      background:#0b63e5;
+      box-shadow:0 18px 44px rgba(11,99,229,.38);
+    }
 
-         .tagline {
-            color: var(--naranja-acento);
-            font-size: 12px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 16px;
-            display: block;
-         }
+    .btn-primary:hover{
+      background:#0a55c5;
+      transform:translateY(-2px);
+    }
 
-         h1 {
-            font-size: clamp(42px, 5vw, 62px);
-            font-weight: 900;
-            line-height: 1.08;
-            letter-spacing: -2.5px;
-            color: var(--blanco);
-            margin-bottom: 24px;
-         }
+    .btn-secondary{
+      border-color:rgba(255,255,255,.16);
+      background:rgba(255,255,255,.035);
+      backdrop-filter:blur(14px);
+    }
 
-         h1 span {
-            background: linear-gradient(135deg, #ffffff 40%, #87a2c7 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-         }
+    .btn-secondary:hover{
+      border-color:rgba(245,166,35,.5);
+      transform:translateY(-2px);
+    }
 
-         p.introduccion {
-            font-size: clamp(16px, 1.4vw, 18px);
-            color: var(--texto-secundario);
-            line-height: 1.6;
-            margin-bottom: 40px;
-            max-width: 570px;
-         }
+    .visual{
+      position:relative;
+      min-height:440px;
+      display:grid;
+      place-items:center;
+    }
 
-         .caja-botones {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-         }
+    .orb{
+      position:absolute;
+      width:330px;
+      height:330px;
+      border-radius:50%;
+      border:1px solid rgba(117,184,255,.28);
+      background:
+        radial-gradient(circle, rgba(74,163,255,.16), transparent 62%);
+      box-shadow:0 0 80px rgba(74,163,255,.16);
+      animation:float 6s ease-in-out infinite;
+    }
 
-         .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 16px 36px;
-            border-radius: 6px;
-            font-size: 14px;
-            font-weight: 700;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.25s ease;
-         }
+    .orb::before,
+    .orb::after{
+      content:"";
+      position:absolute;
+      inset:24px;
+      border-radius:50%;
+      border:1px solid rgba(245,166,35,.38);
+      transform:rotate(32deg) scaleX(1.34);
+    }
 
-         .btn-azul {
-            background-color: var(--azul-premium);
-            color: var(--blanco);
-            box-shadow: 0 12px 35px rgba(0, 82, 204, 0.35);
-         }
+    .orb::after{
+      border-color:rgba(74,163,255,.45);
+      transform:rotate(-38deg) scaleX(1.28);
+    }
 
-         .btn-azul:hover {
-            background-color: #1a73e8;
-            transform: translateY(-2px);
-         }
+    .cube{
+      position:absolute;
+      right:8px;
+      top:20px;
+      width:210px;
+      height:210px;
+      border:1px solid rgba(74,163,255,.38);
+      transform:rotate(45deg);
+      opacity:.72;
+      box-shadow:0 0 34px rgba(74,163,255,.22);
+    }
 
-         .btn-vacio {
-            background-color: transparent;
-            color: var(--blanco);
-            border: 1px solid var(--borde-glass);
-         }
+    .cube::before{
+      content:"";
+      position:absolute;
+      inset:32px;
+      border:1px solid rgba(245,166,35,.5);
+    }
 
-         .btn-vacio:hover {
-            background-color: rgba(255, 255, 255, 0.02);
-            border-color: rgba(255, 255, 255, 0.25);
-         }
+    .panel{
+      position:relative;
+      z-index:3;
+      width:min(440px, 100%);
+      padding:24px;
+      border:1px solid rgba(255,255,255,.23);
+      border-radius:18px;
+      background:linear-gradient(145deg, rgba(255,255,255,.16), rgba(255,255,255,.055));
+      backdrop-filter:blur(20px);
+      box-shadow:
+        0 28px 80px rgba(0,0,0,.42),
+        inset 0 1px 0 rgba(255,255,255,.22);
+    }
 
-         /* --- REINGENIERÍA DEL DASHBOARD (AVANZADO) --- */
-         .dashboard-marco {
-            background: rgba(10, 24, 50, 0.4);
-            border: 1px solid var(--borde-glass);
-            border-radius: 20px;
-            padding: 32px;
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
-            box-shadow: 0 60px 110px rgba(0, 0, 0, 0.6);
-         }
+    .panel-head{
+      display:flex;
+      justify-content:space-between;
+      gap:18px;
+      padding-bottom:18px;
+      border-bottom:1px solid rgba(255,255,255,.13);
+    }
 
-         .dashboard-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 28px;
-         }
+    .panel-head strong{
+      display:block;
+      margin-bottom:3px;
+      font-size:16px;
+    }
 
-         .dashboard-meta strong {
-            font-size: 16px;
-            font-weight: 700;
-            display: block;
-            letter-spacing: -0.3px;
-         }
+    .panel-head span{
+      color:var(--muted);
+      font-size:13px;
+    }
 
-         .dashboard-meta span {
-            font-size: 12px;
-            color: var(--texto-secundario);
-            display: block;
-            margin-top: 4px;
-         }
+    .panel-head em{
+      color:var(--gold);
+      font-style:normal;
+      font-size:12px;
+      font-weight:900;
+      white-space:nowrap;
+    }
 
-         /* Grid de Métricas Expandido */
-         .dashboard-metricas {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-            margin-bottom: 28px;
-         }
+    .cards{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+      margin:20px 0 24px;
+    }
 
-         .tarjeta-kpi {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            padding: 14px;
-            position: relative;
-         }
+    .mini{
+      padding:18px 16px;
+      border:1px solid rgba(255,255,255,.15);
+      border-radius:12px;
+      background:rgba(2,8,20,.34);
+    }
 
-         .tarjeta-kpi small {
-            font-size: 9px;
-            color: var(--texto-secundario);
-            text-transform: uppercase;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            display: block;
-         }
+    .mini small{
+      display:block;
+      margin-bottom:8px;
+      color:#aebed2;
+      font-size:11px;
+      line-height:1.35;
+      text-transform:uppercase;
+    }
 
-         .tarjeta-kpi div {
-            font-size: 18px;
-            font-weight: 700;
-            margin-top: 6px;
-            color: var(--blanco);
-         }
+    .mini strong{
+      display:block;
+      font-size:28px;
+      line-height:1;
+    }
 
-         .tarjeta-kpi div span {
-            font-size: 10px;
-            color: #00ff66;
-            margin-left: 2px;
-         }
+    .mini b{
+      color:var(--green);
+      font-size:12px;
+    }
 
-         /* Indicador parpadeante de datos en vivo */
-         .live-dot {
-            position: absolute;
-            top: 14px;
-            right: 14px;
-            width: 5px;
-            height: 5px;
-            background-color: var(--naranja-acento);
-            border-radius: 50%;
-            animation: pulseLive 1.5s infinite;
-         }
+    .chart{
+      height:132px;
+      display:flex;
+      align-items:flex-end;
+      gap:12px;
+      padding-top:22px;
+      border-bottom:1px solid rgba(255,255,255,.12);
+    }
 
-         @keyframes pulseLive {
-            0% { transform: scale(0.9); opacity: 0.3; }
-            50% { transform: scale(1.4); opacity: 1; }
-            100% { transform: scale(0.9); opacity: 0.3; }
-         }
+    .bar{
+      flex:1;
+      min-height:28px;
+      border-radius:6px 6px 0 0;
+      background:linear-gradient(180deg, rgba(74,163,255,.75), rgba(11,99,229,.85));
+      box-shadow:0 0 24px rgba(74,163,255,.16);
+    }
 
-         /* SERIE DE TIEMPO SVG CON MOVIMIENTO INFINITO */
-         .contenedor-serie-tiempo {
-            background: rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            border-radius: 8px;
-            padding: 16px;
-            height: 140px;
-            position: relative;
-            overflow: hidden;
-         }
+    .bar:nth-child(1){height:36%}
+    .bar:nth-child(2){height:52%}
+    .bar:nth-child(3){height:68%}
+    .bar:nth-child(4){
+      height:88%;
+      background:linear-gradient(180deg, #ffd06a, #d88900);
+      box-shadow:0 0 34px rgba(245,166,35,.38);
+    }
+    .bar:nth-child(5){height:58%}
 
-         .eje-linea {
-            position: absolute;
-            left: 0;
-            width: 100%;
-            height: 1px;
-            background: rgba(255, 255, 255, 0.05);
-         }
-         .eje-linea.superior { top: 25%; }
-         .eje-linea.central { top: 50%; border-top: 1px dashed rgba(161, 179, 203, 0.1); }
-         .eje-linea.inferior { bottom: 25%; }
+    footer{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:22px;
+      padding-top:20px;
+      border-top:1px solid rgba(255,255,255,.11);
+      color:#8fa3ba;
+      font-size:13px;
+    }
 
-         .svg-grafico-animado {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            z-index: 2;
-         }
+    .footer-links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:30px;
+    }
 
-         /* Simulación de flujo de datos continuo mediante dasharray deslizante */
-         .linea-datos-flujo {
-            fill: none;
-            stroke: var(--azul-premium);
-            stroke-width: 2.5;
-            stroke-dasharray: 1000;
-            stroke-dashoffset: 1000;
-            animation: desplazarSerie 20s linear infinite;
-         }
+    .footer-links span::before{
+      content:"✓";
+      margin-right:8px;
+      color:#0b63e5;
+      font-weight:900;
+    }
 
-         .linea-datos-flujo.secundaria {
-            stroke: var(--naranja-acento);
-            stroke-width: 1.5;
-            opacity: 0.7;
-            animation: desplazarSerie 25s linear infinite reverse;
-         }
+    @keyframes float{
+      0%,100%{transform:translateY(0)}
+      50%{transform:translateY(-16px)}
+    }
 
-         @keyframes desplazarSerie {
-            to {
-               stroke-dashoffset: 0;
-            }
-         }
+    @media(max-width:980px){
+      header{
+        flex-wrap:wrap;
+      }
 
-         /* --- PIE DE PÁGINA --- */
-         .footer-bloque {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 16px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            padding-top: 24px;
-            font-size: 13px;
-            color: rgba(161, 179, 203, 0.35);
-         }
+      nav{
+        order:3;
+        width:100%;
+        justify-content:center;
+        flex-wrap:wrap;
+        border-radius:18px;
+      }
 
-         .lista-certificaciones {
-            display: flex;
-            gap: 32px;
-            list-style: none;
-         }
+      main{
+        grid-template-columns:1fr;
+        gap:40px;
+        padding-top:48px;
+      }
 
-         .lista-certificaciones li {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-         }
+      .visual{
+        min-height:390px;
+      }
 
-         .lista-certificaciones li::before {
-            content: "✓";
-            color: var(--azul-premium);
-            font-weight: 900;
-         }
+      h1{
+        letter-spacing:-2.5px;
+      }
 
-         /* RESPONSIVE */
-         @media (max-width: 992px) {
-            .grid-principal { grid-template-columns: 1fr; text-align: center; gap: 48px; }
-            p.introduccion { margin-left: auto; margin-right: auto; }
-            .caja-botones { justify-content: center; }
-            .dashboard-marco { max-width: 500px; margin: 0 auto; }
-            .menu-estricto { display: none; }
-            .dashboard-metricas { grid-template-columns: repeat(2, 1fr); }
-         }
-      </style>
-   </head>
-   <body>
+      footer{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+    }
 
-      <div class="capa-universo">
-         <div class="red-esferica-abstracta"></div>
-         <div class="hipercubo-abstracto"></div>
+    @media(max-width:620px){
+      .page{
+        width:min(100% - 30px, 1180px);
+      }
+
+      .logo img{
+        width:112px;
+      }
+
+      .status{
+        width:100%;
+        justify-content:center;
+      }
+
+      nav a{
+        width:100%;
+        text-align:center;
+      }
+
+      h1{
+        font-size:43px;
+        letter-spacing:-2px;
+      }
+
+      .lead{
+        font-size:16px;
+      }
+
+      .actions{
+        display:grid;
+      }
+
+      .btn{
+        width:100%;
+      }
+
+      .cards{
+        grid-template-columns:1fr;
+      }
+
+      .cube{
+        display:none;
+      }
+
+      .panel{
+        padding:18px;
+      }
+
+      .footer-links{
+        display:grid;
+        gap:10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <header>
+      <a class="logo" href="index.html" aria-label="NeoDat Consultores">
+        <img src="Neo1.png" alt="NeoDat Consultores">
+      </a>
+
+      <nav aria-label="Navegación principal">
+        <a href="index.html">Inicio</a>
+        <a href="servicios.html">Servicios</a>
+        <a href="metodo.html">Método</a>
+        <a href="ambitos.html">Ámbitos</a>
+        <a href="quienes-somos.html">Quiénes somos</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+
+      <div class="status">
+        <span></span>
+        PLATAFORMA CORPORATIVA ACTIVA
       </div>
+    </header>
 
-      <div class="contenedor pantalla-portada">
-         
-         <header class="top-bar">
-            <div class="logo-contenedor">
-               <img src="Neo1.png" alt="NeoDat Consultores">
+    <main>
+      <section>
+        <div class="tag">Ingeniería de gestión & BI</div>
+
+        <h1>
+          Transformamos la complejidad en
+          <span>dirección absoluta.</span>
+        </h1>
+
+        <p class="lead">
+          Estructuramos ecosistemas de datos, control financiero, tableros ejecutivos
+          y procesos de gestión para dotar a su organización de información clara,
+          trazable y accionable.
+        </p>
+
+        <div class="actions">
+          <a class="btn btn-primary" href="servicios.html">Entrar a la plataforma</a>
+          <a class="btn btn-secondary" href="contacto.html">Consultoría directa</a>
+        </div>
+      </section>
+
+      <section class="visual" aria-label="Panel ejecutivo NeoDat">
+        <div class="orb"></div>
+        <div class="cube"></div>
+
+        <div class="panel">
+          <div class="panel-head">
+            <div>
+              <strong>Ecosistema NeoDat</strong>
+              <span>Monitoreo de infraestructura global</span>
             </div>
-            
-            <nav class="menu-estricto">
-               <ul>
-                  <li><a href="servicios.html">Soluciones</a></li>
-                  <li><a href="metodo.html">Nuestro Método</a></li>
-                  <li><a href="ambitos.html">Especialidades</a></li>
-                  <li><a href="contacto.html">Contacto</a></li>
-               </ul>
-            </nav>
+            <em>Métricas de control</em>
+          </div>
 
-            <div class="badge-interactivo">
-               PLATAFORMA CORPORATIVA ACTIVA
+          <div class="cards">
+            <div class="mini">
+              <small>Optimización de procesos</small>
+              <strong>94.2% <b>↑ 4.1%</b></strong>
             </div>
-         </header>
 
-         <main class="grid-principal">
-            
-            <section>
-               <span class="tagline">Ingeniería de Gestión & BI</span>
-               <h1>Transformamos la complejidad en <span>dirección absoluta.</span></h1>
-               <p class="introduccion">Estructuramos ecosistemas de datos avanzados y modelos financieros de alta precisión para dotar a su organización de un control ejecutivo permanente.</p>
-               
-               <div class="caja-botones">
-                  <a href="servicios.html" class="btn btn-azul">Entrar a la Plataforma</a>
-                  <a href="contacto.html" class="btn btn-vacio">Consultoría Directa</a>
-               </div>
-            </section>
+            <div class="mini">
+              <small>Margen neto de operación</small>
+              <strong>31.8% <b>↑ 2.3%</b></strong>
+            </div>
+          </div>
 
-            <section class="dashboard-marco">
-               <div class="dashboard-top">
-                  <div class="dashboard-meta">
-                     <strong>Ecosistema Analítico V3</strong>
-                     <span>Flujo de Series Temporales en Vivo</span>
-                  </div>
-                  <div style="font-size: 11px; font-weight: 700; color: #00ff66; letter-spacing: 0.5px; text-transform: uppercase;">Estable</div>
-               </div>
-               
-               <div class="dashboard-metricas">
-                  <div class="tarjeta-kpi">
-                     <div class="live-dot"></div>
-                     <small>Eficiencia</small>
-                     <div>94.2%<span>↑</span></div>
-                  </div>
-                  <div class="tarjeta-kpi">
-                     <small>Previsión Mn.</small>
-                     <div>$142.8K</div>
-                  </div>
-                  <div class="tarjeta-kpi">
-                     <small>Desviación</small>
-                     <div>0.04%</div>
-                  </div>
-               </div>
+          <div class="chart" aria-hidden="true">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+          </div>
+        </div>
+      </section>
+    </main>
 
-               <div class="contenedor-serie-tiempo">
-                  <div class="eje-linea superior"></div>
-                  <div class="eje-linea central"></div>
-                  <div class="eje-linea inferior"></div>
-                  
-                  <svg class="svg-grafico-animado" viewBox="0 0 500 100" preserveAspectRatio="none">
-                     <path class="linea-datos-flujo" d="M0,50 Q40,20 80,60 T160,40 T240,70 T320,30 T400,60 T480,40 T560,70 T640,20 T720,60 T800,50" />
-                     <path class="linea-datos-flujo secundaria" d="M0,60 Q50,80 100,40 T200,70 T300,30 T400,50 T500,40 T600,60 T700,30 T800,60" />
-                  </svg>
-               </div>
-            </section>
+    <footer>
+      <span>© 2026 NeoDat Consultores. Todos los derechos reservados.</span>
 
-         </main>
-
-         <footer class="footer-bloque">
-            <span>© 2026 NeoDat Consultores. Todos los derechos reservados.</span>
-            <ul class="lista-certificaciones">
-               <li>Análisis Predictivo</li>
-               <li>Modelado Matemático</li>
-               <li>Arquitectura de Datos</li>
-            </ul>
-         </footer>
-
+      <div class="footer-links">
+        <span>Análisis predictivo</span>
+        <span>Modelado matemático</span>
+        <span>Arquitectura de datos</span>
       </div>
+    </footer>
 
-   </body>
+  </div>
+</body>
 </html>
