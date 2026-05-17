@@ -5,7 +5,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>NeoDat Consultores</title>
       <link rel="icon" type="image/png" sizes="32x32" href="Neo1.png">
-      <meta name="description" content="NeoDat Consultores ofrece soluciones en análisis de datos, dashboards, finanzas, control de gestión, proyectos y desarrollo web empresarial." [cite: 1, 2] />
+      <meta name="description" content="NeoDat Consultores ofrece soluciones en análisis de datos, dashboards, finanzas, control de gestión, proyectos y desarrollo web empresarial." />
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -23,33 +23,33 @@
             --texto: #243447;
             --texto-suave: #66788a;
             --sombra: 0 18px 45px rgba(7, 23, 45, 0.08);
-            --sombra-fuerte: 0 28px 70px rgba(7, 23, 45, 0.14); [cite: 3, 4, 5]
+            --sombra-fuerte: 0 28px 70px rgba(7, 23, 45, 0.14);
          }
          * {
             margin: 0;
             padding: 0;
-            box-sizing: border-box; [cite: 6]
+            box-sizing: border-box;
          }
          html {
-            scroll-behavior: smooth; [cite: 7]
+            scroll-behavior: smooth;
          }
          body {
             font-family: "Inter", Arial, sans-serif;
             background: #ffffff;
             color: var(--texto);
             line-height: 1.6;
-            overflow-x: hidden; [cite: 8]
+            overflow-x: hidden;
          }
          a {
             text-decoration: none;
-            color: inherit; [cite: 9]
+            color: inherit;
          }
          button {
-            font: inherit; [cite: 10]
+            font: inherit;
          }
          .contenedor {
             width: min(1160px, calc(100% - 40px));
-            margin: auto; [cite: 11]
+            margin: auto;
          }
          .btn {
             display: inline-flex;
@@ -63,34 +63,34 @@
             font-weight: 800;
             cursor: pointer;
             transition: 0.2s ease;
-            white-space: nowrap; [cite: 12, 13]
+            white-space: nowrap;
          }
          .btn-principal {
             background: var(--azul);
             color: var(--blanco);
-            box-shadow: 0 16px 34px rgba(22,43,78,.18); [cite: 14]
+            box-shadow: 0 16px 34px rgba(22,43,78,.18);
          }
          .btn-principal:hover {
             background: var(--azul-oscuro);
-            transform: translateY(-2px); [cite: 15]
+            transform: translateY(-2px);
          }
          .btn-whatsapp {
             background: #25D366;
             color: #ffffff;
-            box-shadow: none; [cite: 16]
+            box-shadow: none;
          }
          .btn-whatsapp:hover {
             background: #1ebe5d;
-            transform: translateY(-2px); [cite: 17]
+            transform: translateY(-2px);
          }
          .btn-secundario {
             background: var(--blanco);
             color: var(--azul);
-            border-color: rgba(22, 43, 78, 0.14); [cite: 18]
+            border-color: rgba(22, 43, 78, 0.14);
          }
          .btn-secundario:hover {
             border-color: rgba(255, 165, 0, 0.55);
-            box-shadow: 0 12px 24px rgba(7, 23, 45, 0.08); [cite: 19]
+            box-shadow: 0 12px 24px rgba(7, 23, 45, 0.08);
          }
          header {
             position: fixed;
@@ -100,30 +100,30 @@
             width: 100%;
             background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(18px);
-            border-bottom: 1px solid rgba(22, 43, 78, 0.08); [cite: 20, 21]
+            border-bottom: 1px solid rgba(22, 43, 78, 0.08);
          }
          .navbar {
             height: 78px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 28px; [cite: 22]
+            gap: 28px;
          }
          .logo {
             display: flex;
             align-items: center;
-            gap: 12px; [cite: 23]
+            gap: 12px;
          }
          .logo-icono {
             width: 160px;
             height: 160px;
-            object-fit: contain; 
+            object-fit: contain;
          }
          nav ul {
             list-style: none;
             display: flex;
             align-items: center;
-            gap: 8px; [cite: 25]
+            gap: 8px;
          }
          nav a {
             display: inline-flex;
@@ -132,20 +132,20 @@
             font-size: 14px;
             font-weight: 750;
             color: var(--azul);
-            transition: 0.2s ease; [cite: 26, 27]
+            transition: 0.2s ease;
          }
          nav a:hover {
-            background: var(--azul-claro); [cite: 28]
+            background: var(--azul-claro);
          }
          .hero {
             position: relative;
-            /* MODIFICACIÓN: Ajuste de espaciado óptimo para disolver la franja blanca excesiva */
-            padding: 60px 0 100px; 
+            /* Ajustado ligeramente para compensar el espacio que ocupaba la etiqueta quitada */
+            padding: 80px 0 100px; 
             background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
             overflow: hidden;
             min-height: calc(100vh - 44px);
             display: flex;
-            align-items: center; [cite: 29, 30]
+            align-items: center;
          }
          .hero::before {
             content: "";
@@ -156,7 +156,7 @@
                linear-gradient(90deg, rgba(22, 43, 78, 0.04) 1px, transparent 1px);
             background-size: 44px 44px;
             mask-image: linear-gradient(180deg, black, transparent 76%);
-            pointer-events: none; [cite: 31, 32, 33]
+            pointer-events: none;
          }
          .hero-grid {
             position: relative;
@@ -164,61 +164,38 @@
             display: grid;
             grid-template-columns: 1fr 0.96fr;
             gap: 62px;
-            align-items: center; [cite: 34, 35]
-         }
-         .eyebrow {
-            display: inline-flex;
             align-items: center;
-            gap: 10px;
-            margin-bottom: 22px;
-            padding: 8px 14px;
-            border: 1px solid rgba(22, 43, 78, 0.1);
-            border-radius: 999px;
-            background: var(--blanco);
-            color: var(--azul);
-            font-size: 12px;
-            font-weight: 900;
-            letter-spacing: 1px;
-            text-transform: uppercase; [cite: 36, 37, 38]
-         }
-         .eyebrow::before {
-            content: "";
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--naranja); [cite: 39]
          }
          h1 {
             max-width: 720px;
             margin-bottom: 24px;
             color: var(--azul-oscuro);
-            /* MODIFICACIÓN: Tipografía totalmente proporcional, corporativa y limpia */
             font-size: clamp(32px, 4.2vw, 46px);
             line-height: 1.2;
-            letter-spacing: -1.2px; [cite: 40, 41]
+            letter-spacing: -1.2px;
          }
          .hero p {
             max-width: 640px;
             margin-bottom: 32px;
             color: var(--texto-suave);
-            font-size: 17px; [cite: 42]
+            font-size: 17px;
          }
          .acciones {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px; [cite: 43]
+            gap: 12px;
          }
          .dashboard-shell {
             padding: 12px;
             border-radius: 32px;
             background: linear-gradient(135deg, var(--azul), var(--azul-oscuro));
             box-shadow: var(--sombra-fuerte);
-            overflow: hidden; [cite: 44, 45]
+            overflow: hidden;
          }
          .dashboard {
             overflow: hidden;
             border-radius: 24px;
-            background: var(--gris); [cite: 46]
+            background: var(--gris);
          }
          .dashboard-top {
             display: flex;
@@ -227,14 +204,14 @@
             gap: 16px;
             padding: 18px 22px;
             background: var(--blanco);
-            border-bottom: 1px solid var(--gris-2); [cite: 47, 48]
+            border-bottom: 1px solid var(--gris-2);
          }
          .dashboard-top strong {
             display: block;
             color: var(--azul-oscuro);
             font-size: 18px;
             font-weight: 850;
-            letter-spacing: -0.3px; [cite: 49]
+            letter-spacing: -0.3px;
          }
          .badge {
             padding: 7px 12px;
@@ -243,32 +220,32 @@
             color: var(--azul);
             font-size: 11px;
             font-weight: 900;
-            white-space: nowrap; [cite: 50, 51]
+            white-space: nowrap;
          }
          .dashboard-body {
             display: grid;
             gap: 14px;
-            padding: 18px; [cite: 52]
+            padding: 18px;
          }
          .kpis {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 12px; [cite: 53]
+            gap: 12px;
          }
          .kpi, .card {
             border: 1px solid var(--gris-2);
             border-radius: 20px;
-            background: var(--blanco); [cite: 54]
+            background: var(--blanco);
          }
          .kpi {
-            padding: 16px; [cite: 55]
+            padding: 16px;
          }
          .kpi small {
             display: block;
             margin-bottom: 8px;
             color: var(--texto-suave);
             font-size: 12px;
-            font-weight: 700; [cite: 56]
+            font-weight: 700;
          }
          .kpi strong {
             display: block;
@@ -276,7 +253,7 @@
             font-size: 29px;
             font-weight: 900;
             line-height: 1;
-            letter-spacing: -1px; [cite: 57, 58]
+            letter-spacing: -1px;
          }
          .menu-toggle {
             display: none;
@@ -288,13 +265,13 @@
             color: var(--azul);
             font-size: 26px;
             font-weight: 900;
-            cursor: pointer; [cite: 59, 60]
+            cursor: pointer;
          }
          .site-footer {
             background: #07172d;
             color: rgba(255,255,255,.72);
             padding: 24px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.08); [cite: 61, 62]
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
          }
          .footer-bottom {
             display: flex;
@@ -302,13 +279,13 @@
             align-items: center;
             text-align: center;
             font-size: 12.5px;
-            color: rgba(255,255,255,.52); [cite: 63, 64]
+            color: rgba(255,255,255,.52);
          }
          @media (max-width: 980px) {
-            .navbar { height: 72px; [cite: 65] }
-            .logo-icono { width: 130px; height: 130px; [cite: 66] }
-            .menu-toggle { display: flex; align-items: center; justify-content: center; [cite: 67] }
-            .whatsapp-desktop { display: none; [cite: 68] }
+            .navbar { height: 72px; }
+            .logo-icono { width: 130px; height: 130px; }
+            .menu-toggle { display: flex; align-items: center; justify-content: center; }
+            .whatsapp-desktop { display: none; }
             nav.menu {
                position: absolute;
                top: 72px;
@@ -317,31 +294,31 @@
                display: none;
                background: #ffffff;
                border-bottom: 1px solid rgba(22,43,78,.08);
-               box-shadow: 0 18px 40px rgba(7,23,45,.10); [cite: 69, 70]
+               box-shadow: 0 18px 40px rgba(7,23,45,.10);
             }
-            nav.menu.activo { display: block; [cite: 71] }
+            nav.menu.activo { display: block; }
             nav.menu ul {
                width: min(1160px, calc(100% - 40px));
                margin: auto;
                padding: 18px 0;
                display: grid;
                grid-template-columns: 1fr;
-               gap: 8px; [cite: 72, 73]
+               gap: 8px;
             }
             nav.menu a {
                width: 100%;
                padding: 14px 16px;
                border-radius: 16px;
-               background: var(--gris); [cite: 74]
+               background: var(--gris);
             }
-            .hero-grid { grid-template-columns: 1fr; [cite: 75] }
+            .hero-grid { grid-template-columns: 1fr; }
          }
          @media (max-width: 680px) {
-            .hero { padding: 40px 0 60px; [cite: 76] }
-            .metricas, .kpis { grid-template-columns: 1fr; [cite: 77] }
-            h1 { font-size: clamp(26px, 7.5vw, 35px); [cite: 78] }
-            .acciones { display: grid; grid-template-columns: 1fr; width: 100%; [cite: 79] }
-            .acciones .btn { width: 100%; [cite: 80] }
+            .hero { padding: 40px 0 60px; }
+            .metricas, .kpis { grid-template-columns: 1fr; }
+            h1 { font-size: clamp(26px, 7.5vw, 35px); }
+            .acciones { display: grid; grid-template-columns: 1fr; width: 100%; }
+            .acciones .btn { width: 100%; }
          }
       </style>
    </head>
@@ -351,18 +328,18 @@
             <a href="index.html" class="logo" aria-label="NeoDat Consultores">
                <img src="Neo1.png" class="logo-icono" alt="Logo NeoDat">
             </a>
-            <button class="menu-toggle" type="button" aria-label="Abrir menú"> ☰ </button> [cite: 81]
+            <button class="menu-toggle" type="button" aria-label="Abrir menú"> ☰ </button>
             <nav class="menu" aria-label="Navegación principal">
                <ul>
                   <li><a href="index.html">Inicio</a></li>
                   <li><a href="servicios.html">Servicios</a></li>
                   <li><a href="metodo.html">Método</a></li>
-                  <li><a href="ambitos.html">Ámbitos</a></li> [cite: 82]
+                  <li><a href="ambitos.html">Ámbitos</a></li>
                   <li><a href="quienes-somos.html">Quiénes somos</a></li>
                   <li><a href="contacto.html">Contacto</a></li>
                </ul>
             </nav>
-            <a class="btn btn-whatsapp whatsapp-desktop" href="https://wa.me/593988200116?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20NeoDat%20Consultores." target="_blank" rel="noopener"> [cite: 83]
+            <a class="btn btn-whatsapp whatsapp-desktop" href="https://wa.me/593988200116?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20NeoDat%20Consultores." target="_blank" rel="noopener">
                WhatsApp
             </a>
          </div>
@@ -372,41 +349,40 @@
          <section class="hero">
             <div class="contenedor hero-grid">
                <div>
-                  <div class="eyebrow">Consultoría empresarial y analítica</div> [cite: 84]
                   <h1>Transformamos la incertidumbre de su empresa en decisiones respaldadas por datos precisos.</h1>
                   <p>NeoDat Consultores estructura datos, finanzas, dashboards y procesos para que las empresas trabajen con información clara, indicadores confiables y control ejecutivo.</p>
                   <div class="acciones">
-                     <a class="btn btn-principal" href="servicios.html"> Ver servicios </a> [cite: 85]
-                     <a class="btn btn-principal btn-whatsapp" href="https://wa.me/593988200116?text=Hola,%20quiero%20solicitar%20una%20asesor%C3%ADa%20con%20NeoDat." target="_blank" rel="noopener"> Solicitar asesoría </a> [cite: 86]
+                     <a class="btn btn-principal" href="servicios.html"> Ver servicios </a>
+                     <a class="btn btn-principal btn-whatsapp" href="https://wa.me/593988200116?text=Hola,%20quiero%20solicitar%20una%20asesor%C3%ADa%20con%20NeoDat." target="_blank" rel="noopener"> Solicitar asesoría </a>
                      <a class="btn btn-secundario" href="contacto.html"> Contacto formal </a>
                   </div>
                </div>
 
                <div class="dashboard-shell">
                   <div class="dashboard">
-                     <div class="dashboard-top"> [cite: 87]
+                     <div class="dashboard-top">
                         <div>
                            <strong>Panel ejecutivo NeoDat</strong>
                         </div>
-                        <div class="badge">Demo BI</div> [cite: 88]
+                        <div class="badge">Demo BI</div>
                      </div>
                      <div class="dashboard-body">
                         <div class="kpis">
-                           <div class="kpi"> [cite: 89]
+                           <div class="kpi">
                               <small>Ingresos</small>
                               <strong>$84.2K</strong>
-                           </div> [cite: 90]
+                           </div>
                            <div class="kpi">
                               <small>Margen</small>
                               <strong>31.8%</strong>
-                           </div> [cite: 91]
+                           </div>
                            <div class="kpi">
                               <small>Eficiencia</small>
-                              <strong>92%</strong> [cite: 92]
+                              <strong>92%</strong>
                            </div>
                         </div>
                      </div>
-                  </div> [cite: 93]
+                  </div>
                </div>
             </div>
          </section>
@@ -414,17 +390,17 @@
 
       <footer class="site-footer">
          <div class="contenedor footer-bottom">
-            <span>© 2026 NeoDat Consultores. Todos los derechos reservados.</span> [cite: 94]
+            <span>© 2026 NeoDat Consultores. Todos los derechos reservados.</span>
          </div>
       </footer>
 
       <script>
          const menuToggle = document.querySelector(".menu-toggle");
-         const menu = document.querySelector(".menu"); [cite: 95]
+         const menu = document.querySelector(".menu");
 
          menuToggle.addEventListener("click", () => {
             menu.classList.toggle("activo");
          });
-      </script> [cite: 96]
+      </script>
    </body>
 </html>
