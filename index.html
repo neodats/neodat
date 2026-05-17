@@ -3,9 +3,9 @@
    <head>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>NeoDat Consultores | Business Intelligence & Analytics</title>
+      <title>NeoDat Consultores | Ingeniería de Datos de Alto Rendimiento</title>
       <link rel="icon" type="image/png" sizes="32x32" href="Neo1.png">
-      <meta name="description" content="Infraestructura analítica y control de gestión de alto rendimiento corporativo." />
+      <meta name="description" content="Estructuramos datos, finanzas y dashboards para transformar la incertidumbre de su empresa en decisiones ejecutivas de alto impacto." />
       
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -13,16 +13,29 @@
       
       <style>
          :root {
-            --bg-principal: #040811;
-            --bg-tarjeta: rgba(10, 20, 42, 0.4);
+            /* Degradado de fondo profesional: de azul muy oscuro a negro profundo */
+            --bg-principal: linear-gradient(135deg, #07172d 0%, #000000 100%);
+            
+            /* Colores de Tarjeta y Panel con desenfoque */
+            --bg-panel-base: rgba(13, 27, 56, 0.5); /* Ligeramente más claro para destacar */
+            --bg-tarjeta: rgba(255, 255, 255, 0.03);
+            
+            /* Colores de Acento Corporativo */
             --azul-premium: #0052cc;
-            --azul-glow: rgba(0, 82, 204, 0.15);
+            --azul-intermedio: #1d3b6a;
+            --azul-glow: rgba(0, 82, 204, 0.2);
             --naranja-acento: #ff9900;
+            --naranja-glow: rgba(255, 153, 0, 0.1);
+            
+            /* Textos y Bordes */
             --blanco: #ffffff;
-            --texto-secundario: #8fa0b5;
-            --borde-sutil: rgba(255, 255, 255, 0.08);
+            --texto-principal: #ffffff;
+            --texto-secundario: #a3c2f0; /* Azul muy claro para mejor lectura en fondo oscuro */
+            --borde-sutil: rgba(255, 255, 255, 0.1);
+            --borde-tarjeta: rgba(163, 194, 240, 0.15); /* Borde claro para las tarjetas */
          }
 
+         /* RESET GLOBAL Y CONFIGURACIÓN BASE */
          * {
             margin: 0;
             padding: 0;
@@ -32,21 +45,21 @@
          html, body {
             width: 100%;
             height: 100%;
-            background-color: var(--bg-principal);
+            background: var(--bg-principal);
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            color: var(--blanco);
+            color: var(--texto-principal);
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
          }
 
-         /* Fondo Dinámico Corporativo (Grid y Luces) */
+         /* FONDO ABSTRACTO (Mejorado para dar textura) */
          .fondo-abstracto {
             position: absolute;
             inset: 0;
             z-index: 1;
             background-image: 
-               linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-               linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+               linear-gradient(rgba(163, 194, 240, 0.02) 1px, transparent 1px),
+               linear-gradient(90deg, rgba(163, 194, 240, 0.02) 1px, transparent 1px);
             background-size: 60px 60px;
             pointer-events: none;
          }
@@ -58,22 +71,11 @@
             right: -10%;
             width: 600px;
             height: 600px;
-            background: radial-gradient(circle, rgba(0, 82, 204, 0.25) 0%, transparent 70%);
-            filter: blur(80px);
+            background: radial-gradient(circle, var(--azul-glow) 0%, transparent 70%);
+            filter: blur(100px);
          }
 
-         .fondo-abstracto::after {
-            content: "";
-            position: absolute;
-            bottom: -10%;
-            left: -10%;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(255, 153, 0, 0.06) 0%, transparent 70%);
-            filter: blur(80px);
-         }
-
-         /* Estructura Base de Pantalla Completa */
+         /* ESTRUCTURA BASE DE PANTALLA COMPLETA */
          .pantalla-portada {
             position: relative;
             z-index: 2;
@@ -81,7 +83,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            padding: 40px 0;
+            padding: 30px 0;
          }
 
          .contenedor {
@@ -89,52 +91,80 @@
             margin: 0 auto;
          }
 
-         /* Top Bar / Branding Simple */
-         .header-portada {
+         /* TOP BAR CON ENLACES (Nuevo) Y LOGO MEJORADO */
+         .top-bar {
             display: flex;
             align-items: center;
             justify-content: space-between;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--borde-sutil);
          }
 
-         .logo img {
-            height: 56px;
+         .logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+         }
+
+         .logo-icono {
+            height: 52px; /* Ligeramente más grande */
             width: auto;
             display: block;
+            filter: drop-shadow(0 0 10px rgba(163, 194, 240, 0.3)); /* Resalta el logo */
+         }
+
+         .menu-superior ul {
+            list-style: none;
+            display: flex;
+            gap: 24px;
+         }
+
+         .menu-superior a {
+            text-decoration: none;
+            color: var(--texto-secundario);
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+         }
+
+         .menu-superior a:hover {
+            color: var(--blanco);
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
          }
 
          .status-indicador {
             display: flex;
             align-items: center;
-            gap: 10px;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid var(--borde-sutil);
-            padding: 8px 16px;
+            gap: 8px;
+            background: rgba(163, 194, 240, 0.05);
+            border: 1px solid var(--borde-tarjeta);
+            padding: 6px 14px;
             border-radius: 999px;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 700;
             letter-spacing: 1px;
             text-transform: uppercase;
          }
 
          .status-punto {
-            width: 8px;
-            height: 8px;
+            width: 7px;
+            height: 7px;
             background-color: #00ff66;
             border-radius: 50%;
-            box-shadow: 0 0 12px #00ff66;
+            box-shadow: 0 0 10px #00ff66;
          }
 
-         /* Bloque Central Split */
+         /* BLOQUE CENTRAL SPLIT */
          .grid-principal {
             display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
+            grid-template-columns: 1.15fr 0.85fr;
             gap: 80px;
             align-items: center;
             margin: auto 0;
             padding: 60px 0;
          }
 
-         /* Textos de la Portada */
+         /* TEXTOS DEL HERO */
          .tagline {
             color: var(--naranja-acento);
             font-size: 13px;
@@ -146,81 +176,80 @@
          }
 
          h1 {
-            font-size: clamp(44px, 5.5vw, 72px);
+            font-size: clamp(44px, 5.5vw, 68px);
             font-weight: 900;
             line-height: 1.05;
             letter-spacing: -3px;
-            color: var(--blanco);
             margin-bottom: 28px;
          }
 
          h1 span {
-            background: linear-gradient(135deg, #ffffff 30%, #a3c2f0 100%);
+            background: linear-gradient(135deg, #ffffff 30%, var(--texto-secundario) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
          }
 
          p.introduccion {
-            font-size: clamp(16px, 1.8vw, 20px);
+            font-size: clamp(16px, 1.8vw, 19px);
             color: var(--texto-secundario);
             line-height: 1.55;
             margin-bottom: 44px;
-            max-width: 600px;
+            max-width: 620px;
          }
 
-         /* Botones de Entrada */
+         /* BOTONES */
          .area-acciones {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 16px;
          }
 
-         .btn-portada {
+         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 16px 36px;
+            padding: 14px 32px;
             border-radius: 8px;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 700;
             cursor: pointer;
             transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
             text-decoration: none;
          }
 
-         .btn-entrar {
+         .btn-primario {
             background-color: var(--azul-premium);
             color: var(--blanco);
-            box-shadow: 0 20px 40px var(--azul-glow);
+            box-shadow: 0 15px 30px var(--azul-glow);
          }
 
-         .btn-entrar:hover {
+         .btn-primario:hover {
             background-color: #1a73e8;
             transform: translateY(-2px);
-            box-shadow: 0 25px 50px rgba(0, 82, 204, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 82, 204, 0.3);
          }
 
-         .btn-contacto {
+         .btn-secundario {
             background-color: transparent;
             color: var(--blanco);
             border: 1px solid var(--borde-sutil);
          }
 
-         .btn-contacto:hover {
+         .btn-secundario:hover {
             background-color: rgba(255, 255, 255, 0.03);
             border-color: rgba(255, 255, 255, 0.3);
          }
 
-         /* Render Visual Corporativo (Interface BI Mockup) */
+         /* PANEL DE CONTROL (MEJORADO) */
          .interfaz-contenedor {
             position: relative;
-            background: var(--bg-tarjeta);
-            border: 1px solid var(--borde-sutil);
+            background: var(--bg-panel-base);
+            border: 1px solid var(--borde-tarjeta);
             border-radius: 20px;
             padding: 24px;
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            box-shadow: 0 50px 100px -20px rgba(0,0,0,0.7);
+            box-shadow: 0 40px 80px -20px rgba(0,0,0,0.6);
          }
 
          .interfaz-header {
@@ -228,7 +257,7 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 24px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(163, 194, 240, 0.05);
             padding-bottom: 16px;
          }
 
@@ -241,95 +270,114 @@
          .interfaz-titulo span {
             color: var(--texto-secundario);
             font-weight: 400;
-            font-size: 12px;
+            font-size: 11px;
             display: block;
             margin-top: 2px;
          }
 
-         .interfaz-kpis {
+         .interfaz-metricas {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 16px;
             margin-bottom: 24px;
          }
 
-         .kpi-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--borde-sutil);
+         .metrica-card {
+            background: var(--bg-tarjeta);
+            border: 1px solid var(--borde-tarjeta);
             border-radius: 12px;
             padding: 16px;
          }
 
-         .kpi-card small {
+         .metrica-card small {
             color: var(--texto-secundario);
-            font-size: 11px;
+            font-size: 10px;
             text-transform: uppercase;
-            font-weight: 500;
+            font-weight: 600;
+            letter-spacing: 0.5px;
          }
 
-         .kpi-card div {
+         .metrica-card div {
             font-size: 24px;
             font-weight: 700;
             margin-top: 6px;
          }
 
-         .kpi-card div span {
-            font-size: 12px;
+         .metrica-card div span {
+            font-size: 11px;
             color: #00ff66;
             margin-left: 6px;
             font-weight: 500;
          }
 
-         /* Gráfico de Barras Estilizado */
+         /* GRÁFICO DE BARRAS (MEJORADO) */
          .grafico-barras {
-            height: 130px;
+            height: 140px;
             display: flex;
             align-items: flex-end;
-            gap: 12px;
+            gap: 10px;
             padding: 10px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(163, 194, 240, 0.05);
          }
 
-         .barra {
+         .barra-item {
             flex: 1;
-            background: linear-gradient(180deg, rgba(0, 82, 204, 0.2) 0%, var(--azul-premium) 100%);
-            border-radius: 4px 4px 0 0;
-            transition: height 1s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
          }
 
-         .barra.destacada {
+         .barra-rect {
+            width: 100%;
+            background: linear-gradient(180deg, rgba(0, 82, 204, 0.3) 0%, var(--azul-premium) 100%);
+            border-radius: 6px 6px 0 0;
+            transition: height 1s ease; /* Efecto de carga */
+         }
+
+         .barra-rect.destacada {
             background: linear-gradient(180deg, rgba(255, 153, 0, 0.4) 0%, var(--naranja-acento) 100%);
+            box-shadow: 0 0 20px var(--naranja-glow);
          }
 
-         /* Footer Fijo de Entrada */
-         .footer-portada {
+         .barra-label {
+            font-size: 9px;
+            color: var(--texto-secundario);
+            font-weight: 500;
+         }
+
+         /* FOOTER MINIMALISTA */
+         .footer-wrap {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
             border-top: 1px solid var(--borde-sutil);
             padding-top: 24px;
             font-size: 13px;
-            color: var(--texto-secundario);
+            color: rgba(163, 194, 240, 0.4);
          }
 
-         .credenciales {
+         .especialidades-link {
             display: flex;
-            gap: 32px;
+            gap: 20px;
+            list-style: none;
          }
 
-         .credenciales span {
+         .especialidades-link li {
             display: flex;
             align-items: center;
             gap: 8px;
          }
 
-         .credenciales span::before {
+         .especialidades-link li::before {
             content: "✓";
             color: var(--azul-premium);
             font-weight: bold;
          }
 
-         /* Adaptación Responsiva */
+         /* ADAPTACIÓN RESPONSIVA */
          @media (max-width: 992px) {
             .grid-principal {
                grid-template-columns: 1fr;
@@ -352,34 +400,27 @@
             }
          }
 
-         @media (max-width: 576px) {
-            .pantalla-portada {
-               padding: 24px 0;
-            }
-
-            .header-portada {
+         @media (max-width: 768px) {
+            .top-bar {
                flex-direction: column;
                gap: 20px;
             }
-
-            .area-acciones {
-               flex-direction: column;
-               width: 100%;
-            }
-
-            .btn-portada {
-               width: 100%;
-            }
-
-            .footer-portada {
-               flex-direction: column;
+            
+            .menu-superior ul {
                gap: 16px;
-               text-align: center;
+            }
+         }
+
+         @media (max-width: 576px) {
+            .logo-icono {
+               height: 44px;
             }
 
-            .credenciales {
+            .especialidades-link {
                flex-direction: column;
                gap: 8px;
+               text-align: center;
+               width: 100%;
             }
          }
       </style>
@@ -390,66 +431,91 @@
 
       <div class="contenedor pantalla-portada">
          
-         <header class="header-portada">
-            <div class="logo">
-               <img src="Neo1.png" alt="NeoDat Consultores">
+         <header class="top-bar">
+            <div class="logo-wrapper">
+               <img src="Neo1.png" alt="NeoDat Consultores" class="logo-icono">
             </div>
+            
+            <nav class="menu-superior">
+               <ul>
+                  <li><a href="#soluciones">Soluciones</a></li>
+                  <li><a href="#nosotros">Nosotros</a></li>
+                  <li><a href="#ambitos">Ámbitos</a></li>
+                  <li><a href="#contacto">Contacto</a></li>
+               </ul>
+            </nav>
+
             <div class="status-indicador">
-               <span class="status-punto"></span> Plataforma Corporativa Activa
+               <span class="status-punto"></span> PLATAFORMA CORPORATIVA ACTIVA
             </div>
          </header>
 
          <main class="grid-principal">
             
-            <section>
+            <section class="texto-hero">
                <span class="tagline">Ingeniería de Gestión & BI</span>
                <h1>Transformamos la complejidad en <span>dirección absoluta.</span></h1>
-               <p class="introduccion">Estructuramos ecosistemas de datos avanzados y modelos financieros de alta precisión para dotar a su organización de un control ejecutivo permanente.</p>
+               <p class="introduccion">Estructuramos ecosistemas de datos avanzados y modelos financieros de alta precisión para dotar a su organización de un absoluto control ejecutivo y permanente.</p>
                
                <div class="area-acciones">
-                  <a href="servicios.html" class="btn-portada btn-entrar">Entrar a la Plataforma</a>
-                  <a href="contacto.html" class="btn-portada btn-contacto">Consultoría Directa</a>
+                  <a href="#plataforma" class="btn btn-primario">Entrar a la Plataforma</a>
+                  <a href="#consultoria" class="btn btn-secundario">Consultoría Directa</a>
                </div>
             </section>
 
-            <section class="interfaz-contenedor">
+            <section class="interfaz-contenedor" id="plataforma">
                <div class="interfaz-header">
                   <div class="interfaz-titulo">
                      Ecosistema NeoDat
                      <span>Monitoreo de Infraestructura Global</span>
                   </div>
-                  <div style="font-size: 11px; font-weight: 700; color: var(--naranja-acento);">Métricas de Control</div>
+                  <div style="font-size: 11px; font-weight: 700; color: var(--naranja-acento); text-transform: uppercase; letter-spacing: 0.5px;">Métricas de Control</div>
                </div>
                
-               <div class="interfaz-kpis">
-                  <div class="kpi-card">
+               <div class="interfaz-metricas">
+                  <div class="metrica-card">
                      <small>Optimización de Procesos</small>
                      <div>94.2%<span>↑ 4.1%</span></div>
                   </div>
-                  <div class="kpi-card">
+                  <div class="metrica-card">
                      <small>Margen Neto de Operación</small>
                      <div>31.8%<span>↑ 2.3%</span></div>
                   </div>
                </div>
 
                <div class="grafico-barras">
-                  <div class="barra" style="height: 35%;"></div>
-                  <div class="barra" style="height: 55%;"></div>
-                  <div class="barra" style="height: 80%;"></div>
-                  <div class="barra destacada" style="height: 95%;"></div>
-                  <div class="barra" style="height: 70%;"></div>
+                  <div class="barra-item">
+                     <div class="barra-rect" style="height: 35%;"></div>
+                     <span class="barra-label">S1</span>
+                  </div>
+                  <div class="barra-item">
+                     <div class="barra-rect" style="height: 55%;"></div>
+                     <span class="barra-label">S2</span>
+                  </div>
+                  <div class="barra-item">
+                     <div class="barra-rect" style="height: 80%;"></div>
+                     <span class="barra-label">S3</span>
+                  </div>
+                  <div class="barra-item">
+                     <div class="barra-rect destacada" style="height: 95%;"></div>
+                     <span class="barra-label">S4</span>
+                  </div>
+                  <div class="barra-item">
+                     <div class="barra-rect" style="height: 70%;"></div>
+                     <span class="barra-label">S5</span>
+                  </div>
                </div>
             </section>
 
          </main>
 
-         <footer class="footer-portada">
+         <footer class="footer-wrap">
             <span>© 2026 NeoDat Consultores. Todos los derechos reservados.</span>
-            <div class="credenciales">
-               <span>Análisis Predictivo</span>
-               <span>Modelado Matemático</span>
-               <span>Arquitectura de Datos</span>
-            </div>
+            <ul class="especialidades-link">
+               <li>Análisis Predictivo</li>
+               <li>Modelado Matemático</li>
+               <li>Arquitectura de Datos</li>
+            </ul>
          </footer>
 
       </div>
