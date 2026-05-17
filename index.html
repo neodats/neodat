@@ -9,21 +9,16 @@
       
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
       
       <style>
          :root {
-            /* Colores Institucionales y de Interfaz Exactos */
-            --azul-base: #162b4e;
-            --azul-oscuro: #07172d;
-            --azul-universo: #02060d; /* Fondo base ultra oscuro de la imagen */
-            --azul-medio: #27456f;
-            --azul-claro: #edf2f8;
+            --azul-universo: #020611;
             --naranja-acento: #ff9900;
             --blanco: #ffffff;
             --texto-secundario: #94a3b8;
-            --borde-glass: rgba(255, 255, 255, 0.08);
-            --borde-active: rgba(0, 255, 102, 0.2);
+            --borde-glass: rgba(255, 255, 255, 0.12);
+            --borde-active: rgba(0, 255, 102, 0.25);
          }
 
          * {
@@ -40,72 +35,32 @@
             color: var(--blanco);
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
          }
 
-         /* --- ENTORNO CINÉTICO Y CAPAS DE FONDO REPLICADAS DE LA IMAGEN --- */
+         /* --- CAPA DE FONDO FIEL A LA IMAGEN --- */
          .capa-universo {
             position: absolute;
             inset: 0;
             z-index: 1;
-            /* Combinación exacta de luces radiales y el fondo degradado oscuro de la imagen original */
             background: 
-               radial-gradient(circle at 75% 30%, rgba(22, 43, 78, 0.55) 0%, transparent 55%),
-               radial-gradient(circle at 30% 70%, rgba(255, 153, 0, 0.02) 0%, transparent 45%),
-               linear-gradient(150deg, #051329 0%, #020712 50%, #010307 100%);
-            overflow: hidden;
+               radial-gradient(circle at 75% 30%, rgba(22, 43, 78, 0.6) 0%, transparent 50%),
+               radial-gradient(circle at 25% 75%, rgba(255, 153, 0, 0.02) 0%, transparent 40%),
+               linear-gradient(145deg, #06152d 0%, #020914 45%, #010408 100%);
          }
 
-         /* Cuadrícula Analítica de Fondo de Alta Precisión */
          .capa-universo::before {
             content: "";
             position: absolute;
             inset: 0;
             background-image: 
-               linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-               linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-            background-size: 44px 44px;
-            mask-image: radial-gradient(circle at 60% 40%, black 30%, transparent 90%);
-            -webkit-mask-image: radial-gradient(circle at 60% 40%, black 30%, transparent 90%);
+               linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+               linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+            background-size: 45px 45px;
+            mask-image: radial-gradient(circle at 65% 45%, black 40%, transparent 95%);
+            -webkit-mask-image: radial-gradient(circle at 65% 45%, black 40%, transparent 95%);
             pointer-events: none;
          }
 
-         /* Estructuras Geométricas 3D de la Imagen */
-         .red-esferica-abstracta {
-            position: absolute;
-            top: -8%;
-            right: 5%;
-            width: 550px;
-            height: 550px;
-            border: 1px dashed rgba(39, 69, 111, 0.25);
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(22, 43, 78, 0.08) 0%, transparent 70%);
-            animation: rotacionLenta 60s linear infinite;
-         }
-
-         .hipercubo-abstracto {
-            position: absolute;
-            bottom: 12%;
-            right: 35%;
-            width: 260px;
-            height: 260px;
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            transform: rotate(35deg);
-            background: linear-gradient(135deg, rgba(22, 43, 78, 0.12), transparent);
-            animation: balanceoSutil 12s ease-in-out infinite alternate;
-         }
-
-         @keyframes rotacionLenta {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-         }
-
-         @keyframes balanceoSutil {
-            0% { transform: translateY(0) rotate(35deg); }
-            100% { transform: translateY(-15px) rotate(40deg); }
-         }
-
-         /* --- NAVEGACIÓN PREMIUM LIMPIA --- */
          .pantalla-portada {
             position: relative;
             z-index: 2;
@@ -113,29 +68,31 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            padding: 24px 0;
+            padding: 30px 0;
          }
 
          .contenedor {
-            width: min(1200px, calc(100% - 40px));
+            width: min(1280px, calc(100% - 40px));
             margin: 0 auto;
          }
 
+         /* --- COPIA EXACTA DE LA BARRA SUPERIOR (CÁPSULA CLARA) --- */
          .top-bar {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding-bottom: 20px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-         }
-
-         .logo-contenedor {
-            display: flex;
-            align-items: center;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.12) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border-radius: 20px;
+            padding: 10px 32px;
+            width: 100%;
          }
 
          .logo-contenedor img {
-            height: 44px;
+            height: 48px;
             width: auto;
             display: block;
          }
@@ -143,28 +100,29 @@
          .menu-estricto ul {
             list-style: none;
             display: flex;
-            gap: 32px;
+            gap: 36px;
          }
 
          .menu-estricto a {
-            color: var(--texto-secundario);
-            font-size: 14px;
-            font-weight: 500;
+            color: #0b192e; /* Contraste oscuro para la barra clara */
+            font-size: 15px;
+            font-weight: 600;
             text-decoration: none;
-            transition: color 0.25s ease;
+            transition: opacity 0.2s ease;
          }
 
          .menu-estricto a:hover {
-            color: var(--blanco);
+            opacity: 0.7;
          }
 
          .badge-interactivo {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(0, 255, 102, 0.02);
-            border: 1px solid var(--borde-active);
-            padding: 8px 16px;
+            background: rgba(0, 255, 102, 0.15);
+            border: 1px solid rgba(0, 255, 102, 0.3);
+            color: #072211;
+            padding: 8px 18px;
             border-radius: 999px;
             font-size: 11px;
             font-weight: 700;
@@ -173,66 +131,45 @@
 
          .badge-interactivo::before {
             content: "";
-            width: 6px;
-            height: 6px;
-            background-color: #00ff66;
+            width: 7px;
+            height: 7px;
+            background-color: #00cc52;
             border-radius: 50%;
-            box-shadow: 0 0 8px #00ff66;
          }
 
-         /* Botón hamburguesa para celular */
          .menu-toggle {
             display: none;
             background: transparent;
             border: none;
-            color: var(--blanco);
+            color: #0b192e;
             font-size: 26px;
             cursor: pointer;
-            padding: 4px;
          }
 
-         /* Menú desplegable móvil */
          .menu-movil-panel {
             display: none;
             position: absolute;
-            top: 80px;
+            top: 95px;
             left: 20px;
             right: 20px;
-            background: rgba(7, 23, 45, 0.96);
+            background: rgba(7, 23, 45, 0.98);
             border: 1px solid var(--borde-glass);
-            border-radius: 14px;
+            border-radius: 16px;
             padding: 24px;
             z-index: 1000;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.7);
             backdrop-filter: blur(20px);
          }
 
-         .menu-movil-panel.activo {
-            display: block;
-         }
+         .menu-movil-panel.activo { display: block; }
+         .menu-movil-panel ul { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+         .menu-movil-panel a { color: var(--blanco); text-decoration: none; font-size: 16px; font-weight: 500; display: block; padding: 8px 0; }
 
-         .menu-movil-panel ul {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-         }
-
-         .menu-movil-panel a {
-            color: var(--blanco);
-            text-decoration: none;
-            font-size: 16px;
-            font-weight: 500;
-            display: block;
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-         }
-
-         /* --- ESTRUCTURA DEL CONTENIDO --- */
+         /* --- DISTRIBUCIÓN GRID --- */
          .grid-principal {
             display: grid;
-            grid-template-columns: 1.15fr 0.85fr;
-            gap: 64px;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 60px;
             align-items: center;
             margin: auto 0;
             padding: 40px 0;
@@ -244,25 +181,24 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
             display: block;
          }
 
          h1 {
-            font-size: clamp(34px, 4vw, 52px);
+            font-size: clamp(36px, 4.5vw, 56px);
             font-weight: 800;
-            line-height: 1.15;
-            letter-spacing: -1px;
-            color: var(--blanco);
-            margin-bottom: 24px;
+            line-height: 1.12;
+            letter-spacing: -1.5px;
+            margin-bottom: 28px;
          }
 
          p.introduccion {
-            font-size: 16px;
+            font-size: 17px;
             color: var(--texto-secundario);
-            line-height: 1.65;
-            margin-bottom: 36px;
-            max-width: 540px;
+            line-height: 1.7;
+            margin-bottom: 40px;
+            max-width: 550px;
          }
 
          .caja-botones {
@@ -275,9 +211,9 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 14px 28px;
+            padding: 15px 32px;
             border-radius: 8px;
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 600;
             cursor: pointer;
             text-decoration: none;
@@ -285,189 +221,201 @@
          }
 
          .btn-azul {
-            background-color: var(--azul-base);
+            background-color: #0b5cd4;
             color: var(--blanco);
-            box-shadow: 0 10px 25px rgba(22, 43, 78, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 25px rgba(11, 92, 212, 0.45);
+            border: 1px solid rgba(255, 255, 255, 0.15);
          }
 
-         .btn-azul:hover {
-            background-color: var(--azul-medio);
-            transform: translateY(-1px);
-         }
+         .btn-azul:hover { background-color: #126bee; transform: translateY(-1px); }
+         .btn-vacio { background-color: transparent; color: var(--blanco); border: 1px solid rgba(255,255,255,0.2); }
+         .btn-vacio:hover { background-color: rgba(255, 255, 255, 0.04); }
 
-         .btn-vacio {
-            background-color: transparent;
-            color: var(--blanco);
-            border: 1px solid var(--borde-glass);
-         }
-
-         .btn-vacio:hover {
-            background-color: rgba(255, 255, 255, 0.03);
-            border-color: rgba(255, 255, 255, 0.2);
-         }
-
-         /* --- INTERFAZ DEL DASHBOARD GLASSMORPHISM --- */
+         /* --- REPLICANDO EL INTERIOR DEL DASHBOARD ORIGINAL --- */
          .dashboard-marco {
-            background: rgba(7, 23, 45, 0.35);
-            border: 1px solid var(--borde-glass);
-            border-radius: 18px;
-            padding: 24px;
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
+            background: rgba(9, 23, 44, 0.45);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 24px;
+            padding: 32px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 50px 100px rgba(0, 0, 0, 0.7);
          }
 
          .dashboard-top {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 20px;
+            margin-bottom: 28px;
          }
 
          .dashboard-meta strong {
-            font-size: 14px; 
+            font-size: 15px;
             font-weight: 700;
             display: block;
-            color: var(--blanco);
             letter-spacing: -0.2px;
          }
 
          .dashboard-meta span {
-            font-size: 11px;
+            font-size: 12px;
             color: var(--texto-secundario);
             display: block;
-            margin-top: 3px;
+            margin-top: 4px;
+         }
+
+         .metrics-label {
+            font-size: 11px;
+            color: var(--naranja-acento);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
          }
 
          .dashboard-metricas {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            margin-bottom: 20px;
+            gap: 16px;
+            margin-bottom: 28px;
          }
 
          .tarjeta-kpi {
             background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
-            padding: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+            padding: 16px 20px;
          }
 
          .tarjeta-kpi small {
             font-size: 10px;
             color: var(--texto-secundario);
             text-transform: uppercase;
-            font-weight: 600;
-            letter-spacing: 0.3px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
             display: block;
          }
 
          .tarjeta-kpi div {
-            font-size: 18px; 
+            font-size: 22px;
             font-weight: 700;
-            margin-top: 4px;
+            margin-top: 6px;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
          }
 
          .tarjeta-kpi div span {
-            font-size: 11px;
+            font-size: 12px;
             color: #00ff66;
             font-weight: 500;
          }
 
-         /* --- MEDIDOR DE RITMO EMPRESARIAL CONTINUO --- */
-         .contenedor-serie-tiempo {
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            border-radius: 8px;
-            padding: 12px;
-            height: 110px;
+         /* SECCIÓN DE LOS VOLÚMENES 3D E INFOGRAFÍA CORPORATIVA */
+         .contenedor-visual-3d {
+            background: rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 12px;
+            padding: 24px;
+            height: 160px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
             position: relative;
             overflow: hidden;
          }
 
-         .svg-grafico-animado {
+         .barras-3d-contenedor {
+            display: flex;
+            align-items: flex-end;
+            gap: 14px;
             width: 100%;
             height: 100%;
+            z-index: 2;
          }
 
-         .linea-pulsos {
+         .barra-volumen {
+            flex: 1;
+            background: linear-gradient(180deg, rgba(148, 163, 184, 0.3) 0%, rgba(30, 41, 59, 0.6) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            transition: height 1s ease;
+         }
+
+         /* La barra central dorada destacada idéntica a la imagen */
+         .barra-volumen.destacada-oro {
+            background: linear-gradient(180deg, #ffd700 0%, #b8860b 100%);
+            border: 1px solid #ffe4b5;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+         }
+
+         /* Línea de ritmo analítico cruzando por encima */
+         .svg-onda-flotante {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 3;
+            pointer-events: none;
+         }
+
+         .linea-ritmo {
             fill: none;
-            stroke: var(--naranja-acento);
-            stroke-width: 2.5;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-            stroke-dasharray: 1000;
-            stroke-dashoffset: 1000;
-            animation: ritmoCorporativo 15s linear infinite;
+            stroke: #ffffff;
+            stroke-width: 2;
+            opacity: 0.85;
+            stroke-dasharray: 8;
+            animation: flujoLineal 30s linear infinite;
          }
 
-         @keyframes ritmoCorporativo {
-            to {
-               stroke-dashoffset: 0;
-            }
+         @keyframes flujoLineal {
+            to { stroke-dashoffset: -500; }
          }
 
-         /* --- FOOTER TOTALMENTE CENTRADO --- */
+         /* --- REPLICANDO EL PIE DE PÁGINA (DERECHOS + PALOMITAS ADERECHA) --- */
          .footer-bloque {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
-            padding-top: 20px;
+            flex-wrap: wrap;
+            gap: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 24px;
             font-size: 13px;
             color: var(--texto-secundario);
-            text-align: center;
          }
 
-         /* RESPONSIVE DESIGN */
+         .footer-tags {
+            display: flex;
+            gap: 24px;
+         }
+
+         .footer-tags span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: rgba(255, 255, 255, 0.6);
+         }
+
+         .footer-tags span::before {
+            content: "✓";
+            color: #3b82f6;
+            font-weight: bold;
+         }
+
+         /* RESPONSIVE DESIGN COMPLETAMENTE CONFIGURADO */
          @media (max-width: 992px) {
-            .grid-principal { 
-               grid-template-columns: 1fr; 
-               text-align: center; 
-               gap: 44px; 
-            }
-            p.introduccion { 
-               margin-left: auto; 
-               margin-right: auto; 
-            }
-            .caja-botones { 
-               justify-content: center; 
-            }
-            .menu-estricto, .badge-interactivo { 
-               display: none; 
-            }
-            .menu-toggle { 
-               display: block; 
-            }
-            h1 {
-               font-size: 32px;
-            }
-         }
-
-         @media (max-width: 480px) {
-            .dashboard-metricas {
-               grid-template-columns: 1fr;
-            }
-            .caja-botones {
-               flex-direction: column;
-               width: 100%;
-            }
-            .btn {
-               width: 100%;
-            }
+            .grid-principal { grid-template-columns: 1fr; text-align: center; gap: 48px; }
+            p.introduccion { margin-left: auto; margin-right: auto; }
+            .caja-botones { justify-content: center; }
+            .menu-estricto, .badge-interactivo { display: none; }
+            .menu-toggle { display: block; }
+            .footer-bloque { flex-direction: column; text-align: center; }
+            .footer-tags { justify-content: center; flex-wrap: wrap; }
          }
       </style>
    </head>
    <body>
 
-      <div class="capa-universo">
-         <div class="red-esferica-abstracta"></div>
-         <div class="hipercubo-abstracto"></div>
-      </div>
+      <div class="capa-universo"></div>
 
       <div class="contenedor pantalla-portada">
          
@@ -502,7 +450,6 @@
          </div>
 
          <main class="grid-principal">
-            
             <section>
                <span class="tagline">Ingeniería de Gestión & BI</span>
                <h1>Transformamos la complejidad en dirección absoluta.</h1>
@@ -517,9 +464,10 @@
             <section class="dashboard-marco">
                <div class="dashboard-top">
                   <div class="dashboard-meta">
-                     <strong>NeoDat Analítica</strong>
-                     <span>Monitoreo del Ritmo de la Empresa</span>
+                     <strong>Ecosistema NeoDat</strong>
+                     <span>Monitoreo de Infraestructura Global</span>
                   </div>
+                  <span class="metrics-label">Métricas de Control</span>
                </div>
                
                <div class="dashboard-metricas">
@@ -533,17 +481,32 @@
                   </div>
                </div>
 
-               <div class="contenedor-serie-tiempo">
-                  <svg class="svg-grafico-animado" viewBox="0 0 400 100" preserveAspectRatio="none">
-                     <path class="linea-pulsos" d="M 0,50 L 40,50 L 50,20 L 55,80 L 60,50 L 120,50 L 130,10 L 140,90 L 150,50 L 220,50 L 230,30 L 235,70 L 240,50 L 300,50 L 315,15 L 325,85 L 335,50 L 400,50 M 400,50 L 440,50 L 450,20 L 455,80 L 460,50 L 520,50 L 530,10 L 540,90 L 550,50 L 620,50 L 630,30 L 635,70 L 640,50 L 700,50 L 715,15 L 725,85 L 735,50 L 800,50" />
+               <div class="contenedor-visual-3d">
+                  <div class="barras-3d-contenedor">
+                     <div class="barra-volumen" style="height: 35%;"></div>
+                     <div class="barra-volumen" style="height: 50%;"></div>
+                     <div class="barra-volumen" style="height: 40%;"></div>
+                     <div class="barra-volumen destacada-oro" style="height: 85%;"></div>
+                     <div class="barra-volumen" style="height: 60%;"></div>
+                  </div>
+                  
+                  <svg class="svg-onda-flotante" viewBox="0 0 400 160" preserveAspectRatio="none">
+                     <path class="linea-ritmo" d="M 0,110 Q 50,70 100,90 T 200,60 T 300,40 T 400,80" />
+                     <circle cx="100" cy="90" r="4" fill="#ffffff" />
+                     <circle cx="200" cy="60" r="4" fill="#ffffff" />
+                     <circle cx="300" cy="40" r="4" fill="#ffd700" />
                   </svg>
                </div>
             </section>
-
          </main>
 
          <footer class="footer-bloque">
             <span>© 2026 NeoDat Consultores. Todos los derechos reservados.</span>
+            <div class="footer-tags">
+               <span>Análisis Predictivo</span>
+               <span>Modelado Matemático</span>
+               <span>Arquitectura de Datos</span>
+            </div>
          </footer>
 
       </div>
