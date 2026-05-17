@@ -167,8 +167,12 @@
             color: var(--azul);
             transition: 0.2s ease;
          }
-         nav a:hover {
+         
+         /* ESTILO PARA ENLACE ACTIVO O HOVER */
+         nav a:hover,
+         nav a.actual {
             background: var(--azul-claro);
+            color: var(--azul-oscuro);
          }
          
          .hero {
@@ -204,7 +208,7 @@
             max-width: 720px;
             margin-bottom: 20px;
             color: var(--azul-oscuro);
-            font-size: clamp(22px, 2.4vw, 28px); /* Reducido para un aspecto refinado */
+            font-size: clamp(22px, 2.4vw, 28px);
             line-height: 1.3;
             letter-spacing: -0.3px;
          }
@@ -213,7 +217,7 @@
             max-width: 640px;
             margin-bottom: 28px;
             color: var(--texto-suave);
-            font-size: 14px; /* Ajustado de 15px a 14px */
+            font-size: 14px;
          }
          .acciones {
             display: flex;
@@ -221,9 +225,7 @@
             gap: 12px;
          }
 
-         /* ==========================================================================
-            DASHBOARD CORPORATIVO INTELLIGENT BI
-            ========================================================================== */
+         /* DASHBOARD CORPORATIVO INTELLIGENT BI */
          .dashboard-shell {
             padding: 10px;
             border-radius: 24px; 
@@ -443,7 +445,7 @@
          }
          .bullet-dot { width: 7px; height: 7px; border-radius: 50%; }
 
-         /* RESPONSIVO Y ELEMENTOS COMUNES */
+         /* RESPONSIVO */
          .menu-toggle {
             display: none;
             width: 42px;
@@ -461,7 +463,7 @@
          .site-footer {
             background: #07172d;
             color: rgba(255, 255, 255, .72);
-            padding: 12px 0; /* Reducido a la mitad para un diseño más compacto */
+            padding: 12px 0;
             border-top: 1px solid rgba(255, 255, 255, 0.08);
             width: 100%;
             flex-shrink: 0;
@@ -512,7 +514,7 @@
             .hero { padding: 100px 0 30px; }
             .kpis { grid-template-columns: 1fr; gap: 10px; }
             .analytics-grid-bottom { grid-template-columns: 1fr; gap: 12px; }
-            h1 { font-size: clamp(19px, 5vw, 23px); line-height: 1.3; letter-spacing: normal; } /* Proporción móvil corregida */
+            h1 { font-size: clamp(19px, 5vw, 23px); line-height: 1.3; letter-spacing: normal; }
             .acciones { display: grid; grid-template-columns: 1fr; width: 100%; gap: 10px; }
             .acciones .btn { width: 100%; }
          }
@@ -545,8 +547,8 @@
          <section class="hero">
             <div class="contenedor hero-grid">
                <div>
-                  <h1>Transformamos datos complejos en decisiones de negocio rentables.</h1>
-                  <p>Estructuramos analítica avanzada, gobierno de datos, arquitecturas financieras y optimización de procesos para dotar a su empresa de un control ejecutivo permanente.</p>
+                  <h1>Transformamos la incertidumbre de su empresa en decisiones respaldadas por datos precisos.</h1>
+                  <p>NeoDat Consultores estructura datos, finanzas, dashboards y procesos para que las empresas trabajen con información clara, indicadores confiables y control ejecutivo.</p>
                   <div class="acciones">
                      <a class="btn btn-principal" href="servicios.html">Ver servicios <span>→</span></a>
                      <a class="btn btn-whatsapp" href="https://wa.me/593988200116?text=Hola,%20quiero%20solicitar%20una%20asesor%C3%ADa%20con%20NeoDat." target="_blank" rel="noopener">Solicitar asesoría</a>
@@ -563,7 +565,6 @@
                         </div>
                      </div>
                      <div class="dashboard-body">
-                        
                         <div class="kpis">
                            <div class="kpi">
                               <small>Margen Neto</small>
@@ -602,7 +603,7 @@
                                  <line x1="0" y1="30" x2="500" y2="30" stroke="rgba(22,43,78,0.05)" stroke-width="1" />
                                  <line x1="0" y1="60" x2="500" y2="60" stroke="rgba(22,43,78,0.05)" stroke-width="1" />
                                  <line x1="0" y1="90" x2="500" y2="90" stroke="rgba(22,43,78,0.05)" stroke-width="1" />
-                                 
+                  
                                  <text x="5" y="116" fill="#66788a" font-size="9" font-weight="600">Ene</text>
                                  <text x="100" y="116" fill="#66788a" font-size="9" font-weight="600">Feb</text>
                                  <text x="200" y="116" fill="#66788a" font-size="9" font-weight="600">Mar</text>
@@ -613,7 +614,6 @@
                                  <line x1="0" y1="85" x2="500" y2="35" stroke="var(--naranja)" stroke-width="1.5" stroke-dasharray="4,4" />
 
                                  <path id="graph-area" d="M 0 95 L 100 80 L 200 45 L 300 75 L 400 35 L 500 50 L 500 100 L 0 100 Z" fill="url(#bi-area-grad)" />
-
                                  <polyline id="graph-line" fill="none" stroke="var(--azul)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" points="0,95 100,80 200,45 300,75 400,35 500,50" />
 
                                  <circle cx="100" cy="80" r="3" fill="var(--azul)" />
@@ -629,7 +629,6 @@
                      </div>
                   </div>
                </div>
-
             </div>
          </section>
       </main>
@@ -646,6 +645,16 @@
          const menu = document.querySelector(".menu");
          menuToggle.addEventListener("click", () => {
             menu.classList.toggle("activo");
+         });
+
+         // Autodetección de página activa para resaltar el menú
+         const ubicacionActual = window.location.pathname.split("/").pop() || "index.html";
+         const enlacesMenu = document.querySelectorAll("nav.menu a");
+
+         enlacesMenu.forEach(enlace => {
+            if (enlace.getAttribute("href") === ubicacionActual) {
+               enlace.classList.add("actual");
+            }
          });
 
          // Elementos del KPI y del Gráfico Premium
