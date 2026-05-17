@@ -124,7 +124,7 @@
             transform: translateY(-1px);
          }
 
-         /* INTERFAZ Y MAQUETACIÓN */
+         /* ESTILOS DE LA INTERFAZ */
          header {
             position: fixed;
             top: 0;
@@ -222,7 +222,7 @@
          }
 
          /* ==========================================================================
-            DASHBOARD CORPORATIVO REDISEÑADO CON COMPONENTES REALISTAS DE BI
+            DASHBOARD CORPORATIVO INTELLIGENT BI
             ========================================================================== */
          .dashboard-shell {
             padding: 10px;
@@ -301,7 +301,6 @@
             background: #ffffff;
             border-radius: 12px;
             border: 1px solid var(--gris-2); 
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
          }
          .kpi small {
             display: block;
@@ -330,40 +329,61 @@
          .trend-up { color: var(--exito); }
          .trend-orange { color: var(--naranja); }
 
-         /* NUEVA SECCIÓN: GRÁFICO PRINCIPAL DE TENDENCIA FINANCIERA (LINE CHART) */
-         .analytics-main-card {
+         /* NUEVO COMPONENTE: GRÁFICO DE LÍNEA ANALÍTICO AVANZADO */
+         .chart-container {
             background: #ffffff;
             border-radius: 12px;
             padding: 16px;
             border: 1px solid var(--gris-2);
          }
-         .card-header-clean {
+         .chart-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 12px;
          }
-         .card-title-clean {
+         .chart-title {
             font-size: 11.5px;
             font-weight: 800;
             color: var(--azul-oscuro);
          }
-         .card-subtitle-clean {
+         .chart-legend {
+            display: flex;
+            gap: 12px;
             font-size: 10px;
             font-weight: 600;
-            color: var(--exito);
+            color: var(--texto-suave);
          }
-         .chart-line-wrapper {
+         .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+         }
+         .legend-azul::before { content: ""; width: 8px; height: 8px; background: var(--azul); border-radius: 50%; display: inline-block; }
+         .legend-naranja::before { content: ""; width: 8px; height: 8px; background: var(--naranja); border-radius: 50%; display: inline-block; }
+
+         .bi-graph-wrapper {
             position: relative;
             width: 100%;
-            height: 110px;
+            height: 120px;
+            margin-top: 6px;
          }
-         .chart-line-svg {
+         .bi-svg {
             width: 100%;
             height: 100%;
+            overflow: visible;
+         }
+         /* Animación sutil de respiración para el nodo activo de datos */
+         .live-node {
+            animation: pulseActiveNode 2s infinite ease-in-out;
+         }
+         @keyframes pulseActiveNode {
+            0% { r: 4; opacity: 1; }
+            50% { r: 7; opacity: 0.4; }
+            100% { r: 4; opacity: 1; }
          }
 
-         /* NUEVA SECCIÓN: DISTRIBUCIÓN INFERIOR EN DOS COLUMNAS */
+         /* DISTRIBUCIÓN INFERIOR */
          .analytics-grid-bottom {
             display: grid;
             grid-template-columns: 1.2fr 1fr;
@@ -378,8 +398,6 @@
             flex-direction: column;
             justify-content: space-between;
          }
-
-         /* Estilos del Embudo (Funnel) */
          .funnel-container {
             display: flex;
             flex-direction: column;
@@ -400,7 +418,6 @@
          .funnel-2 { background: var(--azul); width: 85%; }
          .funnel-3 { background: var(--azul-medio); width: 68%; }
 
-         /* Estilos del Donut Finanzas */
          .donut-box {
             display: flex;
             align-items: center;
@@ -425,14 +442,9 @@
             font-weight: 600;
             color: var(--texto-suave);
          }
-         .bullet-dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-         }
+         .bullet-dot { width: 7px; height: 7px; border-radius: 50%; }
 
-         /* ========================================================================== */
-
+         /* RESPONSIVO */
          .menu-toggle {
             display: none;
             width: 42px;
@@ -445,7 +457,6 @@
             font-weight: 900;
             cursor: pointer;
          }
-         
          .site-footer {
             background: #07172d;
             color: rgba(255,255,255,.72);
@@ -453,7 +464,6 @@
             border-top: 1px solid rgba(255, 255, 255, 0.08);
             width: 100%;
             flex-shrink: 0;
-            margin-top: 0;
          }
          .footer-bottom {
             display: flex;
@@ -464,7 +474,6 @@
             color: rgba(255,255,255,.52);
          }
          
-         /* SECCIÓN RESPONSIVA OPTIMIZADA */
          @media (max-width: 980px) {
             .navbar { height: 64px; }
             .logo-icono { width: 120px; height: 120px; }
@@ -502,11 +511,7 @@
             .hero { padding: 100px 0 30px; }
             .kpis { grid-template-columns: 1fr; gap: 10px; }
             .analytics-grid-bottom { grid-template-columns: 1fr; gap: 12px; }
-            h1 { 
-               font-size: clamp(20px, 5.5vw, 26px);
-               line-height: 1.3;
-               letter-spacing: normal;
-            }
+            h1 { font-size: clamp(20px, 5.5vw, 26px); line-height: 1.3; letter-spacing: normal; }
             .acciones { display: grid; grid-template-columns: 1fr; width: 100%; gap: 10px; }
             .acciones .btn { width: 100%; }
          }
@@ -542,15 +547,9 @@
                   <h1>Transformamos la incertidumbre de su empresa en decisiones respaldadas por datos precisos.</h1>
                   <p>NeoDat Consultores estructura datos, finanzas, dashboards y procesos para que las empresas trabajen con información clara, indicadores confiables y control ejecutivo.</p>
                   <div class="acciones">
-                     <a class="btn btn-principal" href="servicios.html"> 
-                        Ver servicios <span>→</span>
-                     </a>
-                     <a class="btn btn-whatsapp" href="https://wa.me/593988200116?text=Hola,%20quiero%20solicitar%20una%20asesor%C3%ADa%20con%20NeoDat." target="_blank" rel="noopener"> 
-                        Solicitar asesoría 
-                     </a>
-                     <a class="btn btn-secundario" href="contacto.html"> 
-                        Agendar reunión 
-                     </a>
+                     <a class="btn btn-principal" href="servicios.html">Ver servicios <span>→</span></a>
+                     <a class="btn btn-whatsapp" href="https://wa.me/593988200116?text=Hola,%20quiero%20solicitar%20una%20asesor%C3%ADa%20con%20NeoDat." target="_blank" rel="noopener">Solicitar asesoría</a>
+                     <a class="btn btn-secundario" href="contacto.html">Agendar reunión</a>
                   </div>
                </div>
 
@@ -583,30 +582,53 @@
                            </div>
                         </div>
 
-                        <div class="analytics-main-card">
-                           <div class="card-header-clean">
-                              <span class="card-title-clean">Evolución de Ingresos y Flujo de Caja</span>
-                              <span class="card-subtitle-clean">Historial H1</span>
+                        <div class="chart-container">
+                           <div class="chart-header">
+                              <span class="chart-title">Evolución de Ingresos y Flujo de Caja</span>
+                              <div class="chart-legend">
+                                 <span class="legend-item legend-azul">Ingresos</span>
+                                 <span class="legend-item legend-naranja">Meta</span>
+                              </div>
                            </div>
-                           <div class="chart-line-wrapper">
-                              <svg class="chart-line-svg" viewBox="0 0 500 110" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                           <div class="bi-graph-wrapper">
+                              <svg class="bi-svg" viewBox="0 0 500 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
                                  <defs>
-                                    <linearGradient id="gradient-line" x1="0" y1="0" x2="0" y2="1">
-                                       <stop offset="0%" stop-color="var(--azul)" stop-opacity="0.15"/>
-                                       <stop offset="100%" stop-color="var(--azul)" stop-opacity="0"/>
+                                    <linearGradient id="bi-area-grad" x1="0" y1="0" x2="0" y2="1">
+                                       <stop offset="0%" stop-color="#162b4e" stop-opacity="0.15"/>
+                                       <stop offset="100%" stop-color="#162b4e" stop-opacity="0.0"/>
                                     </linearGradient>
                                  </defs>
-                                 <path d="M0,90 Q70,40 140,70 T280,30 T420,50 L500,20 L500,110 L0,110 Z" fill="url(#gradient-line)" />
-                                 <path d="M0,90 Q70,40 140,70 T280,30 T420,50 L500,20" fill="none" stroke="var(--azul)" stroke-width="2.5" stroke-linecap="round" />
-                                 <path d="M0,85 L100,75 L200,60 L300,45 L400,40 L500,30" fill="none" stroke="var(--naranja)" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.7" />
-                                 <circle cx="500" cy="20" r="4" fill="var(--azul)" />
-                                 <circle cx="500" cy="20" r="8" fill="var(--azul)" opacity="0.3" />
+                                 
+                                 <line x1="0" y1="30" x2="500" y2="30" stroke="rgba(22,43,78,0.05)" stroke-width="1" />
+                                 <line x1="0" y1="60" x2="500" y2="60" stroke="rgba(22,43,78,0.05)" stroke-width="1" />
+                                 <line x1="0" y1="90" x2="500" y2="90" stroke="rgba(22,43,78,0.05)" stroke-width="1" />
+                                 
+                                 <text x="5" y="116" fill="#66788a" font-size="9" font-weight="600">Ene</text>
+                                 <text x="100" y="116" fill="#66788a" font-size="9" font-weight="600">Feb</text>
+                                 <text x="200" y="116" fill="#66788a" font-size="9" font-weight="600">Mar</text>
+                                 <text x="300" y="116" fill="#66788a" font-size="9" font-weight="600">Abr</text>
+                                 <text x="400" y="116" fill="#66788a" font-size="9" font-weight="600">May</text>
+                                 <text x="475" y="116" fill="#66788a" font-size="9" font-weight="600">Jun</text>
+
+                                 <line x1="0" y1="85" x2="500" y2="35" stroke="var(--naranja)" stroke-width="1.5" stroke-dasharray="4,4" />
+
+                                 <path id="graph-area" d="M 0 95 L 100 80 L 200 45 L 300 75 L 400 35 L 500 50 L 500 100 L 0 100 Z" fill="url(#bi-area-grad)" />
+
+                                 <polyline id="graph-line" fill="none" stroke="var(--azul)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                                    points="0,95 100,80 200,45 300,75 400,35 500,50" />
+
+                                 <circle cx="100" cy="80" r="3" fill="var(--azul)" />
+                                 <circle cx="200" cy="45" r="3" fill="var(--azul)" />
+                                 <circle cx="300" cy="75" r="3" fill="var(--azul)" />
+                                 <circle cx="400" cy="35" r="3" fill="var(--azul)" />
+
+                                 <circle id="live-tracker-outer" cx="500" cy="50" r="6" fill="var(--azul)" opacity="0.25" class="live-node" />
+                                 <circle id="live-tracker-inner" cx="500" cy="50" r="3.5" fill="var(--azul)" />
                               </svg>
                            </div>
                         </div>
 
                         <div class="analytics-grid-bottom">
-                           
                            <div class="small-analytics-card">
                               <span class="card-title-clean">Estructuración de Datos</span>
                               <div class="funnel-container">
@@ -627,16 +649,11 @@
                                     </svg>
                                  </div>
                                  <div class="donut-legends">
-                                    <div class="donut-legend-item">
-                                       <span class="bullet-dot" style="background: var(--azul)"></span> Corp
-                                    </div>
-                                    <div class="donut-legend-item">
-                                       <span class="bullet-dot" style="background: var(--naranja)"></span> I+D
-                                    </div>
+                                    <div class="donut-legend-item"><span class="bullet-dot" style="background: var(--azul)"></span> Corp</div>
+                                    <div class="donut-legend-item"><span class="bullet-dot" style="background: var(--naranja)"></span> I+D</div>
                                  </div>
                               </div>
                            </div>
-
                         </div>
 
                      </div>
@@ -654,20 +671,26 @@
       </footer>
 
       <script>
-         // Menú móvil accesible
+         // Menú móvil
          const menuToggle = document.querySelector(".menu-toggle");
          const menu = document.querySelector(".menu");
          menuToggle.addEventListener("click", () => {
             menu.classList.toggle("activo");
          });
 
-         // Nodos de datos dinámicos ejecutivos
+         // Elementos del KPI y del Gráfico Premium
          const margenTxt = document.getElementById("kpi-stream");
          const ebitdaTxt = document.getElementById("kpi-eficiencia");
          const calidadTxt = document.getElementById("kpi-procesos");
+         
+         const graphLine = document.getElementById("graph-line");
+         const graphArea = document.getElementById("graph-area");
+         const trackerOuter = document.getElementById("live-tracker-outer");
+         const trackerInner = document.getElementById("live-tracker-inner");
 
-         // Simulación interactiva muy fluida para KPIs reales
+         // Fluctuación en tiempo real para simular un feed de BI real
          setInterval(() => {
+            // 1. Actualización de textos numéricos
             const vMargen = (33 + Math.random() * 2).toFixed(1);
             margenTxt.textContent = `${vMargen}%`;
 
@@ -676,6 +699,21 @@
 
             const vCalidad = (99.5 + Math.random() * 0.4).toFixed(1);
             calidadTxt.textContent = `${vCalidad}%`;
+
+            // 2. Movimiento fluido del último nodo del gráfico (Mes de Junio)
+            // Genera una coordenada Y aleatoria y elegante entre 25 y 65 para mantener la consistencia financiera
+            const nuevaYJunio = Math.floor(25 + Math.random() * 40); 
+            
+            // Actualizar la polilínea del gráfico
+            graphLine.setAttribute("points", `0,95 100,80 200,45 300,75 400,35 500,${nuevaYJunio}`);
+            
+            // Actualizar el polígono del área sombreada para que coincida perfectamente
+            graphArea.setAttribute("d", `M 0 95 L 100 80 L 200 45 L 300 75 L 400 35 L 500 ${nuevaYJunio} L 500 100 L 0 100 Z`);
+            
+            // Reposicionar el punto dinámico final (nodos de tracking)
+            trackerOuter.setAttribute("cy", nuevaYJunio);
+            trackerInner.setAttribute("cy", nuevaYJunio);
+
          }, 2500);
       </script>
    </body>
