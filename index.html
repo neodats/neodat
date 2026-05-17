@@ -18,7 +18,7 @@
             --naranja: #ffa500;
             --blanco: #ffffff;
             --gris: #f8fafc;
-            --gris-2: rgba(22, 43, 78, 0.06); /* MODIFICADO: Bordes mucho más suaves y sutiles */
+            --gris-2: rgba(22, 43, 78, 0.06); 
             --gris-3: #f0f4f8;
             --texto: #243447;
             --texto-suave: #66788a;
@@ -38,7 +38,7 @@
             font-family: "Inter", Arial, sans-serif;
             background: #ffffff;
             color: var(--texto);
-            line-height: 1.6;
+            line-height: 1.5; /* MODIFICADO: Interlineado un poco más compacto */
             overflow-x: hidden;
          }
          a {
@@ -56,11 +56,11 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            min-height: 48px;
-            padding: 13px 22px;
+            min-height: 44px; /* MODIFICADO: Botones ligeramente más compactos */
+            padding: 10px 20px;
             border-radius: 999px;
             border: 1px solid transparent;
-            font-size: 14px;
+            font-size: 13px; /* MODIFICADO: Letra de botones más pequeña */
             font-weight: 800;
             cursor: pointer;
             transition: 0.2s ease;
@@ -104,7 +104,7 @@
             border-bottom: 1px solid var(--gris-2);
          }
          .navbar {
-            height: 78px;
+            height: 70px; /* MODIFICADO: Menú más delgado */
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -116,21 +116,21 @@
             gap: 12px;
          }
          .logo-icono {
-            width: 160px;
-            height: 160px;
+            width: 140px; /* MODIFICADO: Logo ligeramente más pequeño */
+            height: 140px;
             object-fit: contain;
          }
          nav ul {
             list-style: none;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 4px;
          }
          nav a {
             display: inline-flex;
-            padding: 10px 15px;
+            padding: 8px 12px; /* MODIFICADO: Enlaces del menú más compactos */
             border-radius: 999px;
-            font-size: 14px;
+            font-size: 13px; /* MODIFICADO: Letra del menú más pequeña */
             font-weight: 750;
             color: var(--azul);
             transition: 0.2s ease;
@@ -140,7 +140,7 @@
          }
          .hero {
             position: relative;
-            padding: 110px 0 100px; /* MODIFICADO: Incremento de padding superior para evitar solapamientos */
+            padding: 100px 0 80px; 
             background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
             overflow: hidden;
             min-height: calc(100vh - 44px);
@@ -168,17 +168,17 @@
          }
          h1 {
             max-width: 720px;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             color: var(--azul-oscuro);
-            font-size: clamp(30px, 4.2vw, 45px);
+            font-size: clamp(26px, 3.5vw, 38px); /* MODIFICADO: Título principal más pequeño */
             line-height: 1.25;
-            letter-spacing: -1px;
+            letter-spacing: -0.5px;
          }
          .hero p {
             max-width: 640px;
-            margin-bottom: 32px;
+            margin-bottom: 28px;
             color: var(--texto-suave);
-            font-size: 17px;
+            font-size: 15px; /* MODIFICADO: Párrafo descriptivo más pequeño */
          }
          .acciones {
             display: flex;
@@ -191,9 +191,9 @@
             ========================================================================== */
          .dashboard-shell {
             padding: 10px;
-            border-radius: 24px; /* MODIFICADO: Radio más balanceado */
+            border-radius: 24px; 
             background: linear-gradient(145deg, rgba(22, 43, 78, 0.03), rgba(7, 23, 45, 0.05));
-            border: 1px solid var(--gris-2); /* MODIFICADO: Contorno general suavizado */
+            border: 1px solid var(--gris-2); 
             position: relative;
          }
          .dashboard {
@@ -207,7 +207,7 @@
             align-items: center;
             justify-content: space-between;
             gap: 16px;
-            padding: 16px 20px;
+            padding: 14px 20px;
             background: #ffffff;
             border-bottom: 1px solid var(--gris-2);
          }
@@ -216,7 +216,7 @@
             align-items: center;
             gap: 8px;
             color: var(--azul-oscuro);
-            font-size: 14px;
+            font-size: 13px; /* MODIFICADO: Texto del panel */
             font-weight: 800;
          }
          .live-dot {
@@ -233,11 +233,11 @@
             100% { transform: scale(0.9); opacity: 0.6; }
          }
          .badge-live {
-            padding: 6px 12px;
+            padding: 4px 10px;
             border-radius: 999px;
             background: rgba(16, 185, 129, 0.08);
             color: var(--exito);
-            font-size: 11px;
+            font-size: 10px; /* MODIFICADO */
             font-weight: 800;
          }
          .dashboard-body {
@@ -253,10 +253,10 @@
             gap: 14px;
          }
          .kpi {
-            padding: 16px;
+            padding: 14px;
             background: #ffffff;
             border-radius: 12px;
-            border: 1px solid var(--gris-2); /* MODIFICADO: Contorno interior suave */
+            border: 1px solid var(--gris-2); 
             transition: transform 0.2s ease, box-shadow 0.2s ease;
          }
          .kpi:hover {
@@ -267,7 +267,7 @@
             display: block;
             margin-bottom: 4px;
             color: var(--texto-suave);
-            font-size: 11px;
+            font-size: 10px; /* MODIFICADO */
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.3px;
@@ -275,12 +275,11 @@
          .kpi strong {
             display: block;
             color: var(--azul-oscuro);
-            font-size: 22px;
+            font-size: 19px; /* MODIFICADO: Números de KPIs ligeramente menores */
             font-weight: 900;
             line-height: 1.1;
             transition: color 0.2s ease;
          }
-         /* Efecto de cambio dinámico */
          .kpi strong.cambio-activo {
             color: var(--naranja);
          }
@@ -288,7 +287,7 @@
             display: inline-flex;
             align-items: center;
             gap: 4px;
-            font-size: 11px;
+            font-size: 10px; /* MODIFICADO */
             font-weight: 700;
             margin-top: 4px;
          }
@@ -298,7 +297,7 @@
          .chart-container {
             background: #ffffff;
             border-radius: 12px;
-            padding: 20px;
+            padding: 18px;
             border: 1px solid var(--gris-2);
             position: relative;
          }
@@ -306,17 +305,17 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
          }
          .chart-title {
-            font-size: 13px;
+            font-size: 12px; /* MODIFICADO */
             font-weight: 800;
             color: var(--azul-oscuro);
          }
          .chart-legend {
             display: flex;
             gap: 12px;
-            font-size: 11px;
+            font-size: 10px; /* MODIFICADO */
             font-weight: 600;
             color: var(--texto-suave);
          }
@@ -335,7 +334,7 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
-            height: 140px;
+            height: 130px;
             padding-top: 10px;
             border-bottom: 1px solid var(--gris-2);
             position: relative;
@@ -360,7 +359,6 @@
          .bar-primary { background: var(--azul); }
          .bar-secondary { background: var(--naranja); opacity: 0.8; }
          
-         /* Hover interactivo sobre grupos de barras */
          .bar-group:hover .bar {
             filter: brightness(1.1);
             opacity: 1;
@@ -375,7 +373,7 @@
             color: #ffffff;
             padding: 4px 8px;
             border-radius: 4px;
-            font-size: 10px;
+            font-size: 9px; /* MODIFICADO */
             font-weight: 700;
             opacity: 0;
             transition: opacity 0.2s ease, transform 0.2s ease;
@@ -396,7 +394,7 @@
             padding: 0 4px;
          }
          .chart-labels span {
-            font-size: 10px;
+            font-size: 9px; /* MODIFICADO */
             font-weight: 700;
             color: var(--texto-suave);
             width: 12%;
@@ -412,20 +410,20 @@
 
          .menu-toggle {
             display: none;
-            width: 46px;
-            height: 46px;
+            width: 42px;
+            height: 42px;
             border: 1px solid var(--gris-2);
-            border-radius: 14px;
+            border-radius: 12px;
             background: #ffffff;
             color: var(--azul);
-            font-size: 26px;
+            font-size: 22px;
             font-weight: 900;
             cursor: pointer;
          }
          .site-footer {
             background: #07172d;
             color: rgba(255,255,255,.72);
-            padding: 24px 0;
+            padding: 20px 0;
             border-top: 1px solid rgba(255, 255, 255, 0.08);
          }
          .footer-bottom {
@@ -433,20 +431,18 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            font-size: 12.5px;
+            font-size: 11.5px; /* MODIFICADO */
             color: rgba(255,255,255,.52);
          }
          
          /* RESPONSIVO OPTIMIZADO PARA MÓVILES */
          @media (max-width: 980px) {
-            .navbar { height: 72px; }
-            .logo-icono { width: 130px; height: 130px; }
+            .navbar { height: 64px; }
+            .logo-icono { width: 120px; height: 120px; }
             .menu-toggle { display: flex; align-items: center; justify-content: center; }
             .whatsapp-desktop { display: none; }
             nav.menu {
-               position: absolute;
-               top: 72px;
-               left: 0;
+               top: 64px;
                width: 100%;
                display: none;
                background: #ffffff;
@@ -457,25 +453,25 @@
             nav.menu ul {
                width: min(1160px, calc(100% - 40px));
                margin: auto;
-               padding: 18px 0;
+               padding: 14px 0;
                display: grid;
                grid-template-columns: 1fr;
-               gap: 8px;
+               gap: 6px;
             }
             nav.menu a {
                width: 100%;
-               padding: 14px 16px;
-               border-radius: 16px;
+               padding: 12px 14px;
+               border-radius: 12px;
                background: var(--gris);
+               font-size: 13px;
             }
             .hero-grid { grid-template-columns: 1fr; gap: 40px; }
          }
          @media (max-width: 680px) {
-            /* MODIFICACIÓN CLAVE: Mayor padding-top para que el menú fijo jamás tape el título */
-            .hero { padding: 125px 0 60px; }
+            .hero { padding: 110px 0 60px; }
             .kpis { grid-template-columns: 1fr; gap: 10px; }
             h1 { 
-               font-size: clamp(24px, 6.5vw, 32px); 
+               font-size: clamp(22px, 6vw, 28px); /* MODIFICADO */
                line-height: 1.3;
                letter-spacing: normal;
             }
@@ -628,7 +624,6 @@
             menu.classList.toggle("activo");
          });
 
-         // Controlador de eventos para hacer el panel de control interactivo
          barGroups.forEach(group => {
             const cambiarValor = () => {
                const nuevoValor = group.getAttribute("data-valor");
@@ -641,7 +636,6 @@
                kpiIngresos.classList.remove("cambio-activo");
             };
 
-            // Soporte para PC (Mouse) y Móviles (Touch)
             group.addEventListener("mouseenter", cambiarValor);
             group.addEventListener("mouseleave", restaurarValor);
             group.addEventListener("touchstart", cambiarValor, {passive: true});
