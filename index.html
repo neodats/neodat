@@ -9,17 +9,19 @@
       
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
       
       <style>
          :root {
-            --bg-base: #030a16;
-            --azul-glow: #0052cc;
+            --bg-base: #020712;
+            --azul-premium: #0052cc;
+            --azul-glow: rgba(0, 82, 204, 0.2);
             --naranja-acento: #ff9900;
+            --naranja-glow: rgba(255, 153, 0, 0.15);
             --blanco: #ffffff;
-            --texto-secundario: #8fa0b5;
+            --texto-secundario: #a1b3cb;
             --borde-glass: rgba(255, 255, 255, 0.08);
-            --borde-active: rgba(0, 255, 102, 0.3);
+            --borde-active: rgba(0, 255, 102, 0.25);
          }
 
          * {
@@ -38,19 +40,20 @@
             -webkit-font-smoothing: antialiased;
          }
 
-         /* --- ENTORNO CINÉTICO Y ANIMACIONES DE FONDO --- */
+         /* --- ENTORNO CINÉTICO Y CAPAS DE FONDO (Fieles a la imagen) --- */
          .capa-universo {
             position: absolute;
             inset: 0;
             z-index: 1;
             background: 
-               radial-gradient(circle at 80% 20%, rgba(0, 82, 204, 0.15) 0%, transparent 50%),
-               radial-gradient(circle at 20% 80%, rgba(255, 153, 0, 0.03) 0%, transparent 50%),
-               linear-gradient(180deg, #040d1a 0%, #02060d 100%);
+               radial-gradient(circle at 15% 15%, rgba(255, 255, 255, 0.07) 0%, transparent 25%), /* Foco de claridad sutil exclusivo para el Logo */
+               radial-gradient(circle at 85% 20%, rgba(0, 82, 204, 0.18) 0%, transparent 50%),
+               radial-gradient(circle at 50% 90%, rgba(255, 153, 0, 0.04) 0%, transparent 40%),
+               linear-gradient(140deg, #051226 0%, #01040a 100%);
             overflow: hidden;
          }
 
-         /* Cuadrícula analítica estática de fondo */
+         /* Cuadrícula técnica */
          .capa-universo::before {
             content: "";
             position: absolute;
@@ -58,22 +61,21 @@
             background-image: 
                linear-gradient(rgba(255, 255, 255, 0.01) 1px, transparent 1px),
                linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
-            background-size: 50px 50px;
+            background-size: 55px 55px;
             pointer-events: none;
          }
 
-         /* Simulación de partículas ascendentes en movimiento constante */
+         /* Flujo sutil de micro-partículas analíticas hacia arriba */
          .capa-universo::after {
             content: "";
             position: absolute;
             inset: 0;
             background-image: 
-               radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 0),
-               radial-gradient(rgba(163, 194, 240, 0.1) 2px, transparent 0);
-            background-size: 120px 120px;
-            background-position: 0 0;
-            animation: flujoDatos 40s linear infinite;
-            opacity: 0.6;
+               radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 0),
+               radial-gradient(rgba(161, 179, 203, 0.08) 1.5px, transparent 0);
+            background-size: 140px 140px;
+            animation: flujoDatos 45s linear infinite;
+            opacity: 0.5;
          }
 
          @keyframes flujoDatos {
@@ -81,45 +83,42 @@
             to { background-position: 0 -1000px; }
          }
 
-         /* Estructuras abstractas flotantes emulando la imagen */
+         /* Estructuras en suspensión de fondo */
          .red-esferica-abstracta {
             position: absolute;
-            top: -5%;
-            right: 25%;
-            width: 420px;
-            height: 420px;
-            border: 1px dashed rgba(0, 82, 204, 0.15);
+            top: -2%;
+            right: 22%;
+            width: 440px;
+            height: 440px;
+            border: 1px dashed rgba(0, 82, 204, 0.12);
             border-radius: 50%;
             background: radial-gradient(circle, rgba(0, 82, 204, 0.02) 0%, transparent 75%);
-            animation: flotacionEje 12s ease-in-out infinite alternate;
-         }
-         .red-esferica-abstracta::after {
-            content: "";
-            position: absolute;
-            inset: 30px;
-            border: 1px double rgba(143, 160, 181, 0.08);
-            border-radius: 50%;
-            transform: rotateX(70deg);
+            animation: flotarEjeA 14s ease-in-out infinite alternate;
          }
 
          .hipercubo-abstracto {
             position: absolute;
-            bottom: -5%;
-            right: 40%;
-            width: 320px;
-            height: 320px;
-            border: 1px solid rgba(163, 194, 240, 0.08);
-            transform: rotate(25deg);
-            background: linear-gradient(135deg, rgba(0, 82, 204, 0.03), transparent);
-            animation: flotacionEje 9s ease-in-out infinite alternate-reverse;
+            bottom: -8%;
+            right: 38%;
+            width: 350px;
+            height: 350px;
+            border: 1px solid rgba(161, 179, 203, 0.06);
+            transform: rotate(20deg);
+            background: linear-gradient(135deg, rgba(0, 82, 204, 0.02), transparent);
+            animation: flotarEjeB 10s ease-in-out infinite alternate-reverse;
          }
 
-         @keyframes flotacionEje {
+         @keyframes flotarEjeA {
             0% { transform: translateY(0) rotate(0deg); }
-            100% { transform: translateY(-15px) rotate(5deg); }
+            100% { transform: translateY(-20px) rotate(8deg); }
          }
 
-         /* --- INTERFAZ BASE Y LAYOUT --- */
+         @keyframes flotarEjeB {
+            0% { transform: translateY(0) rotate(20deg); }
+            100% { transform: translateY(-15px) rotate(15deg); }
+         }
+
+         /* --- NAVEGACIÓN Y MARCA CORPORATIVA --- */
          .pantalla-portada {
             position: relative;
             z-index: 2;
@@ -127,7 +126,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            padding: 30px 0;
+            padding: 32px 0;
          }
 
          .contenedor {
@@ -135,7 +134,6 @@
             margin: 0 auto;
          }
 
-         /* Barra Superior con Enlaces */
          .top-bar {
             display: flex;
             align-items: center;
@@ -144,22 +142,37 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
          }
 
-         .logo-link img {
-            height: 48px;
+         /* Zona del Logo Mejorada para Visibilidad Absoluta */
+         .logo-contenedor {
+            display: inline-flex;
+            align-items: center;
+            position: relative;
+            padding: 4px;
+            border-radius: 8px;
+         }
+
+         .logo-contenedor img {
+            height: 50px;
             width: auto;
             display: block;
+            position: relative;
+            z-index: 2;
+            /* Resalte ligero para separarlo totalmente del fondo oscuro */
+            filter: drop-shadow(0 2px 12px rgba(255, 255, 255, 0.18)); 
          }
 
          .menu-estricto ul {
             list-style: none;
             display: flex;
-            gap: 32px;
+            gap: 36px;
          }
 
          .menu-estricto a {
             color: var(--texto-secundario);
             font-size: 14px;
-            font-weight: 500;
+            font-weight: 600;
+            letter-spacing: -0.2px;
+            text-decoration: none;
             transition: color 0.25s ease;
          }
 
@@ -168,17 +181,17 @@
          }
 
          .badge-interactivo {
-            display: flex;
+            display: inline-flex;
             align-items: center;
             gap: 10px;
-            background: rgba(0, 255, 102, 0.03);
+            background: rgba(0, 255, 102, 0.02);
             border: 1px solid var(--borde-active);
             padding: 8px 18px;
             border-radius: 999px;
             font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            box-shadow: 0 0 20px rgba(0, 255, 102, 0.05);
+            font-weight: 800;
+            letter-spacing: 1px;
+            box-shadow: 0 0 20px rgba(0, 255, 102, 0.04);
          }
 
          .badge-interactivo::before {
@@ -188,51 +201,52 @@
             background-color: #00ff66;
             border-radius: 50%;
             box-shadow: 0 0 10px #00ff66;
-            animation: pulsoSensor 2s infinite;
          }
 
-         @keyframes pulsoSensor {
-            0% { opacity: 0.4; }
-            50% { opacity: 1; }
-            100% { opacity: 0.4; }
-         }
-
-         /* Distribución de Pantalla */
+         /* --- ESTRUCTURA GRID Y REORDENAMIENTO VISUAL --- */
          .grid-principal {
             display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 60px;
+            grid-template-columns: 1.12fr 0.88fr;
+            gap: 64px;
             align-items: center;
             margin: auto 0;
-            padding: 40px 0;
+            padding: 50px 0;
          }
 
-         /* Copys de la Portada */
-         .subtitulo-bloque {
+         /* RE-ARQUITECTURA TIPOGRÁFICA (ORDEN VISUAL PREMIUM) */
+         .tagline {
             color: var(--naranja-acento);
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 12px;
+            font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin-bottom: 20px;
+            margin-bottom: 16px; /* Ajuste estrecho para ligarlo al título */
             display: block;
          }
 
          h1 {
-            font-size: clamp(42px, 5.2vw, 64px);
+            font-size: clamp(42px, 5vw, 62px);
             font-weight: 900;
-            line-height: 1.1;
-            letter-spacing: -2px;
+            line-height: 1.08;
+            letter-spacing: -2.5px; /* Compresión tipográfica ejecutiva */
             color: var(--blanco);
-            margin-bottom: 28px;
+            margin-bottom: 24px;
+         }
+
+         h1 span {
+            background: linear-gradient(135deg, #ffffff 40%, #87a2c7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
          }
 
          p.introduccion {
-            font-size: clamp(16px, 1.5vw, 18px);
+            font-size: clamp(16px, 1.4vw, 18px);
             color: var(--texto-secundario);
             line-height: 1.6;
+            font-weight: 400;
             margin-bottom: 40px;
-            max-width: 580px;
+            max-width: 570px;
+            letter-spacing: -0.1px;
          }
 
          /* Botones */
@@ -246,23 +260,25 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 15px 36px;
+            padding: 16px 36px;
             border-radius: 6px;
             font-size: 14px;
             font-weight: 700;
             cursor: pointer;
+            text-decoration: none;
             transition: all 0.25s ease;
          }
 
          .btn-azul {
-            background-color: #0052cc;
+            background-color: var(--azul-premium);
             color: var(--blanco);
-            box-shadow: 0 12px 30px rgba(0, 82, 204, 0.3);
+            box-shadow: 0 12px 35px rgba(0, 82, 204, 0.35);
          }
 
          .btn-azul:hover {
             background-color: #1a73e8;
             transform: translateY(-2px);
+            box-shadow: 0 16px 40px rgba(0, 82, 204, 0.45);
          }
 
          .btn-vacio {
@@ -273,36 +289,36 @@
 
          .btn-vacio:hover {
             background-color: rgba(255, 255, 255, 0.02);
-            border-color: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.25);
          }
 
-         /* --- CONSTRUCCIÓN FIEL DEL GLASS-DASHBOARD (Fiel a la imagen) --- */
+         /* --- GLASS DASHBOARD FIEL A LA IMAGEN --- */
          .dashboard-marco {
-            background: rgba(10, 22, 44, 0.3);
+            background: rgba(10, 24, 50, 0.35);
             border: 1px solid var(--borde-glass);
             border-radius: 16px;
-            padding: 28px;
+            padding: 30px;
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
-            box-shadow: 0 50px 100px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 60px 110px rgba(0, 0, 0, 0.6);
          }
 
          .dashboard-top {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 32px;
+            margin-bottom: 28px;
          }
 
          .dashboard-meta strong {
             font-size: 15px;
             font-weight: 700;
             display: block;
-            color: var(--blanco);
+            letter-spacing: -0.2px;
          }
 
          .dashboard-meta span {
-            font-size: 12px;
+            font-size: 11px;
             color: var(--texto-secundario);
             display: block;
             margin-top: 4px;
@@ -320,7 +336,7 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 16px;
-            margin-bottom: 32px;
+            margin-bottom: 28px;
          }
 
          .tarjeta-kpi {
@@ -342,29 +358,27 @@
          .tarjeta-kpi div {
             font-size: 26px;
             font-weight: 700;
-            margin-top: 8px;
+            margin-top: 6px;
             display: flex;
             align-items: baseline;
-            gap: 8px;
+            gap: 6px;
          }
 
          .tarjeta-kpi div span {
             font-size: 12px;
             color: #00ff66;
-            font-weight: 500;
+            font-weight: 600;
          }
 
-         /* Gráfico Analítico de la imagen con Ondas y Barras */
+         /* Gráfico analítico de Barras con Ondas */
          .contenedor-grafico-onda {
             position: relative;
             height: 130px;
             display: flex;
             align-items: flex-end;
-            gap: 14px;
-            padding-top: 20px;
+            gap: 12px;
          }
 
-         /* Render de Barras con Degradados */
          .columna-grafica {
             flex: 1;
             background: linear-gradient(180deg, rgba(0, 82, 204, 0.1) 0%, rgba(0, 82, 204, 0.6) 100%);
@@ -376,37 +390,35 @@
          .columna-grafica.oro {
             background: linear-gradient(180deg, rgba(255, 153, 0, 0.2) 0%, rgba(255, 153, 0, 0.7) 100%);
             border: 1px solid rgba(255, 153, 0, 0.5);
-            box-shadow: 0 0 30px rgba(255, 153, 0, 0.15);
+            box-shadow: 0 0 25px rgba(255, 153, 0, 0.2);
          }
 
-         /* Líneas Vectoriales de Tendencia con animación de pulso sutil */
          .linea-tendencia {
             position: absolute;
             left: 0;
             width: 100%;
             height: 2px;
-            background: rgba(255, 255, 255, 0.15);
             pointer-events: none;
          }
-         .linea-tendencia.alta { bottom: 85%; border-top: 1px dashed rgba(0, 255, 102, 0.2); }
-         .linea-tendencia.baja { bottom: 35%; border-top: 1px dashed rgba(255, 255, 255, 0.05); }
+         .linea-tendencia.alta { bottom: 82%; border-top: 1px dashed rgba(0, 255, 102, 0.15); }
+         .linea-tendencia.baja { bottom: 38%; border-top: 1px dashed rgba(255, 255, 255, 0.04); }
 
-         /* --- PIE DE PÁGINA --- */
+         /* --- PIE DE PÁGINA CORPORATIVO --- */
          .footer-bloque {
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
             gap: 16px;
-            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
             padding-top: 24px;
             font-size: 13px;
-            color: rgba(143, 160, 181, 0.4);
+            color: rgba(161, 179, 203, 0.35);
          }
 
          .lista-certificaciones {
             display: flex;
-            gap: 28px;
+            gap: 32px;
             list-style: none;
          }
 
@@ -414,18 +426,19 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            font-weight: 500;
          }
 
          .lista-certificaciones li::before {
             content: "✓";
-            color: #0052cc;
-            font-weight: 800;
+            color: var(--azul-premium);
+            font-weight: 900;
          }
 
          /* RESPONSIVE */
          @media (max-width: 992px) {
-            .grid-principal { grid-template-columns: 1fr; text-align: center; gap: 40px; }
-            p.introduccion { margin-0: auto; margin-right: auto; }
+            .grid-principal { grid-template-columns: 1fr; text-align: center; gap: 48px; }
+            p.introduccion { margin-left: auto; margin-right: auto; }
             .caja-botones { justify-content: center; }
             .dashboard-marco { max-width: 500px; margin: 0 auto; }
             .menu-estricto { display: none; }
@@ -442,7 +455,7 @@
       <div class="contenedor pantalla-portada">
          
          <header class="top-bar">
-            <a href="index.html" class="logo-link">
+            <a href="index.html" class="logo-contenedor">
                <img src="Neo1.png" alt="NeoDat Consultores">
             </a>
             
@@ -463,7 +476,7 @@
          <main class="grid-principal">
             
             <section>
-               <span class="subtitulo-bloque">Ingeniería de Gestión & BI</span>
+               <span class="tagline">Ingeniería de Gestión & BI</span>
                <h1>Transformamos la complejidad en <span>dirección absoluta.</span></h1>
                <p class="introduccion">Estructuramos ecosistemas de datos avanzados y modelos financieros de alta precisión para dotar a su organización de un control ejecutivo permanente.</p>
                
