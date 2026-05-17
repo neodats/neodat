@@ -3,30 +3,27 @@
    <head>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Inicio | NeoDat Consultores</title>
+      <title>NeoDat Consultores | Business Intelligence & Consultoría</title>
       <link rel="icon" type="image/png" sizes="32x32" href="Neo1.png">
-      <meta name="description" content="Consultoría empresarial especializada en análisis de datos, finanzas corporativas y soluciones de control de gestión." />
-      
+      <meta name="description" content="Estructuramos datos, finanzas y dashboards para transformar la incertidumbre de su empresa en decisiones ejecutivas respaldadas por información confiable." />
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
-      
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
       <style>
          :root {
-            --azul-premium: #0a192f;
-            --azul-intermedio: #172a45;
-            --azul-marca: #1d3b6a;
-            --azul-super-claro: #f4f7f6;
-            --naranja-acento: #e69500;
-            --texto-principal: #1e293b;
-            --texto-secundario: #64748b;
+            --azul: #162b4e;
+            --azul-oscuro: #07172d;
+            --azul-medio: #27456f;
+            --azul-claro: #edf2f8;
+            --naranja: #ffa500;
             --blanco: #ffffff;
-            --borde-sutil: rgba(15, 23, 42, 0.08);
-            --borde-sutil-blanco: rgba(255, 255, 255, 0.12);
-            --sombra-premium: 0 20px 40px -15px rgba(0, 0, 0, 0.05);
+            --gris: #f6f8fb;
+            --gris-2: #e1e7f0;
+            --texto: #243447;
+            --texto-suave: #66788a;
+            --sombra: 0 20px 50px rgba(7, 23, 45, 0.06);
+            --sombra-fuerte: 0 30px 70px rgba(7, 23, 45, 0.12);
          }
-
-         /* RESET & CONFIGURACIÓN GLOBAL */
          * {
             margin: 0;
             padding: 0;
@@ -34,519 +31,468 @@
          }
          html {
             scroll-behavior: smooth;
-            -webkit-font-smoothing: antialiased;
          }
          body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            background-color: var(--blanco);
-            color: var(--texto-principal);
+            font-family: "Inter", Arial, sans-serif;
+            background: var(--blanco);
+            color: var(--texto);
             line-height: 1.6;
-            font-size: 16px;
+            overflow-x: hidden;
          }
          a {
             text-decoration: none;
             color: inherit;
          }
-         button, input, select, textarea {
-            font-family: inherit;
-         }
-
          .contenedor {
-            width: min(1200px, calc(100% - 48px));
-            margin: 0 auto;
+            width: min(1160px, calc(100% - 40px));
+            margin: auto;
          }
-
-         /* COMPONENTES DE BOTÓN HOMOGÉNEOS */
          .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            min-height: 48px;
+            padding: 13px 26px;
+            border-radius: 999px;
             border: 1px solid transparent;
+            font-size: 14px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            white-space: nowrap;
          }
-         .btn-primario {
-            background-color: var(--azul-marca);
+         .btn-principal {
+            background: var(--azul);
             color: var(--blanco);
+            box-shadow: 0 16px 34px rgba(22, 43, 78, 0.15);
          }
-         .btn-primario:hover {
-            background-color: var(--azul-premium);
-            transform: translateY(-1px);
+         .btn-principal:hover {
+            background: var(--azul-oscuro);
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px rgba(22, 43, 78, 0.25);
          }
          .btn-secundario {
-            background-color: var(--blanco);
-            color: var(--azul-marca);
-            border-color: var(--borde-sutil);
+            background: var(--blanco);
+            color: var(--azul);
+            border-color: rgba(22, 43, 78, 0.16);
          }
          .btn-secundario:hover {
-            background-color: var(--azul-super-claro);
-            border-color: var(--azul-marca);
+            border-color: var(--azul);
+            background: var(--gris);
+            transform: translateY(-2px);
          }
          .btn-whatsapp {
-            background-color: #128c7e;
-            color: var(--blanco);
+            background: #25D366;
+            color: #ffffff;
          }
          .btn-whatsapp:hover {
-            background-color: #075e54;
-            transform: translateY(-1px);
+            background: #1ebe5d;
+            transform: translateY(-2px);
          }
 
-         /* CABECERA (NAVBAR) */
+         /* HEADER Y NAV */
          header {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
             z-index: 100;
-            background-color: rgba(255, 255, 255, 0.85);
+            width: 100%;
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--borde-sutil);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(22, 43, 78, 0.06);
          }
          .navbar {
-            height: 80px;
+            height: 84px;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            gap: 24px;
          }
-         .logo img {
-            height: 42px;
-            width: auto;
-            display: block;
+         .logo {
+            display: flex;
+            align-items: center;
          }
-         nav.menu ul {
+         .logo-icono {
+            width: 140px;
+            height: 70px;
+            object-fit: contain;
+         }
+         nav ul {
             list-style: none;
             display: flex;
-            gap: 8px;
+            align-items: center;
+            gap: 6px;
          }
-         nav.menu a {
-            padding: 8px 16px;
+         nav a {
+            display: inline-flex;
+            padding: 10px 18px;
+            border-radius: 999px;
             font-size: 14px;
-            font-weight: 600;
-            color: var(--texto-principal);
-            border-radius: 6px;
-            transition: background 0.2s ease;
+            font-weight: 700;
+            color: var(--azul-medio);
+            transition: 0.2s ease;
          }
-         nav.menu a:hover, nav.menu li.activo a {
-            background-color: var(--azul-super-claro);
-            color: var(--azul-marca);
+         nav a:hover, nav li.activo a {
+            color: var(--azul-oscuro);
+            background: var(--azul-claro);
          }
          .menu-toggle {
             display: none;
-            background: none;
-            border: none;
+            width: 44px;
+            height: 44px;
+            border: 1px solid var(--gris-2);
+            border-radius: 12px;
+            background: #ffffff;
+            color: var(--azul);
             font-size: 24px;
-            color: var(--azul-premium);
             cursor: pointer;
          }
 
-         /* ESTRUCTURA DE SECCIÓN CORPORATIVA */
-         section {
-            padding: 140px 0;
-         }
-         .seccion-gris {
-            background-color: var(--azul-super-claro);
-         }
-         .encabezado-bloque {
-            max-width: 640px;
-            margin-bottom: 60px;
-         }
-         .encabezado-bloque.centro {
-            text-align: center;
-            margin-left: auto;
-            margin-right: auto;
-         }
-         .tagline {
-            display: block;
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--naranja-acento);
-            margin-bottom: 12px;
-         }
-         h2 {
-            font-size: 36px;
-            font-weight: 700;
-            color: var(--azul-premium);
-            letter-spacing: -0.02em;
-            line-height: 1.2;
-         }
-         .encabezado-bloque p {
-            margin-top: 16px;
-            color: var(--texto-secundario);
-            font-size: 16px;
-         }
-
-         /* SECCIÓN HERO */
+         /* PORTADA - HERO */
          .hero {
-            padding: 200px 0 120px;
-            background: radial-gradient(circle at 90% 10%, rgba(29, 59, 106, 0.03), transparent 40%);
+            position: relative;
+            padding: 180px 0 110px;
+            background: linear-gradient(180deg, #ffffff 0%, #f4f8fc 100%);
+            overflow: hidden;
+         }
+         .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: 
+               linear-gradient(rgba(22, 43, 78, 0.03) 1px, transparent 1px),
+               linear-gradient(90deg, rgba(22, 43, 78, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            mask-image: linear-gradient(180deg, black 60%, transparent 100%);
+            -webkit-mask-image: linear-gradient(180deg, black 60%, transparent 100%);
+            pointer-events: none;
          }
          .hero-grid {
+            position: relative;
+            z-index: 2;
             display: grid;
             grid-template-columns: 1.1fr 0.9fr;
-            gap: 80px;
+            gap: 60px;
             align-items: center;
          }
-         h1 {
-            font-size: 52px;
-            font-weight: 700;
-            line-height: 1.15;
-            letter-spacing: -0.03em;
-            color: var(--azul-premium);
+         .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             margin-bottom: 24px;
+            padding: 6px 14px;
+            border: 1px solid rgba(22, 43, 78, 0.08);
+            border-radius: 999px;
+            background: var(--blanco);
+            color: var(--azul-medio);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+         }
+         .eyebrow::before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--naranja);
+         }
+         h1 {
+            color: var(--azul-oscuro);
+            font-size: clamp(40px, 4.8vw, 66px);
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin-bottom: 24px;
+            font-weight: 900;
+         }
+         h1 span {
+            color: var(--azul);
+            background: linear-gradient(135deg, var(--azul), var(--azul-medio));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
          }
          .hero p {
+            color: var(--texto-suave);
             font-size: 18px;
-            color: var(--texto-secundario);
+            line-height: 1.55;
             margin-bottom: 36px;
+            max-width: 580px;
          }
-         .hero-acciones {
+         .acciones {
             display: flex;
-            gap: 12px;
+            flex-wrap: wrap;
+            gap: 14px;
             margin-bottom: 48px;
          }
 
-         /* PREMETRICAS HERO */
-         .mini-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            border-top: 1px solid var(--borde-sutil);
-            padding-top: 32px;
-         }
-         .stat-box strong {
-            display: block;
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--azul-marca);
-         }
-         .stat-box span {
-            font-size: 13px;
-            color: var(--texto-secundario);
-         }
-
-         /* MAQUETA DE ENTRAMADO (DASHBOARD PREVIEW) */
-         .shell-interfaz {
-            background-color: var(--azul-premium);
+         /* VISUAL DASHBOARD SIMULADO */
+         .dashboard-shell {
             padding: 12px;
-            border-radius: 16px;
-            box-shadow: var(--sombra-premium);
+            border-radius: 28px;
+            background: linear-gradient(135deg, var(--azul), var(--azul-oscuro));
+            box-shadow: var(--sombra-fuerte);
          }
-         .interfaz-interna {
-            background-color: #fafafa;
-            border-radius: 10px;
+         .dashboard {
             overflow: hidden;
+            border-radius: 20px;
+            background: var(--gris);
+         }
+         .dashboard-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px;
+            background: var(--blanco);
+            border-bottom: 1px solid var(--gris-2);
+         }
+         .dashboard-top strong {
+            display: block;
+            color: var(--azul-oscuro);
+            font-size: 16px;
+            font-weight: 800;
+         }
+         .dashboard-top span {
+            color: var(--texto-suave);
             font-size: 12px;
          }
-         .interfaz-nav {
-            background-color: var(--blanco);
-            padding: 14px 20px;
-            border-bottom: 1px solid var(--borde-sutil);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+         .badge {
+            padding: 5px 10px;
+            border-radius: 999px;
+            background: var(--azul-claro);
+            color: var(--azul);
+            font-size: 11px;
+            font-weight: 800;
          }
-         .interfaz-nav strong { color: var(--azul-premium); font-size: 14px; }
-         .interfaz-panel {
-            padding: 20px;
+         .dashboard-body {
             display: grid;
-            gap: 16px;
+            gap: 12px;
+            padding: 16px;
          }
-         .interfaz-kpis {
+         .kpis {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
+            gap: 10px;
          }
-         .interfaz-card {
-            background-color: var(--blanco);
-            padding: 16px;
-            border-radius: 8px;
-            border: 1px solid var(--borde-sutil);
+         .kpi, .card-db {
+            border: 1px solid var(--gris-2);
+            border-radius: 14px;
+            background: var(--blanco);
+            padding: 14px;
          }
-         .interfaz-card small { color: var(--texto-secundario); display: block; margin-bottom: 4px; }
-         .interfaz-card strong { font-size: 20px; color: var(--azul-premium); }
-         
-         .interfaz-graficos {
+         .kpi small {
+            display: block;
+            color: var(--texto-suave);
+            font-size: 11px;
+            font-weight: 600;
+            margin-bottom: 4px;
+         }
+         .kpi strong {
+            display: block;
+            color: var(--azul-oscuro);
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+         }
+         .graficos {
             display: grid;
-            grid-template-columns: 1.3fr 0.7fr;
-            gap: 16px;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 10px;
          }
-         .interfaz-chart {
-            height: 140px;
+         .card-db h3 {
+            margin-bottom: 12px;
+            color: var(--azul-oscuro);
+            font-size: 13px;
+            font-weight: 800;
+         }
+         .chart {
+            height: 120px;
             display: flex;
             align-items: flex-end;
             gap: 8px;
-            padding-top: 10px;
          }
-         .interfaz-bar {
+         .bar {
             flex: 1;
-            background-color: var(--azul-marca);
-            border-radius: 4px 4px 0 0;
-            opacity: 0.85;
+            min-height: 15px;
+            border-radius: 6px 6px 0 0;
+            background: linear-gradient(180deg, var(--azul), var(--azul-medio));
          }
-         .interfaz-bar.destaque { background-color: var(--naranja-acento); opacity: 1; }
+         .bar:nth-child(1) { height: 40%; opacity: 0.6; }
+         .bar:nth-child(2) { height: 65%; opacity: 0.7; }
+         .bar:nth-child(3) { height: 50%; opacity: 0.8; }
+         .bar:nth-child(4) { height: 90%; background: linear-gradient(180deg, var(--naranja), #ffc766); }
+         .bar:nth-child(5) { height: 75%; }
          
-         .interfaz-progress-group {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-         }
-         .progress-bar-bg {
-            height: 6px;
-            background-color: var(--azul-super-claro);
-            border-radius: 3px;
-            overflow: hidden;
-            margin-top: 4px;
-         }
-         .progress-bar-fill {
-            height: 100%;
-            background-color: var(--azul-marca);
-         }
-
-         /* MOSAICO DE SERVICIOS */
-         .grid-servicios {
+         .indicadores {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
+            gap: 10px;
          }
-         .tarjeta-servicio {
-            background-color: var(--blanco);
-            padding: 40px;
-            border-radius: 12px;
-            border: 1px solid var(--borde-sutil);
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-         }
-         .tarjeta-servicio:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--sombra-premium);
-            border-color: rgba(29, 59, 106, 0.2);
-         }
-         .num-servicio {
-            font-size: 14px;
+         .item-top {
+            display: flex;
+            justify-content: space-between;
+            color: var(--texto-suave);
+            font-size: 11px;
             font-weight: 700;
-            color: var(--naranja-acento);
-            margin-bottom: 20px;
+            margin-bottom: 4px;
+         }
+         .progress {
+            height: 6px;
+            border-radius: 999px;
+            background: var(--azul-claro);
+            overflow: hidden;
+         }
+         .progress span {
+            display: block;
+            height: 100%;
+            background: var(--azul);
+            border-radius: inherit;
+         }
+         .progress.orange span { background: var(--naranja); }
+
+         /* SECCIÓN PORTADA - ENLACE INTERNO A PRODUCTOS */
+         .preview-seccion {
+            padding: 100px 0;
+            background: var(--blanco);
+         }
+         .encabezado-portada {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 50px;
+         }
+         .sub {
+            color: var(--naranja);
+            font-size: 13px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
             display: block;
          }
-         .tarjeta-servicio h3 {
+         h2 {
+            color: var(--azul-oscuro);
+            font-size: clamp(28px, 3.5vw, 42px);
+            font-weight: 900;
+            letter-spacing: -1px;
+            line-height: 1.15;
+         }
+         .grid-preview {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 44px;
+         }
+         .tarjeta-preview {
+            padding: 32px;
+            border: 1px solid var(--gris-2);
+            border-radius: 20px;
+            background: var(--gris);
+            transition: all 0.25s ease;
+         }
+         .tarjeta-preview:hover {
+            background: var(--blanco);
+            transform: translateY(-5px);
+            box-shadow: var(--sombra);
+            border-color: rgba(22, 43, 78, 0.12);
+         }
+         .tarjeta-preview h3 {
             font-size: 20px;
-            font-weight: 600;
-            color: var(--azul-premium);
+            color: var(--azul-oscuro);
+            font-weight: 800;
             margin-bottom: 12px;
          }
-         .tarjeta-servicio p {
-            color: var(--texto-secundario);
+         .tarjeta-preview p {
+            color: var(--texto-suave);
             font-size: 15px;
+            margin-bottom: 20px;
          }
-
-         /* MÉTODO CORPORATIVO */
-         .seccion-oscura {
-            background-color: var(--azul-premium);
-            color: var(--blanco);
-         }
-         .seccion-oscura h2 { color: var(--blanco); }
-         .seccion-oscura .encabezado-bloque p { color: rgba(255, 255, 255, 0.7); }
-         .grid-metodo {
-            display: grid;
-            grid-template-columns: 0.9fr 1.1fr;
-            gap: 80px;
-         }
-         .lista-pasos {
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-         }
-         .item-paso {
-            display: flex;
-            gap: 24px;
-            padding: 32px;
-            background-color: var(--azul-intermedio);
-            border-radius: 12px;
-            border: 1px solid var(--borde-sutil-blanco);
-         }
-         .num-paso {
-            flex: 0 0 36px;
-            height: 36px;
-            background-color: var(--blanco);
-            color: var(--azul-premium);
-            border-radius: 6px;
-            display: grid;
-            place-items: center;
-            font-weight: 700;
+         .link-interno {
             font-size: 14px;
-         }
-         .contenido-paso h3 {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 6px;
-         }
-         .contenido-paso p {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 15px;
-         }
-
-         /* COMPONENTES DE CHIPS */
-         .wrapper-chips {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            justify-content: center;
-            max-width: 900px;
-            margin: 0 auto;
-         }
-         .chip-institucional {
-            background-color: var(--blanco);
-            border: 1px solid var(--borde-sutil);
-            padding: 10px 20px;
-            border-radius: 999px;
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--azul-marca);
-         }
-
-         /* SECCIÓN LLAMADA A LA ACCIÓN */
-         .cta-bloque {
-            background-color: var(--azul-intermedio);
-            color: var(--blanco);
-            padding: 100px 0;
-         }
-         .cta-grid {
-            display: flex;
-            justify-content: space-between;
+            font-weight: 800;
+            color: var(--azul);
+            display: inline-flex;
             align-items: center;
-            gap: 40px;
+            gap: 6px;
          }
-         .cta-grid h2 { color: var(--blanco); }
-         .cta-grid p { color: rgba(255,255,255,0.7); margin-top: 12px; font-size: 17px; }
-         .cta-botones {
-            display: flex;
-            gap: 16px;
-            flex-shrink: 0;
+         .link-interno:hover {
+            color: var(--azul-oscuro);
+         }
+         .centro-accion {
+            text-align: center;
          }
 
-         /* PIE DE PÁGINA (FOOTER) */
+         /* SECCIÓN SEGUNDA - LA COMPAÑÍA / VALOR */
+         .split-seccion {
+            padding: 90px 0;
+            background: var(--azul-oscuro);
+            color: var(--blanco);
+         }
+         .split-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+         }
+         .split-grid h2 {
+            color: var(--blanco);
+         }
+         .split-grid p {
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 17px;
+            margin-bottom: 24px;
+         }
+
+         /* FOOTER */
          footer {
-            background-color: var(--azul-premium);
+            background: #040d1a;
             color: rgba(255, 255, 255, 0.5);
-            padding: 40px 0;
+            padding: 30px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
             font-size: 14px;
-            border-top: 1px solid var(--borde-sutil-blanco);
          }
-         .footer-container {
+         .footer-wrap {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
          }
 
-         /* MODAL FORMULARIO PREMIUM */
-         .overlay-modal {
-            position: fixed;
-            inset: 0;
-            z-index: 200;
-            background-color: rgba(10, 25, 47, 0.4);
-            backdrop-filter: blur(16px);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 24px;
-         }
-         .overlay-modal.activo { display: flex; }
-         .ventana-modal {
-            background-color: var(--blanco);
-            width: min(680px, 100%);
-            border-radius: 16px;
-            box-shadow: 0 30px 60px -15px rgba(0,0,0,0.25);
-            overflow: hidden;
-         }
-         .modal-cabecera {
-            padding: 32px 40px;
-            border-bottom: 1px solid var(--borde-sutil);
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-         }
-         .modal-cabecera h3 { font-size: 24px; color: var(--azul-premium); font-weight: 700; }
-         .modal-cabecera p { color: var(--texto-secundario); font-size: 14px; margin-top: 4px; }
-         .btn-cerrar {
-            background: none; border: none; font-size: 28px; color: var(--texto-secundario); cursor: pointer; line-height: 1;
-         }
-         .modal-cuerpo { padding: 40px; }
-         .form-estructura {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-         }
-         .full-width { grid-column: span 2; }
-         .grupo-campo { display: flex; flex-direction: column; gap: 6px; }
-         .grupo-campo label { font-size: 13px; font-weight: 600; color: var(--azul-premium); }
-         .grupo-campo input, .grupo-campo select, .grupo-campo textarea {
-            padding: 12px 16px;
-            border: 1px solid var(--borde-sutil);
-            border-radius: 6px;
-            font-size: 14px;
-            color: var(--texto-principal);
-            background-color: var(--blanco);
-            outline: none;
-         }
-         .grupo-campo input:focus, .grupo-campo select:focus, .grupo-campo textarea:focus {
-            border-color: var(--azul-marca);
-            box-shadow: 0 0 0 3px rgba(29, 59, 106, 0.08);
-         }
-         .mosaico-checks {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-         }
-         .tarjeta-check {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px;
-            border: 1px solid var(--borde-sutil);
-            border-radius: 6px;
-            font-size: 13px;
-            font-weight: 600;
-            cursor: pointer;
-            background-color: var(--azul-super-claro);
-         }
-         .modal-botones {
-            margin-top: 32px;
-            display: flex;
-            gap: 12px;
-            justify-content: flex-end;
-         }
-
-         /* DISPOSITIVOS MÓVILES (RESPONSIVE) */
-         @media (max-width: 992px) {
-            section { padding: 100px 0; }
-            .menu-toggle { display: block; }
+         /* RESPONSIVO */
+         @media (max-width: 980px) {
+            .navbar { height: 74px; }
+            .menu-toggle { display: flex; align-items: center; justify-content: center; }
             nav.menu {
-               position: absolute; top: 80px; left: 0; width: 100%;
-               background-color: var(--blanco); border-bottom: 1px solid var(--borde-sutil);
-               display: none; padding: 24px 0;
+               position: absolute;
+               top: 74px;
+               left: 0;
+               width: 100%;
+               display: none;
+               background: #ffffff;
+               border-bottom: 1px solid var(--gris-2);
+               box-shadow: var(--sombra);
+               padding: 20px 0;
             }
             nav.menu.activo { display: block; }
-            nav.menu ul { flex-direction: column; width: min(1200px, calc(100% - 48px)); margin: 0 auto; gap: 4px; }
-            nav.menu a { width: 100%; display: block; padding: 12px 16px; }
-            .hero-grid, .grid-servicios, .grid-metodo, .cta-grid { grid-template-columns: 1fr; }
-            .hero { padding-top: 140px; }
-            .cta-grid { flex-direction: column; text-align: center; }
-            .cta-botones { justify-content: center; }
+            nav ul {
+               flex-direction: column;
+               width: min(100% - 40px, 1160px);
+               margin: auto;
+               gap: 8px;
+            }
+            nav a { width: 100%; padding: 12px 16px; border-radius: 12px; background: var(--gris); }
+            .hero-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+            .hero p { margin-left: auto; margin-right: auto; }
+            .acciones { justify-content: center; }
+            .grid-preview { grid-template-columns: repeat(2, 1fr); }
+            .split-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+            .whatsapp-desktop { display: none; }
          }
-         @media (max-width: 576px) {
-            h1 { font-size: 38px; }
-            .hero-acciones { flex-direction: column; }
-            .mini-stats, .mosaico-checks { grid-template-columns: 1fr; }
-            .modal-cabecera { padding: 24px; }
-            .modal-cuerpo { padding: 24px; }
-            .form-estructura { grid-template-columns: 1fr; }
-            .full-width { grid-column: span 1; }
-            .footer-container { flex-direction: column; gap: 12px; text-align: center; }
+         @media (max-width: 640px) {
+            .hero { padding: 130px 0 60px; }
+            .grid-preview { grid-template-columns: 1fr; }
+            .acciones .btn { width: 100%; }
+            .footer-wrap { flex-direction: column; text-align: center; }
+            .graficos { grid-template-columns: 1fr; }
          }
       </style>
    </head>
@@ -555,20 +501,25 @@
       <header>
          <div class="contenedor navbar">
             <a href="index.html" class="logo" aria-label="NeoDat Home">
-               <img src="Neo1.png" alt="NeoDat Consultores">
+               <img src="Neo1.png" alt="NeoDat Consultores" class="logo-icono">
             </a>
-            <button class="menu-toggle" type="button" aria-label="Menu" onclick="toggleMenu()">☰</button>
-            <nav class="menu">
+            
+            <button class="menu-toggle" type="button" id="btnMenu" aria-label="Abrir Menú">☰</button>
+            
+            <nav class="menu" id="menuNavegacion">
                <ul>
                   <li class="activo"><a href="index.html">Inicio</a></li>
-                  <li><a href="servicios.html">Servicios</a></li>
-                  <li><a href="metodo.html">Método</a></li>
-                  <li><a href="ambitos.html">Ámbitos</a></li>
-                  <li><a href="quienes-somos.html">Quiénes somos</a></li>
+                  <li><a href="servicios.html">Servicios y Productos</a></li>
+                  <li><a href="metodo.html">Nuestro Método</a></li>
+                  <li><a href="ambitos.html">Especialidades</a></li>
+                  <li><a href="quienes-somos.html">Quiénes Somos</a></li>
                   <li><a href="contacto.html">Contacto</a></li>
                </ul>
             </nav>
-            <a class="btn btn-whatsapp" href="https://wa.me/593988200116" target="_blank" rel="noopener">WhatsApp Corporativo</a>
+
+            <a class="btn btn-whatsapp whatsapp-desktop" href="https://wa.me/593988200116?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20NeoDat%20Consultores." target="_blank" rel="noopener">
+               WhatsApp Corporate
+            </a>
          </div>
       </header>
 
@@ -576,250 +527,133 @@
          <section class="hero">
             <div class="contenedor hero-grid">
                <div>
-                  <h1>Transformamos la complejidad de sus datos en rentabilidad corporativa.</h1>
-                  <p>Estructuramos analítica avanzada, inteligencia financiera y arquitecturas de datos a la medida para dotar a su organización de un absoluto control ejecutivo.</p>
-                  <div class="hero-acciones">
-                     <a class="btn btn-primario" href="servicios.html">Ver catálogo de soluciones</a>
-                     <button class="btn btn-secundario" type="button" onclick="abrirModal()">Solicitud formal por correo</button>
-                  </div>
-                  <div class="mini-stats">
-                     <div class="stat-box"><strong>BI</strong><span>Dashboards de Control</span></div>
-                     <div class="stat-box"><strong>ROI</strong><span>Optimización Financiera</span></div>
-                     <div class="stat-box"><strong>360°</strong><span>Auditoría de Procesos</span></div>
+                  <div class="eyebrow">Consultoría Inteligente Especializada</div>
+                  <h1>Transformamos datos corporativos en <span>decisiones estratégicas.</span></h1>
+                  <p>Estructuramos los ecosistemas de información, finanzas, automatizaciones e indicadores KPI de su empresa para instalar el control ejecutivo definitivo.</p>
+                  
+                  <div class="acciones">
+                     <a class="btn btn-principal" href="servicios.html">Ver Catálogo de Productos</a>
+                     <a class="btn btn-secundario" href="contacto.html">Agendar Consultoría</a>
                   </div>
                </div>
 
-               <div class="shell-interfaz">
-                  <div class="interfaz-interna">
-                     <div class="interfaz-nav">
-                        <strong>Control General de Operaciones</strong>
-                        <span class="badge">Sistemas Activos</span>
-                     </div>
-                     <div class="interfaz-panel">
-                        <div class="interfaz-kpis">
-                           <div class="interfaz-card"><small>Rendimiento</small><strong>94.2%</strong></div>
-                           <div class="interfaz-card"><small>Margen Neto</small><strong>31.8%</strong></div>
-                           <div class="interfaz-card"><small>Eficiencia</small><strong>92.0%</strong></div>
+               <div class="dashboard-shell">
+                  <div class="dashboard">
+                     <div class="dashboard-top">
+                        <div>
+                           <strong>Panel Ejecutivo Central</strong>
+                           <span>Métricas de Control Integral</span>
                         </div>
-                        <div class="interfaz-graficos">
-                           <div class="interfaz-card">
-                              <div class="interfaz-chart">
-                                 <div class="interfaz-bar" style="height: 40%"></div>
-                                 <div class="interfaz-bar" style="height: 65%"></div>
-                                 <div class="interfaz-bar destaque" style="height: 90%"></div>
-                                 <div class="interfaz-bar" style="height: 70%"></div>
-                              </div>
+                        <div class="badge">En Tiempo Real</div>
+                     </div>
+                     <div class="dashboard-body">
+                        <div class="kpis">
+                           <div class="kpi">
+                              <small>Rendimiento Global</small>
+                              <strong>+34.8%</strong>
                            </div>
-                           <div class="interfaz-card">
-                              <div class="interfaz-progress-group">
-                                 <div>
-                                    <span style="color: var(--texto-secundario); font-size:11px;">Automatización</span>
-                                    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 86%"></div></div>
-                                 </div>
-                                 <div>
-                                    <span style="color: var(--texto-secundario); font-size:11px;">Integración</span>
-                                    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 73%"></div></div>
-                                 </div>
-                              </div>
+                           <div class="kpi">
+                              <small>Margen Operativo</small>
+                              <strong>31.2%</strong>
+                           </div>
+                           <div class="kpi">
+                              <small>Procesos BI</small>
+                              <strong>98.4%</strong>
                            </div>
                         </div>
+                        <div class="graficos">
+                           <div class="card-db">
+                              <h3>Rendimiento Semanal</h3>
+                              <div class="chart">
+                                 <div class="bar"></div>
+                                 <div class="bar"></div>
+                                 <div class="bar"></div>
+                                 <div class="bar"></div>
+                                 <div class="bar"></div>
+                              </div>
+                           </div>
+                           <div class="card-db">
+                              <h3>Objetivos Activos</h3>
+                              <div class="indicadores">
+                                 <div>
+                                    <div class="item-top"><span>Automatización</span><strong>92%</strong></div>
+                                    <div class="progress"><span style="width: 92%;"></span></div>
+                                 </div>
+                                 <div>
+                                    <div class="item-top"><span>Finanzas</span><strong>84%</strong></div>
+                                    <div class="progress orange"><span style="width: 84%;"></span></div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
                      </div>
                   </div>
                </div>
             </div>
          </section>
 
-         <section class="seccion-gris">
+         <section class="preview-seccion">
             <div class="contenedor">
-               <div class="encabezado-bloque">
-                  <span class="tagline">Especialidades</span>
-                  <h2>Soluciones corporativas de ingeniería y gestión</h2>
-                  <p>Diseñamos e instalamos capacidades analíticas duraderas e integradas directamente en la cadena de valor de su negocio.</p>
+               <div class="encabezado-portada">
+                  <span class="sub">Soluciones de Negocio</span>
+                  <h2>¿Qué implementamos en su organización?</h2>
                </div>
-               <div class="grid-servicios">
-                  <article class="tarjeta-servicio">
-                     <span class="num-servicio">01</span>
-                     <h3>Análisis de Datos</h3>
-                     <p>Estructuración de almacenes de datos limpios, lógicos y completamente escalables para auditorías analíticas.</p>
-                  </article>
-                  <article class="tarjeta-servicio">
-                     <span class="num-servicio">02</span>
-                     <h3>Consultoría Financiera</h3>
-                     <p>Modelado matemático de presupuestos, proyecciones corporativas avanzadas y análisis de costes operativos.</p>
-                  </article>
-                  <article class="tarjeta-servicio">
-                     <span class="num-servicio">03</span>
-                     <h3>Dashboards Corporativos</h3>
-                     <p>Interfaces centralizadas interactivos de KPIs críticos orientados al monitoreo del cuadro de mando ejecutivo.</p>
-                  </article>
-               </div>
-            </div>
-         </section>
 
-         <section class="seccion-oscura">
-            <div class="contenedor grid-metodo">
-               <div class="encabezado-bloque">
-                  <span class="tagline">Garantía Operativa</span>
-                  <h2>Un proceso consultivo riguroso e institucional</h2>
-                  <p>Garantizamos soluciones funcionales basadas en un análisis técnico previo del ecosistema digital e informático de su compañía.</p>
-               </div>
-               <div class="lista-pasos">
-                  <div class="item-paso">
-                     <div class="num-paso">1</div>
-                     <div class="contenido-paso">
-                        <h3>Diagnóstico Técnico Inicial</h3>
-                        <p>Evaluación estructural de la consistencia de los datos, brechas del sistema y requerimientos estratégicos directivos.</p>
-                     </div>
+               <div class="grid-preview">
+                  <div class="tarjeta-preview">
+                     <h3>Business Intelligence & Dashboards</h3>
+                     <p>Centralice múltiples fuentes de información dispersas en un cuadro de mando unificado y automatizado.</p>
+                     <a href="servicios.html" class="link-interno">Ver detalles técnicos →</a>
                   </div>
-                  <div class="item-paso">
-                     <div class="num-paso">2</div>
-                     <div class="contenido-paso">
-                        <h3>Diseño y Modelado</h3>
-                        <p>Estructuración lógica de los indicadores críticos, flujos de extracción y arquitectura del entregable.</p>
-                     </div>
+                  <div class="tarjeta-preview">
+                     <h3>Consultoría Financiera Avanzada</h3>
+                     <p>Control presupuestario robusto, modelos predictivos de flujos y proyecciones de rentabilidad confiables.</p>
+                     <a href="servicios.html" class="link-interno">Ver modelos financieros →</a>
+                  </div>
+                  <div class="tarjeta-preview">
+                     <h3>Desarrollo Web & Control de Gestión</h3>
+                     <p>Plataformas corporativas a medida interconectadas con sus KPIs de dirección fundamentales.</p>
+                     <a href="servicios.html" class="link-interno">Ver arquitectura digital →</a>
                   </div>
                </div>
-            </div>
-         </section>
 
-         <section class="seccion-gris">
-            <div class="contenedor">
-               <div class="encabezado-bloque centro">
-                  <span class="tagline">Áreas de Cobertura</span>
-                  <h2>Soporte en pilares críticos organizacionales</h2>
-               </div>
-               <div class="wrapper-chips">
-                  <span class="chip-institucional">Business Intelligence</span>
-                  <span class="chip-institucional">Planificación Financiera</span>
-                  <span class="chip-institucional">Control de Gestión</span>
-                  <span class="chip-institucional">Modelos de Rentabilidad</span>
-                  <span class="chip-institucional">Arquitectura Web Corporativa</span>
-                  <span class="chip-institucional">Optimización de KPIs</span>
+               <div class="centro-accion">
+                  <a href="servicios.html" class="btn btn-secundario">Explorar los 6 Servicios Corporativos</a>
                </div>
             </div>
          </section>
 
-         <section class="cta-bloque">
-            <div class="contenedor cta-grid">
+         <section class="split-seccion">
+            <div class="contenedor split-grid">
                <div>
-                  <h2>Inicie la institucionalización de sus sistemas de información</h2>
-                  <p>Establezca una sesión técnica inicial con nuestro panel de consultores para evaluar las capacidades de control vigentes en su organización.</p>
+                  <h2>Un método estructurado, medible y libre de archivos estáticos.</h2>
                </div>
-               <div class="cta-botones">
-                  <button class="btn btn-primario" style="background-color: var(--blanco); color: var(--azul-premium);" onclick="abrirModal()">Agendar Sesión</button>
-                  <a class="btn btn-secundario" style="background-color: transparent; color: var(--blanco); border-color: rgba(255,255,255,0.3);" href="contacto.html">Más información</a>
+               <div>
+                  <p>No entregamos reportes planos o plantillas aisladas. En NeoDat Consultores diseñamos, programamos e instalamos herramientas de decisión corporativa que se quedan en su empresa para siempre.</p>
+                  <a href="metodo.html" class="btn btn-principal">Conozca Nuestro Método de Trabajo</a>
                </div>
             </div>
          </section>
       </main>
 
       <footer>
-         <div class="contenedor footer-container">
+         <div class="contenedor footer-wrap">
             <span>© 2026 NeoDat Consultores. Todos los derechos reservados.</span>
-            <span style="font-size:12px;">Infraestructura Corporativa Segura</span>
+            <div style="display: flex; gap: 20px;">
+               <a href="quienes-somos.html">La Firma</a>
+               <a href="contacto.html">Soporte Corporativo</a>
+            </div>
          </div>
       </footer>
 
-      <div class="overlay-modal" id="modalCorreo" aria-hidden="true" onclick="cerrarModalExterno(event)">
-         <div class="ventana-modal">
-            <div class="modal-cabecera">
-               <div>
-                  <h3>Requerimiento de Consultoría</h3>
-                  <p>Describa los parámetros de su proyecto para asignar un especialista técnico.</p>
-               </div>
-               <button class="btn-cerrar" onclick="cerrarModal()">×</button>
-            </div>
-            <div class="modal-cuerpo">
-               <form id="formConsultoria" class="form-estructura" onsubmit="enviarFormulario(event)">
-                  <div class="grupo-campo">
-                     <label for="nombre">Nombre Completo</label>
-                     <input type="text" id="nombre" name="nombre" placeholder="Ej. Juan Pérez" required>
-                  </div>
-                  <div class="grupo-campo">
-                     <label for="empresa">Organización / Empresa</label>
-                     <input type="text" id="empresa" name="empresa" placeholder="Nombre de su compañía">
-                  </div>
-                  <div class="grupo-campo">
-                     <label for="correo">Correo Institucional</label>
-                     <input type="email" id="correo" name="correo" placeholder="ejemplo@empresa.com" required>
-                  </div>
-                  <div class="grupo-campo">
-                     <label for="telefono">Teléfono de Contacto</label>
-                     <input type="tel" id="telefono" name="telefono" placeholder="Ej. 0987654321">
-                  </div>
-                  <div class="grupo-campo full-width">
-                     <label>Solución Requerida</label>
-                     <div class="mosaico-checks">
-                        <label class="tarjeta-check"><input type="checkbox" name="servicio" value="Análisis de Datos"> Análisis de Datos</label>
-                        <label class="tarjeta-check"><input type="checkbox" name="servicio" value="Consultoría Financiera"> Consultoría Financiera</label>
-                        <label class="tarjeta-check"><input type="checkbox" name="servicio" value="Dashboards Corporativos"> Dashboards Corporativos</label>
-                        <label class="tarjeta-check"><input type="checkbox" name="servicio" value="Infraestructura Web"> Desarrollo Web Corporativo</label>
-                     </div>
-                  </div>
-                  <div class="grupo-campo full-width">
-                     <label for="mensaje">Breve Descripción del Requerimiento</label>
-                     <textarea id="mensaje" name="mensaje" rows="4" placeholder="Describa el estado actual o problema estratégico a resolver..." required></textarea>
-                  </div>
-                  <div class="modal-botones full-width">
-                     <button type="button" class="btn btn-secundario" onclick="cerrarModal()">Cancelar</button>
-                     <button type="submit" class="btn btn-primario">Procesar e Iniciar Solicitud</button>
-                  </div>
-               </form>
-            </div>
-         </div>
-      </div>
-
       <script>
-         function toggleMenu() {
-            document.querySelector('nav.menu').classList.toggle('activo');
-         }
+         const btnMenu = document.getElementById('btnMenu');
+         const menuNavegacion = document.getElementById('menuNavegacion');
 
-         function abrirModal() {
-            const modal = document.getElementById('modalCorreo');
-            modal.classList.add('activo');
-            modal.removeAttribute('aria-hidden');
-            document.body.style.overflow = 'hidden';
-         }
-
-         function cerrarModal() {
-            const modal = document.getElementById('modalCorreo');
-            modal.classList.remove('activo');
-            modal.setAttribute('aria-hidden', 'true');
-            document.body.style.overflow = '';
-         }
-
-         function cerrarModalExterno(e) {
-            if (e.target.id === 'modalCorreo') cerrarModal();
-         }
-
-         function enviarFormulario(e) {
-            e.preventDefault();
-            const formData = new FormData(document.getElementById('formConsultoria'));
-            const serviciosSeleccionados = formData.getAll('servicio');
-
-            const estructuraCuerpo = [
-               "Estimado equipo técnico de NeoDat Consultores,",
-               "",
-               "Se ha generado una nueva solicitud formal de consultoría mediante el portal institucional:",
-               "",
-               "Información del Solicitante:",
-               "- Nombre completo: " + formData.get('nombre'),
-               "- Empresa/Organización: " + (formData.get('empresa') || 'No indicada'),
-               "- Correo electrónico: " + formData.get('correo'),
-               "- Teléfono de contacto: " + (formData.get('telefono') || 'No indicado'),
-               "",
-               "Servicios de interés seleccionados:",
-               serviciosSeleccionados.length ? serviciosSeleccionados.map(s => "  • " + s).join("\n") : "  • Ninguno especificado de forma explícita",
-               "",
-               "Detalles operativos de la necesidad:",
-               formData.get('mensaje'),
-               "",
-               "Atentamente."
-            ].join("\n");
-
-            const asunto = encodeURIComponent("Requerimiento Formal de Consultoría Corporativa - NeoDat");
-            window.location.href = `mailto:neodatconsultores@gmail.com?subject=${asunto}&body=${encodeURIComponent(estructuraCuerpo)}`;
-         }
+         btnMenu.addEventListener('click', () => {
+            menuNavegacion.classList.toggle('activo');
+            btnMenu.textContent = menuNavegacion.classList.contains('activo') ? '✕' : '☰';
+         });
       </script>
    </body>
 </html>
