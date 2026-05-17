@@ -231,12 +231,14 @@
          text-transform: uppercase;
       }
       h1 {
-         margin-bottom: 22px;
-         color: var(--azul-oscuro);
-         font-size: clamp(38px, 4.5vw, 62px);
-         line-height: 1.05;
-         letter-spacing: -2px;
-      }
+            max-width: 720px;
+            margin-bottom: 20px;
+            color: var(--azul-oscuro);
+            /* Cambiado: Tamaño más controlado y estilizado */
+            font-size: clamp(24px, 3.2vw, 36px); 
+            line-height: 1.25;
+            letter-spacing: -0.5px;
+         } 
       h1 span {
          color: var(--azul);
          position: relative;
@@ -669,7 +671,7 @@
       <section class="hero">
          <div class="contenedor hero-grid">
             <div>
-               <h1>De información dispersa a <span>decisiones claras</span>.</h1>
+               <h1>De información dispersa a decisiones claras.</h1>
 
                <p>
                   Ayudamos a empresas que trabajan con reportes manuales, datos desordenados
