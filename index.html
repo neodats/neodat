@@ -5,42 +5,36 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>NeoDat Consultores</title>
       <link rel="icon" type="image/png" sizes="32x32" href="Neo1.png">
-      <meta name="description" content="NeoDat Consultores offers solutions in analysis of data, dashboards, finanzas, control de gestión, proyectos y desarrollo web empresarial." />
+      <meta name="description" content="NeoDat Consultores offers solutions in data analysis, dashboards, finanzas, control de gestión, proyectos y desarrollo web empresarial." />
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
       <style>
          :root {
-            --azul: #162b4e;
-            --azul-oscuro: #07172d;
-            --azul-medio: #27456f;
-            --azul-claro: #edf2f8;
-            --naranja: #ffa500;
+            --bg-principal: #040a13;
+            --azul-solido: #0f1c30;
+            --azul-acento: #1d3557;
+            --azul-neon: #38bdf8;
+            --naranja: #f97316;
             --blanco: #ffffff;
-            --gris: #f8fafc;
-            --gris-2: rgba(22, 43, 78, 0.08); 
-            --texto: #1e293b;
-            --texto-suave: #64748b;
-            --sombra-premium: 0 20px 40px -15px rgba(7, 23, 45, 0.1), 0 0 0 1px rgba(22, 43, 78, 0.05);
-            --sombra-panel: 0 40px 80px -20px rgba(7, 23, 45, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.6);
+            --texto-p: #94a3b8;
+            --texto-h: #f8fafc;
             --exito: #10b981;
+            --borde-premium: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.02) 100%);
          }
          
-         html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-         }
          * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
          }
+         html, body {
+            height: 100%;
+         }
          body {
             font-family: "Inter", Arial, sans-serif;
-            background: #ffffff;
-            color: var(--texto);
+            background-color: var(--bg-principal);
+            color: var(--texto-p);
             overflow-x: hidden;
             display: flex;
             flex-direction: column;
@@ -49,426 +43,337 @@
             flex: 1 0 auto;
          }
          .contenedor {
-            width: min(1180px, calc(100% - 40px));
+            width: min(1200px, calc(100% - 40px));
             margin: auto;
          }
 
-         /* BOTONES REDISEÑADOS CON EFECTOS MODERNOS */
-         .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            min-height: 48px;
-            padding: 12px 26px;
-            border-radius: 14px;
-            font-size: 13.5px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-            text-decoration: none;
-         }
-         .btn-principal {
-            background: linear-gradient(135deg, var(--azul) 0%, var(--azul-oscuro) 100%);
-            color: var(--blanco);
-            border: 1px solid var(--azul-oscuro);
-            box-shadow: 0 8px 20px -6px rgba(22, 43, 78, 0.4);
-         }
-         .btn-principal:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 28px -6px rgba(22, 43, 78, 0.5);
-         }
-         .btn-whatsapp {
-            background: #ffffff;
-            color: #1ebe5d;
-            border: 1px solid rgba(30, 190, 93, 0.2);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-         }
-         .btn-whatsapp:hover {
-            background: rgba(37, 211, 102, 0.05);
-            border-color: #1ebe5d;
-            transform: translateY(-2px);
-         }
-         .btn-secundario {
-            background: transparent;
-            color: var(--azul);
-            border: 1px solid rgba(22, 43, 78, 0.14);
-         }
-         .btn-secundario:hover {
-            background: var(--azul-claro);
-            transform: translateY(-2px);
-         }
-
-         /* NAV BAR AJUSTADO PARA EVITAR TAMAÑO EXAGERADO */
+         /* NAVEGACIÓN ESTILO FLOTANTE FUTURISTA */
          header {
             position: fixed;
             top: 0;
             left: 0;
             z-index: 100;
             width: 100%;
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(22, 43, 78, 0.05);
+            background: rgba(4, 10, 19, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
          }
          .navbar {
-            height: 70px;
+            height: 75px;
             display: flex;
             align-items: center;
             justify-content: space-between;
          }
          .logo-icono {
-            max-height: 40px; /* Tamaño controlado, elegante e integrado */
+            max-height: 38px;
             width: auto;
             display: block;
+            filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.2));
          }
          nav ul {
             list-style: none;
             display: flex;
-            gap: 6px;
+            gap: 8px;
          }
          nav a {
             padding: 8px 16px;
-            border-radius: 999px;
+            border-radius: 12px;
             font-size: 13.5px;
-            font-weight: 700;
-            color: var(--azul);
-            transition: 0.2s ease;
+            font-weight: 600;
+            color: var(--texto-h);
+            text-decoration: none;
+            transition: all 0.2s ease;
          }
          nav a:hover {
-            background: var(--azul-claro);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--azul-neon);
+         }
+         
+         /* BOTONES ESTILIZADOS */
+         .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            min-height: 48px;
+            padding: 12px 28px;
+            border-radius: 14px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, background 0.2s;
+         }
+         .btn-principal {
+            background: var(--blanco);
+            color: var(--bg-principal);
+         }
+         .btn-principal:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px -6px rgba(255, 255, 255, 0.2);
+         }
+         .btn-whatsapp {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--exito);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+         }
+         .btn-whatsapp:hover {
+            background: var(--exito);
+            color: var(--blanco);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px -6px rgba(16, 185, 129, 0.3);
+         }
+         .btn-secundario {
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--texto-h);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+         }
+         .btn-secundario:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-2px);
          }
 
-         /* HERO REDISEÑADO CON CAPAS VISUALES PROFUNDAS */
+         /* HERO ASIMÉTRICO REDISEÑADO CON CAPAS INMERSIVAS */
          .hero {
             position: relative;
-            padding: 170px 0 100px;
-            background: radial-gradient(100% 100% at 50% 0%, rgba(237, 242, 248, 0.5) 0%, #ffffff 100%);
+            padding: 180px 0 120px;
             overflow: hidden;
          }
-         /* Orbe de luz de fondo sutil detrás del panel */
-         .hero::before {
-            content: "";
+         
+         /* Destellos abstractos de fondo para eliminar la sensación plana */
+         .hero-blur-1 {
             position: absolute;
-            width: 700px;
-            height: 700px;
-            right: -10%;
-            top: 10%;
-            background: radial-gradient(circle, rgba(22, 43, 78, 0.05) 0%, rgba(255, 165, 0, 0.02) 50%, transparent 100%);
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, transparent 70%);
+            top: -10%;
+            right: 5%;
             z-index: 1;
             pointer-events: none;
          }
-         /* Patrón de cuadrícula tecnológica moderna */
-         .hero::after {
-            content: "";
+         .hero-blur-2 {
             position: absolute;
-            inset: 0;
-            background-image: linear-gradient(rgba(22, 43, 78, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(22, 43, 78, 0.03) 1px, transparent 1px);
-            background-size: 45px 45px;
-            mask-image: radial-gradient(circle at 70% 40%, black 30%, transparent 80%);
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(249, 115, 22, 0.04) 0%, transparent 70%);
+            bottom: 5%;
+            left: -5%;
             z-index: 1;
             pointer-events: none;
          }
 
          .hero-grid {
             position: relative;
-            z-index: 5;
+            z-index: 10;
             display: grid;
-            grid-template-columns: 1fr 1.25fr;
-            gap: 60px;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 50px;
             align-items: center;
          }
 
-         /* COLUMNA IZQUIERDA TYPOGRAPHY */
+         /* TIPOGRAFÍA DE ARQUITECTURA VISUAL */
          .hero-content h1 {
-            color: var(--azul-oscuro);
-            font-size: clamp(26px, 3vw, 38px);
-            line-height: 1.2;
-            letter-spacing: -0.8px;
-            font-weight: 800;
-            margin-bottom: 22px;
+            color: var(--texto-h);
+            font-size: clamp(28px, 3.4vw, 42px);
+            line-height: 1.15;
+            letter-spacing: -1px;
+            font-weight: 900;
+            margin-bottom: 24px;
+         }
+         .hero-content h1 span {
+            background: linear-gradient(135deg, #fff 30%, var(--azul-neon) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
          }
          .hero-content p {
-            color: var(--texto-suave);
-            font-size: 15.5px;
+            color: var(--texto-p);
+            font-size: 16px;
             line-height: 1.6;
-            margin-bottom: 36px;
-            max-width: 540px;
+            margin-bottom: 40px;
+            max-width: 520px;
          }
          .acciones {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 45px;
+            gap: 14px;
          }
 
-         /* SECCIÓN DE DATOS DE MARCA (TRUSTBAR INTEGRADA) */
-         .trust-container {
-            border-top: 1px solid rgba(22, 43, 78, 0.08);
-            padding-top: 24px;
-         }
-         .trust-title {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 1.2px;
-            color: var(--texto-suave);
-            font-weight: 700;
-            margin-bottom: 14px;
-            display: block;
-         }
-         .trust-grid {
-            display: flex;
-            gap: 24px;
-            align-items: center;
-            flex-wrap: wrap;
-         }
-         .trust-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--azul-medio);
-            background: rgba(22, 43, 78, 0.04);
-            padding: 6px 14px;
-            border-radius: 10px;
-            border: 1px solid rgba(22, 43, 78, 0.02);
-         }
-
-         /* INTERFAZ MAC / DECORACIÓN DEL DASHBOARD DE CONTROL */
-         .panel-wrapper {
-            padding: 10px;
-            border-radius: 24px;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(237, 242, 248, 0.3) 100%);
-            box-shadow: var(--sombra-panel);
-            border: 1px solid rgba(255, 255, 255, 0.8);
+         /* DASHBOARD SIMULADO EN FORMATO GLASSMORPHISM 3D */
+         .panel-3d-container {
             position: relative;
+            perspective: 1000px;
          }
-         /* Efecto decorativo flotante trasero para ganar dinamismo */
-         .panel-wrapper::before {
-            content: "";
-            position: absolute;
-            width: 120px;
-            height: 120px;
-            background: var(--naranja);
-            filter: blur(50px);
-            bottom: -20px;
-            left: -20px;
-            opacity: 0.15;
-            z-index: -1;
+         .glass-panel {
+            background: rgba(15, 28, 48, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transform: rotateY(-4deg) rotateX(2deg);
+            transition: transform 0.4s ease;
+         }
+         .glass-panel:hover {
+            transform: rotateY(0deg) rotateX(0deg) translateY(-4px);
          }
 
-         .mac-frame {
-            background: #ffffff;
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid rgba(7, 23, 45, 0.08);
-         }
-         .mac-header {
-            background: #ffffff;
-            padding: 14px 20px;
-            border-bottom: 1px solid var(--gris-2);
+         /* CONTROLES MAC */
+         .panel-header {
             display: flex;
-            align-items: center;
             justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 14px;
          }
-         .mac-dots {
-            display: flex;
-            gap: 6px;
-         }
-         .mac-dots span {
-            width: 9px;
-            height: 9px;
-            border-radius: 50%;
-            background: #e2e8f0;
-         }
-         .mac-header strong {
-            font-size: 12.5px;
+         .dots { display: flex; gap: 6px; }
+         .dots span { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.15); }
+         .dots span:nth-child(1) { background: #ef4444; }
+         .dots span:nth-child(2) { background: #eab308; }
+         .dots span:nth-child(3) { background: #22c55e; }
+         
+         .panel-title {
+            font-size: 12px;
             font-weight: 700;
-            color: var(--azul-oscuro);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--azul-neon);
             display: flex;
             align-items: center;
             gap: 8px;
          }
-         .live-indicator {
-            width: 7px;
-            height: 7px;
+         .live-ping {
+            width: 6px;
+            height: 6px;
             background: var(--exito);
             border-radius: 50%;
             position: relative;
          }
-         .live-indicator::after {
-            content: "";
-            position: absolute;
-            inset: -4px;
-            border-radius: 50%;
-            border: 1px solid var(--exito);
-            animation: pulseCircle 1.8s infinite linear;
+         .live-ping::after {
+            content: ""; position: absolute; inset: -4px; border-radius: 50%; border: 1px solid var(--exito);
+            animation: pulse 1.5s infinite ease-in-out;
          }
-         @keyframes pulseCircle {
-            0% { transform: scale(0.6); opacity: 1; }
-            100% { transform: scale(1.6); opacity: 0; }
-         }
+         @keyframes pulse { 0%{transform:scale(0.5);opacity:1;} 100%{transform:scale(1.8);opacity:0;} }
 
-         /* CONTENIDO INTERNO DEL B.I. */
-         .panel-body {
-            background: #f8fafc;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-         }
-         .kpi-row {
+         /* FILA DE INDICADORES (KPIS) */
+         .grid-kpis {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
+            gap: 14px;
+            margin-bottom: 24px;
          }
-         .kpi-card {
-            background: #ffffff;
+         .card-kpi {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 16px;
             padding: 16px;
-            border-radius: 14px;
-            border: 1px solid rgba(22, 43, 78, 0.04);
-            box-shadow: var(--sombra-premium);
          }
-         .kpi-card label {
+         .card-kpi label {
             display: block;
-            font-size: 10.5px;
-            font-weight: 700;
-            color: var(--texto-suave);
-            text-transform: uppercase;
-            letter-spacing: 0.4px;
-            margin-bottom: 4px;
-         }
-         .kpi-card var {
-            display: block;
-            font-size: 21px;
-            font-weight: 800;
-            font-style: normal;
-            color: var(--azul-oscuro);
-            line-height: 1.1;
-         }
-         .trend {
-            display: inline-flex;
             font-size: 10px;
             font-weight: 700;
+            color: var(--texto-p);
+            text-transform: uppercase;
+            margin-bottom: 6px;
+            letter-spacing: 0.5px;
+         }
+         .card-kpi var {
+            display: block;
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--texto-h);
+            font-style: normal;
+            line-height: 1;
+         }
+         .card-kpi span {
+            display: block;
+            font-size: 10px;
             margin-top: 6px;
+            font-weight: 600;
             color: var(--exito);
          }
-         .trend.meta { color: var(--naranja); }
+         .card-kpi span.meta { color: var(--naranja); }
 
-         /* FILA GRÁFICO SVG */
-         .main-chart {
-            background: #ffffff;
-            border-radius: 14px;
+         /* GRÁFICO INTEGRADO */
+         .contenedor-grafico {
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 16px;
             padding: 20px;
-            border: 1px solid rgba(22, 43, 78, 0.04);
-            box-shadow: var(--sombra-premium);
          }
-         .chart-top {
+         .grafico-top {
             display: flex;
             justify-content: space-between;
-            align-items: center;
             margin-bottom: 16px;
          }
-         .chart-top h3 {
-            font-size: 12.5px;
-            font-weight: 800;
-            color: var(--azul-oscuro);
-         }
-         .legends {
-            display: flex;
-            gap: 14px;
-            font-size: 11px;
-            font-weight: 600;
-            color: var(--texto-suave);
-         }
-         .lg-item { display: flex; align-items: center; gap: 6px; }
-         .lg-item::before { content: ""; width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
-         .lg-real::before { background: var(--azul); }
-         .lg-meta::before { background: var(--naranja); }
+         .grafico-top h4 { font-size: 13px; color: var(--texto-h); font-weight: 700; }
+         
+         .svg-container { width: 100%; height: 130px; }
+         .svg-grafico { width: 100%; height: 100%; overflow: visible; }
 
-         .svg-wrapper {
-            width: 100%;
-            height: 120px;
-         }
-         .svg-element {
-            width: 100%;
-            height: 100%;
-            overflow: visible;
-         }
-
-         /* ANIMACIÓN CELERIDAD ENTRADA WEB */
-         .gs-reveal {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: revealOnLoad 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-         }
-         .d-1 { animation-delay: 0.1s; }
-         .d-2 { animation-delay: 0.25s; }
-
-         @keyframes revealOnLoad {
-            to { opacity: 1; transform: translateY(0); }
-         }
-
-         /* MENÚ MÓVIL ELEMENTO */
-         .menu-toggle {
-            display: none;
-            width: 42px;
-            height: 42px;
-            border-radius: 10px;
-            border: 1px solid var(--gris-2);
-            background: #ffffff;
-            cursor: pointer;
-            font-size: 20px;
-         }
-
-         /* FOOTER DELGADO REQUERIDO */
+         /* FOOTER ULTRA ANGSTO EXIGIDO */
          .site-footer {
-            background: var(--azul-oscuro);
+            background: #02060d;
             padding: 12px 0;
-            border-top: 1px solid rgba(255,255,255,0.06);
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
             width: 100%;
             flex-shrink: 0;
          }
          .footer-bottom {
             display: flex;
             justify-content: center;
-            font-size: 11.5px;
-            color: rgba(255,255,255,0.45);
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.3);
+            letter-spacing: 0.3px;
          }
 
-         /* RESPONSIVO AJUSTES EXTREMOS */
+         /* RESPONSIVO AJUSTADO */
+         .menu-toggle {
+            display: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: transparent;
+            color: var(--texto-h);
+            cursor: pointer;
+            font-size: 18px;
+         }
+
          @media (max-width: 980px) {
             .menu-toggle { display: block; }
             .whatsapp-desktop { display: none; }
             nav.menu {
                position: absolute;
-               top: 70px; left: 0; width: 100%;
-               display: none; background: #ffffff;
-               border-bottom: 1px solid var(--gris-2);
-               padding: 16px 0;
-               box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+               top: 75px; left: 0; width: 100%;
+               display: none; background: var(--azul-solido);
+               border-bottom: 1px solid rgba(255,255,255,0.05);
+               padding: 20px 0;
             }
             nav.menu.activo { display: block; }
-            nav.menu ul { flex-direction: column; gap: 8px; width: min(1180px, calc(100% - 40px)); margin: auto; }
-            nav a { display: block; padding: 10px 16px; background: #f8fafc; }
-            .hero-grid { grid-template-columns: 1fr; gap: 45px; text-align: center; }
-            .hero-content p { margin-left: auto; margin-right: auto; }
+            nav.menu ul { flex-direction: column; gap: 10px; width: min(1200px, calc(100% - 40px)); margin: auto; }
+            nav a { display: block; padding: 12px; background: rgba(255,255,255,0.02); }
+            .hero-grid { grid-template-columns: 1fr; gap: 60px; }
+            .hero-content { text-align: center; }
+            .hero-content p { margin: 0 auto 30px; }
             .acciones { justify-content: center; }
-            .trust-grid { justify-content: center; }
+            .glass-panel { transform: none; }
          }
          @media (max-width: 640px) {
-            .kpi-row { grid-template-columns: 1fr; gap: 10px; }
+            .grid-kpis { grid-template-columns: 1fr; gap: 10px; }
             .acciones .btn { width: 100%; }
-            .hero { padding-top: 120px; }
+            .hero { padding-top: 130px; }
          }
       </style>
    </head>
    <body>
+      
       <header>
          <div class="contenedor navbar">
-            <a href="index.html" class="logo" aria-label="NeoDat">
-               <img src="Neo1.png" class="logo-icono" alt="NeoDat">
+            <a href="index.html" aria-label="NeoDat Home">
+               <img src="Neo1.png" class="logo-icono" alt="NeoDat Consultores">
             </a>
             <button class="menu-toggle" type="button"> ☰ </button>
             <nav class="menu">
@@ -486,134 +391,62 @@
 
       <main>
          <section class="hero">
+            <div class="hero-blur-1"></div>
+            <div class="hero-blur-2"></div>
+            
             <div class="contenedor hero-grid">
                
-               <div class="hero-content gs-reveal d-1">
-                  <h1>Transformamos la incertidumbre empresarial en decisiones respaldadas por datos precisos.</h1>
-                  <p>NeoDat Consultores estructura datos, finanzas, dashboards y procesos para que las empresas trabajen con información clara, indicadores confiables y control ejecutivo permanente.</p>
-                  
+               <div class="hero-content">
+                  <h1>Transformamos la incertidumbre empresarial en <span>decisiones de alto impacto.</span></h1>
+                  <p>NeoDat Consultores estructura datos, arquitecturas financieras, dashboards interactivos y procesos analíticos avanzados para garantizar un control ejecutivo permanente.</p>
                   <div class="acciones">
-                     <a class="btn btn-principal" href="servicios.html">Ver servicios <span>→</span></a>
+                     <a class="btn btn-principal" href="servicios.html">Explorar servicios</a>
                      <a class="btn btn-whatsapp" href="https://wa.me/593988200116" target="_blank" rel="noopener">Solicitar asesoría</a>
                      <a class="btn btn-secundario" href="contacto.html">Agendar reunión</a>
                   </div>
-
-                  <div class="trust-container">
-                     <span class="trust-title">Especialistas en Integración</span>
-                     <div class="trust-grid">
-                        <div class="trust-badge">📊 Power BI</div>
-                        <div class="trust-badge">🗄️ SQL Server</div>
-                        <div class="trust-badge">🐍 Python</div>
-                        <div class="trust-badge">📈 Excel Avanzado</div>
-                     </div>
-                  </div>
                </div>
 
-               <div class="panel-wrapper gs-reveal d-2">
-                  <div class="mac-frame">
-                     <div class="mac-header">
-                        <div class="mac-dots"><span></span><span></span><span></span></div>
-                        <strong><span class="live-indicator"></span> Panel de Control Corporativo</strong>
+               <div class="panel-3d-container">
+                  <div class="glass-panel">
+                     <div class="panel-header">
+                        <div class="dots"><span></span><span></span><span></span></div>
+                        <div class="panel-title"><span class="live-ping"></span> Business Intelligence Stream</div>
                      </div>
-                     <div class="panel-body">
-                        
-                        <div class="kpi-row">
-                           <div class="kpi-card">
-                              <label>Margen Neto</label>
-                              <var id="kpi-margen">34.2%</var>
-                              <span class="trend">▲ +2.4% vs mes ant.</span>
-                           </div>
-                           <div class="kpi-card">
-                              <label>Ebitda Anual</label>
-                              <var id="kpi-ebitda">$428K</var>
-                              <span class="trend">▲ Optimizado</span>
-                           </div>
-                           <div class="kpi-card">
-                              <label>Calidad Datos</label>
-                              <var id="kpi-calidad">99.8%</var>
-                              <span class="trend meta">● Confiable</span>
-                           </div>
+                     
+                     <div class="grid-kpis">
+                        <div class="card-kpi">
+                           <label>Margen Neto</label>
+                           <var id="val-margen">34.2%</var>
+                           <span>▲ +2.4% este mes</span>
                         </div>
-
-                        <div class="main-chart">
-                           <div class="chart-top">
-                              <h3>Evolución de Ingresos</h3>
-                              <div class="legends">
-                                 <span class="lg-item lg-real">Ingresos</span>
-                                 <span class="lg-item lg-meta">Meta</span>
-                              </div>
-                           </div>
-                           <div class="svg-wrapper">
-                              <svg class="svg-element" viewBox="0 0 500 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-                                 <defs>
-                                    <linearGradient id="area-grad" x1="0" y1="0" x2="0" y2="1">
-                                       <stop offset="0%" stop-color="#162b4e" stop-opacity="0.15"/>
-                                       <stop offset="100%" stop-color="#162b4e" stop-opacity="0.0"/>
-                                    </linearGradient>
-                                 </defs>
-                                 <line x1="0" y1="30" x2="500" y2="30" stroke="rgba(22,43,78,0.04)" stroke-width="1" />
-                                 <line x1="0" y1="60" x2="500" y2="60" stroke="rgba(22,43,78,0.04)" stroke-width="1" />
-                                 <line x1="0" y1="90" x2="500" y2="90" stroke="rgba(22,43,78,0.04)" stroke-width="1" />
-                                 
-                                 <text x="5" y="116" fill="#64748b" font-size="9" font-weight="600">Ene</text>
-                                 <text x="100" y="116" fill="#64748b" font-size="9" font-weight="600">Feb</text>
-                                 <text x="200" y="116" fill="#64748b" font-size="9" font-weight="600">Mar</text>
-                                 <text x="300" y="116" fill="#64748b" font-size="9" font-weight="600">Abr</text>
-                                 <text x="400" y="116" fill="#64748b" font-size="9" font-weight="600">May</text>
-                                 <text x="470" y="116" fill="#64748b" font-size="9" font-weight="600">Jun</text>
-
-                                 <line x1="0" y1="85" x2="500" y2="35" stroke="var(--naranja)" stroke-width="1.5" stroke-dasharray="4,4" />
-                                 <path id="dyn-area" d="M 0 95 L 100 80 L 200 45 L 300 75 L 400 35 L 500 50 L 500 100 L 0 100 Z" fill="url(#area-grad)" />
-                                 <polyline id="dyn-line" fill="none" stroke="var(--azul)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" points="0,95 100,80 200,45 300,75 400,35 500,50" />
-
-                                 <circle cx="100" cy="80" r="3.5" fill="var(--azul)" />
-                                 <circle cx="200" cy="45" r="3.5" fill="var(--azul)" />
-                                 <circle cx="300" cy="75" r="3.5" fill="var(--azul)" />
-                                 <circle cx="400" cy="35" r="3.5" fill="var(--azul)" />
-                                 <circle id="track-ball" cx="500" cy="50" r="4" fill="var(--azul)" />
-                              </svg>
-                           </div>
+                        <div class="card-kpi">
+                           <label>Ebitda Anual</label>
+                           <var id="val-ebitda">$428K</var>
+                           <span>▲ Optimizado</span>
                         </div>
-
+                        <div class="card-kpi">
+                           <label>Precisión BI</label>
+                           <var id="val-precision">99.8%</var>
+                           <span class="meta">● Confiable</span>
+                        </div>
                      </div>
-                  </div>
-               </div>
 
-            </div>
-         </section>
-      </main>
-
-      <footer class="site-footer">
-         <div class="contenedor footer-bottom">
-            <span>© 2026 NeoDat Consultores. Todos los derechos reservados.</span>
-         </div>
-      </footer>
-
-      <script>
-         // Menú móvil disparador
-         const btnMenu = document.querySelector(".menu-toggle");
-         const navbarMenu = document.querySelector(".menu");
-         btnMenu.addEventListener("click", () => navbarMenu.classList.toggle("activo"));
-
-         // Feed BI dinámico real corregido
-         const lMargen = document.getElementById("kpi-margen");
-         const lEbitda = document.getElementById("kpi-ebitda");
-         const lCalidad = document.getElementById("kpi-calidad");
-         
-         const dLine = document.getElementById("dyn-line");
-         const dArea = document.getElementById("dyn-area");
-         const tBall = document.getElementById("track-ball");
-
-         setInterval(() => {
-            lMargen.textContent = `${(33 + Math.random() * 2).toFixed(1)}%`;
-            lEbitda.textContent = `$${(420 + Math.floor(Math.random() * 12))}K`;
-            lCalidad.textContent = `${(99.5 + Math.random() * 0.4).toFixed(1)}%`;
-
-            const randomY = Math.floor(25 + Math.random() * 40); 
-            dLine.setAttribute("points", `0,95 100,80 200,45 300,75 400,35 500,${randomY}`);
-            dArea.setAttribute("d", `M 0 95 L 100 80 L 200 45 L 300 75 L 400 35 L 500 ${randomY} L 500 100 L 0 100 Z`);
-            tBall.setAttribute("cy", randomY);
-         }, 2500);
-      </script>
-   </body>
-</html>
+                     <div class="contenedor-grafico">
+                        <div class="grafico-top">
+                           <h4>Performance Real vs Proyección</h4>
+                        </div>
+                        <div class="svg-container">
+                           <svg class="svg-grafico" viewBox="0 0 500 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                              <defs>
+                                 <linearGradient id="grad-area" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.2"/>
+                                    <stop offset="100%" stop-color="#38bdf8" stop-opacity="0"/>
+                                 </linearGradient>
+                              </defs>
+                              <line x1="0" y1="30" x2="500" y2="30" stroke="rgba(255,255,255,0.03)" stroke-width="1" />
+                              <line x1="0" y1="60" x2="500" y2="60" stroke="rgba(255,255,255,0.03)" stroke-width="1" />
+                              <line x1="0" y1="90" x2="500" y2="90" stroke="rgba(255,255,255,0.03)" stroke-width="1" />
+                              
+                              <path id="svg-area" d="M 0 95 L 100 80 L 200 45 L 300 75 L 400 35 L 500 50 L 500 120 L 0 120 Z" fill="url(#grad-area)" />
+                              <polyline id="svg-line" fill="none" stroke="#38bdf8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" points="0,95 100,80 200,45 300,75 400,35 500,50" />
+                              <line x1="0" y1="85" x2="500" y2="35
