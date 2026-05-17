@@ -3,657 +3,456 @@
    <head>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>NeoDat Consultores | Business Intelligence & Consultoría</title>
+      <title>NeoDat Consultores | Business Intelligence & Analytics</title>
       <link rel="icon" type="image/png" sizes="32x32" href="Neo1.png">
-      <meta name="description" content="Estructuramos datos, finanzas y dashboards para transformar la incertidumbre de su empresa en decisiones ejecutivas respaldadas por información confiable." />
+      <meta name="description" content="Infraestructura analítica y control de gestión de alto rendimiento corporativo." />
+      
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet" />
+      
       <style>
          :root {
-            --azul: #162b4e;
-            --azul-oscuro: #07172d;
-            --azul-medio: #27456f;
-            --azul-claro: #edf2f8;
-            --naranja: #ffa500;
+            --bg-principal: #040811;
+            --bg-tarjeta: rgba(10, 20, 42, 0.4);
+            --azul-premium: #0052cc;
+            --azul-glow: rgba(0, 82, 204, 0.15);
+            --naranja-acento: #ff9900;
             --blanco: #ffffff;
-            --gris: #f6f8fb;
-            --gris-2: #e1e7f0;
-            --texto: #243447;
-            --texto-suave: #66788a;
-            --sombra: 0 20px 50px rgba(7, 23, 45, 0.06);
-            --sombra-fuerte: 0 30px 70px rgba(7, 23, 45, 0.12);
+            --texto-secundario: #8fa0b5;
+            --borde-sutil: rgba(255, 255, 255, 0.08);
          }
+
          * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
          }
-         html {
-            scroll-behavior: smooth;
-         }
-         body {
-            font-family: "Inter", Arial, sans-serif;
-            background: var(--blanco);
-            color: var(--texto);
-            line-height: 1.6;
-            overflow-x: hidden;
-         }
-         a {
-            text-decoration: none;
-            color: inherit;
-         }
-         .contenedor {
-            width: min(1160px, calc(100% - 40px));
-            margin: auto;
-         }
-         .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 48px;
-            padding: 13px 26px;
-            border-radius: 999px;
-            border: 1px solid transparent;
-            font-size: 14px;
-            font-weight: 800;
-            cursor: pointer;
-            transition: all 0.25s ease;
-            white-space: nowrap;
-         }
-         .btn-principal {
-            background: var(--azul);
+
+         html, body {
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-principal);
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
             color: var(--blanco);
-            box-shadow: 0 16px 34px rgba(22, 43, 78, 0.15);
-         }
-         .btn-principal:hover {
-            background: var(--azul-oscuro);
-            transform: translateY(-2px);
-            box-shadow: 0 20px 40px rgba(22, 43, 78, 0.25);
-         }
-         .btn-secundario {
-            background: var(--blanco);
-            color: var(--azul);
-            border-color: rgba(22, 43, 78, 0.16);
-         }
-         .btn-secundario:hover {
-            border-color: var(--azul);
-            background: var(--gris);
-            transform: translateY(-2px);
-         }
-         .btn-whatsapp {
-            background: #25D366;
-            color: #ffffff;
-         }
-         .btn-whatsapp:hover {
-            background: #1ebe5d;
-            transform: translateY(-2px);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
          }
 
-         /* HEADER Y NAV */
-         header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 100;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(22, 43, 78, 0.06);
+         /* Fondo Dinámico Corporativo (Grid y Luces) */
+         .fondo-abstracto {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            background-image: 
+               linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+               linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
          }
-         .navbar {
-            height: 84px;
+
+         .fondo-abstracto::before {
+            content: "";
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 82, 204, 0.25) 0%, transparent 70%);
+            filter: blur(80px);
+         }
+
+         .fondo-abstracto::after {
+            content: "";
+            position: absolute;
+            bottom: -10%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 153, 0, 0.06) 0%, transparent 70%);
+            filter: blur(80px);
+         }
+
+         /* Estructura Base de Pantalla Completa */
+         .pantalla-portada {
+            position: relative;
+            z-index: 2;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 40px 0;
+         }
+
+         .contenedor {
+            width: min(1240px, calc(100% - 48px));
+            margin: 0 auto;
+         }
+
+         /* Top Bar / Branding Simple */
+         .header-portada {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 24px;
-         }
-         .logo {
-            display: flex;
-            align-items: center;
-         }
-         .logo-icono {
-            width: 140px;
-            height: 70px;
-            object-fit: contain;
-         }
-         nav ul {
-            list-style: none;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-         }
-         nav a {
-            display: inline-flex;
-            padding: 10px 18px;
-            border-radius: 999px;
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--azul-medio);
-            transition: 0.2s ease;
-         }
-         nav a:hover, nav li.activo a {
-            color: var(--azul-oscuro);
-            background: var(--azul-claro);
-         }
-         .menu-toggle {
-            display: none;
-            width: 44px;
-            height: 44px;
-            border: 1px solid var(--gris-2);
-            border-radius: 12px;
-            background: #ffffff;
-            color: var(--azul);
-            font-size: 24px;
-            cursor: pointer;
          }
 
-         /* PORTADA - HERO */
-         .hero {
-            position: relative;
-            padding: 180px 0 110px;
-            background: linear-gradient(180deg, #ffffff 0%, #f4f8fc 100%);
-            overflow: hidden;
+         .logo img {
+            height: 56px;
+            width: auto;
+            display: block;
          }
-         .hero::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background-image: 
-               linear-gradient(rgba(22, 43, 78, 0.03) 1px, transparent 1px),
-               linear-gradient(90deg, rgba(22, 43, 78, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-            mask-image: linear-gradient(180deg, black 60%, transparent 100%);
-            -webkit-mask-image: linear-gradient(180deg, black 60%, transparent 100%);
-            pointer-events: none;
-         }
-         .hero-grid {
-            position: relative;
-            z-index: 2;
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 60px;
+
+         .status-indicador {
+            display: flex;
             align-items: center;
-         }
-         .eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 24px;
-            padding: 6px 14px;
-            border: 1px solid rgba(22, 43, 78, 0.08);
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--borde-sutil);
+            padding: 8px 16px;
             border-radius: 999px;
-            background: var(--blanco);
-            color: var(--azul-medio);
             font-size: 12px;
-            font-weight: 800;
-            letter-spacing: 0.5px;
+            font-weight: 700;
+            letter-spacing: 1px;
             text-transform: uppercase;
          }
-         .eyebrow::before {
-            content: "";
-            width: 6px;
-            height: 6px;
+
+         .status-punto {
+            width: 8px;
+            height: 8px;
+            background-color: #00ff66;
             border-radius: 50%;
-            background: var(--naranja);
+            box-shadow: 0 0 12px #00ff66;
          }
+
+         /* Bloque Central Split */
+         .grid-principal {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 80px;
+            align-items: center;
+            margin: auto 0;
+            padding: 60px 0;
+         }
+
+         /* Textos de la Portada */
+         .tagline {
+            color: var(--naranja-acento);
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            display: block;
+         }
+
          h1 {
-            color: var(--azul-oscuro);
-            font-size: clamp(40px, 4.8vw, 66px);
-            line-height: 1.05;
-            letter-spacing: -2px;
-            margin-bottom: 24px;
+            font-size: clamp(44px, 5.5vw, 72px);
             font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -3px;
+            color: var(--blanco);
+            margin-bottom: 28px;
          }
+
          h1 span {
-            color: var(--azul);
-            background: linear-gradient(135deg, var(--azul), var(--azul-medio));
+            background: linear-gradient(135deg, #ffffff 30%, #a3c2f0 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
          }
-         .hero p {
-            color: var(--texto-suave);
-            font-size: 18px;
+
+         p.introduccion {
+            font-size: clamp(16px, 1.8vw, 20px);
+            color: var(--texto-secundario);
             line-height: 1.55;
-            margin-bottom: 36px;
-            max-width: 580px;
-         }
-         .acciones {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 14px;
-            margin-bottom: 48px;
+            margin-bottom: 44px;
+            max-width: 600px;
          }
 
-         /* VISUAL DASHBOARD SIMULADO */
-         .dashboard-shell {
-            padding: 12px;
-            border-radius: 28px;
-            background: linear-gradient(135deg, var(--azul), var(--azul-oscuro));
-            box-shadow: var(--sombra-fuerte);
-         }
-         .dashboard {
-            overflow: hidden;
-            border-radius: 20px;
-            background: var(--gris);
-         }
-         .dashboard-top {
+         /* Botones de Entrada */
+         .area-acciones {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            padding: 16px 20px;
-            background: var(--blanco);
-            border-bottom: 1px solid var(--gris-2);
+            gap: 20px;
          }
-         .dashboard-top strong {
-            display: block;
-            color: var(--azul-oscuro);
-            font-size: 16px;
-            font-weight: 800;
-         }
-         .dashboard-top span {
-            color: var(--texto-suave);
-            font-size: 12px;
-         }
-         .badge {
-            padding: 5px 10px;
-            border-radius: 999px;
-            background: var(--azul-claro);
-            color: var(--azul);
-            font-size: 11px;
-            font-weight: 800;
-         }
-         .dashboard-body {
-            display: grid;
-            gap: 12px;
-            padding: 16px;
-         }
-         .kpis {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-         }
-         .kpi, .card-db {
-            border: 1px solid var(--gris-2);
-            border-radius: 14px;
-            background: var(--blanco);
-            padding: 14px;
-         }
-         .kpi small {
-            display: block;
-            color: var(--texto-suave);
-            font-size: 11px;
-            font-weight: 600;
-            margin-bottom: 4px;
-         }
-         .kpi strong {
-            display: block;
-            color: var(--azul-oscuro);
-            font-size: 24px;
-            font-weight: 900;
-            letter-spacing: -0.5px;
-         }
-         .graficos {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 10px;
-         }
-         .card-db h3 {
-            margin-bottom: 12px;
-            color: var(--azul-oscuro);
-            font-size: 13px;
-            font-weight: 800;
-         }
-         .chart {
-            height: 120px;
-            display: flex;
-            align-items: flex-end;
-            gap: 8px;
-         }
-         .bar {
-            flex: 1;
-            min-height: 15px;
-            border-radius: 6px 6px 0 0;
-            background: linear-gradient(180deg, var(--azul), var(--azul-medio));
-         }
-         .bar:nth-child(1) { height: 40%; opacity: 0.6; }
-         .bar:nth-child(2) { height: 65%; opacity: 0.7; }
-         .bar:nth-child(3) { height: 50%; opacity: 0.8; }
-         .bar:nth-child(4) { height: 90%; background: linear-gradient(180deg, var(--naranja), #ffc766); }
-         .bar:nth-child(5) { height: 75%; }
-         
-         .indicadores {
-            display: grid;
-            gap: 10px;
-         }
-         .item-top {
-            display: flex;
-            justify-content: space-between;
-            color: var(--texto-suave);
-            font-size: 11px;
-            font-weight: 700;
-            margin-bottom: 4px;
-         }
-         .progress {
-            height: 6px;
-            border-radius: 999px;
-            background: var(--azul-claro);
-            overflow: hidden;
-         }
-         .progress span {
-            display: block;
-            height: 100%;
-            background: var(--azul);
-            border-radius: inherit;
-         }
-         .progress.orange span { background: var(--naranja); }
 
-         /* SECCIÓN PORTADA - ENLACE INTERNO A PRODUCTOS */
-         .preview-seccion {
-            padding: 100px 0;
-            background: var(--blanco);
-         }
-         .encabezado-portada {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 50px;
-         }
-         .sub {
-            color: var(--naranja);
-            font-size: 13px;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 12px;
-            display: block;
-         }
-         h2 {
-            color: var(--azul-oscuro);
-            font-size: clamp(28px, 3.5vw, 42px);
-            font-weight: 900;
-            letter-spacing: -1px;
-            line-height: 1.15;
-         }
-         .grid-preview {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            margin-bottom: 44px;
-         }
-         .tarjeta-preview {
-            padding: 32px;
-            border: 1px solid var(--gris-2);
-            border-radius: 20px;
-            background: var(--gris);
-            transition: all 0.25s ease;
-         }
-         .tarjeta-preview:hover {
-            background: var(--blanco);
-            transform: translateY(-5px);
-            box-shadow: var(--sombra);
-            border-color: rgba(22, 43, 78, 0.12);
-         }
-         .tarjeta-preview h3 {
-            font-size: 20px;
-            color: var(--azul-oscuro);
-            font-weight: 800;
-            margin-bottom: 12px;
-         }
-         .tarjeta-preview p {
-            color: var(--texto-suave);
-            font-size: 15px;
-            margin-bottom: 20px;
-         }
-         .link-interno {
-            font-size: 14px;
-            font-weight: 800;
-            color: var(--azul);
+         .btn-portada {
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-         }
-         .link-interno:hover {
-            color: var(--azul-oscuro);
-         }
-         .centro-accion {
-            text-align: center;
+            justify-content: center;
+            padding: 16px 36px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            text-decoration: none;
          }
 
-         /* SECCIÓN SEGUNDA - LA COMPAÑÍA / VALOR */
-         .split-seccion {
-            padding: 90px 0;
-            background: var(--azul-oscuro);
+         .btn-entrar {
+            background-color: var(--azul-premium);
             color: var(--blanco);
+            box-shadow: 0 20px 40px var(--azul-glow);
          }
-         .split-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
+
+         .btn-entrar:hover {
+            background-color: #1a73e8;
+            transform: translateY(-2px);
+            box-shadow: 0 25px 50px rgba(0, 82, 204, 0.3);
+         }
+
+         .btn-contacto {
+            background-color: transparent;
+            color: var(--blanco);
+            border: 1px solid var(--borde-sutil);
+         }
+
+         .btn-contacto:hover {
+            background-color: rgba(255, 255, 255, 0.03);
+            border-color: rgba(255, 255, 255, 0.3);
+         }
+
+         /* Render Visual Corporativo (Interface BI Mockup) */
+         .interfaz-contenedor {
+            position: relative;
+            background: var(--bg-tarjeta);
+            border: 1px solid var(--borde-sutil);
+            border-radius: 20px;
+            padding: 24px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 50px 100px -20px rgba(0,0,0,0.7);
+         }
+
+         .interfaz-header {
+            display: flex;
+            justify-content: space-between;
             align-items: center;
+            margin-bottom: 24px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 16px;
          }
-         .split-grid h2 {
-            color: var(--blanco);
+
+         .interfaz-titulo {
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
          }
-         .split-grid p {
-            color: rgba(255, 255, 255, 0.75);
-            font-size: 17px;
+
+         .interfaz-titulo span {
+            color: var(--texto-secundario);
+            font-weight: 400;
+            font-size: 12px;
+            display: block;
+            margin-top: 2px;
+         }
+
+         .interfaz-kpis {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
             margin-bottom: 24px;
          }
 
-         /* FOOTER */
-         footer {
-            background: #040d1a;
-            color: rgba(255, 255, 255, 0.5);
-            padding: 30px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            font-size: 14px;
+         .kpi-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--borde-sutil);
+            border-radius: 12px;
+            padding: 16px;
          }
-         .footer-wrap {
+
+         .kpi-card small {
+            color: var(--texto-secundario);
+            font-size: 11px;
+            text-transform: uppercase;
+            font-weight: 500;
+         }
+
+         .kpi-card div {
+            font-size: 24px;
+            font-weight: 700;
+            margin-top: 6px;
+         }
+
+         .kpi-card div span {
+            font-size: 12px;
+            color: #00ff66;
+            margin-left: 6px;
+            font-weight: 500;
+         }
+
+         /* Gráfico de Barras Estilizado */
+         .grafico-barras {
+            height: 130px;
+            display: flex;
+            align-items: flex-end;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+         }
+
+         .barra {
+            flex: 1;
+            background: linear-gradient(180deg, rgba(0, 82, 204, 0.2) 0%, var(--azul-premium) 100%);
+            border-radius: 4px 4px 0 0;
+            transition: height 1s ease;
+         }
+
+         .barra.destacada {
+            background: linear-gradient(180deg, rgba(255, 153, 0, 0.4) 0%, var(--naranja-acento) 100%);
+         }
+
+         /* Footer Fijo de Entrada */
+         .footer-portada {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 16px;
+            border-top: 1px solid var(--borde-sutil);
+            padding-top: 24px;
+            font-size: 13px;
+            color: var(--texto-secundario);
          }
 
-         /* RESPONSIVO */
-         @media (max-width: 980px) {
-            .navbar { height: 74px; }
-            .menu-toggle { display: flex; align-items: center; justify-content: center; }
-            nav.menu {
-               position: absolute;
-               top: 74px;
-               left: 0;
-               width: 100%;
-               display: none;
-               background: #ffffff;
-               border-bottom: 1px solid var(--gris-2);
-               box-shadow: var(--sombra);
-               padding: 20px 0;
+         .credenciales {
+            display: flex;
+            gap: 32px;
+         }
+
+         .credenciales span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+         }
+
+         .credenciales span::before {
+            content: "✓";
+            color: var(--azul-premium);
+            font-weight: bold;
+         }
+
+         /* Adaptación Responsiva */
+         @media (max-width: 992px) {
+            .grid-principal {
+               grid-template-columns: 1fr;
+               gap: 60px;
+               text-align: center;
             }
-            nav.menu.activo { display: block; }
-            nav ul {
+
+            p.introduccion {
+               margin-left: auto;
+               margin-right: auto;
+            }
+
+            .area-acciones {
+               justify-content: center;
+            }
+
+            .interfaz-contenedor {
+               max-width: 500px;
+               margin: 0 auto;
+            }
+         }
+
+         @media (max-width: 576px) {
+            .pantalla-portada {
+               padding: 24px 0;
+            }
+
+            .header-portada {
                flex-direction: column;
-               width: min(100% - 40px, 1160px);
-               margin: auto;
+               gap: 20px;
+            }
+
+            .area-acciones {
+               flex-direction: column;
+               width: 100%;
+            }
+
+            .btn-portada {
+               width: 100%;
+            }
+
+            .footer-portada {
+               flex-direction: column;
+               gap: 16px;
+               text-align: center;
+            }
+
+            .credenciales {
+               flex-direction: column;
                gap: 8px;
             }
-            nav a { width: 100%; padding: 12px 16px; border-radius: 12px; background: var(--gris); }
-            .hero-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
-            .hero p { margin-left: auto; margin-right: auto; }
-            .acciones { justify-content: center; }
-            .grid-preview { grid-template-columns: repeat(2, 1fr); }
-            .split-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
-            .whatsapp-desktop { display: none; }
-         }
-         @media (max-width: 640px) {
-            .hero { padding: 130px 0 60px; }
-            .grid-preview { grid-template-columns: 1fr; }
-            .acciones .btn { width: 100%; }
-            .footer-wrap { flex-direction: column; text-align: center; }
-            .graficos { grid-template-columns: 1fr; }
          }
       </style>
    </head>
    <body>
 
-      <header>
-         <div class="contenedor navbar">
-            <a href="index.html" class="logo" aria-label="NeoDat Home">
-               <img src="Neo1.png" alt="NeoDat Consultores" class="logo-icono">
-            </a>
+      <div class="fondo-abstracto"></div>
+
+      <div class="contenedor pantalla-portada">
+         
+         <header class="header-portada">
+            <div class="logo">
+               <img src="Neo1.png" alt="NeoDat Consultores">
+            </div>
+            <div class="status-indicador">
+               <span class="status-punto"></span> Plataforma Corporativa Activa
+            </div>
+         </header>
+
+         <main class="grid-principal">
             
-            <button class="menu-toggle" type="button" id="btnMenu" aria-label="Abrir Menú">☰</button>
-            
-            <nav class="menu" id="menuNavegacion">
-               <ul>
-                  <li class="activo"><a href="index.html">Inicio</a></li>
-                  <li><a href="servicios.html">Servicios y Productos</a></li>
-                  <li><a href="metodo.html">Nuestro Método</a></li>
-                  <li><a href="ambitos.html">Especialidades</a></li>
-                  <li><a href="quienes-somos.html">Quiénes Somos</a></li>
-                  <li><a href="contacto.html">Contacto</a></li>
-               </ul>
-            </nav>
+            <section>
+               <span class="tagline">Ingeniería de Gestión & BI</span>
+               <h1>Transformamos la complejidad en <span>dirección absoluta.</span></h1>
+               <p class="introduccion">Estructuramos ecosistemas de datos avanzados y modelos financieros de alta precisión para dotar a su organización de un control ejecutivo permanente.</p>
+               
+               <div class="area-acciones">
+                  <a href="servicios.html" class="btn-portada btn-entrar">Entrar a la Plataforma</a>
+                  <a href="contacto.html" class="btn-portada btn-contacto">Consultoría Directa</a>
+               </div>
+            </section>
 
-            <a class="btn btn-whatsapp whatsapp-desktop" href="https://wa.me/593988200116?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20NeoDat%20Consultores." target="_blank" rel="noopener">
-               WhatsApp Corporate
-            </a>
-         </div>
-      </header>
-
-      <main>
-         <section class="hero">
-            <div class="contenedor hero-grid">
-               <div>
-                  <div class="eyebrow">Consultoría Inteligente Especializada</div>
-                  <h1>Transformamos datos corporativos en <span>decisiones estratégicas.</span></h1>
-                  <p>Estructuramos los ecosistemas de información, finanzas, automatizaciones e indicadores KPI de su empresa para instalar el control ejecutivo definitivo.</p>
-                  
-                  <div class="acciones">
-                     <a class="btn btn-principal" href="servicios.html">Ver Catálogo de Productos</a>
-                     <a class="btn btn-secundario" href="contacto.html">Agendar Consultoría</a>
+            <section class="interfaz-contenedor">
+               <div class="interfaz-header">
+                  <div class="interfaz-titulo">
+                     Ecosistema NeoDat
+                     <span>Monitoreo de Infraestructura Global</span>
+                  </div>
+                  <div style="font-size: 11px; font-weight: 700; color: var(--naranja-acento);">Métricas de Control</div>
+               </div>
+               
+               <div class="interfaz-kpis">
+                  <div class="kpi-card">
+                     <small>Optimización de Procesos</small>
+                     <div>94.2%<span>↑ 4.1%</span></div>
+                  </div>
+                  <div class="kpi-card">
+                     <small>Margen Neto de Operación</small>
+                     <div>31.8%<span>↑ 2.3%</span></div>
                   </div>
                </div>
 
-               <div class="dashboard-shell">
-                  <div class="dashboard">
-                     <div class="dashboard-top">
-                        <div>
-                           <strong>Panel Ejecutivo Central</strong>
-                           <span>Métricas de Control Integral</span>
-                        </div>
-                        <div class="badge">En Tiempo Real</div>
-                     </div>
-                     <div class="dashboard-body">
-                        <div class="kpis">
-                           <div class="kpi">
-                              <small>Rendimiento Global</small>
-                              <strong>+34.8%</strong>
-                           </div>
-                           <div class="kpi">
-                              <small>Margen Operativo</small>
-                              <strong>31.2%</strong>
-                           </div>
-                           <div class="kpi">
-                              <small>Procesos BI</small>
-                              <strong>98.4%</strong>
-                           </div>
-                        </div>
-                        <div class="graficos">
-                           <div class="card-db">
-                              <h3>Rendimiento Semanal</h3>
-                              <div class="chart">
-                                 <div class="bar"></div>
-                                 <div class="bar"></div>
-                                 <div class="bar"></div>
-                                 <div class="bar"></div>
-                                 <div class="bar"></div>
-                              </div>
-                           </div>
-                           <div class="card-db">
-                              <h3>Objetivos Activos</h3>
-                              <div class="indicadores">
-                                 <div>
-                                    <div class="item-top"><span>Automatización</span><strong>92%</strong></div>
-                                    <div class="progress"><span style="width: 92%;"></span></div>
-                                 </div>
-                                 <div>
-                                    <div class="item-top"><span>Finanzas</span><strong>84%</strong></div>
-                                    <div class="progress orange"><span style="width: 84%;"></span></div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
+               <div class="grafico-barras">
+                  <div class="barra" style="height: 35%;"></div>
+                  <div class="barra" style="height: 55%;"></div>
+                  <div class="barra" style="height: 80%;"></div>
+                  <div class="barra destacada" style="height: 95%;"></div>
+                  <div class="barra" style="height: 70%;"></div>
                </div>
-            </div>
-         </section>
+            </section>
 
-         <section class="preview-seccion">
-            <div class="contenedor">
-               <div class="encabezado-portada">
-                  <span class="sub">Soluciones de Negocio</span>
-                  <h2>¿Qué implementamos en su organización?</h2>
-               </div>
+         </main>
 
-               <div class="grid-preview">
-                  <div class="tarjeta-preview">
-                     <h3>Business Intelligence & Dashboards</h3>
-                     <p>Centralice múltiples fuentes de información dispersas en un cuadro de mando unificado y automatizado.</p>
-                     <a href="servicios.html" class="link-interno">Ver detalles técnicos →</a>
-                  </div>
-                  <div class="tarjeta-preview">
-                     <h3>Consultoría Financiera Avanzada</h3>
-                     <p>Control presupuestario robusto, modelos predictivos de flujos y proyecciones de rentabilidad confiables.</p>
-                     <a href="servicios.html" class="link-interno">Ver modelos financieros →</a>
-                  </div>
-                  <div class="tarjeta-preview">
-                     <h3>Desarrollo Web & Control de Gestión</h3>
-                     <p>Plataformas corporativas a medida interconectadas con sus KPIs de dirección fundamentales.</p>
-                     <a href="servicios.html" class="link-interno">Ver arquitectura digital →</a>
-                  </div>
-               </div>
-
-               <div class="centro-accion">
-                  <a href="servicios.html" class="btn btn-secundario">Explorar los 6 Servicios Corporativos</a>
-               </div>
-            </div>
-         </section>
-
-         <section class="split-seccion">
-            <div class="contenedor split-grid">
-               <div>
-                  <h2>Un método estructurado, medible y libre de archivos estáticos.</h2>
-               </div>
-               <div>
-                  <p>No entregamos reportes planos o plantillas aisladas. En NeoDat Consultores diseñamos, programamos e instalamos herramientas de decisión corporativa que se quedan en su empresa para siempre.</p>
-                  <a href="metodo.html" class="btn btn-principal">Conozca Nuestro Método de Trabajo</a>
-               </div>
-            </div>
-         </section>
-      </main>
-
-      <footer>
-         <div class="contenedor footer-wrap">
+         <footer class="footer-portada">
             <span>© 2026 NeoDat Consultores. Todos los derechos reservados.</span>
-            <div style="display: flex; gap: 20px;">
-               <a href="quienes-somos.html">La Firma</a>
-               <a href="contacto.html">Soporte Corporativo</a>
+            <div class="credenciales">
+               <span>Análisis Predictivo</span>
+               <span>Modelado Matemático</span>
+               <span>Arquitectura de Datos</span>
             </div>
-         </div>
-      </footer>
+         </footer>
 
-      <script>
-         const btnMenu = document.getElementById('btnMenu');
-         const menuNavegacion = document.getElementById('menuNavegacion');
+      </div>
 
-         btnMenu.addEventListener('click', () => {
-            menuNavegacion.classList.toggle('activo');
-            btnMenu.textContent = menuNavegacion.classList.contains('activo') ? '✕' : '☰';
-         });
-      </script>
    </body>
 </html>
