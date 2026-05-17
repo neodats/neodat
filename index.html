@@ -5,7 +5,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>NeoDat Consultores</title>
       <link rel="icon" type="image/png" sizes="32x32" href="Neo1.png">
-      <meta name="description" content="NeoDat Consultores offers solutions in analysis of data, dashboards, finanzas, control de gestión, proyectos y desarrollo web empresarial." />
+      <meta name="description" content="NeoDat Consultores ofrece soluciones en análisis de datos, dashboards, finanzas, control de gestión, proyectos y desarrollo web empresarial." />
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -67,7 +67,7 @@
          }
 
          /* ==========================================================================
-            BOTONES PREMIUM REDISEÑADOS
+            BOTONES PREMIUM
             ========================================================================== */
          .btn {
             display: inline-flex;
@@ -204,7 +204,6 @@
             align-items: center;
          }
          
-         /* MODIFICACIÓN: Letra un poco más pequeña y estilizada para el título h1 */
          h1 {
             max-width: 720px;
             margin-bottom: 20px;
@@ -227,7 +226,7 @@
          }
 
          /* ==========================================================================
-            DASHBOARD CORPORATIVO INTERACTIVO EN TIEMPO REAL
+            DASHBOARD CORPORATIVO REDISEÑADO CON MUNDO GIRATORIO
             ========================================================================== */
          .dashboard-shell {
             padding: 10px;
@@ -295,51 +294,80 @@
             gap: 16px;
          }
 
-         /* MAPAMUNDI CORPORATIVO */
-         .map-wrapper {
+         /* ==========================================================================
+            EFECTO GLOBO TERRÁQUEO 3D GIRATORIO (CON CSS / SVG)
+            ========================================================================== */
+         .world-container {
             position: relative;
             width: 100%;
-            height: 160px;
+            height: 280px; /* Aumentado para darle protagonismo al mundo */
             background: #ffffff;
             border-radius: 12px;
             border: 1px solid var(--gris-2);
             overflow: hidden;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
          }
-         .map-svg {
-            width: 90%;
-            height: 90%;
-            opacity: 0.12;
-         }
-         
-         /* Puntos/Nodos móviles y parpadeantes sobre el mapa */
-         .map-node {
-            position: absolute;
-            width: 7px;
-            height: 7px;
-            background: var(--azul);
+
+         /* Esfera de sombreado base y atmósfera */
+         .globe-sphere {
+            position: relative;
+            width: 160px;
+            height: 160px;
             border-radius: 50%;
+            background: var(--azul-claro);
+            box-shadow: inset -20px -20px 50px rgba(7, 23, 45, 0.6), 
+                        inset 10px 10px 30px rgba(255, 255, 255, 0.8),
+                        0 0 25px rgba(22, 43, 78, 0.1);
+            overflow: hidden;
          }
-         .node-1 { top: 32%; left: 22%; animation: pulseNode 2s infinite; }
-         .node-2 { top: 58%; left: 35%; animation: pulseNode 2.4s infinite 0.4s; }
-         .node-3 { top: 30%; left: 55%; animation: pulseNode 1.8s infinite 0.8s; }
-         .node-4 { top: 42%; left: 78%; animation: pulseNode 2.2s infinite 0.2s; }
-         
-         @keyframes pulseNode {
-            0% { transform: scale(1); opacity: 0.4; }
-            50% { transform: scale(1.6); opacity: 1; background: var(--naranja); }
-            100% { transform: scale(1); opacity: 0.4; }
+
+         /* Mapa interno que se desplaza infinitamente simulando rotación */
+         .globe-map {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Cpath fill='%23162b4e' opacity='0.85' d='M20,40 Q40,20 60,50 T100,30 T150,60 T200,30 T250,50 T300,20 T350,50 T400,40 L400,140 Q350,170 300,150 T200,160 T100,140 T0,160 Z'/%3E%3Cpath fill='%23ffa500' opacity='0.3' d='M40,90 Q80,70 120,100 T200,80 T280,110 T360,90 L360,130 Q280,150 200,130 T40,140 Z'/%3E%3Ccircle cx='70' cy='60' r='3' fill='%23ffa500'/%3E%3Ccircle cx='180' cy='90' r='2.5' fill='%23ffa500'/%3E%3Ccircle cx='290' cy='50' r='3.5' fill='%23ffa500'/%3E%3C/svg%3E");
+            background-size: 50% 100%;
+            background-repeat: repeat-x;
+            animation: rotarMundo 12s linear infinite;
+         }
+
+         /* Anillos de flujo de datos externos que orbitan */
+         .data-orbit {
+            position: absolute;
+            width: 210px;
+            height: 70px;
+            border: 2px solid rgba(22, 43, 78, 0.15);
+            border-top-color: var(--naranja);
+            border-radius: 50%;
+            transform: rotateX(65deg) rotateY(-15deg);
+            animation: rotarOrbita 4s linear infinite;
+            pointer-events: none;
+         }
+
+         @keyframes rotarMundo {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+         }
+
+         @keyframes rotarOrbita {
+            0% { transform: rotateX(65deg) rotateY(-15deg) rotateZ(0deg); }
+            100% { transform: rotateX(65deg) rotateY(-15deg) rotateZ(360deg); }
          }
 
          .map-overlay-text {
-            position: absolute;
-            bottom: 10px;
-            left: 14px;
-            font-size: 10.5px;
+            margin-top: 15px;
+            font-size: 11px;
             font-weight: 700;
-            color: var(--texto-suave);
+            color: var(--azul-medio);
+            display: flex;
+            align-items: center;
+            gap: 6px;
          }
 
          /* SECCIÓN KPIS DINÁMICOS */
@@ -371,10 +399,9 @@
          .kpi strong {
             display: block;
             color: var(--azul-oscuro);
-            font-size: 18px;
+            font-size: 19px;
             font-weight: 900;
             line-height: 1.1;
-            transition: color 0.15s ease;
          }
          .kpi-trend {
             display: inline-flex;
@@ -386,65 +413,6 @@
          }
          .trend-up { color: var(--exito); }
          .trend-orange { color: var(--naranja); }
-
-         /* FILA DE CONTENEDOR DE GRÁFICOS */
-         .chart-container {
-            background: #ffffff;
-            border-radius: 12px;
-            padding: 16px;
-            border: 1px solid var(--gris-2);
-         }
-         .chart-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 14px;
-         }
-         .chart-title {
-            font-size: 11.5px;
-            font-weight: 800;
-            color: var(--azul-oscuro);
-         }
-         .chart-legend {
-            display: flex;
-            gap: 12px;
-            font-size: 10px;
-            font-weight: 600;
-            color: var(--texto-suave);
-         }
-         .legend-item::before {
-            content: "";
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            margin-right: 4px;
-         }
-         .legend-azul::before { background: var(--azul); }
-         .legend-naranja::before { background: var(--naranja); }
-
-         .chart-bars {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            height: 85px;
-            border-bottom: 1px solid var(--gris-2);
-         }
-         .bar-group {
-            display: flex;
-            align-items: flex-end;
-            gap: 3px;
-            width: 13%;
-            height: 100%;
-         }
-         .bar {
-            width: 100%;
-            border-radius: 2px 2px 0 0;
-            height: 50%;
-            transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-         }
-         .bar-primary { background: var(--azul); }
-         .bar-secondary { background: var(--naranja); opacity: 0.85; }
 
          /* ========================================================================== */
 
@@ -468,7 +436,6 @@
             border-top: 1px solid rgba(255, 255, 255, 0.08);
             width: 100%;
             flex-shrink: 0;
-            margin-top: 0;
          }
          .footer-bottom {
             display: flex;
@@ -479,7 +446,7 @@
             color: rgba(255,255,255,.52);
          }
          
-         /* SECCIÓN RESPONSIVA OPTIMIZADA */
+         /* RESPONSIVO */
          @media (max-width: 980px) {
             .navbar { height: 64px; }
             .logo-icono { width: 120px; height: 120px; }
@@ -519,7 +486,6 @@
             h1 { 
                font-size: clamp(20px, 5.5vw, 26px); 
                line-height: 1.3;
-               letter-spacing: normal;
             }
             .acciones { display: grid; grid-template-columns: 1fr; width: 100%; gap: 10px; }
             .acciones .btn { width: 100%; }
@@ -563,7 +529,7 @@
                         Solicitar asesoría 
                      </a>
                      <a class="btn btn-secundario" href="contacto.html"> 
-                        Agendar reunión 
+                        Contacto formal 
                      </a>
                   </div>
                </div>
@@ -579,69 +545,29 @@
                      </div>
                      <div class="dashboard-body">
                         
-                        <div class="map-wrapper">
-                           <svg class="map-svg" viewBox="0 0 1000 450" xmlns="http://www.w3.org/2000/svg">
-                              <path fill="var(--azul)" d="M150,120 Q180,100 220,130 T300,110 T380,150 T450,100 T550,140 T680,110 T800,150 T900,120 L920,250 Q850,320 750,280 T600,330 T450,290 T250,350 T120,280 Z"/>
-                              <path fill="var(--azul)" opacity="0.6" d="M200,180 Q250,160 300,200 T400,190 T600,220 T750,180 L800,300 Q650,360 500,320 T200,340 Z"/>
-                           </svg>
-                           <div class="map-node node-1"></div>
-                           <div class="map-node node-2"></div>
-                           <div class="map-node node-3"></div>
-                           <div class="map-node node-4"></div>
-                           <div class="map-overlay-text">📊 Flujo Multiregional de Datos Estructurados</div>
+                        <div class="world-container">
+                           <div class="globe-sphere">
+                              <div class="globe-map"></div>
+                           </div>
+                           <div class="data-orbit"></div>
+                           <div class="map-overlay-text">🌍 Flujo Multiregional de Datos Estructurados</div>
                         </div>
 
                         <div class="kpis">
                            <div class="kpi">
-                              <small>Volumen / Seg</small>
-                              <strong id="kpi-stream">1,240 GB</strong>
-                              <span class="kpi-trend trend-up">▲ Activo</span>
+                              <small>Ingresos Op.</small>
+                              <strong id="kpi-stream">$148.5K</strong>
+                              <span class="kpi-trend trend-up">▲ +12.4%</span>
                            </div>
                            <div class="kpi">
-                              <small>Eficiencia BI</small>
-                              <strong id="kpi-eficiencia">98.4%</strong>
-                              <span class="kpi-trend trend-up">▲ Optima</span>
+                              <small>Margen Neto</small>
+                              <strong id="kpi-eficiencia">34.2%</strong>
+                              <span class="kpi-trend trend-up">▲ +3.1%</span>
                            </div>
                            <div class="kpi">
-                              <small>Procesos AI</small>
-                              <strong id="kpi-procesos">452K</strong>
-                              <span class="kpi-trend trend-orange">● Estable</span>
-                           </div>
-                        </div>
-
-                        <div class="chart-container">
-                           <div class="chart-header">
-                              <span class="chart-title">Carga de Infraestructura de Datos</span>
-                              <div class="chart-legend">
-                                 <span class="legend-item legend-azul">Real</span>
-                                 <span class="legend-item legend-naranja">Meta</span>
-                              </div>
-                           </div>
-                           <div class="chart-bars">
-                              <div class="bar-group">
-                                 <div class="bar bar-primary" style="height: 60%;"></div>
-                                 <div class="bar bar-secondary" style="height: 70%;"></div>
-                              </div>
-                              <div class="bar-group">
-                                 <div class="bar bar-primary" style="height: 45%;"></div>
-                                 <div class="bar bar-secondary" style="height: 50%;"></div>
-                              </div>
-                              <div class="bar-group">
-                                 <div class="bar bar-primary" style="height: 80%;"></div>
-                                 <div class="bar bar-secondary" style="height: 75%;"></div>
-                              </div>
-                              <div class="bar-group">
-                                 <div class="bar bar-primary" style="height: 35%;"></div>
-                                 <div class="bar bar-secondary" style="height: 55%;"></div>
-                              </div>
-                              <div class="bar-group">
-                                 <div class="bar bar-primary" style="height: 90%;"></div>
-                                 <div class="bar bar-secondary" style="height: 85%;"></div>
-                              </div>
-                              <div class="bar-group">
-                                 <div class="bar bar-primary" style="height: 70%;"></div>
-                                 <div class="bar bar-secondary" style="height: 65%;"></div>
-                              </div>
+                              <small>Eficiencia</small>
+                              <strong id="kpi-procesos">94.8%</strong>
+                              <span class="kpi-trend trend-orange">▼ -0.5%</span>
                            </div>
                         </div>
 
@@ -660,35 +586,32 @@
       </footer>
 
       <script>
-         // Menú móvil accesible
+         // Menú móvil
          const menuToggle = document.querySelector(".menu-toggle");
          const menu = document.querySelector(".menu");
          menuToggle.addEventListener("click", () => {
             menu.classList.toggle("activo");
          });
 
-         // Nodos de datos dinámicos
-         const streamTxt = document.getElementById("kpi-stream");
-         const eficienciaTxt = document.getElementById("kpi-eficiencia");
-         const procesosTxt = document.getElementById("kpi-procesos");
-         const lasBarras = document.querySelectorAll(".bar");
+         // Nodos de textos KPIs para el movimiento constante
+         const ingresosTxt = document.getElementById("kpi-stream");
+         const margenTxt = document.getElementById("kpi-eficiencia");
+         const eficienciaTxt = document.getElementById("kpi-procesos");
 
-         // Actualización continua de datos en vivo (cada 2 segundos)
+         // Animación orgánica de los números en tiempo real cada 2.5s
          setInterval(() => {
-            const vStream = (1200 + Math.floor(Math.random() * 200));
-            streamTxt.textContent = `${vStream.toLocaleString()} GB`;
+            // Fluctuación de Ingresos Operativos (~$145.0K a ~$152.0K)
+            const vIngresos = (145 + Math.random() * 7).toFixed(1);
+            ingresosTxt.textContent = `$${vIngresos}K`;
 
-            const vEficiencia = (98 + Math.random() * 1.9).toFixed(1);
+            // Fluctuación de Margen Neto (~33.0% a ~35.5%)
+            const vMargen = (33 + Math.random() * 2.5).toFixed(1);
+            margenTxt.textContent = `${vMargen}%`;
+
+            // Fluctuación sutil de la Eficiencia general (~93.5% a ~96.0%)
+            const vEficiencia = (93.5 + Math.random() * 2.5).toFixed(1);
             eficienciaTxt.textContent = `${vEficiencia}%`;
-
-            const vProcesos = (450 + Math.floor(Math.random() * 15));
-            procesosTxt.textContent = `${vProcesos}K`;
-
-            lasBarras.forEach(bar => {
-               const nuevaAltura = 25 + Math.floor(Math.random() * 70);
-               bar.style.height = `${nuevaAltura}%`;
-            });
-         }, 2000);
+         }, 2500);
       </script>
    </body>
 </html>
