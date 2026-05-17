@@ -13,7 +13,6 @@
       
       <style>
          :root {
-            /* Paleta Confort Visual Optimizada + Nueva Escala Analítica */
             --azul-universo: #030712; 
             --azul-profundo: #091124;
             --azul-institucional: #162b4e;
@@ -70,42 +69,6 @@
             mask-image: radial-gradient(circle at 60% 40%, black 30%, transparent 90%);
             -webkit-mask-image: radial-gradient(circle at 60% 40%, black 30%, transparent 90%);
             pointer-events: none;
-         }
-
-         /* Estructuras Geométricas */
-         .red-esferica-abstracta {
-            position: absolute;
-            top: -50px;
-            right: 5%;
-            width: 550px;
-            height: 550px;
-            border: 1px dashed rgba(39, 69, 111, 0.15);
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(22, 43, 78, 0.05) 0%, transparent 70%);
-            animation: rotacionLenta 80s linear infinite;
-            pointer-events: none;
-         }
-
-         .hipercubo-abstracto {
-            position: absolute;
-            bottom: 100px;
-            right: 35%;
-            width: 260px;
-            height: 260px;
-            border: 1px solid rgba(255, 255, 255, 0.02);
-            background: linear-gradient(135deg, rgba(22, 43, 78, 0.08), transparent);
-            animation: balanceoGPU 10s ease-in-out infinite alternate;
-            pointer-events: none;
-         }
-
-         @keyframes rotacionLenta {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-         }
-
-         @keyframes balanceoGPU {
-            0% { transform: rotate(35deg) translateY(0); }
-            100% { transform: rotate(38deg) translateY(-15px); }
          }
 
          /* --- ESTRUCTURA --- */
@@ -195,25 +158,6 @@
             cursor: pointer;
          }
 
-         .menu-movil-panel {
-            display: none;
-            position: absolute;
-            top: 95px;
-            left: 20px;
-            right: 20px;
-            background: rgba(11, 18, 32, 0.98);
-            border: 1px solid var(--borde-glass);
-            border-radius: 16px;
-            padding: 24px;
-            z-index: 1000;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.7);
-            backdrop-filter: blur(20px);
-         }
-
-         .menu-movil-panel.activo { display: block; }
-         .menu-movil-panel ul { list-style: none; display: flex; flex-direction: column; gap: 16px; }
-         .menu-movil-panel a { color: var(--blanco); text-decoration: none; font-size: 16px; font-weight: 500; display: block; padding: 8px 0; }
-
          /* --- DISEÑO DE CONTENIDO --- */
          .grid-principal {
             display: grid;
@@ -280,7 +224,7 @@
          .btn-vacio { background-color: transparent; color: var(--blanco); border: 1px solid rgba(255,255,255,0.15); }
          .btn-vacio:hover { background-color: rgba(255, 255, 255, 0.03); border-color: rgba(255,255,255,0.3); }
 
-         /* --- INTERFAZ GLASSMORPHISM --- */
+         /* --- INTERFAZ DE MONITOREO (RECUADRO DERECHO) --- */
          .dashboard-marco {
             background: rgba(15, 23, 42, 0.3);
             border: 1px solid var(--borde-glass);
@@ -352,76 +296,70 @@
             font-weight: 500;
          }
 
-         /* --- NUEVA SERIE DE TIEMPO ANALÍTICA PROFESIONAL --- */
+         /* --- NUEVA GRÁFICA CONTROLADA (SIN DESBORDES) --- */
          .contenedor-serie-tiempo {
-            background: rgba(2, 6, 23, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.03);
+            background: rgba(2, 6, 23, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.04);
             border-radius: 12px;
-            padding: 20px 16px 12px 16px;
-            height: 140px;
+            padding: 16px;
+            height: 160px;
             position: relative;
+            /* CLAVE: Evita estrictamente que cualquier elemento interno se salga del recuadro */
+            overflow: hidden; 
          }
 
-         /* Rejilla de escala de grises analítica de fondo */
+         /* Rejilla de escala de grises de fondo */
          .lineas-escala {
             position: absolute;
-            inset: 20px 16px 30px 16px;
+            inset: 16px 16px 36px 16px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             pointer-events: none;
+            z-index: 1;
          }
 
          .linea-guia {
             width: 100%;
             height: 1px;
-            background: linear-gradient(90deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%);
+            background: linear-gradient(90deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
          }
 
-         .contenedor-scroll-svg {
-            display: flex;
-            width: 200%; 
-            height: calc(100% - 15px);
-            animation: desplazamientoContinuo 12s linear infinite;
+         /* El SVG ahora ocupa exactamente el espacio interno, es estático y no usa trucos de scroll lateral */
+         .svg-grafico-fijo {
+            width: 100%;
+            height: calc(100% - 20px);
             position: relative;
             z-index: 2;
+            display: block;
          }
 
-         .svg-grafico-animado {
-            width: 50%;
-            height: 100%;
-         }
-
-         /* Área con relleno sutil usando el Azul Institucional */
+         /* Área con relleno usando el Azul Institucional */
          .area-grafico {
             fill: url(#degradadoAzulInstitucional);
-            opacity: 0.4;
          }
 
          /* Línea de tendencia principal en Blanco Limpio / Gris Máximo */
          .linea-tendencia {
             fill: none;
             stroke: var(--gris-maximo);
-            stroke-width: 2;
+            stroke-width: 2.5;
             stroke-linecap: round;
             stroke-linejoin: round;
          }
 
-         /* Eje de tiempos inferior (Escala de Grises) */
+         /* Eje de tiempos inferior coordinado */
          .eje-fechas {
             display: flex;
             justify-content: space-between;
-            margin-top: 8px;
+            margin-top: 6px;
             font-size: 10px;
             color: var(--gris-medio);
-            font-weight: 500;
-            border-top: 1px solid rgba(255,255,255,0.05);
+            font-weight: 600;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
             padding-top: 6px;
-         }
-
-         @keyframes desplazamientoContinuo {
-            0% { transform: translateX(0%); }
-            100% { transform: translateX(-50%); }
+            position: relative;
+            z-index: 2;
          }
 
          /* --- RESPONSIVE DESIGN --- */
@@ -442,10 +380,7 @@
    </head>
    <body>
 
-      <div class="capa-universo">
-         <div class="red-esferica-abstracta"></div>
-         <div class="hipercubo-abstracto"></div>
-      </div>
+      <div class="capa-universo"></div>
 
       <div class="contenedor pantalla-portada">
          
@@ -466,18 +401,7 @@
             <div class="badge-interactivo">
                PLATAFORMA CORPORATIVA ACTIVA
             </div>
-
-            <button class="menu-toggle" id="btnMenu" aria-label="Abrir menú">☰</button>
          </header>
-
-         <div class="menu-movil-panel" id="menuMovil">
-            <ul>
-               <li><a href="#soluciones">Soluciones</a></li>
-               <li><a href="#metodo">Nuestro Método</a></li>
-               <li><a href="#especialidades">Especialidades</a></li>
-               <li><a href="#contacto">Contacto</a></li>
-            </ul>
-         </div>
 
          <main class="grid-principal">
             <section>
@@ -518,29 +442,23 @@
                      <div class="linea-guia"></div>
                   </div>
 
-                  <div class="contenedor-scroll-svg">
-                     <svg class="svg-grafico-animado" viewBox="0 0 400 100" preserveAspectRatio="none">
-                        <defs>
-                           <linearGradient id="degradadoAzulInstitucional" x1="0" y1="0" x2="0" y2="1">
-                              <stop offset="0%" stop-color="var(--azul-institucional)" stop-opacity="0.8"/>
-                              <stop offset="100%" stop-color="var(--azul-institucional)" stop-opacity="0.0"/>
-                           </linearGradient>
-                        </defs>
-                        <path class="area-grafico" d="M 0,60 Q 40,30 80,55 T 160,25 T 240,45 T 320,15 T 400,35 L 400,100 L 0,100 Z" />
-                        <path class="linea-tendencia" d="M 0,60 Q 40,30 80,55 T 160,25 T 240,45 T 320,15 T 400,35" />
-                        
-                        <circle cx="160" cy="25" r="4" fill="var(--naranja-acento)" />
-                        <circle cx="320" cy="15" r="4" fill="var(--naranja-acento)" />
-                     </svg>
-
-                     <svg class="svg-grafico-animado" viewBox="0 0 400 100" preserveAspectRatio="none">
-                        <path class="area-grafico" d="M 0,60 Q 40,30 80,55 T 160,25 T 240,45 T 320,15 T 400,35 L 400,100 L 0,100 Z" />
-                        <path class="linea-tendencia" d="M 0,60 Q 40,30 80,55 T 160,25 T 240,45 T 320,15 T 400,35" />
-                        
-                        <circle cx="160" cy="25" r="4" fill="var(--naranja-acento)" />
-                        <circle cx="320" cy="15" r="4" fill="var(--naranja-acento)" />
-                     </svg>
-                  </div>
+                  <svg class="svg-grafico-fijo" viewBox="0 0 400 100" preserveAspectRatio="none">
+                     <defs>
+                        <linearGradient id="degradadoAzulInstitucional" x1="0" y1="0" x2="0" y2="1">
+                           <stop offset="0%" stop-color="var(--azul-institucional)" stop-opacity="0.85"/>
+                           <stop offset="100%" stop-color="var(--azul-institucional)" stop-opacity="0.0"/>
+                        </linearGradient>
+                     </defs>
+                     
+                     <path class="area-grafico" d="M 0,75 Q 50,25 100,60 T 200,30 T 300,65 T 400,20 L 400,100 L 0,100 Z" />
+                     
+                     <path class="linea-tendencia" d="M 0,75 Q 50,25 100,60 T 200,30 T 300,65 T 400,20" />
+                     
+                     <circle cx="50" cy="36" r="4.5" fill="var(--naranja-acento)" />
+                     <circle cx="160" cy="42" r="4.5" fill="var(--naranja-acento)" />
+                     <circle cx="255" cy="48" r="4.5" fill="var(--naranja-acento)" />
+                     <circle cx="360" cy="30" r="4.5" fill="var(--naranja-acento)" />
+                  </svg>
 
                   <div class="eje-fechas">
                      <span>Q1</span>
@@ -557,20 +475,6 @@
          </footer>
 
       </div>
-
-      <script>
-         const btnMenu = document.getElementById('btnMenu');
-         const menuMovil = document.getElementById('menuMovil');
-
-         btnMenu.addEventListener('click', (e) => {
-            e.stopPropagation();
-            menuMovil.classList.toggle('activo');
-         });
-
-         document.addEventListener('click', () => {
-            menuMovil.classList.remove('activo');
-         });
-      </script>
 
    </body>
 </html>
