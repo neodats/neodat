@@ -46,7 +46,7 @@
             font-family: "Inter", Arial, sans-serif;
             background: #ffffff;
             color: var(--texto);
-            line-height: 1.5;
+            line-height: 1.4; /* Ajustado para tipografía más compacta */
             overflow-x: hidden;
             display: flex;
             flex-direction: column;
@@ -72,10 +72,10 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
-            min-height: 46px;
-            padding: 12px 24px;
-            border-radius: 12px;
-            font-size: 13.5px;
+            min-height: 40px; /* Más compacto */
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 13px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
@@ -111,17 +111,6 @@
             border-color: #25D366;
             transform: translateY(-1px);
             box-shadow: 0 6px 16px rgba(37, 211, 102, 0.2);
-         }
-         .btn-secundario {
-            background: transparent;
-            color: var(--azul);
-            border: 1px solid rgba(22, 43, 78, 0.15);
-         }
-         .btn-secundario:hover {
-            background: var(--azul-claro);
-            border-color: rgba(22, 43, 78, 0.3);
-            color: var(--azul-oscuro);
-            transform: translateY(-1px);
          }
 
          /* INTERFAZ GENERAL */
@@ -187,7 +176,7 @@
          /* SECCIÓN HERO */
          .hero {
             position: relative;
-            padding: 130px 0 60px; 
+            padding: 120px 0 50px; 
             background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
             overflow: hidden;
             display: flex;
@@ -207,46 +196,23 @@
             position: relative;
             z-index: 2;
             display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 50px;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 40px;
             align-items: center;
-         }
-         .marca-seccion {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 20px;
-         }
-         .marca-seccion span {
-            width: 36px;
-            height: 2px;
-            background: var(--naranja);
-         }
-         .marca-seccion strong {
-            color: var(--azul-medio);
-            font-size: 11px;
-            font-weight: 800;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
          }
          h1 {
-            margin-bottom: 22px;
+            margin-bottom: 16px;
             color: var(--azul-oscuro);
-            font-size: clamp(38px, 4.5vw, 62px);
-            line-height: 1.05;
-            letter-spacing: -2px;
-         }
-         h1 span {
-            color: var(--azul);
-            position: relative;
-            display: inline-block;
+            font-size: 34px; /* Reducido de 62px corporativo a escala estándar */
+            line-height: 1.15;
+            letter-spacing: -1px;
          }
          .hero p {
-            max-width: 620px;
-            margin-bottom: 30px;
+            max-width: 580px;
+            margin-bottom: 24px;
             color: var(--texto-suave);
-            font-size: 17px;
-            line-height: 1.7;
+            font-size: 14.5px; /* Reducido */
+            line-height: 1.6;
          }
          .hero-acciones {
             display: flex;
@@ -256,58 +222,58 @@
 
          /* COMPONENTE PAIN-CARD (HERO ASIDE) */
          .pain-card {
-            padding: 30px;
+            padding: 24px;
             border: 1px solid var(--gris-2);
-            border-radius: 24px;
+            border-radius: 20px;
             background: var(--blanco);
             box-shadow: var(--sombra-fuerte);
          }
          .pain-card h2 {
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             color: var(--azul-oscuro);
-            font-size: 24px;
+            font-size: 18px; /* Reducido */
             line-height: 1.2;
-            letter-spacing: -0.5px;
+            letter-spacing: -0.3px;
          }
          .pain-list {
             display: grid;
-            gap: 12px;
+            gap: 10px;
          }
          .pain-item {
             display: flex;
-            gap: 14px;
-            padding: 14px;
-            border-radius: 16px;
+            gap: 12px;
+            padding: 12px;
+            border-radius: 12px;
             background: var(--gris);
             border: 1px solid var(--gris-2);
          }
          .check {
-            width: 26px;
-            height: 26px;
+            width: 22px;
+            height: 22px;
             flex: 0 0 auto;
             display: grid;
             place-items: center;
             border-radius: 50%;
             background: rgba(22, 43, 78, 0.08);
             color: var(--azul);
-            font-size: 13px;
+            font-size: 11px;
             font-weight: 700;
          }
          .pain-item strong {
             display: block;
             margin-bottom: 2px;
             color: var(--azul-oscuro);
-            font-size: 14.5px;
+            font-size: 13.5px;
             font-weight: 600;
          }
          .pain-item span {
             color: var(--texto-suave);
-            font-size: 13.5px;
+            font-size: 12.5px;
          }
 
          /* SECCIONES ESTÁNDAR */
          .section {
-            padding: 80px 0;
+            padding: 60px 0; /* Más compacto */
          }
          .section.alt {
             background: var(--gris);
@@ -315,36 +281,33 @@
             border-bottom: 1px solid var(--gris-2);
          }
          .encabezado {
-            max-width: 800px;
-            margin: 0 auto 50px;
+            max-width: 750px;
+            margin: 0 auto 40px;
             text-align: center;
          }
-         .encabezado .marca-seccion {
-            justify-content: center;
-         }
          .encabezado h2 {
-            margin-bottom: 16px;
+            margin-bottom: 12px;
             color: var(--azul-oscuro);
-            font-size: clamp(28px, 3.5vw, 44px);
-            line-height: 1.15;
-            letter-spacing: -1.5px;
+            font-size: 26px; /* Reducido */
+            line-height: 1.2;
+            letter-spacing: -0.5px;
          }
          .encabezado p {
             color: var(--texto-suave);
-            font-size: 16.5px;
-            line-height: 1.7;
+            font-size: 14.5px; /* Reducido */
+            line-height: 1.6;
          }
 
          /* GRID DE LOGROS / RESULTADOS */
          .resultado-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
+            gap: 16px;
          }
          .resultado {
-            padding: 26px;
+            padding: 20px;
             border: 1px solid var(--gris-2);
-            border-radius: 20px;
+            border-radius: 16px;
             background: var(--blanco);
             box-shadow: var(--sombra);
             transition: transform 0.25s ease, box-shadow 0.25s ease;
@@ -354,34 +317,33 @@
             box-shadow: var(--sombra-fuerte);
          }
          .resultado-num {
-            margin-bottom: 16px;
+            margin-bottom: 12px;
             color: var(--naranja);
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 800;
             letter-spacing: 1px;
          }
          .resultado h3 {
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             color: var(--azul-oscuro);
-            font-size: 19px;
+            font-size: 16px; /* Reducido */
             line-height: 1.2;
-            letter-spacing: -0.3px;
          }
          .resultado p {
             color: var(--texto-suave);
-            font-size: 14.5px;
-            line-height: 1.6;
+            font-size: 13px; /* Reducido */
+            line-height: 1.5;
          }
 
          /* GRID DE PASOS DEL MÉTODO */
          .metodo-comercial {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 24px;
+            gap: 20px;
          }
          .paso-card {
-            padding: 32px;
-            border-radius: 24px;
+            padding: 26px;
+            border-radius: 20px;
             border: 1px solid var(--gris-2);
             background: var(--blanco);
             box-shadow: var(--sombra);
@@ -396,51 +358,50 @@
             align-items: center;
             justify-content: space-between;
             gap: 16px;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
          }
          .paso-num {
-            width: 52px;
-            height: 52px;
+            width: 44px;
+            height: 44px;
             display: grid;
             place-items: center;
-            border-radius: 14px;
+            border-radius: 12px;
             background: linear-gradient(135deg, var(--azul), var(--azul-oscuro));
             color: var(--blanco);
-            font-size: 18px;
+            font-size: 15px;
             font-weight: 800;
          }
          .paso-tag {
-            padding: 6px 12px;
+            padding: 4px 10px;
             border-radius: 999px;
             background: var(--azul-claro);
             color: var(--azul-medio);
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 0.5px;
          }
          .paso-card h3 {
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             color: var(--azul-oscuro);
-            font-size: 24px;
+            font-size: 18px; /* Reducido */
             line-height: 1.2;
-            letter-spacing: -0.5px;
          }
          .paso-card p {
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             color: var(--texto-suave);
-            font-size: 15px;
-            line-height: 1.6;
+            font-size: 13.5px;
+            line-height: 1.5;
          }
          .paso-card ul {
             display: grid;
-            gap: 8px;
+            gap: 6px;
             padding-left: 16px;
             list-style-type: square;
          }
          .paso-card li {
             color: var(--texto);
-            font-size: 14px;
+            font-size: 13px;
          }
          .paso-card li::marker {
             color: var(--naranja);
@@ -450,11 +411,11 @@
          .entregables {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            gap: 16px;
          }
          .entregable {
-            padding: 26px;
-            border-radius: 20px;
+            padding: 20px;
+            border-radius: 16px;
             border: 1px solid var(--gris-2);
             background: var(--blanco);
             box-shadow: var(--sombra);
@@ -465,40 +426,38 @@
          }
          .entregable strong {
             display: block;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             color: var(--azul);
-            font-size: 19px;
-            line-height: 1.2;
+            font-size: 16px; /* Reducido */
             font-weight: 700;
          }
          .entregable span {
             color: var(--texto-suave);
-            font-size: 14px;
-            line-height: 1.6;
+            font-size: 13px;
+            line-height: 1.5;
          }
 
          /* LLAMADA A LA ACCIÓN (CTA) */
          .cta {
-            padding: 80px 0;
+            padding: 60px 0;
             background: linear-gradient(135deg, var(--azul), var(--azul-oscuro));
             color: var(--blanco);
             text-align: center;
-            position: relative;
          }
          .cta h2 {
-            max-width: 800px;
-            margin: 0 auto 16px;
+            max-width: 700px;
+            margin: 0 auto 12px;
             color: var(--blanco);
-            font-size: clamp(28px, 3.8vw, 46px);
-            line-height: 1.1;
-            letter-spacing: -1.5px;
+            font-size: 28px; /* Reducido */
+            line-height: 1.2;
+            letter-spacing: -0.5px;
          }
          .cta p {
-            max-width: 700px;
-            margin: 0 auto 30px;
+            max-width: 600px;
+            margin: 0 auto 24px;
             color: rgba(255, 255, 255, 0.8);
-            font-size: 17px;
-            line-height: 1.7;
+            font-size: 14.5px;
+            line-height: 1.6;
          }
          .cta .btn-whatsapp {
             background: var(--blanco);
@@ -509,23 +468,21 @@
          .cta .btn-whatsapp:hover {
             background: var(--azul-claro);
             color: var(--azul-oscuro);
-            box-shadow: 0 10px 24px rgba(0,0,0,0.15);
          }
 
-         /* FOOTER */
+         /* PIE DE PÁGINA (COMO EL DE SERVICIOS) */
          .site-footer {
-            background: var(--azul-oscuro);
-            color: rgba(255, 255, 255, 0.7);
-            padding: 20px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            background: #ffffff;
+            color: #66788a;
+            padding: 24px 0;
+            border-top: 1px solid rgba(22, 43, 78, 0.06);
+            font-size: 12px;
          }
          .footer-bottom {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            text-align: center;
-            font-size: 13px;
-            color: rgba(255, 255, 255, 0.5);
+            gap: 20px;
          }
 
          /* DISPOSITIVOS MEDIANOS (RESPONSIVE) */
@@ -576,18 +533,23 @@
                background: var(--gris);
             }
             .hero {
-               padding: 110px 0 50px;
+               padding: 100px 0 40px;
             }
             .hero-grid,
             .metodo-comercial {
                grid-template-columns: 1fr;
-               gap: 40px;
+               gap: 32px;
             }
             .resultado-grid {
                grid-template-columns: repeat(2, 1fr);
             }
             .entregables {
                grid-template-columns: repeat(2, 1fr);
+            }
+            .footer-bottom {
+               flex-direction: column;
+               text-align: center;
+               gap: 10px;
             }
          }
 
@@ -596,17 +558,13 @@
             .contenedor {
                width: min(100% - 32px, 1160px);
             }
-            .hero {
-               padding: 100px 0 40px;
-            }
             h1 {
-               font-size: 35px;
-               letter-spacing: -1px;
+               font-size: 26px;
             }
             .hero p,
             .encabezado p,
             .cta p {
-               font-size: 15px;
+               font-size: 13.5px;
             }
             .hero-acciones {
                display: grid;
@@ -617,7 +575,7 @@
                width: 100%;
             }
             .section {
-               padding: 50px 0;
+               padding: 40px 0;
             }
             .resultado-grid,
             .entregables {
@@ -626,7 +584,7 @@
             .paso-card,
             .pain-card,
             .entregable {
-               padding: 22px;
+               padding: 18px;
             }
          }
       </style>
@@ -670,7 +628,7 @@
          <section class="hero">
             <div class="contenedor hero-grid">
                <div>
-                  <h1>De información dispersa a <span>decisiones claras</span>.</h1>
+                  <h1>De información dispersa a decisiones claras.</h1>
 
                   <p>
                      Ayudamos a empresas que trabajan con reportes manuales, datos desordenados
@@ -904,9 +862,11 @@
          </section>
       </main>
 
+      <!-- FOOTER IGUAL AL MODELO DE SERVICIOS -->
       <footer class="site-footer">
          <div class="contenedor footer-bottom">
             <span>© 2026 NeoDat Consultores. Todos los derechos reservados.</span>
+            <span>Quito, Ecuador</span>
          </div>
       </footer>
 
