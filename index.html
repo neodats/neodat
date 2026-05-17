@@ -64,7 +64,6 @@
             pointer-events: none;
          }
 
-         /* Estructuras Geométricas Vectoriales en Suspensión (Fiel a la imagen) */
          .red-esferica-abstracta {
             position: absolute;
             top: 5%;
@@ -123,7 +122,6 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
          }
 
-         /* Integración limpia y directa del logo sobre el fondo */
          .logo-contenedor {
             display: flex;
             align-items: center;
@@ -223,7 +221,7 @@
             border-bottom: 1px solid rgba(255,255,255,0.05);
          }
 
-         /* --- GRID PRINCIPAL Y AJUSTE DE LETRAS --- */
+         /* --- GRID PRINCIPAL --- */
          .grid-principal {
             display: grid;
             grid-template-columns: 1.1fr 0.9fr;
@@ -244,7 +242,7 @@
          }
 
          h1 {
-            font-size: clamp(32px, 3.8vw, 48px); /* Tipografía refinada, menos tosca */
+            font-size: clamp(32px, 3.8vw, 48px);
             font-weight: 800;
             line-height: 1.2;
             letter-spacing: -1px;
@@ -301,7 +299,7 @@
             border-color: rgba(255, 255, 255, 0.2);
          }
 
-         /* --- REESTRUCTURACIÓN DEL DASHBOARD GLASSMORPHIC --- */
+         /* --- CORRECCIÓN EN LAS PROPORCIONES DE LETRA DEL DASHBOARD --- */
          .dashboard-marco {
             background: rgba(6, 21, 43, 0.45);
             border: 1px solid var(--borde-glass);
@@ -316,17 +314,18 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
          }
 
          .dashboard-meta strong {
-            font-size: 15px;
+            font-size: 14px; /* Proporcional a interfaz de control UI */
             font-weight: 700;
             display: block;
+            color: var(--blanco);
          }
 
          .dashboard-meta span {
-            font-size: 12px;
+            font-size: 11px; /* Estilizado sin competir visualmente */
             color: var(--texto-secundario);
             display: block;
             margin-top: 2px;
@@ -337,14 +336,14 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 12px;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
          }
 
          .tarjeta-kpi {
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 8px;
-            padding: 12px 16px;
+            padding: 12px 14px;
          }
 
          .tarjeta-kpi small {
@@ -357,7 +356,7 @@
          }
 
          .tarjeta-kpi div {
-            font-size: 20px;
+            font-size: 18px; /* Ajuste tipográfico equilibrado */
             font-weight: 700;
             margin-top: 4px;
             display: flex;
@@ -371,13 +370,13 @@
             font-weight: 500;
          }
 
-         /* --- CONTENEDOR RITMO EMPRESARIAL (PULSACIONES - TIPO ECG) --- */
+         /* --- MONITOR DE RITMO CONTINUO DE LA EMPRESA (ECG/ANÁLISIS DE DATOS) --- */
          .contenedor-serie-tiempo {
             background: rgba(0, 0, 0, 0.2);
             border: 1px solid rgba(255, 255, 255, 0.02);
             border-radius: 8px;
             padding: 12px;
-            height: 120px;
+            height: 100px;
             position: relative;
             overflow: hidden;
          }
@@ -387,20 +386,19 @@
             height: 100%;
          }
 
-         /* Estilización de la línea de pulsos continuos */
+         /* Línea continua infinita simulando el ritmo constante de operaciones */
          .linea-pulsos {
             fill: none;
             stroke: var(--naranja-acento);
             stroke-width: 2.5;
             stroke-linecap: round;
             stroke-linejoin: round;
-            /* Duplicamos el patrón para un flujo continuo perfecto sin cortes */
-            stroke-dasharray: 800;
-            stroke-dashoffset: 800;
-            animation: ritmoCardiaco 12s linear infinite;
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: ritmoCorporativo 14s linear infinite;
          }
 
-         @keyframes ritmoCardiaco {
+         @keyframes ritmoCorporativo {
             to {
                stroke-dashoffset: 0;
             }
@@ -419,7 +417,7 @@
             color: var(--texto-secundario);
          }
 
-         /* RESPONSIVE ADAPTATIVO MÓVIL OPTIMIZADO */
+         /* RESPONSIVE DESIGN */
          @media (max-width: 992px) {
             .grid-principal { 
                grid-template-columns: 1fr; 
@@ -513,8 +511,8 @@
             <section class="dashboard-marco">
                <div class="dashboard-top">
                   <div class="dashboard-meta">
-                     <strong>Ecosistema NeoDat</strong>
-                     <span>Monitorea el Pulso de tu Infraestructura</span>
+                     <strong>NeoDat Analítica</strong>
+                     <span>Monitoreo del Ritmo de la Empresa</span>
                   </div>
                </div>
                
@@ -557,7 +555,6 @@
             menuMovil.classList.toggle('activo');
          });
 
-         // Cerrar panel al hacer clic fuera del menú
          document.addEventListener('click', () => {
             menuMovil.classList.remove('activo');
          });
