@@ -5,7 +5,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>NeoDat Consultores</title>
       <link rel="icon" type="image/png" sizes="32x32" href="Neo1.png">
-      <meta name="description" content="NeoDat Consultores ofrece soluciones en análisis de datos, dashboards, finanzas, control de gestión, proyectos y desarrollo web empresarial." />
+      <meta name="description" content="NeoDat Consultores offers solutions in analysis of data, dashboards, finanzas, control de gestión, proyectos y desarrollo web empresarial." />
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -27,7 +27,7 @@
             --exito: #10b981;
          }
          
-         /* CONFIGURACIÓN ESTRUCTURAL ANTIESPACIOS BLANCOS */
+         /* CONFIGURACIÓN ESTRUCTURAL */
          html, body {
             height: 100%;
             margin: 0;
@@ -203,14 +203,17 @@
             gap: 40px;
             align-items: center;
          }
+         
+         /* MODIFICACIÓN: Letra un poco más pequeña y estilizada para el título h1 */
          h1 {
             max-width: 720px;
             margin-bottom: 20px;
             color: var(--azul-oscuro);
-            font-size: clamp(26px, 3.5vw, 38px);
-            line-height: 1.25;
-            letter-spacing: -0.5px;
+            font-size: clamp(24px, 3.1vw, 34px);
+            line-height: 1.3;
+            letter-spacing: -0.3px;
          }
+         
          .hero p {
             max-width: 640px;
             margin-bottom: 28px;
@@ -224,7 +227,7 @@
          }
 
          /* ==========================================================================
-            DASHBOARD AVANZADO CON INTEGRACIÓN DE COLOR CORPORATIVO
+            DASHBOARD CORPORATIVO INTERACTIVO EN TIEMPO REAL
             ========================================================================== */
          .dashboard-shell {
             padding: 10px;
@@ -292,7 +295,7 @@
             gap: 16px;
          }
 
-         /* MAPAMUNDI CORPORATIVO INTEGRADO */
+         /* MAPAMUNDI CORPORATIVO */
          .map-wrapper {
             position: relative;
             width: 100%;
@@ -311,7 +314,7 @@
             opacity: 0.12;
          }
          
-         /* Nodos dinámicos sobre el mapamundi */
+         /* Puntos/Nodos móviles y parpadeantes sobre el mapa */
          .map-node {
             position: absolute;
             width: 7px;
@@ -339,7 +342,7 @@
             color: var(--texto-suave);
          }
 
-         /* NUEVOS KPIS DE MONITOREO GENERAL */
+         /* SECCIÓN KPIS DINÁMICOS */
          .kpis {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -384,7 +387,7 @@
          .trend-up { color: var(--exito); }
          .trend-orange { color: var(--naranja); }
 
-         /* CONTENEDOR GRÁFICO CON MOVIMIENTO */
+         /* FILA DE CONTENEDOR DE GRÁFICOS */
          .chart-container {
             background: #ffffff;
             border-radius: 12px;
@@ -514,7 +517,7 @@
             .hero { padding: 100px 0 30px; }
             .kpis { grid-template-columns: 1fr; gap: 10px; }
             h1 { 
-               font-size: clamp(22px, 6vw, 28px); 
+               font-size: clamp(20px, 5.5vw, 26px); 
                line-height: 1.3;
                letter-spacing: normal;
             }
@@ -657,40 +660,35 @@
       </footer>
 
       <script>
-         // Menú desplegable móvil
+         // Menú móvil accesible
          const menuToggle = document.querySelector(".menu-toggle");
          const menu = document.querySelector(".menu");
          menuToggle.addEventListener("click", () => {
             menu.classList.toggle("activo");
          });
 
-         // Referencias para la simulación interactiva de datos vivos
+         // Nodos de datos dinámicos
          const streamTxt = document.getElementById("kpi-stream");
          const eficienciaTxt = document.getElementById("kpi-eficiencia");
          const procesosTxt = document.getElementById("kpi-procesos");
          const lasBarras = document.querySelectorAll(".bar");
 
-         // Animación fluida de números y gráficas simuladas en tiempo real
+         // Actualización continua de datos en vivo (cada 2 segundos)
          setInterval(() => {
-            // 1. Mover Volumen de datos (e.g. 1,200 - 1,400)
             const vStream = (1200 + Math.floor(Math.random() * 200));
             streamTxt.textContent = `${vStream.toLocaleString()} GB`;
 
-            // 2. Mover Eficiencia sutilmente (e.g. 98.2% - 99.8%)
             const vEficiencia = (98 + Math.random() * 1.9).toFixed(1);
             eficienciaTxt.textContent = `${vEficiencia}%`;
 
-            // 3. Mover Procesos activos (e.g. 450K - 465K)
             const vProcesos = (450 + Math.floor(Math.random() * 15));
             procesosTxt.textContent = `${vProcesos}K`;
 
-            // 4. Cambiar y mover el alto de todas las barras de manera orgánica
             lasBarras.forEach(bar => {
-               const nuevaAltura = 30 + Math.floor(Math.random() * 65);
+               const nuevaAltura = 25 + Math.floor(Math.random() * 70);
                bar.style.height = `${nuevaAltura}%`;
             });
-
-         }, 2000); // Se actualiza dinámicamente cada 2 segundos sin perder rendimiento
+         }, 2000);
       </script>
    </body>
 </html>
