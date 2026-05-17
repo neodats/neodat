@@ -1,547 +1,514 @@
 <!DOCTYPE html>
 <html lang="es">
-   <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Método | NeoDat Consultores</title>
-      <link rel="icon" type="image/png" sizes="32x32" href="Neo1.png">
-      <meta name="description" content="Conozca el Método NeoDat: Transformamos la información dispersa de su empresa en sistemas de decisión claros, rápidos y orientados a resultados." />
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>Método | NeoDat Consultores</title>
+   <link rel="icon" type="image/png" sizes="32x32" href="Neo1.png">
+   <meta name="description" content="Conozca el Método NeoDat: Transformamos la información dispersa de su empresa en sistemas de decisión claros, rápidos y orientados a resultados." />
+   <link rel="preconnect" href="https://fonts.googleapis.com" />
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+   
+   <style>
+      :root {
+         --azul: #162b4e;
+         --azul-oscuro: #07172d;
+         --azul-medio: #27456f;
+         --azul-claro: #edf2f8;
+         --naranja: #ffa500;
+         --blanco: #ffffff;
+         --gris: #f8fafc;
+         --gris-2: rgba(22, 43, 78, 0.06); 
+         --gris-3: #f0f4f8;
+         --texto: #243447;
+         --texto-suave: #66788a;
+         --sombra: 0 10px 30px rgba(7, 23, 45, 0.04);
+         --sombra-fuerte: 0 20px 50px rgba(7, 23, 45, 0.08);
+         --exito: #10b981;
+      }
       
-      <style>
-         :root {
-            --azul: #162b4e;
-            --azul-oscuro: #07172d;
-            --azul-medio: #27456f;
-            --azul-claro: #edf2f8;
-            --naranja: #ffa500;
-            --blanco: #ffffff;
-            --gris: #f8fafc;
-            --gris-2: rgba(22, 43, 78, 0.06); 
-            --gris-3: #f0f4f8;
-            --texto: #243447;
-            --texto-suave: #66788a;
-            --sombra: 0 10px 30px rgba(7, 23, 45, 0.04);
-            --sombra-fuerte: 0 20px 50px rgba(7, 23, 45, 0.08);
-            --exito: #10b981;
-         }
-         
-         /* CONFIGURACIÓN ESTRUCTURAL */
-         html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-         }
-         *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-         }
-         html {
-            scroll-behavior: smooth;
-         }
-         body {
-            font-family: "Inter", Arial, sans-serif;
+      /* CONFIGURACIÓN ESTRUCTURAL */
+      html, body {
+         height: 100%;
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+      }
+      *, *::before, *::after {
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+      }
+      html {
+         scroll-behavior: smooth;
+      }
+      body {
+         font-family: "Inter", Arial, sans-serif;
+         background: #ffffff;
+         color: var(--texto);
+         line-height: 1.5;
+         overflow-x: hidden;
+         display: flex;
+         flex-direction: column;
+      }
+      main {
+         flex: 1 0 auto;
+      }
+      a {
+         text-decoration: none;
+         color: inherit;
+      }
+      button {
+         font: inherit;
+      }
+      .contenedor {
+         width: min(1160px, calc(100% - 40px));
+         margin: auto;
+      }
+
+      /* BOTONES PREMIUM */
+      .btn {
+         display: inline-flex;
+         align-items: center;
+         justify-content: center;
+         gap: 8px;
+         min-height: 46px;
+         padding: 12px 24px;
+         border-radius: 12px;
+         font-size: 13.5px;
+         font-weight: 600;
+         cursor: pointer;
+         transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+         white-space: nowrap;
+      }
+      .btn-whatsapp {
+         background: rgba(37, 211, 102, 0.1);
+         color: #1ebe5d;
+         border: 1px solid rgba(37, 211, 102, 0.25);
+         box-shadow: none;
+      }
+      .btn-whatsapp:hover {
+         background: #25D366;
+         color: #ffffff;
+         border-color: #25D366;
+         transform: translateY(-1px);
+         box-shadow: 0 6px 16px rgba(37, 211, 102, 0.2);
+      }
+
+      /* INTERFAZ GENERAL */
+      header {
+         position: fixed;
+         top: 0;
+         left: 0;
+         z-index: 100;
+         width: 100%;
+         background: rgba(255, 255, 255, 0.85);
+         backdrop-filter: blur(20px);
+         border-bottom: 1px solid var(--gris-2);
+      }
+      .navbar {
+         height: 70px;
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         gap: 28px;
+      }
+      .logo {
+         display: flex;
+         align-items: center;
+         gap: 12px;
+      }
+      .logo-icono {
+         width: 140px;
+         height: 140px;
+         object-fit: contain;
+      }
+      nav ul {
+         list-style: none;
+         display: flex;
+         align-items: center;
+         gap: 4px;
+      }
+      nav a {
+         display: inline-flex;
+         padding: 8px 12px;
+         border-radius: 999px;
+         font-size: 13px;
+         font-weight: 750;
+         color: var(--azul);
+         transition: 0.2s ease;
+      }
+      nav a:hover,
+      nav a.actual {
+         background: var(--azul-claro);
+         color: var(--azul-oscuro);
+      }
+      .menu-toggle {
+         display: none;
+         width: 42px;
+         height: 42px;
+         border: 1px solid var(--gris-2);
+         border-radius: 12px;
+         background: #ffffff;
+         color: var(--azul);
+         font-size: 22px;
+         font-weight: 900;
+         cursor: pointer;
+      }
+
+      /* SECCIÓN HERO */
+      .hero {
+         position: relative;
+         padding: 150px 0 80px; 
+         background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+         overflow: hidden;
+         display: flex;
+         align-items: center;
+      }
+      .hero::before {
+         content: "";
+         position: absolute;
+         inset: 0;
+         background-image:
+            linear-gradient(rgba(22, 43, 78, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(22, 43, 78, 0.03) 1px, transparent 1px);
+         background-size: 44px 44px;
+         mask-image: linear-gradient(180deg, black, transparent 85%);
+         pointer-events: none;
+      }
+      .hero-grid {
+         position: relative;
+         z-index: 2;
+         display: grid;
+         grid-template-columns: 1.1fr 0.9fr;
+         gap: 50px;
+         align-items: center;
+      }
+      .marca-seccion {
+         display: flex;
+         align-items: center;
+         gap: 12px;
+         margin-bottom: 20px;
+      }
+      .marca-seccion span {
+         width: 36px;
+         height: 2px;
+         background: var(--naranja);
+      }
+      .marca-seccion strong {
+         color: var(--naranja);
+         font-size: 11px;
+         font-weight: 800;
+         text-transform: uppercase;
+         letter-spacing: 1px;
+      }
+      h1 {
+         margin-bottom: 20px;
+         color: var(--azul-oscuro);
+         font-size: clamp(28px, 3.5vw, 48px);
+         line-height: 1.15;
+         letter-spacing: -1px;
+      }
+      .hero p {
+         margin-bottom: 28px;
+         color: var(--texto-suave);
+         font-size: 16px;
+         line-height: 1.6;
+      }
+
+      /* VISUALIZADOR DE METODOLOGÍA (INTERACTIVO) */
+      .metodo-shell {
+         padding: 10px;
+         border-radius: 24px; 
+         background: linear-gradient(145deg, rgba(22, 43, 78, 0.03), rgba(7, 23, 45, 0.05));
+         border: 1px solid var(--gris-2); 
+      }
+      .metodo-box {
+         background: #ffffff;
+         border-radius: 16px;
+         box-shadow: var(--sombra-fuerte);
+         border: 1px solid rgba(22, 43, 78, 0.08);
+         padding: 24px;
+      }
+      .metodo-nav {
+         display: grid;
+         grid-template-columns: repeat(4, 1fr);
+         gap: 8px;
+         margin-bottom: 20px;
+         border-bottom: 1px solid var(--gris-2);
+         padding-bottom: 12px;
+      }
+      .fase-btn {
+         background: var(--gris);
+         border: 1px solid var(--gris-2);
+         padding: 10px;
+         border-radius: 10px;
+         font-size: 11px;
+         font-weight: 700;
+         color: var(--texto-suave);
+         cursor: pointer;
+         text-align: center;
+         transition: all 0.2s ease;
+      }
+      .fase-btn.activo {
+         background: var(--azul);
+         color: var(--blanco);
+         border-color: var(--azul);
+      }
+      .metodo-contenido {
+         min-height: 140px;
+      }
+      .metodo-contenido h3 {
+         color: var(--azul-oscuro);
+         font-size: 18px;
+         font-weight: 800;
+         margin-bottom: 12px;
+         display: flex;
+         align-items: center;
+         gap: 8px;
+      }
+      .metodo-contenido h3::before {
+         content: "●";
+         color: var(--naranja);
+      }
+      .metodo-contenido p {
+         font-size: 14.5px;
+         color: var(--texto);
+         line-height: 1.6;
+      }
+
+      /* SECCIÓN EXPLICATIVA INFERIOR */
+      .detalles-metodo {
+         padding: 80px 0;
+         background: var(--gris);
+         border-top: 1px solid var(--gris-2);
+      }
+      .grid-detalles {
+         display: grid;
+         grid-template-columns: repeat(4, 1fr);
+         gap: 24px;
+      }
+      .tarjeta-detalle {
+         background: var(--blanco);
+         padding: 24px;
+         border-radius: 16px;
+         border: 1px solid var(--gris-2);
+         box-shadow: var(--sombra);
+         transition: transform 0.25s ease, box-shadow 0.25s ease;
+      }
+      .tarjeta-detalle:hover {
+         transform: translateY(-2px);
+         box-shadow: var(--sombra-fuerte);
+      }
+      .num-fase {
+         font-size: 32px;
+         font-weight: 900;
+         color: rgba(22, 43, 78, 0.08);
+         line-height: 1;
+         margin-bottom: 8px;
+      }
+      .tarjeta-detalle h4 {
+         font-size: 16px;
+         color: var(--azul-oscuro);
+         font-weight: 800;
+         margin-bottom: 8px;
+      }
+      .tarjeta-detalle p {
+         font-size: 13.5px;
+         color: var(--texto-suave);
+         line-height: 1.5;
+      }
+
+      /* PIE DE PÁGINA */
+      .site-footer {
+         background: #07172d;
+         color: rgba(255, 255, 255, .72);
+         padding: 24px 0;
+         border-top: 1px solid rgba(255, 255, 255, 0.08);
+         width: 100%;
+         flex-shrink: 0;
+      }
+      .footer-bottom {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         text-align: center;
+         font-size: 12px;
+         color: rgba(255, 255, 255, .52);
+      }
+
+      /* RESPONSIVO */
+      @media (max-width: 980px) {
+         .navbar { height: 64px; }
+         .logo-icono { width: 120px; height: 120px; }
+         .menu-toggle { display: flex; align-items: center; justify-content: center; }
+         .whatsapp-desktop { display: none; }
+         nav.menu {
+            position: absolute;
+            top: 64px;
+            left: 0;
+            width: 100%;
+            display: none;
             background: #ffffff;
-            color: var(--texto);
-            line-height: 1.5;
-            overflow-x: hidden;
-            display: flex;
-            flex-direction: column;
+            border-bottom: 1px solid rgba(22,43,78,.08);
+            box-shadow: 0 18px 40px rgba(7,23,45,.10);
          }
-         main {
-            flex: 1 0 auto;
-         }
-         a {
-            text-decoration: none;
-            color: inherit;
-         }
-         button {
-            font: inherit;
-         }
-         .contenedor {
+         nav.menu.activo { display: block; }
+         nav.menu ul {
             width: min(1160px, calc(100% - 40px));
             margin: auto;
+            padding: 14px 0;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 6px;
          }
-
-         /* BOTONES PREMIUM */
-         .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            min-height: 46px;
-            padding: 12px 24px;
-            border-radius: 12px;
-            font-size: 13.5px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            white-space: nowrap;
-         }
-         .btn-principal {
-            background: var(--azul);
-            color: var(--blanco);
-            border: 1px solid var(--azul);
-            box-shadow: 0 4px 12px rgba(22, 43, 78, 0.12);
-         }
-         .btn-principal:hover {
-            background: var(--azul-oscuro);
-            border-color: var(--azul-oscuro);
-            transform: translateY(-1px);
-            box-shadow: 0 6px 20px rgba(22, 43, 78, 0.18);
-         }
-         .btn-principal span {
-            transition: transform 0.2s ease;
-         }
-         .btn-principal:hover span {
-            transform: translateY(3px);
-         }
-         .btn-whatsapp {
-            background: rgba(37, 211, 102, 0.1);
-            color: #1ebe5d;
-            border: 1px solid rgba(37, 211, 102, 0.25);
-            box-shadow: none;
-         }
-         .btn-whatsapp:hover {
-            background: #25D366;
-            color: #ffffff;
-            border-color: #25D366;
-            transform: translateY(-1px);
-            box-shadow: 0 6px 16px rgba(37, 211, 102, 0.2);
-         }
-         .btn-secundario {
-            background: transparent;
-            color: var(--azul);
-            border: 1px solid rgba(22, 43, 78, 0.15);
-         }
-         .btn-secundario:hover {
-            background: var(--azul-claro);
-            border-color: rgba(22, 43, 78, 0.3);
-            color: var(--azul-oscuro);
-            transform: translateY(-1px);
-         }
-
-         /* INTERFAZ GENERAL */
-         header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 100;
+         nav.menu a {
             width: 100%;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--gris-2);
-         }
-         .navbar {
-            height: 70px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 28px;
-         }
-         .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-         }
-         .logo-icono {
-            width: 140px;
-            height: 140px;
-            object-fit: contain;
-         }
-         nav ul {
-            list-style: none;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-         }
-         nav a {
-            display: inline-flex;
-            padding: 8px 12px;
-            border-radius: 999px;
-            font-size: 13px;
-            font-weight: 750;
-            color: var(--azul);
-            transition: 0.2s ease;
-         }
-         nav a:hover,
-         nav a.actual {
-            background: var(--azul-claro);
-            color: var(--azul-oscuro);
-         }
-         .menu-toggle {
-            display: none;
-            width: 42px;
-            height: 42px;
-            border: 1px solid var(--gris-2);
+            padding: 12px 14px;
             border-radius: 12px;
-            background: #ffffff;
-            color: var(--azul);
-            font-size: 22px;
-            font-weight: 900;
-            cursor: pointer;
-         }
-
-         /* SECCIÓN HERO */
-         .hero {
-            position: relative;
-            padding: 130px 0 60px; 
-            background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-         }
-         .hero::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background-image:
-               linear-gradient(rgba(22, 43, 78, 0.03) 1px, transparent 1px),
-               linear-gradient(90deg, rgba(22, 43, 78, 0.03) 1px, transparent 1px);
-            background-size: 44px 44px;
-            mask-image: linear-gradient(180deg, black, transparent 85%);
-            pointer-events: none;
-         }
-         .hero-grid {
-            position: relative;
-            z-index: 2;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-         }
-         .marca-seccion {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 20px;
-         }
-         .marca-seccion span {
-            width: 36px;
-            height: 2px;
-            background: var(--naranja);
-         }
-         .marca-seccion strong {
-            color: var(--naranja);
-            font-size: 11px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-         }
-         h1 {
-            margin-bottom: 20px;
-            color: var(--azul-oscuro);
-            font-size: clamp(24px, 2.8vw, 36px);
-            line-height: 1.25;
-            letter-spacing: -0.5px;
-         }
-         .hero p {
-            margin-bottom: 28px;
-            color: var(--texto-suave);
-            font-size: 15px;
-         }
-
-         /* VISUALIZADOR DE METODOLOGÍA (INTERACTIVO) */
-         .metodo-shell {
-            padding: 10px;
-            border-radius: 24px; 
-            background: linear-gradient(145deg, rgba(22, 43, 78, 0.03), rgba(7, 23, 45, 0.05));
-            border: 1px solid var(--gris-2); 
-         }
-         .metodo-box {
-            background: #ffffff;
-            border-radius: 16px;
-            box-shadow: var(--sombra-fuerte);
-            border: 1px solid rgba(22, 43, 78, 0.08);
-            padding: 24px;
-         }
-         .metodo-nav {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 8px;
-            margin-bottom: 20px;
-            border-bottom: 1px solid var(--gris-2);
-            padding-bottom: 12px;
-         }
-         .fase-btn {
             background: var(--gris);
-            border: 1px solid var(--gris-2);
-            padding: 10px;
-            border-radius: 10px;
-            font-size: 11px;
-            font-weight: 700;
-            color: var(--texto-suave);
-            cursor: pointer;
-            text-align: center;
-            transition: all 0.2s ease;
-         }
-         .fase-btn.activo {
-            background: var(--azul);
-            color: var(--blanco);
-            border-color: var(--azul);
-         }
-         .metodo-contenido {
-            min-height: 140px;
-         }
-         .metodo-contenido h3 {
-            color: var(--azul-oscuro);
-            font-size: 16px;
-            font-weight: 800;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-         }
-         .metodo-contenido h3::before {
-            content: "●";
-            color: var(--naranja);
-         }
-         .metodo-contenido p {
-            font-size: 13.5px;
-            color: var(--texto);
-            line-height: 1.6;
-         }
-
-         /* SECCIÓN EXPLICATIVA INFERIOR */
-         .detalles-metodo {
-            padding: 60px 0;
-            background: var(--gris);
-            border-top: 1px solid var(--gris-2);
-         }
-         .grid-detalles {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
-         }
-         .tarjeta-detalle {
-            background: var(--blanco);
-            padding: 24px;
-            border-radius: 16px;
-            border: 1px solid var(--gris-2);
-            box-shadow: var(--sombra);
-         }
-         .num-fase {
-            font-size: 32px;
-            font-weight: 900;
-            color: rgba(22, 43, 78, 0.08);
-            line-height: 1;
-            margin-bottom: 8px;
-         }
-         .tarjeta-detalle h4 {
-            font-size: 15px;
-            color: var(--azul-oscuro);
-            font-weight: 800;
-            margin-bottom: 8px;
-         }
-         .tarjeta-detalle p {
             font-size: 13px;
-            color: var(--texto-suave);
-            line-height: 1.5;
          }
+         .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+         .grid-detalles { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+      }
+      @media (max-width: 680px) {
+         .hero { padding: 120px 0 40px; }
+         .metodo-nav { grid-template-columns: repeat(2, 1fr); }
+         .grid-detalles { grid-template-columns: 1fr; gap: 16px; }
+         h1 { font-size: clamp(22px, 6vw, 32px); }
+      }
+   </style>
+</head>
+<body>
+   <header>
+      <div class="contenedor navbar">
+         <a href="index.html" class="logo" aria-label="NeoDat Consultores">
+            <img src="Neo1.png" class="logo-icono" alt="Logo NeoDat">
+         </a>
+         <button class="menu-toggle" type="button" aria-label="Abrir menú"> ☰ </button>
+         <nav class="menu" aria-label="Navegación principal">
+            <ul>
+               <li><a href="index.html">Inicio</a></li>
+               <li><a href="servicios.html">Servicios</a></li>
+               <li><a href="metodo.html" class="actual">Método</a></li>
+               <li><a href="ambitos.html">Ámbitos</a></li>
+               <li><a href="quienes-somos.html">Quiénes somos</a></li>
+               <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+         </nav>
+         <a class="btn btn-whatsapp whatsapp-desktop" href="https://wa.me/593988200116?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20el%20Metodo%20NeoDat." target="_blank" rel="noopener">
+            WhatsApp
+         </a>
+      </div>
+   </header>
 
-         /* PIE DE PÁGINA */
-         .site-footer {
-            background: #07172d;
-            color: rgba(255, 255, 255, .72);
-            padding: 12px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            width: 100%;
-            flex-shrink: 0;
-         }
-         .footer-bottom {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            font-size: 11.5px;
-            color: rgba(255, 255, 255, .52);
-         }
-
-         /* RESPONSIVO */
-         @media (max-width: 980px) {
-            .navbar { height: 64px; }
-            .logo-icono { width: 120px; height: 120px; }
-            .menu-toggle { display: flex; align-items: center; justify-content: center; }
-            .whatsapp-desktop { display: none; }
-            nav.menu {
-               position: absolute;
-               top: 64px;
-               left: 0;
-               width: 100%;
-               display: none;
-               background: #ffffff;
-               border-bottom: 1px solid rgba(22,43,78,.08);
-               box-shadow: 0 18px 40px rgba(7,23,45,.10);
-            }
-            nav.menu.activo { display: block; }
-            nav.menu ul {
-               width: min(1160px, calc(100% - 40px));
-               margin: auto;
-               padding: 14px 0;
-               display: grid;
-               grid-template-columns: 1fr;
-               gap: 6px;
-            }
-            nav.menu a {
-               width: 100%;
-               padding: 12px 14px;
-               border-radius: 12px;
-               background: var(--gris);
-               font-size: 13px;
-            }
-            .hero-grid { grid-template-columns: 1fr; gap: 40px; }
-            .grid-detalles { grid-template-columns: repeat(2, 1fr); gap: 20px; }
-         }
-         @media (max-width: 680px) {
-            .hero { padding: 100px 0 40px; }
-            .metodo-nav { grid-template-columns: repeat(2, 1fr); }
-            .grid-detalles { grid-template-columns: 1fr; gap: 16px; }
-            h1 { font-size: clamp(20px, 6vw, 26px); }
-         }
-      </style>
-   </head>
-   <body>
-      <header>
-         <div class="contenedor navbar">
-            <a href="index.html" class="logo" aria-label="NeoDat Consultores">
-               <img src="Neo1.png" class="logo-icono" alt="Logo NeoDat">
-            </a>
-            <button class="menu-toggle" type="button" aria-label="Abrir menú"> ☰ </button>
-            <nav class="menu" aria-label="Navegación principal">
-               <ul>
-                  <li><a href="index.html">Inicio</a></li>
-                  <li><a href="servicios.html">Servicios</a></li>
-                  <li><a href="metodo.html">Método</a></li>
-                  <li><a href="ambitos.html">Ámbitos</a></li>
-                  <li><a href="quienes-somos.html">Quiénes somos</a></li>
-                  <li><a href="contacto.html">Contacto</a></li>
-               </ul>
-            </nav>
-            <a class="btn btn-whatsapp whatsapp-desktop" href="https://wa.me/593988200116?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20el%20Metodo%20NeoDat." target="_blank" rel="noopener">
-               WhatsApp
-            </a>
-         </div>
-      </header>
-
-      <main>
-         <section class="hero">
-            <div class="contenedor hero-grid">
-               <div>
-                  <div class="marca-seccion">
-                     <span></span>
-                     <strong>Nuestra Metodología</strong>
-                  </div>
-                  <h1>Estructura inteligente para transformar información en resultados concretos.</h1>
-                  <p>El Método NeoDat consiste en ordenar la dispersión operativa de su negocio mediante procesos ágiles de ingeniería y análisis. No improvisamos: seguimos un flujo lógico diseñado para mitigar riesgos financieros y maximizar la visibilidad gerencial.</p>
+   <main>
+      <section class="hero">
+         <div class="contenedor hero-grid">
+            <div>
+               <div class="marca-seccion">
+                  <span></span>
+                  <strong>Nuestra Metodología</strong>
                </div>
+               <h1>Estructura inteligente para transformar información en resultados concretos.</h1>
+               <p>El Método NeoDat consiste en ordenar la dispersión operativa de su negocio mediante procesos ágiles de ingeniería y análisis. No improvisamos: seguimos un flujo lógico diseñado para mitigar riesgos financieros y maximizar la visibilidad gerencial.</p>
+            </div>
 
-               <div class="metodo-shell">
-                  <div class="metodo-box">
-                     <div class="metodo-nav">
-                        <button class="fase-btn activo" data-fase="1">01. Relevamiento</button>
-                        <button class="fase-btn" data-fase="2">02. Estructura</button>
-                        <button class="fase-btn" data-fase="3">03. BI & Dashboards</button>
-                        <button class="fase-btn" data-fase="4">04. Control</button>
-                     </div>
-                     <div class="metodo-contenido">
-                        <h3 id="dinamico-titulo">Fase 1: Relevamiento y Diagnóstico</h3>
-                        <p id="dinamico-desc">Identificamos los flujos de información actuales de su empresa, detectamos fugas de datos, inconsistencias en los reportes financieros y determinamos las necesidades clave de los directivos.</p>
-                     </div>
+            <div class="metodo-shell">
+               <div class="metodo-box">
+                  <div class="metodo-nav">
+                     <button class="fase-btn activo" data-fase="1">01. Relevamiento</button>
+                     <button class="fase-btn" data-fase="2">02. Estructura</button>
+                     <button class="fase-btn" data-fase="3">03. BI & Dashboards</button>
+                     <button class="fase-btn" data-fase="4">04. Control</button>
+                  </div>
+                  <div class="metodo-contenido">
+                     <h3 id="dinamico-titulo">Fase 1: Relevamiento y Diagnóstico</h3>
+                     <p id="dinamico-desc">Identificamos los flujos de información actuales de su empresa, detectamos fugas de datos, inconsistencias en los reportes financieros y determinamos las necesidades clave de los directivos.</p>
                   </div>
                </div>
             </div>
-         </section>
+         </div>
+      </section>
 
-         <section class="detalles-metodo" id="detalles">
-            <div class="contenedor">
-               <div class="grid-detalles">
-                  <div class="tarjeta-detalle">
-                     <div class="num-fase">01</div>
-                     <h4>Relevamiento y Diagnóstico</h4>
-                     <p>Identificamos flujos de información actuales, detectamos fugas de datos y localizamos inconsistencias en sus reportes financieros clave.</p>
-                  </div>
-                  <div class="tarjeta-detalle">
-                     <div class="num-fase">02</div>
-                     <h4>Estructura y ETL</h4>
-                     <p>Extraemos, transformamos y cargamos la información dispersa en modelos limpios y centralizados para mitigar errores humanos.</p>
-                  </div>
-                  <div class="tarjeta-detalle">
-                     <div class="num-fase">03</div>
-                     <h4>BI & Dashboards</h4>
-                     <p>Diseñamos cuadros de mando interactivos dinámicos que reflejan la realidad financiera y operativa de su empresa al instante.</p>
-                  </div>
-                  <div class="tarjeta-detalle">
-                     <div class="num-fase">04</div>
-                     <h4>Control de Gestión</h4>
-                     <p>Implementamos rutinas de seguimiento analítico y alertas automatizadas para una toma de decisiones optimizada en tiempo real.</p>
-                  </div>
+      <section class="detalles-metodo" id="detalles">
+         <div class="contenedor">
+            <div class="grid-detalles">
+               <div class="tarjeta-detalle">
+                  <div class="num-fase">01</div>
+                  <h4>Relevamiento y Diagnóstico</h4>
+                  <p>Identificamos flujos de información actuales, detectamos fugas de datos y localizamos inconsistencias en sus reportes financieros clave.</p>
+               </div>
+               <div class="tarjeta-detalle">
+                  <div class="num-fase">02</div>
+                  <h4>Estructura y ETL</h4>
+                  <p>Extraemos, transformamos y cargamos la información dispersa en modelos limpios y centralizados para mitigar errores humanos.</p>
+               </div>
+               <div class="tarjeta-detalle">
+                  <div class="num-fase">03</div>
+                  <h4>BI & Dashboards</h4>
+                  <p>Diseñamos cuadros de mando interactivos dinámicos que reflejan la realidad financiera y operativa de su empresa al instante.</p>
+               </div>
+               <div class="tarjeta-detalle">
+                  <div class="num-fase">04</div>
+                  <h4>Control de Gestión</h4>
+                  <p>Implementamos rutinas de seguimiento analítico y alertas automatizadas para una toma de decisiones optimizada en tiempo real.</p>
                </div>
             </div>
-         </section>
-      </main>
-
-      <footer class="site-footer">
-         <div class="contenedor footer-bottom">
-            <span>© 2026 NeoDat Consultores. Todos los derechos reservados.</span>
          </div>
-      </footer>
+      </section>
+   </main>
 
-      <script>
-         // Menú móvil
-         const menuToggle = document.querySelector(".menu-toggle");
-         const menu = document.querySelector(".menu");
-         menuToggle.addEventListener("click", () => {
-            menu.classList.toggle("activo");
+   <footer class="site-footer">
+      <div class="contenedor footer-bottom">
+         <span>© 2026 NeoDat Consultores. Todos los derechos reservados.</span>
+      </div>
+   </footer>
+
+   <script>
+      // Menú móvil
+      const menuToggle = document.querySelector(".menu-toggle");
+      const menu = document.querySelector(".menu");
+      menuToggle.addEventListener("click", () => {
+         menu.classList.toggle("activo");
+      });
+
+      // Datos e Interacción Dinámica del Bloque Metodológico
+      const fasesData = {
+         "1": {
+            titulo: "Fase 1: Relevamiento y Diagnóstico",
+            desc: "Identificamos los flujos de información actuales de su empresa, detectamos fugas de datos, inconsistencias en los reportes financieros y determinamos las necesidades clave de los directivos."
+         },
+         "2": {
+            titulo: "Fase 2: Estructura y Procesamiento ETL",
+            desc: "Extraemos, transformamos y cargamos la información dispersa. Normalizamos las fuentes de datos creando modelos limpios, estables y centralizados para mitigar errores humanos."
+         },
+         "3": {
+            titulo: "Fase 3: Inteligencia de Negocio & Dashboards",
+            desc: "Diseñamos cuadros de mando ejecutivos avanzados. Convertimos los datos estructurados en gráficos interactivos dinámicos que reflejan la realidad financiera y operativa de forma instantánea."
+         },
+         "4": {
+            titulo: "Fase 4: Control de Gestión Continuo",
+            desc: "Implementamos rutinas de seguimiento analítico, control presupuestario avanzado y automatización de alertas para optimizar la toma de decisiones gerenciales en tiempo real."
+         }
+      };
+
+      const faseBotones = document.querySelectorAll(".fase-btn");
+      const dinamicoTitulo = document.getElementById("dinamico-titulo");
+      const dinamicoDesc = document.getElementById("dinamico-desc");
+
+      faseBotones.forEach(btn => {
+         btn.addEventListener("click", () => {
+            faseBotones.forEach(b => b.classList.remove("activo"));
+            btn.classList.add("activo");
+            
+            const nFase = btn.getAttribute("data-fase");
+            dinamicoTitulo.textContent = fasesData[nFase].titulo;
+            dinamicoDesc.textContent = fasesData[nFase].desc;
          });
-
-         // Autodetección de página activa para resaltar el menú
-         const ubicacionActual = window.location.pathname.split("/").pop() || "index.html";
-         const enlacesMenu = document.querySelectorAll("nav.menu a");
-
-         enlacesMenu.forEach(enlace => {
-            if (enlace.getAttribute("href") === ubicacionActual) {
-               enlace.classList.add("actual");
-            }
-         });
-
-         // Datos e Interacción del Bloque Metodológico
-         const fasesData = {
-            "1": {
-               titulo: "Fase 1: Relevamiento y Diagnóstico",
-               desc: "Identificamos los flujos de información actuales de su empresa, detectamos fugas de datos, inconsistencias en los reportes financieros y determinamos las necesidades clave de los directivos."
-            },
-            "2": {
-               titulo: "Fase 2: Estructura y Procesamiento ETL",
-               desc: "Extraemos, transformamos y cargamos la información dispersa. Normalizamos las fuentes de datos creando modelos limpios, estables y centralizados para mitigar errores humanos."
-            },
-            "3": {
-               titulo: "Fase 3: Inteligencia de Negocio & Dashboards",
-               desc: "Diseñamos cuadros de mando ejecutivos avanzados. Convertimos los datos estructurados en gráficos interactivos dinámicos que reflejan la realidad financiera y operativa de forma instantánea."
-            },
-            "4": {
-               titulo: "Fase 4: Control de Gestión Continuo",
-               desc: "Implementamos rutinas de seguimiento analítico, control presupuestario avanzado y automatización de alertas para optimizar la toma de decisiones gerenciales en tiempo real."
-            }
-         };
-
-         const faseBotones = document.querySelectorAll(".fase-btn");
-         const dinamicoTitulo = document.getElementById("dinamico-titulo");
-         const dinamicoDesc = document.getElementById("dinamico-desc");
-
-         faseBotones.forEach(btn => {
-            btn.addEventListener("click", () => {
-               faseBotones.forEach(b => b.classList.remove("activo"));
-               btn.classList.add("activo");
-               
-               const nFase = btn.getAttribute("data-fase");
-               dinamicoTitulo.textContent = fasesData[nFase].titulo;
-               dinamicoDesc.textContent = fasesData[nFase].desc;
-            });
-         });
-      </script>
-   </body>
+      });
+   </script>
+</body>
 </html>
