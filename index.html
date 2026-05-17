@@ -3,1001 +3,564 @@
    <head>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>NeoDat Consultores</title>
+      <title>Inicio | NeoDat Consultores</title>
       <link rel="icon" type="image/png" sizes="32x32" href="Neo1.png">
-      <meta
-         name="description"
-         content="NeoDat Consultores ofrece soluciones en análisis de datos, dashboards, finanzas, control de gestión, proyectos y desarrollo web empresarial."
-         />
+      <meta name="description" content="Consultoría empresarial especializada en análisis de datos, finanzas corporativas y soluciones de control de gestión." />
+      
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-      <link
-         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
-         rel="stylesheet"
-         />
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+      
       <style>
          :root {
-         --azul: #162b4e;
-         --azul-oscuro: #07172d;
-         --azul-medio: #27456f;
-         --azul-claro: #edf2f8;
-         --naranja: #ffa500;
-         --blanco: #ffffff;
-         --gris: #f6f8fb;
-         --gris-2: #e1e7f0;
-         --gris-3: #f0f4f8;
-         --texto: #243447;
-         --texto-suave: #66788a;
-         --sombra: 0 18px 45px rgba(7, 23, 45, 0.08);
-         --sombra-fuerte: 0 28px 70px rgba(7, 23, 45, 0.14);
-         }
-         * {
-         margin: 0;
-         padding: 0;
-         box-sizing: border-box;
-         }
-         html {
-         scroll-behavior: smooth;
-         }
-         body {
-         font-family: "Inter", Arial, sans-serif;
-         background: #ffffff;
-         color: var(--texto);
-         line-height: 1.6;
-         overflow-x: hidden;
-         font-size: 16px;
-         }
-         a {
-         text-decoration: none;
-         color: inherit;
-         }
-         button,
-         input,
-         select,
-         textarea {
-         font: inherit;
-         }
-         .contenedor {
-         width: min(1160px, calc(100% - 40px));
-         margin: auto;
-         }
-         .btn {
-         display: inline-flex;
-         align-items: center;
-         justify-content: center;
-         min-height: 48px;
-         padding: 13px 22px;
-         border-radius: 999px;
-         border: 1px solid transparent;
-         font-size: 14px;
-         font-weight: 700;
-         cursor: pointer;
-         transition: 0.2s ease;
-         white-space: nowrap;
-         }
-         .btn-principal {
-         background:var(--azul);
-         color:var(--blanco);
-         box-shadow: 0 16px 34px rgba(22,43,78,.18);
-         }
-         .btn-principal:hover {
-         background:var(--azul-oscuro);
-         transform:translateY(-2px);
-         }
-         .btn-whatsapp{
-         background:#25D366;
-         color:#ffffff;
-         box-shadow:none;
-         }
-         .btn-whatsapp:hover{
-         background:#1ebe5d;
-         transform:translateY(-2px);
-         }
-         .btn-secundario {
-         background: var(--blanco);
-         color: var(--azul);
-         border-color: rgba(22, 43, 78, 0.14);
-         }
-         .btn-secundario:hover {
-         border-color: rgba(255, 165, 0, 0.55);
-         box-shadow: 0 12px 24px rgba(7, 23, 45, 0.08);
-         }
-         header {
-         position: fixed;
-         top: 0;
-         left: 0;
-         z-index: 100;
-         width: 100%;
-         background: rgba(255, 255, 255, 0.9);
-         backdrop-filter: blur(18px);
-         border-bottom: 1px solid rgba(22, 43, 78, 0.08);
-         }
-         .navbar {
-         height: 78px;
-         display: flex;
-         align-items: center;
-         justify-content: space-between;
-         gap: 28px;
-         }
-         .logo{
-         display:flex;
-         align-items:center;
-         gap:12px;
-         font-size:24px;
-         font-weight:800;
-         color:var(--azul);
-         letter-spacing:-0.5px;
-         }
-         .logo-icono{
-         width:140px;
-         height:140px;
-         object-fit:contain;
-         }
-         .logo-texto span{
-         color:var(--naranja);
-         }
-         .logo span {
-         color: var(--naranja);
-         }
-         nav ul {
-         list-style: none;
-         display: flex;
-         align-items: center;
-         gap: 8px;
-         }
-         nav a {
-         display: inline-flex;
-         padding: 10px 15px;
-         border-radius: 999px;
-         font-size: 14px;
-         font-weight: 600;
-         color: var(--azul);
-         transition: 0.2s ease;
-         }
-         nav a:hover {
-         background: var(--azul-claro);
-         }
-         .hero {
-         position: relative;
-         padding: 160px 0 100px;
-         background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
-         overflow: hidden;
-         }
-         .hero::before {
-         content: "";
-         position: absolute;
-         inset: 0;
-         background-image:
-         linear-gradient(rgba(22, 43, 78, 0.04) 1px, transparent 1px),
-         linear-gradient(90deg, rgba(22, 43, 78, 0.04) 1px, transparent 1px);
-         background-size: 44px 44px;
-         mask-image: linear-gradient(180deg, black, transparent 76%);
-         pointer-events: none;
-         }
-         .hero-grid {
-         position: relative;
-         z-index: 2;
-         display: grid;
-         grid-template-columns: 1fr 0.96fr;
-         gap: 62px;
-         align-items: center;
-         }
-         .eyebrow {
-         display: inline-flex;
-         align-items: center;
-         gap: 10px;
-         margin-bottom: 20px;
-         padding: 6px 14px;
-         border: 1px solid rgba(22, 43, 78, 0.1);
-         border-radius: 999px;
-         background: var(--blanco);
-         color: var(--azul);
-         font-size: 12px;
-         font-weight: 700;
-         letter-spacing: 1px;
-         text-transform: uppercase;
-         }
-         .eyebrow::before {
-         content: "";
-         width: 8px;
-         height: 8px;
-         border-radius: 50%;
-         background: var(--naranja);
-         }
-         h1 {
-         max-width: 720px;
-         margin-bottom: 24px;
-         color: var(--azul-oscuro);
-         font-size: clamp(36px, 4.5vw, 56px);
-         line-height: 1.15;
-         letter-spacing: -1.5px;
-         font-weight: 800;
-         }
-         h1 span {
-         color: var(--azul);
-         }
-         .hero p {
-         max-width: 640px;
-         margin-bottom: 32px;
-         color: var(--texto-suave);
-         font-size: 16px;
-         line-height: 1.6;
-         }
-         .acciones {
-         display: flex;
-         flex-wrap: wrap;
-         gap: 12px;
-         margin-bottom: 34px;
-         }
-         .metricas {
-         display: grid;
-         grid-template-columns: repeat(3, 1fr);
-         gap: 14px;
-         }
-         .metrica {
-         padding: 18px;
-         border: 1px solid var(--gris-2);
-         border-radius: 22px;
-         background: var(--blanco);
-         box-shadow: var(--sombra);
-         }
-         .metrica strong {
-         display: block;
-         margin-bottom: 5px;
-         color: var(--azul);
-         font-size: 24px;
-         font-weight: 800;
-         line-height: 1;
-         }
-         .metrica span {
-         color: var(--texto-suave);
-         font-size: 13px;
-         font-weight: 500;
-         }
-         .dashboard-shell {
-         padding: 12px;
-         border-radius: 32px;
-         background: linear-gradient(135deg, var(--azul), var(--azul-oscuro));
-         box-shadow: var(--sombra-fuerte);
-         overflow: hidden;
-         }
-         .dashboard {
-         overflow: hidden;
-         border-radius: 24px;
-         background: var(--gris);
-         }
-         .dashboard-top {
-         display: flex;
-         align-items: center;
-         justify-content: space-between;
-         gap: 16px;
-         padding: 18px 22px;
-         background: var(--blanco);
-         border-bottom: 1px solid var(--gris-2);
-         }
-         .dashboard-top strong {
-         display: block;
-         color: var(--azul-oscuro);
-         font-size: 16px;
-         font-weight: 700;
-         letter-spacing: -0.3px;
-         }
-         .dashboard-top span {
-         color: var(--texto-suave);
-         font-size: 12px;
-         font-weight: 500;
-         }
-         .badge {
-         padding: 5px 12px;
-         border-radius: 999px;
-         background: var(--azul-claro);
-         color: var(--azul);
-         font-size: 11px;
-         font-weight: 700;
-         white-space: nowrap;
-         }
-         .dashboard-body {
-         display: grid;
-         gap: 14px;
-         padding: 18px;
-         }
-         .kpis {
-         display: grid;
-         grid-template-columns: repeat(3, 1fr);
-         gap: 12px;
-         }
-         .kpi,
-         .card {
-         border: 1px solid var(--gris-2);
-         border-radius: 20px;
-         background: var(--blanco);
-         }
-         .kpi {
-         padding: 16px;
-         }
-         .kpi small {
-         display: block;
-         margin-bottom: 6px;
-         color: var(--texto-suave);
-         font-size: 12px;
-         font-weight: 500;
-         }
-         .kpi strong {
-         display: block;
-         color: var(--azul-oscuro);
-         font-size: 24px;
-         font-weight: 800;
-         line-height: 1;
-         letter-spacing: -0.5px;
-         }
-         .graficos {
-         display: grid;
-         grid-template-columns: 1.35fr 0.75fr;
-         gap: 12px;
-         }
-         .card {
-         padding: 16px;
-         }
-         .card h3 {
-         margin-bottom: 14px;
-         color: var(--azul-oscuro);
-         font-size: 14px;
-         font-weight: 700;
-         }
-         .chart {
-         height: 180px;
-         display: flex;
-         align-items: flex-end;
-         gap: 10px;
-         }
-         .bar {
-         flex: 1;
-         min-height: 24px;
-         border-radius: 12px 12px 0 0;
-         background: linear-gradient(180deg, var(--azul), var(--azul-medio));
-         }
-         .bar:nth-child(1) { height: 36%; opacity: 0.5; }
-         .bar:nth-child(2) { height: 52%; opacity: 0.6; }
-         .bar:nth-child(3) { height: 46%; opacity: 0.7; }
-         .bar:nth-child(4) { height: 72%; opacity: 0.8; }
-         .bar:nth-child(5) { height: 65%; opacity: 0.9; }
-         .bar:nth-child(6) { height: 92%; background: linear-gradient(180deg, var(--naranja), #ffc766); }
-         .bar:nth-child(7) { height: 80%; }
-         
-         .indicadores {
-         display: grid;
-         gap: 14px;
-         }
-         .item-top {
-         display: flex;
-         justify-content: space-between;
-         margin-bottom: 6px;
-         color: var(--texto-suave);
-         font-size: 12px;
-         font-weight: 600;
-         }
-         .progress {
-         height: 8px;
-         overflow: hidden;
-         border-radius: 999px;
-         background: #edf2f7;
-         }
-         .progress span {
-         display: block;
-         height: 100%;
-         border-radius: inherit;
-         background: var(--azul);
-         }
-         .progress.orange span {
-         background: var(--naranja);
-         }
-         .tabla-bi {
-         display: grid;
-         gap: 8px;
-         }
-         .fila-bi {
-         display: grid;
-         grid-template-columns: 1fr auto auto;
-         gap: 10px;
-         padding: 10px 0;
-         border-bottom: 1px solid var(--gris-2);
-         color: var(--texto-suave);
-         font-size: 13px;
-         font-weight: 500;
-         }
-         .fila-bi:last-child {
-         border-bottom: 0;
-         }
-         .fila-bi strong {
-         color: var(--azul);
-         }
-         section {
-         padding: 80px 0;
-         }
-         .encabezado {
-         max-width: 760px;
-         margin-bottom: 40px;
-         }
-         .encabezado.centro {
-         text-align: center;
-         margin-left: auto;
-         margin-right: auto;
-         }
-         .subtitulo {
-         margin-bottom: 10px;
-         color: var(--naranja);
-         font-size: 12px;
-         font-weight: 700;
-         letter-spacing: 1.5px;
-         text-transform: uppercase;
-         }
-         h2 {
-         margin-bottom: 14px;
-         color: var(--azul-oscuro);
-         font-size: clamp(26px, 3.5vw, 36px);
-         line-height: 1.2;
-         letter-spacing: -1px;
-         font-weight: 800;
-         }
-         .encabezado p {
-         color: var(--texto-suave);
-         font-size: 16px;
-         }
-         .servicios {
-         display: grid;
-         grid-template-columns: repeat(3, 1fr);
-         gap: 20px;
-         }
-         .servicio {
-         padding: 28px;
-         border: 1px solid var(--gris-2);
-         border-radius: 26px;
-         background: var(--blanco);
-         box-shadow: 0 10px 25px rgba(7, 23, 45, 0.04);
-         transition: 0.2s ease;
-         }
-         .servicio:hover {
-         transform: translateY(-5px);
-         box-shadow: var(--sombra);
-         }
-         .servicio-num {
-         width: 48px;
-         height: 48px;
-         display: grid;
-         place-items: center;
-         margin-bottom: 20px;
-         border-radius: 15px;
-         background: var(--azul-claro);
-         color: var(--azul);
-         font-weight: 800;
-         font-size: 14px;
-         }
-         .servicio h3 {
-         margin-bottom: 10px;
-         color: var(--azul);
-         font-size: 20px;
-         font-weight: 700;
-         }
-         .servicio p {
-         color: var(--texto-suave);
-         font-size: 15px;
-         }
-         .metodo {
-         background: var(--azul-oscuro);
-         color: var(--blanco);
-         }
-         .metodo-grid {
-         display: grid;
-         grid-template-columns: 0.88fr 1.12fr;
-         gap: 58px;
-         align-items: start;
-         }
-         .metodo h2,
-         .metodo .encabezado p {
-         color: var(--blanco);
-         }
-         .metodo .encabezado p {
-         opacity: 0.78;
-         }
-         .pasos {
-         display: grid;
-         gap: 14px;
-         }
-         .paso {
-         display: grid;
-         grid-template-columns: 48px 1fr;
-         gap: 16px;
-         padding: 22px;
-         border: 1px solid rgba(255, 255, 255, 0.12);
-         border-radius: 22px;
-         background: rgba(255, 255, 255, 0.055);
-         }
-         .paso-numero {
-         width: 42px;
-         height: 42px;
-         display: grid;
-         place-items: center;
-         border-radius: 14px;
-         background: var(--blanco);
-         color: var(--azul);
-         font-weight: 800;
-         font-size: 15px;
-         }
-         .paso h3 {
-         margin-bottom: 6px;
-         font-size: 18px;
-         font-weight: 700;
-         }
-         .paso p {
-         color: rgba(255, 255, 255, 0.72);
-         font-size: 15px;
-         }
-         .ambitos {
-         background: var(--gris);
-         }
-         .chips {
-         display: grid;
-         grid-template-columns: repeat(3, 1fr);
-         gap: 14px;
-         margin-top: 30px;
-         }
-         .chip {
-         padding: 16px 18px;
-         border: 1px solid var(--gris-2);
-         border-radius: 18px;
-         background: var(--blanco);
-         color: var(--azul);
-         font-weight: 600;
-         font-size: 14px;
-         box-shadow: 0 8px 20px rgba(7, 23, 45, 0.04);
-         text-align: center;
-         }
-         .contacto {
-         background: linear-gradient(135deg, var(--azul), var(--azul-oscuro));
-         color: var(--blanco);
-         }
-         .contacto-grid {
-         display: grid;
-         grid-template-columns: 1fr auto;
-         gap: 34px;
-         align-items: center;
-         }
-         .contacto h2 {
-         color: var(--blanco);
-         }
-         .contacto p {
-         max-width: 730px;
-         color: rgba(255, 255, 255, 0.76);
-         font-size: 16px;
-         }
-         .contacto-acciones {
-         display: grid;
-         gap: 12px;
-         }
-         .contacto .btn-principal {
-         background: var(--blanco);
-         color: var(--azul);
-         box-shadow: none;
-         }
-         .contacto .btn-secundario {
-         background: transparent;
-         color: var(--blanco);
-         border-color: rgba(255, 255, 255, 0.24);
-         }
-         .footer-links button {
-         border: 0;
-         padding: 0;
-         background: transparent;
-         color: rgba(255,255,255,.72);
-         font: inherit;
-         text-align: left;
-         cursor: pointer;
-         }
-         .footer-links button:hover {
-         color: #ffffff;
-         }
-         .site-footer {
-         background: #07172d;
-         color: rgba(255,255,255,.72);
-         padding: 24px 0 20px;
-         }
-         .footer-bottom {
-         display:flex;
-         justify-content:center;
-         align-items:center;
-         text-align:center;
-         font-size:13px;
-         color:rgba(255,255,255,.52);
-         }
-         .correo-overlay {
-         position: fixed;
-         inset: 0;
-         z-index: 200;
-         display: none;
-         align-items: center;
-         justify-content: center;
-         padding: 24px;
-         background: rgba(7, 23, 45, 0.58);
-         backdrop-filter: blur(12px);
-         }
-         .correo-overlay.activo {
-         display: flex;
-         }
-         .correo-modal {
-         width: min(760px, 100%);
-         max-height: min(88vh, 820px);
-         overflow: auto;
-         border-radius: 30px;
-         background: var(--blanco);
-         box-shadow: 0 35px 90px rgba(0, 0, 0, 0.26);
-         animation: modalEntrada 0.22s ease;
-         }
-         @keyframes modalEntrada {
-         from {
-         opacity: 0;
-         transform: translateY(14px) scale(0.98);
-         }
-         to {
-         opacity: 1;
-         transform: translateY(0) scale(1);
-         }
-         }
-         .correo-header {
-         display: flex;
-         align-items: flex-start;
-         justify-content: space-between;
-         gap: 18px;
-         padding: 28px 30px 20px;
-         border-bottom: 1px solid var(--gris-2);
-         background:
-         radial-gradient(circle at top right, rgba(255, 165, 0, 0.11), transparent 32%),
-         linear-gradient(180deg, #ffffff, #f8fafc);
-         }
-         .correo-header span {
-         display: inline-flex;
-         margin-bottom: 8px;
-         color: var(--naranja);
-         font-size: 12px;
-         font-weight: 700;
-         letter-spacing: 1px;
-         text-transform: uppercase;
-         }
-         .correo-header h3 {
-         color: var(--azul-oscuro);
-         font-size: 24px;
-         line-height: 1.2;
-         letter-spacing: -0.5px;
-         font-weight: 800;
-         }
-         .correo-header p {
-         max-width: 560px;
-         margin-top: 8px;
-         color: var(--texto-suave);
-         font-size: 14.5px;
-         }
-         .cerrar-modal {
-         width: 42px;
-         height: 42px;
-         flex: 0 0 auto;
-         border: 1px solid var(--gris-2);
-         border-radius: 50%;
-         background: var(--blanco);
-         color: var(--azul);
-         font-size: 26px;
-         line-height: 1;
-         cursor: pointer;
-         transition: 0.2s ease;
-         }
-         .cerrar-modal:hover {
-         background: var(--azul);
-         color: var(--blanco);
-         }
-         .correo-form {
-         padding: 28px 30px 30px;
-         }
-         .form-grid {
-         display: grid;
-         grid-template-columns: 1fr 1fr;
-         gap: 16px;
-         margin-bottom: 16px;
-         }
-         .campo {
-         display: grid;
-         gap: 8px;
-         }
-         .campo.full {
-         grid-column: 1 / -1;
-         }
-         .campo label {
-         color: var(--azul);
-         font-size: 13.5px;
-         font-weight: 700;
-         }
-         .campo input,
-         .campo select,
-         .campo textarea {
-         width: 100%;
-         border: 1px solid var(--gris-2);
-         border-radius: 16px;
-         background: var(--blanco);
-         color: var(--texto);
-         outline: none;
-         padding: 14px 15px;
-         font-size: 14.5px;
-         transition: 0.2s ease;
-         }
-         .campo textarea {
-         min-height: 130px;
-         resize: vertical;
-         }
-         .campo input:focus,
-         .campo select:focus,
-         .campo textarea:focus {
-         border-color: rgba(22, 43, 78, 0.55);
-         box-shadow: 0 0 0 4px rgba(22, 43, 78, 0.08);
-         }
-         .servicios-check {
-         display: grid;
-         grid-template-columns: 1fr 1fr;
-         gap: 10px;
-         margin-top: 2px;
-         }
-         .check-card {
-         display: flex;
-         align-items: center;
-         gap: 10px;
-         padding: 12px 13px;
-         border: 1px solid var(--gris-2);
-         border-radius: 16px;
-         background: var(--gris);
-         color: var(--azul);
-         font-size: 13.5px;
-         font-weight: 600;
-         cursor: pointer;
-         }
-         .menu-toggle{
-         display:none;
-         width:46px;
-         height:46px;
-         border:1px solid var(--gris-2);
-         border-radius:14px;
-         background:#ffffff;
-         color:var(--azul);
-         font-size:26px;
-         font-weight:700;
-         cursor:pointer;
+            --azul-premium: #0a192f;
+            --azul-intermedio: #172a45;
+            --azul-marca: #1d3b6a;
+            --azul-super-claro: #f4f7f6;
+            --naranja-acento: #e69500;
+            --texto-principal: #1e293b;
+            --texto-secundario: #64748b;
+            --blanco: #ffffff;
+            --borde-sutil: rgba(15, 23, 42, 0.08);
+            --borde-sutil-blanco: rgba(255, 255, 255, 0.12);
+            --sombra-premium: 0 20px 40px -15px rgba(0, 0, 0, 0.05);
          }
 
-         @media (max-width:980px){
-         .navbar{
-         height:72px;
+         /* RESET & CONFIGURACIÓN GLOBAL */
+         * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
          }
-         .logo-icono{
-         width:130px;
-         height:130px;
+         html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
          }
-         .menu-toggle{
-         display:flex;
-         align-items:center;
-         justify-content:center;
+         body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--blanco);
+            color: var(--texto-principal);
+            line-height: 1.6;
+            font-size: 16px;
          }
-         .whatsapp-desktop{
-         display:none;
+         a {
+            text-decoration: none;
+            color: inherit;
          }
-         nav.menu{
-         position:absolute;
-         top:72px;
-         left:0;
-         width:100%;
-         display:none;
-         background:#ffffff;
-         border-bottom:1px solid rgba(22,43,78,.08);
-         box-shadow:0 18px 40px rgba(7,23,45,.10);
+         button, input, select, textarea {
+            font-family: inherit;
          }
-         nav.menu.activo{
-         display:block;
-         }
-         nav.menu ul{
-         width:min(1160px, calc(100% - 40px));
-         margin:auto;
-         padding:18px 0;
-         display:grid;
-         grid-template-columns:1fr;
-         gap:8px;
-         }
-         nav.menu a{
-         width:100%;
-         padding:14px 16px;
-         border-radius:16px;
-         background:var(--gris);
-         }
-         }
-         .check-card input {
-         width: 16px;
-         height: 16px;
-         accent-color: var(--azul);
-         }
-         .form-actions {
-         display: flex;
-         flex-wrap: wrap;
-         gap: 12px;
-         margin-top: 22px;
-         padding-top: 20px;
-         border-top: 1px solid var(--gris-2);
-         }
-         .nota-form {
-         margin-top: 14px;
-         color: var(--texto-suave);
-         font-size: 12.5px;
-         }
-         .cta-mobile {
-         display: none;
-         }
-         @media (max-width: 980px) {
-         nav {
-         display: none;
-         }
-         .hero-grid,
-         .metodo-grid,
-         .contacto-grid,
-         .footer {
-         grid-template-columns: 1fr;
-         }
-         .servicios {
-         grid-template-columns: repeat(2, 1fr);
-         }
-         .chips {
-         grid-template-columns: repeat(2, 1fr);
-         }
-         }
-         @media (max-width: 680px) {
+
          .contenedor {
-         width: min(100% - 30px, 1160px);
+            width: min(1200px, calc(100% - 48px));
+            margin: 0 auto;
+         }
+
+         /* COMPONENTES DE BOTÓN HOMOGÉNEOS */
+         .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            border: 1px solid transparent;
+         }
+         .btn-primario {
+            background-color: var(--azul-marca);
+            color: var(--blanco);
+         }
+         .btn-primario:hover {
+            background-color: var(--azul-premium);
+            transform: translateY(-1px);
+         }
+         .btn-secundario {
+            background-color: var(--blanco);
+            color: var(--azul-marca);
+            border-color: var(--borde-sutil);
+         }
+         .btn-secundario:hover {
+            background-color: var(--azul-super-claro);
+            border-color: var(--azul-marca);
+         }
+         .btn-whatsapp {
+            background-color: #128c7e;
+            color: var(--blanco);
+         }
+         .btn-whatsapp:hover {
+            background-color: #075e54;
+            transform: translateY(-1px);
+         }
+
+         /* CABECERA (NAVBAR) */
+         header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--borde-sutil);
          }
          .navbar {
-         height: 68px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
          }
-         .logo {
-         font-size: 22px;
+         .logo img {
+            height: 42px;
+            width: auto;
+            display: block;
          }
+         nav.menu ul {
+            list-style: none;
+            display: flex;
+            gap: 8px;
+         }
+         nav.menu a {
+            padding: 8px 16px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--texto-principal);
+            border-radius: 6px;
+            transition: background 0.2s ease;
+         }
+         nav.menu a:hover, nav.menu li.activo a {
+            background-color: var(--azul-super-claro);
+            color: var(--azul-marca);
+         }
+         .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--azul-premium);
+            cursor: pointer;
+         }
+
+         /* ESTRUCTURA DE SECCIÓN CORPORATIVA */
+         section {
+            padding: 140px 0;
+         }
+         .seccion-gris {
+            background-color: var(--azul-super-claro);
+         }
+         .encabezado-bloque {
+            max-width: 640px;
+            margin-bottom: 60px;
+         }
+         .encabezado-bloque.centro {
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+         }
+         .tagline {
+            display: block;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--naranja-acento);
+            margin-bottom: 12px;
+         }
+         h2 {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--azul-premium);
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+         }
+         .encabezado-bloque p {
+            margin-top: 16px;
+            color: var(--texto-secundario);
+            font-size: 16px;
+         }
+
+         /* SECCIÓN HERO */
          .hero {
-         padding: 120px 0 60px;
+            padding: 200px 0 120px;
+            background: radial-gradient(circle at 90% 10%, rgba(29, 59, 106, 0.03), transparent 40%);
          }
-         .hero-grid,
-         .metricas,
-         .kpis,
-         .graficos,
-         .servicios,
-         .chips {
-         grid-template-columns: 1fr;
+         .hero-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 80px;
+            align-items: center;
          }
          h1 {
-         font-size: clamp(30px, 9vw, 42px);
-         letter-spacing: -1px;
+            font-size: 52px;
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.03em;
+            color: var(--azul-premium);
+            margin-bottom: 24px;
          }
-         .hero p,
-         .encabezado p {
-         font-size: 15px;
+         .hero p {
+            font-size: 18px;
+            color: var(--texto-secundario);
+            margin-bottom: 36px;
          }
-         .acciones {
-         display: grid;
-         grid-template-columns: 1fr;
+         .hero-acciones {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 48px;
          }
-         .acciones .btn,
-         .contacto-acciones .btn {
-         width: 100%;
+
+         /* PREMETRICAS HERO */
+         .mini-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            border-top: 1px solid var(--borde-sutil);
+            padding-top: 32px;
          }
-         .dashboard-shell {
-         padding: 8px;
-         border-radius: 24px;
+         .stat-box strong {
+            display: block;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--azul-marca);
          }
-         .dashboard {
-         border-radius: 18px;
+         .stat-box span {
+            font-size: 13px;
+            color: var(--texto-secundario);
          }
-         .dashboard-top {
-         padding: 14px;
+
+         /* MAQUETA DE ENTRAMADO (DASHBOARD PREVIEW) */
+         .shell-interfaz {
+            background-color: var(--azul-premium);
+            padding: 12px;
+            border-radius: 16px;
+            box-shadow: var(--sombra-premium);
          }
-         .dashboard-body {
-         padding: 12px;
+         .interfaz-interna {
+            background-color: #fafafa;
+            border-radius: 10px;
+            overflow: hidden;
+            font-size: 12px;
          }
-         .chart {
-         height: 150px;
-         gap: 7px;
+         .interfaz-nav {
+            background-color: var(--blanco);
+            padding: 14px 20px;
+            border-bottom: 1px solid var(--borde-sutil);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
          }
-         .fila-bi {
-         grid-template-columns: 1fr auto;
+         .interfaz-nav strong { color: var(--azul-premium); font-size: 14px; }
+         .interfaz-panel {
+            padding: 20px;
+            display: grid;
+            gap: 16px;
          }
-         .fila-bi span:nth-child(2) {
-         display: none;
+         .interfaz-kpis {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
          }
-         section {
-         padding: 60px 0;
+         .interfaz-card {
+            background-color: var(--blanco);
+            padding: 16px;
+            border-radius: 8px;
+            border: 1px solid var(--borde-sutil);
          }
-         .servicio {
-         padding: 24px;
+         .interfaz-card small { color: var(--texto-secundario); display: block; margin-bottom: 4px; }
+         .interfaz-card strong { font-size: 20px; color: var(--azul-premium); }
+         
+         .interfaz-graficos {
+            display: grid;
+            grid-template-columns: 1.3fr 0.7fr;
+            gap: 16px;
          }
-         .paso {
-         grid-template-columns: 44px 1fr;
-         padding: 18px;
+         .interfaz-chart {
+            height: 140px;
+            display: flex;
+            align-items: flex-end;
+            gap: 8px;
+            padding-top: 10px;
          }
-         .contacto {
-         padding-bottom: 110px;
+         .interfaz-bar {
+            flex: 1;
+            background-color: var(--azul-marca);
+            border-radius: 4px 4px 0 0;
+            opacity: 0.85;
          }
-         .footer-links {
-         display: grid;
-         grid-template-columns: 1fr 1fr;
+         .interfaz-bar.destaque { background-color: var(--naranja-acento); opacity: 1; }
+         
+         .interfaz-progress-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
          }
-         .correo-overlay {
-         padding: 12px;
-         align-items: flex-end;
+         .progress-bar-bg {
+            height: 6px;
+            background-color: var(--azul-super-claro);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 4px;
          }
-         .correo-modal {
-         max-height: 92vh;
-         border-radius: 26px 26px 0 0;
+         .progress-bar-fill {
+            height: 100%;
+            background-color: var(--azul-marca);
          }
-         .correo-header,
-         .correo-form {
-         padding-left: 20px;
-         padding-right: 20px;
+
+         /* MOSAICO DE SERVICIOS */
+         .grid-servicios {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
          }
-         .correo-header h3 {
-         font-size: 22px;
+         .tarjeta-servicio {
+            background-color: var(--blanco);
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid var(--borde-sutil);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
          }
-         .form-grid,
-         .servicios-check {
-         grid-template-columns: 1fr;
+         .tarjeta-servicio:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--sombra-premium);
+            border-color: rgba(29, 59, 106, 0.2);
          }
-         .form-actions {
-         display: grid;
-         grid-template-columns: 1fr;
+         .num-servicio {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--naranja-acento);
+            margin-bottom: 20px;
+            display: block;
          }
-         .form-actions .btn {
-         width: 100%;
+         .tarjeta-servicio h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--azul-premium);
+            margin-bottom: 12px;
          }
-         .cta-mobile {
-         position: fixed;
-         left: 14px;
-         right: 14px;
-         bottom: 14px;
-         z-index: 60;
-         display: block;
-         padding: 8px;
-         border-radius: 22px;
-         background: rgba(255, 255, 255, 0.94);
-         backdrop-filter: blur(16px);
-         box-shadow: 0 18px 40px rgba(7, 23, 45, 0.2);
+         .tarjeta-servicio p {
+            color: var(--texto-secundario);
+            font-size: 15px;
          }
-         .cta-mobile .btn {
-         width: 100%;
-         min-height: 50px;
+
+         /* MÉTODO CORPORATIVO */
+         .seccion-oscura {
+            background-color: var(--azul-premium);
+            color: var(--blanco);
          }
+         .seccion-oscura h2 { color: var(--blanco); }
+         .seccion-oscura .encabezado-bloque p { color: rgba(255, 255, 255, 0.7); }
+         .grid-metodo {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 80px;
          }
-         .site-footer {
-         background: #07172d;
-         color: rgba(255,255,255,.72);
-         padding: 24px 0;
+         .lista-pasos {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
          }
-         .footer-bottom {
-         display:flex;
-         justify-content:center;
-         align-items:center;
-         text-align:center;
-         padding:4px 0;
-         font-size:13px;
-         color:rgba(255,255,255,.52);
+         .item-paso {
+            display: flex;
+            gap: 24px;
+            padding: 32px;
+            background-color: var(--azul-intermedio);
+            border-radius: 12px;
+            border: 1px solid var(--borde-sutil-blanco);
+         }
+         .num-paso {
+            flex: 0 0 36px;
+            height: 36px;
+            background-color: var(--blanco);
+            color: var(--azul-premium);
+            border-radius: 6px;
+            display: grid;
+            place-items: center;
+            font-weight: 700;
+            font-size: 14px;
+         }
+         .contenido-paso h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 6px;
+         }
+         .contenido-paso p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 15px;
+         }
+
+         /* COMPONENTES DE CHIPS */
+         .wrapper-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            max-width: 900px;
+            margin: 0 auto;
+         }
+         .chip-institucional {
+            background-color: var(--blanco);
+            border: 1px solid var(--borde-sutil);
+            padding: 10px 20px;
+            border-radius: 999px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--azul-marca);
+         }
+
+         /* SECCIÓN LLAMADA A LA ACCIÓN */
+         .cta-bloque {
+            background-color: var(--azul-intermedio);
+            color: var(--blanco);
+            padding: 100px 0;
+         }
+         .cta-grid {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+         }
+         .cta-grid h2 { color: var(--blanco); }
+         .cta-grid p { color: rgba(255,255,255,0.7); margin-top: 12px; font-size: 17px; }
+         .cta-botones {
+            display: flex;
+            gap: 16px;
+            flex-shrink: 0;
+         }
+
+         /* PIE DE PÁGINA (FOOTER) */
+         footer {
+            background-color: var(--azul-premium);
+            color: rgba(255, 255, 255, 0.5);
+            padding: 40px 0;
+            font-size: 14px;
+            border-top: 1px solid var(--borde-sutil-blanco);
+         }
+         .footer-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+         }
+
+         /* MODAL FORMULARIO PREMIUM */
+         .overlay-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 200;
+            background-color: rgba(10, 25, 47, 0.4);
+            backdrop-filter: blur(16px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+         }
+         .overlay-modal.activo { display: flex; }
+         .ventana-modal {
+            background-color: var(--blanco);
+            width: min(680px, 100%);
+            border-radius: 16px;
+            box-shadow: 0 30px 60px -15px rgba(0,0,0,0.25);
+            overflow: hidden;
+         }
+         .modal-cabecera {
+            padding: 32px 40px;
+            border-bottom: 1px solid var(--borde-sutil);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+         }
+         .modal-cabecera h3 { font-size: 24px; color: var(--azul-premium); font-weight: 700; }
+         .modal-cabecera p { color: var(--texto-secundario); font-size: 14px; margin-top: 4px; }
+         .btn-cerrar {
+            background: none; border: none; font-size: 28px; color: var(--texto-secundario); cursor: pointer; line-height: 1;
+         }
+         .modal-cuerpo { padding: 40px; }
+         .form-estructura {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+         }
+         .full-width { grid-column: span 2; }
+         .grupo-campo { display: flex; flex-direction: column; gap: 6px; }
+         .grupo-campo label { font-size: 13px; font-weight: 600; color: var(--azul-premium); }
+         .grupo-campo input, .grupo-campo select, .grupo-campo textarea {
+            padding: 12px 16px;
+            border: 1px solid var(--borde-sutil);
+            border-radius: 6px;
+            font-size: 14px;
+            color: var(--texto-principal);
+            background-color: var(--blanco);
+            outline: none;
+         }
+         .grupo-campo input:focus, .grupo-campo select:focus, .grupo-campo textarea:focus {
+            border-color: var(--azul-marca);
+            box-shadow: 0 0 0 3px rgba(29, 59, 106, 0.08);
+         }
+         .mosaico-checks {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+         }
+         .tarjeta-check {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px;
+            border: 1px solid var(--borde-sutil);
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            background-color: var(--azul-super-claro);
+         }
+         .modal-botones {
+            margin-top: 32px;
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+         }
+
+         /* DISPOSITIVOS MÓVILES (RESPONSIVE) */
+         @media (max-width: 992px) {
+            section { padding: 100px 0; }
+            .menu-toggle { display: block; }
+            nav.menu {
+               position: absolute; top: 80px; left: 0; width: 100%;
+               background-color: var(--blanco); border-bottom: 1px solid var(--borde-sutil);
+               display: none; padding: 24px 0;
+            }
+            nav.menu.activo { display: block; }
+            nav.menu ul { flex-direction: column; width: min(1200px, calc(100% - 48px)); margin: 0 auto; gap: 4px; }
+            nav.menu a { width: 100%; display: block; padding: 12px 16px; }
+            .hero-grid, .grid-servicios, .grid-metodo, .cta-grid { grid-template-columns: 1fr; }
+            .hero { padding-top: 140px; }
+            .cta-grid { flex-direction: column; text-align: center; }
+            .cta-botones { justify-content: center; }
+         }
+         @media (max-width: 576px) {
+            h1 { font-size: 38px; }
+            .hero-acciones { flex-direction: column; }
+            .mini-stats, .mosaico-checks { grid-template-columns: 1fr; }
+            .modal-cabecera { padding: 24px; }
+            .modal-cuerpo { padding: 24px; }
+            .form-estructura { grid-template-columns: 1fr; }
+            .full-width { grid-column: span 1; }
+            .footer-container { flex-direction: column; gap: 12px; text-align: center; }
          }
       </style>
    </head>
    <body>
+
       <header>
          <div class="contenedor navbar">
-            <a href="index.html" class="logo" aria-label="NeoDat Consultores">
-            <img src="Neo1.png" class="logo-icono">
+            <a href="index.html" class="logo" aria-label="NeoDat Home">
+               <img src="Neo1.png" alt="NeoDat Consultores">
             </a>
-            <button class="menu-toggle" type="button" aria-label="Abrir menú"> ☰ </button>
-            <nav class="menu" aria-label="Navegación principal">
+            <button class="menu-toggle" type="button" aria-label="Menu" onclick="toggleMenu()">☰</button>
+            <nav class="menu">
                <ul>
-                  <li><a href="index.html">Inicio</a></li>
+                  <li class="activo"><a href="index.html">Inicio</a></li>
                   <li><a href="servicios.html">Servicios</a></li>
                   <li><a href="metodo.html">Método</a></li>
                   <li><a href="ambitos.html">Ámbitos</a></li>
@@ -1005,296 +568,258 @@
                   <li><a href="contacto.html">Contacto</a></li>
                </ul>
             </nav>
-            <a class="btn btn-whatsapp whatsapp-desktop" href="https://wa.me/593988200116?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20NeoDat%20Consultores." target="_blank" rel="noopener" > WhatsApp </a>
+            <a class="btn btn-whatsapp" href="https://wa.me/593988200116" target="_blank" rel="noopener">WhatsApp Corporativo</a>
          </div>
       </header>
+
       <main>
          <section class="hero">
             <div class="contenedor hero-grid">
                <div>
-                  <div class="eyebrow">Consultoría empresarial y analítica</div>
-                  <h1> Transformamos la incertidumbre de su empresa en decisiones respaldadas por datos precisos. </h1>
-                  <p> NeoDat Consultores estructura datos, finanzas, dashboards y procesos para que las empresas trabajen con información clara, indicadores confiables y control ejecutivo. </p>
-                  <div class="acciones">
-                     <a class="btn btn-principal" href="#servicios"> Explorar servicios </a>
-                     <a class="btn btn-principal btn-whatsapp" href="https://wa.me/593988200116?text=Hola,%20quiero%20solicitar%20una%20asesor%C3%ADa%20con%20NeoDat." target="_blank" rel="noopener" > Solicitar asesoría </a>
-                     <button class="btn btn-secundario" type="button" data-open-email> Correo empresarial </button>
+                  <h1>Transformamos la complejidad de sus datos en rentabilidad corporativa.</h1>
+                  <p>Estructuramos analítica avanzada, inteligencia financiera y arquitecturas de datos a la medida para dotar a su organización de un absoluto control ejecutivo.</p>
+                  <div class="hero-acciones">
+                     <a class="btn btn-primario" href="servicios.html">Ver catálogo de soluciones</a>
+                     <button class="btn btn-secundario" type="button" onclick="abrirModal()">Solicitud formal por correo</button>
                   </div>
-                  <div class="metricas">
-                     <div class="metrica"> <strong>BI</strong> <span>Dashboards ejecutivos</span> </div>
-                     <div class="metrica"> <strong>ROI</strong> <span>Control financiero</span> </div>
-                     <div class="metrica"> <strong>360°</strong> <span>Diagnóstico empresarial</span> </div>
+                  <div class="mini-stats">
+                     <div class="stat-box"><strong>BI</strong><span>Dashboards de Control</span></div>
+                     <div class="stat-box"><strong>ROI</strong><span>Optimización Financiera</span></div>
+                     <div class="stat-box"><strong>360°</strong><span>Auditoría de Procesos</span></div>
                   </div>
                </div>
-               <div class="dashboard-shell">
-                  <div class="dashboard">
-                     <div class="dashboard-top">
-                        <div> <strong>Panel ejecutivo NeoDat</strong> <span>Ventas · Finanzas · Operaciones</span> </div>
-                        <div class="badge">Actualizado</div>
+
+               <div class="shell-interfaz">
+                  <div class="interfaz-interna">
+                     <div class="interfaz-nav">
+                        <strong>Control General de Operaciones</strong>
+                        <span class="badge">Sistemas Activos</span>
                      </div>
-                     <div class="dashboard-body">
-                        <div class="kpis">
-                           <div class="kpi"> <small>Ingresos</small> <strong>$84.2K</strong> </div>
-                           <div class="kpi"> <small>Margen</small> <strong>31.8%</strong> </div>
-                           <div class="kpi"> <small>Eficiencia</small> <strong>92%</strong> </div>
+                     <div class="interfaz-panel">
+                        <div class="interfaz-kpis">
+                           <div class="interfaz-card"><small>Rendimiento</small><strong>94.2%</strong></div>
+                           <div class="interfaz-card"><small>Margen Neto</small><strong>31.8%</strong></div>
+                           <div class="interfaz-card"><small>Eficiencia</small><strong>92.0%</strong></div>
                         </div>
-                        <div class="graficos">
-                           <div class="card">
-                              <h3>Resultados por periodo</h3>
-                              <div class="chart" aria-hidden="true">
-                                 <div class="bar"></div>
-                                 <div class="bar"></div>
-                                 <div class="bar"></div>
-                                 <div class="bar"></div>
-                                 <div class="bar"></div>
-                                 <div class="bar"></div>
-                                 <div class="bar"></div>
+                        <div class="interfaz-graficos">
+                           <div class="interfaz-card">
+                              <div class="interfaz-chart">
+                                 <div class="interfaz-bar" style="height: 40%"></div>
+                                 <div class="interfaz-bar" style="height: 65%"></div>
+                                 <div class="interfaz-bar destaque" style="height: 90%"></div>
+                                 <div class="interfaz-bar" style="height: 70%"></div>
                               </div>
                            </div>
-                           <div class="card">
-                              <h3>Indicadores clave</h3>
-                              <div class="indicadores">
+                           <div class="interfaz-card">
+                              <div class="interfaz-progress-group">
                                  <div>
-                                    <div class="item-top"> <span>Rentabilidad</span> <strong>86%</strong> </div>
-                                    <div class="progress"> <span style="width: 86%;"></span> </div>
+                                    <span style="color: var(--texto-secundario); font-size:11px;">Automatización</span>
+                                    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 86%"></div></div>
                                  </div>
                                  <div>
-                                    <div class="item-top"> <span>Reportes</span> <strong>94%</strong> </div>
-                                    <div class="progress orange"> <span style="width: 94%;"></span> </div>
-                                 </div>
-                                 <div>
-                                    <div class="item-top"> <span>Proyectos</span> <strong>78%</strong> </div>
-                                    <div class="progress"> <span style="width: 78%;"></span> </div>
+                                    <span style="color: var(--texto-secundario); font-size:11px;">Integración</span>
+                                    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 73%"></div></div>
                                  </div>
                               </div>
                            </div>
                         </div>
-                        <div class="card">
-                           <h3>Resumen de gestión</h3>
-                           <div class="tabla-bi">
-                              <div class="fila-bi"> <span>Automatización de reportes</span> <span>Estado</span> <strong>Activo</strong> </div>
-                              <div class="fila-bi"> <span>Visibilidad financiera</span> <span>Cobertura</span> <strong>Integral</strong> </div>
-                              <div class="fila-bi"> <span>Seguimiento de proyectos</span> <span>Control</span> <strong>Continuo</strong> </div>
-                           </div>
-                        </div>
                      </div>
                   </div>
                </div>
             </div>
          </section>
-         <section id="servicios">
+
+         <section class="seccion-gris">
             <div class="contenedor">
-               <div class="encabezado">
-                  <div class="subtitulo">Servicios</div>
-                  <h2>Soluciones profesionales para gestión y crecimiento.</h2>
-                  <p> Convertimos información dispersa en herramientas útiles para control, análisis y toma de decisiones. </p>
+               <div class="encabezado-bloque">
+                  <span class="tagline">Especialidades</span>
+                  <h2>Soluciones corporativas de ingeniería y gestión</h2>
+                  <p>Diseñamos e instalamos capacidades analíticas duraderas e integradas directamente en la cadena de valor de su negocio.</p>
                </div>
-               <div class="servicios">
-                  <article class="servicio">
-                     <div class="servicio-num">01</div>
-                     <h3>Análisis de datos</h3>
-                     <p>Consolidación, modelado y análisis de información empresarial.</p>
+               <div class="grid-servicios">
+                  <article class="tarjeta-servicio">
+                     <span class="num-servicio">01</span>
+                     <h3>Análisis de Datos</h3>
+                     <p>Estructuración de almacenes de datos limpios, lógicos y completamente escalables para auditorías analíticas.</p>
                   </article>
-                  <article class="servicio">
-                     <div class="servicio-num">02</div>
-                     <h3>Consultoría financiera</h3>
-                     <p>Evaluación financiera, presupuestos, proyecciones y control.</p>
+                  <article class="tarjeta-servicio">
+                     <span class="num-servicio">02</span>
+                     <h3>Consultoría Financiera</h3>
+                     <p>Modelado matemático de presupuestos, proyecciones corporativas avanzadas y análisis de costes operativos.</p>
                   </article>
-                  <article class="servicio">
-                     <div class="servicio-num">03</div>
-                     <h3>Dashboards</h3>
-                     <p>Diseño de tableros ejecutivos y monitoreo KPI.</p>
-                  </article>
-                  <article class="servicio">
-                     <div class="servicio-num">04</div>
-                     <h3>Creación de proyectos</h3>
-                     <p>Planificación, estructuración y documentación empresarial.</p>
-                  </article>
-                  <article class="servicio">
-                     <div class="servicio-num">05</div>
-                     <h3>Páginas web</h3>
-                     <p>Sitios corporativos y soluciones digitales para empresas.</p>
-                  </article>
-                  <article class="servicio">
-                     <div class="servicio-num">06</div>
-                     <h3>Control de gestión</h3>
-                     <p>Indicadores, reportes y seguimiento empresarial.</p>
+                  <article class="tarjeta-servicio">
+                     <span class="num-servicio">03</span>
+                     <h3>Dashboards Corporativos</h3>
+                     <p>Interfaces centralizadas interactivos de KPIs críticos orientados al monitoreo del cuadro de mando ejecutivo.</p>
                   </article>
                </div>
             </div>
          </section>
-         <section class="metodo" id="metodo">
-            <div class="contenedor metodo-grid">
-               <div class="encabezado">
-                  <div class="subtitulo">Método NeoDat</div>
-                  <h2>Trabajo ordenado, medible y orientado a resultados.</h2>
-                  <p> Cada solución se construye desde el diagnóstico real del negocio. No entregamos únicamente archivos o reportes; instalamos herramientas de control y decisión. </p>
+
+         <section class="seccion-oscura">
+            <div class="contenedor grid-metodo">
+               <div class="encabezado-bloque">
+                  <span class="tagline">Garantía Operativa</span>
+                  <h2>Un proceso consultivo riguroso e institucional</h2>
+                  <p>Garantizamos soluciones funcionales basadas en un análisis técnico previo del ecosistema digital e informático de su compañía.</p>
                </div>
-               <div class="pasos">
-                  <div class="paso">
-                     <div class="paso-numero">1</div>
-                     <div>
-                        <h3>Diagnóstico</h3>
-                        <p>Revisión de información, procesos, necesidades, brechas y objetivos estratégicos.</p>
+               <div class="lista-pasos">
+                  <div class="item-paso">
+                     <div class="num-paso">1</div>
+                     <div class="contenido-paso">
+                        <h3>Diagnóstico Técnico Inicial</h3>
+                        <p>Evaluación estructural de la consistencia de los datos, brechas del sistema y requerimientos estratégicos directivos.</p>
                      </div>
                   </div>
-                  <div class="paso">
-                     <div class="paso-numero">2</div>
-                     <div>
-                        <h3>Diseño</h3>
-                        <p>Definición de indicadores, estructura de datos, modelo financiero, entregables y hoja de ruta.</p>
-                     </div>
-                  </div>
-                  <div class="paso">
-                     <div class="paso-numero">3</div>
-                     <div>
-                        <h3>Implementación</h3>
-                        <p>Construcción de dashboards, reportes, páginas web, modelos, herramientas y controles.</p>
-                     </div>
-                  </div>
-                  <div class="paso">
-                     <div class="paso-numero">4</div>
-                     <div>
-                        <h3>Seguimiento</h3>
-                        <p>Ajuste de resultados, validación de indicadores y mejora continua de la solución.</p>
+                  <div class="item-paso">
+                     <div class="num-paso">2</div>
+                     <div class="contenido-paso">
+                        <h3>Diseño y Modelado</h3>
+                        <p>Estructuración lógica de los indicadores críticos, flujos de extracción y arquitectura del entregable.</p>
                      </div>
                   </div>
                </div>
             </div>
          </section>
-         <section class="ambitos" id="ambitos">
+
+         <section class="seccion-gris">
             <div class="contenedor">
-               <div class="encabezado centro">
-                  <div class="subtitulo">Ámbitos</div>
-                  <h2>Consultoría para áreas críticas del negocio.</h2>
-                  <p> Apoyamos procesos de dirección, administración, finanzas, operaciones, comercial, tecnología y gestión de proyectos. </p>
+               <div class="encabezado-bloque centro">
+                  <span class="tagline">Áreas de Cobertura</span>
+                  <h2>Soporte en pilares críticos organizacionales</h2>
                </div>
-               <div class="chips"> <span class="chip">Análisis financiero</span> <span class="chip">Business Intelligence</span> <span class="chip">Control presupuestario</span> <span class="chip">Automatización de reportes</span> <span class="chip">Planeación estratégica</span> <span class="chip">Gestión operativa</span> <span class="chip">Modelos de negocio</span> <span class="chip">Desarrollo web</span> <span class="chip">Indicadores KPI</span> </div>
+               <div class="wrapper-chips">
+                  <span class="chip-institucional">Business Intelligence</span>
+                  <span class="chip-institucional">Planificación Financiera</span>
+                  <span class="chip-institucional">Control de Gestión</span>
+                  <span class="chip-institucional">Modelos de Rentabilidad</span>
+                  <span class="chip-institucional">Arquitectura Web Corporativa</span>
+                  <span class="chip-institucional">Optimización de KPIs</span>
+               </div>
             </div>
          </section>
-         <section class="contacto" id="contacto">
-            <div class="contenedor contacto-grid">
+
+         <section class="cta-bloque">
+            <div class="contenedor cta-grid">
                <div>
-                  <h2>Convirtamos sus datos en decisiones útiles.</h2>
-                  <p> Puede contactar a NeoDat por WhatsApp para una respuesta rápida o por correo electrónico para solicitudes formales. </p>
+                  <h2>Inicie la institucionalización de sus sistemas de información</h2>
+                  <p>Establezca una sesión técnica inicial con nuestro panel de consultores para evaluar las capacidades de control vigentes en su organización.</p>
                </div>
-               <div class="contacto-acciones"> <a class="btn btn-principal btn-whatsapp" href="https://wa.me/593988200116?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20NeoDat." target="_blank" rel="noopener" > Contactar por WhatsApp </a> <button class="btn btn-secundario" type="button" data-open-email> Contactar por correo </button> </div>
+               <div class="cta-botones">
+                  <button class="btn btn-primario" style="background-color: var(--blanco); color: var(--azul-premium);" onclick="abrirModal()">Agendar Sesión</button>
+                  <a class="btn btn-secundario" style="background-color: transparent; color: var(--blanco); border-color: rgba(255,255,255,0.3);" href="contacto.html">Más información</a>
+               </div>
             </div>
          </section>
       </main>
-      <footer class="site-footer">
-         <div class="contenedor footer-bottom"> <span>© 2026 NeoDat Consultores. Todos los derechos reservados.</span> </div>
+
+      <footer>
+         <div class="contenedor footer-container">
+            <span>© 2026 NeoDat Consultores. Todos los derechos reservados.</span>
+            <span style="font-size:12px;">Infraestructura Corporativa Segura</span>
+         </div>
       </footer>
-      <div class="correo-overlay" id="correoOverlay" aria-hidden="true">
-         <div class="correo-modal" role="dialog" aria-modal="true" aria-labelledby="correoTitulo">
-            <div class="correo-header">
+
+      <div class="overlay-modal" id="modalCorreo" aria-hidden="true" onclick="cerrarModalExterno(event)">
+         <div class="ventana-modal">
+            <div class="modal-cabecera">
                <div>
-                  <span>Solicitud por correo</span> 
-                  <h3 id="correoTitulo">Cuéntenos qué servicio requiere</h3>
-                  <p> Comparta los detalles de su requerimiento y uno de nuestros consultores se comunicará con usted para analizar su solicitud y brindarle una solución adecuada. </p>
+                  <h3>Requerimiento de Consultoría</h3>
+                  <p>Describa los parámetros de su proyecto para asignar un especialista técnico.</p>
                </div>
-               <button class="cerrar-modal" type="button" data-close-email aria-label="Cerrar formulario"> × </button>
+               <button class="btn-cerrar" onclick="cerrarModal()">×</button>
             </div>
-            <form class="correo-form" id="correoForm">
-               <div class="form-grid">
-                  <div class="campo"> <label for="nombre">Nombre</label> <input id="nombre" name="nombre" type="text" placeholder="Nombre y apellido" required /> </div>
-                  <div class="campo"> <label for="empresa">Empresa</label> <input id="empresa" name="empresa" type="text" placeholder="Nombre de la empresa" /> </div>
-                  <div class="campo"> <label for="correo">Correo</label> <input id="correo" name="correo" type="email" placeholder="correo@empresa.com" required /> </div>
-                  <div class="campo"> <label for="telefono">Teléfono</label> <input id="telefono" name="telefono" type="tel" placeholder="0987123456" /> </div>
-                  <div class="campo"> <label for="ciudad">Ciudad</label> <input id="ciudad" name="ciudad" type="text" placeholder="Ciudad" /> </div>
-                  <div class="campo">
-                     <label for="urgencia">Nivel de prioridad</label> 
-                     <select id="urgencia" name="urgencia">
-                        <option value="Consulta general">Consulta general</option>
-                        <option value="Requerimiento prioritario">Requerimiento prioritario</option>
-                        <option value="Proyecto próximo a iniciar">Proyecto próximo a iniciar</option>
-                     </select>
+            <div class="modal-cuerpo">
+               <form id="formConsultoria" class="form-estructura" onsubmit="enviarFormulario(event)">
+                  <div class="grupo-campo">
+                     <label for="nombre">Nombre Completo</label>
+                     <input type="text" id="nombre" name="nombre" placeholder="Ej. Juan Pérez" required>
                   </div>
-                  <div class="campo full">
-                     <label>Servicio requerido</label> 
-                     <div class="servicios-check">
-                        <label class="check-card"> <input type="checkbox" name="servicio" value="Análisis de datos" /> Análisis de datos </label> 
-                        <label class="check-card"> <input type="checkbox" name="servicio" value="Consultoría financiera" /> Consultoría financiera </label> 
-                        <label class="check-card"> <input type="checkbox" name="servicio" value="Dashboards y KPI" /> Dashboards y KPI </label> 
-                        <label class="check-card"> <input type="checkbox" name="servicio" value="Creación de proyectos" /> Creación de proyectos </label> 
-                        <label class="check-card"> <input type="checkbox" name="servicio" value="Página web corporativa" /> Página web corporativa </label> 
-                        <label class="check-card"> <input type="checkbox" name="servicio" value="Control de gestión" /> Control de gestión </label> 
+                  <div class="grupo-campo">
+                     <label for="empresa">Organización / Empresa</label>
+                     <input type="text" id="empresa" name="empresa" placeholder="Nombre de su compañía">
+                  </div>
+                  <div class="grupo-campo">
+                     <label for="correo">Correo Institucional</label>
+                     <input type="email" id="correo" name="correo" placeholder="ejemplo@empresa.com" required>
+                  </div>
+                  <div class="grupo-campo">
+                     <label for="telefono">Teléfono de Contacto</label>
+                     <input type="tel" id="telefono" name="telefono" placeholder="Ej. 0987654321">
+                  </div>
+                  <div class="grupo-campo full-width">
+                     <label>Solución Requerida</label>
+                     <div class="mosaico-checks">
+                        <label class="tarjeta-check"><input type="checkbox" name="servicio" value="Análisis de Datos"> Análisis de Datos</label>
+                        <label class="tarjeta-check"><input type="checkbox" name="servicio" value="Consultoría Financiera"> Consultoría Financiera</label>
+                        <label class="tarjeta-check"><input type="checkbox" name="servicio" value="Dashboards Corporativos"> Dashboards Corporativos</label>
+                        <label class="tarjeta-check"><input type="checkbox" name="servicio" value="Infraestructura Web"> Desarrollo Web Corporativo</label>
                      </div>
                   </div>
-                  <div class="campo full"> <label for="mensaje">Descripción de la necesidad</label> <textarea id="mensaje" name="mensaje" placeholder="Describa brevemente qué necesita, qué problema busca resolver o qué resultado espera obtener." required ></textarea> </div>
-               </div>
-               <div class="form-actions">
-                  <button class="btn btn-principal" type="submit"> Enviar solicitud </button>
-                  <button class="btn btn-secundario" type="button" data-close-email> Cancelar </button>
-               </div>
-               <p class="nota-form">Al enviar este formulario, se abrirá su gestor de correo predeterminado con los datos estructurados.</p>
-            </form>
+                  <div class="grupo-campo full-width">
+                     <label for="mensaje">Breve Descripción del Requerimiento</label>
+                     <textarea id="mensaje" name="mensaje" rows="4" placeholder="Describa el estado actual o problema estratégico a resolver..." required></textarea>
+                  </div>
+                  <div class="modal-botones full-width">
+                     <button type="button" class="btn btn-secundario" onclick="cerrarModal()">Cancelar</button>
+                     <button type="submit" class="btn btn-primario">Procesar e Iniciar Solicitud</button>
+                  </div>
+               </form>
+            </div>
          </div>
       </div>
-      <div class="cta-mobile"> <a class="btn btn-principal btn-whatsapp" href="https://wa.me/593988200116?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20NeoDat%20Consultores." target="_blank" rel="noopener"> WhatsApp corporativo </a> </div>
+
       <script>
-         const overlay = document.getElementById("correoOverlay");
-         const btnsOpen = document.querySelectorAll("[data-open-email]");
-         const btnsClose = document.querySelectorAll("[data-close-email]");
-         const form = document.getElementById("correoForm");
-         
+         function toggleMenu() {
+            document.querySelector('nav.menu').classList.toggle('activo');
+         }
+
          function abrirModal() {
-           overlay.classList.add("activo");
-           overlay.removeAttribute("aria-hidden");
-           document.body.style.overflow = "hidden";
+            const modal = document.getElementById('modalCorreo');
+            modal.classList.add('activo');
+            modal.removeAttribute('aria-hidden');
+            document.body.style.overflow = 'hidden';
          }
-         
+
          function cerrarModal() {
-           overlay.classList.remove("activo");
-           overlay.setAttribute("aria-hidden", "true");
-           document.body.style.overflow = "";
+            const modal = document.getElementById('modalCorreo');
+            modal.classList.remove('activo');
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
          }
-         
-         btnsOpen.forEach((btn) => btn.addEventListener("click", abrirModal));
-         btnsClose.forEach((btn) => btn.addEventListener("click", cerrarModal));
-         
-         overlay.addEventListener("click", (e) => {
-           if (e.target === overlay) cerrarModal();
-         });
-         
-         form.addEventListener("submit", (e) => {
-           e.preventDefault();
-           const data = new FormData(form);
-           const servicios = data.getAll("servicio");
-         
-           const cuerpo = [
-             "Hola NeoDat,",
-             "",
-             "Quiero solicitar información sobre los siguientes servicios:",
-             servicios.length ? servicios.map((item) => "- " + item).join("\n") : "- No especificado",
-             "",
-             "Datos del solicitante:",
-             "Nombre: " + (data.get("nombre") || ""),
-             "Empresa: " + (data.get("empresa") || ""),
-             "Correo: " + (data.get("correo") || ""),
-             "Teléfono: " + (data.get("telefono") || ""),
-             "Ciudad: " + (data.get("ciudad") || ""),
-             "Prioridad: " + (data.get("urgencia") || ""),
-             "",
-             "Descripción de la necesidad:",
-             data.get("mensaje") || "",
-             "",
-             "Gracias."
-           ].join("\n");
-         
-           const subject = encodeURIComponent("Solicitud de servicio - NeoDat Consultores");
-           const body = encodeURIComponent(cuerpo);
-         
-           window.location.href = "mailto:neodatconsultores@gmail.com?subject=" + subject + "&body=" + body;
-         });
-      </script>
-      <script>
-         const menuToggle = document.querySelector(".menu-toggle");
-         const menu = document.querySelector(".menu");
-         
-         menuToggle.addEventListener("click", () => {
-            menu.classList.toggle("activo");
-         });
+
+         function cerrarModalExterno(e) {
+            if (e.target.id === 'modalCorreo') cerrarModal();
+         }
+
+         function enviarFormulario(e) {
+            e.preventDefault();
+            const formData = new FormData(document.getElementById('formConsultoria'));
+            const serviciosSeleccionados = formData.getAll('servicio');
+
+            const estructuraCuerpo = [
+               "Estimado equipo técnico de NeoDat Consultores,",
+               "",
+               "Se ha generado una nueva solicitud formal de consultoría mediante el portal institucional:",
+               "",
+               "Información del Solicitante:",
+               "- Nombre completo: " + formData.get('nombre'),
+               "- Empresa/Organización: " + (formData.get('empresa') || 'No indicada'),
+               "- Correo electrónico: " + formData.get('correo'),
+               "- Teléfono de contacto: " + (formData.get('telefono') || 'No indicado'),
+               "",
+               "Servicios de interés seleccionados:",
+               serviciosSeleccionados.length ? serviciosSeleccionados.map(s => "  • " + s).join("\n") : "  • Ninguno especificado de forma explícita",
+               "",
+               "Detalles operativos de la necesidad:",
+               formData.get('mensaje'),
+               "",
+               "Atentamente."
+            ].join("\n");
+
+            const asunto = encodeURIComponent("Requerimiento Formal de Consultoría Corporativa - NeoDat");
+            window.location.href = `mailto:neodatconsultores@gmail.com?subject=${asunto}&body=${encodeURIComponent(estructuraCuerpo)}`;
+         }
       </script>
    </body>
 </html>
