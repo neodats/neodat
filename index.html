@@ -178,7 +178,6 @@
             overflow: hidden;
             display: flex;
             align-items: center;
-            margin-bottom: 0;
          }
          .hero::before {
             content: "";
@@ -222,7 +221,7 @@
          }
 
          /* ==========================================================================
-            DASHBOARD CORPORATIVO INTELLIGENT BI
+            DASHBOARD CORPORATIVO (MAPA ELIMINADO Y ESTRUCTURA REFINADA)
             ========================================================================== */
          .dashboard-shell {
             padding: 10px;
@@ -329,7 +328,7 @@
          .trend-up { color: var(--exito); }
          .trend-orange { color: var(--naranja); }
 
-         /* NUEVO COMPONENTE: GRÁFICO DE LÍNEA ANALÍTICO AVANZADO */
+         /* GRÁFICO DE LÍNEAS AVANZADO ANALÍTICO */
          .chart-container {
             background: #ffffff;
             border-radius: 12px;
@@ -373,7 +372,6 @@
             height: 100%;
             overflow: visible;
          }
-         /* Animación sutil de respiración para el nodo activo de datos */
          .live-node {
             animation: pulseActiveNode 2s infinite ease-in-out;
          }
@@ -383,7 +381,7 @@
             100% { r: 4; opacity: 1; }
          }
 
-         /* DISTRIBUCIÓN INFERIOR */
+         /* INTERFAZ INFERIOR DISTRIBUIDA */
          .analytics-grid-bottom {
             display: grid;
             grid-template-columns: 1.2fr 1fr;
@@ -397,6 +395,11 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+         }
+         .card-title-clean {
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--azul-oscuro);
          }
          .funnel-container {
             display: flex;
@@ -671,14 +674,14 @@
       </footer>
 
       <script>
-         // Menú móvil
+         // Menú móvil accesible
          const menuToggle = document.querySelector(".menu-toggle");
          const menu = document.querySelector(".menu");
          menuToggle.addEventListener("click", () => {
             menu.classList.toggle("activo");
          });
 
-         // Elementos del KPI y del Gráfico Premium
+         // Nodos y elementos dinámicos
          const margenTxt = document.getElementById("kpi-stream");
          const ebitdaTxt = document.getElementById("kpi-eficiencia");
          const calidadTxt = document.getElementById("kpi-procesos");
@@ -688,9 +691,9 @@
          const trackerOuter = document.getElementById("live-tracker-outer");
          const trackerInner = document.getElementById("live-tracker-inner");
 
-         // Fluctuación en tiempo real para simular un feed de BI real
+         // Fluctuación fluida del feed de BI corporativo (cada 2.5 segundos)
          setInterval(() => {
-            // 1. Actualización de textos numéricos
+            // Actualización sutil de métricas
             const vMargen = (33 + Math.random() * 2).toFixed(1);
             margenTxt.textContent = `${vMargen}%`;
 
@@ -700,17 +703,16 @@
             const vCalidad = (99.5 + Math.random() * 0.4).toFixed(1);
             calidadTxt.textContent = `${vCalidad}%`;
 
-            // 2. Movimiento fluido del último nodo del gráfico (Mes de Junio)
-            // Genera una coordenada Y aleatoria y elegante entre 25 y 65 para mantener la consistencia financiera
+            // Movimiento suave de la línea de ingresos en Junio
             const nuevaYJunio = Math.floor(25 + Math.random() * 40); 
             
-            // Actualizar la polilínea del gráfico
+            // Actualizar coordenadas de la línea
             graphLine.setAttribute("points", `0,95 100,80 200,45 300,75 400,35 500,${nuevaYJunio}`);
             
-            // Actualizar el polígono del área sombreada para que coincida perfectamente
+            // Sincronizar el polígono de fondo
             graphArea.setAttribute("d", `M 0 95 L 100 80 L 200 45 L 300 75 L 400 35 L 500 ${nuevaYJunio} L 500 100 L 0 100 Z`);
             
-            // Reposicionar el punto dinámico final (nodos de tracking)
+            // Desplazar el nodo interactivo activo
             trackerOuter.setAttribute("cy", nuevaYJunio);
             trackerInner.setAttribute("cy", nuevaYJunio);
 
