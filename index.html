@@ -15,11 +15,12 @@
         }
 
         body {
-            background-color: #030b1e;
+            background-color: #ffffff;
+            /* Degradados sutiles para dar profundidad sobre el blanco */
             background-image: 
-                radial-gradient(circle at 80% 20%, rgba(28, 77, 138, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 20% 80%, rgba(10, 25, 50, 0.5) 0%, transparent 50%);
-            color: #ffffff;
+                radial-gradient(circle at 80% 20%, rgba(240, 244, 255, 0.8) 0%, transparent 50%),
+                radial-gradient(circle at 20% 80%, rgba(245, 247, 250, 1) 0%, transparent 60%);
+            color: #1e293b; /* Texto principal oscuro para contraste */
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -28,13 +29,13 @@
             position: relative;
         }
 
-        /* Fondo de cuadrícula simulado */
+        /* Fondo de cuadrícula sutil en gris claro */
         body::before {
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-                              linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-image: linear-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
             background-size: 40px 40px;
             z-index: 0;
             pointer-events: none;
@@ -57,16 +58,17 @@
             font-weight: 700;
             font-size: 22px;
             letter-spacing: 1px;
+            color: #0f172a;
         }
 
         .logo span {
-            color: #f3a952; /* Color naranja/dorado del logo */
+            color: #e28743; /* Mantiene el toque dorado/naranja */
         }
 
         .status-badge {
-            background: rgba(0, 200, 110, 0.15);
-            border: 1px solid rgba(0, 200, 110, 0.4);
-            color: #52ffaf;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: #059669;
             padding: 8px 16px;
             border-radius: 20px;
             font-size: 12px;
@@ -75,7 +77,6 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            box-shadow: 0 0 15px rgba(0, 200, 110, 0.2);
         }
 
         .status-badge::before {
@@ -83,9 +84,9 @@
             display: inline-block;
             width: 8px;
             height: 8px;
-            background-color: #52ffaf;
+            background-color: #10b981;
             border-radius: 50%;
-            box-shadow: 0 0 8px #52ffaf;
+            box-shadow: 0 0 6px rgba(16, 185, 129, 0.4);
         }
 
         /* --- MAIN CONTENT CONTAINER --- */
@@ -100,7 +101,7 @@
             z-index: 10;
         }
 
-        /* --- LEFT COLUMN: TEXT & CALL TO ACTIONS --- */
+        /* --- LEFT COLUMN --- */
         .main-text {
             max-width: 550px;
         }
@@ -120,10 +121,11 @@
             line-height: 1.15;
             margin-bottom: 25px;
             letter-spacing: -1px;
+            color: #0f172a;
         }
 
         .description {
-            color: #8fa0be;
+            color: #64748b; /* Gris corporativo suave */
             font-size: 16px;
             line-height: 1.6;
             margin-bottom: 40px;
@@ -145,45 +147,46 @@
             text-decoration: none;
         }
 
+        /* El botón principal ahora resalta en un tono oscuro/elegante o azul vivo limpio */
         .btn-primary {
-            background-color: #0052cc;
+            background-color: #0f172a;
             color: white;
             border: none;
-            box-shadow: 0 4px 15px rgba(0, 82, 204, 0.4);
+            box-shadow: 0 4px 15px rgba(15, 23, 42, 0.2);
         }
 
         .btn-primary:hover {
-            background-color: #0066ff;
-            box-shadow: 0 6px 20px rgba(0, 82, 204, 0.6);
+            background-color: #1e293b;
+            box-shadow: 0 6px 20px rgba(15, 23, 42, 0.3);
             transform: translateY(-2px);
         }
 
         .btn-secondary {
             background-color: transparent;
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #0f172a;
+            border: 1px solid rgba(15, 23, 42, 0.2);
         }
 
         .btn-secondary:hover {
-            background-color: rgba(255, 255, 255, 0.05);
-            border-color: rgba(255, 255, 255, 0.4);
+            background-color: rgba(0, 0, 0, 0.03);
+            border-color: rgba(15, 23, 42, 0.4);
             transform: translateY(-2px);
         }
 
-        /* --- RIGHT COLUMN: GLASSMORPHISM DASHBOARD CARD --- */
+        /* --- RIGHT COLUMN: WHITE GLASSMORPHISM CARD --- */
         .dashboard-wrapper {
             position: relative;
         }
 
         .glass-card {
-            background: rgba(15, 25, 45, 0.45);
+            background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.6);
             border-radius: 16px;
             padding: 30px;
             width: 520px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.06), 0 1px 3px rgba(0,0,0,0.02);
         }
 
         .card-header {
@@ -196,12 +199,12 @@
         .card-title h3 {
             font-size: 16px;
             font-weight: 600;
-            color: #ffffff;
+            color: #0f172a;
         }
 
         .card-title p {
             font-size: 12px;
-            color: #6b7c96;
+            color: #64748b;
             margin-top: 4px;
         }
 
@@ -221,15 +224,15 @@
         }
 
         .metric-box {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(0, 0, 0, 0.01);
+            border: 1px solid rgba(0, 0, 0, 0.04);
             border-radius: 12px;
             padding: 16px;
         }
 
         .metric-label {
             font-size: 10px;
-            color: #6b7c96;
+            color: #64748b;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-bottom: 8px;
@@ -244,57 +247,56 @@
         .metric-value {
             font-size: 24px;
             font-weight: 700;
-            color: #ffffff;
+            color: #0f172a;
         }
 
         .metric-trend {
             font-size: 12px;
-            color: #00c86e;
+            color: #10b981;
             font-weight: 600;
         }
 
-        /* Simulación del Gráfico de barras 3D/Brillante */
+        /* Gráfico adaptado a tonos grises y dorados */
         .chart-container {
             display: flex;
             align-items: flex-end;
             justify-content: space-between;
             height: 120px;
             padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
             position: relative;
         }
 
         .bar {
             width: 15%;
-            background: linear-gradient(180deg, rgba(100, 140, 190, 0.4) 0%, rgba(40, 60, 90, 0.1) 100%);
-            border: 1px solid rgba(150, 180, 220, 0.3);
+            background: linear-gradient(180deg, rgba(203, 213, 225, 0.6) 0%, rgba(241, 245, 249, 0.3) 100%);
+            border: 1px solid rgba(148, 163, 184, 0.2);
             border-radius: 4px 4px 0 0;
             transition: all 0.3s ease;
-            position: relative;
         }
 
-        /* La barra dorada destacada */
+        /* Barra dorada destacada */
         .bar.highlight {
-            background: linear-gradient(180deg, #d4af37 0%, rgba(184, 134, 11, 0.2) 100%);
-            border: 1px solid #ffd700;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+            background: linear-gradient(180deg, #e28743 0%, rgba(226, 135, 67, 0.2) 100%);
+            border: 1px solid #e28743;
+            box-shadow: 0 4px 15px rgba(226, 135, 67, 0.25);
         }
 
         .bar-1 { height: 30%; }
         .bar-2 { height: 50%; }
         .bar-3 { height: 45%; }
-        .bar-4 { height: 85%; } /* Destacada */
+        .bar-4 { height: 85%; }
         .bar-5 { height: 60%; }
 
-        /* --- FOOTER & TAGS --- */
+        /* --- FOOTER --- */
         footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 30px 6%;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
             font-size: 12px;
-            color: #52647c;
+            color: #94a3b8;
             position: relative;
             z-index: 10;
         }
@@ -308,28 +310,24 @@
             display: flex;
             align-items: center;
             gap: 6px;
-            color: #8fa0be;
+            color: #475569;
         }
 
         .tag-item::before {
             content: '✓';
-            color: #0052cc;
+            color: #e28743;
             font-weight: bold;
         }
 
-        /* --- RESPONSIVE DESIGN (MEDIA QUERIES) --- */
+        /* --- RESPONSIVE DESIGN --- */
         @media (max-width: 1024px) {
             .container {
                 flex-direction: column;
                 text-align: center;
                 padding-top: 40px;
             }
-            .main-text {
-                max-width: 100%;
-            }
-            .buttons-group {
-                justify-content: center;
-            }
+            .main-text { max-width: 100%; }
+            .buttons-group { justify-content: center; }
             .glass-card {
                 width: 100%;
                 max-width: 500px;
