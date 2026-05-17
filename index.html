@@ -13,12 +13,14 @@
       
       <style>
          :root {
-            --azul-universo: #020611;
-            --naranja-acento: #ff9900;
-            --blanco: #ffffff;
-            --texto-secundario: #94a3b8;
-            --borde-glass: rgba(255, 255, 255, 0.12);
-            --borde-active: rgba(0, 255, 102, 0.25);
+            /* NUEVA PALETA: Optimización para descanso visual (Antiratiga) */
+            --azul-universo: #030712;       /* Fondo ultra oscuro base */
+            --azul-profundo: #070f21;       /* Tono intermedio para contenedores */
+            --naranja-acento: #f97316;      /* Naranja quemado menos fosforescente */
+            --blanco: #f8fafc;              /* Blanco roto/óptico sutil (no deslumbra) */
+            --texto-secundario: #94a3b8;    /* Gris slate suave para lectura descansada */
+            --borde-glass: rgba(255, 255, 255, 0.05);
+            --borde-active: rgba(34, 197, 94, 0.2);
          }
 
          * {
@@ -37,15 +39,15 @@
             -webkit-font-smoothing: antialiased;
          }
 
-         /* --- CAPA DE FONDO FIEL A LA IMAGEN --- */
+         /* --- CAPA DE FONDO EQUILIBRADA (MENOS LUZ AZUL DIRECTA) --- */
          .capa-universo {
             position: absolute;
             inset: 0;
             z-index: 1;
             background: 
-               radial-gradient(circle at 75% 30%, rgba(22, 43, 78, 0.6) 0%, transparent 50%),
-               radial-gradient(circle at 25% 75%, rgba(255, 153, 0, 0.02) 0%, transparent 40%),
-               linear-gradient(145deg, #06152d 0%, #020914 45%, #010408 100%);
+               radial-gradient(circle at 75% 30%, rgba(15, 32, 67, 0.4) 0%, transparent 60%),
+               radial-gradient(circle at 25% 75%, rgba(249, 115, 22, 0.01) 0%, transparent 40%),
+               linear-gradient(145deg, #050b18 0%, #02050d 50%, #010205 100%);
          }
 
          .capa-universo::before {
@@ -53,8 +55,8 @@
             position: absolute;
             inset: 0;
             background-image: 
-               linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-               linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+               linear-gradient(rgba(255, 255, 255, 0.008) 1px, transparent 1px),
+               linear-gradient(90deg, rgba(255, 255, 255, 0.008) 1px, transparent 1px);
             background-size: 45px 45px;
             mask-image: radial-gradient(circle at 65% 45%, black 40%, transparent 95%);
             -webkit-mask-image: radial-gradient(circle at 65% 45%, black 40%, transparent 95%);
@@ -76,25 +78,26 @@
             margin: 0 auto;
          }
 
-         /* --- COPIA EXACTA DE LA BARRA SUPERIOR (CÁPSULA CLARA) --- */
+         /* --- BARRA SUPERIOR MEJORADA: ESTILO OSCURO ELEGANTE TRANSLÚCIDO --- */
          .top-bar {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.12) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
+            background: rgba(15, 23, 42, 0.45); /* Base oscura tipo 'Gris Espacial' */
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border-radius: 20px;
-            padding: 10px 32px;
+            padding: 12px 32px;
             width: 100%;
          }
 
          .logo-contenedor img {
-            height: 48px;
+            height: 42px;
             width: auto;
             display: block;
+            filter: drop-shadow(0 2px 8px rgba(0,0,0,0.2));
          }
 
          .menu-estricto ul {
@@ -104,44 +107,45 @@
          }
 
          .menu-estricto a {
-            color: #0b192e; /* Contraste oscuro para la barra clara */
-            font-size: 15px;
-            font-weight: 600;
+            color: var(--texto-secundario);
+            font-size: 14px;
+            font-weight: 500;
             text-decoration: none;
-            transition: opacity 0.2s ease;
+            transition: color 0.2s ease, opacity 0.2s ease;
          }
 
          .menu-estricto a:hover {
-            opacity: 0.7;
+            color: var(--blanco);
          }
 
          .badge-interactivo {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(0, 255, 102, 0.15);
-            border: 1px solid rgba(0, 255, 102, 0.3);
-            color: #072211;
-            padding: 8px 18px;
+            background: rgba(34, 197, 94, 0.06);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            color: #4ade80;
+            padding: 6px 14px;
             border-radius: 999px;
             font-size: 11px;
-            font-weight: 700;
+            font-weight: 600;
             letter-spacing: 0.5px;
          }
 
          .badge-interactivo::before {
             content: "";
-            width: 7px;
-            height: 7px;
-            background-color: #00cc52;
+            width: 6px;
+            height: 6px;
+            background-color: #22c55e;
             border-radius: 50%;
+            box-shadow: 0 0 8px rgba(34, 197, 94, 0.6);
          }
 
          .menu-toggle {
             display: none;
             background: transparent;
             border: none;
-            color: #0b192e;
+            color: var(--blanco);
             font-size: 26px;
             cursor: pointer;
          }
@@ -152,7 +156,7 @@
             top: 95px;
             left: 20px;
             right: 20px;
-            background: rgba(7, 23, 45, 0.98);
+            background: rgba(11, 18, 32, 0.98);
             border: 1px solid var(--borde-glass);
             border-radius: 16px;
             padding: 24px;
@@ -186,15 +190,16 @@
          }
 
          h1 {
-            font-size: clamp(36px, 4.5vw, 56px);
+            font-size: clamp(36px, 4.5vw, 54px);
             font-weight: 800;
-            line-height: 1.12;
-            letter-spacing: -1.5px;
-            margin-bottom: 28px;
+            line-height: 1.15;
+            letter-spacing: -1.2px;
+            margin-bottom: 24px;
+            color: var(--blanco);
          }
 
          p.introduccion {
-            font-size: 17px;
+            font-size: 16px;
             color: var(--texto-secundario);
             line-height: 1.7;
             margin-bottom: 40px;
@@ -211,9 +216,9 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 15px 32px;
+            padding: 14px 30px;
             border-radius: 8px;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 600;
             cursor: pointer;
             text-decoration: none;
@@ -221,25 +226,25 @@
          }
 
          .btn-azul {
-            background-color: #0b5cd4;
+            background-color: #1d4ed8;
             color: var(--blanco);
-            box-shadow: 0 10px 25px rgba(11, 92, 212, 0.45);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 4px 14px rgba(29, 78, 216, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.08);
          }
 
-         .btn-azul:hover { background-color: #126bee; transform: translateY(-1px); }
-         .btn-vacio { background-color: transparent; color: var(--blanco); border: 1px solid rgba(255,255,255,0.2); }
-         .btn-vacio:hover { background-color: rgba(255, 255, 255, 0.04); }
+         .btn-azul:hover { background-color: #2563eb; transform: translateY(-1px); }
+         .btn-vacio { background-color: transparent; color: var(--blanco); border: 1px solid rgba(255,255,255,0.15); }
+         .btn-vacio:hover { background-color: rgba(255, 255, 255, 0.03); border-color: rgba(255,255,255,0.3); }
 
-         /* --- REPLICANDO EL INTERIOR DEL DASHBOARD ORIGINAL --- */
+         /* --- INTERIOR DEL DASHBOARD SUAVE Y COHESIVO --- */
          .dashboard-marco {
-            background: rgba(9, 23, 44, 0.45);
-            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(15, 23, 42, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.06);
             border-radius: 24px;
             padding: 32px;
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            box-shadow: 0 50px 100px rgba(0, 0, 0, 0.7);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
          }
 
          .dashboard-top {
@@ -254,6 +259,7 @@
             font-weight: 700;
             display: block;
             letter-spacing: -0.2px;
+            color: var(--blanco);
          }
 
          .dashboard-meta span {
@@ -279,8 +285,8 @@
          }
 
          .tarjeta-kpi {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid rgba(255, 255, 255, 0.04);
             border-radius: 12px;
             padding: 16px 20px;
          }
@@ -301,18 +307,19 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            color: var(--blanco);
          }
 
          .tarjeta-kpi div span {
             font-size: 12px;
-            color: #00ff66;
+            color: #4ade80;
             font-weight: 500;
          }
 
-         /* SECCIÓN DE LOS VOLÚMENES 3D E INFOGRAFÍA CORPORATIVA */
+         /* SECCIÓN DE LOS VOLÚMENES MEJORADOS EN CONTRASTE */
          .contenedor-visual-3d {
-            background: rgba(0, 0, 0, 0.25);
-            border: 1px solid rgba(255, 255, 255, 0.04);
+            background: rgba(2, 6, 23, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.03);
             border-radius: 12px;
             padding: 24px;
             height: 160px;
@@ -334,20 +341,18 @@
 
          .barra-volumen {
             flex: 1;
-            background: linear-gradient(180deg, rgba(148, 163, 184, 0.3) 0%, rgba(30, 41, 59, 0.6) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: linear-gradient(180deg, rgba(71, 85, 105, 0.4) 0%, rgba(15, 23, 42, 0.7) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 4px;
-            transition: height 1s ease;
          }
 
-         /* La barra central dorada destacada idéntica a la imagen */
-         .barra-volumen.destacada-oro {
-            background: linear-gradient(180deg, #ffd700 0%, #b8860b 100%);
-            border: 1px solid #ffe4b5;
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+         /* Barra dorada más sobria y elegante */
+         .barra-volumen destacada-oro {
+            background: linear-gradient(180deg, #eab308 0%, #ca8a04 100%);
+            border: 1px solid rgba(254, 240, 138, 0.3);
+            box-shadow: 0 0 15px rgba(234, 179, 8, 0.15);
          }
 
-         /* Línea de ritmo analítico cruzando por encima */
          .svg-onda-flotante {
             position: absolute;
             inset: 0;
@@ -359,10 +364,9 @@
 
          .linea-ritmo {
             fill: none;
-            stroke: #ffffff;
-            stroke-width: 2;
-            opacity: 0.85;
-            stroke-dasharray: 8;
+            stroke: rgba(255, 255, 255, 0.6);
+            stroke-width: 1.5;
+            stroke-dasharray: 6;
             animation: flujoLineal 30s linear infinite;
          }
 
@@ -370,14 +374,14 @@
             to { stroke-dashoffset: -500; }
          }
 
-         /* --- REPLICANDO EL PIE DE PÁGINA (DERECHOS + PALOMITAS ADERECHA) --- */
+         /* --- PIE DE PÁGINA EQUILIBRADO --- */
          .footer-bloque {
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
             gap: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
             padding-top: 24px;
             font-size: 13px;
             color: var(--texto-secundario);
@@ -392,12 +396,12 @@
             display: flex;
             align-items: center;
             gap: 6px;
-            color: rgba(255, 255, 255, 0.6);
+            color: var(--texto-secundario);
          }
 
          .footer-tags span::before {
             content: "✓";
-            color: #3b82f6;
+            color: #60a5fa;
             font-weight: bold;
          }
 
@@ -492,9 +496,9 @@
                   
                   <svg class="svg-onda-flotante" viewBox="0 0 400 160" preserveAspectRatio="none">
                      <path class="linea-ritmo" d="M 0,110 Q 50,70 100,90 T 200,60 T 300,40 T 400,80" />
-                     <circle cx="100" cy="90" r="4" fill="#ffffff" />
-                     <circle cx="200" cy="60" r="4" fill="#ffffff" />
-                     <circle cx="300" cy="40" r="4" fill="#ffd700" />
+                     <circle cx="100" cy="90" r="3" fill="#ffffff" opacity="0.5" />
+                     <circle cx="200" cy="60" r="3" fill="#ffffff" opacity="0.5" />
+                     <circle cx="300" cy="40" r="3.5" fill="#eab308" />
                   </svg>
                </div>
             </section>
