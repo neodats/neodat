@@ -82,6 +82,24 @@
          transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
          white-space: nowrap;
       }
+      .btn-principal {
+         background: var(--azul);
+         color: var(--blanco);
+         border: 1px solid var(--azul);
+         box-shadow: 0 4px 12px rgba(22, 43, 78, 0.12);
+      }
+      .btn-principal:hover {
+         background: var(--azul-oscuro);
+         border-color: var(--azul-oscuro);
+         transform: translateY(-1px);
+         box-shadow: 0 6px 20px rgba(22, 43, 78, 0.18);
+      }
+      .btn-principal span {
+         transition: transform 0.2s ease;
+      }
+      .btn-principal:hover span {
+         transform: translateX(3px);
+      }
       .btn-whatsapp {
          background: rgba(37, 211, 102, 0.1);
          color: #1ebe5d;
@@ -94,6 +112,17 @@
          border-color: #25D366;
          transform: translateY(-1px);
          box-shadow: 0 6px 16px rgba(37, 211, 102, 0.2);
+      }
+      .btn-secundario {
+         background: transparent;
+         color: var(--azul);
+         border: 1px solid rgba(22, 43, 78, 0.15);
+      }
+      .btn-secundario:hover {
+         background: var(--azul-claro);
+         border-color: rgba(22, 43, 78, 0.3);
+         color: var(--azul-oscuro);
+         transform: translateY(-1px);
       }
 
       /* INTERFAZ GENERAL */
@@ -146,21 +175,20 @@
       }
       .menu-toggle {
          display: none;
-         width: 42px;
-         height: 42px;
+         width: 40px;
+         height: 40px;
          border: 1px solid var(--gris-2);
-         border-radius: 12px;
-         background: #ffffff;
+         border-radius: 10px;
+         background: var(--blanco);
          color: var(--azul);
          font-size: 22px;
-         font-weight: 900;
          cursor: pointer;
       }
 
       /* SECCIÓN HERO */
       .hero {
          position: relative;
-         padding: 150px 0 80px; 
+         padding: 130px 0 60px; 
          background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
          overflow: hidden;
          display: flex;
@@ -175,7 +203,6 @@
             linear-gradient(90deg, rgba(22, 43, 78, 0.03) 1px, transparent 1px);
          background-size: 44px 44px;
          mask-image: linear-gradient(180deg, black, transparent 85%);
-         pointer-events: none;
       }
       .hero-grid {
          position: relative;
@@ -197,210 +224,424 @@
          background: var(--naranja);
       }
       .marca-seccion strong {
-         color: var(--naranja);
+         color: var(--azul-medio);
          font-size: 11px;
          font-weight: 800;
+         letter-spacing: 1.5px;
          text-transform: uppercase;
-         letter-spacing: 1px;
       }
       h1 {
-         margin-bottom: 20px;
+         margin-bottom: 22px;
          color: var(--azul-oscuro);
-         font-size: clamp(28px, 3.5vw, 48px);
-         line-height: 1.15;
-         letter-spacing: -1px;
+         font-size: clamp(38px, 4.5vw, 62px);
+         line-height: 1.05;
+         letter-spacing: -2px;
+      }
+      h1 span {
+         color: var(--azul);
+         position: relative;
+         display: inline-block;
       }
       .hero p {
-         margin-bottom: 28px;
+         max-width: 620px;
+         margin-bottom: 30px;
          color: var(--texto-suave);
-         font-size: 16px;
-         line-height: 1.6;
+         font-size: 17px;
+         line-height: 1.7;
+      }
+      .hero-acciones {
+         display: flex;
+         flex-wrap: wrap;
+         gap: 12px;
       }
 
-      /* VISUALIZADOR DE METODOLOGÍA (INTERACTIVO) */
-      .metodo-shell {
-         padding: 10px;
-         border-radius: 24px; 
-         background: linear-gradient(145deg, rgba(22, 43, 78, 0.03), rgba(7, 23, 45, 0.05));
-         border: 1px solid var(--gris-2); 
-      }
-      .metodo-box {
-         background: #ffffff;
-         border-radius: 16px;
+      /* COMPONENTE PAIN-CARD (HERO ASIDE) */
+      .pain-card {
+         padding: 30px;
+         border: 1px solid var(--gris-2);
+         border-radius: 24px;
+         background: var(--blanco);
          box-shadow: var(--sombra-fuerte);
-         border: 1px solid rgba(22, 43, 78, 0.08);
-         padding: 24px;
       }
-      .metodo-nav {
-         display: grid;
-         grid-template-columns: repeat(4, 1fr);
-         gap: 8px;
+      .pain-card h2 {
          margin-bottom: 20px;
-         border-bottom: 1px solid var(--gris-2);
-         padding-bottom: 12px;
+         color: var(--azul-oscuro);
+         font-size: 24px;
+         line-height: 1.2;
+         letter-spacing: -0.5px;
       }
-      .fase-btn {
+      .pain-list {
+         display: grid;
+         gap: 12px;
+      }
+      .pain-item {
+         display: flex;
+         gap: 14px;
+         padding: 14px;
+         border-radius: 16px;
          background: var(--gris);
          border: 1px solid var(--gris-2);
-         padding: 10px;
-         border-radius: 10px;
-         font-size: 11px;
+      }
+      .check {
+         width: 26px;
+         height: 26px;
+         flex: 0 0 auto;
+         display: grid;
+         place-items: center;
+         border-radius: 50%;
+         background: rgba(22, 43, 78, 0.08);
+         color: var(--azul);
+         font-size: 13px;
          font-weight: 700;
-         color: var(--texto-suave);
-         cursor: pointer;
-         text-align: center;
-         transition: all 0.2s ease;
       }
-      .fase-btn.activo {
-         background: var(--azul);
-         color: var(--blanco);
-         border-color: var(--azul);
-      }
-      .metodo-contenido {
-         min-height: 140px;
-      }
-      .metodo-contenido h3 {
+      .pain-item strong {
+         display: block;
+         margin-bottom: 2px;
          color: var(--azul-oscuro);
-         font-size: 18px;
-         font-weight: 800;
-         margin-bottom: 12px;
-         display: flex;
-         align-items: center;
-         gap: 8px;
-      }
-      .metodo-contenido h3::before {
-         content: "●";
-         color: var(--naranja);
-      }
-      .metodo-contenido p {
          font-size: 14.5px;
-         color: var(--texto);
-         line-height: 1.6;
+         font-weight: 600;
+      }
+      .pain-item span {
+         color: var(--texto-suave);
+         font-size: 13.5px;
       }
 
-      /* SECCIÓN EXPLICATIVA INFERIOR */
-      .detalles-metodo {
-         padding: 100px 0;
+      /* SECCIONES ESTÁNDAR */
+      .section {
+         padding: 80px 0;
+      }
+      .section.alt {
          background: var(--gris);
          border-top: 1px solid var(--gris-2);
+         border-bottom: 1px solid var(--gris-2);
       }
-      .encabezado-seccion {
-         text-align: center;
-         max-width: 700px;
+      .encabezado {
+         max-width: 800px;
          margin: 0 auto 50px;
+         text-align: center;
       }
-      .encabezado-seccion h2 {
+      .encabezado .marca-seccion {
+         justify-content: center;
+      }
+      .encabezado h2 {
+         margin-bottom: 16px;
          color: var(--azul-oscuro);
-         font-size: clamp(24px, 2.5vw, 36px);
-         font-weight: 800;
-         letter-spacing: -0.5px;
-         line-height: 1.2;
+         font-size: clamp(28px, 3.5vw, 44px);
+         line-height: 1.15;
+         letter-spacing: -1.5px;
       }
-      .grid-detalles {
+      .encabezado p {
+         color: var(--texto-suave);
+         font-size: 16.5px;
+         line-height: 1.7;
+      }
+
+      /* GRID DE LOGROS / RESULTADOS */
+      .resultado-grid {
          display: grid;
          grid-template-columns: repeat(4, 1fr);
-         gap: 24px;
+         gap: 20px;
       }
-      .tarjeta-detalle {
-         background: var(--blanco);
-         padding: 32px 24px;
-         border-radius: 16px;
+      .resultado {
+         padding: 26px;
          border: 1px solid var(--gris-2);
+         border-radius: 20px;
+         background: var(--blanco);
          box-shadow: var(--sombra);
          transition: transform 0.25s ease, box-shadow 0.25s ease;
       }
-      .tarjeta-detalle:hover {
-         transform: translateY(-4px);
+      .resultado:hover {
+         transform: translateY(-2px);
          box-shadow: var(--sombra-fuerte);
       }
-      .num-fase {
-         font-size: 40px;
-         font-weight: 900;
-         color: rgba(22, 43, 78, 0.06);
-         line-height: 1;
+      .resultado-num {
          margin-bottom: 16px;
-      }
-      .tarjeta-detalle h4 {
-         font-size: 16.5px;
-         color: var(--azul-oscuro);
+         color: var(--naranja);
+         font-size: 13px;
          font-weight: 800;
-         margin-bottom: 12px;
+         letter-spacing: 1px;
       }
-      .tarjeta-detalle p {
-         font-size: 13.5px;
+      .resultado h3 {
+         margin-bottom: 10px;
+         color: var(--azul-oscuro);
+         font-size: 19px;
+         line-height: 1.2;
+         letter-spacing: -0.3px;
+      }
+      .resultado p {
          color: var(--texto-suave);
+         font-size: 14.5px;
          line-height: 1.6;
       }
 
-      /* PIE DE PÁGINA */
+      /* GRID DE PASOS DEL MÉTODO */
+      .metodo-comercial {
+         display: grid;
+         grid-template-columns: 1fr 1fr;
+         gap: 24px;
+      }
+      .paso-card {
+         padding: 32px;
+         border-radius: 24px;
+         border: 1px solid var(--gris-2);
+         background: var(--blanco);
+         box-shadow: var(--sombra);
+         transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .paso-card:hover {
+         transform: translateY(-3px);
+         box-shadow: var(--sombra-fuerte);
+      }
+      .paso-top {
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         gap: 16px;
+         margin-bottom: 20px;
+      }
+      .paso-num {
+         width: 52px;
+         height: 52px;
+         display: grid;
+         place-items: center;
+         border-radius: 14px;
+         background: linear-gradient(135deg, var(--azul), var(--azul-oscuro));
+         color: var(--blanco);
+         font-size: 18px;
+         font-weight: 800;
+      }
+      .paso-tag {
+         padding: 6px 12px;
+         border-radius: 999px;
+         background: var(--azul-claro);
+         color: var(--azul-medio);
+         font-size: 11px;
+         font-weight: 800;
+         text-transform: uppercase;
+         letter-spacing: 0.5px;
+      }
+      .paso-card h3 {
+         margin-bottom: 12px;
+         color: var(--azul-oscuro);
+         font-size: 24px;
+         line-height: 1.2;
+         letter-spacing: -0.5px;
+      }
+      .paso-card p {
+         margin-bottom: 20px;
+         color: var(--texto-suave);
+         font-size: 15px;
+         line-height: 1.6;
+      }
+      .paso-card ul {
+         display: grid;
+         gap: 8px;
+         padding-left: 16px;
+         list-style-type: square;
+      }
+      .paso-card li {
+         color: var(--texto);
+         font-size: 14px;
+      }
+      .paso-card li::marker {
+         color: var(--naranja);
+      }
+
+      /* GRID DE ENTREGABLES */
+      .entregables {
+         display: grid;
+         grid-template-columns: repeat(3, 1fr);
+         gap: 20px;
+      }
+      .entregable {
+         padding: 26px;
+         border-radius: 20px;
+         border: 1px solid var(--gris-2);
+         background: var(--blanco);
+         box-shadow: var(--sombra);
+         transition: transform 0.25s ease;
+      }
+      .entregable:hover {
+         transform: translateY(-2px);
+      }
+      .entregable strong {
+         display: block;
+         margin-bottom: 10px;
+         color: var(--azul);
+         font-size: 19px;
+         line-height: 1.2;
+         font-weight: 700;
+      }
+      .entregable span {
+         color: var(--texto-suave);
+         font-size: 14px;
+         line-height: 1.6;
+      }
+
+      /* LLAMADA A LA ACCIÓN (CTA) */
+      .cta {
+         padding: 80px 0;
+         background: linear-gradient(135deg, var(--azul), var(--azul-oscuro));
+         color: var(--blanco);
+         text-align: center;
+         position: relative;
+      }
+      .cta h2 {
+         max-width: 800px;
+         margin: 0 auto 16px;
+         color: var(--blanco);
+         font-size: clamp(28px, 3.8vw, 46px);
+         line-height: 1.1;
+         letter-spacing: -1.5px;
+      }
+      .cta p {
+         max-width: 700px;
+         margin: 0 auto 30px;
+         color: rgba(255, 255, 255, 0.8);
+         font-size: 17px;
+         line-height: 1.7;
+      }
+      .cta .btn-whatsapp {
+         background: var(--blanco);
+         color: var(--azul-oscuro);
+         border-color: var(--blanco);
+         font-weight: 700;
+      }
+      .cta .btn-whatsapp:hover {
+         background: var(--azul-claro);
+         color: var(--azul-oscuro);
+         box-shadow: 0 10px 24px rgba(0,0,0,0.15);
+      }
+
+      /* FOOTER */
       .site-footer {
-         background: #07172d;
-         color: rgba(255, 255, 255, .72);
-         padding: 24px 0;
-         border-top: 1px solid rgba(255, 255, 255, 0.08);
-         width: 100%;
-         flex-shrink: 0;
+         background: var(--azul-oscuro);
+         color: rgba(255, 255, 255, 0.7);
+         padding: 20px 0;
+         border-top: 1px solid rgba(255, 255, 255, 0.05);
       }
       .footer-bottom {
          display: flex;
          justify-content: center;
          align-items: center;
          text-align: center;
-         font-size: 12px;
-         color: rgba(255, 255, 255, .52);
+         font-size: 13px;
+         color: rgba(255, 255, 255, 0.5);
       }
 
-      /* RESPONSIVO */
+      /* DISPOSITIVOS MEDIANOS (RESPONSIVE) */
       @media (max-width: 980px) {
-         .navbar { height: 64px; }
-         .logo-icono { width: 120px; height: 120px; }
-         .menu-toggle { display: flex; align-items: center; justify-content: center; }
-         .whatsapp-desktop { display: none; }
+         .navbar {
+            height: 65px;
+         }
+         .logo-icono {
+            width: 120px;
+            height: 120px;
+         }
+         .menu-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+         }
+         .whatsapp-desktop {
+            display: none;
+         }
          nav.menu {
             position: absolute;
-            top: 64px;
+            top: 65px;
             left: 0;
             width: 100%;
             display: none;
-            background: #ffffff;
-            border-bottom: 1px solid rgba(22,43,78,.08);
-            box-shadow: 0 18px 40px rgba(7,23,45,.10);
+            background: var(--blanco);
+            border-bottom: 1px solid var(--gris-2);
+            box-shadow: var(--sombra-fuerte);
          }
-         nav.menu.activo { display: block; }
+         nav.menu.activo {
+            display: block;
+         }
          nav.menu ul {
             width: min(1160px, calc(100% - 40px));
             margin: auto;
-            padding: 14px 0;
+            padding: 16px 0;
             display: grid;
             grid-template-columns: 1fr;
             gap: 6px;
          }
          nav.menu a {
             width: 100%;
-            padding: 12px 14px;
-            border-radius: 12px;
+            padding: 12px 16px;
+            border-radius: 10px;
             background: var(--gris);
-            font-size: 13px;
          }
-         .hero-grid { grid-template-columns: 1fr; gap: 40px; }
-         .grid-detalles { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+         .hero {
+            padding: 110px 0 50px;
+         }
+         .hero-grid,
+         .metodo-comercial {
+            grid-template-columns: 1fr;
+            gap: 40px;
+         }
+         .resultado-grid {
+            grid-template-columns: repeat(2, 1fr);
+         }
+         .entregables {
+            grid-template-columns: repeat(2, 1fr);
+         }
       }
+
+      /* DISPOSITIVOS MÓVILES */
       @media (max-width: 680px) {
-         .hero { padding: 120px 0 40px; }
-         .metodo-nav { grid-template-columns: repeat(2, 1fr); }
-         .grid-detalles { grid-template-columns: 1fr; gap: 16px; }
-         h1 { font-size: clamp(22px, 6vw, 32px); }
-         .detalles-metodo { padding: 60px 0; }
+         .contenedor {
+            width: min(100% - 32px, 1160px);
+         }
+         .hero {
+            padding: 100px 0 40px;
+         }
+         h1 {
+            font-size: 35px;
+            letter-spacing: -1px;
+         }
+         .hero p,
+         .encabezado p,
+         .cta p {
+            font-size: 15px;
+         }
+         .hero-acciones {
+            display: grid;
+            grid-template-columns: 1fr;
+         }
+         .hero-acciones .btn,
+         .cta .btn {
+            width: 100%;
+         }
+         .section {
+            padding: 50px 0;
+         }
+         .resultado-grid,
+         .entregables {
+            grid-template-columns: 1fr;
+         }
+         .paso-card,
+         .pain-card,
+         .entregable {
+            padding: 22px;
+         }
       }
    </style>
 </head>
+
 <body>
+
    <header>
       <div class="contenedor navbar">
          <a href="index.html" class="logo" aria-label="NeoDat Consultores">
             <img src="Neo1.png" class="logo-icono" alt="Logo NeoDat">
          </a>
-         <button class="menu-toggle" type="button" aria-label="Abrir menú"> ☰ </button>
+
+         <button class="menu-toggle" type="button" aria-label="Abrir menú">
+            ☰
+         </button>
+
          <nav class="menu" aria-label="Navegación principal">
             <ul>
                <li><a href="index.html">Inicio</a></li>
@@ -411,74 +652,253 @@
                <li><a href="contacto.html">Contacto</a></li>
             </ul>
          </nav>
-         <a class="btn btn-whatsapp whatsapp-desktop" href="https://wa.me/593988200116?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20el%20Metodo%20NeoDat." target="_blank" rel="noopener">
+
+         <a
+            class="btn btn-whatsapp whatsapp-desktop"
+            href="https://wa.me/593988200116?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20NeoDat%20Consultores."
+            target="_blank"
+            rel="noopener"
+         >
             WhatsApp
          </a>
       </div>
    </header>
 
    <main>
+      <!-- HERO -->
       <section class="hero">
          <div class="contenedor hero-grid">
             <div>
-               <div class="marca-seccion">
-                  <span></span>
-                  <strong>Nuestra Metodología</strong>
+               <h1>De información dispersa a <span>decisiones claras</span>.</h1>
+
+               <p>
+                  Ayudamos a empresas que trabajan con reportes manuales, datos desordenados
+                  o poca visibilidad de su gestión a construir herramientas claras para controlar,
+                  analizar y decidir mejor.
+               </p>
+
+               <div class="hero-acciones">
+                  <a class="btn btn-principal" href="contacto.html">
+                     Solicitar diagnóstico <span>→</span>
+                  </a>
+                  <a
+                     class="btn btn-whatsapp"
+                     href="https://wa.me/593988200116?text=Hola,%20quiero%20solicitar%20un%20diagn%C3%B3stico%20con%20NeoDat."
+                     target="_blank"
+                     rel="noopener"
+                  >
+                     Contactar por WhatsApp
+                  </a>
                </div>
-               <h1>Estructura inteligente para transformar información en resultados concretos.</h1>
-               <p>El Método NeoDat consiste en ordenar la dispersión operativa de su negocio mediante procesos ágiles de ingeniería y análisis. No improvisamos: seguimos un flujo lógico diseñado para mitigar riesgos financieros y maximizar la visibilidad gerencial.</p>
             </div>
 
-            <div class="metodo-shell">
-               <div class="metodo-box">
-                  <div class="metodo-nav">
-                     <button class="fase-btn activo" data-fase="1">01. Relevamiento</button>
-                     <button class="fase-btn" data-fase="2">02. Estructura</button>
-                     <button class="fase-btn" data-fase="3">03. BI & Dashboards</button>
-                     <button class="fase-btn" data-fase="4">04. Control</button>
+            <aside class="pain-card">
+               <h2>¿Esto pasa en su empresa?</h2>
+               <div class="pain-list">
+                  <div class="pain-item">
+                     <div class="check">✓</div>
+                     <div>
+                        <strong>Reportes que toman demasiado tiempo.</strong>
+                        <span>La información llega tarde o depende de trabajo manual.</span>
+                     </div>
                   </div>
-                  <div class="metodo-contenido">
-                     <h3 id="dinamico-titulo">Fase 1: Relevamiento y Diagnóstico</h3>
-                     <p id="dinamico-desc">Identificamos los flujos de información actuales de su empresa, detectamos fugas de datos, inconsistencias en los reportes financieros y determinamos las necesidades clave de los directivos.</p>
+                  <div class="pain-item">
+                     <div class="check">✓</div>
+                     <div>
+                        <strong>Datos repartidos en varios archivos.</strong>
+                        <span>No existe una fuente clara para analizar el negocio.</span>
+                     </div>
                   </div>
+                  <div class="pain-item">
+                     <div class="check">✓</div>
+                     <div>
+                        <strong>Indicadores poco claros.</strong>
+                        <span>Hay información, pero no necesariamente sirve para decidir.</span>
+                     </div>
+                  </div>
+                  <div class="pain-item">
+                     <div class="check">✓</div>
+                     <div>
+                        <strong>Falta de control ejecutivo.</strong>
+                        <span>La gerencia no ve con rapidez ventas, costos, proyectos o resultados.</span>
+                     </div>
+                  </div>
+               </div>
+            </aside>
+         </div>
+      </section>
+
+      <!-- RESULTADOS -->
+      <section class="section">
+         <div class="contenedor">
+            <div class="encabezado">
+               <h2>No entregamos solo reportes. Construimos sistemas de decisión.</h2>
+               <p>
+                  Nuestro trabajo conecta datos, finanzas, procesos y tecnología para que la empresa
+                  tenga visibilidad, control y herramientas que se puedan usar en la gestión diaria.
+               </p>
+            </div>
+
+            <div class="resultado-grid">
+               <div class="resultado">
+                  <div class="resultado-num">01</div>
+                  <h3>Menos trabajo manual</h3>
+                  <p>Automatizamos reportes y procesos repetitivos para liberar tiempo operativo.</p>
+               </div>
+               <div class="resultado">
+                  <div class="resultado-num">02</div>
+                  <h3>Más claridad gerencial</h3>
+                  <p>Convertimos datos dispersos en indicadores comprensibles y accionables.</p>
+               </div>
+               <div class="resultado">
+                  <div class="resultado-num">03</div>
+                  <h3>Mejor control financiero</h3>
+                  <p>Ordenamos información económica para seguir ingresos, costos, márgenes y resultados.</p>
+               </div>
+               <div class="resultado">
+                  <div class="resultado-num">04</div>
+                  <h3>Decisiones con soporte</h3>
+                  <p>Diseñamos herramientas para decidir con evidencia, no solo con intuición.</p>
                </div>
             </div>
          </div>
       </section>
 
-      <section class="detalles-metodo" id="detalles">
+      <!-- PROCESO / INTERVENCIÓN -->
+      <section class="section alt">
          <div class="contenedor">
-            <div class="encabezado-seccion">
-               <div class="marca-seccion" style="justify-content: center; margin-bottom: 12px;">
-                  <span></span>
-                  <strong>Fases detalladas</strong>
-                  <span></span>
-               </div>
-               <h2>El flujo de nuestro método paso a paso</h2>
+            <div class="encabezado">
+               <h2>Un proceso claro, rápido y orientado a resultados.</h2>
+               <p>
+                  Trabajamos con una ruta práctica: entender el problema, diseñar la solución,
+                  implementarla y dejarla funcionando con acompañamiento.
+               </p>
             </div>
-            
-            <div class="grid-detalles">
-               <div class="tarjeta-detalle">
-                  <div class="num-fase">01</div>
-                  <h4>Relevamiento y Diagnóstico</h4>
-                  <p>Identificamos flujos de información actuales, detectamos fugas de datos y localizamos inconsistencias en sus reportes financieros clave.</p>
+
+            <div class="metodo-comercial">
+               <article class="paso-card">
+                  <div class="paso-top">
+                     <div class="paso-num">01</div>
+                     <div class="paso-tag">Diagnóstico</div>
+                  </div>
+                  <h3>Entendemos dónde está el bloqueo.</h3>
+                  <p>
+                     Revisamos información, reportes, procesos, archivos, indicadores y necesidades
+                     de decisión para identificar qué impide tener control y claridad.
+                  </p>
+                  <ul>
+                     <li>Revisión de fuentes de información.</li>
+                     <li>Identificación de brechas y duplicidades.</li>
+                     <li>Evaluación de procesos manuales.</li>
+                     <li>Priorización de problemas críticos.</li>
+                  </ul>
+               </article>
+
+               <article class="paso-card">
+                  <div class="paso-top">
+                     <div class="paso-num">02</div>
+                     <div class="paso-tag">Diseño</div>
+                  </div>
+                  <h3>Diseñamos una solución útil, no decorativa.</h3>
+                  <p>
+                     Definimos indicadores, estructura de datos, visualizaciones, reportes y herramientas
+                     que respondan a preguntas reales del negocio.
+                  </p>
+                  <ul>
+                     <li>Definición de KPI estratégicos.</li>
+                     <li>Diseño de tableros y reportes.</li>
+                     <li>Estructura financiera y operativa.</li>
+                     <li>Modelo de seguimiento gerencial.</li>
+                  </ul>
+               </article>
+
+               <article class="paso-card">
+                  <div class="paso-top">
+                     <div class="paso-num">03</div>
+                     <div class="paso-tag">Implementación</div>
+                  </div>
+                  <h3>Construimos la herramienta y la dejamos operativa.</h3>
+                  <p>
+                     Desarrollamos dashboards, automatizaciones, modelos financieros, reportes o soluciones
+                     digitales según el problema detectado.
+                  </p>
+                  <ul>
+                     <li>Dashboards ejecutivos.</li>
+                     <li>Reportes automatizados.</li>
+                     <li>Modelos de análisis y control.</li>
+                     <li>Soluciones web y formularios empresariales.</li>
+                  </ul>
+               </article>
+
+               <article class="paso-card">
+                  <div class="paso-top">
+                     <div class="paso-num">04</div>
+                     <div class="paso-tag">Acompañamiento</div>
+                  </div>
+                  <h3>Aseguramos que la solución se use.</h3>
+                  <p>
+                     No dejamos archivos aislados. Acompañamos la adopción para que la herramienta
+                     funcione dentro de la operación y genere valor real.
+                  </p>
+                  <ul>
+                     <li>Capacitación en uso de herramientas.</li>
+                     <li>Ajustes según retroalimentación.</li>
+                     <li>Seguimiento de indicadores.</li>
+                     <li>Mejora continua del sistema implementado.</li>
+                  </ul>
+               </article>
+            </div>
+         </div>
+      </section>
+
+      <!-- ENTREGABLES -->
+      <section class="section">
+         <div class="contenedor">
+            <div class="encabezado">
+               <h2>Entregables concretos, utilizables y alineados al negocio.</h2>
+               <p>
+                  Cada solución se adapta a la necesidad de la empresa. El objetivo es que el cliente
+                  reciba herramientas que sirvan para operar, controlar y decidir.
+               </p>
+            </div>
+
+            <div class="entregables">
+               <div class="entregable">
+                  <strong>Dashboards ejecutivos</strong>
+                  <span>Tableros para monitorear ventas, finanzas, operaciones, proyectos o indicadores clave.</span>
                </div>
-               <div class="tarjeta-detalle">
-                  <div class="num-fase">02</div>
-                  <h4>Estructura y ETL</h4>
-                  <p>Extraemos, transformamos y cargamos la información dispersa en modelos limpios y centralizados para mitigar errores humanos.</p>
+               <div class="entregable">
+                  <strong>Reportes automatizados</strong>
+                  <span>Información periódica estructurada para reducir tareas manuales y errores recurrentes.</span>
                </div>
-               <div class="tarjeta-detalle">
-                  <div class="num-fase">03</div>
-                  <h4>BI & Dashboards</h4>
-                  <p>Diseñamos cuadros de mando interactivos dinámicos que reflejan la realidad financiera y operativa de su empresa al instante.</p>
+               <div class="entregable">
+                  <strong>Modelos financieros</strong>
+                  <span>Presupuestos, proyecciones, análisis de rentabilidad y escenarios de decisión.</span>
                </div>
-               <div class="tarjeta-detalle">
-                  <div class="num-fase">04</div>
-                  <h4>Control de Gestión</h4>
-                  <p>Implementamos rutinas de seguimiento analítico y alertas automatizadas para una toma de decisiones optimizada en tiempo real.</p>
+               <div class="entregable">
+                  <strong>Herramientas de control</strong>
+                  <span>Seguimiento de resultados, indicadores, cumplimiento, costos, avances y desempeño.</span>
+               </div>
+               <div class="entregable">
+                  <strong>Soluciones digitales</strong>
+                  <span>Páginas web, formularios, estructuras de captación y herramientas empresariales.</span>
+               </div>
+               <div class="entregable">
+                  <strong>Plan de mejora</strong>
+                  <span>Ruta clara para ordenar información, automatizar procesos y mejorar la gestión.</span>
                </div>
             </div>
+         </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="cta">
+         <div class="contenedor">
+            <h2>Si su empresa tiene datos, pero no claridad, ahí empieza nuestro trabajo.</h2>
+            <p>Revisamos su situación actual y proponemos una ruta concreta para mejorar control, análisis y toma de decisiones.</p>
+            <a class="btn btn-whatsapp" href="contacto.html">
+               Solicitar diagnóstico
+            </a>
          </div>
       </section>
    </main>
@@ -490,46 +910,11 @@
    </footer>
 
    <script>
-      // Menú móvil
       const menuToggle = document.querySelector(".menu-toggle");
       const menu = document.querySelector(".menu");
+
       menuToggle.addEventListener("click", () => {
          menu.classList.toggle("activo");
-      });
-
-      // Datos e Interacción Dinámica del Bloque Metodológico
-      const fasesData = {
-         "1": {
-            titulo: "Fase 1: Relevamiento y Diagnóstico",
-            desc: "Identificamos los flujos de información actuales de su empresa, detectamos fugas de datos, inconsistencias en los reportes financieros y determinamos las necesidades clave de los directivos."
-         },
-         "2": {
-            titulo: "Fase 2: Estructura y Procesamiento ETL",
-            desc: "Extraemos, transformamos y cargamos la información dispersa. Normalizamos las fuentes de datos creando modelos limpios, estables y centralizados para mitigar errores humanos."
-         },
-         "3": {
-            titulo: "Fase 3: Inteligencia de Negocio & Dashboards",
-            desc: "Diseñamos cuadros de mando ejecutivos avanzados. Convertimos los datos estructurados en gráficos interactivos dinámicos que reflejan la realidad financiera y operativa de forma instantánea."
-         },
-         "4": {
-            titulo: "Fase 4: Control de Gestión Continuo",
-            desc: "Implementamos rutinas de seguimiento analítico, control presupuestario avanzado y automatización de alertas para optimizar la toma de decisiones gerenciales en tiempo real."
-         }
-      };
-
-      const faseBotones = document.querySelectorAll(".fase-btn");
-      const dinamicoTitulo = document.getElementById("dinamico-titulo");
-      const dinamicoDesc = document.getElementById("dinamico-desc");
-
-      faseBotones.forEach(btn => {
-         btn.addEventListener("click", () => {
-            faseBotones.forEach(b => b.classList.remove("activo"));
-            btn.classList.add("activo");
-            
-            const nFase = btn.getAttribute("data-fase");
-            dinamicoTitulo.textContent = fasesData[nFase].titulo;
-            dinamicoDesc.textContent = fasesData[nFase].desc;
-         });
       });
    </script>
 </body>
