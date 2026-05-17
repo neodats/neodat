@@ -27,7 +27,7 @@
             --exito: #10b981;
          }
          
-         /* AJUSTE ESTRUCTURAL PARA QUITAR ESPACIOS MUERTOS */
+         /* CONFIGURACIÓN ESTRUCTURAL ANTIESPACIOS BLANCOS */
          html, body {
             height: 100%;
             margin: 0;
@@ -175,10 +175,9 @@
             background: var(--azul-claro);
          }
          
-         /* HERO OPTIMIZADO (REDUCIDO ESPACIO INFERIOR) */
          .hero {
             position: relative;
-            padding: 110px 0 40px; /* Reducido de 80px a 40px */
+            padding: 110px 0 40px; 
             background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
             overflow: hidden;
             display: flex;
@@ -225,7 +224,7 @@
          }
 
          /* ==========================================================================
-            DASHBOARD INTERACTIVO
+            DASHBOARD INTERACTIVO Y ALINEACIÓN DEL PUNTO LIVE
             ========================================================================== */
          .dashboard-shell {
             padding: 10px;
@@ -249,13 +248,19 @@
             background: #ffffff;
             border-bottom: 1px solid var(--gris-2);
          }
-         .dashboard-top strong {
+         
+         /* MODIFICACIÓN: Flex alineado para colocar el título y el punto juntos */
+         .dashboard-top div:first-child {
             display: flex;
             align-items: center;
             gap: 8px;
+         }
+         
+         .dashboard-top strong {
             color: var(--azul-oscuro);
             font-size: 13px;
             font-weight: 800;
+            white-space: nowrap;
          }
          .live-dot {
             width: 8px;
@@ -263,6 +268,7 @@
             background-color: var(--exito);
             border-radius: 50%;
             display: inline-block;
+            flex-shrink: 0;
             animation: pulsoLive 1.8s infinite;
          }
          @keyframes pulsoLive {
@@ -459,7 +465,6 @@
             cursor: pointer;
          }
          
-         /* FOOTER SIN ESPACIOS PARÁSITOS */
          .site-footer {
             background: #07172d;
             color: rgba(255,255,255,.72);
@@ -558,7 +563,7 @@
                   <p>NeoDat Consultores estructura datos, finanzas, dashboards y procesos para que las empresas trabajen con información clara, indicadores confiables y control ejecutivo.</p>
                   <div class="acciones">
                      <a class="btn btn-principal" href="servicios.html"> 
-                        Ver servicios
+                        Ver servicios <span>→</span>
                      </a>
                      <a class="btn btn-whatsapp" href="https://wa.me/593988200116?text=Hola,%20quiero%20solicitar%20una%20asesor%C3%ADa%20con%20NeoDat." target="_blank" rel="noopener"> 
                         Solicitar asesoría 
@@ -573,9 +578,11 @@
                   <div class="dashboard">
                      <div class="dashboard-top">
                         <div>
-                           <span class="live-dot"></span> <strong>Panel de Control Corporativo</strong>
+                           <span class="live-dot"></span>
+                           <strong>Panel de Control Corporativo</strong>
                         </div>
-                      </div>
+                        <div class="badge-live">NeoDat BI Engine</div>
+                     </div>
                      <div class="dashboard-body">
                         
                         <div class="kpis">
