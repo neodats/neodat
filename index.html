@@ -24,6 +24,7 @@
             --texto-suave: #66788a;
             --sombra: 0 18px 45px rgba(7, 23, 45, 0.08);
             --sombra-fuerte: 0 28px 70px rgba(7, 23, 45, 0.14);
+            --exito: #10b981;
          }
          * {
             margin: 0;
@@ -161,19 +162,17 @@
             position: relative;
             z-index: 2;
             display: grid;
-            grid-template-columns: 1fr 0.96fr;
-            gap: 62px;
+            grid-template-columns: 1fr 1.05fr;
+            gap: 50px;
             align-items: center;
          }
          h1 {
             max-width: 720px;
             margin-bottom: 24px;
             color: var(--azul-oscuro);
-            /* MODIFICACIÓN: Ajuste de fluidez tipográfica y remoción de letter-spacing negativo para evitar cortes */
-            font-size: clamp(26px, 4.5vw, 44px);
+            font-size: clamp(32px, 4.2vw, 46px);
             line-height: 1.25;
-            letter-spacing: normal;
-            word-wrap: break-word;
+            letter-spacing: -1.2px;
          }
          .hero p {
             max-width: 640px;
@@ -186,76 +185,228 @@
             flex-wrap: wrap;
             gap: 12px;
          }
+
+         /* ==========================================================================
+            NUEVO DASHBOARD PROFESIONAL E INTERACTIVO CON MOVIMIENTO 
+            ========================================================================== */
          .dashboard-shell {
-            padding: 12px;
-            border-radius: 32px;
-            background: linear-gradient(135deg, var(--azul), var(--azul-oscuro));
+            padding: 14px;
+            border-radius: 28px;
+            background: linear-gradient(145deg, rgba(22, 43, 78, 0.95), rgba(7, 23, 45, 0.98));
             box-shadow: var(--sombra-fuerte);
-            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            position: relative;
          }
          .dashboard {
             overflow: hidden;
-            border-radius: 24px;
-            background: var(--gris);
+            border-radius: 20px;
+            background: #ffffff;
          }
          .dashboard-top {
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 16px;
-            padding: 18px 22px;
-            background: var(--blanco);
+            padding: 16px 20px;
+            background: #ffffff;
             border-bottom: 1px solid var(--gris-2);
          }
          .dashboard-top strong {
-            display: block;
+            display: flex;
+            align-items: center;
+            gap: 8px;
             color: var(--azul-oscuro);
-            font-size: 18px;
-            font-weight: 850;
-            letter-spacing: -0.3px;
+            font-size: 15px;
+            font-weight: 800;
          }
-         .badge {
-            padding: 7px 12px;
+         /* Indicador parpadeante en tiempo real */
+         .live-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--exito);
+            border-radius: 50%;
+            display: inline-block;
+            animation: pulso Live 1.8s infinite;
+         }
+         @keyframes pulsoLive {
+            0% { transform: scale(0.9); opacity: 0.6; cubic-bezier(0.24, 0, 0.38, 1); }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(0.9); opacity: 0.6; }
+         }
+         .badge-live {
+            padding: 6px 12px;
             border-radius: 999px;
-            background: var(--azul-claro);
-            color: var(--azul);
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--exito);
             font-size: 11px;
-            font-weight: 900;
-            white-space: nowrap;
+            font-weight: 800;
          }
          .dashboard-body {
-            display: grid;
-            gap: 14px;
-            padding: 18px;
+            padding: 20px;
+            background: var(--gris);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
          }
          .kpis {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-         }
-         .kpi, .card {
-            border: 1px solid var(--gris-2);
-            border-radius: 20px;
-            background: var(--blanco);
+            gap: 14px;
          }
          .kpi {
             padding: 16px;
+            background: #ffffff;
+            border-radius: 16px;
+            border: 1px solid var(--gris-2);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+         }
+         .kpi:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--sombra);
          }
          .kpi small {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             color: var(--texto-suave);
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
          }
          .kpi strong {
             display: block;
             color: var(--azul-oscuro);
-            font-size: 29px;
+            font-size: 24px;
             font-weight: 900;
-            line-height: 1;
-            letter-spacing: -1px;
+            line-height: 1.1;
+            letter-spacing: -0.5px;
          }
+         .kpi-trend {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 11px;
+            font-weight: 700;
+            margin-top: 6px;
+         }
+         .trend-up { color: var(--exito); }
+         .trend-down { color: #ef4444; }
+
+         /* Gráfico analítico con barras dinámicas animadas */
+         .chart-container {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 20px;
+            border: 1px solid var(--gris-2);
+            position: relative;
+         }
+         .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+         }
+         .chart-title {
+            font-size: 13px;
+            font-weight: 800;
+            color: var(--azul-oscuro);
+         }
+         .chart-legend {
+            display: flex;
+            gap: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--texto-suave);
+         }
+         .legend-item::before {
+            content: "";
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 4px;
+         }
+         .legend-azul::before { background: var(--azul); }
+         .legend-naranja::before { background: var(--naranja); }
+
+         /* Barras animadas */
+         .chart-bars {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            height: 140px;
+            padding-top: 10px;
+            border-bottom: 1px solid var(--gris-2);
+            position: relative;
+         }
+         .bar-group {
+            display: flex;
+            align-items: flex-end;
+            gap: 4px;
+            width: 12%;
+            height: 100%;
+            position: relative;
+         }
+         .bar {
+            width: 100%;
+            border-radius: 4px 4px 0 0;
+            position: relative;
+            cursor: pointer;
+            transform-origin: bottom;
+            animation: crecerBarra 1.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+         }
+         .bar-primary { background: var(--azul); }
+         .bar-secondary { background: var(--naranja); opacity: 0.85; }
+         .bar:hover {
+            opacity: 1;
+            filter: brightness(1.1);
+         }
+
+         /* Tooltip interactivo simulado */
+         .chart-tooltip {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--azul-oscuro);
+            color: #ffffff;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 10px;
+            font-weight: 700;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            pointer-events: none;
+            white-space: nowrap;
+            z-index: 5;
+         }
+         .bar-group:hover .chart-tooltip {
+            opacity: 1;
+         }
+
+         /* Eje X Etiquetas */
+         .chart-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+            padding: 0 4px;
+         }
+         .chart-labels span {
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--texto-suave);
+            width: 12%;
+            text-align: center;
+         }
+
+         /* Animaciones de las barras del dashboard */
+         @keyframes crecerBarra {
+            0% { transform: scaleY(0); }
+            100% { transform: scaleY(1); }
+         }
+
+         /* ========================================================================== */
+
          .menu-toggle {
             display: none;
             width: 46px;
@@ -312,12 +463,11 @@
                border-radius: 16px;
                background: var(--gris);
             }
-            .hero-grid { grid-template-columns: 1fr; }
+            .hero-grid { grid-template-columns: 1fr; gap: 40px; }
          }
          @media (max-width: 680px) {
             .hero { padding: 40px 0 60px; }
-            .metricas, .kpis { grid-template-columns: 1fr; }
-            /* MODIFICACIÓN: Altura de línea y tamaño perfectamente calculados para pantallas de celulares pequeños */
+            .kpis { grid-template-columns: 1fr; gap: 10px; }
             h1 { 
                font-size: clamp(24px, 6.2vw, 34px); 
                line-height: 1.3;
@@ -325,6 +475,8 @@
             }
             .acciones { display: grid; grid-template-columns: 1fr; width: 100%; gap: 10px; }
             .acciones .btn { width: 100%; }
+            .bar-group:nth-child(even) { display: none; } /* Ocultar barras alternas para legibilidad en pantallas muy compactas */
+            .chart-labels span:nth-child(even) { display: none; }
          }
       </style>
    </head>
@@ -338,7 +490,7 @@
             <nav class="menu" aria-label="Navegación principal">
                <ul>
                   <li><a href="index.html">Inicio</a></li>
-                  <li><a href="servicios.html">Servicios</a></li>
+                  <li><a href="servicios.html">Services</a></li>
                   <li><a href="metodo.html">Método</a></li>
                   <li><a href="ambitos.html">Ámbitos</a></li>
                   <li><a href="quienes-somos.html">Quiénes somos</a></li>
@@ -368,28 +520,86 @@
                   <div class="dashboard">
                      <div class="dashboard-top">
                         <div>
-                           <strong>Panel ejecutivo NeoDat</strong>
+                           <span class="live-dot"></span>
+                           <strong>Panel de Control Corporativo</strong>
                         </div>
-                        <div class="badge">Demo BI</div>
+                        <div class="badge-live">NeoDat BI Engine</div>
                      </div>
                      <div class="dashboard-body">
                         <div class="kpis">
                            <div class="kpi">
-                              <small>Ingresos</small>
-                              <strong>$84.2K</strong>
+                              <small>Ingresos Op.</small>
+                              <strong>$148.5K</strong>
+                              <span class="kpi-trend trend-up">▲ +12.4%</span>
                            </div>
                            <div class="kpi">
-                              <small>Margen</small>
-                              <strong>31.8%</strong>
+                              <small>Margen Neto</small>
+                              <strong>34.2%</strong>
+                              <span class="kpi-trend trend-up">▲ +3.1%</span>
                            </div>
                            <div class="kpi">
                               <small>Eficiencia</small>
-                              <strong>92%</strong>
+                              <strong>94.8%</strong>
+                              <span class="kpi-trend trend-down">▼ -0.5%</span>
                            </div>
                         </div>
+
+                        <div class="chart-container">
+                           <div class="chart-header">
+                              <span class="chart-title">Desempeño Mensual Activos vs Proyectado</span>
+                              <div class="chart-legend">
+                                 <span class="legend-item legend-azul">Real</span>
+                                 <span class="legend-item legend-naranja">Meta</span>
+                              </div>
+                           </div>
+                           
+                           <div class="chart-bars">
+                              <div class="bar-group">
+                                 <div class="chart-tooltip">Ene: 65%</div>
+                                 <div class="bar bar-primary" style="height: 65%;"></div>
+                                 <div class="bar bar-secondary" style="height: 70%;"></div>
+                              </div>
+                              <div class="bar-group">
+                                 <div class="chart-tooltip">Feb: 80%</div>
+                                 <div class="bar bar-primary" style="height: 80%;"></div>
+                                 <div class="bar bar-secondary" style="height: 75%;"></div>
+                              </div>
+                              <div class="bar-group">
+                                 <div class="chart-tooltip">Mar: 45%</div>
+                                 <div class="bar bar-primary" style="height: 45%;"></div>
+                                 <div class="bar bar-secondary" style="height: 60%;"></div>
+                              </div>
+                              <div class="bar-group">
+                                 <div class="chart-tooltip">Abr: 95%</div>
+                                 <div class="bar bar-primary" style="height: 95%;"></div>
+                                 <div class="bar bar-secondary" style="height: 85%;"></div>
+                              </div>
+                              <div class="bar-group">
+                                 <div class="chart-tooltip">May: 75%</div>
+                                 <div class="bar bar-primary" style="height: 75%;"></div>
+                                 <div class="bar bar-secondary" style="height: 80%;"></div>
+                              </div>
+                              <div class="bar-group">
+                                 <div class="chart-tooltip">Jun: 88%</div>
+                                 <div class="bar bar-primary" style="height: 88%;"></div>
+                                 <div class="bar bar-secondary" style="height: 90%;"></div>
+                              </div>
+                           </div>
+
+                           <div class="chart-labels">
+                              <span>Ene</span>
+                              <span>Feb</span>
+                              <span>Mar</span>
+                              <span>Abr</span>
+                              <span>May</span>
+                              <span>Jun</span>
+                           </div>
+                        </div>
+
                      </div>
                   </div>
                </div>
+
             </div>
          </section>
       </main>
