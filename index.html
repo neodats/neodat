@@ -26,6 +26,14 @@
             --sombra-fuerte: 0 20px 50px rgba(7, 23, 45, 0.08);
             --exito: #10b981;
          }
+         
+         /* AJUSTE ESTRUCTURAL PARA QUITAR ESPACIOS MUERTOS */
+         html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+         }
          * {
             margin: 0;
             padding: 0;
@@ -40,6 +48,11 @@
             color: var(--texto);
             line-height: 1.5;
             overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+         }
+         main {
+            flex: 1 0 auto;
          }
          a {
             text-decoration: none;
@@ -63,7 +76,7 @@
             gap: 8px;
             min-height: 46px;
             padding: 12px 24px;
-            border-radius: 12px; /* Adiós a las cápsulas médicas, hola diseño moderno */
+            border-radius: 12px;
             font-size: 13.5px;
             font-weight: 600;
             cursor: pointer;
@@ -86,10 +99,10 @@
             transition: transform 0.2s ease;
          }
          .btn-principal:hover span {
-            transform: translateX(3px); /* Pequeña animación interactiva en la flecha */
+            transform: translateX(3px);
          }
          .btn-whatsapp {
-            background: rgba(37, 211, 102, 0.1); /* Fondo sutil para no competir con el primario */
+            background: rgba(37, 211, 102, 0.1);
             color: #1ebe5d;
             border: 1px solid rgba(37, 211, 102, 0.25);
             box-shadow: none;
@@ -161,14 +174,16 @@
          nav a:hover {
             background: var(--azul-claro);
          }
+         
+         /* HERO OPTIMIZADO (REDUCIDO ESPACIO INFERIOR) */
          .hero {
             position: relative;
-            padding: 100px 0 80px; 
+            padding: 110px 0 40px; /* Reducido de 80px a 40px */
             background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
             overflow: hidden;
-            min-height: calc(100vh - 44px);
             display: flex;
             align-items: center;
+            margin-bottom: 0;
          }
          .hero::before {
             content: "";
@@ -443,11 +458,16 @@
             font-weight: 900;
             cursor: pointer;
          }
+         
+         /* FOOTER SIN ESPACIOS PARÁSITOS */
          .site-footer {
             background: #07172d;
             color: rgba(255,255,255,.72);
-            padding: 20px 0;
+            padding: 24px 0;
             border-top: 1px solid rgba(255, 255, 255, 0.08);
+            width: 100%;
+            flex-shrink: 0;
+            margin-top: 0;
          }
          .footer-bottom {
             display: flex;
@@ -493,7 +513,7 @@
             .hero-grid { grid-template-columns: 1fr; gap: 40px; }
          }
          @media (max-width: 680px) {
-            .hero { padding: 110px 0 60px; }
+            .hero { padding: 100px 0 30px; }
             .kpis { grid-template-columns: 1fr; gap: 10px; }
             h1 { 
                font-size: clamp(22px, 6vw, 28px); 
