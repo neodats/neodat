@@ -17,36 +17,38 @@
          />
       <style>
          :root {
-         --azul: #162b4e;
          --azul-oscuro: #0a192f;
-         --azul-medio: #172a45;
-         --azul-claro: #edf2f8;
+         --azul-primario: #162b4e;
          --naranja: #ff9f1c;
          --blanco: #ffffff;
-         --gris: #f8fafc;
-         --gris-2: #e2e8f0;
-         --texto-oscuro: #1e293b;
-         --texto-claro: #64748b;
+         --gris-fondo: #f8fafc;
+         --gris-borde: #e2e8f0;
+         --texto-principal: #1e293b;
+         --texto-secundario: #64748b;
          }
+
          * {
          box-sizing: border-box;
          margin: 0;
          padding: 0;
          }
+
          body {
          font-family: 'Inter', sans-serif;
          background-color: var(--blanco);
-         color: var(--texto-oscuro);
-         line-height: 1.5;
+         color: var(--texto-principal);
+         line-height: 1.6;
          }
+
          header {
-         background-color: var(--azul-oscuro);
+         background-color: var(--blanco);
+         border-bottom: 1px solid var(--gris-borde);
          padding: 1rem 2rem;
          position: sticky;
          top: 0;
          z-index: 1000;
-         box-shadow: 0 4px 20px rgba(0,0,0,0.1);
          }
+
          .nav-container {
          max-width: 1200px;
          margin: 0 auto;
@@ -54,255 +56,237 @@
          justify-content: space-between;
          align-items: center;
          }
+
          .logo {
          display: flex;
          align-items: center;
-         gap: 0.75rem;
+         gap: 0.5rem;
          text-decoration: none;
          }
+
          .logo img {
-         height: 40px;
+         height: 35px;
          width: auto;
          }
+
          .logo span {
-         color: var(--blanco);
-         font-size: 1.25rem;
+         color: var(--azul-oscuro);
+         font-size: 1.2rem;
          font-weight: 800;
-         letter-spacing: -0.5px;
          }
+
          .logo span span {
          color: var(--naranja);
          }
+
          .menu {
          display: flex;
-         gap: 1.5rem;
+         gap: 2rem;
          list-style: none;
          }
+
          .menu a {
-         color: #94a3b8;
+         color: var(--texto-secundario);
          text-decoration: none;
          font-size: 0.9rem;
          font-weight: 500;
-         transition: color 0.3s ease;
+         transition: color 0.2s ease;
          }
+
          .menu a:hover {
          color: var(--naranja);
          }
+
          .menu-toggle {
          display: none;
          background: none;
          border: none;
-         color: var(--blanco);
+         color: var(--azul-oscuro);
          font-size: 1.5rem;
          cursor: pointer;
          }
+
+         /* Ajuste Proporcional y combinación de colores Blanco/Azul/Naranja */
          .hero {
-         background: linear-gradient(135deg, var(--azul-oscuro) 0%, var(--azul-medio) 100%);
-         color: var(--blanco);
-         padding: 5rem 2rem;
+         background: linear-gradient(135deg, var(--blanco) 0%, var(--gris-fondo) 100%);
+         padding: 4rem 2rem;
          text-align: center;
-         position: relative;
-         overflow: hidden;
+         border-bottom: 1px solid var(--gris-borde);
          }
-         .hero::before {
-         content: '';
-         position: absolute;
-         top: 0; left: 0; right: 0; bottom: 0;
-         background: radial-gradient(circle at 80% 20%, rgba(255,165,0,0.08) 0%, transparent 50%);
-         pointer-events: none;
-         }
+
          .hero-content {
-         max-width: 800px;
+         max-width: 700px;
          margin: 0 auto;
-         position: relative;
-         z-index: 1;
          }
+
+         /* Letra de títulos mucho más pequeña y proporcional */
          .hero h1 {
-         font-size: 2.25rem;
+         font-size: 2rem;
          font-weight: 800;
-         line-height: 1.2;
+         color: var(--azul-oscuro);
+         line-height: 1.3;
          margin-bottom: 1rem;
-         letter-spacing: -1px;
+         letter-spacing: -0.5px;
          }
+
          .hero h1 span {
          color: var(--naranja);
          }
+
          .hero p {
-         font-size: 1rem;
-         color: #94a3b8;
-         margin-bottom: 2rem;
-         max-width: 600px;
-         margin-left: auto;
-         margin-right: auto;
+         font-size: 0.95rem;
+         color: var(--texto-secundario);
+         margin-bottom: 1.75rem;
          }
+
          .btn {
          display: inline-block;
          background-color: var(--naranja);
-         color: var(--azul-oscuro);
-         padding: 0.75rem 1.75rem;
+         color: var(--blanco);
+         padding: 0.65rem 1.5rem;
          border-radius: 6px;
          text-decoration: none;
          font-weight: 600;
-         font-size: 0.9rem;
-         transition: all 0.3s ease;
-         box-shadow: 0 4px 15px rgba(255,159,28,0.3);
+         font-size: 0.85rem;
+         transition: background-color 0.2s;
          }
+
          .btn:hover {
-         background-color: var(--blanco);
-         color: var(--azul-oscuro);
-         transform: translateY(-2px);
-         box-shadow: 0 6px 20px rgba(255,255,255,0.2);
+         background-color: var(--azul-primario);
          }
+
          section {
-         padding: 4.5rem 2rem;
+         padding: 3.5rem 2rem;
          }
+
+         /* Títulos de sección más pequeños y estilizados */
          .section-title {
          text-align: center;
-         font-size: 1.75rem;
-         font-weight: 800;
-         margin-bottom: 2.5rem;
-         position: relative;
-         letter-spacing: -0.5px;
-         }
-         .section-title::after {
-         content: '';
-         display: block;
-         width: 40px;
-         height: 3px;
-         background-color: var(--naranja);
-         margin: 0.5rem auto 0 auto;
-         border-radius: 2px;
-         }
-         .servicios-grid {
-         max-width: 1100px;
-         margin: 0 auto;
-         display: grid;
-         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-         gap: 1.5rem;
-         }
-         .servicio-card {
-         background-color: var(--gris);
-         border: 1px solid var(--gris-2);
-         border-radius: 8px;
-         padding: 2rem 1.5rem;
-         transition: all 0.3s ease;
-         display: flex;
-         flex-direction: column;
-         gap: 0.75rem;
-         }
-         .servicio-card:hover {
-         transform: translateY(-4px);
-         background-color: var(--blanco);
-         border-color: var(--naranja);
-         box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-         }
-         .servicio-card h3 {
-         font-size: 1.15rem;
+         font-size: 1.5rem;
          font-weight: 700;
          color: var(--azul-oscuro);
+         margin-bottom: 2rem;
          }
+
+         /* Removidos los elementos no deseados, dejando solo la cuadrícula limpia */
+         .servicios-grid {
+         max-width: 1000px;
+         margin: 0 auto;
+         display: grid;
+         grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+         gap: 1.5rem;
+         }
+
+         .servicio-card {
+         background-color: var(--blanco);
+         border: 1px solid var(--gris-borde);
+         border-radius: 8px;
+         padding: 1.5rem;
+         transition: box-shadow 0.2s;
+         }
+
+         .servicio-card:hover {
+         box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+         border-color: var(--naranja);
+         }
+
+         .servicio-card h3 {
+         font-size: 1.05rem;
+         font-weight: 600;
+         color: var(--azul-primario);
+         margin-bottom: 0.5rem;
+         }
+
          .servicio-card p {
-         font-size: 0.9rem;
-         color: var(--texto-claro);
+         font-size: 0.85rem;
+         color: var(--texto-secundario);
          }
+
          .nosotros-container {
-         max-width: 900px;
+         max-width: 800px;
          margin: 0 auto;
-         background-color: var(--gris);
-         border-radius: 12px;
-         padding: 2.5rem;
-         border: 1px solid var(--gris-2);
-         }
-         .nosotros-text {
-         font-size: 0.95rem;
-         color: var(--texto-oscuro);
          text-align: center;
-         max-width: 750px;
-         margin: 0 auto;
+         font-size: 0.9rem;
+         color: var(--texto-principal);
          }
+
          .contacto-container {
-         max-width: 650px;
+         max-width: 550px;
          margin: 0 auto;
-         background: var(--blanco);
-         padding: 2.5rem;
-         border-radius: 12px;
-         box-shadow: 0 10px 40px rgba(0,0,0,0.04);
-         border: 1px solid var(--gris-2);
+         background: var(--gris-fondo);
+         padding: 2rem;
+         border-radius: 8px;
+         border: 1px solid var(--gris-borde);
          }
+
          .form-group {
-         margin-bottom: 1.25rem;
+         margin-bottom: 1rem;
          }
+
          .form-group label {
          display: block;
-         font-size: 0.85rem;
+         font-size: 0.8rem;
          font-weight: 600;
-         margin-bottom: 0.4rem;
-         color: var(--azul-oscuro);
+         margin-bottom: 0.25rem;
          }
+
          .form-control {
          width: 100%;
-         padding: 0.65rem 0.85rem;
+         padding: 0.55rem 0.75rem;
          font-family: inherit;
-         font-size: 0.9rem;
-         border: 1px solid var(--gris-2);
-         border-radius: 6px;
-         background-color: var(--gris);
-         transition: all 0.3s ease;
-         }
-         .form-control:focus {
-         outline: none;
-         border-color: var(--azul);
+         font-size: 0.85rem;
+         border: 1px solid var(--gris-borde);
+         border-radius: 4px;
          background-color: var(--blanco);
-         box-shadow: 0 0 0 3px rgba(22,43,78,0.1);
          }
+
          .checkbox-group {
          display: grid;
-         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+         grid-template-columns: 1fr 1fr;
          gap: 0.5rem;
-         margin-top: 0.5rem;
+         margin-top: 0.25rem;
          }
+
          .checkbox-label {
          display: flex;
          align-items: center;
          gap: 0.5rem;
-         font-size: 0.85rem;
-         color: var(--texto-oscuro);
-         cursor: pointer;
+         font-size: 0.8rem;
          }
-         .checkbox-label input {
-         accent-color: var(--naranja);
-         width: 15px;
-         height: 15px;
-         }
+
          .btn-submit {
          width: 100%;
-         background-color: var(--azul-oscuro);
+         background-color: var(--azul-primario);
          color: var(--blanco);
          border: none;
-         padding: 0.8rem;
-         border-radius: 6px;
-         font-size: 0.95rem;
+         padding: 0.7rem;
+         border-radius: 4px;
+         font-size: 0.9rem;
          font-weight: 600;
          cursor: pointer;
-         transition: all 0.3s ease;
          margin-top: 0.5rem;
          }
+
          .btn-submit:hover {
          background-color: var(--naranja);
-         color: var(--azul-oscuro);
          }
+
+         /* Footer estrictamente centrado */
          footer {
          background-color: var(--azul-oscuro);
-         color: #94a3b8;
-         padding: 2rem;
-         font-size: 0.85rem;
-         border-top: 1px solid var(--azul-medio);
+         color: var(--blanco);
+         padding: 1.5rem;
+         font-size: 0.8rem;
          text-align: center;
          }
+
          .footer-content {
-         max-width: 1200px;
-         margin: 0 auto;
+         width: 100%;
+         display: flex;
+         justify-content: center;
+         align-items: center;
          }
+
          @media (max-width: 768px) {
          .menu {
          display: none;
@@ -311,11 +295,9 @@
          top: 100%;
          left: 0;
          right: 0;
-         background-color: var(--azul-oscuro);
-         padding: 1.5rem;
-         gap: 1rem;
-         border-top: 1px solid var(--azul-medio);
-         box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+         background-color: var(--blanco);
+         padding: 1rem;
+         border-top: 1px solid var(--gris-borde);
          }
          .menu.active {
          display: flex;
@@ -324,10 +306,7 @@
          display: block;
          }
          .hero h1 {
-         font-size: 1.75rem;
-         }
-         section {
-         padding: 3.5rem 1.5rem;
+         font-size: 1.6rem;
          }
          }
       </style>
@@ -352,9 +331,7 @@
          <section id="inicio" class="hero">
             <div class="hero-content">
                <h1>Transformamos tus datos en <span>decisiones estratégicas</span></h1>
-               <p>
-                  Ofrecemos consultoría especializada para optimizar la gestión de tu empresa mediante soluciones analíticas, financieras y tecnológicas a medida.
-               </p>
+               <p>Ofrecemos consultoría especializada para optimizar la gestión de tu empresa mediante soluciones analíticas, financieras y tecnológicas a medida.</p>
                <a href="#contacto" class="btn">Solicitar Información</a>
             </div>
          </section>
@@ -379,12 +356,10 @@
                </div>
             </div>
          </section>
-         <section id="nosotros" style="background-color: var(--gris);">
+         <section id="nosotros" style="background-color: var(--gris-fondo);">
             <h2 class="section-title">Sobre Nosotros</h2>
             <div class="nosotros-container">
-               <p class="nosotros-text">
-                  En <strong>NeoDat Consultores</strong> nos apasiona convertir la complejidad de los datos en claridad operativa. Somos un equipo de profesionales dedicados a brindar soporte estratégico a empresas que buscan dar el siguiente paso hacia la transformación digital, combinando experiencia técnica en analítica con una profunda visión de negocio.
-               </p>
+               <p>En <strong>NeoDat Consultores</strong> nos apasiona convertir la complejidad de los datos en claridad operativa. Somos un equipo de profesionales dedicados a brindar soporte estratégico a empresas que buscan dar el siguiente paso hacia la transformación digital, combinando experiencia técnica en analítica con una profunda visión de negocio.</p>
             </div>
          </section>
          <section id="contacto">
@@ -422,23 +397,15 @@
                   <div class="form-group">
                      <label>Servicios de Interés</label>
                      <div class="checkbox-group">
-                        <label class="checkbox-label">
-                        <input type="checkbox" name="servicio" value="Análisis de Datos y BI" /> Análisis de Datos y BI
-                        </label>
-                        <label class="checkbox-label">
-                        <input type="checkbox" name="servicio" value="Finanzas y Control" /> Finanzas y Control
-                        </label>
-                        <label class="checkbox-label">
-                        <input type="checkbox" name="servicio" value="Gestión de Proyectos" /> Gestión de Proyectos
-                        </label>
-                        <label class="checkbox-label">
-                        <input type="checkbox" name="servicio" value="Desarrollo Web" /> Desarrollo Web
-                        </label>
+                        <label class="checkbox-label"><input type="checkbox" name="servicio" value="Análisis de Datos y BI" /> Análisis de Datos y BI</label>
+                        <label class="checkbox-label"><input type="checkbox" name="servicio" value="Finanzas y Control" /> Finanzas y Control</label>
+                        <label class="checkbox-label"><input type="checkbox" name="servicio" value="Gestión de Proyectos" /> Gestión de Proyectos</label>
+                        <label class="checkbox-label"><input type="checkbox" name="servicio" value="Desarrollo Web" /> Desarrollo Web</label>
                      </div>
                   </div>
                   <div class="form-group">
                      <label for="mensaje">Cuéntanos sobre tu necesidad</label>
-                     <textarea id="mensaje" name="mensaje" class="form-control" rows="4" required></textarea>
+                     <textarea id="mensaje" name="mensaje" class="form-control" rows="3" required></textarea>
                   </div>
                   <button type="submit" class="btn-submit">Enviar Solicitud por Correo</button>
                </form>
@@ -452,12 +419,10 @@
       </footer>
       <script>
          const form = document.getElementById("contactForm");
-         
          form.addEventListener("submit", (e) => {
            e.preventDefault();
            const data = new FormData(form);
            const servicios = data.getAll("servicio");
-         
            const cuerpo = [
              "Hola NeoDat,",
              "",
@@ -477,17 +442,13 @@
              "",
              "Gracias."
            ].join("\n");
-         
            const subject = encodeURIComponent("Solicitud de servicio - NeoDat Consultores");
            const body = encodeURIComponent(cuerpo);
-         
            window.location.href = "mailto:neodatconsultores@gmail.com?subject=" + subject + "&body=" + body;
          });
-      </script>
-      <script>
+
          const menuToggle = document.querySelector(".menu-toggle");
          const menu = document.querySelector(".menu");
-         
          menuToggle.addEventListener("click", () => {
             menu.classList.toggle("active");
          });
