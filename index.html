@@ -2,45 +2,96 @@
 <html lang="es">
    <head>
       <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-      <title>NeoDat - Panel Ejecutivo</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>NeoDat Consultores</title>
       <link rel="icon" type="image/png" sizes="32x32" href="Neo1.png">
+      <meta name="description" content="NeoDat Consultores ofrece soluciones en análisis de datos, dashboards, finanzas, control de gestión, proyectos y desarrollo web empresarial." />
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
       <style>
          :root {
             --azul: #162b4e;
             --azul-oscuro: #07172d;
+            --azul-medio: #27456f;
             --azul-claro: #edf2f8;
             --naranja: #ffa500;
             --blanco: #ffffff;
             --gris: #f8fafc;
-            --gris-2: rgba(22, 43, 78, 0.05);
+            --gris-2: rgba(22, 43, 78, 0.06); /* MODIFICADO: Bordes mucho más suaves y sutiles */
+            --gris-3: #f0f4f8;
             --texto: #243447;
             --texto-suave: #66788a;
+            --sombra: 0 10px 30px rgba(7, 23, 45, 0.04);
+            --sombra-fuerte: 0 20px 50px rgba(7, 23, 45, 0.08);
             --exito: #10b981;
-            --alerta: #ef4444;
-            --header-height: 60px;
          }
          * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
          }
-         html { scroll-behavior: smooth; }
+         html {
+            scroll-behavior: smooth;
+         }
          body {
-            font-family: "Inter", -apple-system, sans-serif;
-            background: var(--gris);
+            font-family: "Inter", Arial, sans-serif;
+            background: #ffffff;
             color: var(--texto);
-            line-height: 1.4;
+            line-height: 1.6;
             overflow-x: hidden;
-            font-size: 15px;
+         }
+         a {
+            text-decoration: none;
+            color: inherit;
+         }
+         button {
+            font: inherit;
          }
          .contenedor {
-            width: min(1160px, calc(100% - 32px));
+            width: min(1160px, calc(100% - 40px));
             margin: auto;
+         }
+         .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 13px 22px;
+            border-radius: 999px;
+            border: 1px solid transparent;
+            font-size: 14px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: 0.2s ease;
+            white-space: nowrap;
+         }
+         .btn-principal {
+            background: var(--azul);
+            color: var(--blanco);
+            box-shadow: 0 16px 34px rgba(22,43,78,.18);
+         }
+         .btn-principal:hover {
+            background: var(--azul-oscuro);
+            transform: translateY(-2px);
+         }
+         .btn-whatsapp {
+            background: #25D366;
+            color: #ffffff;
+            box-shadow: none;
+         }
+         .btn-whatsapp:hover {
+            background: #1ebe5d;
+            transform: translateY(-2px);
+         }
+         .btn-secundario {
+            background: var(--blanco);
+            color: var(--azul);
+            border-color: rgba(22, 43, 78, 0.14);
+         }
+         .btn-secundario:hover {
+            border-color: rgba(255, 165, 0, 0.55);
+            box-shadow: 0 12px 24px rgba(7, 23, 45, 0.08);
          }
          header {
             position: fixed;
@@ -48,137 +99,219 @@
             left: 0;
             z-index: 100;
             width: 100%;
-            height: var(--header-height);
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--gris-2);
-            display: flex;
-            align-items: center;
          }
          .navbar {
+            height: 78px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            width: 100%;
+            gap: 28px;
+         }
+         .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
          }
          .logo-icono {
-            height: 32px;
-            width: auto;
+            width: 160px;
+            height: 160px;
             object-fit: contain;
          }
-         .menu-toggle {
-            width: 40px;
-            height: 40px;
-            border: 1px solid var(--gris-2);
-            border-radius: 8px;
-            background: #ffffff;
-            color: var(--azul);
-            font-size: 22px;
-            cursor: pointer;
+         nav ul {
+            list-style: none;
             display: flex;
             align-items: center;
-            justify-content: center;
+            gap: 8px;
          }
-         main {
-            padding-top: calc(var(--header-height) + 16px);
-            padding-bottom: 32px;
+         nav a {
+            display: inline-flex;
+            padding: 10px 15px;
+            border-radius: 999px;
+            font-size: 14px;
+            font-weight: 750;
+            color: var(--azul);
+            transition: 0.2s ease;
          }
-         .eyebrow-container {
+         nav a:hover {
+            background: var(--azul-claro);
+         }
+         .hero {
+            position: relative;
+            padding: 110px 0 100px; /* MODIFICADO: Incremento de padding superior para evitar solapamientos */
+            background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+            overflow: hidden;
+            min-height: calc(100vh - 44px);
+            display: flex;
+            align-items: center;
+         }
+         .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image:
+               linear-gradient(rgba(22, 43, 78, 0.03) 1px, transparent 1px),
+               linear-gradient(90deg, rgba(22, 43, 78, 0.03) 1px, transparent 1px);
+            background-size: 44px 44px;
+            mask-image: linear-gradient(180deg, black, transparent 85%);
+            pointer-events: none;
+         }
+         .hero-grid {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1.05fr;
+            gap: 50px;
+            align-items: center;
+         }
+         h1 {
+            max-width: 720px;
+            margin-bottom: 24px;
+            color: var(--azul-oscuro);
+            font-size: clamp(30px, 4.2vw, 45px);
+            line-height: 1.25;
+            letter-spacing: -1px;
+         }
+         .hero p {
+            max-width: 640px;
+            margin-bottom: 32px;
+            color: var(--texto-suave);
+            font-size: 17px;
+         }
+         .acciones {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+         }
+
+         /* ==========================================================================
+            DASHBOARD DISEÑO SUAVE E INTERACTIVO
+            ========================================================================== */
+         .dashboard-shell {
+            padding: 10px;
+            border-radius: 24px; /* MODIFICADO: Radio más balanceado */
+            background: linear-gradient(145deg, rgba(22, 43, 78, 0.03), rgba(7, 23, 45, 0.05));
+            border: 1px solid var(--gris-2); /* MODIFICADO: Contorno general suavizado */
+            position: relative;
+         }
+         .dashboard {
+            overflow: hidden;
+            border-radius: 16px;
+            background: #ffffff;
+            box-shadow: var(--sombra-fuerte);
+         }
+         .dashboard-top {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 16px;
-            gap: 12px;
+            gap: 16px;
+            padding: 16px 20px;
+            background: #ffffff;
+            border-bottom: 1px solid var(--gris-2);
          }
-         h1 {
-            color: var(--azul-oscuro);
-            font-size: 18px;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-         }
-         .live-status {
+         .dashboard-top strong {
             display: flex;
             align-items: center;
-            gap: 6px;
-            padding: 4px 10px;
-            border-radius: 999px;
-            background: rgba(16, 185, 129, 0.1);
-            color: var(--exito);
-            font-size: 11px;
-            font-weight: 700;
-            white-space: nowrap;
+            gap: 8px;
+            color: var(--azul-oscuro);
+            font-size: 14px;
+            font-weight: 800;
          }
          .live-dot {
-            width: 6px;
-            height: 6px;
+            width: 8px;
+            height: 8px;
             background-color: var(--exito);
             border-radius: 50%;
-            animation: pulsoLive 1.5s infinite;
+            display: inline-block;
+            animation: pulsoLive 1.8s infinite;
          }
          @keyframes pulsoLive {
-            0% { transform: scale(0.8); opacity: 0.5; }
-            50% { transform: scale(1.2); opacity: 1; }
-            100% { transform: scale(0.8); opacity: 0.5; }
+            0% { transform: scale(0.9); opacity: 0.6; }
+            50% { transform: scale(1.3); opacity: 1; }
+            100% { transform: scale(0.9); opacity: 0.6; }
+         }
+         .badge-live {
+            padding: 6px 12px;
+            border-radius: 999px;
+            background: rgba(16, 185, 129, 0.08);
+            color: var(--exito);
+            font-size: 11px;
+            font-weight: 800;
          }
          .dashboard-body {
+            padding: 20px;
+            background: var(--gris);
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 20px;
          }
          .kpis {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 10px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
          }
          .kpi {
+            padding: 16px;
             background: #ffffff;
             border-radius: 12px;
-            padding: 16px;
-            border: 1px solid var(--gris-2);
-            transition: box-shadow 0.2s ease;
+            border: 1px solid var(--gris-2); /* MODIFICADO: Contorno interior suave */
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
          }
-         .kpi:active { box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+         .kpi:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--sombra);
+         }
          .kpi small {
             display: block;
+            margin-bottom: 4px;
             color: var(--texto-suave);
             font-size: 11px;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 2px;
+            letter-spacing: 0.3px;
          }
          .kpi strong {
             display: block;
             color: var(--azul-oscuro);
-            font-size: 26px;
+            font-size: 22px;
             font-weight: 900;
             line-height: 1.1;
-            letter-spacing: -1px;
+            transition: color 0.2s ease;
+         }
+         /* Efecto de cambio dinámico */
+         .kpi strong.cambio-activo {
+            color: var(--naranja);
          }
          .kpi-trend {
-            display: flex;
+            display: inline-flex;
             align-items: center;
             gap: 4px;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 700;
             margin-top: 4px;
          }
          .trend-up { color: var(--exito); }
-         .trend-down { color: var(--alerta); }
+         .trend-down { color: #ef4444; }
 
-         /* GRÁFICO OPTIMIZADO PARA MÓVIL */
          .chart-container {
             background: #ffffff;
             border-radius: 12px;
-            padding: 16px;
+            padding: 20px;
             border: 1px solid var(--gris-2);
+            position: relative;
          }
-         .chart-header { margin-bottom: 16px; }
+         .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+         }
          .chart-title {
             font-size: 13px;
             font-weight: 800;
             color: var(--azul-oscuro);
-            margin-bottom: 6px;
          }
          .chart-legend {
             display: flex;
@@ -190,8 +323,8 @@
          .legend-item::before {
             content: "";
             display: inline-block;
-            width: 7px;
-            height: 7px;
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
             margin-right: 4px;
          }
@@ -202,122 +335,317 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
-            height: 150px;
-            padding-bottom: 4px;
+            height: 140px;
+            padding-top: 10px;
             border-bottom: 1px solid var(--gris-2);
             position: relative;
          }
          .bar-group {
             display: flex;
             align-items: flex-end;
-            gap: 3px;
-            width: 14%;
+            gap: 4px;
+            width: 12%;
             height: 100%;
             position: relative;
             cursor: pointer;
          }
          .bar {
-            flex: 1;
+            width: 100%;
             border-radius: 3px 3px 0 0;
             position: relative;
             transform-origin: bottom;
-            animation: crecerBarra 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            animation: crecerBarra 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            transition: filter 0.2s ease, opacity 0.2s ease;
          }
          .bar-primary { background: var(--azul); }
          .bar-secondary { background: var(--naranja); opacity: 0.8; }
+         
+         /* Hover interactivo sobre grupos de barras */
+         .bar-group:hover .bar {
+            filter: brightness(1.1);
+            opacity: 1;
+         }
+
+         .chart-tooltip {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(4px);
+            background: var(--azul-oscuro);
+            color: #ffffff;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 700;
+            opacity: 0;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+            pointer-events: none;
+            white-space: nowrap;
+            z-index: 5;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+         }
+         .bar-group:hover .chart-tooltip {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+         }
+
          .chart-labels {
             display: flex;
             justify-content: space-between;
-            margin-top: 6px;
-            padding: 0 2px;
+            margin-top: 8px;
+            padding: 0 4px;
          }
          .chart-labels span {
             font-size: 10px;
             font-weight: 700;
             color: var(--texto-suave);
-            width: 14%;
+            width: 12%;
             text-align: center;
          }
+
          @keyframes crecerBarra {
             0% { transform: scaleY(0); }
             100% { transform: scaleY(1); }
+         }
+
+         /* ========================================================================== */
+
+         .menu-toggle {
+            display: none;
+            width: 46px;
+            height: 46px;
+            border: 1px solid var(--gris-2);
+            border-radius: 14px;
+            background: #ffffff;
+            color: var(--azul);
+            font-size: 26px;
+            font-weight: 900;
+            cursor: pointer;
+         }
+         .site-footer {
+            background: #07172d;
+            color: rgba(255,255,255,.72);
+            padding: 24px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+         }
+         .footer-bottom {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 12.5px;
+            color: rgba(255,255,255,.52);
+         }
+         
+         /* RESPONSIVO OPTIMIZADO PARA MÓVILES */
+         @media (max-width: 980px) {
+            .navbar { height: 72px; }
+            .logo-icono { width: 130px; height: 130px; }
+            .menu-toggle { display: flex; align-items: center; justify-content: center; }
+            .whatsapp-desktop { display: none; }
+            nav.menu {
+               position: absolute;
+               top: 72px;
+               left: 0;
+               width: 100%;
+               display: none;
+               background: #ffffff;
+               border-bottom: 1px solid rgba(22,43,78,.08);
+               box-shadow: 0 18px 40px rgba(7,23,45,.10);
+            }
+            nav.menu.activo { display: block; }
+            nav.menu ul {
+               width: min(1160px, calc(100% - 40px));
+               margin: auto;
+               padding: 18px 0;
+               display: grid;
+               grid-template-columns: 1fr;
+               gap: 8px;
+            }
+            nav.menu a {
+               width: 100%;
+               padding: 14px 16px;
+               border-radius: 16px;
+               background: var(--gris);
+            }
+            .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+         }
+         @media (max-width: 680px) {
+            /* MODIFICACIÓN CLAVE: Mayor padding-top para que el menú fijo jamás tape el título */
+            .hero { padding: 125px 0 60px; }
+            .kpis { grid-template-columns: 1fr; gap: 10px; }
+            h1 { 
+               font-size: clamp(24px, 6.5vw, 32px); 
+               line-height: 1.3;
+               letter-spacing: normal;
+            }
+            .acciones { display: grid; grid-template-columns: 1fr; width: 100%; gap: 10px; }
+            .acciones .btn { width: 100%; }
+            .bar-group:nth-child(even) { display: none; } 
+            .chart-labels span:nth-child(even) { display: none; }
          }
       </style>
    </head>
    <body>
       <header>
          <div class="contenedor navbar">
-            <img src="Neo1.png" class="logo-icono" alt="Logo NeoDat">
-            <button class="menu-toggle" type="button">☰</button>
+            <a href="index.html" class="logo" aria-label="NeoDat Consultores">
+               <img src="Neo1.png" class="logo-icono" alt="Logo NeoDat">
+            </a>
+            <button class="menu-toggle" type="button" aria-label="Abrir menú"> ☰ </button>
+            <nav class="menu" aria-label="Navegación principal">
+               <ul>
+                  <li><a href="index.html">Inicio</a></li>
+                  <li><a href="servicios.html">Servicios</a></li>
+                  <li><a href="metodo.html">Método</a></li>
+                  <li><a href="ambitos.html">Ámbitos</a></li>
+                  <li><a href="quienes-somos.html">Quiénes somos</a></li>
+                  <li><a href="contacto.html">Contacto</a></li>
+               </ul>
+            </nav>
+            <a class="btn btn-whatsapp whatsapp-desktop" href="https://wa.me/593988200116?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20NeoDat%20Consultores." target="_blank" rel="noopener">
+               WhatsApp
+            </a>
          </div>
       </header>
+
       <main>
-         <div class="contenedor">
-            <div class="eyebrow-container">
-               <h1>Panel Ejecutivo</h1>
-               <div class="live-status">
-                  <span class="live-dot"></span>
-                  <span>NeoDat BI Engine</span>
+         <section class="hero">
+            <div class="contenedor hero-grid">
+               <div>
+                  <h1>Transformamos la incertidumbre de su empresa en decisiones respaldadas por datos precisos.</h1>
+                  <p>NeoDat Consultores estructura datos, finanzas, dashboards y procesos para que las empresas trabajen con información clara, indicadores confiables y control ejecutivo.</p>
+                  <div class="acciones">
+                     <a class="btn btn-principal" href="servicios.html"> Ver servicios </a>
+                     <a class="btn btn-principal btn-whatsapp" href="https://wa.me/593988200116?text=Hola,%20quiero%20solicitar%20una%20asesor%C3%ADa%20con%20NeoDat." target="_blank" rel="noopener"> Solicitar asesoría </a>
+                     <a class="btn btn-secundario" href="contacto.html"> Contacto formal </a>
+                  </div>
                </div>
+
+               <div class="dashboard-shell">
+                  <div class="dashboard">
+                     <div class="dashboard-top">
+                        <div>
+                           <span class="live-dot"></span>
+                           <strong>Panel de Control Corporativo</strong>
+                        </div>
+                        <div class="badge-live">NeoDat BI Engine</div>
+                     </div>
+                     <div class="dashboard-body">
+                        
+                        <div class="kpis">
+                           <div class="kpi">
+                              <small>Ingresos Op.</small>
+                              <strong id="kpi-ingresos">$148.5K</strong>
+                              <span class="kpi-trend trend-up">▲ +12.4%</span>
+                           </div>
+                           <div class="kpi">
+                              <small>Margen Neto</small>
+                              <strong>34.2%</strong>
+                              <span class="kpi-trend trend-up">▲ +3.1%</span>
+                           </div>
+                           <div class="kpi">
+                              <small>Eficiencia</small>
+                              <strong>94.8%</strong>
+                              <span class="kpi-trend trend-down">▼ -0.5%</span>
+                           </div>
+                        </div>
+
+                        <div class="chart-container">
+                           <div class="chart-header">
+                              <span class="chart-title">Desempeño Mensual Activos vs Proyectado</span>
+                              <div class="chart-legend">
+                                 <span class="legend-item legend-azul">Real</span>
+                                 <span class="legend-item legend-naranja">Meta</span>
+                              </div>
+                           </div>
+                           
+                           <div class="chart-bars">
+                              <div class="bar-group" data-valor="$112.4K">
+                                 <div class="chart-tooltip">Ene: $112.4K</div>
+                                 <div class="bar bar-primary" style="height: 65%;"></div>
+                                 <div class="bar bar-secondary" style="height: 70%;"></div>
+                              </div>
+                              <div class="bar-group" data-valor="$128.9K">
+                                 <div class="chart-tooltip">Feb: $128.9K</div>
+                                 <div class="bar bar-primary" style="height: 80%;"></div>
+                                 <div class="bar bar-secondary" style="height: 75%;"></div>
+                              </div>
+                              <div class="bar-group" data-valor="$94.1K">
+                                 <div class="chart-tooltip">Mar: $94.1K</div>
+                                 <div class="bar bar-primary" style="height: 45%;"></div>
+                                 <div class="bar bar-secondary" style="height: 60%;"></div>
+                              </div>
+                              <div class="bar-group" data-valor="$162.0K">
+                                 <div class="chart-tooltip">Abr: $162.0K</div>
+                                 <div class="bar bar-primary" style="height: 95%;"></div>
+                                 <div class="bar bar-secondary" style="height: 85%;"></div>
+                              </div>
+                              <div class="bar-group" data-valor="$135.6K">
+                                 <div class="chart-tooltip">May: $135.6K</div>
+                                 <div class="bar bar-primary" style="height: 75%;"></div>
+                                 <div class="bar bar-secondary" style="height: 80%;"></div>
+                              </div>
+                              <div class="bar-group" data-valor="$148.5K">
+                                 <div class="chart-tooltip">Jun: $148.5K</div>
+                                 <div class="bar bar-primary" style="height: 88%;"></div>
+                                 <div class="bar bar-secondary" style="height: 90%;"></div>
+                              </div>
+                           </div>
+
+                           <div class="chart-labels">
+                              <span>Ene</span>
+                              <span>Feb</span>
+                              <span>Mar</span>
+                              <span>Abr</span>
+                              <span>May</span>
+                              <span>Jun</span>
+                           </div>
+                        </div>
+
+                     </div>
+                  </div>
+               </div>
+
             </div>
-            <div class="dashboard-body">
-               <div class="kpis">
-                  <div class="kpi">
-                     <small>Ingresos Op.</small>
-                     <strong>$148.5K</strong>
-                     <div class="kpi-trend trend-up">▲ +12.4%</div>
-                  </div>
-                  <div class="kpi">
-                     <small>Margen Neto</small>
-                     <strong>34.2%</strong>
-                     <div class="kpi-trend trend-up">▲ +3.1%</div>
-                  </div>
-                  <div class="kpi">
-                     <small>Eficiencia</small>
-                     <strong>94.8%</strong>
-                     <div class="kpi-trend trend-down">▼ -0.5%</div>
-                  </div>
-               </div>
-               <div class="chart-container">
-                  <div class="chart-header">
-                     <div class="chart-title">Desempeño Mensual Activos vs Meta</div>
-                     <div class="chart-legend">
-                        <span class="legend-item legend-azul">Real</span>
-                        <span class="legend-item legend-naranja">Meta</span>
-                     </div>
-                  </div>
-                  <div class="chart-bars">
-                     <div class="bar-group">
-                        <div class="bar bar-primary" style="height: 65%;"></div>
-                        <div class="bar bar-secondary" style="height: 70%;"></div>
-                     </div>
-                     <div class="bar-group">
-                        <div class="bar bar-primary" style="height: 80%;"></div>
-                        <div class="bar bar-secondary" style="height: 75%;"></div>
-                     </div>
-                     <div class="bar-group">
-                        <div class="bar bar-primary" style="height: 45%;"></div>
-                        <div class="bar bar-secondary" style="height: 60%;"></div>
-                     </div>
-                     <div class="bar-group">
-                        <div class="bar bar-primary" style="height: 95%;"></div>
-                        <div class="bar bar-secondary" style="height: 85%;"></div>
-                     </div>
-                     <div class="bar-group">
-                        <div class="bar bar-primary" style="height: 75%;"></div>
-                        <div class="bar bar-secondary" style="height: 80%;"></div>
-                     </div>
-                     <div class="bar-group">
-                        <div class="bar bar-primary" style="height: 88%;"></div>
-                        <div class="bar bar-secondary" style="height: 90%;"></div>
-                     </div>
-                  </div>
-                  <div class="chart-labels">
-                     <span>Ene</span><span>Feb</span><span>Mar</span><span>Abr</span><span>May</span><span>Jun</span>
-                  </div>
-               </div>
-            </div>
-         </div>
+         </section>
       </main>
+
+      <footer class="site-footer">
+         <div class="contenedor footer-bottom">
+            <span>© 2026 NeoDat Consultores. Todos los derechos reservados.</span>
+         </div>
+      </footer>
+
+      <script>
+         const menuToggle = document.querySelector(".menu-toggle");
+         const menu = document.querySelector(".menu");
+         const kpiIngresos = document.getElementById("kpi-ingresos");
+         const barGroups = document.querySelectorAll(".bar-group");
+         const valorOriginal = "$148.5K";
+
+         menuToggle.addEventListener("click", () => {
+            menu.classList.toggle("activo");
+         });
+
+         // Controlador de eventos para hacer el panel de control interactivo
+         barGroups.forEach(group => {
+            const cambiarValor = () => {
+               const nuevoValor = group.getAttribute("data-valor");
+               kpiIngresos.textContent = nuevoValor;
+               kpiIngresos.classList.add("cambio-activo");
+            };
+
+            const restaurarValor = () => {
+               kpiIngresos.textContent = valorOriginal;
+               kpiIngresos.classList.remove("cambio-activo");
+            };
+
+            // Soporte para PC (Mouse) y Móviles (Touch)
+            group.addEventListener("mouseenter", cambiarValor);
+            group.addEventListener("mouseleave", restaurarValor);
+            group.addEventListener("touchstart", cambiarValor, {passive: true});
+         });
+      </script>
    </body>
 </html>
