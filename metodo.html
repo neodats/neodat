@@ -98,7 +98,7 @@
             transition: transform 0.2s ease;
          }
          .btn-principal:hover span {
-            transform: translateX(3px);
+            transform: translateY(3px);
          }
          .btn-whatsapp {
             background: rgba(37, 211, 102, 0.1);
@@ -296,7 +296,7 @@
             align-items: center;
             gap: 8px;
          }
-         .metodo-contenido h3 ::before {
+         .metodo-contenido h3::before {
             content: "●";
             color: var(--naranja);
          }
@@ -314,7 +314,7 @@
          }
          .grid-detalles {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 24px;
          }
          .tarjeta-detalle {
@@ -394,11 +394,12 @@
                font-size: 13px;
             }
             .hero-grid { grid-template-columns: 1fr; gap: 40px; }
-            .grid-detalles { grid-template-columns: 1fr; gap: 16px; }
+            .grid-detalles { grid-template-columns: repeat(2, 1fr); gap: 20px; }
          }
          @media (max-width: 680px) {
             .hero { padding: 100px 0 40px; }
             .metodo-nav { grid-template-columns: repeat(2, 1fr); }
+            .grid-detalles { grid-template-columns: 1fr; gap: 16px; }
             h1 { font-size: clamp(20px, 6vw, 26px); }
          }
       </style>
@@ -436,7 +437,7 @@
                   </div>
                   <h1>Estructura inteligente para transformar información en resultados concretos.</h1>
                   <p>El Método NeoDat consiste en ordenar la dispersión operativa de su negocio mediante procesos ágiles de ingeniería y análisis. No improvisamos: seguimos un flujo lógico diseñado para mitigar riesgos financieros y maximizar la visibilidad gerencial.</p>
-                  <div class="btn btn-principal" onclick="document.getElementById('detalles').scrollIntoView();">
+                  <div class="btn btn-principal" onclick="document.getElementById('detalles').scrollIntoView({behavior: 'smooth'});">
                      Conocer fases <span>↓</span>
                   </div>
                </div>
@@ -462,19 +463,24 @@
             <div class="contenedor">
                <div class="grid-detalles">
                   <div class="tarjeta-detalle">
-                     <div class="num-fase">I</div>
-                     <h4>Conexión Segura de Datos</h4>
-                     <p>Unificamos sus bases de datos, sistemas contables y hojas de cálculo aisladas en repositorios limpios y listos para el consumo corporativo.</p>
+                     <div class="num-fase">01</div>
+                     <h4>Relevamiento y Diagnóstico</h4>
+                     <p>Identificamos flujos de información actuales, detectamos fugas de datos y localizamos inconsistencias en sus reportes financieros clave.</p>
                   </div>
                   <div class="tarjeta-detalle">
-                     <div class="num-fase">II</div>
-                     <h4>Modelado Financiero</h4>
-                     <p>Estructuramos sus centros de costos, presupuestos y proyecciones bajo metodologías ágiles que garantizan un control preciso del flujo de caja.</p>
+                     <div class="num-fase">02</div>
+                     <h4>Estructura y ETL</h4>
+                     <p>Extraemos, transformamos y cargamos la información dispersa en modelos limpios y centralizados para mitigar errores humanos.</p>
                   </div>
                   <div class="tarjeta-detalle">
-                     <div class="num-fase">III</div>
-                     <h4>Cultura Executive BI</h4>
-                     <p>Capacitamos a su equipo directivo en la lectura ágil de indicadores para asegurar una transición exitosa hacia una cultura verdaderamente data-driven.</p>
+                     <div class="num-fase">03</div>
+                     <h4>BI & Dashboards</h4>
+                     <p>Diseñamos cuadros de mando interactivos dinámicos que reflejan la realidad financiera y operativa de su empresa al instante.</p>
+                  </div>
+                  <div class="tarjeta-detalle">
+                     <div class="num-fase">04</div>
+                     <h4>Control de Gestión</h4>
+                     <p>Implementamos rutinas de seguimiento analítico y alertas automatizadas para una toma de decisiones optimizada en tiempo real.</p>
                   </div>
                </div>
             </div>
