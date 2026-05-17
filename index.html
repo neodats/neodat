@@ -178,6 +178,7 @@
             overflow: hidden;
             display: flex;
             align-items: center;
+            margin-bottom: 0;
          }
          .hero::before {
             content: "";
@@ -221,7 +222,7 @@
          }
 
          /* ==========================================================================
-            DASHBOARD CORPORATIVO (REORGANIZADO SIN EL MAPA)
+            DASHBOARD CORPORATIVO INTELLIGENT BI
             ========================================================================== */
          .dashboard-shell {
             padding: 10px;
@@ -328,7 +329,7 @@
          .trend-up { color: var(--exito); }
          .trend-orange { color: var(--naranja); }
 
-         /* FILA GRÁFICA CENTRAL INFRAESTRUCTURA */
+         /* NUEVO COMPONENTE: GRÁFICO DE LÍNEA ANALÍTICO AVANZADO */
          .chart-container {
             background: #ffffff;
             border-radius: 12px;
@@ -339,7 +340,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 14px;
+            margin-bottom: 12px;
          }
          .chart-title {
             font-size: 11.5px;
@@ -353,41 +354,36 @@
             font-weight: 600;
             color: var(--texto-suave);
          }
-         .legend-item::before {
-            content: "";
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            margin-right: 4px;
+         .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
          }
-         .legend-azul::before { background: var(--azul); }
-         .legend-naranja::before { background: var(--naranja); }
+         .legend-azul::before { content: ""; width: 8px; height: 8px; background: var(--azul); border-radius: 50%; display: inline-block; }
+         .legend-naranja::before { content: ""; width: 8px; height: 8px; background: var(--naranja); border-radius: 50%; display: inline-block; }
 
-         .chart-bars {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            height: 85px;
-            border-bottom: 1px solid var(--gris-2);
-         }
-         .bar-group {
-            display: flex;
-            align-items: flex-end;
-            gap: 3px;
-            width: 13%;
-            height: 100%;
-         }
-         .bar {
+         .bi-graph-wrapper {
+            position: relative;
             width: 100%;
-            border-radius: 2px 2px 0 0;
-            height: 50%;
-            transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            height: 120px;
+            margin-top: 6px;
          }
-         .bar-primary { background: var(--azul); }
-         .bar-secondary { background: var(--naranja); opacity: 0.85; }
+         .bi-svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+         }
+         /* Animación sutil de respiración para el nodo activo de datos */
+         .live-node {
+            animation: pulseActiveNode 2s infinite ease-in-out;
+         }
+         @keyframes pulseActiveNode {
+            0% { r: 4; opacity: 1; }
+            50% { r: 7; opacity: 0.4; }
+            100% { r: 4; opacity: 1; }
+         }
 
-         /* DISTRIBUCIÓN ANALÍTICA DE LA PARTE INFERIOR */
+         /* DISTRIBUCIÓN INFERIOR */
          .analytics-grid-bottom {
             display: grid;
             grid-template-columns: 1.2fr 1fr;
@@ -402,49 +398,31 @@
             flex-direction: column;
             justify-content: space-between;
          }
-         .card-title-clean {
-            font-size: 11px;
-            font-weight: 800;
-            color: var(--azul-oscuro);
-            margin-bottom: 10px;
-         }
-         
-         /* Barras horizontales del bloque Estructuración */
-         .progress-box {
+         .funnel-container {
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 6px;
+            margin-top: 8px;
          }
-         .progress-row {
+         .funnel-stage {
             display: flex;
-            flex-direction: column;
-            gap: 4px;
-         }
-         .progress-info {
-            display: flex;
+            align-items: center;
             justify-content: space-between;
+            padding: 6px 12px;
+            color: #ffffff;
             font-size: 10px;
             font-weight: 700;
-            color: var(--texto);
+            border-radius: 6px;
          }
-         .progress-bar-bg {
-            width: 100%;
-            height: 8px;
-            background: var(--gris-3);
-            border-radius: 4px;
-            overflow: hidden;
-         }
-         .progress-bar-fill {
-            height: 100%;
-            background: var(--azul);
-            border-radius: 4px;
-         }
+         .funnel-1 { background: var(--azul-oscuro); width: 100%; }
+         .funnel-2 { background: var(--azul); width: 85%; }
+         .funnel-3 { background: var(--azul-medio); width: 68%; }
 
-         /* Gráfico de anillo OpEx */
          .donut-box {
             display: flex;
             align-items: center;
             gap: 14px;
+            margin-top: 4px;
          }
          .donut-svg-wrapper {
             width: 55px;
@@ -582,80 +560,81 @@
                            <span class="live-dot"></span>
                            <strong>Panel de Control Corporativo</strong>
                         </div>
-                        <div class="badge-live">Procesamiento Global</div>
+                        <div class="badge-live">BI & Analytics</div>
                      </div>
                      <div class="dashboard-body">
                         
                         <div class="kpis">
                            <div class="kpi">
-                              <small>Volumen / Seg</small>
-                              <strong id="kpi-stream">1,240 GB</strong>
-                              <span class="kpi-trend trend-up">▲ Activo</span>
+                              <small>Margen Neto</small>
+                              <strong id="kpi-stream">34.2%</strong>
+                              <span class="kpi-trend trend-up">▲ +2.4% vs mes ant.</span>
                            </div>
                            <div class="kpi">
-                              <small>Eficiencia BI</small>
-                              <strong id="kpi-eficiencia">98.4%</strong>
-                              <span class="kpi-trend trend-up">▲ Óptima</span>
+                              <small>Ebitda Anual</small>
+                              <strong id="kpi-eficiencia">$428K</strong>
+                              <span class="kpi-trend trend-up">▲ Optimizado</span>
                            </div>
                            <div class="kpi">
-                              <small>Procesos AI</small>
-                              <strong id="kpi-procesos">452K</strong>
-                              <span class="kpi-trend trend-orange">● Estable</span>
+                              <small>Calidad de Datos</small>
+                              <strong id="kpi-procesos">99.8%</strong>
+                              <span class="kpi-trend trend-orange">● Confiable</span>
                            </div>
                         </div>
 
                         <div class="chart-container">
                            <div class="chart-header">
-                              <span class="chart-title">Carga de Infraestructura de Datos</span>
+                              <span class="chart-title">Evolución de Ingresos</span>
                               <div class="chart-legend">
-                                 <span class="legend-item legend-azul">Real</span>
+                                 <span class="legend-item legend-azul">Ingresos</span>
                                  <span class="legend-item legend-naranja">Meta</span>
                               </div>
                            </div>
-                           <div class="chart-bars">
-                              <div class="bar-group">
-                                 <div class="bar bar-primary" style="height: 60%;"></div>
-                                 <div class="bar bar-secondary" style="height: 70%;"></div>
-                              </div>
-                              <div class="bar-group">
-                                 <div class="bar bar-primary" style="height: 45%;"></div>
-                                 <div class="bar bar-secondary" style="height: 50%;"></div>
-                              </div>
-                              <div class="bar-group">
-                                 <div class="bar bar-primary" style="height: 80%;"></div>
-                                 <div class="bar bar-secondary" style="height: 75%;"></div>
-                              </div>
-                              <div class="bar-group">
-                                 <div class="bar bar-primary" style="height: 35%;"></div>
-                                 <div class="bar bar-secondary" style="height: 55%;"></div>
-                              </div>
-                              <div class="bar-group">
-                                 <div class="bar bar-primary" style="height: 90%;"></div>
-                                 <div class="bar bar-secondary" style="height: 85%;"></div>
-                              </div>
-                              <div class="bar-group">
-                                 <div class="bar bar-primary" style="height: 70%;"></div>
-                                 <div class="bar bar-secondary" style="height: 65%;"></div>
-                              </div>
+                           <div class="bi-graph-wrapper">
+                              <svg class="bi-svg" viewBox="0 0 500 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                                 <defs>
+                                    <linearGradient id="bi-area-grad" x1="0" y1="0" x2="0" y2="1">
+                                       <stop offset="0%" stop-color="#162b4e" stop-opacity="0.15"/>
+                                       <stop offset="100%" stop-color="#162b4e" stop-opacity="0.0"/>
+                                    </linearGradient>
+                                 </defs>
+                                 
+                                 <line x1="0" y1="30" x2="500" y2="30" stroke="rgba(22,43,78,0.05)" stroke-width="1" />
+                                 <line x1="0" y1="60" x2="500" y2="60" stroke="rgba(22,43,78,0.05)" stroke-width="1" />
+                                 <line x1="0" y1="90" x2="500" y2="90" stroke="rgba(22,43,78,0.05)" stroke-width="1" />
+                                 
+                                 <text x="5" y="116" fill="#66788a" font-size="9" font-weight="600">Ene</text>
+                                 <text x="100" y="116" fill="#66788a" font-size="9" font-weight="600">Feb</text>
+                                 <text x="200" y="116" fill="#66788a" font-size="9" font-weight="600">Mar</text>
+                                 <text x="300" y="116" fill="#66788a" font-size="9" font-weight="600">Abr</text>
+                                 <text x="400" y="116" fill="#66788a" font-size="9" font-weight="600">May</text>
+                                 <text x="475" y="116" fill="#66788a" font-size="9" font-weight="600">Jun</text>
+
+                                 <line x1="0" y1="85" x2="500" y2="35" stroke="var(--naranja)" stroke-width="1.5" stroke-dasharray="4,4" />
+
+                                 <path id="graph-area" d="M 0 95 L 100 80 L 200 45 L 300 75 L 400 35 L 500 50 L 500 100 L 0 100 Z" fill="url(#bi-area-grad)" />
+
+                                 <polyline id="graph-line" fill="none" stroke="var(--azul)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                                    points="0,95 100,80 200,45 300,75 400,35 500,50" />
+
+                                 <circle cx="100" cy="80" r="3" fill="var(--azul)" />
+                                 <circle cx="200" cy="45" r="3" fill="var(--azul)" />
+                                 <circle cx="300" cy="75" r="3" fill="var(--azul)" />
+                                 <circle cx="400" cy="35" r="3" fill="var(--azul)" />
+
+                                 <circle id="live-tracker-outer" cx="500" cy="50" r="6" fill="var(--azul)" opacity="0.25" class="live-node" />
+                                 <circle id="live-tracker-inner" cx="500" cy="50" r="3.5" fill="var(--azul)" />
+                              </svg>
                            </div>
                         </div>
 
                         <div class="analytics-grid-bottom">
                            <div class="small-analytics-card">
                               <span class="card-title-clean">Estructuración de Datos</span>
-                              <div class="progress-box">
-                                 <div class="progress-row">
-                                    <div class="progress-info"><span>Fuentes Crudas</span><span>100%</span></div>
-                                    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 100%"></div></div>
-                                 </div>
-                                 <div class="progress-row">
-                                    <div class="progress-info"><span>Procesados</span><span>85%</span></div>
-                                    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 85%"></div></div>
-                                 </div>
-                                 <div class="progress-row">
-                                    <div class="progress-info"><span>Modelados BI</span><span>68%</span></div>
-                                    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 68%"></div></div>
-                                 </div>
+                              <div class="funnel-container">
+                                 <div class="funnel-stage funnel-1">Fuentes Crudas <span>100%</span></div>
+                                 <div class="funnel-stage funnel-2">Procesados <span>85%</span></div>
+                                 <div class="funnel-stage funnel-3">Modelados BI <span>68%</span></div>
                               </div>
                            </div>
 
@@ -692,35 +671,50 @@
       </footer>
 
       <script>
-         // Menú móvil accesible
+         // Menú móvil
          const menuToggle = document.querySelector(".menu-toggle");
          const menu = document.querySelector(".menu");
          menuToggle.addEventListener("click", () => {
             menu.classList.toggle("activo");
          });
 
-         // Nodos de datos dinámicos
-         const streamTxt = document.getElementById("kpi-stream");
-         const eficienciaTxt = document.getElementById("kpi-eficiencia");
-         const procesosTxt = document.getElementById("kpi-procesos");
-         const lasBarras = document.querySelectorAll(".bar");
+         // Elementos del KPI y del Gráfico Premium
+         const margenTxt = document.getElementById("kpi-stream");
+         const ebitdaTxt = document.getElementById("kpi-eficiencia");
+         const calidadTxt = document.getElementById("kpi-procesos");
+         
+         const graphLine = document.getElementById("graph-line");
+         const graphArea = document.getElementById("graph-area");
+         const trackerOuter = document.getElementById("live-tracker-outer");
+         const trackerInner = document.getElementById("live-tracker-inner");
 
-         // Actualización continua de datos en vivo (cada 2 segundos)
+         // Fluctuación en tiempo real para simular un feed de BI real
          setInterval(() => {
-            const vStream = (1200 + Math.floor(Math.random() * 200));
-            streamTxt.textContent = `${vStream.toLocaleString()} GB`;
+            // 1. Actualización de textos numéricos
+            const vMargen = (33 + Math.random() * 2).toFixed(1);
+            margenTxt.textContent = `${vMargen}%`;
 
-            const vEficiencia = (98 + Math.random() * 1.9).toFixed(1);
-            eficienciaTxt.textContent = `${vEficiencia}%`;
+            const vEbitda = (420 + Math.floor(Math.random() * 12));
+            ebitdaTxt.textContent = `$${vEbitda}K`;
 
-            const vProcesos = (450 + Math.floor(Math.random() * 15));
-            procesosTxt.textContent = `${vProcesos}K`;
+            const vCalidad = (99.5 + Math.random() * 0.4).toFixed(1);
+            calidadTxt.textContent = `${vCalidad}%`;
 
-            lasBarras.forEach(bar => {
-               const nuevaAltura = 25 + Math.floor(Math.random() * 70);
-               bar.style.height = `${nuevaAltura}%`;
-            });
-         }, 2000);
+            // 2. Movimiento fluido del último nodo del gráfico (Mes de Junio)
+            // Genera una coordenada Y aleatoria y elegante entre 25 y 65 para mantener la consistencia financiera
+            const nuevaYJunio = Math.floor(25 + Math.random() * 40); 
+            
+            // Actualizar la polilínea del gráfico
+            graphLine.setAttribute("points", `0,95 100,80 200,45 300,75 400,35 500,${nuevaYJunio}`);
+            
+            // Actualizar el polígono del área sombreada para que coincida perfectamente
+            graphArea.setAttribute("d", `M 0 95 L 100 80 L 200 45 L 300 75 L 400 35 L 500 ${nuevaYJunio} L 500 100 L 0 100 Z`);
+            
+            // Reposicionar el punto dinámico final (nodos de tracking)
+            trackerOuter.setAttribute("cy", nuevaYJunio);
+            trackerInner.setAttribute("cy", nuevaYJunio);
+
+         }, 2500);
       </script>
    </body>
 </html>
