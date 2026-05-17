@@ -16,11 +16,11 @@
 
         body {
             background-color: #ffffff;
-            /* Degradados sutiles para dar profundidad sobre el blanco */
+            /* Fondo claro con sutiles gradientes de profundidad */
             background-image: 
                 radial-gradient(circle at 80% 20%, rgba(240, 244, 255, 0.8) 0%, transparent 50%),
                 radial-gradient(circle at 20% 80%, rgba(245, 247, 250, 1) 0%, transparent 60%);
-            color: #1e293b; /* Texto principal oscuro para contraste */
+            color: #1e293b; /* Gris oscuro para textos principales */
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -29,7 +29,7 @@
             position: relative;
         }
 
-        /* Fondo de cuadrícula sutil en gris claro */
+        /* Cuadrícula sutil de fondo */
         body::before {
             content: '';
             position: absolute;
@@ -41,14 +41,17 @@
             pointer-events: none;
         }
 
-        /* --- HEADER --- */
-        header {
+        /* --- NAVBAR (Tu estructura adaptada) --- */
+        .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 30px 6%;
+            padding: 25px 6%;
             position: relative;
             z-index: 10;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         .logo {
@@ -62,60 +65,68 @@
         }
 
         .logo span {
-            color: #e28743; /* Mantiene el toque dorado/naranja */
+            color: #e28743; /* Acento dorado/naranja */
         }
 
-        .status-badge {
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            color: #059669;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 1px;
+        .nav-links {
             display: flex;
+            gap: 30px;
             align-items: center;
-            gap: 8px;
+            list-style: none;
         }
 
-        .status-badge::before {
-            content: '';
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            background-color: #10b981;
-            border-radius: 50%;
-            box-shadow: 0 0 6px rgba(16, 185, 129, 0.4);
+        .nav-links a {
+            text-decoration: none;
+            color: #475569;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s ease;
         }
 
-        /* --- MAIN CONTENT CONTAINER --- */
-        .container {
+        .nav-links a:hover {
+            color: #0f172a;
+        }
+
+        .btn-nav {
+            padding: 10px 20px;
+            border-radius: 6px;
+            background-color: #0f172a;
+            color: #ffffff !important;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(15, 23, 42, 0.15);
+        }
+
+        .btn-nav:hover {
+            background-color: #1e293b;
+        }
+
+        /* --- SECCIÓN HERO (Contenedor de dos columnas) --- */
+        .hero {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 6% 40px 6%;
+            padding: 60px 6%;
             flex: 1;
-            gap: 40px;
+            gap: 50px;
             position: relative;
             z-index: 10;
         }
 
-        /* --- LEFT COLUMN --- */
-        .main-text {
+        /* Columna Izquierda: Mensajes */
+        .hero-content {
             max-width: 550px;
         }
 
-        .subtitle {
+        .hero-subtitle {
             color: #e28743;
             text-transform: uppercase;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 700;
             letter-spacing: 2px;
             margin-bottom: 20px;
         }
 
-        h1 {
+        .hero-title {
             font-size: 52px;
             font-weight: 800;
             line-height: 1.15;
@@ -124,57 +135,56 @@
             color: #0f172a;
         }
 
-        .description {
-            color: #64748b; /* Gris corporativo suave */
+        .hero-description {
+            color: #64748b;
             font-size: 16px;
             line-height: 1.6;
             margin-bottom: 40px;
-            font-weight: 400;
         }
 
-        .buttons-group {
+        .cta-group {
             display: flex;
             gap: 20px;
         }
 
-        .btn {
-            padding: 15px 30px;
+        .btn-cta {
+            padding: 15px 32px;
             border-radius: 8px;
             font-size: 14px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
+            display: inline-block;
         }
 
-        /* El botón principal ahora resalta en un tono oscuro/elegante o azul vivo limpio */
-        .btn-primary {
+        .btn-cta-primary {
             background-color: #0f172a;
             color: white;
             border: none;
             box-shadow: 0 4px 15px rgba(15, 23, 42, 0.2);
         }
 
-        .btn-primary:hover {
+        .btn-cta-primary:hover {
             background-color: #1e293b;
-            box-shadow: 0 6px 20px rgba(15, 23, 42, 0.3);
             transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(15, 23, 42, 0.3);
         }
 
-        .btn-secondary {
+        .btn-cta-secondary {
             background-color: transparent;
             color: #0f172a;
             border: 1px solid rgba(15, 23, 42, 0.2);
         }
 
-        .btn-secondary:hover {
+        .btn-cta-secondary:hover {
             background-color: rgba(0, 0, 0, 0.03);
             border-color: rgba(15, 23, 42, 0.4);
             transform: translateY(-2px);
         }
 
-        /* --- RIGHT COLUMN: WHITE GLASSMORPHISM CARD --- */
-        .dashboard-wrapper {
+        /* Columna Derecha: Tarjeta de Métricas (Glassmorphism Blanco) */
+        .hero-dashboard {
             position: relative;
         }
 
@@ -185,7 +195,7 @@
             border: 1px solid rgba(255, 255, 255, 0.6);
             border-radius: 16px;
             padding: 30px;
-            width: 520px;
+            width: 500px;
             box-shadow: 0 20px 40px rgba(15, 23, 42, 0.06), 0 1px 3px rgba(0,0,0,0.02);
         }
 
@@ -256,39 +266,36 @@
             font-weight: 600;
         }
 
-        /* Gráfico adaptado a tonos grises y dorados */
+        /* Gráfico de Barras Minimalista */
         .chart-container {
             display: flex;
             align-items: flex-end;
             justify-content: space-between;
-            height: 120px;
+            height: 110px;
             padding-top: 20px;
             border-top: 1px solid rgba(0, 0, 0, 0.05);
-            position: relative;
         }
 
         .bar {
-            width: 15%;
+            width: 14%;
             background: linear-gradient(180deg, rgba(203, 213, 225, 0.6) 0%, rgba(241, 245, 249, 0.3) 100%);
             border: 1px solid rgba(148, 163, 184, 0.2);
             border-radius: 4px 4px 0 0;
-            transition: all 0.3s ease;
         }
 
-        /* Barra dorada destacada */
         .bar.highlight {
             background: linear-gradient(180deg, #e28743 0%, rgba(226, 135, 67, 0.2) 100%);
             border: 1px solid #e28743;
             box-shadow: 0 4px 15px rgba(226, 135, 67, 0.25);
         }
 
-        .bar-1 { height: 30%; }
-        .bar-2 { height: 50%; }
-        .bar-3 { height: 45%; }
-        .bar-4 { height: 85%; }
+        .bar-1 { height: 35%; }
+        .bar-2 { height: 55%; }
+        .bar-3 { height: 40%; }
+        .bar-4 { height: 85%; } /* Destacada */
         .bar-5 { height: 60%; }
 
-        /* --- FOOTER --- */
+        /* --- FOOTER / SECCIÓN DE BENEFICIOS SUTILES --- */
         footer {
             display: flex;
             justify-content: space-between;
@@ -301,7 +308,7 @@
             z-index: 10;
         }
 
-        .tech-tags {
+        .benefits-tags {
             display: flex;
             gap: 25px;
         }
@@ -311,6 +318,7 @@
             align-items: center;
             gap: 6px;
             color: #475569;
+            font-weight: 500;
         }
 
         .tag-item::before {
@@ -319,60 +327,65 @@
             font-weight: bold;
         }
 
-        /* --- RESPONSIVE DESIGN --- */
+        /* --- RESPONSIVE DESIGN (Media Queries) --- */
         @media (max-width: 1024px) {
-            .container {
+            .navbar { padding: 20px 4%; }
+            .hero {
                 flex-direction: column;
                 text-align: center;
-                padding-top: 40px;
+                padding: 40px 4%;
             }
-            .main-text { max-width: 100%; }
-            .buttons-group { justify-content: center; }
+            .hero-content { max-width: 100%; }
+            .cta-group { justify-content: center; }
             .glass-card {
                 width: 100%;
                 max-width: 500px;
-                margin-top: 30px;
+                margin-top: 20px;
             }
             footer {
                 flex-direction: column-reverse;
                 gap: 20px;
-                text-align: center;
+                padding: 20px 4%;
             }
+            .nav-links { display: none; } /* Ocultar menú simple en móvil para diseño limpio */
         }
 
         @media (max-width: 600px) {
-            h1 { font-size: 36px; }
-            .buttons-group { flex-direction: column; width: 100%; }
+            .hero-title { font-size: 34px; }
+            .cta-group { flex-direction: column; width: 100%; }
             .metrics-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <header>
+    <nav class="navbar">
         <div class="logo">
             ⬡ NEODAT <span>Consultores</span>
         </div>
-        <div class="status-badge">
-            PLATAFORMA CORPORATIVA ACTIVA
-        </div>
-    </header>
+        <ul class="nav-links">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#nosotros">Nosotros</a></li>
+            <li><a href="#contacto" class="btn-nav">Contacto</a></li>
+        </ul>
+    </nav>
 
-    <main class="container">
+    <main class="hero">
         
-        <div class="main-text">
-            <p class="subtitle">Ingeniería de Gestión & BI</p>
-            <h1>Transformamos la complejidad en dirección absoluta.</h1>
-            <p class="description">
+        <div class="hero-content">
+            <p class="hero-subtitle">Ingeniería de Gestión & BI</p>
+            <h1 class="hero-title">Transformamos la complejidad en dirección absoluta.</h1>
+            <p class="hero-description">
                 Estructuramos ecosistemas de datos avanzados y modelos financieros de alta precisión para dotar a su organización de un control ejecutivo permanente.
             </p>
-            <div class="buttons-group">
-                <a href="#" class="btn btn-primary">Entrar a la Plataforma</a>
-                <a href="#" class="btn btn-secondary">Consultoría Directa</a>
+            <div class="cta-group">
+                <a href="#plataforma" class="btn-cta btn-cta-primary">Entrar a la Plataforma</a>
+                <a href="#consultoria" class="btn-cta btn-cta-secondary">Consultoría Directa</a>
             </div>
         </div>
 
-        <div class="dashboard-wrapper">
+        <div class="hero-dashboard">
             <div class="glass-card">
                 <div class="card-header">
                     <div class="card-title">
@@ -414,7 +427,7 @@
         <div>
             © 2026 NeoDat Consultores. Todos los derechos reservados.
         </div>
-        <div class="tech-tags">
+        <div class="benefits-tags">
             <span class="tag-item">Análisis Predictivo</span>
             <span class="tag-item">Modelado Matemático</span>
             <span class="tag-item">Arquitectura de Datos</span>
