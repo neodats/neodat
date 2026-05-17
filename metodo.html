@@ -179,19 +179,29 @@
          align-items: center;
       }
 
+      /* FORMATO DE TÍTULO UNIFICADO CON LÍNEAS HORIZONTALES */
       .marca-seccion {
          display: flex;
          align-items: center;
-         gap: 14px;
+         gap: 15px;
          margin-bottom: 22px;
       }
 
       .marca-seccion strong {
-         color: var(--azul-medio);
-         font-size: 12px;
-         font-weight: 900;
-         letter-spacing: 2px;
+         color: var(--azul);
+         font-size: 14px;
+         font-weight: 800;
+         letter-spacing: 1.5px;
          text-transform: uppercase;
+      }
+
+      .marca-seccion::before,
+      .marca-seccion::after {
+         content: "";
+         display: block;
+         width: 35px;
+         height: 2px;
+         background-color: var(--naranja);
       }
 
       h1 {
@@ -244,8 +254,9 @@
 
       .pain-item {
          display: flex;
+         align-items: center;
          gap: 14px;
-         padding: 16px;
+         padding: 16px 20px;
          border-radius: 20px;
          background: var(--gris);
          border: 1px solid var(--gris-2);
@@ -266,14 +277,8 @@
 
       .pain-item strong {
          display: block;
-         margin-bottom: 3px;
          color: var(--azul);
          font-size: 15.5px;
-      }
-
-      .pain-item span {
-         color: var(--texto-suave);
-         font-size: 14px;
       }
 
       /* Secciones Comunes */
@@ -319,16 +324,16 @@
       }
 
       .resultado {
-         min-height: 230px;
-         padding: 30px;
+         padding: 35px 30px;
          border: 1px solid var(--gris-2);
          border-radius: 30px;
          background: var(--blanco);
          box-shadow: 0 10px 28px rgba(7, 23, 45, 0.02);
+         text-align: center;
       }
 
       .resultado-num {
-         margin-bottom: 22px;
+         margin-bottom: 16px;
          color: var(--naranja);
          font-size: 14px;
          font-weight: 900;
@@ -336,17 +341,10 @@
       }
 
       .resultado h3 {
-         margin-bottom: 12px;
          color: var(--azul-oscuro);
-         font-size: 21px;
-         line-height: 1.15;
+         font-size: 20px;
+         line-height: 1.2;
          letter-spacing: -0.5px;
-      }
-
-      .resultado p {
-         color: var(--texto-suave);
-         font-size: 14.5px;
-         line-height: 1.65;
       }
 
       /* Grilla Método Comercial */
@@ -375,7 +373,7 @@
          align-items: center;
          justify-content: space-between;
          gap: 18px;
-         margin-bottom: 24px;
+         margin-bottom: 20px;
       }
 
       .paso-num {
@@ -402,30 +400,10 @@
       }
 
       .paso-card h3 {
-         margin-bottom: 14px;
          color: var(--azul-oscuro);
-         font-size: 26px;
-         line-height: 1.15;
+         font-size: 24px;
+         line-height: 1.2;
          letter-spacing: -1px;
-      }
-
-      .paso-card p {
-         margin-bottom: 22px;
-         color: var(--texto-suave);
-         font-size: 15px;
-         line-height: 1.7;
-      }
-
-      .paso-card ul {
-         display: grid;
-         gap: 10px;
-         padding-left: 18px;
-      }
-
-      .paso-card li {
-         color: var(--texto);
-         font-size: 14.5px;
-         line-height: 1.65;
       }
 
       /* Grilla de Entregables */
@@ -436,25 +414,19 @@
       }
 
       .entregable {
-         padding: 32px;
+         padding: 35px 32px;
          border-radius: 30px;
          border: 1px solid var(--gris-2);
          background: var(--blanco);
          box-shadow: 0 10px 28px rgba(7, 23, 45, 0.02);
+         text-align: center;
       }
 
       .entregable strong {
          display: block;
-         margin-bottom: 12px;
          color: var(--azul);
          font-size: 20px;
          line-height: 1.2;
-      }
-
-      .entregable span {
-         color: var(--texto-suave);
-         font-size: 14.5px;
-         line-height: 1.65;
       }
 
       /* CTA */
@@ -698,7 +670,6 @@
                      <div class="check">✓</div>
                      <div>
                         <strong>Reportes que toman demasiado tiempo.</strong>
-                        <span>La información llega tarde o depende de trabajo manual.</span>
                      </div>
                   </div>
 
@@ -706,7 +677,6 @@
                      <div class="check">✓</div>
                      <div>
                         <strong>Datos repartidos en varios archivos.</strong>
-                        <span>No existe una fuente clara para analizar el negocio.</span>
                      </div>
                   </div>
 
@@ -714,7 +684,6 @@
                      <div class="check">✓</div>
                      <div>
                         <strong>Indicadores poco claros.</strong>
-                        <span>Hay información, pero no necesariamente sirve para decidir.</span>
                      </div>
                   </div>
 
@@ -722,7 +691,6 @@
                      <div class="check">✓</div>
                      <div>
                         <strong>Falta de control ejecutivo.</strong>
-                        <span>La gerencia no ve con rapidez ventas, costos, proyectos o resultados.</span>
                      </div>
                   </div>
 
@@ -755,25 +723,21 @@
                <div class="resultado">
                   <div class="resultado-num">01</div>
                   <h3>Menos trabajo manual</h3>
-                  <p>Automatizamos reportes y procesos repetitivos para liberar tiempo operativo.</p>
                </div>
 
                <div class="resultado">
                   <div class="resultado-num">02</div>
                   <h3>Más claridad gerencial</h3>
-                  <p>Convertimos datos dispersos en indicadores comprensibles y accionables.</p>
                </div>
 
                <div class="resultado">
                   <div class="resultado-num">03</div>
                   <h3>Mejor control financiero</h3>
-                  <p>Ordenamos información económica para seguir ingresos, costos, márgenes y resultados.</p>
                </div>
 
                <div class="resultado">
                   <div class="resultado-num">04</div>
                   <h3>Decisiones con soporte</h3>
-                  <p>Diseñamos herramientas para decidir con evidencia, no solo con intuición.</p>
                </div>
 
             </div>
@@ -806,20 +770,7 @@
                      <div class="paso-num">01</div>
                      <div class="paso-tag">Diagnóstico</div>
                   </div>
-
                   <h3>Entendemos dónde está el bloqueo.</h3>
-
-                  <p>
-                     Revisamos información, reportes, procesos, archivos, indicadores y necesidades
-                     de decisión para identificar qué impide tener control y claridad.
-                  </p>
-
-                  <ul>
-                     <li>Revisión de fuentes de información.</li>
-                     <li>Identificación de brechas y duplicidades.</li>
-                     <li>Evaluación de procesos manuales.</li>
-                     <li>Priorización de problemas críticos.</li>
-                  </ul>
                </article>
 
                <article class="paso-card">
@@ -827,20 +778,7 @@
                      <div class="paso-num">02</div>
                      <div class="paso-tag">Diseño</div>
                   </div>
-
                   <h3>Diseñamos una solución útil, no decorativa.</h3>
-
-                  <p>
-                     Definimos indicadores, estructura de datos, visualizaciones, reportes y herramientas
-                     que respondan a preguntas reales del negocio.
-                  </p>
-
-                  <ul>
-                     <li>Definición de KPI estratégicos.</li>
-                     <li>Diseño de tableros y reportes.</li>
-                     <li>Estructura financiera y operativa.</li>
-                     <li>Modelo de seguimiento gerencial.</li>
-                  </ul>
                </article>
 
                <article class="paso-card">
@@ -848,20 +786,7 @@
                      <div class="paso-num">03</div>
                      <div class="paso-tag">Implementación</div>
                   </div>
-
                   <h3>Construimos la herramienta y la dejamos operativa.</h3>
-
-                  <p>
-                     Desarrollamos dashboards, automatizaciones, modelos financieros, reportes o soluciones
-                     digitales según el problema detectado.
-                  </p>
-
-                  <ul>
-                     <li>Dashboards ejecutivos.</li>
-                     <li>Reportes automatizados.</li>
-                     <li>Modelos de análisis y control.</li>
-                     <li>Soluciones web y formularios empresariales.</li>
-                  </ul>
                </article>
 
                <article class="paso-card">
@@ -869,20 +794,7 @@
                      <div class="paso-num">04</div>
                      <div class="paso-tag">Acompañamiento</div>
                   </div>
-
                   <h3>Aseguramos que la solución se use.</h3>
-
-                  <p>
-                     No dejamos archivos aislados. Acompañamos la adopción para que la herramienta
-                     funcione dentro de la operación y genere valor real.
-                  </p>
-
-                  <ul>
-                     <li>Capacitación en uso de herramientas.</li>
-                     <li>Ajustes según retroalimentación.</li>
-                     <li>Seguimiento de indicadores.</li>
-                     <li>Mejora continua del sistema implementado.</li>
-                  </ul>
                </article>
 
             </div>
@@ -912,32 +824,26 @@
 
                <div class="entregable">
                   <strong>Dashboards ejecutivos</strong>
-                  <span>Tableros para monitorear ventas, finanzas, operaciones, proyectos o indicadores clave.</span>
                </div>
 
                <div class="entregable">
                   <strong>Reportes automatizados</strong>
-                  <span>Información periódica estructurada para reducir tareas manuales y errores recurrentes.</span>
                </div>
 
                <div class="entregable">
                   <strong>Modelos financieros</strong>
-                  <span>Presupuestos, proyecciones, análisis de rentabilidad y escenarios de decisión.</span>
                </div>
 
                <div class="entregable">
                   <strong>Herramientas de control</strong>
-                  <span>Seguimiento de resultados, indicadores, cumplimiento, costos, avances y desempeño.</span>
                </div>
 
                <div class="entregable">
                   <strong>Soluciones digitales</strong>
-                  <span>Páginas web, formularios, estructuras de captación y herramientas empresariales.</span>
                </div>
 
                <div class="entregable">
                   <strong>Plan de mejora</strong>
-                  <span>Ruta clara para ordenar información, automatizar procesos y mejorar la gestión.</span>
                </div>
 
             </div>
