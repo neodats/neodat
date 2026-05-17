@@ -179,7 +179,7 @@
          align-items: center;
       }
 
-      /* FORMATO DE TÍTULO UNIFICADO CON LÍNEAS HORIZONTALES */
+      /* Formato unificado de marcas de sección */
       .marca-seccion {
          display: flex;
          align-items: center;
@@ -316,47 +316,53 @@
          line-height: 1.75;
       }
 
-      /* Grilla de Resultados */
+      /* FORMATO NUEVO: Cuadrícula de 2 columnas simétricas para Resultados */
       .resultado-grid {
          display: grid;
-         grid-template-columns: repeat(4, 1fr);
-         gap: 20px;
+         grid-template-columns: 1fr 1fr;
+         gap: 24px;
       }
 
       .resultado {
-         padding: 35px 30px;
+         display: flex;
+         align-items: center;
+         gap: 24px;
+         padding: 30px 36px;
          border: 1px solid var(--gris-2);
          border-radius: 30px;
          background: var(--blanco);
          box-shadow: 0 10px 28px rgba(7, 23, 45, 0.02);
-         text-align: center;
       }
 
       .resultado-num {
-         margin-bottom: 16px;
+         flex: 0 0 auto;
          color: var(--naranja);
-         font-size: 14px;
+         font-size: 18px;
          font-weight: 900;
          letter-spacing: 1px;
       }
 
       .resultado h3 {
          color: var(--azul-oscuro);
-         font-size: 20px;
+         font-size: 21px;
          line-height: 1.2;
          letter-spacing: -0.5px;
       }
 
-      /* Grilla Método Comercial */
+      /* FORMATO NUEVO: Método Comercial tipo Lista de Flujo Ejecutivo (1 columna completa) */
       .metodo-comercial {
          display: grid;
-         grid-template-columns: 1fr 1fr;
-         gap: 26px;
+         grid-template-columns: 1fr;
+         gap: 18px;
       }
 
       .paso-card {
-         padding: 36px;
-         border-radius: 34px;
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         gap: 40px;
+         padding: 28px 40px;
+         border-radius: 28px;
          border: 1px solid var(--gris-2);
          background: var(--blanco);
          box-shadow: 0 10px 28px rgba(7, 23, 45, 0.02);
@@ -364,36 +370,35 @@
       }
 
       .paso-card:hover {
-         transform: translateY(-5px);
-         box-shadow: 0 28px 70px rgba(7, 23, 45, 0.08);
+         transform: translateY(-3px);
+         box-shadow: 0 20px 50px rgba(7, 23, 45, 0.06);
       }
 
       .paso-top {
          display: flex;
          align-items: center;
-         justify-content: space-between;
-         gap: 18px;
-         margin-bottom: 20px;
+         gap: 20px;
+         flex: 0 0 auto;
       }
 
       .paso-num {
-         width: 62px;
-         height: 62px;
+         width: 54px;
+         height: 54px;
          display: grid;
          place-items: center;
-         border-radius: 18px;
+         border-radius: 16px;
          background: linear-gradient(135deg, var(--azul), var(--azul-oscuro));
          color: var(--blanco);
-         font-size: 20px;
+         font-size: 18px;
          font-weight: 900;
       }
 
       .paso-tag {
-         padding: 8px 13px;
+         padding: 7px 14px;
          border-radius: 999px;
          background: var(--azul-claro);
          color: var(--azul);
-         font-size: 12px;
+         font-size: 11px;
          font-weight: 900;
          text-transform: uppercase;
          letter-spacing: .7px;
@@ -401,21 +406,27 @@
 
       .paso-card h3 {
          color: var(--azul-oscuro);
-         font-size: 24px;
+         font-size: 22px;
          line-height: 1.2;
-         letter-spacing: -1px;
+         letter-spacing: -0.5px;
+         text-align: right;
+         font-weight: 700;
       }
 
-      /* Grilla de Entregables */
+      /* FORMATO NUEVO: Cuadrícula de 2 columnas simétricas para Entregables */
       .entregables {
          display: grid;
-         grid-template-columns: repeat(3, 1fr);
-         gap: 22px;
+         grid-template-columns: 1fr 1fr;
+         gap: 24px;
       }
 
       .entregable {
-         padding: 35px 32px;
-         border-radius: 30px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         min-height: 90px;
+         padding: 24px 36px;
+         border-radius: 26px;
          border: 1px solid var(--gris-2);
          background: var(--blanco);
          box-shadow: 0 10px 28px rgba(7, 23, 45, 0.02);
@@ -427,6 +438,7 @@
          color: var(--azul);
          font-size: 20px;
          line-height: 1.2;
+         font-weight: 700;
       }
 
       /* CTA */
@@ -528,14 +540,30 @@
             background: var(--gris);
          }
 
-         .hero-grid,
-         .metodo-comercial {
+         .hero-grid {
             grid-template-columns: 1fr;
          }
 
+         .paso-card {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 26px;
+         }
+
+         .paso-card h3 {
+            text-align: left;
+         }
+      }
+
+      @media (max-width: 768px) {
          .resultado-grid,
          .entregables {
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr;
+         }
+
+         .resultado {
+            padding: 24px;
          }
       }
 
@@ -573,12 +601,6 @@
             padding: 65px 0;
          }
 
-         .resultado-grid,
-         .entregables {
-            grid-template-columns: 1fr;
-         }
-
-         .paso-card,
          .pain-card,
          .entregable {
             padding: 26px;
