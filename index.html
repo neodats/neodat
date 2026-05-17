@@ -18,16 +18,14 @@
             --naranja: #ffa500;
             --blanco: #ffffff;
             --gris: #f8fafc;
-            --gris-2: rgba(22, 43, 78, 0.06); 
-            --gris-3: #f0f4f8;
-            --texto: #243447;
-            --texto-suave: #66788a;
-            --sombra: 0 10px 30px rgba(7, 23, 45, 0.04);
-            --sombra-fuerte: 0 30px 60px rgba(7, 23, 45, 0.12);
+            --gris-2: rgba(22, 43, 78, 0.08); 
+            --texto: #1e293b;
+            --texto-suave: #64748b;
+            --sombra-premium: 0 20px 40px -15px rgba(7, 23, 45, 0.1), 0 0 0 1px rgba(22, 43, 78, 0.05);
+            --sombra-panel: 0 40px 80px -20px rgba(7, 23, 45, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.6);
             --exito: #10b981;
          }
          
-         /* CONFIGURACIÓN ESTRUCTURAL */
          html, body {
             height: 100%;
             margin: 0;
@@ -39,14 +37,10 @@
             padding: 0;
             box-sizing: border-box;
          }
-         html {
-            scroll-behavior: smooth;
-         }
          body {
             font-family: "Inter", Arial, sans-serif;
             background: #ffffff;
             color: var(--texto);
-            line-height: 1.5;
             overflow-x: hidden;
             display: flex;
             flex-direction: column;
@@ -54,102 +48,65 @@
          main {
             flex: 1 0 auto;
          }
-         a {
-            text-decoration: none;
-            color: inherit;
-         }
-         button {
-            font: inherit;
-         }
          .contenedor {
-            width: min(1160px, calc(100% - 40px));
+            width: min(1180px, calc(100% - 40px));
             margin: auto;
          }
 
-         /* ANIMACIONES DE ENTRADA (NUEVO) */
-         @keyframes fadeInUp {
-            from {
-               opacity: 0;
-               transform: translateY(24px);
-            }
-            to {
-               opacity: 1;
-               transform: translateY(0);
-            }
-         }
-         .anim-fade-up {
-            opacity: 0;
-            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-         }
-         .retraso-1 { animation-delay: 0.1s; }
-         .retraso-2 { animation-delay: 0.25s; }
-         .retraso-3 { animation-delay: 0.4s; }
-
-         /* BOTONES PREMIUM */
+         /* BOTONES REDISEÑADOS CON EFECTOS MODERNOS */
          .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            min-height: 46px;
-            padding: 12px 24px;
-            border-radius: 12px;
+            gap: 10px;
+            min-height: 48px;
+            padding: 12px 26px;
+            border-radius: 14px;
             font-size: 13.5px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            white-space: nowrap;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            text-decoration: none;
          }
          .btn-principal {
-            background: var(--azul);
+            background: linear-gradient(135deg, var(--azul) 0%, var(--azul-oscuro) 100%);
             color: var(--blanco);
-            border: 1px solid var(--azul);
-            box-shadow: 0 4px 12px rgba(22, 43, 78, 0.15);
+            border: 1px solid var(--azul-oscuro);
+            box-shadow: 0 8px 20px -6px rgba(22, 43, 78, 0.4);
          }
          .btn-principal:hover {
-            background: var(--azul-oscuro);
-            border-color: var(--azul-oscuro);
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(22, 43, 78, 0.25);
-         }
-         .btn-principal span {
-            transition: transform 0.2s ease;
-         }
-         .btn-principal:hover span {
-            transform: translateX(4px);
+            box-shadow: 0 12px 28px -6px rgba(22, 43, 78, 0.5);
          }
          .btn-whatsapp {
-            background: rgba(37, 211, 102, 0.08);
+            background: #ffffff;
             color: #1ebe5d;
-            border: 1px solid rgba(37, 211, 102, 0.25);
+            border: 1px solid rgba(30, 190, 93, 0.2);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
          }
          .btn-whatsapp:hover {
-            background: #25D366;
-            color: #ffffff;
-            border-color: #25D366;
+            background: rgba(37, 211, 102, 0.05);
+            border-color: #1ebe5d;
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.2);
          }
          .btn-secundario {
             background: transparent;
             color: var(--azul);
-            border: 1px solid rgba(22, 43, 78, 0.15);
+            border: 1px solid rgba(22, 43, 78, 0.14);
          }
          .btn-secundario:hover {
             background: var(--azul-claro);
-            border-color: rgba(22, 43, 78, 0.3);
-            color: var(--azul-oscuro);
             transform: translateY(-2px);
          }
 
-         /* ESTILOS DE LA CABECERA OPTIMIZADA */
+         /* NAV BAR AJUSTADO PARA EVITAR TAMAÑO EXAGERADO */
          header {
             position: fixed;
             top: 0;
             left: 0;
             z-index: 100;
             width: 100%;
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.75);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(22, 43, 78, 0.05);
@@ -159,26 +116,18 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 28px;
-         }
-         .logo {
-            display: flex;
-            align-items: center;
-            height: 100%;
          }
          .logo-icono {
-            max-height: 48px; /* Ajustado proporcionalmente para corregir el Navbar gigante */
+            max-height: 40px; /* Tamaño controlado, elegante e integrado */
             width: auto;
-            object-fit: contain;
+            display: block;
          }
          nav ul {
             list-style: none;
             display: flex;
-            align-items: center;
-            gap: 4px;
+            gap: 6px;
          }
          nav a {
-            display: inline-flex;
             padding: 8px 16px;
             border-radius: 999px;
             font-size: 13.5px;
@@ -188,345 +137,341 @@
          }
          nav a:hover {
             background: var(--azul-claro);
-            color: var(--azul-oscuro);
          }
-         
-         /* HERO AVANZADO CON EFECTO DE RESPLANDOR (GLOW) */
+
+         /* HERO REDISEÑADO CON CAPAS VISUALES PROFUNDAS */
          .hero {
             position: relative;
-            padding: 150px 0 70px; 
-            background: linear-gradient(180deg, #ffffff 0%, #f3f7fc 100%);
+            padding: 170px 0 100px;
+            background: radial-gradient(100% 100% at 50% 0%, rgba(237, 242, 248, 0.5) 0%, #ffffff 100%);
             overflow: hidden;
-            display: flex;
-            align-items: center;
          }
-         /* Orbe de luz flotante en el fondo */
-         .hero::after {
-            content: "";
-            position: absolute;
-            top: -15%;
-            right: -10%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(22, 43, 78, 0.06) 0%, transparent 70%);
-            z-index: 1;
-            pointer-events: none;
-         }
+         /* Orbe de luz de fondo sutil detrás del panel */
          .hero::before {
             content: "";
             position: absolute;
-            inset: 0;
-            background-image:
-               linear-gradient(rgba(22, 43, 78, 0.04) 1px, transparent 1px),
-               linear-gradient(90deg, rgba(22, 43, 78, 0.04) 1px, transparent 1px);
-            background-size: 40px 40px;
-            mask-image: linear-gradient(180deg, black 40%, transparent 90%);
-            pointer-events: none;
+            width: 700px;
+            height: 700px;
+            right: -10%;
+            top: 10%;
+            background: radial-gradient(circle, rgba(22, 43, 78, 0.05) 0%, rgba(255, 165, 0, 0.02) 50%, transparent 100%);
             z-index: 1;
+            pointer-events: none;
          }
+         /* Patrón de cuadrícula tecnológica moderna */
+         .hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(22, 43, 78, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(22, 43, 78, 0.03) 1px, transparent 1px);
+            background-size: 45px 45px;
+            mask-image: radial-gradient(circle at 70% 40%, black 30%, transparent 80%);
+            z-index: 1;
+            pointer-events: none;
+         }
+
          .hero-grid {
             position: relative;
-            z-index: 2;
+            z-index: 5;
             display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 50px;
+            grid-template-columns: 1fr 1.25fr;
+            gap: 60px;
             align-items: center;
          }
-         
-         h1 {
-            max-width: 720px;
-            margin-bottom: 20px;
+
+         /* COLUMNA IZQUIERDA TYPOGRAPHY */
+         .hero-content h1 {
             color: var(--azul-oscuro);
-            font-size: clamp(25px, 2.8vw, 34px);
-            line-height: 1.25;
-            letter-spacing: -0.5px;
+            font-size: clamp(26px, 3vw, 38px);
+            line-height: 1.2;
+            letter-spacing: -0.8px;
             font-weight: 800;
+            margin-bottom: 22px;
          }
-         
-         .hero p {
-            max-width: 640px;
-            margin-bottom: 32px;
+         .hero-content p {
             color: var(--texto-suave);
-            font-size: 15px;
+            font-size: 15.5px;
             line-height: 1.6;
+            margin-bottom: 36px;
+            max-width: 540px;
          }
          .acciones {
             display: flex;
             flex-wrap: wrap;
             gap: 12px;
-            margin-bottom: 40px;
+            margin-bottom: 45px;
          }
 
-         /* BARRA DE TECNOLOGÍAS INTEGRADA (NUEVO) */
-         .trust-bar {
+         /* SECCIÓN DE DATOS DE MARCA (TRUSTBAR INTEGRADA) */
+         .trust-container {
             border-top: 1px solid rgba(22, 43, 78, 0.08);
-            padding-top: 20px;
-            max-width: 520px;
+            padding-top: 24px;
          }
          .trust-title {
             font-size: 11px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.2px;
             color: var(--texto-suave);
             font-weight: 700;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
             display: block;
          }
-         .trust-items {
+         .trust-grid {
             display: flex;
             gap: 24px;
             align-items: center;
-            opacity: 0.8;
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--azul-medio);
+            flex-wrap: wrap;
          }
-         .trust-items span {
-            display: flex;
+         .trust-badge {
+            display: inline-flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--azul-medio);
+            background: rgba(22, 43, 78, 0.04);
+            padding: 6px 14px;
+            border-radius: 10px;
+            border: 1px solid rgba(22, 43, 78, 0.02);
          }
 
-         /* PANEL DE CONTROL CON GLASSMORPHISM (NUEVO) */
-         .dashboard-shell {
-            padding: 14px;
-            border-radius: 28px; 
-            background: linear-gradient(145deg, rgba(255, 255, 255, 0.45), rgba(22, 43, 78, 0.03));
-            border: 1px solid rgba(255, 255, 255, 0.7); 
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+         /* INTERFAZ MAC / DECORACIÓN DEL DASHBOARD DE CONTROL */
+         .panel-wrapper {
+            padding: 10px;
+            border-radius: 24px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(237, 242, 248, 0.3) 100%);
+            box-shadow: var(--sombra-panel);
+            border: 1px solid rgba(255, 255, 255, 0.8);
             position: relative;
-            box-shadow: var(--sombra-fuerte);
          }
-         .dashboard {
-            overflow: hidden;
-            border-radius: 18px;
+         /* Efecto decorativo flotante trasero para ganar dinamismo */
+         .panel-wrapper::before {
+            content: "";
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            background: var(--naranja);
+            filter: blur(50px);
+            bottom: -20px;
+            left: -20px;
+            opacity: 0.15;
+            z-index: -1;
+         }
+
+         .mac-frame {
             background: #ffffff;
-            border: 1px solid rgba(22, 43, 78, 0.06);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(7, 23, 45, 0.08);
          }
-         .dashboard-top {
+         .mac-header {
+            background: #ffffff;
+            padding: 14px 20px;
+            border-bottom: 1px solid var(--gris-2);
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 16px;
-            padding: 16px 20px;
-            background: #ffffff;
-            border-bottom: 1px solid var(--gris-2);
          }
-         
-         .dashboard-top div:first-child {
+         .mac-dots {
+            display: flex;
+            gap: 6px;
+         }
+         .mac-dots span {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: #e2e8f0;
+         }
+         .mac-header strong {
+            font-size: 12.5px;
+            font-weight: 700;
+            color: var(--azul-oscuro);
             display: flex;
             align-items: center;
             gap: 8px;
          }
-         
-         .dashboard-top strong {
-            color: var(--azul-oscuro);
-            font-size: 13.5px;
-            font-weight: 800;
-            white-space: nowrap;
-         }
-         .live-dot {
-            width: 8px;
-            height: 8px;
-            background-color: var(--exito);
+         .live-indicator {
+            width: 7px;
+            height: 7px;
+            background: var(--exito);
             border-radius: 50%;
-            display: inline-block;
-            flex-shrink: 0;
-            animation: pulsoLive 1.8s infinite;
+            position: relative;
          }
-         @keyframes pulsoLive {
-            0% { transform: scale(0.9); opacity: 0.6; }
-            50% { transform: scale(1.3); opacity: 1; }
-            100% { transform: scale(0.9); opacity: 0.6; }
+         .live-indicator::after {
+            content: "";
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            border: 1px solid var(--exito);
+            animation: pulseCircle 1.8s infinite linear;
          }
-         .dashboard-body {
-            padding: 20px;
-            background: var(--gris);
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
+         @keyframes pulseCircle {
+            0% { transform: scale(0.6); opacity: 1; }
+            100% { transform: scale(1.6); opacity: 0; }
          }
 
-         /* SECCIÓN KPIS */
-         .kpis {
+         /* CONTENIDO INTERNO DEL B.I. */
+         .panel-body {
+            background: #f8fafc;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+         }
+         .kpi-row {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 12px;
          }
-         .kpi {
-            padding: 16px 14px;
+         .kpi-card {
             background: #ffffff;
+            padding: 16px;
             border-radius: 14px;
-            border: 1px solid var(--gris-2); 
-            transition: transform 0.3s ease;
+            border: 1px solid rgba(22, 43, 78, 0.04);
+            box-shadow: var(--sombra-premium);
          }
-         .kpi:hover {
-            transform: translateY(-2px);
-         }
-         .kpi small {
+         .kpi-card label {
             display: block;
-            margin-bottom: 4px;
-            color: var(--texto-suave);
-            font-size: 10px;
+            font-size: 10.5px;
             font-weight: 700;
+            color: var(--texto-suave);
             text-transform: uppercase;
-            letter-spacing: 0.3px;
+            letter-spacing: 0.4px;
+            margin-bottom: 4px;
          }
-         .kpi strong {
+         .kpi-card var {
             display: block;
+            font-size: 21px;
+            font-weight: 800;
+            font-style: normal;
             color: var(--azul-oscuro);
-            font-size: 20px;
-            font-weight: 900;
             line-height: 1.1;
          }
-         .kpi-trend {
+         .trend {
             display: inline-flex;
-            align-items: center;
-            gap: 4px;
             font-size: 10px;
             font-weight: 700;
-            margin-top: 4px;
+            margin-top: 6px;
+            color: var(--exito);
          }
-         .trend-up { color: var(--exito); }
-         .trend-orange { color: var(--naranja); }
+         .trend.meta { color: var(--naranja); }
 
-         /* GRÁFICO AVANZADO */
-         .chart-container {
+         /* FILA GRÁFICO SVG */
+         .main-chart {
             background: #ffffff;
             border-radius: 14px;
-            padding: 18px;
-            border: 1px solid var(--gris-2);
+            padding: 20px;
+            border: 1px solid rgba(22, 43, 78, 0.04);
+            box-shadow: var(--sombra-premium);
          }
-         .chart-header {
+         .chart-top {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 14px;
+            margin-bottom: 16px;
          }
-         .chart-title {
-            font-size: 12px;
+         .chart-top h3 {
+            font-size: 12.5px;
             font-weight: 800;
             color: var(--azul-oscuro);
          }
-         .chart-legend {
+         .legends {
             display: flex;
-            gap: 12px;
-            font-size: 10.5px;
+            gap: 14px;
+            font-size: 11px;
             font-weight: 600;
             color: var(--texto-suave);
          }
-         .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-         }
-         .legend-azul::before { content: ""; width: 8px; height: 8px; background: var(--azul); border-radius: 50%; display: inline-block; }
-         .legend-naranja::before { content: ""; width: 8px; height: 8px; background: var(--naranja); border-radius: 50%; display: inline-block; }
+         .lg-item { display: flex; align-items: center; gap: 6px; }
+         .lg-item::before { content: ""; width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+         .lg-real::before { background: var(--azul); }
+         .lg-meta::before { background: var(--naranja); }
 
-         .bi-graph-wrapper {
-            position: relative;
+         .svg-wrapper {
             width: 100%;
             height: 120px;
-            margin-top: 6px;
          }
-         .bi-svg {
+         .svg-element {
             width: 100%;
             height: 100%;
             overflow: visible;
          }
-         .live-node {
-            animation: pulseActiveNode 2s infinite ease-in-out;
+
+         /* ANIMACIÓN CELERIDAD ENTRADA WEB */
+         .gs-reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: revealOnLoad 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
          }
-         @keyframes pulseActiveNode {
-            0% { r: 4; opacity: 1; }
-            50% { r: 7; opacity: 0.4; }
-            100% { r: 4; opacity: 1; }
+         .d-1 { animation-delay: 0.1s; }
+         .d-2 { animation-delay: 0.25s; }
+
+         @keyframes revealOnLoad {
+            to { opacity: 1; transform: translateY(0); }
          }
 
-         /* RESPONSIVO */
+         /* MENÚ MÓVIL ELEMENTO */
          .menu-toggle {
             display: none;
             width: 42px;
             height: 42px;
+            border-radius: 10px;
             border: 1px solid var(--gris-2);
-            border-radius: 12px;
             background: #ffffff;
-            color: var(--azul);
-            font-size: 22px;
-            font-weight: 900;
             cursor: pointer;
+            font-size: 20px;
          }
-         
-         /* PIE DE PÁGINA ANGOSTO CORREGIDO */
+
+         /* FOOTER DELGADO REQUERIDO */
          .site-footer {
-            background: #07172d;
-            color: rgba(255, 255, 255, .72);
-            padding: 12px 0; 
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            background: var(--azul-oscuro);
+            padding: 12px 0;
+            border-top: 1px solid rgba(255,255,255,0.06);
             width: 100%;
             flex-shrink: 0;
          }
          .footer-bottom {
             display: flex;
             justify-content: center;
-            align-items: center;
-            text-align: center;
             font-size: 11.5px;
-            color: rgba(255, 255, 255, .52);
+            color: rgba(255,255,255,0.45);
          }
-         
+
+         /* RESPONSIVO AJUSTES EXTREMOS */
          @media (max-width: 980px) {
-            .navbar { height: 64px; }
-            .menu-toggle { display: flex; align-items: center; justify-content: center; }
+            .menu-toggle { display: block; }
             .whatsapp-desktop { display: none; }
             nav.menu {
                position: absolute;
-               top: 64px;
-               left: 0;
-               width: 100%;
-               display: none;
-               background: #ffffff;
-               border-bottom: 1px solid rgba(22,43,78,.08);
-               box-shadow: 0 18px 40px rgba(7,23,45,.10);
+               top: 70px; left: 0; width: 100%;
+               display: none; background: #ffffff;
+               border-bottom: 1px solid var(--gris-2);
+               padding: 16px 0;
+               box-shadow: 0 15px 30px rgba(0,0,0,0.05);
             }
             nav.menu.activo { display: block; }
-            nav.menu ul {
-               width: min(1160px, calc(100% - 40px));
-               margin: auto;
-               padding: 14px 0;
-               display: grid;
-               grid-template-columns: 1fr;
-               gap: 6px;
-            }
-            nav.menu a {
-               width: 100%;
-               padding: 12px 14px;
-               border-radius: 12px;
-               background: var(--gris);
-               font-size: 13px;
-            }
-            .hero-grid { grid-template-columns: 1fr; gap: 40px; }
-            .trust-bar { margin: 0 auto; text-align: center; }
-            .trust-items { justify-content: center; flex-wrap: wrap; }
+            nav.menu ul { flex-direction: column; gap: 8px; width: min(1180px, calc(100% - 40px)); margin: auto; }
+            nav a { display: block; padding: 10px 16px; background: #f8fafc; }
+            .hero-grid { grid-template-columns: 1fr; gap: 45px; text-align: center; }
+            .hero-content p { margin-left: auto; margin-right: auto; }
+            .acciones { justify-content: center; }
+            .trust-grid { justify-content: center; }
          }
-         @media (max-width: 680px) {
-            .hero { padding: 110px 0 30px; }
-            .kpis { grid-template-columns: 1fr; gap: 10px; }
-            h1 { font-size: clamp(21px, 5.5vw, 27px); }
-            .acciones { display: grid; grid-template-columns: 1fr; width: 100%; gap: 10px; }
+         @media (max-width: 640px) {
+            .kpi-row { grid-template-columns: 1fr; gap: 10px; }
             .acciones .btn { width: 100%; }
+            .hero { padding-top: 120px; }
          }
       </style>
    </head>
    <body>
       <header>
          <div class="contenedor navbar">
-            <a href="index.html" class="logo" aria-label="NeoDat Consultores">
-               <img src="Neo1.png" class="logo-icono" alt="Logo NeoDat">
+            <a href="index.html" class="logo" aria-label="NeoDat">
+               <img src="Neo1.png" class="logo-icono" alt="NeoDat">
             </a>
-            <button class="menu-toggle" type="button" aria-label="Abrir menú"> ☰ </button>
-            <nav class="menu" aria-label="Navegación principal">
+            <button class="menu-toggle" type="button"> ☰ </button>
+            <nav class="menu">
                <ul>
                   <li><a href="servicios.html">Servicios</a></li>
                   <li><a href="metodo.html">Método</a></li>
@@ -535,9 +480,7 @@
                   <li><a href="contacto.html">Contacto</a></li>
                </ul>
             </nav>
-            <a class="btn btn-whatsapp whatsapp-desktop" href="https://wa.me/593988200116?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20NeoDat%20Consultores." target="_blank" rel="noopener">
-               WhatsApp
-            </a>
+            <a class="btn btn-whatsapp whatsapp-desktop" href="https://wa.me/593988200116" target="_blank" rel="noopener">WhatsApp</a>
          </div>
       </header>
 
@@ -545,99 +488,93 @@
          <section class="hero">
             <div class="contenedor hero-grid">
                
-               <div class="anim-fade-up retraso-1">
-                  <h1>Transformamos la incertidumbre de su empresa en decisiones respaldadas por datos precisos.</h1>
-                  <p>NeoDat Consultores estructura datos, finanzas, dashboards y procesos para que las empresas trabajen con información clara, indicadores confiables y control ejecutivo.</p>
+               <div class="hero-content gs-reveal d-1">
+                  <h1>Transformamos la incertidumbre empresarial en decisiones respaldadas por datos precisos.</h1>
+                  <p>NeoDat Consultores estructura datos, finanzas, dashboards y procesos para que las empresas trabajen con información clara, indicadores confiables y control ejecutivo permanente.</p>
                   
                   <div class="acciones">
                      <a class="btn btn-principal" href="servicios.html">Ver servicios <span>→</span></a>
-                     <a class="btn btn-whatsapp" href="https://wa.me/593988200116?text=Hola,%20quiero%20solicitar%20una%20asesor%C3%ADa%20con%20NeoDat." target="_blank" rel="noopener">Solicitar asesoría</a>
+                     <a class="btn btn-whatsapp" href="https://wa.me/593988200116" target="_blank" rel="noopener">Solicitar asesoría</a>
                      <a class="btn btn-secundario" href="contacto.html">Agendar reunión</a>
                   </div>
 
-                  <div class="trust-bar">
+                  <div class="trust-container">
                      <span class="trust-title">Especialistas en Integración</span>
-                     <div class="trust-items">
-                        <span>📊 Power BI</span>
-                        <span>🗄️ SQL Server</span>
-                        <span>🐍 Python</span>
-                        <span>📈 Excel Avanzado</span>
+                     <div class="trust-grid">
+                        <div class="trust-badge">📊 Power BI</div>
+                        <div class="trust-badge">🗄️ SQL Server</div>
+                        <div class="trust-badge">🐍 Python</div>
+                        <div class="trust-badge">📈 Excel Avanzado</div>
                      </div>
                   </div>
                </div>
 
-               <div class="dashboard-shell anim-fade-up retraso-2">
-                  <div class="dashboard">
-                     <div class="dashboard-top">
-                        <div>
-                           <span class="live-dot"></span>
-                           <strong>Panel de Control Corporativo</strong>
-                        </div>
+               <div class="panel-wrapper gs-reveal d-2">
+                  <div class="mac-frame">
+                     <div class="mac-header">
+                        <div class="mac-dots"><span></span><span></span><span></span></div>
+                        <strong><span class="live-indicator"></span> Panel de Control Corporativo</strong>
                      </div>
-                     <div class="dashboard-body">
+                     <div class="panel-body">
                         
-                        <div class="kpis">
-                           <div class="kpi">
-                              <small>Margen Neto</small>
-                              <strong id="kpi-stream">34.2%</strong>
-                              <span class="kpi-trend trend-up">▲ +2.4% vs mes ant.</span>
+                        <div class="kpi-row">
+                           <div class="kpi-card">
+                              <label>Margen Neto</label>
+                              <var id="kpi-margen">34.2%</var>
+                              <span class="trend">▲ +2.4% vs mes ant.</span>
                            </div>
-                           <div class="kpi">
-                              <small>Ebitda Anual</small>
-                              <strong id="kpi-eficiencia">$428K</strong>
-                              <span class="kpi-trend trend-up">▲ Optimizado</span>
+                           <div class="kpi-card">
+                              <label>Ebitda Anual</label>
+                              <var id="kpi-ebitda">$428K</var>
+                              <span class="trend">▲ Optimizado</span>
                            </div>
-                           <div class="kpi">
-                              <small>Calidad de Datos</small>
-                              <strong id="kpi-procesos">99.8%</strong>
-                              <span class="kpi-trend trend-orange">● Confiable</span>
+                           <div class="kpi-card">
+                              <label>Calidad Datos</label>
+                              <var id="kpi-calidad">99.8%</var>
+                              <span class="trend meta">● Confiable</span>
                            </div>
                         </div>
 
-                        <div class="chart-container">
-                           <div class="chart-header">
-                              <span class="chart-title">Evolución de Ingresos</span>
-                              <div class="chart-legend">
-                                 <span class="legend-item legend-azul">Ingresos</span>
-                                 <span class="legend-item legend-naranja">Meta</span>
+                        <div class="main-chart">
+                           <div class="chart-top">
+                              <h3>Evolución de Ingresos</h3>
+                              <div class="legends">
+                                 <span class="lg-item lg-real">Ingresos</span>
+                                 <span class="lg-item lg-meta">Meta</span>
                               </div>
                            </div>
-                           <div class="bi-graph-wrapper">
-                              <svg class="bi-svg" viewBox="0 0 500 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                           <div class="svg-wrapper">
+                              <svg class="svg-element" viewBox="0 0 500 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
                                  <defs>
-                                    <linearGradient id="bi-area-grad" x1="0" y1="0" x2="0" y2="1">
+                                    <linearGradient id="area-grad" x1="0" y1="0" x2="0" y2="1">
                                        <stop offset="0%" stop-color="#162b4e" stop-opacity="0.15"/>
                                        <stop offset="100%" stop-color="#162b4e" stop-opacity="0.0"/>
                                     </linearGradient>
                                  </defs>
+                                 <line x1="0" y1="30" x2="500" y2="30" stroke="rgba(22,43,78,0.04)" stroke-width="1" />
+                                 <line x1="0" y1="60" x2="500" y2="60" stroke="rgba(22,43,78,0.04)" stroke-width="1" />
+                                 <line x1="0" y1="90" x2="500" y2="90" stroke="rgba(22,43,78,0.04)" stroke-width="1" />
                                  
-                                 <line x1="0" y1="30" x2="500" y2="30" stroke="rgba(22,43,78,0.05)" stroke-width="1" />
-                                 <line x1="0" y1="60" x2="500" y2="60" stroke="rgba(22,43,78,0.05)" stroke-width="1" />
-                                 <line x1="0" y1="90" x2="500" y2="90" stroke="rgba(22,43,78,0.05)" stroke-width="1" />
-                                 
-                                 <text x="5" y="116" fill="#66788a" font-size="9" font-weight="600">Ene</text>
-                                 <text x="100" y="116" fill="#66788a" font-size="9" font-weight="600">Feb</text>
-                                 <text x="200" y="116" fill="#66788a" font-size="9" font-weight="600">Mar</text>
-                                 <text x="300" y="116" fill="#66788a" font-size="9" font-weight="600">Abr</text>
-                                 <text x="400" y="116" fill="#66788a" font-size="9" font-weight="600">May</text>
-                                 <text x="475" y="116" fill="#66788a" font-size="9" font-weight="600">Jun</text>
+                                 <text x="5" y="116" fill="#64748b" font-size="9" font-weight="600">Ene</text>
+                                 <text x="100" y="116" fill="#64748b" font-size="9" font-weight="600">Feb</text>
+                                 <text x="200" y="116" fill="#64748b" font-size="9" font-weight="600">Mar</text>
+                                 <text x="300" y="116" fill="#64748b" font-size="9" font-weight="600">Abr</text>
+                                 <text x="400" y="116" fill="#64748b" font-size="9" font-weight="600">May</text>
+                                 <text x="470" y="116" fill="#64748b" font-size="9" font-weight="600">Jun</text>
 
                                  <line x1="0" y1="85" x2="500" y2="35" stroke="var(--naranja)" stroke-width="1.5" stroke-dasharray="4,4" />
+                                 <path id="dyn-area" d="M 0 95 L 100 80 L 200 45 L 300 75 L 400 35 L 500 50 L 500 100 L 0 100 Z" fill="url(#area-grad)" />
+                                 <polyline id="dyn-line" fill="none" stroke="var(--azul)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" points="0,95 100,80 200,45 300,75 400,35 500,50" />
 
-                                 <path id="graph-area" d="M 0 95 L 100 80 L 200 45 L 300 75 L 400 35 L 500 50 L 500 100 L 0 100 Z" fill="url(#bi-area-grad)" />
-
-                                 <polyline id="graph-line" fill="none" stroke="var(--azul)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" points="0,95 100,80 200,45 300,75 400,35 500,50" />
-
-                                 <circle cx="100" cy="80" r="3" fill="var(--azul)" />
-                                 <circle cx="200" cy="45" r="3" fill="var(--azul)" />
-                                 <circle cx="300" cy="75" r="3" fill="var(--azul)" />
-                                 <circle cx="400" cy="35" r="3" fill="var(--azul)" />
-
-                                 <circle id="live-tracker-outer" cx="500" cy="50" r="6" fill="var(--azul)" opacity="0.25" class="live-node" />
-                                 <circle id="live-tracker-inner" cx="500" cy="50" r="3.5" fill="var(--azul)" />
+                                 <circle cx="100" cy="80" r="3.5" fill="var(--azul)" />
+                                 <circle cx="200" cy="45" r="3.5" fill="var(--azul)" />
+                                 <circle cx="300" cy="75" r="3.5" fill="var(--azul)" />
+                                 <circle cx="400" cy="35" r="3.5" fill="var(--azul)" />
+                                 <circle id="track-ball" cx="500" cy="50" r="4" fill="var(--azul)" />
                               </svg>
                            </div>
-                        </div>                        
+                        </div>
+
                      </div>
                   </div>
                </div>
@@ -653,40 +590,29 @@
       </footer>
 
       <script>
-         // Menú móvil
-         const menuToggle = document.querySelector(".menu-toggle");
-         const menu = document.querySelector(".menu");
-         menuToggle.addEventListener("click", () => {
-            menu.classList.toggle("activo");
-         });
+         // Menú móvil disparador
+         const btnMenu = document.querySelector(".menu-toggle");
+         const navbarMenu = document.querySelector(".menu");
+         btnMenu.addEventListener("click", () => navbarMenu.classList.toggle("activo"));
 
-         // Elementos dinámicos del Dashboard
-         const margenTxt = document.getElementById("kpi-stream");
-         const ebitdaTxt = document.getElementById("kpi-eficiencia");
-         const calidadTxt = document.getElementById("kpi-procesos");
+         // Feed BI dinámico real corregido
+         const lMargen = document.getElementById("kpi-margen");
+         const lEbitda = document.getElementById("kpi-ebitda");
+         const lCalidad = document.getElementById("kpi-calidad");
          
-         const graphLine = document.getElementById("graph-line");
-         const graphArea = document.getElementById("graph-area");
-         const trackerOuter = document.getElementById("live-tracker-outer");
-         const trackerInner = document.getElementById("live-tracker-inner");
+         const dLine = document.getElementById("dyn-line");
+         const dArea = document.getElementById("dyn-area");
+         const tBall = document.getElementById("track-ball");
 
          setInterval(() => {
-            const vMargen = (33 + Math.random() * 2).toFixed(1);
-            margenTxt.textContent = `${vMargen}%`;
+            lMargen.textContent = `${(33 + Math.random() * 2).toFixed(1)}%`;
+            lEbitda.textContent = `$${(420 + Math.floor(Math.random() * 12))}K`;
+            lCalidad.textContent = `${(99.5 + Math.random() * 0.4).toFixed(1)}%`;
 
-            const vEbitda = (420 + Math.floor(Math.random() * 12));
-            ebitdaTxt.textContent = `$${vEbitda}K`;
-
-            const vCalidad = (99.5 + Math.random() * 0.4).toFixed(1);
-            calidadTxt.textContent = `${vCalidad}%`;
-
-            const nuevaYJunio = Math.floor(25 + Math.random() * 40); 
-            
-            graphLine.setAttribute("points", `0,95 100,80 200,45 300,75 400,35 500,${nuevaYJunio}`);
-            graphArea.setAttribute("d", `M 0 95 L 100 80 L 200 45 L 300 75 L 400 35 L 500 ${nuevaYJunio} L 500 100 L 0 100 Z`);
-            trackerOuter.setAttribute("cy", nuevaYJunio);
-            trackerInner.setAttribute("cy", nuevaYJunio);
-
+            const randomY = Math.floor(25 + Math.random() * 40); 
+            dLine.setAttribute("points", `0,95 100,80 200,45 300,75 400,35 500,${randomY}`);
+            dArea.setAttribute("d", `M 0 95 L 100 80 L 200 45 L 300 75 L 400 35 L 500 ${randomY} L 500 100 L 0 100 Z`);
+            tBall.setAttribute("cy", randomY);
          }, 2500);
       </script>
    </body>
