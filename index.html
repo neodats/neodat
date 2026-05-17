@@ -66,9 +66,7 @@
             margin: auto;
          }
 
-         /* ==========================================================================
-            BOTONES PREMIUM REDISEÑADOS
-            ========================================================================== */
+         /* BOTONES PREMIUM */
          .btn {
             display: inline-flex;
             align-items: center;
@@ -126,9 +124,7 @@
             transform: translateY(-1px);
          }
 
-         /* ==========================================================================
-            ESTILOS DE LA INTERFAZ Y MAQUETACIÓN
-            ========================================================================== */
+         /* INTERFAZ Y MAQUETACIÓN */
          header {
             position: fixed;
             top: 0;
@@ -226,7 +222,7 @@
          }
 
          /* ==========================================================================
-            DASHBOARD CORPORATIVO INTERACTIVO EN TIEMPO REAL
+            DASHBOARD CORPORATIVO REDISEÑADO CON COMPONENTES REALISTAS DE BI
             ========================================================================== */
          .dashboard-shell {
             padding: 10px;
@@ -291,56 +287,10 @@
             background: var(--gris);
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 14px;
          }
 
-         /* MAPAMUNDI CORPORATIVO */
-         .map-wrapper {
-            position: relative;
-            width: 100%;
-            height: 160px;
-            background: #ffffff;
-            border-radius: 12px;
-            border: 1px solid var(--gris-2);
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-         }
-         .map-svg {
-            width: 90%;
-            height: 90%;
-            opacity: 0.12;
-         }
-         
-         .map-node {
-            position: absolute;
-            width: 7px;
-            height: 7px;
-            background: var(--azul);
-            border-radius: 50%;
-         }
-         .node-1 { top: 32%; left: 22%; animation: pulseNode 2s infinite; }
-         .node-2 { top: 58%; left: 35%; animation: pulseNode 2.4s infinite 0.4s; }
-         .node-3 { top: 30%; left: 55%; animation: pulseNode 1.8s infinite 0.8s; }
-         .node-4 { top: 42%; left: 78%; animation: pulseNode 2.2s infinite 0.2s; }
-         
-         @keyframes pulseNode {
-            0% { transform: scale(1); opacity: 0.4; }
-            50% { transform: scale(1.6); opacity: 1; background: var(--naranja); }
-            100% { transform: scale(1); opacity: 0.4; }
-         }
-
-         .map-overlay-text {
-            position: absolute;
-            bottom: 10px;
-            left: 14px;
-            font-size: 10.5px;
-            font-weight: 700;
-            color: var(--texto-suave);
-         }
-
-         /* SECCIÓN KPIS DINÁMICOS */
+         /* SECCIÓN KPIS */
          .kpis {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -352,10 +302,6 @@
             border-radius: 12px;
             border: 1px solid var(--gris-2); 
             transition: transform 0.2s ease, box-shadow 0.2s ease;
-         }
-         .kpi:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--sombra);
          }
          .kpi small {
             display: block;
@@ -372,7 +318,6 @@
             font-size: 18px;
             font-weight: 900;
             line-height: 1.1;
-            transition: color 0.15s ease;
          }
          .kpi-trend {
             display: inline-flex;
@@ -384,6 +329,109 @@
          }
          .trend-up { color: var(--exito); }
          .trend-orange { color: var(--naranja); }
+
+         /* NUEVA SECCIÓN: GRÁFICO PRINCIPAL DE TENDENCIA FINANCIERA (LINE CHART) */
+         .analytics-main-card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 16px;
+            border: 1px solid var(--gris-2);
+         }
+         .card-header-clean {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+         }
+         .card-title-clean {
+            font-size: 11.5px;
+            font-weight: 800;
+            color: var(--azul-oscuro);
+         }
+         .card-subtitle-clean {
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--exito);
+         }
+         .chart-line-wrapper {
+            position: relative;
+            width: 100%;
+            height: 110px;
+         }
+         .chart-line-svg {
+            width: 100%;
+            height: 100%;
+         }
+
+         /* NUEVA SECCIÓN: DISTRIBUCIÓN INFERIOR EN DOS COLUMNAS */
+         .analytics-grid-bottom {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 14px;
+         }
+         .small-analytics-card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 14px;
+            border: 1px solid var(--gris-2);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+         }
+
+         /* Estilos del Embudo (Funnel) */
+         .funnel-container {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-top: 8px;
+         }
+         .funnel-stage {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 6px 12px;
+            color: #ffffff;
+            font-size: 10px;
+            font-weight: 700;
+            border-radius: 6px;
+         }
+         .funnel-1 { background: var(--azul-oscuro); width: 100%; }
+         .funnel-2 { background: var(--azul); width: 85%; }
+         .funnel-3 { background: var(--azul-medio); width: 68%; }
+
+         /* Estilos del Donut Finanzas */
+         .donut-box {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-top: 4px;
+         }
+         .donut-svg-wrapper {
+            width: 55px;
+            height: 55px;
+            flex-shrink: 0;
+         }
+         .donut-legends {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+         }
+         .donut-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--texto-suave);
+         }
+         .bullet-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+         }
+
+         /* ========================================================================== */
 
          .menu-toggle {
             display: none;
@@ -453,6 +501,7 @@
          @media (max-width: 680px) {
             .hero { padding: 100px 0 30px; }
             .kpis { grid-template-columns: 1fr; gap: 10px; }
+            .analytics-grid-bottom { grid-template-columns: 1fr; gap: 12px; }
             h1 { 
                font-size: clamp(20px, 5.5vw, 26px);
                line-height: 1.3;
@@ -512,36 +561,82 @@
                            <span class="live-dot"></span>
                            <strong>Panel de Control Corporativo</strong>
                         </div>
+                        <div class="badge-live">BI & Analytics</div>
                      </div>
                      <div class="dashboard-body">
-                        <div class="map-wrapper">
-                           <svg class="map-svg" viewBox="0 0 1000 450" xmlns="http://www.w3.org/2000/svg">
-                              <path fill="var(--azul)" d="M150,120 Q180,100 220,130 T300,110 T380,150 T450,100 T550,140 T680,110 T800,150 T900,120 L920,250 Q850,320 750,280 T600,330 T450,290 T250,350 T120,280 Z"/>
-                              <path fill="var(--azul)" opacity="0.6" d="M200,180 Q250,160 300,200 T400,190 T600,220 T750,180 L800,300 Q650,360 500,320 T200,340 Z"/>
-                           </svg>
-                           <div class="map-node node-1"></div>
-                           <div class="map-node node-2"></div>
-                           <div class="map-node node-3"></div>
-                           <div class="map-node node-4"></div>
-                           <div class="map-overlay-text">📊 Flujo Multiregional de Datos Estructurados</div>
-                        </div>
-
+                        
                         <div class="kpis">
                            <div class="kpi">
-                              <small>Volumen / Seg</small>
-                              <strong id="kpi-stream">1,240 GB</strong>
-                              <span class="kpi-trend trend-up">▲ Activo</span>
+                              <small>Margen Neto</small>
+                              <strong id="kpi-stream">34.2%</strong>
+                              <span class="kpi-trend trend-up">▲ +2.4% vs mes ant.</span>
                            </div>
                            <div class="kpi">
-                              <small>Eficiencia BI</small>
-                              <strong id="kpi-eficiencia">98.4%</strong>
-                              <span class="kpi-trend trend-up">▲ Optima</span>
+                              <small>Ebitda Anual</small>
+                              <strong id="kpi-eficiencia">$428K</strong>
+                              <span class="kpi-trend trend-up">▲ Optimizado</span>
                            </div>
                            <div class="kpi">
-                              <small>Procesos AI</small>
-                              <strong id="kpi-procesos">452K</strong>
-                              <span class="kpi-trend trend-orange">● Estable</span>
+                              <small>Calidad de Datos</small>
+                              <strong id="kpi-procesos">99.8%</strong>
+                              <span class="kpi-trend trend-orange">● Confiable</span>
                            </div>
+                        </div>
+
+                        <div class="analytics-main-card">
+                           <div class="card-header-clean">
+                              <span class="card-title-clean">Evolución de Ingresos y Flujo de Caja</span>
+                              <span class="card-subtitle-clean">Historial H1</span>
+                           </div>
+                           <div class="chart-line-wrapper">
+                              <svg class="chart-line-svg" viewBox="0 0 500 110" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                                 <defs>
+                                    <linearGradient id="gradient-line" x1="0" y1="0" x2="0" y2="1">
+                                       <stop offset="0%" stop-color="var(--azul)" stop-opacity="0.15"/>
+                                       <stop offset="100%" stop-color="var(--azul)" stop-opacity="0"/>
+                                    </linearGradient>
+                                 </defs>
+                                 <path d="M0,90 Q70,40 140,70 T280,30 T420,50 L500,20 L500,110 L0,110 Z" fill="url(#gradient-line)" />
+                                 <path d="M0,90 Q70,40 140,70 T280,30 T420,50 L500,20" fill="none" stroke="var(--azul)" stroke-width="2.5" stroke-linecap="round" />
+                                 <path d="M0,85 L100,75 L200,60 L300,45 L400,40 L500,30" fill="none" stroke="var(--naranja)" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.7" />
+                                 <circle cx="500" cy="20" r="4" fill="var(--azul)" />
+                                 <circle cx="500" cy="20" r="8" fill="var(--azul)" opacity="0.3" />
+                              </svg>
+                           </div>
+                        </div>
+
+                        <div class="analytics-grid-bottom">
+                           
+                           <div class="small-analytics-card">
+                              <span class="card-title-clean">Estructuración de Datos</span>
+                              <div class="funnel-container">
+                                 <div class="funnel-stage funnel-1">Fuentes Crudas <span>100%</span></div>
+                                 <div class="funnel-stage funnel-2">Procesados <span>85%</span></div>
+                                 <div class="funnel-stage funnel-3">Modelados BI <span>68%</span></div>
+                              </div>
+                           </div>
+
+                           <div class="small-analytics-card">
+                              <span class="card-title-clean">Gastos OpEx</span>
+                              <div class="donut-box">
+                                 <div class="donut-svg-wrapper">
+                                    <svg viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+                                       <circle cx="18" cy="18" r="15.915" fill="none" stroke="#f0f4f8" stroke-width="4.2"/>
+                                       <circle cx="18" cy="18" r="15.915" fill="none" stroke="var(--azul)" stroke-width="4.2" stroke-dasharray="60 100" stroke-dashoffset="25"/>
+                                       <circle cx="18" cy="18" r="15.915" fill="none" stroke="var(--naranja)" stroke-width="4.2" stroke-dasharray="40 100" stroke-dashoffset="85"/>
+                                    </svg>
+                                 </div>
+                                 <div class="donut-legends">
+                                    <div class="donut-legend-item">
+                                       <span class="bullet-dot" style="background: var(--azul)"></span> Corp
+                                    </div>
+                                    <div class="donut-legend-item">
+                                       <span class="bullet-dot" style="background: var(--naranja)"></span> I+D
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+
                         </div>
 
                      </div>
@@ -566,22 +661,22 @@
             menu.classList.toggle("activo");
          });
 
-         // Nodos de datos dinámicos
-         const streamTxt = document.getElementById("kpi-stream");
-         const eficienciaTxt = document.getElementById("kpi-eficiencia");
-         const procesosTxt = document.getElementById("kpi-procesos");
+         // Nodos de datos dinámicos ejecutivos
+         const margenTxt = document.getElementById("kpi-stream");
+         const ebitdaTxt = document.getElementById("kpi-eficiencia");
+         const calidadTxt = document.getElementById("kpi-procesos");
 
-         // Actualización continua de datos en vivo (cada 2 segundos)
+         // Simulación interactiva muy fluida para KPIs reales
          setInterval(() => {
-            const vStream = (1200 + Math.floor(Math.random() * 200));
-            streamTxt.textContent = `${vStream.toLocaleString()} GB`;
+            const vMargen = (33 + Math.random() * 2).toFixed(1);
+            margenTxt.textContent = `${vMargen}%`;
 
-            const vEficiencia = (98 + Math.random() * 1.9).toFixed(1);
-            eficienciaTxt.textContent = `${vEficiencia}%`;
+            const vEbitda = (420 + Math.floor(Math.random() * 12));
+            ebitdaTxt.textContent = `$${vEbitda}K`;
 
-            const vProcesos = (450 + Math.floor(Math.random() * 15));
-            procesosTxt.textContent = `${vProcesos}K`;
-         }, 2000);
+            const vCalidad = (99.5 + Math.random() * 0.4).toFixed(1);
+            calidadTxt.textContent = `${vCalidad}%`;
+         }, 2500);
       </script>
    </body>
 </html>
