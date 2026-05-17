@@ -169,9 +169,11 @@
             max-width: 720px;
             margin-bottom: 24px;
             color: var(--azul-oscuro);
-            font-size: clamp(32px, 4.2vw, 46px);
-            line-height: 1.2;
-            letter-spacing: -1.2px;
+            /* MODIFICACIÓN: Ajuste de fluidez tipográfica y remoción de letter-spacing negativo para evitar cortes */
+            font-size: clamp(26px, 4.5vw, 44px);
+            line-height: 1.25;
+            letter-spacing: normal;
+            word-wrap: break-word;
          }
          .hero p {
             max-width: 640px;
@@ -315,8 +317,13 @@
          @media (max-width: 680px) {
             .hero { padding: 40px 0 60px; }
             .metricas, .kpis { grid-template-columns: 1fr; }
-            h1 { font-size: clamp(26px, 7.5vw, 35px); }
-            .acciones { display: grid; grid-template-columns: 1fr; width: 100%; }
+            /* MODIFICACIÓN: Altura de línea y tamaño perfectamente calculados para pantallas de celulares pequeños */
+            h1 { 
+               font-size: clamp(24px, 6.2vw, 34px); 
+               line-height: 1.3;
+               letter-spacing: normal;
+            }
+            .acciones { display: grid; grid-template-columns: 1fr; width: 100%; gap: 10px; }
             .acciones .btn { width: 100%; }
          }
       </style>
