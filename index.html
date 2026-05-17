@@ -25,6 +25,7 @@
             --sombra: 0 10px 30px rgba(7, 23, 45, 0.04);
             --sombra-fuerte: 0 20px 50px rgba(7, 23, 45, 0.08);
             --exito: #10b981;
+            --cyber-cyan: #00f2fe;
          }
          
          /* CONFIGURACIÓN ESTRUCTURAL ANTIESPACIOS BLANCOS */
@@ -199,8 +200,8 @@
             position: relative;
             z-index: 2;
             display: grid;
-            grid-template-columns: 1fr 1.05fr;
-            gap: 50px;
+            grid-template-columns: 1fr 1.15fr;
+            gap: 40px;
             align-items: center;
          }
          h1 {
@@ -224,32 +225,35 @@
          }
 
          /* ==========================================================================
-            DASHBOARD INTERACTIVO Y ALINEACIÓN DEL PUNTO LIVE
+            DASHBOARD FUTURISTA CON MAPAMUNDI ANIMADO
             ========================================================================== */
          .dashboard-shell {
-            padding: 10px;
+            padding: 8px;
             border-radius: 24px; 
-            background: linear-gradient(145deg, rgba(22, 43, 78, 0.03), rgba(7, 23, 45, 0.05));
-            border: 1px solid var(--gris-2); 
+            background: linear-gradient(145deg, rgba(7, 23, 45, 0.85), rgba(22, 43, 78, 0.95));
+            border: 1px solid rgba(255, 255, 255, 0.08); 
             position: relative;
+            box-shadow: var(--sombra-fuerte);
          }
          .dashboard {
             overflow: hidden;
-            border-radius: 16px;
-            background: #ffffff;
-            box-shadow: var(--sombra-fuerte);
+            border-radius: 18px;
+            background: #0b192e;
+            position: relative;
          }
          .dashboard-top {
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 16px;
-            padding: 14px 20px;
-            background: #ffffff;
-            border-bottom: 1px solid var(--gris-2);
+            padding: 16px 20px;
+            background: rgba(11, 25, 46, 0.6);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            z-index: 10;
+            position: relative;
          }
          
-         /* MODIFICACIÓN: Flex alineado para colocar el título y el punto juntos */
          .dashboard-top div:first-child {
             display: flex;
             align-items: center;
@@ -257,75 +261,130 @@
          }
          
          .dashboard-top strong {
-            color: var(--azul-oscuro);
+            color: #ffffff;
             font-size: 13px;
-            font-weight: 800;
+            font-weight: 700;
             white-space: nowrap;
+            letter-spacing: 0.5px;
          }
          .live-dot {
             width: 8px;
             height: 8px;
-            background-color: var(--exito);
+            background-color: var(--cyber-cyan);
             border-radius: 50%;
             display: inline-block;
             flex-shrink: 0;
-            animation: pulsoLive 1.8s infinite;
+            box-shadow: 0 0 10px var(--cyber-cyan);
+            animation: pulsoLive 1.5s infinite;
          }
          @keyframes pulsoLive {
-            0% { transform: scale(0.9); opacity: 0.6; }
-            50% { transform: scale(1.3); opacity: 1; }
-            100% { transform: scale(0.9); opacity: 0.6; }
+            0% { transform: scale(0.9); opacity: 0.5; box-shadow: 0 0 4px var(--cyber-cyan); }
+            50% { transform: scale(1.3); opacity: 1; box-shadow: 0 0 12px var(--cyber-cyan); }
+            100% { transform: scale(0.9); opacity: 0.5; box-shadow: 0 0 4px var(--cyber-cyan); }
          }
          .badge-live {
             padding: 4px 10px;
             border-radius: 999px;
-            background: rgba(16, 185, 129, 0.08);
-            color: var(--exito);
+            background: rgba(0, 242, 254, 0.1);
+            color: var(--cyber-cyan);
             font-size: 10px;
-            font-weight: 800;
+            font-weight: 700;
+            border: 1px solid rgba(0, 242, 254, 0.15);
          }
          .dashboard-body {
             padding: 20px;
-            background: var(--gris);
+            background: #091324;
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 16px;
+            position: relative;
          }
+
+         /* CONTENEDOR DEL MAPAMUNDI ANIMADO */
+         .map-wrapper {
+            position: relative;
+            width: 100%;
+            height: 180px;
+            background: rgba(7, 15, 30, 0.6);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+         }
+         .map-svg {
+            width: 100%;
+            height: 100%;
+            opacity: 0.25;
+            object-fit: contain;
+         }
+         
+         /* Puntos parpadeantes en el mapa (Nodos Globales) */
+         .map-node {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: var(--cyber-cyan);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--cyber-cyan);
+         }
+         .node-1 { top: 35%; left: 25%; animation: pulseNode 2s infinite 0.3s; }
+         .node-2 { top: 65%; left: 32%; animation: pulseNode 1.8s infinite 0.8s; }
+         .node-3 { top: 28%; left: 52%; animation: pulseNode 2.5s infinite 1.2s; }
+         .node-4 { top: 45%; left: 75%; animation: pulseNode 2.2s infinite 0.1s; }
+         .node-5 { top: 72%; left: 85%; animation: pulseNode 1.9s infinite 0.5s; }
+
+         @keyframes pulseNode {
+            0% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.6); opacity: 1; box-shadow: 0 0 12px var(--cyber-cyan); }
+            100% { transform: scale(1); opacity: 0.3; }
+         }
+
+         .map-overlay-text {
+            position: absolute;
+            bottom: 12px;
+            left: 16px;
+            font-size: 11px;
+            font-weight: 600;
+            color: rgba(255,255,255,0.4);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+         }
+
+         /* SECCIÓN KPIS DATASTREAM */
          .kpis {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 14px;
+            gap: 12px;
          }
          .kpi {
-            padding: 14px;
-            background: #ffffff;
+            padding: 12px 14px;
+            background: rgba(255, 255, 255, 0.02);
             border-radius: 12px;
-            border: 1px solid var(--gris-2); 
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05); 
+            transition: all 0.25s ease;
          }
          .kpi:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--sombra);
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(0, 242, 254, 0.2);
          }
          .kpi small {
             display: block;
             margin-bottom: 4px;
-            color: var(--texto-suave);
+            color: rgba(255, 255, 255, 0.4);
             font-size: 10px;
-            font-weight: 700;
+            font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.3px;
+            letter-spacing: 0.5px;
          }
          .kpi strong {
             display: block;
-            color: var(--azul-oscuro);
-            font-size: 19px;
-            font-weight: 900;
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: 800;
             line-height: 1.1;
-            transition: color 0.2s ease;
-         }
-         .kpi strong.cambio-activo {
-            color: var(--naranja);
          }
          .kpi-trend {
             display: inline-flex;
@@ -335,114 +394,47 @@
             font-weight: 700;
             margin-top: 4px;
          }
-         .trend-up { color: var(--exito); }
-         .trend-down { color: #ef4444; }
+         .trend-up { color: var(--cyber-cyan); }
+         .trend-neutral { color: var(--naranja); }
 
+         /* FILA INFERIOR DE RED CON GRÁFICO PEQUEÑO */
          .chart-container {
-            background: #ffffff;
+            background: rgba(255, 255, 255, 0.01);
             border-radius: 12px;
-            padding: 18px;
-            border: 1px solid var(--gris-2);
-            position: relative;
+            padding: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
          }
          .chart-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
          }
          .chart-title {
-            font-size: 12px;
-            font-weight: 800;
-            color: var(--azul-oscuro);
+            font-size: 11px;
+            font-weight: 700;
+            color: rgba(255,255,255,0.7);
          }
-         .chart-legend {
-            display: flex;
-            gap: 12px;
-            font-size: 10px;
-            font-weight: 600;
-            color: var(--texto-suave);
-         }
-         .legend-item::before {
-            content: "";
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            margin-right: 4px;
-         }
-         .legend-azul::before { background: var(--azul); }
-         .legend-naranja::before { background: var(--naranja); }
-
+         
          .chart-bars {
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
-            height: 130px;
-            padding-top: 10px;
-            border-bottom: 1px solid var(--gris-2);
-            position: relative;
+            height: 60px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
          }
          .bar-group {
+            width: 14%;
+            height: 100%;
             display: flex;
             align-items: flex-end;
-            gap: 4px;
-            width: 12%;
-            height: 100%;
-            position: relative;
-            cursor: pointer;
          }
          .bar {
             width: 100%;
-            border-radius: 3px 3px 0 0;
-            position: relative;
-            transform-origin: bottom;
+            background: linear-gradient(180deg, var(--cyber-cyan) 0%, rgba(0, 242, 254, 0.2) 100%);
+            border-radius: 2px 2px 0 0;
+            height: 40%;
             animation: crecerBarra 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-            transition: filter 0.2s ease, opacity 0.2s ease;
-         }
-         .bar-primary { background: var(--azul); }
-         .bar-secondary { background: var(--naranja); opacity: 0.8; }
-         
-         .bar-group:hover .bar {
-            filter: brightness(1.1);
-            opacity: 1;
-         }
-
-         .chart-tooltip {
-            position: absolute;
-            top: -20px;
-            left: 50%;
-            transform: translateX(-50%) translateY(4px);
-            background: var(--azul-oscuro);
-            color: #ffffff;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 9px;
-            font-weight: 700;
-            opacity: 0;
-            transition: opacity 0.2s ease, transform 0.2s ease;
-            pointer-events: none;
-            white-space: nowrap;
-            z-index: 5;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-         }
-         .bar-group:hover .chart-tooltip {
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
-         }
-
-         .chart-labels {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 8px;
-            padding: 0 4px;
-         }
-         .chart-labels span {
-            font-size: 9px;
-            font-weight: 700;
-            color: var(--texto-suave);
-            width: 12%;
-            text-align: center;
          }
 
          @keyframes crecerBarra {
@@ -527,8 +519,6 @@
             }
             .acciones { display: grid; grid-template-columns: 1fr; width: 100%; gap: 10px; }
             .acciones .btn { width: 100%; }
-            .bar-group:nth-child(even) { display: none; } 
-            .chart-labels span:nth-child(even) { display: none; }
          }
       </style>
    </head>
@@ -541,6 +531,7 @@
             <button class="menu-toggle" type="button" aria-label="Abrir menú"> ☰ </button>
             <nav class="menu" aria-label="Navegación principal">
                <ul>
+                  <li><a href="index.html">Inicio</a></li>
                   <li><a href="servicios.html">Servicios</a></li>
                   <li><a href="metodo.html">Método</a></li>
                   <li><a href="ambitos.html">Ámbitos</a></li>
@@ -578,78 +569,57 @@
                      <div class="dashboard-top">
                         <div>
                            <span class="live-dot"></span>
-                           <strong>Panel de Control Corporativo</strong>
-                        </div>                        
+                           <strong>Consola de Datos Globales</strong>
+                        </div>
+                        <div class="badge-live">Live Streams</div>
                      </div>
                      <div class="dashboard-body">
                         
+                        <div class="map-wrapper">
+                           <svg class="map-svg" viewBox="0 0 1000 450" xmlns="http://www.w3.org/2000/svg">
+                              <path fill="rgba(255,255,255,0.15)" d="M150,120 Q180,100 220,130 T300,110 T380,150 T450,100 T550,140 T680,110 T800,150 T900,120 L920,250 Q850,320 750,280 T600,330 T450,290 T250,350 T120,280 Z"/>
+                              <path fill="rgba(255,255,255,0.08)" d="M200,180 Q250,160 300,200 T400,190 T600,220 T750,180 L800,300 Q650,360 500,320 T200,340 Z"/>
+                           </svg>
+                           <div class="map-node node-1"></div>
+                           <div class="map-node node-2"></div>
+                           <div class="map-node node-3"></div>
+                           <div class="map-node node-4"></div>
+                           <div class="map-node node-5"></div>
+                           
+                           <div class="map-overlay-text">
+                              <span>🌐 Conexiones Activas de Servidores Estructurados</span>
+                           </div>
+                        </div>
+
                         <div class="kpis">
                            <div class="kpi">
-                              <small>Ingresos Op.</small>
-                              <strong id="kpi-ingresos">$148.5K</strong>
-                              <span class="kpi-trend trend-up">▲ +12.4%</span>
+                              <small>Data Stream</small>
+                              <strong id="live-stream">2,481 MB/s</strong>
+                              <span class="kpi-trend trend-up">▲ Live</span>
                            </div>
                            <div class="kpi">
-                              <small>Margen Neto</small>
-                              <strong>34.2%</strong>
-                              <span class="kpi-trend trend-up">▲ +3.1%</span>
+                              <small>Nodos Activos</small>
+                              <strong>94 Jurisdic.</strong>
+                              <span class="kpi-trend trend-up">▲ 100%</span>
                            </div>
                            <div class="kpi">
-                              <small>Eficiencia</small>
-                              <strong>94.8%</strong>
-                              <span class="kpi-trend trend-down">▼ -0.5%</span>
+                              <small>Precisión BI</small>
+                              <strong>99.98%</strong>
+                              <span class="kpi-trend trend-neutral">■ Estable</span>
                            </div>
                         </div>
 
                         <div class="chart-container">
                            <div class="chart-header">
-                              <span class="chart-title">Desempeño Mensual Activos vs Proyectado</span>
-                              <div class="chart-legend">
-                                 <span class="legend-item legend-azul">Real</span>
-                                 <span class="legend-item legend-naranja">Meta</span>
-                              </div>
+                              <span class="chart-title">Volumen de Procesamiento por Hora</span>
                            </div>
-                           
                            <div class="chart-bars">
-                              <div class="bar-group" data-valor="$112.4K">
-                                 <div class="chart-tooltip">Ene: $112.4K</div>
-                                 <div class="bar bar-primary" style="height: 65%;"></div>
-                                 <div class="bar bar-secondary" style="height: 70%;"></div>
-                              </div>
-                              <div class="bar-group" data-valor="$128.9K">
-                                 <div class="chart-tooltip">Feb: $128.9K</div>
-                                 <div class="bar bar-primary" style="height: 80%;"></div>
-                                 <div class="bar bar-secondary" style="height: 75%;"></div>
-                              </div>
-                              <div class="bar-group" data-valor="$94.1K">
-                                 <div class="chart-tooltip">Mar: $94.1K</div>
-                                 <div class="bar bar-primary" style="height: 45%;"></div>
-                                 <div class="bar bar-secondary" style="height: 60%;"></div>
-                              </div>
-                              <div class="bar-group" data-valor="$162.0K">
-                                 <div class="chart-tooltip">Abr: $162.0K</div>
-                                 <div class="bar bar-primary" style="height: 95%;"></div>
-                                 <div class="bar bar-secondary" style="height: 85%;"></div>
-                              </div>
-                              <div class="bar-group" data-valor="$135.6K">
-                                 <div class="chart-tooltip">May: $135.6K</div>
-                                 <div class="bar bar-primary" style="height: 75%;"></div>
-                                 <div class="bar bar-secondary" style="height: 80%;"></div>
-                              </div>
-                              <div class="bar-group" data-valor="$148.5K">
-                                 <div class="chart-tooltip">Jun: $148.5K</div>
-                                 <div class="bar bar-primary" style="height: 88%;"></div>
-                                 <div class="bar bar-secondary" style="height: 90%;"></div>
-                              </div>
-                           </div>
-
-                           <div class="chart-labels">
-                              <span>Ene</span>
-                              <span>Feb</span>
-                              <span>Mar</span>
-                              <span>Abr</span>
-                              <span>May</span>
-                              <span>Jun</span>
+                              <div class="bar-group"><div class="bar" style="height: 45%;"></div></div>
+                              <div class="bar-group"><div class="bar" style="height: 70%;"></div></div>
+                              <div class="bar-group"><div class="bar" style="height: 55%;"></div></div>
+                              <div class="bar-group"><div class="bar" style="height: 90%;"></div></div>
+                              <div class="bar-group"><div class="bar" style="height: 75%;"></div></div>
+                              <div class="bar-group"><div class="bar" style="height: 85%;"></div></div>
                            </div>
                         </div>
 
@@ -670,30 +640,17 @@
       <script>
          const menuToggle = document.querySelector(".menu-toggle");
          const menu = document.querySelector(".menu");
-         const kpiIngresos = document.getElementById("kpi-ingresos");
-         const barGroups = document.querySelectorAll(".bar-group");
-         const valorOriginal = "$148.5K";
+         const streamElement = document.getElementById("live-stream");
 
          menuToggle.addEventListener("click", () => {
             menu.classList.toggle("activo");
          });
 
-         barGroups.forEach(group => {
-            const cambiarValor = () => {
-               const nuevoValor = group.getAttribute("data-valor");
-               kpiIngresos.textContent = nuevoValor;
-               kpiIngresos.classList.add("cambio-activo");
-            };
-
-            const restaurarValor = () => {
-               kpiIngresos.textContent = valorOriginal;
-               kpiIngresos.classList.remove("cambio-activo");
-            };
-
-            group.addEventListener("mouseenter", cambiarValor);
-            group.addEventListener("mouseleave", restaurarValor);
-            group.addEventListener("touchstart", cambiarValor, {passive: true});
-         });
+         // Efecto sutil de datos cambiando vivos en la consola para impresionar
+         setInterval(() => {
+            const randomData = (2400 + Math.floor(Math.random() * 180));
+            streamElement.textContent = `${randomData.toLocaleString()} MB/s`;
+         }, 2500);
       </script>
    </body>
 </html>
