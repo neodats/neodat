@@ -204,7 +204,6 @@
             align-items: center;
          }
          
-         /* CORRECCIÓN: Tamaño optimizado, equilibrado y proporcional para el título principal */
          h1 {
             max-width: 720px;
             margin-bottom: 20px;
@@ -515,10 +514,7 @@
             .hero { padding: 100px 0 30px; }
             .kpis { grid-template-columns: 1fr; gap: 10px; }
             .analytics-grid-bottom { grid-template-columns: 1fr; gap: 12px; }
-            
-            /* CORRECCIÓN ADICIONAL: Proporción controlada en pantallas pequeñas móviles */
             h1 { font-size: clamp(19px, 5vw, 23px); line-height: 1.3; letter-spacing: normal; }
-            
             .acciones { display: grid; grid-template-columns: 1fr; width: 100%; gap: 10px; }
             .acciones .btn { width: 100%; }
          }
@@ -651,12 +647,20 @@
             menu.classList.toggle("activo");
          });
 
-         // Autodetección de página activa para resaltar el menú
-         const ubicacionActual = window.location.pathname.split("/").pop() || "index.html";
+         // NUEVA LOGICA DE AUTODETECCIÓN DE PÁGINA ACTIVA OPTIMIZADA
+         // Compara si la barra de direcciones contiene el enlace para que funcione localmente o en producción.
+         const rutaActual = window.location.pathname.toLowerCase();
          const enlacesMenu = document.querySelectorAll("nav.menu a");
 
          enlacesMenu.forEach(enlace => {
-            if (enlace.getAttribute("href") === ubicacionActual) {
+            const hrefOriginal = enlace.getAttribute("href").toLowerCase();
+            
+            // Caso base para la página de inicio si estás en la raíz "/"
+            if ((rutaActual === "/" || rutaActual.endsWith("/")) && hrefOriginal === "index.html") {
+               enlace.classList.add("actual");
+            } 
+            // Caso general: evalúa si la ruta actual termina con el href del enlace
+            else if (rutaActual.endsWith(hrefOriginal) && hrefOriginal !== "") {
                enlace.classList.add("actual");
             }
          });
