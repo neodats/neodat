@@ -13,10 +13,10 @@
       
       <style>
          :root {
-            /* Colores Institucionales Exactos */
+            /* Colores Institucionales y de Interfaz Exactos */
             --azul-base: #162b4e;
             --azul-oscuro: #07172d;
-            --azul-universo: #040d1a;
+            --azul-universo: #02060d; /* Fondo base ultra oscuro de la imagen */
             --azul-medio: #27456f;
             --azul-claro: #edf2f8;
             --naranja-acento: #ff9900;
@@ -43,53 +43,56 @@
             -moz-osx-font-smoothing: grayscale;
          }
 
-         /* --- ENTORNO CINÉTICO Y CAPAS DE FONDO --- */
+         /* --- ENTORNO CINÉTICO Y CAPAS DE FONDO REPLICADAS DE LA IMAGEN --- */
          .capa-universo {
             position: absolute;
             inset: 0;
             z-index: 1;
+            /* Combinación exacta de luces radiales y el fondo degradado oscuro de la imagen original */
             background: 
-               radial-gradient(circle at 80% 20%, rgba(22, 43, 78, 0.4) 0%, transparent 60%),
-               radial-gradient(circle at 20% 80%, rgba(255, 153, 0, 0.03) 0%, transparent 40%),
-               linear-gradient(140deg, var(--azul-oscuro) 0%, #020813 100%);
+               radial-gradient(circle at 75% 30%, rgba(22, 43, 78, 0.55) 0%, transparent 55%),
+               radial-gradient(circle at 30% 70%, rgba(255, 153, 0, 0.02) 0%, transparent 45%),
+               linear-gradient(150deg, #051329 0%, #020712 50%, #010307 100%);
             overflow: hidden;
          }
 
-         /* Cuadrícula Analítica de Fondo */
+         /* Cuadrícula Analítica de Fondo de Alta Precisión */
          .capa-universo::before {
             content: "";
             position: absolute;
             inset: 0;
             background-image: 
-               linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-               linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
-            background-size: 50px 50px;
+               linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+               linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 44px 44px;
+            mask-image: radial-gradient(circle at 60% 40%, black 30%, transparent 90%);
+            -webkit-mask-image: radial-gradient(circle at 60% 40%, black 30%, transparent 90%);
             pointer-events: none;
          }
 
-         /* Estructuras Geométricas 3D */
+         /* Estructuras Geométricas 3D de la Imagen */
          .red-esferica-abstracta {
             position: absolute;
-            top: -5%;
-            right: 10%;
-            width: 500px;
-            height: 500px;
-            border: 1px dashed rgba(39, 69, 111, 0.2);
+            top: -8%;
+            right: 5%;
+            width: 550px;
+            height: 550px;
+            border: 1px dashed rgba(39, 69, 111, 0.25);
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(22, 43, 78, 0.05) 0%, transparent 70%);
-            animation: rotacionLenta 50s linear infinite;
+            background: radial-gradient(circle, rgba(22, 43, 78, 0.08) 0%, transparent 70%);
+            animation: rotacionLenta 60s linear infinite;
          }
 
          .hipercubo-abstracto {
             position: absolute;
-            bottom: 8%;
-            right: 32%;
-            width: 280px;
-            height: 280px;
-            border: 1px solid rgba(255, 255, 255, 0.04);
+            bottom: 12%;
+            right: 35%;
+            width: 260px;
+            height: 260px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
             transform: rotate(35deg);
-            background: linear-gradient(135deg, rgba(22, 43, 78, 0.1), transparent);
-            animation: balanceoSutil 15s ease-in-out infinite alternate;
+            background: linear-gradient(135deg, rgba(22, 43, 78, 0.12), transparent);
+            animation: balanceoSutil 12s ease-in-out infinite alternate;
          }
 
          @keyframes rotacionLenta {
@@ -99,7 +102,7 @@
 
          @keyframes balanceoSutil {
             0% { transform: translateY(0) rotate(35deg); }
-            100% { transform: translateY(-20px) rotate(42deg); }
+            100% { transform: translateY(-15px) rotate(40deg); }
          }
 
          /* --- NAVEGACIÓN PREMIUM LIMPIA --- */
@@ -304,15 +307,15 @@
             border-color: rgba(255, 255, 255, 0.2);
          }
 
-         /* --- CORECCIÓN DE PROPORCIONES EN DASHBOARD --- */
+         /* --- INTERFAZ DEL DASHBOARD GLASSMORPHISM --- */
          .dashboard-marco {
-            background: rgba(7, 23, 45, 0.4);
+            background: rgba(7, 23, 45, 0.35);
             border: 1px solid var(--borde-glass);
             border-radius: 18px;
             padding: 24px;
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
-            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
          }
 
          .dashboard-top {
@@ -377,8 +380,8 @@
 
          /* --- MEDIDOR DE RITMO EMPRESARIAL CONTINUO --- */
          .contenedor-serie-tiempo {
-            background: rgba(0, 0, 0, 0.25);
-            border: 1px solid rgba(255, 255, 255, 0.02);
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.03);
             border-radius: 8px;
             padding: 12px;
             height: 110px;
@@ -408,10 +411,10 @@
             }
          }
 
-         /* --- FOOTER CENTRADO Y MODIFICADO --- */
+         /* --- FOOTER TOTALMENTE CENTRADO --- */
          .footer-bloque {
             display: flex;
-            justify-content: center; /* Alineación al centro */
+            justify-content: center;
             align-items: center;
             border-top: 1px solid rgba(255, 255, 255, 0.06);
             padding-top: 20px;
