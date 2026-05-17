@@ -3,39 +3,25 @@
    <head>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>NeoDat Consultores | Ingeniería de Datos de Alto Rendimiento</title>
+      <title>NeoDat Consultores | Ingeniería de Gestión & BI</title>
       <link rel="icon" type="image/png" sizes="32x32" href="Neo1.png">
-      <meta name="description" content="Estructuramos datos, finanzas y dashboards para transformar la incertidumbre de su empresa en decisiones ejecutivas de alto impacto." />
+      <meta name="description" content="Estructuramos ecosistemas de datos avanzados y modelos financieros de alta precisión para dotar a su organización de un control ejecutivo permanente." />
       
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet" />
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
       
       <style>
          :root {
-            /* Degradado de fondo profesional: de azul muy oscuro a negro profundo */
-            --bg-principal: linear-gradient(135deg, #07172d 0%, #000000 100%);
-            
-            /* Colores de Tarjeta y Panel con desenfoque */
-            --bg-panel-base: rgba(13, 27, 56, 0.5); /* Ligeramente más claro para destacar */
-            --bg-tarjeta: rgba(255, 255, 255, 0.03);
-            
-            /* Colores de Acento Corporativo */
-            --azul-premium: #0052cc;
-            --azul-intermedio: #1d3b6a;
-            --azul-glow: rgba(0, 82, 204, 0.2);
+            --bg-base: #030a16;
+            --azul-glow: #0052cc;
             --naranja-acento: #ff9900;
-            --naranja-glow: rgba(255, 153, 0, 0.1);
-            
-            /* Textos y Bordes */
             --blanco: #ffffff;
-            --texto-principal: #ffffff;
-            --texto-secundario: #a3c2f0; /* Azul muy claro para mejor lectura en fondo oscuro */
-            --borde-sutil: rgba(255, 255, 255, 0.1);
-            --borde-tarjeta: rgba(163, 194, 240, 0.15); /* Borde claro para las tarjetas */
+            --texto-secundario: #8fa0b5;
+            --borde-glass: rgba(255, 255, 255, 0.08);
+            --borde-active: rgba(0, 255, 102, 0.3);
          }
 
-         /* RESET GLOBAL Y CONFIGURACIÓN BASE */
          * {
             margin: 0;
             padding: 0;
@@ -45,37 +31,95 @@
          html, body {
             width: 100%;
             height: 100%;
-            background: var(--bg-principal);
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            color: var(--texto-principal);
+            background-color: var(--bg-base);
+            font-family: 'Inter', system-ui, sans-serif;
+            color: var(--blanco);
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
          }
 
-         /* FONDO ABSTRACTO (Mejorado para dar textura) */
-         .fondo-abstracto {
+         /* --- ENTORNO CINÉTICO Y ANIMACIONES DE FONDO --- */
+         .capa-universo {
             position: absolute;
             inset: 0;
             z-index: 1;
+            background: 
+               radial-gradient(circle at 80% 20%, rgba(0, 82, 204, 0.15) 0%, transparent 50%),
+               radial-gradient(circle at 20% 80%, rgba(255, 153, 0, 0.03) 0%, transparent 50%),
+               linear-gradient(180deg, #040d1a 0%, #02060d 100%);
+            overflow: hidden;
+         }
+
+         /* Cuadrícula analítica estática de fondo */
+         .capa-universo::before {
+            content: "";
+            position: absolute;
+            inset: 0;
             background-image: 
-               linear-gradient(rgba(163, 194, 240, 0.02) 1px, transparent 1px),
-               linear-gradient(90deg, rgba(163, 194, 240, 0.02) 1px, transparent 1px);
-            background-size: 60px 60px;
+               linear-gradient(rgba(255, 255, 255, 0.01) 1px, transparent 1px),
+               linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+            background-size: 50px 50px;
             pointer-events: none;
          }
 
-         .fondo-abstracto::before {
+         /* Simulación de partículas ascendentes en movimiento constante */
+         .capa-universo::after {
             content: "";
             position: absolute;
-            top: -20%;
-            right: -10%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, var(--azul-glow) 0%, transparent 70%);
-            filter: blur(100px);
+            inset: 0;
+            background-image: 
+               radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 0),
+               radial-gradient(rgba(163, 194, 240, 0.1) 2px, transparent 0);
+            background-size: 120px 120px;
+            background-position: 0 0;
+            animation: flujoDatos 40s linear infinite;
+            opacity: 0.6;
          }
 
-         /* ESTRUCTURA BASE DE PANTALLA COMPLETA */
+         @keyframes flujoDatos {
+            from { background-position: 0 0; }
+            to { background-position: 0 -1000px; }
+         }
+
+         /* Estructuras abstractas flotantes emulando la imagen */
+         .red-esferica-abstracta {
+            position: absolute;
+            top: -5%;
+            right: 25%;
+            width: 420px;
+            height: 420px;
+            border: 1px dashed rgba(0, 82, 204, 0.15);
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 82, 204, 0.02) 0%, transparent 75%);
+            animation: flotacionEje 12s ease-in-out infinite alternate;
+         }
+         .red-esferica-abstracta::after {
+            content: "";
+            position: absolute;
+            inset: 30px;
+            border: 1px double rgba(143, 160, 181, 0.08);
+            border-radius: 50%;
+            transform: rotateX(70deg);
+         }
+
+         .hipercubo-abstracto {
+            position: absolute;
+            bottom: -5%;
+            right: 40%;
+            width: 320px;
+            height: 320px;
+            border: 1px solid rgba(163, 194, 240, 0.08);
+            transform: rotate(25deg);
+            background: linear-gradient(135deg, rgba(0, 82, 204, 0.03), transparent);
+            animation: flotacionEje 9s ease-in-out infinite alternate-reverse;
+         }
+
+         @keyframes flotacionEje {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-15px) rotate(5deg); }
+         }
+
+         /* --- INTERFAZ BASE Y LAYOUT --- */
          .pantalla-portada {
             position: relative;
             z-index: 2;
@@ -87,85 +131,84 @@
          }
 
          .contenedor {
-            width: min(1240px, calc(100% - 48px));
+            width: min(1280px, calc(100% - 48px));
             margin: 0 auto;
          }
 
-         /* TOP BAR CON ENLACES (Nuevo) Y LOGO MEJORADO */
+         /* Barra Superior con Enlaces */
          .top-bar {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding-bottom: 20px;
-            border-bottom: 1px solid var(--borde-sutil);
+            padding-bottom: 24px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
          }
 
-         .logo-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-         }
-
-         .logo-icono {
-            height: 52px; /* Ligeramente más grande */
+         .logo-link img {
+            height: 48px;
             width: auto;
             display: block;
-            filter: drop-shadow(0 0 10px rgba(163, 194, 240, 0.3)); /* Resalta el logo */
          }
 
-         .menu-superior ul {
+         .menu-estricto ul {
             list-style: none;
             display: flex;
-            gap: 24px;
+            gap: 32px;
          }
 
-         .menu-superior a {
-            text-decoration: none;
+         .menu-estricto a {
             color: var(--texto-secundario);
             font-size: 14px;
             font-weight: 500;
-            transition: all 0.2s ease;
+            transition: color 0.25s ease;
          }
 
-         .menu-superior a:hover {
+         .menu-estricto a:hover {
             color: var(--blanco);
-            text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
          }
 
-         .status-indicador {
+         .badge-interactivo {
             display: flex;
             align-items: center;
-            gap: 8px;
-            background: rgba(163, 194, 240, 0.05);
-            border: 1px solid var(--borde-tarjeta);
-            padding: 6px 14px;
+            gap: 10px;
+            background: rgba(0, 255, 102, 0.03);
+            border: 1px solid var(--borde-active);
+            padding: 8px 18px;
             border-radius: 999px;
             font-size: 11px;
             font-weight: 700;
-            letter-spacing: 1px;
-            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            box-shadow: 0 0 20px rgba(0, 255, 102, 0.05);
          }
 
-         .status-punto {
+         .badge-interactivo::before {
+            content: "";
             width: 7px;
             height: 7px;
             background-color: #00ff66;
             border-radius: 50%;
             box-shadow: 0 0 10px #00ff66;
+            animation: pulsoSensor 2s infinite;
          }
 
-         /* BLOQUE CENTRAL SPLIT */
+         @keyframes pulsoSensor {
+            0% { opacity: 0.4; }
+            50% { opacity: 1; }
+            100% { opacity: 0.4; }
+         }
+
+         /* Distribución de Pantalla */
          .grid-principal {
             display: grid;
-            grid-template-columns: 1.15fr 0.85fr;
-            gap: 80px;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 60px;
             align-items: center;
             margin: auto 0;
-            padding: 60px 0;
+            padding: 40px 0;
          }
 
-         /* TEXTOS DEL HERO */
-         .tagline {
+         /* Copys de la Portada */
+         .subtitulo-bloque {
             color: var(--naranja-acento);
             font-size: 13px;
             font-weight: 700;
@@ -176,29 +219,24 @@
          }
 
          h1 {
-            font-size: clamp(44px, 5.5vw, 68px);
+            font-size: clamp(42px, 5.2vw, 64px);
             font-weight: 900;
-            line-height: 1.05;
-            letter-spacing: -3px;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            color: var(--blanco);
             margin-bottom: 28px;
          }
 
-         h1 span {
-            background: linear-gradient(135deg, #ffffff 30%, var(--texto-secundario) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-         }
-
          p.introduccion {
-            font-size: clamp(16px, 1.8vw, 19px);
+            font-size: clamp(16px, 1.5vw, 18px);
             color: var(--texto-secundario);
-            line-height: 1.55;
-            margin-bottom: 44px;
-            max-width: 620px;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            max-width: 580px;
          }
 
-         /* BOTONES */
-         .area-acciones {
+         /* Botones */
+         .caja-botones {
             display: flex;
             align-items: center;
             gap: 16px;
@@ -208,310 +246,270 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 14px 32px;
-            border-radius: 8px;
+            padding: 15px 36px;
+            border-radius: 6px;
             font-size: 14px;
             font-weight: 700;
             cursor: pointer;
-            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-            text-decoration: none;
+            transition: all 0.25s ease;
          }
 
-         .btn-primario {
-            background-color: var(--azul-premium);
+         .btn-azul {
+            background-color: #0052cc;
             color: var(--blanco);
-            box-shadow: 0 15px 30px var(--azul-glow);
+            box-shadow: 0 12px 30px rgba(0, 82, 204, 0.3);
          }
 
-         .btn-primario:hover {
+         .btn-azul:hover {
             background-color: #1a73e8;
             transform: translateY(-2px);
-            box-shadow: 0 20px 40px rgba(0, 82, 204, 0.3);
          }
 
-         .btn-secundario {
+         .btn-vacio {
             background-color: transparent;
             color: var(--blanco);
-            border: 1px solid var(--borde-sutil);
+            border: 1px solid var(--borde-glass);
          }
 
-         .btn-secundario:hover {
-            background-color: rgba(255, 255, 255, 0.03);
-            border-color: rgba(255, 255, 255, 0.3);
+         .btn-vacio:hover {
+            background-color: rgba(255, 255, 255, 0.02);
+            border-color: rgba(255, 255, 255, 0.2);
          }
 
-         /* PANEL DE CONTROL (MEJORADO) */
-         .interfaz-contenedor {
-            position: relative;
-            background: var(--bg-panel-base);
-            border: 1px solid var(--borde-tarjeta);
-            border-radius: 20px;
-            padding: 24px;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            box-shadow: 0 40px 80px -20px rgba(0,0,0,0.6);
+         /* --- CONSTRUCCIÓN FIEL DEL GLASS-DASHBOARD (Fiel a la imagen) --- */
+         .dashboard-marco {
+            background: rgba(10, 22, 44, 0.3);
+            border: 1px solid var(--borde-glass);
+            border-radius: 16px;
+            padding: 28px;
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            box-shadow: 0 50px 100px rgba(0, 0, 0, 0.5);
          }
 
-         .interfaz-header {
+         .dashboard-top {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            margin-bottom: 24px;
-            border-bottom: 1px solid rgba(163, 194, 240, 0.05);
-            padding-bottom: 16px;
+            align-items: flex-start;
+            margin-bottom: 32px;
          }
 
-         .interfaz-titulo {
-            font-size: 14px;
+         .dashboard-meta strong {
+            font-size: 15px;
             font-weight: 700;
+            display: block;
+            color: var(--blanco);
+         }
+
+         .dashboard-meta span {
+            font-size: 12px;
+            color: var(--texto-secundario);
+            display: block;
+            margin-top: 4px;
+         }
+
+         .txt-alert-orange {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--naranja-acento);
+            text-transform: uppercase;
             letter-spacing: 0.5px;
          }
 
-         .interfaz-titulo span {
-            color: var(--texto-secundario);
-            font-weight: 400;
-            font-size: 11px;
-            display: block;
-            margin-top: 2px;
-         }
-
-         .interfaz-metricas {
+         .dashboard-metricas {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 16px;
-            margin-bottom: 24px;
+            margin-bottom: 32px;
          }
 
-         .metrica-card {
-            background: var(--bg-tarjeta);
-            border: 1px solid var(--borde-tarjeta);
-            border-radius: 12px;
-            padding: 16px;
+         .tarjeta-kpi {
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 10px;
+            padding: 16px 20px;
          }
 
-         .metrica-card small {
-            color: var(--texto-secundario);
+         .tarjeta-kpi small {
             font-size: 10px;
+            color: var(--texto-secundario);
             text-transform: uppercase;
             font-weight: 600;
             letter-spacing: 0.5px;
+            display: block;
          }
 
-         .metrica-card div {
-            font-size: 24px;
+         .tarjeta-kpi div {
+            font-size: 26px;
             font-weight: 700;
-            margin-top: 6px;
+            margin-top: 8px;
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
          }
 
-         .metrica-card div span {
-            font-size: 11px;
+         .tarjeta-kpi div span {
+            font-size: 12px;
             color: #00ff66;
-            margin-left: 6px;
             font-weight: 500;
          }
 
-         /* GRÁFICO DE BARRAS (MEJORADO) */
-         .grafico-barras {
-            height: 140px;
+         /* Gráfico Analítico de la imagen con Ondas y Barras */
+         .contenedor-grafico-onda {
+            position: relative;
+            height: 130px;
             display: flex;
             align-items: flex-end;
-            gap: 10px;
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(163, 194, 240, 0.05);
+            gap: 14px;
+            padding-top: 20px;
          }
 
-         .barra-item {
+         /* Render de Barras con Degradados */
+         .columna-grafica {
             flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 6px;
+            background: linear-gradient(180deg, rgba(0, 82, 204, 0.1) 0%, rgba(0, 82, 204, 0.6) 100%);
+            border-radius: 4px 4px 2px 2px;
+            position: relative;
+            border: 1px solid rgba(0, 82, 204, 0.3);
          }
 
-         .barra-rect {
+         .columna-grafica.oro {
+            background: linear-gradient(180deg, rgba(255, 153, 0, 0.2) 0%, rgba(255, 153, 0, 0.7) 100%);
+            border: 1px solid rgba(255, 153, 0, 0.5);
+            box-shadow: 0 0 30px rgba(255, 153, 0, 0.15);
+         }
+
+         /* Líneas Vectoriales de Tendencia con animación de pulso sutil */
+         .linea-tendencia {
+            position: absolute;
+            left: 0;
             width: 100%;
-            background: linear-gradient(180deg, rgba(0, 82, 204, 0.3) 0%, var(--azul-premium) 100%);
-            border-radius: 6px 6px 0 0;
-            transition: height 1s ease; /* Efecto de carga */
+            height: 2px;
+            background: rgba(255, 255, 255, 0.15);
+            pointer-events: none;
          }
+         .linea-tendencia.alta { bottom: 85%; border-top: 1px dashed rgba(0, 255, 102, 0.2); }
+         .linea-tendencia.baja { bottom: 35%; border-top: 1px dashed rgba(255, 255, 255, 0.05); }
 
-         .barra-rect.destacada {
-            background: linear-gradient(180deg, rgba(255, 153, 0, 0.4) 0%, var(--naranja-acento) 100%);
-            box-shadow: 0 0 20px var(--naranja-glow);
-         }
-
-         .barra-label {
-            font-size: 9px;
-            color: var(--texto-secundario);
-            font-weight: 500;
-         }
-
-         /* FOOTER MINIMALISTA */
-         .footer-wrap {
+         /* --- PIE DE PÁGINA --- */
+         .footer-bloque {
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
             gap: 16px;
-            border-top: 1px solid var(--borde-sutil);
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
             padding-top: 24px;
             font-size: 13px;
-            color: rgba(163, 194, 240, 0.4);
+            color: rgba(143, 160, 181, 0.4);
          }
 
-         .especialidades-link {
+         .lista-certificaciones {
             display: flex;
-            gap: 20px;
+            gap: 28px;
             list-style: none;
          }
 
-         .especialidades-link li {
+         .lista-certificaciones li {
             display: flex;
             align-items: center;
             gap: 8px;
          }
 
-         .especialidades-link li::before {
+         .lista-certificaciones li::before {
             content: "✓";
-            color: var(--azul-premium);
-            font-weight: bold;
+            color: #0052cc;
+            font-weight: 800;
          }
 
-         /* ADAPTACIÓN RESPONSIVA */
+         /* RESPONSIVE */
          @media (max-width: 992px) {
-            .grid-principal {
-               grid-template-columns: 1fr;
-               gap: 60px;
-               text-align: center;
-            }
-
-            p.introduccion {
-               margin-left: auto;
-               margin-right: auto;
-            }
-
-            .area-acciones {
-               justify-content: center;
-            }
-
-            .interfaz-contenedor {
-               max-width: 500px;
-               margin: 0 auto;
-            }
-         }
-
-         @media (max-width: 768px) {
-            .top-bar {
-               flex-direction: column;
-               gap: 20px;
-            }
-            
-            .menu-superior ul {
-               gap: 16px;
-            }
-         }
-
-         @media (max-width: 576px) {
-            .logo-icono {
-               height: 44px;
-            }
-
-            .especialidades-link {
-               flex-direction: column;
-               gap: 8px;
-               text-align: center;
-               width: 100%;
-            }
+            .grid-principal { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+            p.introduccion { margin-0: auto; margin-right: auto; }
+            .caja-botones { justify-content: center; }
+            .dashboard-marco { max-width: 500px; margin: 0 auto; }
+            .menu-estricto { display: none; }
          }
       </style>
    </head>
    <body>
 
-      <div class="fondo-abstracto"></div>
+      <div class="capa-universo">
+         <div class="red-esferica-abstracta"></div>
+         <div class="hipercubo-abstracto"></div>
+      </div>
 
       <div class="contenedor pantalla-portada">
          
          <header class="top-bar">
-            <div class="logo-wrapper">
-               <img src="Neo1.png" alt="NeoDat Consultores" class="logo-icono">
-            </div>
+            <a href="index.html" class="logo-link">
+               <img src="Neo1.png" alt="NeoDat Consultores">
+            </a>
             
-            <nav class="menu-superior">
+            <nav class="menu-estricto">
                <ul>
-                  <li><a href="#soluciones">Soluciones</a></li>
-                  <li><a href="#nosotros">Nosotros</a></li>
-                  <li><a href="#ambitos">Ámbitos</a></li>
-                  <li><a href="#contacto">Contacto</a></li>
+                  <li><a href="servicios.html">Soluciones</a></li>
+                  <li><a href="metodo.html">Nuestro Método</a></li>
+                  <li><a href="ambitos.html">Especialidades</a></li>
+                  <li><a href="contacto.html">Contacto</a></li>
                </ul>
             </nav>
 
-            <div class="status-indicador">
-               <span class="status-punto"></span> PLATAFORMA CORPORATIVA ACTIVA
+            <div class="badge-interactivo">
+               PLATAFORMA CORPORATIVA ACTIVA
             </div>
          </header>
 
          <main class="grid-principal">
             
-            <section class="texto-hero">
-               <span class="tagline">Ingeniería de Gestión & BI</span>
+            <section>
+               <span class="subtitulo-bloque">Ingeniería de Gestión & BI</span>
                <h1>Transformamos la complejidad en <span>dirección absoluta.</span></h1>
-               <p class="introduccion">Estructuramos ecosistemas de datos avanzados y modelos financieros de alta precisión para dotar a su organización de un absoluto control ejecutivo y permanente.</p>
+               <p class="introduccion">Estructuramos ecosistemas de datos avanzados y modelos financieros de alta precisión para dotar a su organización de un control ejecutivo permanente.</p>
                
-               <div class="area-acciones">
-                  <a href="#plataforma" class="btn btn-primario">Entrar a la Plataforma</a>
-                  <a href="#consultoria" class="btn btn-secundario">Consultoría Directa</a>
+               <div class="caja-botones">
+                  <a href="servicios.html" class="btn btn-azul">Entrar a la Plataforma</a>
+                  <a href="contacto.html" class="btn btn-vacio">Consultoría Directa</a>
                </div>
             </section>
 
-            <section class="interfaz-contenedor" id="plataforma">
-               <div class="interfaz-header">
-                  <div class="interfaz-titulo">
-                     Ecosistema NeoDat
+            <section class="dashboard-marco">
+               <div class="dashboard-top">
+                  <div class="dashboard-meta">
+                     <strong>Ecosistema NeoDat</strong>
                      <span>Monitoreo de Infraestructura Global</span>
                   </div>
-                  <div style="font-size: 11px; font-weight: 700; color: var(--naranja-acento); text-transform: uppercase; letter-spacing: 0.5px;">Métricas de Control</div>
+                  <div class="txt-alert-orange">Métricas de Control</div>
                </div>
                
-               <div class="interfaz-metricas">
-                  <div class="metrica-card">
+               <div class="dashboard-metricas">
+                  <div class="tarjeta-kpi">
                      <small>Optimización de Procesos</small>
-                     <div>94.2%<span>↑ 4.1%</span></div>
+                     <div>94.2% <span>↑ 4.1%</span></div>
                   </div>
-                  <div class="metrica-card">
+                  <div class="tarjeta-kpi">
                      <small>Margen Neto de Operación</small>
-                     <div>31.8%<span>↑ 2.3%</span></div>
+                     <div>31.8% <span>↑ 2.3%</span></div>
                   </div>
                </div>
 
-               <div class="grafico-barras">
-                  <div class="barra-item">
-                     <div class="barra-rect" style="height: 35%;"></div>
-                     <span class="barra-label">S1</span>
-                  </div>
-                  <div class="barra-item">
-                     <div class="barra-rect" style="height: 55%;"></div>
-                     <span class="barra-label">S2</span>
-                  </div>
-                  <div class="barra-item">
-                     <div class="barra-rect" style="height: 80%;"></div>
-                     <span class="barra-label">S3</span>
-                  </div>
-                  <div class="barra-item">
-                     <div class="barra-rect destacada" style="height: 95%;"></div>
-                     <span class="barra-label">S4</span>
-                  </div>
-                  <div class="barra-item">
-                     <div class="barra-rect" style="height: 70%;"></div>
-                     <span class="barra-label">S5</span>
-                  </div>
+               <div class="contenedor-grafico-onda">
+                  <div class="linea-tendencia alta"></div>
+                  <div class="linea-tendencia baja"></div>
+                  
+                  <div class="columna-grafica" style="height: 25%;"></div>
+                  <div class="columna-grafica" style="height: 45%;"></div>
+                  <div class="columna-grafica" style="height: 60%;"></div>
+                  <div class="columna-grafica oro" style="height: 90%;"></div>
+                  <div class="columna-grafica" style="height: 52%;"></div>
                </div>
             </section>
 
          </main>
 
-         <footer class="footer-wrap">
+         <footer class="footer-bloque">
             <span>© 2026 NeoDat Consultores. Todos los derechos reservados.</span>
-            <ul class="especialidades-link">
+            <ul class="lista-certificaciones">
                <li>Análisis Predictivo</li>
                <li>Modelado Matemático</li>
                <li>Arquitectura de Datos</li>
