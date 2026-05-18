@@ -3,14 +3,12 @@
 <head>
    <meta charset="UTF-8" />
    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
    <title>Contacto | NeoDat Consultores</title>
-
    <link rel="icon" type="image/png" sizes="32x32" href="Neo1.png">
-
+   <meta name="description" content="NeoDat Consultores offers solutions in analysis of data, dashboards, finanzas, control de gestión, proyectos y desarrollo web empresarial." />
+   
    <link rel="preconnect" href="https://fonts.googleapis.com" />
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
    <style>
@@ -20,6 +18,7 @@
          --azul-medio: #27456f;
          --azul-claro: #edf2f8;
          --naranja: #ffa500;
+         --naranja-brillo: rgba(255, 165, 0, 0.15);
          --blanco: #ffffff;
          --gris: #f8fafc;
          --gris-2: rgba(22, 43, 78, 0.06); 
@@ -27,10 +26,10 @@
          --texto: #243447;
          --texto-suave: #66788a;
          --sombra: 0 10px 30px rgba(7, 23, 45, 0.04);
-         --sombra-fuerte: 0 20px 50px rgba(7, 23, 45, 0.08);
+         --sombra-fuerte: 0 20px 50px rgba(7, 23, 45, 0.15);
          --exito: #10b981;
       }
-
+      
       /* CONFIGURACIÓN ESTRUCTURAL */
       html, body {
          height: 100%;
@@ -62,10 +61,7 @@
          text-decoration: none;
          color: inherit;
       }
-      input,
-      select,
-      textarea,
-      button {
+      input, select, textarea, button {
          font: inherit;
       }
       .contenedor {
@@ -119,8 +115,8 @@
          transform: translateY(-1px);
          box-shadow: 0 6px 16px rgba(37, 211, 102, 0.2);
       }
-
-      /* ESTILOS DE LA INTERFAZ */
+      
+      /* INTERFAZ GENERAL */
       header {
          position: fixed;
          top: 0;
@@ -163,58 +159,103 @@
          color: var(--azul);
          transition: 0.2s ease;
       }
-      
-      nav a:hover,
-      nav a.actual {
+      nav a:hover, nav a.actual {
          background: var(--azul-claro);
          color: var(--azul-oscuro);
       }
-
-      /* HERO CONFIGURACIÓN */
+      
+      /* HERO ESTILO OSCURO CORPORATIVO */
       .hero {
          position: relative;
-         padding: 130px 0 50px; 
-         background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+         padding: 140px 0 70px; 
+         background: radial-gradient(circle at 80% 20%, rgba(255, 165, 0, 0.15) 0%, transparent 50%),
+                     radial-gradient(circle at 15% 80%, rgba(39, 69, 111, 0.3) 0%, transparent 60%),
+                     linear-gradient(135deg, var(--azul-oscuro) 0%, #0f2544 100%);
          overflow: hidden;
+         text-align: center;
       }
       .hero::before {
          content: "";
          position: absolute;
          inset: 0;
          background-image:
-            linear-gradient(rgba(22, 43, 78, 0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(22, 43, 78, 0.03) 1px, transparent 1px);
-         background-size: 44px 44px;
-         mask-image: linear-gradient(180deg, black, transparent 85%);
+            linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+         background-size: 50px 50px;
+         mask-image: radial-gradient(circle at center, black, transparent 90%);
          pointer-events: none;
+         z-index: 1;
       }
+      .figura {
+         position: absolute;
+         border-radius: 50%;
+         pointer-events: none;
+         z-index: 1;
+         filter: blur(40px);
+         opacity: 0.6;
+      }
+      .figura-1 {
+         top: 10%;
+         right: 5%;
+         width: 250px;
+         height: 250px;
+         background: var(--naranja);
+         filter: blur(80px);
+         opacity: 0.25;
+      }
+      .figura-2 {
+         bottom: -5%;
+         left: 20%;
+         width: 300px;
+         height: 300px;
+         background: var(--azul-medio);
+         filter: blur(60px);
+         opacity: 0.4;
+      }
+      .shapes-container {
+         position: absolute;
+         inset: 0;
+         overflow: hidden;
+         pointer-events: none;
+         z-index: 1;
+      }
+      .shape-circle {
+         position: absolute;
+         border: 2px solid rgba(255, 165, 0, 0.2);
+         border-radius: 50%;
+      }
+      .sc-1 { width: 400px; height: 400px; top: -100px; right: -50px; }
+      .sc-2 { width: 200px; height: 200px; top: 150px; right: 50px; border: 1px dashed rgba(255, 255, 255, 0.1); }
+      .sc-3 { width: 20px; height: 20px; bottom: 15%; left: 45%; background: rgba(255, 165, 0, 0.3); border: none; filter: blur(2px); }
+
       .hero-contenido {
          position: relative;
          z-index: 2;
          max-width: 860px;
          margin: auto;
-         text-align: center;
       }
       h1 {
          margin-bottom: 20px;
-         color: var(--azul-oscuro);
-         font-size: clamp(32px, 4vw, 48px);
-         line-height: 1.2;
-         letter-spacing: -1px;
+         color: var(--blanco);
+         font-size: clamp(24px, 2.8vw, 36px);
+         line-height: 1.25;
+         letter-spacing: -0.5px;
+         font-weight: 800;
       }
       h1 span {
-         color: var(--azul);
+         color: var(--naranja);
       }
       .hero p {
-         max-width: 700px;
+         max-width: 640px;
          margin: 0 auto;
-         color: var(--texto-suave);
+         color: rgba(255, 255, 255, 0.75);
          font-size: 15px;
+         line-height: 1.6;
       }
 
       /* SECCIÓN CONTACTO */
       .contacto-section {
-         padding: 50px 0 80px;
+         padding: 60px 0 90px;
          background: var(--gris);
       }
       .contacto-grid {
@@ -223,8 +264,7 @@
          gap: 32px;
          align-items: start;
       }
-      .info-card,
-      .form-card {
+      .info-card, .form-card {
          border: 1px solid var(--gris-2);
          border-radius: 20px;
          background: #ffffff;
@@ -233,13 +273,13 @@
       .info-card {
          padding: 30px;
       }
-      .info-card h2,
-      .form-card h2 {
+      .info-card h2, .form-card h2 {
          margin-bottom: 16px;
          color: var(--azul-oscuro);
          font-size: 24px;
          line-height: 1.2;
          letter-spacing: -0.5px;
+         font-weight: 800;
       }
       .info-card p {
          margin-bottom: 24px;
@@ -271,8 +311,7 @@
          font-size: 14.5px;
          font-weight: 700;
       }
-      .contacto-item span,
-      .contacto-item a {
+      .contacto-item span, .contacto-item a {
          color: var(--texto-suave);
          font-size: 14px;
          transition: color 0.2s;
@@ -307,11 +346,9 @@
          font-size: 13px;
          font-weight: 700;
       }
-      .campo input,
-      .campo select,
-      .campo textarea {
+      .campo input, .campo select, .campo textarea {
          width: 100%;
-         border: 1px solid var(--gris-2);
+         border: 1px solid rgba(22, 43, 78, 0.1);
          border-radius: 12px;
          background: var(--gris);
          color: var(--texto);
@@ -323,11 +360,8 @@
       .campo textarea {
          min-height: 120px;
          resize: vertical;
-         background: var(--gris);
       }
-      .campo input:focus,
-      .campo select:focus,
-      .campo textarea:focus {
+      .campo input:focus, .campo select:focus, .campo textarea:focus {
          border-color: rgba(22, 43, 78, 0.3);
          background: #ffffff;
          box-shadow: 0 0 0 4px rgba(22, 43, 78, 0.05);
@@ -373,7 +407,7 @@
          font-size: 12px;
       }
 
-      /* FOOTER */
+      /* PIE DE PÁGINA */
       .site-footer {
          background: #07172d;
          color: rgba(255, 255, 255, .72);
@@ -406,21 +440,10 @@
       }
 
       @media (max-width: 980px) {
-         .navbar {
-            height: 64px;
-         }
-         .logo-icono {
-            width: 120px;
-            height: 120px;
-         }
-         .menu-toggle {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-         }
-         .whatsapp-desktop {
-            display: none;
-         }
+         .navbar { height: 64px; }
+         .logo-icono { width: 120px; height: 120px; }
+         .menu-toggle { display: flex; align-items: center; justify-content: center; }
+         .whatsapp-desktop { display: none; }
          nav.menu {
             position: absolute;
             top: 64px;
@@ -431,9 +454,7 @@
             border-bottom: 1px solid rgba(22,43,78,.08);
             box-shadow: 0 18px 40px rgba(7,23,45,.10);
          }
-         nav.menu.activo {
-            display: block;
-         }
+         nav.menu.activo { display: block; }
          nav.menu ul {
             width: min(1160px, calc(100% - 40px));
             margin: auto;
@@ -456,33 +477,13 @@
       }
 
       @media (max-width: 680px) {
-         .hero {
-            padding: 100px 0 30px;
-         }
-         h1 {
-            font-size: clamp(24px, 6vw, 32px);
-            letter-spacing: -0.5px;
-         }
-         .contacto-section {
-            padding: 30px 0 50px;
-         }
-         .info-card,
-         .form-card {
-            padding: 20px;
-            border-radius: 16px;
-         }
-         .form-grid,
-         .servicios-check {
-            grid-template-columns: 1fr;
-         }
-         .form-actions {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 10px;
-         }
-         .form-actions .btn {
-            width: 100%;
-         }
+         .hero { padding: 110px 0 40px; }
+         h1 { font-size: clamp(21px, 6vw, 28px); line-height: 1.3; letter-spacing: normal; }
+         .contacto-section { padding: 30px 0 50px; }
+         .info-card, .form-card { padding: 20px; border-radius: 16px; }
+         .form-grid, .servicios-check { grid-template-columns: 1fr; }
+         .form-actions { display: grid; grid-template-columns: 1fr; gap: 10px; }
+         .form-actions .btn { width: 100%; }
       }
    </style>
 </head>
@@ -491,15 +492,10 @@
 
    <header>
       <div class="contenedor navbar">
-
          <a href="index.html" class="logo" aria-label="NeoDat Consultores">
             <img src="Neo1.png" class="logo-icono" alt="Logo NeoDat">
          </a>
-
-         <button class="menu-toggle" type="button" aria-label="Abrir menú">
-            ☰
-         </button>
-
+         <button class="menu-toggle" type="button" aria-label="Abrir menú"> ☰ </button>
          <nav class="menu" aria-label="Navegación principal">
             <ul>
                <li><a href="index.html">Inicio</a></li>
@@ -507,54 +503,41 @@
                <li><a href="metodo.html">Método</a></li>
                <li><a href="ambitos.html">Ámbitos</a></li>
                <li><a href="quienes-somos.html">Quiénes somos</a></li>
-               <li><a href="contacto.html" class="actual">Contacto</a></li>
+               <li><a href="contacto.html">Contacto</a></li>
             </ul>
          </nav>
-
-         <a
-            class="btn btn-whatsapp whatsapp-desktop"
-            href="https://wa.me/593988200116?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20NeoDat%20Consultores."
-            target="_blank"
-            rel="noopener"
-         >
+         <a class="btn btn-whatsapp whatsapp-desktop" href="https://wa.me/593988200116?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20NeoDat%20Consultores." target="_blank" rel="noopener">
             WhatsApp
          </a>
-
       </div>
    </header>
 
    <main>
-
       <section class="hero">
+         <div class="figura figura-1"></div>
+         <div class="figura figura-2"></div>
+         <div class="shapes-container">
+            <div class="shape-circle sc-1"></div>
+            <div class="shape-circle sc-2"></div>
+            <div class="shape-circle sc-3"></div>
+         </div>
          <div class="contenedor hero-contenido">
             <h1>Hablemos de su <span>proyecto</span>.</h1>
-            <p>
-               Cuéntenos qué necesita mejorar, automatizar, analizar o estructurar.
-               En NeoDat Consultores revisaremos su requerimiento y le orientaremos
-               con una solución clara y profesional.
-            </p>
+            <p>Cuéntenos qué necesita mejorar, automatizar, analizar o estructurar. En NeoDat Consultores revisaremos su requerimiento y le orientaremos con una solución clara y profesional.</p>
          </div>
       </section>
 
       <section class="contacto-section">
          <div class="contenedor contacto-grid">
-
             <aside class="info-card">
                <h2>Canales de atención.</h2>
-               <p>
-                  Puede comunicarse con nosotros para solicitar información,
-                  coordinar una asesoría o plantear una necesidad empresarial específica.
-               </p>
+               <p>Puede comunicarse con nosotros para solicitar información, coordinar una asesoría o plantear una necesidad empresarial específica.</p>
 
                <div class="contacto-item">
                   <div class="icono">W</div>
                   <div>
                      <strong>WhatsApp</strong>
-                     <a
-                        href="https://wa.me/593988200116?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20NeoDat%20Consultores."
-                        target="_blank"
-                        rel="noopener"
-                     >
+                     <a href="https://wa.me/593988200116?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20NeoDat%20Consultores." target="_blank" rel="noopener">
                         +593 98 820 0116
                      </a>
                   </div>
@@ -564,9 +547,7 @@
                   <div class="icono">@</div>
                   <div>
                      <strong>Correo electrónico</strong>
-                     <a href="mailto:neodatconsultores@gmail.com">
-                        neodatconsultores@gmail.com
-                     </a>
+                     <a href="mailto:neodatconsultores@gmail.com">neodatconsultores@gmail.com</a>
                   </div>
                </div>
 
@@ -574,23 +555,17 @@
                   <div class="icono">N</div>
                   <div>
                      <strong>NeoDat Consultores</strong>
-                     <span>
-                        Consultoría empresarial, analítica, financiera y tecnológica.
-                     </span>
+                     <span>Consultoría empresarial, analítica, financiera y tecnológica.</span>
                   </div>
                </div>
             </aside>
 
             <section class="form-card">
                <h2>Envíenos su requerimiento.</h2>
-               <p>
-                  Complete la información principal. Al enviar, se abrirá su aplicación
-                  de correo con el mensaje listo para remitirlo a NeoDat Consultores.
-               </p>
+               <p>Complete la información principal. Al enviar, se abrirá su aplicación de correo con el mensaje listo para remitirlo a NeoDat Consultores.</p>
 
                <form id="contactoForm">
                   <div class="form-grid">
-
                      <div class="campo">
                         <label for="nombre">Nombre</label>
                         <input id="nombre" name="nombre" type="text" placeholder="Nombre y apellido" required />
@@ -629,68 +604,43 @@
                         <label>Servicio requerido</label>
                         <div class="servicios-check">
                            <label class="check-card">
-                              <input type="checkbox" name="servicio" value="Análisis de datos" />
-                              Análisis de datos
+                              <input type="checkbox" name="servicio" value="Análisis de datos" /> Análisis de datos
                            </label>
                            <label class="check-card">
-                              <input type="checkbox" name="servicio" value="Consultoría financiera" />
-                              Consultoría financiera
+                              <input type="checkbox" name="servicio" value="Consultoría financiera" /> Consultoría financiera
                            </label>
                            <label class="check-card">
-                              <input type="checkbox" name="servicio" value="Dashboards y KPI" />
-                              Dashboards y KPI
+                              <input type="checkbox" name="servicio" value="Dashboards y KPI" /> Dashboards y KPI
                            </label>
                            <label class="check-card">
-                              <input type="checkbox" name="servicio" value="Creación de proyectos" />
-                              Creación de proyectos
+                              <input type="checkbox" name="servicio" value="Creación de proyectos" /> Creación de proyectos
                            </label>
                            <label class="check-card">
-                              <input type="checkbox" name="servicio" value="Página web corporativa" />
-                              Página web corporativa
+                              <input type="checkbox" name="servicio" value="Página web corporativa" /> Página web corporativa
                            </label>
                            <label class="check-card">
-                              <input type="checkbox" name="servicio" value="Control de gestión" />
-                              Control de gestión
+                              <input type="checkbox" name="servicio" value="Control de gestión" /> Control de gestión
                            </label>
                         </div>
                      </div>
 
                      <div class="campo full">
                         <label for="mensaje">Descripción de la necesidad</label>
-                        <textarea
-                           id="mensaje"
-                           name="mensaje"
-                           placeholder="Describa brevemente qué necesita, qué problema busca resolver o qué resultado espera obtener."
-                           required
-                        ></textarea>
+                        <textarea id="mensaje" name="mensaje" placeholder="Describa brevemente qué necesita, qué problema busca resolver o qué resultado espera obtener." required></textarea>
                      </div>
-
                   </div>
 
                   <div class="form-actions">
-                     <button class="btn btn-principal" type="submit">
-                        Enviar requerimiento
-                     </button>
-
-                     <a
-                        class="btn btn-whatsapp"
-                        href="https://wa.me/593988200116?text=Hola,%20quiero%20solicitar%20una%20asesor%C3%ADa%20con%20NeoDat."
-                        target="_blank"
-                        rel="noopener"
-                     >
+                     <button class="btn btn-principal" type="submit">Enviar requerimiento</button>
+                     <a class="btn btn-whatsapp" href="https://wa.me/593988200116?text=Hola,%20quiero%20solicitar%20una%20asesor%C3%ADa%20con%20NeoDat." target="_blank" rel="noopener">
                         Contactar por WhatsApp
                      </a>
                   </div>
-
-                  <p class="nota">
-                     Al continuar, se abrirá su aplicación de correo para completar el envío.
-                  </p>
+                  <p class="nota">Al continuar, se abrirá su aplicación de correo para completar el envío.</p>
                </form>
             </section>
-
          </div>
       </section>
-
    </main>
 
    <footer class="site-footer">
@@ -700,15 +650,24 @@
    </footer>
 
    <script>
+      // Menú móvil
       const menuToggle = document.querySelector(".menu-toggle");
       const menu = document.querySelector(".menu");
-
       menuToggle.addEventListener("click", () => {
          menu.classList.toggle("activo");
       });
 
-      const form = document.getElementById("contactoForm");
+      // Autodetección e iluminación de página activa en el Nav
+      const ubicacionActual = window.location.pathname.split("/").pop() || "index.html";
+      const enlacesMenu = document.querySelectorAll("nav.menu a");
+      enlacesMenu.forEach(enlace => {
+         if (enlace.getAttribute("href") === ubicacionActual) {
+            enlace.classList.add("actual");
+         }
+      });
 
+      // Procesamiento del formulario y envío mailto
+      const form = document.getElementById("contactoForm");
       form.addEventListener("submit", (event) => {
          event.preventDefault();
 
@@ -741,6 +700,5 @@
          window.location.href = "mailto:neodatconsultores@gmail.com?subject=" + subject + "&body=" + body;
       });
    </script>
-
 </body>
 </html>
