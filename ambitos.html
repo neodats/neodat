@@ -5,6 +5,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
    <title>Ámbitos | NeoDat Consultores</title>
    <link rel="icon" type="image/png" sizes="32x32" href="Neo1.png">
+   <meta name="description" content="NeoDat Consultores ofrece soluciones en análisis de data, dashboards, finanzas, control de gestión, proyectos y desarrollo web empresarial." />
    <link rel="preconnect" href="https://fonts.googleapis.com" />
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -16,6 +17,7 @@
          --azul-medio: #27456f;
          --azul-claro: #edf2f8;
          --naranja: #ffa500;
+         --naranja-brillo: rgba(255, 165, 0, 0.15);
          --blanco: #ffffff;
          --gris: #f8fafc;
          --gris-2: rgba(22, 43, 78, 0.06); 
@@ -23,7 +25,7 @@
          --texto: #243447;
          --texto-suave: #66788a;
          --sombra: 0 10px 30px rgba(7, 23, 45, 0.04);
-         --sombra-fuerte: 0 20px 50px rgba(7, 23, 45, 0.08);
+         --sombra-fuerte: 0 20px 50px rgba(7, 23, 45, 0.15);
          --exito: #10b981;
       }
       
@@ -123,6 +125,17 @@
          color: var(--azul-oscuro);
          transform: translateY(-1px);
       }
+      
+      .btn-secundario-oscuro {
+         background: rgba(255, 255, 255, 0.08);
+         color: var(--blanco);
+         border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+      .btn-secundario-oscuro:hover {
+         background: rgba(255, 255, 255, 0.15);
+         border-color: rgba(255, 255, 255, 0.4);
+         transform: translateY(-1px);
+      }
 
       /* ESTILOS DE LA INTERFAZ */
       header {
@@ -174,45 +187,82 @@
          color: var(--azul-oscuro);
       }
 
-      .menu-toggle {
-         display: none;
-         width: 42px;
-         height: 42px;
-         border: 1px solid var(--gris-2);
-         border-radius: 12px;
-         background: #ffffff;
-         color: var(--azul);
-         font-size: 22px;
-         font-weight: 900;
-         cursor: pointer;
-      }
-
-      /* HERO CONFIG */
+      /* HERO REDISEÑADO (Fondo Oscuro Premium) */
       .hero {
          position: relative;
-         padding: 110px 0 40px; 
-         background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+         padding: 140px 0 70px; 
+         background: radial-gradient(circle at 80% 20%, rgba(255, 165, 0, 0.15) 0%, transparent 50%),
+                     radial-gradient(circle at 15% 80%, rgba(39, 69, 111, 0.3) 0%, transparent 60%),
+                     linear-gradient(135deg, var(--azul-oscuro) 0%, #0f2544 100%);
          overflow: hidden;
          display: flex;
          align-items: center;
+         margin-bottom: 0;
       }
+
       .hero::before {
          content: "";
          position: absolute;
          inset: 0;
          background-image:
-            linear-gradient(rgba(22, 43, 78, 0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(22, 43, 78, 0.03) 1px, transparent 1px);
-         background-size: 44px 44px;
-         mask-image: linear-gradient(180deg, black, transparent 85%);
+            linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+         background-size: 50px 50px;
+         mask-image: radial-gradient(circle at center, black, transparent 90%);
          pointer-events: none;
+         z-index: 1;
       }
+
+      /* FIGURAS GEOMÉTRICAS ABSTRACTAS BI */
+      .figura {
+         position: absolute;
+         border-radius: 50%;
+         pointer-events: none;
+         z-index: 1;
+         filter: blur(40px);
+         opacity: 0.6;
+      }
+      .figura-1 {
+         top: 10%;
+         right: 5%;
+         width: 250px;
+         height: 250px;
+         background: var(--naranja);
+         filter: blur(80px);
+         opacity: 0.25;
+      }
+      .figura-2 {
+         bottom: -5%;
+         left: 20%;
+         width: 300px;
+         height: 300px;
+         background: var(--azul-medio);
+         filter: blur(60px);
+         opacity: 0.4;
+      }
+      
+      .shapes-container {
+         position: absolute;
+         inset: 0;
+         overflow: hidden;
+         pointer-events: none;
+         z-index: 1;
+      }
+      .shape-circle {
+         position: absolute;
+         border: 2px solid rgba(255, 165, 0, 0.2);
+         border-radius: 50%;
+      }
+      .sc-1 { width: 400px; height: 400px; top: -100px; right: -50px; }
+      .sc-2 { width: 200px; height: 200px; top: 150px; right: 50px; border: 1px dashed rgba(255, 255, 255, 0.1); }
+      .sc-3 { width: 20px; height: 20px; bottom: 15%; left: 45%; background: rgba(255, 165, 0, 0.3); border: none; filter: blur(2px); }
+
       .hero-grid {
          position: relative;
          z-index: 2;
          display: grid;
          grid-template-columns: 1.1fr 0.9fr;
-         gap: 48px;
+         gap: 50px;
          align-items: center;
       }
       
@@ -231,7 +281,7 @@
          background: var(--naranja);
       }
       .marca-seccion strong {
-         color: var(--azul-medio);
+         color: rgba(255, 255, 255, 0.6);
          font-size: 11px;
          font-weight: 800;
          letter-spacing: 1.5px;
@@ -241,19 +291,21 @@
       h1 {
          max-width: 720px;
          margin-bottom: 20px;
-         color: var(--azul-oscuro);
-         font-size: clamp(28px, 3.8vw, 44px);
-         line-height: 1.2;
-         letter-spacing: -1px;
+         color: var(--blanco);
+         font-size: clamp(24px, 2.8vw, 36px);
+         line-height: 1.25;
+         letter-spacing: -0.5px;
+         font-weight: 800;
       }
-      h1 span {
-         color: var(--azul);
+      h1 font {
+         color: var(--naranja);
       }
+      
       .hero p {
          max-width: 640px;
-         margin-bottom: 28px;
-         color: var(--texto-suave);
-         font-size: 14.5px;
+         margin-bottom: 32px;
+         color: rgba(255, 255, 255, 0.75);
+         font-size: 15px;
          line-height: 1.6;
       }
       .hero-acciones {
@@ -262,18 +314,39 @@
          gap: 12px;
       }
 
-      /* PANEL HERO SIDE */
+      .hero .btn-principal {
+         background: var(--naranja);
+         color: var(--azul-oscuro);
+         border-color: var(--naranja);
+         box-shadow: 0 4px 15px rgba(255, 165, 0, 0.2);
+      }
+      .hero .btn-principal:hover {
+         background: #e69500;
+         border-color: #e69500;
+         box-shadow: 0 6px 22px rgba(255, 165, 0, 0.3);
+      }
+
+      /* PANEL HERO SIDE ASIDE (Estilo Shell Inteligente) */
       .hero-panel {
-         padding: 28px;
-         border-radius: 20px;
-         background: #ffffff;
-         border: 1px solid var(--gris-2);
+         padding: 12px;
+         border-radius: 26px; 
+         background: rgba(255, 255, 255, 0.04);
+         border: 1px solid rgba(255, 255, 255, 0.08); 
+         backdrop-filter: blur(10px);
+         position: relative;
          box-shadow: var(--sombra-fuerte);
+      }
+      .hero-panel-interno {
+         overflow: hidden;
+         border-radius: 16px;
+         background: #ffffff;
+         border: 1px solid rgba(22, 43, 78, 0.08);
+         padding: 24px;
       }
       .hero-panel h2 {
          margin-bottom: 18px;
          color: var(--azul-oscuro);
-         font-size: 20px;
+         font-size: 18px;
          font-weight: 800;
          letter-spacing: -0.5px;
       }
@@ -282,21 +355,23 @@
          gap: 12px;
       }
       .panel-item {
-         padding: 14px 16px;
+         padding: 14px;
          border-radius: 12px;
          background: var(--gris);
          border: 1px solid var(--gris-2);
       }
       .panel-item strong {
          display: block;
-         margin-bottom: 2px;
-         color: var(--azul);
-         font-size: 14px;
-         font-weight: 700;
+         margin-bottom: 4px;
+         color: var(--azul-oscuro);
+         font-size: 13.5px;
+         font-weight: 800;
       }
       .panel-item span {
          color: var(--texto-suave);
-         font-size: 13px;
+         font-size: 12.5px;
+         line-height: 1.5;
+         display: block;
       }
 
       /* SECCIONES COMUNES */
@@ -316,9 +391,10 @@
       .encabezado h2 {
          margin-bottom: 14px;
          color: var(--azul-oscuro);
-         font-size: clamp(24px, 3.2vw, 34px);
-         line-height: 1.2;
+         font-size: clamp(24px, 3.2vw, 32px);
+         line-height: 1.25;
          letter-spacing: -0.8px;
+         font-weight: 800;
       }
       .encabezado p {
          color: var(--texto-suave);
@@ -355,7 +431,7 @@
       .ambito h3 {
          margin-bottom: 12px;
          color: var(--azul-oscuro);
-         font-size: 20px;
+         font-size: 19px;
          font-weight: 800;
          letter-spacing: -0.3px;
       }
@@ -388,25 +464,31 @@
          background: #ffffff;
          border: 1px solid var(--gris-2);
          box-shadow: var(--sombra);
+         transition: all 0.25s ease;
+      }
+      .caso:hover {
+         transform: translateY(-2px);
+         box-shadow: var(--sombra-fuerte);
       }
       .caso strong {
          display: block;
          margin-bottom: 10px;
-         color: var(--azul);
-         font-size: 17px;
-         font-weight: 750;
-         line-height: 1.3;
+         color: var(--azul-oscuro);
+         font-size: 16px;
+         font-weight: 800;
+         line-height: 1.35;
       }
       .caso span {
          color: var(--texto-suave);
-         font-size: 14px;
+         font-size: 13.5px;
          line-height: 1.6;
+         display: block;
       }
 
       /* SECCIÓN IMPACTO PREMIUM */
       .impacto {
          padding: 64px 0;
-         background: linear-gradient(135deg, var(--azul), var(--azul-oscuro));
+         background: linear-gradient(135deg, var(--azul-oscuro) 0%, #0f2544 100%);
          color: #ffffff;
          text-align: center;
          position: relative;
@@ -415,15 +497,15 @@
          max-width: 800px;
          margin: 0 auto 16px;
          color: #ffffff;
-         font-size: clamp(24px, 3.2vw, 36px);
-         line-height: 1.2;
+         font-size: clamp(24px, 3.2vw, 34px);
+         line-height: 1.25;
          letter-spacing: -0.8px;
          font-weight: 800;
       }
       .impacto p {
          max-width: 720px;
          margin: 0 auto 28px;
-         color: rgba(255, 255, 255, 0.8);
+         color: rgba(255, 255, 255, 0.75);
          font-size: 15px;
          line-height: 1.6;
       }
@@ -438,7 +520,21 @@
          box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
       }
 
-      /* FOOTER */
+      /* RESPONSIVO Y MENÚ MÓVIL */
+      .menu-toggle {
+         display: none;
+         width: 42px;
+         height: 42px;
+         border: 1px solid var(--gris-2);
+         border-radius: 12px;
+         background: #ffffff;
+         color: var(--azul);
+         font-size: 22px;
+         font-weight: 900;
+         cursor: pointer;
+      }
+      
+      /* PIE DE PÁGINA */
       .site-footer {
          background: #07172d;
          color: rgba(255, 255, 255, .72);
@@ -455,14 +551,12 @@
          font-size: 11.5px;
          color: rgba(255, 255, 255, .52);
       }
-
-      /* RESPONSIVO MÓVIL Y ADAPTACIONES REFINADAS */
+      
       @media (max-width: 980px) {
          .navbar { height: 64px; }
          .logo-icono { width: 120px; height: 120px; }
          .menu-toggle { display: flex; align-items: center; justify-content: center; }
          .whatsapp-desktop { display: none; }
-         
          nav.menu {
             position: absolute;
             top: 64px;
@@ -489,37 +583,17 @@
             background: var(--gris);
             font-size: 13px;
          }
-         
-         .hero-grid, .casos-grid {
-            grid-template-columns: 1fr;
-            gap: 36px;
-         }
-         .ambitos-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-         }
+         .hero-grid, .casos-grid { grid-template-columns: 1fr; gap: 40px; }
+         .ambitos-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
       }
-
       @media (max-width: 680px) {
-         .hero { padding: 100px 0 30px; }
-         h1 { font-size: clamp(22px, 6vw, 30px); letter-spacing: -0.5px; }
-         .hero p, .encabezado p, .impacto p { font-size: 14px; }
-         
-         .hero-acciones {
-            display: grid;
-            grid-template-columns: 1fr;
-            width: 100%;
-            gap: 10px;
-         }
+         .hero { padding: 110px 0 40px; }
+         .ambitos-grid { grid-template-columns: 1fr; }
+         h1 { font-size: clamp(21px, 6vw, 28px); line-height: 1.3; letter-spacing: normal; }
+         .hero-acciones { display: grid; grid-template-columns: 1fr; width: 100%; gap: 10px; }
          .hero-acciones .btn { width: 100%; }
          .section { padding: 48px 0; }
-         
-         .ambitos-grid {
-            grid-template-columns: 1fr;
-         }
-         .ambito, .hero-panel, .caso {
-            padding: 22px;
-         }
+         .ambito, .hero-panel, .caso { padding: 22px; }
       }
    </style>
 </head>
@@ -531,74 +605,63 @@
          <a href="index.html" class="logo" aria-label="NeoDat Consultores">
             <img src="Neo1.png" class="logo-icono" alt="Logo NeoDat">
          </a>
-
-         <button class="menu-toggle" type="button" aria-label="Abrir menú">
-            ☰
-         </button>
-
+         <button class="menu-toggle" type="button" aria-label="Abrir menú"> ☰ </button>
          <nav class="menu" aria-label="Navegación principal">
             <ul>
                <li><a href="index.html">Inicio</a></li>
                <li><a href="servicios.html">Servicios</a></li>
                <li><a href="metodo.html">Método</a></li>
-               <li><a href="ambitos.html" class="actual">Ámbitos</a></li>
+               <li><a href="ambitos.html">Ámbitos</a></li>
                <li><a href="quienes-somos.html">Quiénes somos</a></li>
                <li><a href="contacto.html">Contacto</a></li>
             </ul>
          </nav>
-
-         <a 
-            class="btn btn-whatsapp whatsapp-desktop" 
-            href="https://wa.me/593988200116?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20NeoDat%20Consultores." 
-            target="_blank" 
-            rel="noopener"
-         >
+         <a class="btn btn-whatsapp whatsapp-desktop" href="https://wa.me/593988200116?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20NeoDat%20Consultores." target="_blank" rel="noopener">
             WhatsApp
          </a>
       </div>
    </header>
 
    <main>
-
       <section class="hero">
+         <div class="figura figura-1"></div>
+         <div class="figura figura-2"></div>
+         <div class="shapes-container">
+            <div class="shape-circle sc-1"></div>
+            <div class="shape-circle sc-2"></div>
+            <div class="shape-circle sc-3"></div>
+         </div>
+
          <div class="contenedor hero-grid">
             <div>
                <div class="marca-seccion">
                   <span></span>
                   <strong>Ámbitos de intervención</strong>
                </div>
-               <h1>
-                  Intervenimos donde la información afecta la <span>gestión del negocio</span>.
-               </h1>
-               <p>
-                  NeoDat trabaja en áreas donde la falta de control, datos dispersos,
-                  reportes manuales o procesos poco claros limitan la capacidad de decidir,
-                  ejecutar y crecer.
-               </p>
+               <h1>Intervenimos donde la información afecta la <font>gestión del negocio</font>.</h1>
+               <p>NeoDat trabaja en áreas donde la falta de control, datos dispersos, reportes manuales o procesos poco claros limitan la capacidad de decidir, ejecutar y crecer.</p>
                <div class="hero-acciones">
-                  <a class="btn btn-principal" href="contacto.html">
-                     Solicitar análisis <span>→</span>
-                  </a>
-                  <a class="btn btn-whatsapp" href="https://wa.me/593988200116?text=Hola,%20quiero%20solicitar%20una%20asesor%C3%ADa%20con%20NeoDat." target="_blank" rel="noopener">
-                     Contactar por WhatsApp
-                  </a>
+                  <a class="btn btn-principal" href="contacto.html">Solicitar análisis <span>→</span></a>
+                  <a class="btn btn-whatsapp" href="https://wa.me/593988200116?text=Hola,%20quiero%20solicitar%20una%20asesor%C3%ADa%20con%20NeoDat." target="_blank" rel="noopener">Contactar por WhatsApp</a>
                </div>
             </div>
 
             <aside class="hero-panel">
-               <h2>¿Cuándo tiene sentido intervenir?</h2>
-               <div class="panel-lista">
-                  <div class="panel-item">
-                     <strong>Cuando hay datos, pero no claridad.</strong>
-                     <span>La información existe, pero no se traduce en decisiones.</span>
-                  </div>
-                  <div class="panel-item">
-                     <strong>Cuando los reportes dependen de trabajo manual.</strong>
-                     <span>La empresa pierde tiempo preparando información repetitiva.</span>
-                  </div>
-                  <div class="panel-item">
-                     <strong>Cuando la gerencia no tiene visibilidad suficiente.</strong>
-                     <span>Ventas, costos, proyectos o resultados no se monitorean con oportunidad.</span>
+               <div class="hero-panel-interno">
+                  <h2>¿Cuándo tiene sentido intervenir?</h2>
+                  <div class="panel-lista">
+                     <div class="panel-item">
+                        <strong>Cuando hay datos, pero no claridad.</strong>
+                        <span>La información existe, pero no se traduce en decisiones estratégicas eficientes.</span>
+                     </div>
+                     <div class="panel-item">
+                        <strong>Cuando los reportes dependen de trabajo manual.</strong>
+                        <span>La empresa pierde tiempo valioso preparando información operativa repetitiva.</span>
+                     </div>
+                     <div class="panel-item">
+                        <strong>Cuando la gerencia no tiene visibilidad suficiente.</strong>
+                        <span>Ventas, costos, proyectos o resultados no se monitorean con la debida oportunidad.</span>
+                     </div>
                   </div>
                </div>
             </aside>
@@ -614,20 +677,14 @@
                   <span></span>
                </div>
                <h2>Áreas donde ordenamos información, control y ejecución.</h2>
-               <p>
-                  Estos frentes empresariales son donde NeoDat puede aportar análisis,
-                  estructura y herramientas digitales avanzadas para mejorar la gestión y control gerencial.
-               </p>
+               <p>Estos frentes empresariales son donde NeoDat puede aportar análisis, estructura y herramientas digitales avanzadas para mejorar la gestión y control gerencial.</p>
             </div>
 
             <div class="ambitos-grid">
                <article class="ambito">
                   <div class="ambito-num">01 / Finanzas</div>
                   <h3>Finanzas y rentabilidad</h3>
-                  <p>
-                     Para empresas que necesitan entender mejor ingresos, costos,
-                     márgenes, presupuestos y resultados económicos.
-                  </p>
+                  <p>Para empresas que necesitan entender mejor ingresos, costos, márgenes, presupuestos y resultados económicos.</p>
                   <ul>
                      <li>Rentabilidad por línea, cliente o unidad.</li>
                      <li>Control de ingresos, gastos y márgenes.</li>
@@ -638,10 +695,7 @@
                <article class="ambito">
                   <div class="ambito-num">02 / Gerencia</div>
                   <h3>Dirección y toma de decisiones</h3>
-                  <p>
-                     Para equipos directivos que requieren indicadores claros,
-                     reportes ejecutivos y lectura rápida del desempeño.
-                  </p>
+                  <p>Para equipos directivos que requieren indicadores claros, reportes ejecutivos y lectura rápida del desempeño.</p>
                   <ul>
                      <li>Paneles gerenciales automatizados.</li>
                      <li>Indicadores clave de gestión (KPIs).</li>
@@ -652,10 +706,7 @@
                <article class="ambito">
                   <div class="ambito-num">03 / Operación</div>
                   <h3>Operaciones y procesos</h3>
-                  <p>
-                     Para organizaciones con procesos manuales, información fragmentada
-                     o baja trazabilidad en su operación diaria.
-                  </p>
+                  <p>Para organizaciones con procesos manuales, información fragmentada o baja trazabilidad en su operación diaria.</p>
                   <ul>
                      <li>Mapeo de procesos críticos.</li>
                      <li>Automatización estructurada de reportes.</li>
@@ -666,10 +717,7 @@
                <article class="ambito">
                   <div class="ambito-num">04 / Comercial</div>
                   <h3>Comercial y ventas</h3>
-                  <p>
-                     Para negocios que necesitan analizar ventas, clientes,
-                     cumplimiento de metas y oportunidades comerciales.
-                  </p>
+                  <p>Para negocios que necesitan analizar ventas, clientes, cumplimiento de metas y oportunidades comerciales.</p>
                   <ul>
                      <li>Seguimiento de ventas histórico y diario.</li>
                      <li>Indicadores y tendencias comerciales.</li>
@@ -680,10 +728,7 @@
                <article class="ambito">
                   <div class="ambito-num">05 / Proyectos</div>
                   <h3>Proyectos e instituciones</h3>
-                  <p>
-                     Para iniciativas que requieren planificación, seguimiento,
-                     documentación, control de avances y medición de resultados.
-                  </p>
+                  <p>Para iniciativas que requieren planificación, seguimiento, documentación, control de avances y medición de resultados.</p>
                   <ul>
                      <li>Control de hitos clave y entregables.</li>
                      <li>Gestión integral de PMO.</li>
@@ -694,10 +739,7 @@
                <article class="ambito">
                   <div class="ambito-num">06 / Datos</div>
                   <h3>Tecnología y datos</h3>
-                  <p>
-                     Para empresas que buscan ordenar información, conectar herramientas
-                     digitales y convertir datos en activos de gestión.
-                  </p>
+                  <p>Para empresas que buscan ordenar información, conectar herramientas digitales y convertir datos en activos de gestión.</p>
                   <ul>
                      <li>Estructuración avanzada de bases de datos.</li>
                      <li>Integración inteligente de información dispersa.</li>
@@ -722,34 +764,22 @@
             <div class="casos-grid">
                <div class="caso">
                   <strong>La empresa vende, pero no sabe qué tan rentable es.</strong>
-                  <span>
-                     Ordenamos la información financiera para identificar márgenes,
-                     costos, líneas rentables y puntos críticos.
-                  </span>
+                  <span>Ordenamos la información financiera para identificar márgenes, costos, líneas rentables y puntos críticos.</span>
                </div>
 
                <div class="caso">
                   <strong>La gerencia recibe reportes tarde o incompletos.</strong>
-                  <span>
-                     Automatizamos información clave para que los indicadores estén disponibles
-                     con mayor oportunidad y consistencia.
-                  </span>
+                  <span>Automatizamos información clave para que los indicadores estén disponibles con mayor oportunidad y consistencia.</span>
                </div>
 
                <div class="caso">
                   <strong>Los proyectos avanzan, pero no existe control claro.</strong>
-                  <span>
-                     Diseñamos estructuras de seguimiento, hitos, responsables, cronogramas
-                     y reportes analíticos de avance.
-                  </span>
+                  <span>Diseñamos estructuras de seguimiento, hitos, responsables, cronogramas y reportes analíticos de avance.</span>
                </div>
 
                <div class="caso">
                   <strong>La información está repartida en varios archivos.</strong>
-                  <span>
-                     Consolidamos datos y construimos modelos que permiten analizar,
-                     comparar y decidir con mayor precisión.
-                  </span>
+                  <span>Consolidamos datos y construimos modelos que permiten analizar, comparar y decidir con mayor precisión.</span>
                </div>
             </div>
          </div>
@@ -758,16 +788,12 @@
       <section class="impacto">
          <div class="contenedor">
             <h2>No trabajamos sobre áreas aisladas. Conectamos información, gestión y decisión.</h2>
-            <p>
-               El valor de NeoDat está en integrar finanzas, datos, procesos, proyectos
-               y tecnología para que la empresa pueda operar con absoluta claridad de objetivos.
-            </p>
+            <p>El valor de NeoDat está en integrar finanzas, datos, procesos, proyectos y tecnología para que la empresa pueda operar con absoluta claridad de objetivos.</p>
             <a class="btn btn-whatsapp" href="https://wa.me/593988200116?text=Hola,%20quiero%20solicitar%20una%20evaluaci%C3%B3n%20con%20NeoDat." target="_blank" rel="noopener">
                Solicitar una evaluación
             </a>
          </div>
       </section>
-
    </main>
 
    <footer class="site-footer">
@@ -777,13 +803,22 @@
    </footer>
 
    <script>
+      // Menú móvil
       const menuToggle = document.querySelector(".menu-toggle");
       const menu = document.querySelector(".menu");
-
       menuToggle.addEventListener("click", () => {
          menu.classList.toggle("activo");
       });
-   </script>
 
+      // Autodetección de página activa para resaltar el menú
+      const ubicacionActual = window.location.pathname.split("/").pop() || "index.html";
+      const enlacesMenu = document.querySelectorAll("nav.menu a");
+
+      enlacesMenu.forEach(enlace => {
+         if (enlace.getAttribute("href") === ubicacionActual) {
+            enlace.classList.add("actual");
+         }
+      });
+   </script>
 </body>
 </html>
