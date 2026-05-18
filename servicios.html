@@ -399,28 +399,62 @@
             font-weight: 900;
          }
 
-         /* BLOQUE FINAL PREMIUM (CTA) */
+         /* BLOQUE FINAL PREMIUM (ESTILO COMPLETO DE VENTANA CON GRAN SOMBRA) */
+         .bloque-final-wrapper {
+            width: 100%;
+            padding: 64px 20px 20px;
+            background: #ffffff;
+            display: flex;
+            justify-content: center;
+         }
          .bloque-final {
-            margin-top: 64px;
-            padding: 48px;
-            border-radius: 24px;
-            background: linear-gradient(145deg, var(--azul), var(--azul-oscuro));
+            width: 100%;
+            max-width: 1240px;
+            padding: 72px 48px;
+            border-radius: 28px;
+            background: #091a30;
             color: #ffffff;
             text-align: center;
-            box-shadow: var(--sombra-fuerte);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 30px 70px rgba(7, 23, 45, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.03);
          }
          .bloque-final h2 {
             color: #ffffff;
-            max-width: 680px;
-            margin: 0 auto 14px;
+            max-width: 750px;
+            margin: 0 auto 16px;
+            font-size: clamp(24px, 3vw, 36px);
+            font-weight: 700;
+            line-height: 1.3;
          }
          .bloque-final p {
-            max-width: 620px;
-            margin: 0 auto 24px;
+            max-width: 680px;
+            margin: 0 auto 32px;
             color: rgba(255, 255, 255, 0.75);
-            font-size: 14.5px;
+            font-size: 15px;
             line-height: 1.6;
+         }
+
+         /* Botón estilo contorno verde premium de la imagen */
+         .btn-cta-verde {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 12px 32px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            background: transparent;
+            color: #10b981;
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            transition: all 0.25s ease;
+         }
+         .btn-cta-verde:hover {
+            background: rgba(16, 185, 129, 0.08);
+            border-color: #10b981;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.15);
          }
 
          /* RESPONSIVO */
@@ -491,14 +525,24 @@
                gap: 20px;
             }
          }
+         @media (max-width: 768px) {
+            .bloque-final {
+               padding: 56px 24px;
+               border-radius: 20px;
+            }
+            .bloque-final-wrapper {
+               padding: 40px 16px 16px;
+            }
+            .btn-cta-verde {
+               width: 100%;
+            }
+         }
          @media (max-width: 680px) {
             .hero { padding: 110px 0 40px; }
             .servicios-section { padding: 40px 0 60px; }
             .servicios-grid { grid-template-columns: 1fr; gap: 16px; }
             .servicio-img { height: 160px; }
             .servicio-body { padding: 20px; }
-            .bloque-final { padding: 32px 20px; margin-top: 40px; }
-            .bloque-final .btn { width: 100%; }
          }
       </style>
    </head>
@@ -703,11 +747,13 @@
                      </div>
                   </article>
                </div>
+            </div>
 
+            <div class="bloque-final-wrapper">
                <div class="bloque-final">
                   <h2>Diseñamos soluciones según la necesidad real de cada empresa.</h2>
                   <p>Podemos iniciar con un diagnóstico, construir una herramienta específica o desarrollar una solución integral que conecte datos, finanzas, procesos, proyectos y tecnología.</p>
-                  <a class="btn btn-whatsapp" href="https://wa.me/593988200116?text=Hola,%20quiero%20solicitar%20informaci%C3%B3n%20sobre%20los%20servicios%20de%20NeoDat." target="_blank" rel="noopener">Solicitar información</a>
+                  <a class="btn btn-cta-verde" href="https://wa.me/593988200116?text=Hola,%20quiero%20solicitar%20informaci%C3%B3n%20sobre%20los%20servicios%20de%20NeoDat." target="_blank" rel="noopener">Solicitar información</a>
                </div>
             </div>
          </section>
