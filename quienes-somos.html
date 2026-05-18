@@ -1,570 +1,527 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-   <meta charset="UTF-8" />
-   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   <title>Quiénes Somos | NeoDat Consultores</title>
-   <link rel="icon" type="image/png" sizes="32x32" href="Neo1.png">
-   <meta name="description" content="NeoDat Consultores integra experiencia financiera, tecnológica y analítica. Conoce a nuestro equipo multidisciplinario de expertos." />
-   
-   <link rel="preconnect" href="https://fonts.googleapis.com" />
-   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-
-   <style>
-      :root {
-         --azul: #162b4e;
-         --azul-oscuro: #07172d;
-         --azul-medio: #27456f;
-         --azul-claro: #edf2f8;
-         --naranja: #ffa500;
-         --blanco: #ffffff;
-         --gris: #f8fafc;
-         --gris-2: rgba(22, 43, 78, 0.06); 
-         --gris-3: #f1f5f9;
-         --texto: #243447;
-         --texto-suave: #627d98;
-      }
-
-      * {
-         margin: 0;
-         padding: 0;
-         box-sizing: border-box;
-      }
-
-      html {
-         scroll-behavior: smooth;
-      }
-
-      body {
-         font-family: "Inter", Arial, sans-serif;
-         background: var(--blanco);
-         color: var(--texto);
-         line-height: 1.6;
-         overflow-x: hidden;
-      }
-
-      a {
-         text-decoration: none;
-         color: inherit;
-      }
-
-      .contenedor {
-         width: min(1160px, calc(100% - 40px));
-         margin: auto;
-      }
-
-      /* HEADER & NAVBAR */
-      header {
-         position: fixed;
-         top: 0;
-         left: 0;
-         z-index: 100;
-         width: 100%;
-         background: rgba(255, 255, 255, 0.94);
-         backdrop-filter: blur(18px);
-         -webkit-backdrop-filter: blur(18px);
-         border-bottom: 1px solid rgba(22, 43, 78, 0.06);
-      }
-
-      .navbar {
-         height: 78px;
-         display: flex;
-         align-items: center;
-         justify-content: space-between;
-         gap: 28px;
-      }
-
-      .logo {
-         display: flex;
-         align-items: center;
-      }
-
-      .logo-icono {
-         width: 160px;
-         height: 160px;
-         object-fit: contain;
-      }
-
-      nav ul {
-         list-style: none;
-         display: flex;
-         align-items: center;
-         gap: 6px;
-      }
-
-      nav a {
-         display: inline-flex;
-         padding: 10px 16px;
-         border-radius: 999px;
-         font-size: 14px;
-         font-weight: 700;
-         color: var(--azul-medio);
-         transition: all 0.2s ease;
-      }
-
-      nav a:hover {
-         background: var(--azul-claro);
-         color: var(--azul);
-      }
-
-      nav li.activo a {
-         background: var(--azul);
-         color: var(--blanco);
-      }
-
-      /* BOTONES */
-      .btn {
-         display: inline-flex;
-         align-items: center;
-         justify-content: center;
-         min-height: 48px;
-         padding: 13px 24px;
-         border-radius: 999px;
-         border: 0;
-         font-size: 14px;
-         font-weight: 800;
-         transition: transform 0.2s ease, box-shadow 0.2s ease;
-         cursor: pointer;
-      }
-
-      .btn:hover {
-         transform: translateY(-1px);
-      }
-
-      .btn-whatsapp {
-         background: #25D366;
-         color: var(--blanco);
-         box-shadow: 0 4px 14px rgba(37, 211, 102, 0.2);
-      }
-
-      .btn-whatsapp:hover {
-         background: #20ba5a;
-         box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
-      }
-
-      /* HERO SECTION */
-      .hero {
-         position: relative;
-         padding: 160px 0 80px;
-         background: linear-gradient(180deg, #ffffff 0%, #f4f8fd 100%);
-         overflow: hidden;
-      }
-
-      .hero::before {
-         content: "";
-         position: absolute;
-         inset: 0;
-         background-image: 
-            linear-gradient(rgba(22, 43, 78, 0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(22, 43, 78, 0.03) 1px, transparent 1px);
-         background-size: 44px 44px;
-         mask-image: linear-gradient(180deg, black 50%, transparent 95%);
-         -webkit-mask-image: linear-gradient(180deg, black 50%, transparent 95%);
-      }
-
-      .hero-contenido {
-         position: relative;
-         z-index: 2;
-         max-width: 860px;
-         margin: auto;
-         text-align: center;
-      }
-
-      h1 {
-         margin-bottom: 28px;
-         color: var(--azul-oscuro);
-         font-size: clamp(40px, 5.5vw, 68px);
-         line-height: 1.02;
-         letter-spacing: -2.5px;
-         font-weight: 900;
-      }
-
-      h1 span {
-         color: var(--azul);
-         position: relative;
-      }
-
-      .hero p {
-         max-width: 760px;
-         margin: 0 auto 20px;
-         color: var(--texto-suave);
-         font-size: clamp(16px, 2vw, 19px);
-         line-height: 1.65;
-      }
-
-      /* BLOQUES GENERALES */
-      .bloque {
-         padding: 80px 0 100px;
-      }
-
-      .bloque-gris {
-         background: var(--gris);
-         border-top: 1px solid var(--gris-2);
-         border-bottom: 1px solid var(--gris-2);
-      }
-
-      .encabezado {
-         max-width: 78px;
-         max-width: 760px;
-         margin: 0 auto 54px;
-         text-align: center;
-      }
-
-      h2 {
-         margin-bottom: 20px;
-         color: var(--azul-oscuro);
-         font-size: clamp(28px, 4vw, 42px);
-         line-height: 1.1;
-         letter-spacing: -1.5px;
-         font-weight: 800;
-      }
-
-      .encabezado p {
-         color: var(--texto-suave);
-         font-size: 17px;
-         line-height: 1.6;
-      }
-
-      /* SECCIÓN EQUIPO */
-      .equipo-grid {
-         display: grid;
-         grid-template-columns: repeat(2, 1fr);
-         gap: 24px;
-         align-items: stretch;
-      }
-
-      .miembro {
-         position: relative;
-         padding: 40px;
-         border: 1px solid var(--gris-2);
-         border-radius: 24px;
-         background: var(--blanco);
-         transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-         box-shadow: 0 4px 20px rgba(7, 23, 45, 0.02);
-      }
-
-      .miembro:hover {
-         transform: translateY(-4px);
-         box-shadow: 0 20px 38px rgba(7, 23, 45, 0.06);
-         border-color: rgba(22, 43, 78, 0.12);
-      }
-
-      .miembro-top {
-         display: flex;
-         align-items: center;
-         gap: 12px;
-         margin-bottom: 20px;
-      }
-
-      .miembro-top span {
-         color: var(--azul-medio);
-         font-size: 11px;
-         font-weight: 800;
-         letter-spacing: 1px;
-         text-transform: uppercase;
-      }
-
-      .linea {
-         width: 32px;
-         height: 2px;
-         background: var(--naranja);
-         flex: 0 0 auto;
-      }
-
-      .miembro h3 {
-         color: var(--azul-oscuro);
-         font-size: 24px;
-         line-height: 1.1;
-         letter-spacing: -0.5px;
-         font-weight: 800;
-      }
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Quiénes Somos | NeoDat Consultores</title>
+      <link rel="icon" type="image/png" sizes="32x32" href="Neo1.png">
+      <meta name="description" content="NeoDat Consultores integra experiencia financiera, tecnológica y analítica. Conoce a nuestro equipo multidisciplinario de expertos." />
       
-      .miembro .cargo {
-         color: var(--azul);
-         font-size: 15px;
-         font-weight: 600;
-         margin-top: 2px;
-         margin-bottom: 16px;
-      }
-
-      .miembro p {
-         color: var(--texto-suave);
-         font-size: 15px;
-         line-height: 1.7;
-      }
-
-      .miembro.destacado {
-         background: linear-gradient(145deg, rgba(255, 255, 255, 1) 0%, rgba(22, 43, 78, 0.02) 100%);
-         border-color: rgba(22, 43, 78, 0.1);
-      }
-
-      /* SECCIÓN VALORES */
-      .valores-box {
-         max-width: 1000px;
-         margin: auto;
-      }
-
-      .valores-grid {
-         display: grid;
-         grid-template-columns: repeat(4, 1fr);
-         gap: 20px;
-      }
-
-      .valor-item {
-         padding: 32px 24px;
-         border: 1px solid var(--gris-2);
-         border-radius: 20px;
-         background: var(--blanco);
-         box-shadow: 0 4px 15px rgba(7, 23, 45, 0.02);
-         transition: all 0.25s ease;
-      }
-
-      .valor-item:hover {
-         transform: translateY(-3px);
-         box-shadow: 0 16px 30px rgba(7, 23, 45, 0.05);
-         border-color: rgba(22, 43, 78, 0.1);
-      }
-
-      .valor-item strong {
-         display: block;
-         margin-bottom: 8px;
-         color: var(--azul);
-         font-size: 20px;
-         font-weight: 800;
-         letter-spacing: -0.5px;
-      }
-
-      .valor-item span {
-         display: block;
-         color: var(--texto-suave);
-         font-size: 14px;
-         line-height: 1.5;
-      }
-
-      /* SITE FOOTER */
-      .site-footer {
-         background: var(--azul-oscuro);
-         color: rgba(255, 255, 255, 0.72);
-         padding: 24px 0;
-         border-top: 1px solid rgba(255, 255, 255, 0.05);
-      }
-
-      .footer-bottom {
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         text-align: center;
-         font-size: 13px;
-         color: rgba(255, 255, 255, 0.45);
-      }
-
-      /* RESPONSIVE MEDIA QUERIES */
-      @media (max-width: 980px) {
-         nav {
-            display: none; /* Idealmente se cambiará por un menú hamburguesa dinámico posterior */
-         }
-
-         .equipo-grid {
-            grid-template-columns: 1fr;
-            gap: 20px;
-         }
-
-         .valores-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+      <style>
+         :root {
+            --azul: #162b4e;
+            --azul-oscuro: #07172d;
+            --azul-medio: #27456f;
+            --azul-claro: #edf2f8;
+            --naranja: #ffa500;
+            --blanco: #ffffff;
+            --gris: #f8fafc;
+            --gris-2: rgba(22, 43, 78, 0.06); 
+            --gris-3: #f0f4f8;
+            --texto: #243447;
+            --texto-suave: #66788a;
+            --sombra: 0 10px 30px rgba(7, 23, 45, 0.04);
+            --sombra-fuerte: 0 20px 50px rgba(7, 23, 45, 0.08);
+            --exito: #10b981;
          }
          
+         /* CONFIGURACIÓN ESTRUCTURAL */
+         html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+         }
+         * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+         }
+         html {
+            scroll-behavior: smooth;
+         }
+         body {
+            font-family: "Inter", Arial, sans-serif;
+            background: #ffffff;
+            color: var(--texto);
+            line-height: 1.5;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+         }
+         main {
+            flex: 1 0 auto;
+         }
+         a {
+            text-decoration: none;
+            color: inherit;
+         }
+         button {
+            font: inherit;
+         }
+         .contenedor {
+            width: min(1160px, calc(100% - 40px));
+            margin: auto;
+         }
+
+         /* BOTONES PREMIUM */
+         .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            min-height: 46px;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-size: 13.5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            white-space: nowrap;
+         }
+         .btn-whatsapp {
+            background: rgba(37, 211, 102, 0.1);
+            color: #1ebe5d;
+            border: 1px solid rgba(37, 211, 102, 0.25);
+            box-shadow: none;
+         }
+         .btn-whatsapp:hover {
+            background: #25D366;
+            color: #ffffff;
+            border-color: #25D366;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(37, 211, 102, 0.2);
+         }
+
+         /* INTERFAZ GENERAL (CABECERA Y NAVBAR) */
+         header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--gris-2);
+         }
+         .navbar {
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 28px;
+         }
+         .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+         }
+         .logo-icono {
+            width: 140px;
+            height: 140px;
+            object-fit: contain;
+         }
+         nav ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+         }
+         nav a {
+            display: inline-flex;
+            padding: 8px 12px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 750;
+            color: var(--azul);
+            transition: 0.2s ease;
+         }
+         
+         nav a:hover,
+         nav a.actual {
+            background: var(--azul-claro);
+            color: var(--azul-oscuro);
+         }
+
+         .menu-toggle {
+            display: none;
+            width: 42px;
+            height: 42px;
+            border: 1px solid var(--gris-2);
+            border-radius: 12px;
+            background: #ffffff;
+            color: var(--azul);
+            font-size: 22px;
+            font-weight: 900;
+            cursor: pointer;
+         }
+         
+         /* HERO ADAPTADO */
+         .hero {
+            position: relative;
+            padding: 150px 0 60px; 
+            background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            text-align: center;
+         }
+         .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image:
+               linear-gradient(rgba(22, 43, 78, 0.03) 1px, transparent 1px),
+               linear-gradient(90deg, rgba(22, 43, 78, 0.03) 1px, transparent 1px);
+            background-size: 44px 44px;
+            mask-image: linear-gradient(180deg, black, transparent 85%);
+            pointer-events: none;
+         }
+         .hero-contenido {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: auto;
+         }
+         
+         h1 {
+            margin-bottom: 20px;
+            color: var(--azul-oscuro);
+            font-size: clamp(28px, 4vw, 42px);
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+            font-weight: 900;
+         }
+         h1 span {
+            color: var(--azul);
+         }
+         .hero p {
+            max-width: 700px;
+            margin: 0 auto 16px;
+            color: var(--texto-suave);
+            font-size: 14.5px;
+            line-height: 1.6;
+         }
+
+         /* SECCIONES Y BLOQUES */
          .bloque {
             padding: 60px 0 80px;
          }
-      }
-
-      @media (max-width: 680px) {
-         .navbar {
-            height: 68px;
+         .bloque-gris {
+            background: var(--gris);
+            border-top: 1px solid var(--gris-2);
+            border-bottom: 1px solid var(--gris-2);
          }
-
-         .hero {
-            padding: 130px 0 60px;
-         }
-
-         h1 {
-            letter-spacing: -1.5px;
-         }
-
          .encabezado {
-            margin-bottom: 36px;
+            max-width: 720px;
+            margin: 0 auto 40px;
+            text-align: center;
+         }
+         h2 {
+            margin-bottom: 16px;
+            color: var(--azul-oscuro);
+            font-size: clamp(22px, 2.5vw, 28px);
+            line-height: 1.3;
+            letter-spacing: -0.3px;
+            font-weight: 800;
+         }
+         .encabezado p {
+            color: var(--texto-suave);
+            font-size: 14px;
+            line-height: 1.6;
          }
 
+         /* GRID DE EQUIPO CORPORATIVO */
+         .equipo-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+         }
          .miembro {
-            padding: 28px;
+            padding: 30px;
+            background: #ffffff;
+            border-radius: 16px;
+            border: 1px solid var(--gris-2);
+            box-shadow: var(--sombra);
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+         }
+         .miembro:hover {
+            transform: translateY(-2px);
+            border-color: rgba(22, 43, 78, 0.12);
+            box-shadow: var(--sombra-fuerte);
+         }
+         .miembro-top {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 14px;
+         }
+         .miembro-top span {
+            color: var(--azul-medio);
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+         }
+         .linea {
+            width: 24px;
+            height: 2px;
+            background: var(--naranja);
+         }
+         .miembro h3 {
+            color: var(--azul-oscuro);
+            font-size: 19px;
+            font-weight: 800;
+            line-height: 1.2;
+         }
+         .miembro .cargo {
+            color: var(--azul);
+            font-size: 13px;
+            font-weight: 700;
+            margin-top: 4px;
+            margin-bottom: 12px;
+         }
+         .miembro p {
+            color: var(--texto-suave);
+            font-size: 13.5px;
+            line-height: 1.6;
+         }
+         .miembro.destacado {
+            background: linear-gradient(145deg, #ffffff 0%, rgba(22, 43, 78, 0.02) 100%);
+            border-color: rgba(22, 43, 78, 0.1);
          }
 
+         /* GRID DE VALORES */
          .valores-grid {
-            grid-template-columns: 1fr;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
          }
-      }
-   </style>
-</head>
+         .valor-item {
+            padding: 24px 20px;
+            background: #ffffff;
+            border-radius: 14px;
+            border: 1px solid var(--gris-2);
+            box-shadow: var(--sombra);
+            transition: all 0.25s ease;
+         }
+         .valor-item:hover {
+            transform: translateY(-2px);
+            border-color: rgba(22, 43, 78, 0.1);
+            box-shadow: var(--sombra-fuerte);
+         }
+         .valor-item strong {
+            display: block;
+            margin-bottom: 6px;
+            color: var(--azul-oscuro);
+            font-size: 16px;
+            font-weight: 800;
+         }
+         .valor-item span {
+            display: block;
+            color: var(--texto-suave);
+            font-size: 13px;
+            line-height: 1.5;
+         }
 
-<body>
+         /* PIE DE PÁGINA */
+         .site-footer {
+            background: #07172d;
+            color: rgba(255, 255, 255, .72);
+            padding: 12px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            width: 100%;
+            flex-shrink: 0;
+         }
+         .footer-bottom {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 11.5px;
+            color: rgba(255, 255, 255, .52);
+         }
+         
+         /* RESPONSIVO EXACTO AL INDEX */
+         @media (max-width: 980px) {
+            .navbar { height: 64px; }
+            .logo-icono { width: 120px; height: 120px; }
+            .menu-toggle { display: flex; align-items: center; justify-content: center; }
+            .whatsapp-desktop { display: none; }
+            nav.menu {
+               position: absolute;
+               top: 64px;
+               left: 0;
+               width: 100%;
+               display: none;
+               background: #ffffff;
+               border-bottom: 1px solid rgba(22,43,78,.08);
+               box-shadow: 0 18px 40px rgba(7,23,45,.10);
+            }
+            nav.menu.activo { display: block; }
+            nav.menu ul {
+               width: min(1160px, calc(100% - 40px));
+               margin: auto;
+               padding: 14px 0;
+               display: grid;
+               grid-template-columns: 1fr;
+               gap: 6px;
+            }
+            nav.menu a {
+               width: 100%;
+               padding: 12px 14px;
+               border-radius: 12px;
+               background: var(--gris);
+               font-size: 13px;
+            }
+            .equipo-grid { grid-template-columns: 1fr; gap: 16px; }
+            .valores-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+         }
+         @media (max-width: 680px) {
+            .hero { padding: 120px 0 40px; }
+            .valores-grid { grid-template-columns: 1fr; gap: 12px; }
+            .bloque { padding: 40px 0 50px; }
+         }
+      </style>
+   </head>
 
-   <header>
-      <div class="contenedor navbar">
-
-         <a href="index.html" class="logo" aria-label="NeoDat Consultores">
-            <img src="Neo1.png" alt="Logo NeoDat Consultores" class="logo-icono">
-         </a>
-
-         <nav aria-label="Navegación principal">
-            <ul>
-               <li><a href="index.html">Inicio</a></li>
-               <li><a href="servicios.html">Servicios</a></li>
-               <li><a href="metodo.html">Método</a></li>
-               <li><a href="ambitos.html">Ámbitos</a></li>
-               <li class="activo"><a href="quienes-somos.html">Quiénes somos</a></li>
-               <li><a href="contacto.html">Contacto</a></li>
-            </ul>
-         </nav>
-
-         <a
-            class="btn btn-whatsapp"
-            href="https://wa.me/593988200116?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20NeoDat%20Consultores."
-            target="_blank"
-            rel="noopener"
-         >
-            WhatsApp
-         </a>
-
-      </div>
-   </header>
-
-   <main>
-
-      <section class="hero">
-         <div class="contenedor hero-contenido">
-            <h1>Quiénes <span>somos</span>.</h1>
-            <p>
-               NeoDat Consultores integra experiencia financiera, tecnológica y analítica
-               para ayudar a empresas a trabajar con información clara, control estratégico
-               y herramientas modernas de gestión.
-            </p>
-            <p>
-               Nuestro enfoque combina economía, desarrollo de software, dirección de proyectos,
-               business intelligence y ciencia de datos para construir soluciones empresariales
-               reales y medibles.
-            </p>
+   <body>
+      <header>
+         <div class="contenedor navbar">
+            <a href="index.html" class="logo" aria-label="NeoDat Consultores">
+               <img src="Neo1.png" class="logo-icono" alt="Logo NeoDat">
+            </a>
+            <button class="menu-toggle" type="button" aria-label="Abrir menú"> ☰ </button>
+            <nav class="menu" aria-label="Navegación principal">
+               <ul>
+                  <li><a href="index.html">Inicio</a></li>
+                  <li><a href="servicios.html">Servicios</a></li>
+                  <li><a href="metodo.html">Método</a></li>
+                  <li><a href="ambitos.html">Ámbitos</a></li>
+                  <li><a href="quienes-somos.html">Quiénes somos</a></li>
+                  <li><a href="contacto.html">Contacto</a></li>
+               </ul>
+            </nav>
+            <a class="btn btn-whatsapp whatsapp-desktop" href="https://wa.me/593988200116?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20NeoDat%20Consultores." target="_blank" rel="noopener">
+               WhatsApp
+            </a>
          </div>
-      </section>
+      </header>
 
-      <section class="bloque">
-         <div class="contenedor">
-
-            <div class="encabezado">
-               <h2>Un equipo con visión financiera, tecnológica y estratégica.</h2>
-               <p>
-                  Combinamos experiencia en economía, finanzas, desarrollo tecnológico,
-                  gestión de proyectos y ciencia de datos para construir soluciones
-                  empresarariales modernas y orientadas a resultados.
-               </p>
+      <main>
+         <section class="hero">
+            <div class="contenedor hero-contenido">
+               <h1>Quiénes <span>somos</span>.</h1>
+               <p>NeoDat Consultores integra experiencia financiera, tecnológica y analítica para ayudar a empresas a trabajar con información clara, control estratégico y herramientas modernas de gestión.</p>
+               <p>Nuestro enfoque combina economía, desarrollo de software, dirección de proyectos, business intelligence y ciencia de datos para construir soluciones empresariales reales y medibles.</p>
             </div>
+         </section>
 
-            <div class="equipo-grid">
+         <section class="bloque">
+            <div class="contenedor">
+               <div class="encabezado">
+                  <h2>Un equipo con visión financiera, tecnológica y estratégica.</h2>
+                  <p>Combinamos experiencia en economía, finanzas, desarrollo tecnológico, gestión de proyectos y ciencia de datos para construir soluciones empresariales modernas y orientadas a resultados.</p>
+               </div>
 
-               <article class="miembro">
-                  <div class="miembro-top">
-                     <div class="linea"></div>
-                     <span>Finanzas y estrategia comercial</span>
-                  </div>
-                  <h3>Ing. Alfonso Abad Álvarez, Mgs.</h3>
-                  <div class="cargo">Presidente NeoDat Consultores</div>
-                  <p>
-                     Experto financiero con experiencia en banca y ventas, enfocado en análisis empresarial, gestión financiera y visión estratégica de negocio.
-                  </p>
-               </article>
+               <div class="equipo-grid">
+                  <article class="miembro">
+                     <div class="miembro-top">
+                        <div class="linea"></div>
+                        <span>Finanzas y estrategia comercial</span>
+                     </div>
+                     <h3>Ing. Alfonso Abad Álvarez, Mgs.</h3>
+                     <div class="cargo">Presidente NeoDat Consultores</div>
+                     <p>Experto financiero con experiencia en banca y ventas, enfocado en análisis empresarial, gestión financiera y visión estratégica de negocio.</p>
+                  </article>
 
-               <article class="miembro">
-                  <div class="miembro-top">
-                     <div class="linea"></div>
-                     <span>Tecnología y software</span>
-                  </div>
-                  <h3>Ing. Roberto Jácome Galarza, Ph.D.</h3>
-                  <div class="cargo">Socio Consultor de Tecnología</div>
-                  <p>
-                     Experto en programación, desarrollo de software e inteligencia artificial, orientado a automatización, soluciones digitales y construcción de herramientas tecnológicas empresariales.
-                  </p>
-               </article>
+                  <article class="miembro">
+                     <div class="miembro-top">
+                        <div class="linea"></div>
+                        <span>Tecnología y software</span>
+                     </div>
+                     <h3>Ing. Roberto Jácome Galarza, Ph.D.</h3>
+                     <div class="cargo">Socio Consultor de Tecnología</div>
+                     <p>Experto en programación, desarrollo de software e inteligencia artificial, orientado a automatización, soluciones digitales y construcción de herramientas tecnológicas empresariales.</p>
+                  </article>
 
-               <article class="miembro">
-                  <div class="miembro-top">
-                     <div class="linea"></div>
-                     <span>Dirección de proyectos</span>
-                  </div>
-                  <h3>Ing. Clara Guamán Jaramillo, Mgs.</h3>
-                  <div class="cargo">Socio Consultor de Proyectos</div>
-                  <p>
-                     Profesional en Administración de Empresas y Dirección de Proyectos, con experiencia en PMO, desarrollo institucional y financiamiento, orientada a la gestión financiera, análisis empresarial y toma de decisiones estratégicas.
-                  </p>
-               </article>
+                  <article class="miembro">
+                     <div class="miembro-top">
+                        <div class="linea"></div>
+                        <span>Dirección de proyectos</span>
+                     </div>
+                     <h3>Ing. Clara Guamán Jaramillo, Mgs.</h3>
+                     <div class="cargo">Socio Consultor de Proyectos</div>
+                     <p>Profesional en Administración de Empresas y Dirección de Proyectos, con experiencia en PMO, desarrollo institucional y financiamiento, orientada a la gestión financiera, análisis empresarial y toma de decisiones estratégicas.</p>
+                  </article>
 
-               <article class="miembro destacado">
-                  <div class="miembro-top">
-                     <div class="linea"></div>
-                     <span>Economía, Big Data e inteligencia de negocios</span>
-                  </div>
-                  <h3>Econ. Darío Hurtado Cuenca, Mgs.</h3>
-                  <div class="cargo">Socio Consultor Analítico</div>
-                  <p>
-                     Especialista en Big Data, Ciencia de Datos e Inteligencia de Negocios, con enfoque en análisis estratégico, modelamiento de información y toma de decisiones orientadas por datos.
-                  </p>
-               </article>
-
+                  <article class="miembro destacado">
+                     <div class="miembro-top">
+                        <div class="linea"></div>
+                        <span>Economía, Big Data e inteligencia de negocios</span>
+                     </div>
+                     <h3>Econ. Darío Hurtado Cuenca, Mgs.</h3>
+                     <div class="cargo">Socio Consultor Analítico</div>
+                     <p>Especialista en Big Data, Ciencia de Datos e Inteligencia de Negocios, con enfoque en análisis estratégico, modelamiento de información y toma de decisiones orientadas por datos.</p>
+                  </article>
+               </div>
             </div>
+         </section>
+
+         <section class="bloque bloque-gris">
+            <div class="contenedor">
+               <div class="encabezado">
+                  <h2>Valores</h2>
+               </div>
+
+               <div class="valores-grid">
+                  <div class="valor-item">
+                     <strong>Precisión</strong>
+                     <span>Análisis claro y decisiones confiables.</span>
+                  </div>
+                  <div class="valor-item">
+                     <strong>Claridad</strong>
+                     <span>Información útil y fácil de interpretar.</span>
+                  </div>
+                  <div class="valor-item">
+                     <strong>Innovación</strong>
+                     <span>Tecnología aplicada a resultados reales.</span>
+                  </div>
+                  <div class="valor-item">
+                     <strong>Estrategia</strong>
+                     <span>Soluciones orientadas al crecimiento.</span>
+                  </div>
+               </div>
+            </div>
+         </section>
+      </main>
+
+      <footer class="site-footer">
+         <div class="contenedor footer-bottom">
+            <span>© 2026 NeoDat Consultores. Todos los derechos reservados.</span>
          </div>
-      </section>
+      </footer>
 
-      <section class="bloque bloque-gris">
-         <div class="contenedor valores-box">
+      <script>
+         // Menú móvil funcional e idéntico al index
+         const menuToggle = document.querySelector(".menu-toggle");
+         const menu = document.querySelector(".menu");
+         menuToggle.addEventListener("click", () => {
+            menu.classList.toggle("activo");
+         });
 
-            <div class="encabezado">
-               <h2>Valores</h2>
-            </div>
+         // Autodetección de página activa para resaltar la pestaña actual
+         const ubicacionActual = window.location.pathname.split("/").pop() || "index.html";
+         const enlacesMenu = document.querySelectorAll("nav.menu a");
 
-            <div class="valores-grid">
-
-               <div class="valor-item">
-                  <strong>Precisión</strong>
-                  <span>Análisis claro y decisiones confiables.</span>
-               </div>
-
-               <div class="valor-item">
-                  <strong>Claridad</strong>
-                  <span>Información útil y fácil de interpretar.</span>
-               </div>
-
-               <div class="valor-item">
-                  <strong>Innovación</strong>
-                  <span>Tecnología aplicada a resultados reales.</span>
-               </div>
-
-               <div class="valor-item">
-                  <strong>Estrategia</strong>
-                  <span>Soluciones orientadas al crecimiento.</span>
-               </div>
-
-            </div>
-
-         </div>
-      </section>
-
-   </main>
-
-   <footer class="site-footer">
-      <div class="contenedor footer-bottom">
-         <span>© 2026 NeoDat Consultores. Todos los derechos reservados.</span>
-      </div>
-   </footer>
-
-</body>
+         enlacesMenu.forEach(enlace => {
+            if (enlace.getAttribute("href") === ubicacionActual) {
+               enlace.classList.add("actual");
+            }
+         });
+      </script>
+   </body>
 </html>
