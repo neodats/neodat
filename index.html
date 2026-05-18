@@ -16,6 +16,7 @@
             --azul-medio: #27456f;
             --azul-claro: #edf2f8;
             --naranja: #ffa500;
+            --naranja-brillo: rgba(255, 165, 0, 0.15);
             --blanco: #ffffff;
             --gris: #f8fafc;
             --gris-2: rgba(22, 43, 78, 0.06); 
@@ -23,7 +24,7 @@
             --texto: #243447;
             --texto-suave: #66788a;
             --sombra: 0 10px 30px rgba(7, 23, 45, 0.04);
-            --sombra-fuerte: 0 20px 50px rgba(7, 23, 45, 0.08);
+            --sombra-fuerte: 0 20px 50px rgba(7, 23, 45, 0.15);
             --exito: #10b981;
          }
          
@@ -123,6 +124,18 @@
             color: var(--azul-oscuro);
             transform: translateY(-1px);
          }
+         
+         /* Botón secundario adaptado para fondos oscuros */
+         .btn-secundario-oscuro {
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--blanco);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+         }
+         .btn-secundario-oscuro:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-1px);
+         }
 
          /* ESTILOS DE LA INTERFAZ */
          header {
@@ -175,49 +188,107 @@
             color: var(--azul-oscuro);
          }
          
+         /* HERO REDISEÑADO CON COLORES CORPORATIVOS Y FIGURAS */
          .hero {
             position: relative;
-            padding: 110px 0 40px; 
-            background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+            padding: 140px 0 70px; 
+            background: radial-gradient(circle at 80% 20%, rgba(255, 165, 0, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 15% 80%, rgba(39, 69, 111, 0.3) 0%, transparent 60%),
+                        linear-gradient(135deg, var(--azul-oscuro) 0%, #0f2544 100%);
             overflow: hidden;
             display: flex;
             align-items: center;
             margin-bottom: 0;
          }
+
+         /* Malla tecnológica de fondo */
          .hero::before {
             content: "";
             position: absolute;
             inset: 0;
             background-image:
-               linear-gradient(rgba(22, 43, 78, 0.03) 1px, transparent 1px),
-               linear-gradient(90deg, rgba(22, 43, 78, 0.03) 1px, transparent 1px);
-            background-size: 44px 44px;
-            mask-image: linear-gradient(180deg, black, transparent 85%);
+               linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+               linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 50px 50px;
+            mask-image: radial-gradient(circle at center, black, transparent 90%);
             pointer-events: none;
+            z-index: 1;
          }
+
+         /* FIGURAS GEOMÉTRICAS ABSTRACTAS BI */
+         .figura {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1;
+            filter: blur(40px);
+            opacity: 0.6;
+         }
+         .figura-1 {
+            top: 10%;
+            right: 5%;
+            width: 250px;
+            height: 250px;
+            background: var(--naranja);
+            filter: blur(80px);
+            opacity: 0.25;
+         }
+         .figura-2 {
+            bottom: -5%;
+            left: 20%;
+            width: 300px;
+            height: 300px;
+            background: var(--azul-medio);
+            filter: blur(60px);
+            opacity: 0.4;
+         }
+         
+         /* Figuras nítidas decorativas */
+         .shapes-container {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 1;
+         }
+         .shape-circle {
+            position: absolute;
+            border: 2px solid rgba(255, 165, 0, 0.2);
+            border-radius: 50%;
+         }
+         .sc-1 { width: 400px; height: 400px; top: -100px; right: -50px; }
+         .sc-2 { width: 200px; height: 200px; top: 150px; right: 50px; border: 1px dashed rgba(255, 255, 255, 0.1); }
+         .sc-3 { width: 20px; height: 20px; bottom: 15%; left: 45%; background: rgba(255, 165, 0, 0.3); border: none; filter: blur(2px); }
+
          .hero-grid {
             position: relative;
             z-index: 2;
             display: grid;
             grid-template-columns: 1fr 1.15fr;
-            gap: 40px;
+            gap: 50px;
             align-items: center;
          }
          
+         /* Adaptación de textos para fondo oscuro */
          h1 {
             max-width: 720px;
             margin-bottom: 20px;
-            color: var(--azul-oscuro);
-            font-size: clamp(22px, 2.4vw, 28px);
-            line-height: 1.3;
-            letter-spacing: -0.3px;
+            color: var(--blanco);
+            font-size: clamp(24px, 2.8vw, 36px);
+            line-height: 1.25;
+            letter-spacing: -0.5px;
+            font-weight: 800;
+         }
+         h1 font {
+            color: var(--naranja);
          }
          
          .hero p {
             max-width: 640px;
-            margin-bottom: 28px;
-            color: var(--texto-suave);
-            font-size: 14px;
+            margin-bottom: 32px;
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 15px;
+            line-height: 1.6;
          }
          .acciones {
             display: flex;
@@ -225,19 +296,33 @@
             gap: 12px;
          }
 
+         /* Botón principal adaptado al nuevo contexto de color */
+         .hero .btn-principal {
+            background: var(--naranja);
+            color: var(--azul-oscuro);
+            border-color: var(--naranja);
+            box-shadow: 0 4px 15px rgba(255, 165, 0, 0.2);
+         }
+         .hero .btn-principal:hover {
+            background: #e69500;
+            border-color: #e69500;
+            box-shadow: 0 6px 22px rgba(255, 165, 0, 0.3);
+         }
+
          /* DASHBOARD CORPORATIVO INTELLIGENT BI */
          .dashboard-shell {
-            padding: 10px;
-            border-radius: 24px; 
-            background: linear-gradient(145deg, rgba(22, 43, 78, 0.03), rgba(7, 23, 45, 0.05));
-            border: 1px solid var(--gris-2); 
+            padding: 12px;
+            border-radius: 26px; 
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08); 
+            backdrop-filter: blur(10px);
             position: relative;
+            box-shadow: var(--sombra-fuerte);
          }
          .dashboard {
             overflow: hidden;
             border-radius: 16px;
             background: #ffffff;
-            box-shadow: var(--sombra-fuerte);
             border: 1px solid rgba(22, 43, 78, 0.08);
          }
          .dashboard-top {
@@ -275,14 +360,6 @@
             0% { transform: scale(0.9); opacity: 0.6; }
             50% { transform: scale(1.3); opacity: 1; }
             100% { transform: scale(0.9); opacity: 0.6; }
-         }
-         .badge-live {
-            padding: 4px 10px;
-            border-radius: 999px;
-            background: rgba(22, 43, 78, 0.05);
-            color: var(--azul-medio);
-            font-size: 10px;
-            font-weight: 800;
          }
          .dashboard-body {
             padding: 20px;
@@ -384,67 +461,6 @@
             100% { r: 4; opacity: 1; }
          }
 
-         /* DISTRIBUCIÓN INFERIOR */
-         .analytics-grid-bottom {
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 14px;
-         }
-         .small-analytics-card {
-            background: #ffffff;
-            border-radius: 12px;
-            padding: 14px;
-            border: 1px solid var(--gris-2);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-         }
-         .funnel-container {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            margin-top: 8px;
-         }
-         .funnel-stage {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 6px 12px;
-            color: #ffffff;
-            font-size: 10px;
-            font-weight: 700;
-            border-radius: 6px;
-         }
-         .funnel-1 { background: var(--azul-oscuro); width: 100%; }
-         .funnel-2 { background: var(--azul); width: 85%; }
-         .funnel-3 { background: var(--azul-medio); width: 68%; }
-
-         .donut-box {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            margin-top: 4px;
-         }
-         .donut-svg-wrapper {
-            width: 55px;
-            height: 55px;
-            flex-shrink: 0;
-         }
-         .donut-legends {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-         }
-         .donut-legend-item {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 10px;
-            font-weight: 600;
-            color: var(--texto-suave);
-         }
-         .bullet-dot { width: 7px; height: 7px; border-radius: 50%; }
-
          /* RESPONSIVO */
          .menu-toggle {
             display: none;
@@ -459,7 +475,7 @@
             cursor: pointer;
          }
          
-         /* PIE DE PÁGINA ANGOSTO Y ESTILIZADO */
+         /* PIE DE PÁGINA */
          .site-footer {
             background: #07172d;
             color: rgba(255, 255, 255, .72);
@@ -511,10 +527,9 @@
             .hero-grid { grid-template-columns: 1fr; gap: 40px; }
          }
          @media (max-width: 680px) {
-            .hero { padding: 100px 0 30px; }
+            .hero { padding: 110px 0 40px; }
             .kpis { grid-template-columns: 1fr; gap: 10px; }
-            .analytics-grid-bottom { grid-template-columns: 1fr; gap: 12px; }
-            h1 { font-size: clamp(19px, 5vw, 23px); line-height: 1.3; letter-spacing: normal; }
+            h1 { font-size: clamp(21px, 6vw, 28px); line-height: 1.3; letter-spacing: normal; }
             .acciones { display: grid; grid-template-columns: 1fr; width: 100%; gap: 10px; }
             .acciones .btn { width: 100%; }
          }
@@ -545,14 +560,22 @@
 
       <main>
          <section class="hero">
+            <div class="figura figura-1"></div>
+            <div class="figura figura-2"></div>
+            <div class="shapes-container">
+               <div class="shape-circle sc-1"></div>
+               <div class="shape-circle sc-2"></div>
+               <div class="shape-circle sc-3"></div>
+            </div>
+
             <div class="contenedor hero-grid">
                <div>
-                  <h1>Transformamos datos complejos en decisiones de negocio rentables.</h1>
+                  <h1>Transformamos datos complejos en decisiones de negocio <font>rentables</font>.</h1>
                   <p>Estructuramos analítica avanzada, gobierno de datos, arquitecturas financieras y optimización de procesos para dotar a su empresa de un control ejecutivo permanente.</p>
                   <div class="acciones">
                      <a class="btn btn-principal" href="servicios.html">Ver servicios <span>→</span></a>
                      <a class="btn btn-whatsapp" href="https://wa.me/593988200116?text=Hola,%20quiero%20solicitar%20una%20asesor%C3%ADa%20con%20NeoDat." target="_blank" rel="noopener">Solicitar asesoría</a>
-                     <a class="btn btn-secundario" href="contacto.html">Agendar reunión</a>
+                     <a class="btn btn-secundario-oscuro btn" href="contacto.html">Agendar reunión</a>
                   </div>
                </div>
 
