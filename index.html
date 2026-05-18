@@ -18,11 +18,12 @@
             --naranja: #ffa500;
             --blanco: #ffffff;
             --gris: #f8fafc;
-            --gris-2: rgba(22, 43, 78, 0.08); 
-            --texto: #111827;
-            --texto-suave: #4b5563;
+            --gris-2: rgba(22, 43, 78, 0.06); 
+            --gris-3: #f0f4f8;
+            --texto: #243447;
+            --texto-suave: #66788a;
             --sombra: 0 10px 30px rgba(7, 23, 45, 0.04);
-            --sombra-fuerte: 0 25px 60px rgba(7, 23, 45, 0.12);
+            --sombra-fuerte: 0 20px 50px rgba(7, 23, 45, 0.08);
             --exito: #10b981;
          }
          
@@ -43,7 +44,7 @@
          }
          body {
             font-family: "Inter", Arial, sans-serif;
-            background: radial-gradient(circle at top, #f0f7ff 0%, #ffffff 80%);
+            background: #ffffff;
             color: var(--texto);
             line-height: 1.5;
             overflow-x: hidden;
@@ -59,11 +60,9 @@
          }
          button {
             font: inherit;
-            border: none;
-            background: none;
          }
          .contenedor {
-            width: min(1200px, calc(100% - 40px));
+            width: min(1160px, calc(100% - 40px));
             margin: auto;
          }
 
@@ -73,10 +72,10 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
-            min-height: 44px;
-            padding: 10px 24px;
-            border-radius: 999px;
-            font-size: 14px;
+            min-height: 46px;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-size: 13.5px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
@@ -85,380 +84,452 @@
          .btn-principal {
             background: var(--azul);
             color: var(--blanco);
-            box-shadow: 0 4px 14px rgba(22, 43, 78, 0.2);
+            border: 1px solid var(--azul);
+            box-shadow: 0 4px 12px rgba(22, 43, 78, 0.12);
          }
          .btn-principal:hover {
             background: var(--azul-oscuro);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(22, 43, 78, 0.3);
+            border-color: var(--azul-oscuro);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(22, 43, 78, 0.18);
+         }
+         .btn-principal span {
+            transition: transform 0.2s ease;
+         }
+         .btn-principal:hover span {
+            transform: translateX(3px);
+         }
+         .btn-whatsapp {
+            background: rgba(37, 211, 102, 0.1);
+            color: #1ebe5d;
+            border: 1px solid rgba(37, 211, 102, 0.25);
+            box-shadow: none;
+         }
+         .btn-whatsapp:hover {
+            background: #25D366;
+            color: #ffffff;
+            border-color: #25D366;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(37, 211, 102, 0.2);
          }
          .btn-secundario {
-            background: #ffffff;
-            color: var(--azul-oscuro);
-            border: 1px solid rgba(22, 43, 78, 0.2);
+            background: transparent;
+            color: var(--azul);
+            border: 1px solid rgba(22, 43, 78, 0.15);
          }
          .btn-secundario:hover {
             background: var(--azul-claro);
-            transform: translateY(-2px);
-         }
-         .btn-whatsapp {
-            background: #25D366;
-            color: #ffffff;
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.2);
-         }
-         .btn-whatsapp:hover {
-            background: #1ebd5a;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(37, 211, 102, 0.3);
+            border-color: rgba(22, 43, 78, 0.3);
+            color: var(--azul-oscuro);
+            transform: translateY(-1px);
          }
 
-         /* HEADER FLOTANTE */
+         /* ESTILOS DE LA INTERFAZ */
          header {
             position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
+            top: 0;
+            left: 0;
             z-index: 100;
-            width: min(1200px, calc(100% - 40px));
-            background: rgba(255, 255, 255, 0.8);
+            width: 100%;
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            border-bottom: 1px solid var(--gris-2);
          }
          .navbar {
             height: 70px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 24px;
+            gap: 28px;
          }
          .logo {
             display: flex;
             align-items: center;
+            gap: 12px;
          }
          .logo-icono {
-            width: 130px;
-            height: auto;
+            width: 140px;
+            height: 140px;
             object-fit: contain;
          }
          nav ul {
             list-style: none;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 4px;
          }
          nav a {
             display: inline-flex;
-            padding: 8px 16px;
+            padding: 8px 12px;
             border-radius: 999px;
-            font-size: 14px;
-            font-weight: 500;
-            color: var(--azul-medio);
+            font-size: 13px;
+            font-weight: 750;
+            color: var(--azul);
             transition: 0.2s ease;
          }
-         nav a:hover, nav a.actual {
-            color: var(--azul-oscuro);
-            font-weight: 600;
-         }
+         
+         /* ESTILO PARA ENLACE ACTIVO O HOVER */
+         nav a:hover,
          nav a.actual {
-            border-bottom: 2px solid var(--azul);
-            border-radius: 0;
-            padding-bottom: 4px;
+            background: var(--azul-claro);
+            color: var(--azul-oscuro);
          }
-
-         /* HERO SECCIÓN (DISEÑO CENTRADO) */
+         
          .hero {
-            padding: 180px 0 60px;
-            text-align: center;
             position: relative;
-         }
-         .hero-contenido {
-            max-width: 850px;
-            margin: 0 auto 50px;
+            padding: 110px 0 40px; 
+            background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+            overflow: hidden;
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            margin-bottom: 0;
+         }
+         .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image:
+               linear-gradient(rgba(22, 43, 78, 0.03) 1px, transparent 1px),
+               linear-gradient(90deg, rgba(22, 43, 78, 0.03) 1px, transparent 1px);
+            background-size: 44px 44px;
+            mask-image: linear-gradient(180deg, black, transparent 85%);
+            pointer-events: none;
+         }
+         .hero-grid {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1.15fr;
+            gap: 40px;
             align-items: center;
          }
+         
          h1 {
-            font-size: clamp(28px, 4vw, 46px);
-            font-weight: 800;
+            max-width: 720px;
+            margin-bottom: 20px;
             color: var(--azul-oscuro);
-            line-height: 1.2;
-            letter-spacing: -1px;
-            margin-bottom: 16px;
+            font-size: clamp(22px, 2.4vw, 28px);
+            line-height: 1.3;
+            letter-spacing: -0.3px;
          }
+         
          .hero p {
-            font-size: clamp(14px, 1.5vw, 17px);
+            max-width: 640px;
+            margin-bottom: 28px;
             color: var(--texto-suave);
-            max-width: 680px;
-            margin-bottom: 32px;
+            font-size: 14px;
          }
          .acciones {
             display: flex;
-            justify-content: center;
-            gap: 14px;
             flex-wrap: wrap;
-         }
-
-         /* INTERFAZ DEL DASHBOARD (ESTILO MOCKUP REALISTA) */
-         .dashboard-shell {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 6px;
-            background: #ffffff;
-            border-radius: 20px;
-            border: 1px solid rgba(0,0,0,0.08);
-            box-shadow: var(--sombra-fuerte);
-            position: relative;
-         }
-         /* Notch simulado estilo Macbook en la imagen */
-         .dashboard-shell::before {
-            content: "";
-            position: absolute;
-            top: 6px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120px;
-            height: 14px;
-            background: #111827;
-            border-bottom-left-radius: 8px;
-            border-bottom-right-radius: 8px;
-            z-index: 10;
-         }
-         .dashboard-container {
-            display: grid;
-            grid-template-columns: 60px 1fr;
-            background: #f8fafc;
-            border-radius: 14px;
-            overflow: hidden;
-            min-height: 480px;
-         }
-
-         /* BARRA LATERAL SIMULADA */
-         .dash-sidebar {
-            background: #ffffff;
-            border-right: 1px solid var(--gris-2);
-            padding: 24px 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-         }
-         .sidebar-dot {
-            width: 28px;
-            height: 28px;
-            border-radius: 8px;
-            background: var(--azul-claro);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--azul);
-            font-size: 12px;
-            font-weight: bold;
-         }
-         .sidebar-icon {
-            width: 20px;
-            height: 20px;
-            border-radius: 4px;
-            background: rgba(22, 43, 78, 0.05);
-         }
-         .sidebar-icon.active {
-            background: var(--azul);
-         }
-
-         /* CONTENIDO PRINCIPAL DEL PANEL */
-         .dash-content {
-            padding: 24px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-         }
-         .dash-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--gris-2);
-            padding-bottom: 14px;
-         }
-         .dash-title {
-            font-size: 15px;
-            font-weight: 700;
-            color: var(--azul-oscuro);
-         }
-         .dash-user {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            background: #ddd;
-         }
-
-         /* DISTRIBUCIÓN INTERNA: METRICAS E INGRESOS */
-         .dash-grid {
-            display: grid;
-            grid-template-columns: 260px 1fr;
-            gap: 20px;
-         }
-         .dash-column-kpis {
-            display: flex;
-            flex-direction: column;
             gap: 12px;
          }
-         .kpi-card {
+
+         /* DASHBOARD CORPORATIVO INTELLIGENT BI */
+         .dashboard-shell {
+            padding: 10px;
+            border-radius: 24px; 
+            background: linear-gradient(145deg, rgba(22, 43, 78, 0.03), rgba(7, 23, 45, 0.05));
+            border: 1px solid var(--gris-2); 
+            position: relative;
+         }
+         .dashboard {
+            overflow: hidden;
+            border-radius: 16px;
+            background: #ffffff;
+            box-shadow: var(--sombra-fuerte);
+            border: 1px solid rgba(22, 43, 78, 0.08);
+         }
+         .dashboard-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 14px 20px;
+            background: #ffffff;
+            border-bottom: 1px solid var(--gris-2);
+         }
+         
+         .dashboard-top div:first-child {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+         }
+         
+         .dashboard-top strong {
+            color: var(--azul-oscuro);
+            font-size: 13px;
+            font-weight: 800;
+            white-space: nowrap;
+         }
+         .live-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--exito);
+            border-radius: 50%;
+            display: inline-block;
+            flex-shrink: 0;
+            animation: pulsoLive 1.8s infinite;
+         }
+         @keyframes pulsoLive {
+            0% { transform: scale(0.9); opacity: 0.6; }
+            50% { transform: scale(1.3); opacity: 1; }
+            100% { transform: scale(0.9); opacity: 0.6; }
+         }
+         .badge-live {
+            padding: 4px 10px;
+            border-radius: 999px;
+            background: rgba(22, 43, 78, 0.05);
+            color: var(--azul-medio);
+            font-size: 10px;
+            font-weight: 800;
+         }
+         .dashboard-body {
+            padding: 20px;
+            background: var(--gris);
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+         }
+
+         /* SECCIÓN KPIS */
+         .kpis {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+         }
+         .kpi {
+            padding: 14px;
+            background: #ffffff;
+            border-radius: 12px;
+            border: 1px solid var(--gris-2); 
+         }
+         .kpi small {
+            display: block;
+            margin-bottom: 4px;
+            color: var(--texto-suave);
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+         }
+         .kpi strong {
+            display: block;
+            color: var(--azul-oscuro);
+            font-size: 18px;
+            font-weight: 900;
+            line-height: 1.1;
+         }
+         .kpi-trend {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 10px;
+            font-weight: 700;
+            margin-top: 4px;
+         }
+         .trend-up { color: var(--exito); }
+         .trend-orange { color: var(--naranja); }
+
+         /* GRÁFICO DE LÍNEA ANALÍTICO AVANZADO */
+         .chart-container {
             background: #ffffff;
             border-radius: 12px;
             padding: 16px;
             border: 1px solid var(--gris-2);
-            text-align: left;
-            position: relative;
          }
-         .kpi-card small {
-            display: block;
-            color: var(--texto-suave);
-            font-size: 11px;
-            font-weight: 600;
-            margin-bottom: 4px;
+         .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
          }
-         .kpi-card strong {
-            display: block;
-            font-size: 24px;
+         .chart-title {
+            font-size: 11.5px;
             font-weight: 800;
             color: var(--azul-oscuro);
          }
-         .kpi-card .trend {
-            font-size: 11px;
+         .chart-legend {
+            display: flex;
+            gap: 12px;
+            font-size: 10px;
             font-weight: 600;
-            color: var(--exito);
-            margin-top: 4px;
-            display: block;
+            color: var(--texto-suave);
          }
-         .kpi-indicator {
-            position: absolute;
-            top: 16px;
-            right: 16px;
-            width: 20px;
-            height: 14px;
-            border-radius: 4px;
-            background: #edf2f8;
+         .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+         }
+         .legend-azul::before { content: ""; width: 8px; height: 8px; background: var(--azul); border-radius: 50%; display: inline-block; }
+         .legend-naranja::before { content: ""; width: 8px; height: 8px; background: var(--naranja); border-radius: 50%; display: inline-block; }
+
+         .bi-graph-wrapper {
+            position: relative;
+            width: 100%;
+            height: 120px;
+            margin-top: 6px;
+         }
+         .bi-svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+         }
+         .live-node {
+            animation: pulseActiveNode 2s infinite ease-in-out;
+         }
+         @keyframes pulseActiveNode {
+            0% { r: 4; opacity: 1; }
+            50% { r: 7; opacity: 0.4; }
+            100% { r: 4; opacity: 1; }
          }
 
-         /* SECCIÓN DEL GRÁFICO PRINCIPAL */
-         .main-chart-box {
+         /* DISTRIBUCIÓN INFERIOR */
+         .analytics-grid-bottom {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 14px;
+         }
+         .small-analytics-card {
             background: #ffffff;
             border-radius: 12px;
-            padding: 20px;
+            padding: 14px;
             border: 1px solid var(--gris-2);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
          }
-         .chart-top {
+         .funnel-container {
             display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 10px;
+            flex-direction: column;
+            gap: 6px;
+            margin-top: 8px;
          }
-         .chart-info h3 {
-            font-size: 12px;
-            color: var(--texto-suave);
-            font-weight: 600;
-         }
-         .chart-info .amount {
-            font-size: 26px;
-            font-weight: 800;
-            color: var(--azul-oscuro);
-         }
-         .select-mock {
-            font-size: 11px;
-            padding: 4px 8px;
-            background: var(--gris);
-            border: 1px solid var(--gris-2);
-            border-radius: 6px;
-            color: var(--texto-suave);
-         }
-
-         .svg-container {
-            width: 100%;
-            height: 180px;
-            margin-top: 10px;
-            position: relative;
-         }
-         .bi-svg {
-            width: 100%;
-            height: 100%;
-         }
-
-         /* RECUADRO FLOTANTE INTERACTIVO (Live Tracker de la imagen) */
-         .live-tracker-tooltip {
-            position: absolute;
-            top: 55px;
-            right: 45px;
-            background: #1e293b;
-            color: #ffffff;
-            padding: 10px 14px;
-            border-radius: 8px;
-            font-size: 10px;
-            text-align: left;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-            z-index: 5;
-         }
-         .live-tracker-tooltip div {
-            margin-bottom: 3px;
+         .funnel-stage {
             display: flex;
-            justify-content: space-between;
-            gap: 15px;
-         }
-
-         /* PIE DE PÁGINA */
-         .site-footer {
-            background: var(--azul-oscuro);
-            color: rgba(255, 255, 255, .4);
-            padding: 24px 0;
-            margin-top: 60px;
-            font-size: 12px;
-            width: 100%;
-         }
-         .footer-container {
-            display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
+            padding: 6px 12px;
+            color: #ffffff;
+            font-size: 10px;
+            font-weight: 700;
+            border-radius: 6px;
          }
-         .footer-socials {
+         .funnel-1 { background: var(--azul-oscuro); width: 100%; }
+         .funnel-2 { background: var(--azul); width: 85%; }
+         .funnel-3 { background: var(--azul-medio); width: 68%; }
+
+         .donut-box {
             display: flex;
-            gap: 16px;
+            align-items: center;
+            gap: 14px;
+            margin-top: 4px;
          }
+         .donut-svg-wrapper {
+            width: 55px;
+            height: 55px;
+            flex-shrink: 0;
+         }
+         .donut-legends {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+         }
+         .donut-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--texto-suave);
+         }
+         .bullet-dot { width: 7px; height: 7px; border-radius: 50%; }
 
          /* RESPONSIVO */
          .menu-toggle {
             display: none;
-            font-size: 24px;
+            width: 42px;
+            height: 42px;
+            border: 1px solid var(--gris-2);
+            border-radius: 12px;
+            background: #ffffff;
+            color: var(--azul);
+            font-size: 22px;
+            font-weight: 900;
             cursor: pointer;
-            color: var(--azul-oscuro);
          }
-         @media (max-width: 900px) {
-            header { top: 10px; width: calc(100% - 20px); }
-            .menu-toggle { display: block; }
-            nav.menu { display: none; }
-            .dash-grid { grid-template-columns: 1fr; }
-            .hero { padding-top: 140px; }
+         
+         /* PIE DE PÁGINA ANGOSTO Y ESTILIZADO */
+         .site-footer {
+            background: #07172d;
+            color: rgba(255, 255, 255, .72);
+            padding: 12px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            width: 100%;
+            flex-shrink: 0;
          }
-         @media (max-width: 600px) {
-            .acciones { flex-direction: column; width: 100%; padding: 0 20px; }
+         .footer-bottom {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 11.5px;
+            color: rgba(255, 255, 255, .52);
+         }
+         
+         @media (max-width: 980px) {
+            .navbar { height: 64px; }
+            .logo-icono { width: 120px; height: 120px; }
+            .menu-toggle { display: flex; align-items: center; justify-content: center; }
+            .whatsapp-desktop { display: none; }
+            nav.menu {
+               position: absolute;
+               top: 64px;
+               left: 0;
+               width: 100%;
+               display: none;
+               background: #ffffff;
+               border-bottom: 1px solid rgba(22,43,78,.08);
+               box-shadow: 0 18px 40px rgba(7,23,45,.10);
+            }
+            nav.menu.activo { display: block; }
+            nav.menu ul {
+               width: min(1160px, calc(100% - 40px));
+               margin: auto;
+               padding: 14px 0;
+               display: grid;
+               grid-template-columns: 1fr;
+               gap: 6px;
+            }
+            nav.menu a {
+               width: 100%;
+               padding: 12px 14px;
+               border-radius: 12px;
+               background: var(--gris);
+               font-size: 13px;
+            }
+            .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+         }
+         @media (max-width: 680px) {
+            .hero { padding: 100px 0 30px; }
+            .kpis { grid-template-columns: 1fr; gap: 10px; }
+            .analytics-grid-bottom { grid-template-columns: 1fr; gap: 12px; }
+            h1 { font-size: clamp(19px, 5vw, 23px); line-height: 1.3; letter-spacing: normal; }
+            .acciones { display: grid; grid-template-columns: 1fr; width: 100%; gap: 10px; }
             .acciones .btn { width: 100%; }
-            .dashboard-container { grid-template-columns: 1fr; }
-            .dash-sidebar { display: none; }
          }
       </style>
    </head>
    <body>
       <header>
-         <div class="navbar">
+         <div class="contenedor navbar">
             <a href="index.html" class="logo" aria-label="NeoDat Consultores">
                <img src="Neo1.png" class="logo-icono" alt="Logo NeoDat">
             </a>
+            <button class="menu-toggle" type="button" aria-label="Abrir menú"> ☰ </button>
             <nav class="menu" aria-label="Navegación principal">
                <ul>
-                  <li><a href="index.html" class="actual">Inicio</a></li>
+                  <li><a href="index.html">Inicio</a></li>
                   <li><a href="servicios.html">Servicios</a></li>
                   <li><a href="metodo.html">Método</a></li>
                   <li><a href="ambitos.html">Ámbitos</a></li>
@@ -466,8 +537,7 @@
                   <li><a href="contacto.html">Contacto</a></li>
                </ul>
             </nav>
-            <button class="menu-toggle" type="button" aria-label="Abrir menú"> ☰ </button>
-            <a class="btn btn-whatsapp" href="https://wa.me/593988200116" target="_blank" rel="noopener">
+            <a class="btn btn-whatsapp whatsapp-desktop" href="https://wa.me/593988200116?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20NeoDat%20Consultores." target="_blank" rel="noopener">
                WhatsApp
             </a>
          </div>
@@ -475,155 +545,147 @@
 
       <main>
          <section class="hero">
-            <div class="contenedor">
-               <div class="hero-contenido">
+            <div class="contenedor hero-grid">
+               <div>
                   <h1>Transformamos datos complejos en decisiones de negocio rentables.</h1>
                   <p>Estructuramos analítica avanzada, gobierno de datos, arquitecturas financieras y optimización de procesos para dotar a su empresa de un control ejecutivo permanente.</p>
                   <div class="acciones">
-                     <a class="btn btn-principal" href="servicios.html">Ver servicios</a>
-                     <a class="btn btn-secundario" href="https://wa.me/593988200116" target="_blank" rel="noopener">Solicitar asesoría</a>
+                     <a class="btn btn-principal" href="servicios.html">Ver servicios <span>→</span></a>
+                     <a class="btn btn-whatsapp" href="https://wa.me/593988200116?text=Hola,%20quiero%20solicitar%20una%20asesor%C3%ADa%20con%20NeoDat." target="_blank" rel="noopener">Solicitar asesoría</a>
                      <a class="btn btn-secundario" href="contacto.html">Agendar reunión</a>
                   </div>
                </div>
 
                <div class="dashboard-shell">
-                  <div class="dashboard-container">
-                     <div class="dash-sidebar">
-                        <div class="sidebar-dot">N</div>
-                        <div class="sidebar-icon active"></div>
-                        <div class="sidebar-icon"></div>
-                        <div class="sidebar-icon"></div>
-                        <div class="sidebar-icon"></div>
+                  <div class="dashboard">
+                     <div class="dashboard-top">
+                        <div>
+                           <span class="live-dot"></span>
+                           <strong>Panel de Control Corporativo</strong>
+                        </div>
                      </div>
-
-                     <div class="dash-content">
-                        <div class="dash-header">
-                           <span class="dash-title">dashboard-shell</span>
-                           <div class="dash-user"></div>
-                        </div>
-
-                        <div class="dash-grid">
-                           <div class="dash-column-kpis">
-                              <div class="kpi-card">
-                                 <small>Margen Neto</small>
-                                 <strong id="kpi-stream">34.2%</strong>
-                                 <span class="trend">↗ Trendo 34.2%</span>
-                                 <div class="kpi-indicator"></div>
-                              </div>
-                              <div class="kpi-card">
-                                 <small>Ebitda Anual</small>
-                                 <strong id="kpi-eficiencia">$428K</strong>
-                                 <span class="trend">↗ Trendo a 2023</span>
-                                 <div class="kpi-indicator"></div>
-                              </div>
-                              <div class="kpi-card">
-                                 <small>Calidad de Datos</small>
-                                 <strong id="kpi-procesos">99.8%</strong>
-                                 <span class="trend">↗ Trendo oma dato</span>
-                                 <div class="kpi-indicator" style="background:#10b981;"></div>
-                              </div>
+                     <div class="dashboard-body">
+                        <div class="kpis">
+                           <div class="kpi">
+                              <small>Margen Neto</small>
+                              <strong id="kpi-stream">34.2%</strong>
+                              <span class="kpi-trend trend-up">▲ +2.4% vs mes ant.</span>
                            </div>
-
-                           <div class="main-chart-box">
-                              <div class="chart-top">
-                                 <div class="chart-info">
-                                    <h3>Evolución de Ingresos</h3>
-                                    <div class="amount" id="chart-amount">$11,39B</div>
-                                 </div>
-                                 <div class="select-mock">Data por innen Jun ▾</div>
-                              </div>
-
-                              <div class="svg-container">
-                                 <div class="live-tracker-tooltip">
-                                    <strong style="display:block; margin-bottom:6px;">live tracker</strong>
-                                    <div><span>• Jun</span> <strong id="val-jun">34.2</strong></div>
-                                    <div><span>• Sec</span> <strong>23.3</strong></div>
-                                    <div><span>• Nov</span> <strong>14.8</strong></div>
-                                 </div>
-
-                                 <svg class="bi-svg" viewBox="0 0 600 180" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-                                    <defs>
-                                       <linearGradient id="chart-grad" x1="0" y1="0" x2="0" y2="1">
-                                          <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.2"/>
-                                          <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.0"/>
-                                       </linearGradient>
-                                    </defs>
-
-                                    <line x1="0" y1="90" x2="600" y2="90" stroke="#ffa500" stroke-width="1.5" />
-                                    <text x="10" y="82" fill="#ffa500" font-size="10" font-weight="600">Meta</text>
-
-                                    <path id="graph-area" d="M 0 150 L 100 130 L 200 90 L 300 110 L 400 60 L 500 50 L 600 70 L 600 180 L 0 180 Z" fill="url(#chart-grad)" />
-                                    
-                                    <polyline id="graph-line" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" points="0,150 100,130 200,90 300,110 400,60 500,50 600,70" />
-
-                                    <circle cx="100" cy="130" r="4" fill="#2563eb" />
-                                    <circle cx="200" cy="90" r="4" fill="#2563eb" />
-                                    <circle cx="300" cy="110" r="4" fill="#2563eb" />
-                                    <circle cx="400" cy="60" r="4" fill="#2563eb" />
-                                    
-                                    <circle id="tracker-outer" cx="500" cy="50" r="10" fill="#2563eb" opacity="0.15" />
-                                    <circle id="tracker-inner" cx="500" cy="50" r="5" fill="#2563eb" />
-                                 </svg>
-                              </div>
+                           <div class="kpi">
+                              <small>Ebitda Anual</small>
+                              <strong id="kpi-eficiencia">$428K</strong>
+                              <span class="kpi-trend trend-up">▲ Optimizado</span>
+                           </div>
+                           <div class="kpi">
+                              <small>Calidad de Datos</small>
+                              <strong id="kpi-procesos">99.8%</strong>
+                              <span class="kpi-trend trend-orange">● Confiable</span>
                            </div>
                         </div>
+
+                        <div class="chart-container">
+                           <div class="chart-header">
+                              <span class="chart-title">Evolución de Ingresos</span>
+                              <div class="chart-legend">
+                                 <span class="legend-item legend-azul">Ingresos</span>
+                                 <span class="legend-item legend-naranja">Meta</span>
+                              </div>
+                           </div>
+                           <div class="bi-graph-wrapper">
+                              <svg class="bi-svg" viewBox="0 0 500 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                                 <defs>
+                                    <linearGradient id="bi-area-grad" x1="0" y1="0" x2="0" y2="1">
+                                       <stop offset="0%" stop-color="#162b4e" stop-opacity="0.15"/>
+                                       <stop offset="100%" stop-color="#162b4e" stop-opacity="0.0"/>
+                                    </linearGradient>
+                                 </defs>
+                                 
+                                 <line x1="0" y1="30" x2="500" y2="30" stroke="rgba(22,43,78,0.05)" stroke-width="1" />
+                                 <line x1="0" y1="60" x2="500" y2="60" stroke="rgba(22,43,78,0.05)" stroke-width="1" />
+                                 <line x1="0" y1="90" x2="500" y2="90" stroke="rgba(22,43,78,0.05)" stroke-width="1" />
+                  
+                                 <text x="5" y="116" fill="#66788a" font-size="9" font-weight="600">Ene</text>
+                                 <text x="100" y="116" fill="#66788a" font-size="9" font-weight="600">Feb</text>
+                                 <text x="200" y="116" fill="#66788a" font-size="9" font-weight="600">Mar</text>
+                                 <text x="300" y="116" fill="#66788a" font-size="9" font-weight="600">Abr</text>
+                                 <text x="400" y="116" fill="#66788a" font-size="9" font-weight="600">May</text>
+                                 <text x="475" y="116" fill="#66788a" font-size="9" font-weight="600">Jun</text>
+
+                                 <line x1="0" y1="85" x2="500" y2="35" stroke="var(--naranja)" stroke-width="1.5" stroke-dasharray="4,4" />
+
+                                 <path id="graph-area" d="M 0 95 L 100 80 L 200 45 L 300 75 L 400 35 L 500 50 L 500 100 L 0 100 Z" fill="url(#bi-area-grad)" />
+                                 <polyline id="graph-line" fill="none" stroke="var(--azul)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" points="0,95 100,80 200,45 300,75 400,35 500,50" />
+
+                                 <circle cx="100" cy="80" r="3" fill="var(--azul)" />
+                                 <circle cx="200" cy="45" r="3" fill="var(--azul)" />
+                                 <circle cx="300" cy="75" r="3" fill="var(--azul)" />
+                                 <circle cx="400" cy="35" r="3" fill="var(--azul)" />
+
+                                 <circle id="live-tracker-outer" cx="500" cy="50" r="6" fill="var(--azul)" opacity="0.25" class="live-node" />
+                                 <circle id="live-tracker-inner" cx="500" cy="50" r="3.5" fill="var(--azul)" />
+                              </svg>
+                           </div>
+                        </div>                        
                      </div>
                   </div>
                </div>
-
             </div>
          </section>
       </main>
 
       <footer class="site-footer">
-         <div class="contenedor footer-container">
+         <div class="contenedor footer-bottom">
             <span>© 2026 NeoDat Consultores. Todos los derechos reservados.</span>
-            <div class="footer-socials">
-               <span>Facebook</span>
-               <span>Twitter</span>
-               <span>Linkedin</span>
-            </div>
          </div>
       </footer>
 
       <script>
-         // Fluctuación en tiempo real de datos
+         // Menú móvil
+         const menuToggle = document.querySelector(".menu-toggle");
+         const menu = document.querySelector(".menu");
+         menuToggle.addEventListener("click", () => {
+            menu.classList.toggle("activo");
+         });
+
+         // Autodetección de página activa para resaltar el menú
+         const ubicacionActual = window.location.pathname.split("/").pop() || "index.html";
+         const enlacesMenu = document.querySelectorAll("nav.menu a");
+
+         enlacesMenu.forEach(enlace => {
+            if (enlace.getAttribute("href") === ubicacionActual) {
+               enlace.classList.add("actual");
+            }
+         });
+
+         // Elementos del KPI y del Gráfico Premium
          const margenTxt = document.getElementById("kpi-stream");
          const ebitdaTxt = document.getElementById("kpi-eficiencia");
          const calidadTxt = document.getElementById("kpi-procesos");
-         const chartAmount = document.getElementById("chart-amount");
-         const tooltipJun = document.getElementById("val-jun");
          
          const graphLine = document.getElementById("graph-line");
          const graphArea = document.getElementById("graph-area");
-         const trackerOuter = document.getElementById("tracker-outer");
-         const trackerInner = document.getElementById("tracker-inner");
+         const trackerOuter = document.getElementById("live-tracker-outer");
+         const trackerInner = document.getElementById("live-tracker-inner");
 
+         // Fluctuación en tiempo real para simular un feed de BI real
          setInterval(() => {
-            // Actualizar KPIs numéricos
             const vMargen = (33 + Math.random() * 2).toFixed(1);
             margenTxt.textContent = `${vMargen}%`;
-            tooltipJun.textContent = `${vMargen}`;
 
-            const vEbitda = (420 + Math.floor(Math.random() * 15));
+            const vEbitda = (420 + Math.floor(Math.random() * 12));
             ebitdaTxt.textContent = `$${vEbitda}K`;
 
             const vCalidad = (99.5 + Math.random() * 0.4).toFixed(1);
             calidadTxt.textContent = `${vCalidad}%`;
 
-            // Fluctuación leve en el monto total principal
-            const vTotal = (11.1 + Math.random() * 0.5).toFixed(2);
-            chartAmount.textContent = `$${vTotal}B`;
-
-            // Mover dinámicamente el último tramo del gráfico interactivo
-            const nuevaYJunio = Math.floor(40 + Math.random() * 30); 
+            const nuevaYJunio = Math.floor(25 + Math.random() * 40); 
             
-            graphLine.setAttribute("points", `0,150 100,130 200,90 300,110 400,60 500,${nuevaYJunio} 600,70`);
-            graphArea.setAttribute("d", `M 0 150 L 100 130 L 200 90 L 300 110 L 400 60 L 500 ${nuevaYJunio} L 600 70 L 600 180 L 0 180 Z`);
+            graphLine.setAttribute("points", `0,95 100,80 200,45 300,75 400,35 500,${nuevaYJunio}`);
+            graphArea.setAttribute("d", `M 0 95 L 100 80 L 200 45 L 300 75 L 400 35 L 500 ${nuevaYJunio} L 500 100 L 0 100 Z`);
             trackerOuter.setAttribute("cy", nuevaYJunio);
             trackerInner.setAttribute("cy", nuevaYJunio);
 
-         }, 3000);
+         }, 2500);
       </script>
    </body>
 </html>
