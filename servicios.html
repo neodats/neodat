@@ -16,6 +16,7 @@
             --azul-medio: #27456f;
             --azul-claro: #edf2f8;
             --naranja: #ffa500;
+            --naranja-brillo: rgba(255, 165, 0, 0.15);
             --blanco: #ffffff;
             --gris: #f8fafc;
             --gris-2: rgba(22, 43, 78, 0.06); 
@@ -23,7 +24,7 @@
             --texto: #243447;
             --texto-suave: #66788a;
             --sombra: 0 10px 30px rgba(7, 23, 45, 0.04);
-            --sombra-fuerte: 0 20px 50px rgba(7, 23, 45, 0.08);
+            --sombra-fuerte: 0 20px 50px rgba(7, 23, 45, 0.15);
             --exito: #10b981;
          }
          
@@ -174,47 +175,117 @@
             background: var(--azul-claro);
             color: var(--azul-oscuro);
          }
-
-         /* HERO SECTION */
+         
+         /* HERO REDISEÑADO CON COLORES CORPORATIVOS Y FIGURAS (ESTILO INDEX) */
          .hero {
             position: relative;
-            padding: 130px 0 60px; 
-            background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+            padding: 140px 0 70px; 
+            background: radial-gradient(circle at 80% 20%, rgba(255, 165, 0, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 15% 80%, rgba(39, 69, 111, 0.3) 0%, transparent 60%),
+                        linear-gradient(135deg, var(--azul-oscuro) 0%, #0f2544 100%);
             overflow: hidden;
             text-align: center;
+            margin-bottom: 0;
          }
+
+         /* Malla tecnológica de fondo */
          .hero::before {
             content: "";
             position: absolute;
             inset: 0;
             background-image:
-               linear-gradient(rgba(22, 43, 78, 0.03) 1px, transparent 1px),
-               linear-gradient(90deg, rgba(22, 43, 78, 0.03) 1px, transparent 1px);
-            background-size: 44px 44px;
-            mask-image: linear-gradient(180deg, black, transparent 85%);
+               linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+               linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 50px 50px;
+            mask-image: radial-gradient(circle at center, black, transparent 90%);
             pointer-events: none;
+            z-index: 1;
          }
+
+         /* FIGURAS GEOMÉTRICAS ABSTRACTAS BI */
+         .figura {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1;
+            filter: blur(40px);
+            opacity: 0.6;
+         }
+         .figura-1 {
+            top: 10%;
+            right: 5%;
+            width: 250px;
+            height: 250px;
+            background: var(--naranja);
+            filter: blur(80px);
+            opacity: 0.25;
+         }
+         .figura-2 {
+            bottom: -5%;
+            left: 20%;
+            width: 300px;
+            height: 300px;
+            background: var(--azul-medio);
+            filter: blur(60px);
+            opacity: 0.4;
+         }
+         
+         /* Figuras nítidas decorativas */
+         .shapes-container {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 1;
+         }
+         .shape-circle {
+            position: absolute;
+            border: 2px solid rgba(255, 165, 0, 0.2);
+            border-radius: 50%;
+         }
+         .sc-1 { width: 400px; height: 400px; top: -100px; right: -50px; }
+         .sc-2 { width: 200px; height: 200px; top: 150px; right: 50px; border: 1px dashed rgba(255, 255, 255, 0.1); }
+         .sc-3 { width: 20px; height: 20px; bottom: 15%; left: 45%; background: rgba(255, 165, 0, 0.3); border: none; filter: blur(2px); }
+
          .hero-contenido {
             position: relative;
             z-index: 2;
             max-width: 800px;
             margin: auto;
          }
+         
+         /* Adaptación de textos para fondo oscuro */
          h1 {
             margin-bottom: 20px;
-            color: var(--azul-oscuro);
+            color: var(--blanco);
             font-size: clamp(26px, 3.5vw, 42px);
             line-height: 1.25;
             letter-spacing: -0.5px;
+            font-weight: 800;
          }
-         h1 span {
-            color: var(--azul-medio);
+         h1 font {
+            color: var(--naranja);
          }
+         
          .hero p {
             max-width: 660px;
             margin: 0 auto 28px;
-            color: var(--texto-suave);
+            color: rgba(255, 255, 255, 0.75);
             font-size: 15px;
+            line-height: 1.6;
+         }
+
+         /* Botón principal adaptado al nuevo contexto de color */
+         .hero .btn-principal {
+            background: var(--naranja);
+            color: var(--azul-oscuro);
+            border-color: var(--naranja);
+            box-shadow: 0 4px 15px rgba(255, 165, 0, 0.2);
+         }
+         .hero .btn-principal:hover {
+            background: #e69500;
+            border-color: #e69500;
+            box-shadow: 0 6px 22px rgba(255, 165, 0, 0.3);
          }
 
          /* SECCIÓN DE SERVICIOS */
@@ -233,6 +304,7 @@
             font-size: clamp(22px, 2.8vw, 32px);
             line-height: 1.3;
             letter-spacing: -0.3px;
+            font-weight: 800;
          }
          .encabezado p {
             color: var(--texto-suave);
@@ -364,7 +436,7 @@
             font-weight: 900;
             cursor: pointer;
          }
-
+         
          /* PIE DE PÁGINA ANGOSTO Y ESTILIZADO */
          .site-footer {
             background: #07172d;
@@ -382,7 +454,7 @@
             font-size: 11.5px;
             color: rgba(255, 255, 255, .52);
          }
-
+         
          @media (max-width: 980px) {
             .navbar { height: 64px; }
             .logo-icono { width: 120px; height: 120px; }
@@ -419,7 +491,6 @@
                gap: 20px;
             }
          }
-
          @media (max-width: 680px) {
             .hero { padding: 110px 0 40px; }
             .servicios-section { padding: 40px 0 60px; }
@@ -456,8 +527,16 @@
 
       <main>
          <section class="hero">
+            <div class="figura figura-1"></div>
+            <div class="figura figura-2"></div>
+            <div class="shapes-container">
+               <div class="shape-circle sc-1"></div>
+               <div class="shape-circle sc-2"></div>
+               <div class="shape-circle sc-3"></div>
+            </div>
+
             <div class="contenedor hero-contenido">
-               <h1>Soluciones empresariales con <span>datos, finanzas y tecnología</span>.</h1>
+               <h1>Soluciones empresariales con <font>datos, finanzas y tecnología</font>.</h1>
                <p>Diseñamos herramientas de gestión, análisis y automatización para que las empresas trabajen con información clara, procesos ordenados y decisiones mejor sustentadas.</p>
                <a class="btn btn-principal" href="contacto.html">Solicitar una asesoría <span>→</span></a>
             </div>
@@ -641,12 +720,21 @@
       </footer>
 
       <script>
-         // Control del Menú Móvil
+         // Menú móvil
          const menuToggle = document.querySelector(".menu-toggle");
-         const menu = document.querySelector("nav.menu");
-
+         const menu = document.querySelector(".menu");
          menuToggle.addEventListener("click", () => {
             menu.classList.toggle("activo");
+         });
+
+         // Autodetección de página activa para resaltar el menú
+         const ubicacionActual = window.location.pathname.split("/").pop() || "index.html";
+         const enlacesMenu = document.querySelectorAll("nav.menu a");
+
+         enlacesMenu.forEach(enlace => {
+            if (enlace.getAttribute("href") === ubicacionActual) {
+               enlace.classList.add("actual");
+            }
          });
       </script>
    </body>
