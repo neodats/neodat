@@ -3,406 +3,406 @@
 <head>
    <meta charset="UTF-8" />
    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
    <title>Quiénes Somos | NeoDat Consultores</title>
-
    <link rel="icon" type="image/png" sizes="32x32" href="Neo1.png">
-
+   <meta name="description" content="NeoDat Consultores integra experiencia financiera, tecnológica y analítica. Conoce a nuestro equipo multidisciplinario de expertos." />
+   
    <link rel="preconnect" href="https://fonts.googleapis.com" />
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-   <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
-   />
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
    <style>
-      :root{
-         --azul:#162b4e;
-         --azul-oscuro:#07172d;
-         --azul-claro:#edf2f8;
-         --naranja:#ffa500;
-         --blanco:#ffffff;
-         --gris:#f6f8fb;
-         --gris-2:#e1e7f0;
-         --texto:#243447;
-         --texto-suave:#66788a;
+      :root {
+         --azul: #162b4e;
+         --azul-oscuro: #07172d;
+         --azul-medio: #27456f;
+         --azul-claro: #edf2f8;
+         --naranja: #ffa500;
+         --blanco: #ffffff;
+         --gris: #f8fafc;
+         --gris-2: rgba(22, 43, 78, 0.06); 
+         --gris-3: #f1f5f9;
+         --texto: #243447;
+         --texto-suave: #627d98;
       }
 
-      *{
-         margin:0;
-         padding:0;
-         box-sizing:border-box;
+      * {
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
       }
 
-      html{
-         scroll-behavior:smooth;
+      html {
+         scroll-behavior: smooth;
       }
 
-      body{
-         font-family:"Inter", Arial, sans-serif;
-         background:#ffffff;
-         color:var(--texto);
-         line-height:1.6;
-         overflow-x:hidden;
+      body {
+         font-family: "Inter", Arial, sans-serif;
+         background: var(--blanco);
+         color: var(--texto);
+         line-height: 1.6;
+         overflow-x: hidden;
       }
 
-      a{
-         text-decoration:none;
-         color:inherit;
+      a {
+         text-decoration: none;
+         color: inherit;
       }
 
-      .contenedor{
-         width:min(1160px, calc(100% - 40px));
-         margin:auto;
+      .contenedor {
+         width: min(1160px, calc(100% - 40px));
+         margin: auto;
       }
 
-      header{
-         position:fixed;
-         top:0;
-         left:0;
-         z-index:100;
-         width:100%;
-         background:rgba(255,255,255,.94);
-         backdrop-filter:blur(18px);
-         border-bottom:1px solid rgba(22,43,78,.08);
+      /* HEADER & NAVBAR */
+      header {
+         position: fixed;
+         top: 0;
+         left: 0;
+         z-index: 100;
+         width: 100%;
+         background: rgba(255, 255, 255, 0.94);
+         backdrop-filter: blur(18px);
+         -webkit-backdrop-filter: blur(18px);
+         border-bottom: 1px solid rgba(22, 43, 78, 0.06);
       }
 
-      .navbar{
-         height:78px;
-         display:flex;
-         align-items:center;
-         justify-content:space-between;
-         gap:28px;
+      .navbar {
+         height: 78px;
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         gap: 28px;
       }
 
-      .logo{
-         display:flex;
-         align-items:center;
+      .logo {
+         display: flex;
+         align-items: center;
       }
 
-      .logo-icono{
-         width:160px;
-         height:160px;
-         object-fit:contain;
+      .logo-icono {
+         width: 160px;
+         height: 160px;
+         object-fit: contain;
       }
 
-      nav ul{
-         list-style:none;
-         display:flex;
-         align-items:center;
-         gap:8px;
+      nav ul {
+         list-style: none;
+         display: flex;
+         align-items: center;
+         gap: 6px;
       }
 
-      nav a{
-         display:inline-flex;
-         padding:10px 15px;
-         border-radius:999px;
-         font-size:14px;
-         font-weight:750;
-         color:var(--azul);
-         transition:.2s ease;
+      nav a {
+         display: inline-flex;
+         padding: 10px 16px;
+         border-radius: 999px;
+         font-size: 14px;
+         font-weight: 700;
+         color: var(--azul-medio);
+         transition: all 0.2s ease;
       }
 
-      nav a:hover{
-         background:var(--azul-claro);
+      nav a:hover {
+         background: var(--azul-claro);
+         color: var(--azul);
       }
 
-      .btn{
-         display:inline-flex;
-         align-items:center;
-         justify-content:center;
-         min-height:48px;
-         padding:13px 22px;
-         border-radius:999px;
-         border:0;
-         font-size:14px;
-         font-weight:800;
+      nav li.activo a {
+         background: var(--azul);
+         color: var(--blanco);
       }
 
-      .btn-whatsapp{
-         background:#25D366;
-         color:#ffffff;
+      /* BOTONES */
+      .btn {
+         display: inline-flex;
+         align-items: center;
+         justify-content: center;
+         min-height: 48px;
+         padding: 13px 24px;
+         border-radius: 999px;
+         border: 0;
+         font-size: 14px;
+         font-weight: 800;
+         transition: transform 0.2s ease, box-shadow 0.2s ease;
+         cursor: pointer;
       }
 
-      .hero{
-         position:relative;
-         padding:145px 0 64px;
-         background:linear-gradient(180deg,#ffffff 0%,#f8fbff 100%);
-         overflow:hidden;
+      .btn:hover {
+         transform: translateY(-1px);
       }
 
-      .hero::before{
-         content:"";
-         position:absolute;
-         inset:0;
-         background-image:
-         linear-gradient(rgba(22,43,78,.04) 1px, transparent 1px),
-         linear-gradient(90deg, rgba(22,43,78,.04) 1px, transparent 1px);
-         background-size:44px 44px;
-         mask-image:linear-gradient(180deg, black, transparent 76%);
+      .btn-whatsapp {
+         background: #25D366;
+         color: var(--blanco);
+         box-shadow: 0 4px 14px rgba(37, 211, 102, 0.2);
       }
 
-      .hero-contenido{
-         position:relative;
-         z-index:2;
-         max-width:900px;
-         margin:auto;
-         text-align:center;
+      .btn-whatsapp:hover {
+         background: #20ba5a;
+         box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
       }
 
-      .eyebrow{
-         display:inline-flex;
-         align-items:center;
-         gap:10px;
-         margin-bottom:22px;
-         padding:8px 14px;
-         border:1px solid rgba(22,43,78,.1);
-         border-radius:999px;
-         background:var(--blanco);
-         color:var(--azul);
-         font-size:12px;
-         font-weight:900;
-         letter-spacing:1px;
-         text-transform:uppercase;
+      /* HERO SECTION */
+      .hero {
+         position: relative;
+         padding: 160px 0 80px;
+         background: linear-gradient(180deg, #ffffff 0%, #f4f8fd 100%);
+         overflow: hidden;
       }
 
-      .eyebrow::before{
-         content:"";
-         width:8px;
-         height:8px;
-         border-radius:50%;
-         background:var(--naranja);
+      .hero::before {
+         content: "";
+         position: absolute;
+         inset: 0;
+         background-image: 
+            linear-gradient(rgba(22, 43, 78, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(22, 43, 78, 0.03) 1px, transparent 1px);
+         background-size: 44px 44px;
+         mask-image: linear-gradient(180deg, black 50%, transparent 95%);
+         -webkit-mask-image: linear-gradient(180deg, black 50%, transparent 95%);
       }
 
-      h1{
-         margin-bottom:24px;
-         color:var(--azul-oscuro);
-         font-size:clamp(44px,5vw,72px);
-         line-height:.98;
-         letter-spacing:-3px;
+      .hero-contenido {
+         position: relative;
+         z-index: 2;
+         max-width: 860px;
+         margin: auto;
+         text-align: center;
       }
 
-      h1 span{
-         color:var(--azul);
+      h1 {
+         margin-bottom: 28px;
+         color: var(--azul-oscuro);
+         font-size: clamp(40px, 5.5vw, 68px);
+         line-height: 1.02;
+         letter-spacing: -2.5px;
+         font-weight: 900;
       }
 
-      .hero p{
-         max-width:820px;
-         margin:0 auto 18px;
-         color:var(--texto-suave);
-         font-size:18px;
+      h1 span {
+         color: var(--azul);
+         position: relative;
       }
 
-      .bloque{
-         padding:54px 0 90px;
+      .hero p {
+         max-width: 760px;
+         margin: 0 auto 20px;
+         color: var(--texto-suave);
+         font-size: clamp(16px, 2vw, 19px);
+         line-height: 1.65;
       }
 
-      .encabezado{
-         max-width:820px;
-         margin:0 auto 44px;
-         text-align:center;
+      /* BLOQUES GENERALES */
+      .bloque {
+         padding: 80px 0 100px;
       }
 
-      .subtitulo{
-         margin-bottom:12px;
-         color:var(--naranja);
-         font-size:12px;
-         font-weight:900;
-         letter-spacing:2px;
-         text-transform:uppercase;
+      .bloque-gris {
+         background: var(--gris);
+         border-top: 1px solid var(--gris-2);
+         border-bottom: 1px solid var(--gris-2);
       }
 
-      h2{
-         margin-bottom:18px;
-         color:var(--azul-oscuro);
-         font-size:clamp(30px,4vw,48px);
-         line-height:1.08;
-         letter-spacing:-1.5px;
+      .encabezado {
+         max-width: 78px;
+         max-width: 760px;
+         margin: 0 auto 54px;
+         text-align: center;
       }
 
-      .encabezado p{
-         color:var(--texto-suave);
-         font-size:17px;
+      h2 {
+         margin-bottom: 20px;
+         color: var(--azul-oscuro);
+         font-size: clamp(28px, 4vw, 42px);
+         line-height: 1.1;
+         letter-spacing: -1.5px;
+         font-weight: 800;
       }
 
-      .equipo-grid{
-         display:grid;
-         grid-template-columns:repeat(2, 1fr);
-         gap:22px;
-         align-items:stretch;
+      .encabezado p {
+         color: var(--texto-suave);
+         font-size: 17px;
+         line-height: 1.6;
       }
 
-      .miembro{
-         position:relative;
-         min-height:265px;
-         padding:34px;
-         border:1px solid var(--gris-2);
-         border-radius:30px;
-         background:#ffffff;
-         overflow:hidden;
-         transition:.25s ease;
-         box-shadow:0 10px 25px rgba(7,23,45,.04);
+      /* SECCIÓN EQUIPO */
+      .equipo-grid {
+         display: grid;
+         grid-template-columns: repeat(2, 1fr);
+         gap: 24px;
+         align-items: stretch;
       }
 
-      .miembro:hover{
-         transform:translateY(-4px);
-         box-shadow:0 18px 45px rgba(7,23,45,.08);
+      .miembro {
+         position: relative;
+         padding: 40px;
+         border: 1px solid var(--gris-2);
+         border-radius: 24px;
+         background: var(--blanco);
+         transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+         box-shadow: 0 4px 20px rgba(7, 23, 45, 0.02);
       }
 
-      .miembro-top{
-         display:flex;
-         align-items:center;
-         gap:12px;
-         margin-bottom:22px;
+      .miembro:hover {
+         transform: translateY(-4px);
+         box-shadow: 0 20px 38px rgba(7, 23, 45, 0.06);
+         border-color: rgba(22, 43, 78, 0.12);
       }
 
-      .miembro-top span{
-         color:var(--azul);
-         font-size:12px;
-         font-weight:900;
-         letter-spacing:1px;
-         text-transform:uppercase;
+      .miembro-top {
+         display: flex;
+         align-items: center;
+         gap: 12px;
+         margin-bottom: 20px;
       }
 
-      .linea{
-         width:42px;
-         height:2px;
-         background:var(--naranja);
-         flex:0 0 auto;
+      .miembro-top span {
+         color: var(--azul-medio);
+         font-size: 11px;
+         font-weight: 800;
+         letter-spacing: 1px;
+         text-transform: uppercase;
       }
 
-      .miembro h3{
-         margin-bottom:16px;
-         color:var(--azul-oscuro);
-         font-size:28px;
-         line-height:1.05;
-         letter-spacing:-1px;
+      .linea {
+         width: 32px;
+         height: 2px;
+         background: var(--naranja);
+         flex: 0 0 auto;
       }
 
-      .miembro p{
-         color:var(--texto-suave);
-         font-size:15.5px;
-         line-height:1.75;
+      .miembro h3 {
+         color: var(--azul-oscuro);
+         font-size: 24px;
+         line-height: 1.1;
+         letter-spacing: -0.5px;
+         font-weight: 800;
+      }
+      
+      .miembro .cargo {
+         color: var(--azul);
+         font-size: 15px;
+         font-weight: 600;
+         margin-top: 2px;
+         margin-bottom: 16px;
       }
 
-      .miembro.destacado{
-         background:
-         linear-gradient(
-         135deg,
-         rgba(22,43,78,.03),
-         rgba(255,165,0,.04)
-         );
+      .miembro p {
+         color: var(--texto-suave);
+         font-size: 15px;
+         line-height: 1.7;
       }
 
-      .valores-box{
-         max-width:980px;
-         margin:72px auto 0;
-         text-align:center;
+      .miembro.destacado {
+         background: linear-gradient(145deg, rgba(255, 255, 255, 1) 0%, rgba(22, 43, 78, 0.02) 100%);
+         border-color: rgba(22, 43, 78, 0.1);
       }
 
-      .valores-header{
-         margin-bottom:34px;
+      /* SECCIÓN VALORES */
+      .valores-box {
+         max-width: 1000px;
+         margin: auto;
       }
 
-      .valores-grid{
-         display:grid;
-         grid-template-columns:repeat(4, 1fr);
-         gap:18px;
+      .valores-grid {
+         display: grid;
+         grid-template-columns: repeat(4, 1fr);
+         gap: 20px;
       }
 
-      .valor-item{
-         min-height:150px;
-         padding:30px 24px;
-         border:1px solid var(--gris-2);
-         border-radius:26px;
-         background:#ffffff;
-         box-shadow:0 10px 25px rgba(7,23,45,.04);
-         transition:.2s ease;
+      .valor-item {
+         padding: 32px 24px;
+         border: 1px solid var(--gris-2);
+         border-radius: 20px;
+         background: var(--blanco);
+         box-shadow: 0 4px 15px rgba(7, 23, 45, 0.02);
+         transition: all 0.25s ease;
       }
 
-      .valor-item:hover{
-         transform:translateY(-3px);
-         box-shadow:0 18px 45px rgba(7,23,45,.08);
+      .valor-item:hover {
+         transform: translateY(-3px);
+         box-shadow: 0 16px 30px rgba(7, 23, 45, 0.05);
+         border-color: rgba(22, 43, 78, 0.1);
       }
 
-      .valor-item strong{
-         display:block;
-         margin-bottom:10px;
-         color:var(--azul);
-         font-size:22px;
-         line-height:1.1;
+      .valor-item strong {
+         display: block;
+         margin-bottom: 8px;
+         color: var(--azul);
+         font-size: 20px;
+         font-weight: 800;
+         letter-spacing: -0.5px;
       }
 
-      .valor-item span{
-         display:block;
-         color:var(--texto-suave);
-         font-size:14.5px;
-         line-height:1.6;
+      .valor-item span {
+         display: block;
+         color: var(--texto-suave);
+         font-size: 14px;
+         line-height: 1.5;
       }
 
-      .site-footer{
-         background:#07172d;
-         color:rgba(255,255,255,.72);
-         padding:10px 0;
+      /* SITE FOOTER */
+      .site-footer {
+         background: var(--azul-oscuro);
+         color: rgba(255, 255, 255, 0.72);
+         padding: 24px 0;
+         border-top: 1px solid rgba(255, 255, 255, 0.05);
       }
 
-      .footer-bottom{
-         display:flex;
-         justify-content:center;
-         align-items:center;
-         text-align:center;
-         font-size:12.5px;
-         color:rgba(255,255,255,.52);
+      .footer-bottom {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         text-align: center;
+         font-size: 13px;
+         color: rgba(255, 255, 255, 0.45);
       }
 
-      @media (max-width:980px){
-         nav{
-            display:none;
+      /* RESPONSIVE MEDIA QUERIES */
+      @media (max-width: 980px) {
+         nav {
+            display: none; /* Idealmente se cambiará por un menú hamburguesa dinámico posterior */
          }
 
-         .equipo-grid{
-            grid-template-columns:1fr;
+         .equipo-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
          }
 
-         .valores-grid{
-            grid-template-columns:1fr 1fr;
+         .valores-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+         }
+         
+         .bloque {
+            padding: 60px 0 80px;
          }
       }
 
-      @media (max-width:680px){
-         .navbar{
-            height:68px;
+      @media (max-width: 680px) {
+         .navbar {
+            height: 68px;
          }
 
-         .hero{
-            padding:125px 0 54px;
+         .hero {
+            padding: 130px 0 60px;
          }
 
-         h1{
-            font-size:48px;
-            letter-spacing:-2px;
+         h1 {
+            letter-spacing: -1.5px;
          }
 
-         .hero p{
-            font-size:16px;
+         .encabezado {
+            margin-bottom: 36px;
          }
 
-         .bloque{
-            padding:42px 0 70px;
+         .miembro {
+            padding: 28px;
          }
 
-         .miembro{
-            min-height:auto;
-            padding:26px;
-         }
-
-         .miembro h3{
-            font-size:24px;
-         }
-
-         .valores-grid{
-            grid-template-columns:1fr;
+         .valores-grid {
+            grid-template-columns: 1fr;
          }
       }
    </style>
@@ -414,7 +414,7 @@
       <div class="contenedor navbar">
 
          <a href="index.html" class="logo" aria-label="NeoDat Consultores">
-            <img src="Neo1.png" class="logo-icono">
+            <img src="Neo1.png" alt="Logo NeoDat Consultores" class="logo-icono">
          </a>
 
          <nav aria-label="Navegación principal">
@@ -423,7 +423,7 @@
                <li><a href="servicios.html">Servicios</a></li>
                <li><a href="metodo.html">Método</a></li>
                <li><a href="ambitos.html">Ámbitos</a></li>
-               <li><a href="quienes-somos.html">Quiénes somos</a></li>
+               <li class="activo"><a href="quienes-somos.html">Quiénes somos</a></li>
                <li><a href="contacto.html">Contacto</a></li>
             </ul>
          </nav>
@@ -444,23 +444,17 @@
 
       <section class="hero">
          <div class="contenedor hero-contenido">
-
-            <h1>
-               Quiénes <span>somos</span>.
-            </h1>
-
+            <h1>Quiénes <span>somos</span>.</h1>
             <p>
                NeoDat Consultores integra experiencia financiera, tecnológica y analítica
                para ayudar a empresas a trabajar con información clara, control estratégico
                y herramientas modernas de gestión.
             </p>
-
             <p>
                Nuestro enfoque combina economía, desarrollo de software, dirección de proyectos,
                business intelligence y ciencia de datos para construir soluciones empresariales
                reales y medibles.
             </p>
-
          </div>
       </section>
 
@@ -468,14 +462,11 @@
          <div class="contenedor">
 
             <div class="encabezado">
-               <h2>
-                  Un equipo con visión financiera, tecnológica y estratégica.
-               </h2>
-
+               <h2>Un equipo con visión financiera, tecnológica y estratégica.</h2>
                <p>
                   Combinamos experiencia en economía, finanzas, desarrollo tecnológico,
                   gestión de proyectos y ciencia de datos para construir soluciones
-                  empresariales modernas y orientadas a resultados.
+                  empresarariales modernas y orientadas a resultados.
                </p>
             </div>
 
@@ -486,9 +477,8 @@
                      <div class="linea"></div>
                      <span>Finanzas y estrategia comercial</span>
                   </div>
-
                   <h3>Ing. Alfonso Abad Álvarez, Mgs.</h3>
-                  <h3>Presidente Neodat Consultores</h3>
+                  <div class="cargo">Presidente NeoDat Consultores</div>
                   <p>
                      Experto financiero con experiencia en banca y ventas, enfocado en análisis empresarial, gestión financiera y visión estratégica de negocio.
                   </p>
@@ -499,9 +489,8 @@
                      <div class="linea"></div>
                      <span>Tecnología y software</span>
                   </div>
-
                   <h3>Ing. Roberto Jácome Galarza, Ph.D.</h3>
-
+                  <div class="cargo">Socio Consultor de Tecnología</div>
                   <p>
                      Experto en programación, desarrollo de software e inteligencia artificial, orientado a automatización, soluciones digitales y construcción de herramientas tecnológicas empresariales.
                   </p>
@@ -512,11 +501,10 @@
                      <div class="linea"></div>
                      <span>Dirección de proyectos</span>
                   </div>
-
                   <h3>Ing. Clara Guamán Jaramillo, Mgs.</h3>
-
+                  <div class="cargo">Socio Consultor de Proyectos</div>
                   <p>
-Profesional en Administración de Empresas y Dirección de Proyectos, con experiencia en PMO, desarrollo institucional y financiamiento, orientada a la gestión financiera, análisis empresarial y toma de decisiones estratégicas.
+                     Profesional en Administración de Empresas y Dirección de Proyectos, con experiencia en PMO, desarrollo institucional y financiamiento, orientada a la gestión financiera, análisis empresarial y toma de decisiones estratégicas.
                   </p>
                </article>
 
@@ -525,45 +513,44 @@ Profesional en Administración de Empresas y Dirección de Proyectos, con experi
                      <div class="linea"></div>
                      <span>Economía, Big Data e inteligencia de negocios</span>
                   </div>
-
                   <h3>Econ. Darío Hurtado Cuenca, Mgs.</h3>
-
+                  <div class="cargo">Socio Consultor Analítico</div>
                   <p>
                      Especialista en Big Data, Ciencia de Datos e Inteligencia de Negocios, con enfoque en análisis estratégico, modelamiento de información y toma de decisiones orientadas por datos.
                   </p>
                </article>
 
             </div>
+         </div>
+      </section>
 
-            <div class="valores-box">
+      <section class="bloque bloque-gris">
+         <div class="contenedor valores-box">
 
             <div class="encabezado">
-               <h2>
-                  Valores
-               </h2>
+               <h2>Valores</h2>
+            </div>
 
-               <div class="valores-grid">
+            <div class="valores-grid">
 
-                  <div class="valor-item">
-                     <strong>Precisión</strong>
-                     <span>Análisis claro y decisiones confiables.</span>
-                  </div>
+               <div class="valor-item">
+                  <strong>Precisión</strong>
+                  <span>Análisis claro y decisiones confiables.</span>
+               </div>
 
-                  <div class="valor-item">
-                     <strong>Claridad</strong>
-                     <span>Información útil y fácil de interpretar.</span>
-                  </div>
+               <div class="valor-item">
+                  <strong>Claridad</strong>
+                  <span>Información útil y fácil de interpretar.</span>
+               </div>
 
-                  <div class="valor-item">
-                     <strong>Innovación</strong>
-                     <span>Tecnología aplicada a resultados reales.</span>
-                  </div>
+               <div class="valor-item">
+                  <strong>Innovación</strong>
+                  <span>Tecnología aplicada a resultados reales.</span>
+               </div>
 
-                  <div class="valor-item">
-                     <strong>Estrategia</strong>
-                     <span>Soluciones orientadas al crecimiento.</span>
-                  </div>
-
+               <div class="valor-item">
+                  <strong>Estrategia</strong>
+                  <span>Soluciones orientadas al crecimiento.</span>
                </div>
 
             </div>
