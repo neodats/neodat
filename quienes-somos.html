@@ -17,6 +17,7 @@
             --azul-medio: #27456f;
             --azul-claro: #edf2f8;
             --naranja: #ffa500;
+            --naranja-brillo: rgba(255, 165, 0, 0.15);
             --blanco: #ffffff;
             --gris: #f8fafc;
             --gris-2: rgba(22, 43, 78, 0.06); 
@@ -24,7 +25,7 @@
             --texto: #243447;
             --texto-suave: #66788a;
             --sombra: 0 10px 30px rgba(7, 23, 45, 0.04);
-            --sombra-fuerte: 0 20px 50px rgba(7, 23, 45, 0.08);
+            --sombra-fuerte: 0 20px 50px rgba(7, 23, 45, 0.15);
             --exito: #10b981;
          }
          
@@ -160,27 +161,77 @@
             transition: background 0.2s ease, color 0.2s ease;
          }
          
-         /* HERO ADAPTADO */
+         /* HERO REDISEÑADO (IDÉNTICO AL INDEX) */
          .hero {
             position: relative;
-            padding: 150px 0 60px; 
-            background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+            padding: 160px 0 90px; 
+            background: radial-gradient(circle at 80% 20%, rgba(255, 165, 0, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 15% 80%, rgba(39, 69, 111, 0.3) 0%, transparent 60%),
+                        linear-gradient(135deg, var(--azul-oscuro) 0%, #0f2544 100%);
             overflow: hidden;
             display: flex;
             align-items: center;
             text-align: center;
          }
+
+         /* Malla tecnológica de fondo */
          .hero::before {
             content: "";
             position: absolute;
             inset: 0;
             background-image:
-               linear-gradient(rgba(22, 43, 78, 0.03) 1px, transparent 1px),
-               linear-gradient(90deg, rgba(22, 43, 78, 0.03) 1px, transparent 1px);
-            background-size: 44px 44px;
-            mask-image: linear-gradient(180deg, black, transparent 85%);
+               linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+               linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 50px 50px;
+            mask-image: radial-gradient(circle at center, black, transparent 90%);
             pointer-events: none;
+            z-index: 1;
          }
+
+         /* FIGURAS GEOMÉTRICAS ABSTRACTAS */
+         .figura {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1;
+            filter: blur(40px);
+            opacity: 0.6;
+         }
+         .figura-1 {
+            top: 10%;
+            right: 5%;
+            width: 250px;
+            height: 250px;
+            background: var(--naranja);
+            filter: blur(80px);
+            opacity: 0.25;
+         }
+         .figura-2 {
+            bottom: -5%;
+            left: 20%;
+            width: 300px;
+            height: 300px;
+            background: var(--azul-medio);
+            filter: blur(60px);
+            opacity: 0.4;
+         }
+         
+         .shapes-container {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 1;
+         }
+         .shape-circle {
+            position: absolute;
+            border: 2px solid rgba(255, 165, 0, 0.2);
+            border-radius: 50%;
+         }
+         .sc-1 { width: 400px; height: 400px; top: -100px; right: -50px; }
+         .sc-2 { width: 200px; height: 200px; top: 150px; right: 50px; border: 1px dashed rgba(255, 255, 255, 0.1); }
+         .sc-3 { width: 20px; height: 20px; bottom: 15%; left: 45%; background: rgba(255, 165, 0, 0.3); border: none; filter: blur(2px); }
+
          .hero-contenido {
             position: relative;
             z-index: 2;
@@ -189,27 +240,27 @@
          }
          
          h1 {
-            margin-bottom: 20px;
-            color: var(--azul-oscuro);
-            font-size: clamp(28px, 4vw, 42px);
-            line-height: 1.2;
+            margin-bottom: 25px;
+            color: var(--blanco);
+            font-size: clamp(26px, 3.5vw, 42px);
+            line-height: 1.25;
             letter-spacing: -0.5px;
-            font-weight: 900;
+            font-weight: 800;
          }
-         h1 span {
-            color: var(--azul);
+         h1 font {
+            color: var(--naranja);
          }
          .hero p {
             max-width: 700px;
-            margin: 0 auto 16px;
-            color: var(--texto-suave);
-            font-size: 14.5px;
+            margin: 0 auto 20px;
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 15px;
             line-height: 1.6;
          }
 
          /* SECCIONES Y BLOQUES */
          .bloque {
-            padding: 60px 0 80px;
+            padding: 80px 0 90px;
          }
          .bloque-gris {
             background: var(--gris);
@@ -218,7 +269,7 @@
          }
          .encabezado {
             max-width: 720px;
-            margin: 0 auto 40px;
+            margin: 0 auto 48px;
             text-align: center;
          }
          h2 {
@@ -231,7 +282,7 @@
          }
          .encabezado p {
             color: var(--texto-suave);
-            font-size: 14px;
+            font-size: 14.5px;
             line-height: 1.6;
          }
 
@@ -239,10 +290,10 @@
          .equipo-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+            gap: 24px;
          }
          .miembro {
-            padding: 30px;
+            padding: 34px;
             background: #ffffff;
             border-radius: 16px;
             border: 1px solid var(--gris-2);
@@ -258,7 +309,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-bottom: 14px;
+            margin-bottom: 16px;
          }
          .miembro-top span {
             color: var(--azul-medio);
@@ -285,10 +336,10 @@
          }
          .miembro .cargo {
             color: var(--azul);
-            font-size: 13px;
+            font-size: 13.5px;
             font-weight: 700;
             margin-top: 4px;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
          }
          .miembro p {
             color: var(--texto-suave);
@@ -307,7 +358,7 @@
             gap: 16px;
          }
          .valor-item {
-            padding: 24px 20px;
+            padding: 26px 22px;
             background: #ffffff;
             border-radius: 14px;
             border: 1px solid var(--gris-2);
@@ -383,13 +434,13 @@
                background: var(--gris);
                font-size: 13px;
             }
-            .equipo-grid { grid-template-columns: 1fr; gap: 16px; }
+            .equipo-grid { grid-template-columns: 1fr; gap: 18px; }
             .valores-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
          }
          @media (max-width: 680px) {
-            .hero { padding: 120px 0 40px; }
+            .hero { padding: 130px 0 50px; }
             .valores-grid { grid-template-columns: 1fr; gap: 12px; }
-            .bloque { padding: 40px 0 50px; }
+            .bloque { padding: 50px 0 60px; }
          }
       </style>
    </head>
@@ -419,8 +470,16 @@
 
       <main>
          <section class="hero">
+            <div class="figura figura-1"></div>
+            <div class="figura figura-2"></div>
+            <div class="shapes-container">
+               <div class="shape-circle sc-1"></div>
+               <div class="shape-circle sc-2"></div>
+               <div class="shape-circle sc-3"></div>
+            </div>
+
             <div class="contenedor hero-contenido">
-               <h1>Quiénes <span>somos</span>.</h1>
+               <h1>Quiénes <font>somos</font>.</h1>
                <p>NeoDat Consultores integra experiencia financiera, tecnológica y analítica para ayudar a empresas a trabajar con información clara, control estratégico y herramientas modernas de gestión.</p>
                <p>Nuestro enfoque combina economía, desarrollo de software, dirección de proyectos, business intelligence y ciencia de datos para construir soluciones empresariales reales y medibles.</p>
             </div>
