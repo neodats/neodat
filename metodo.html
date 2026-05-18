@@ -1,917 +1,817 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-   <meta charset="UTF-8" />
-   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   <title>Método | NeoDat Consultores</title>
-   <link rel="icon" type="image/png" sizes="32x32" href="Neo1.png">
-   <meta name="description" content="Conozca el Método NeoDat: Transformamos la información dispersa de su empresa en sistemas de decisión claros, rápidos y orientados a resultados." />
-   <link rel="preconnect" href="https://fonts.googleapis.com" />
-   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-   
-   <style>
-      :root {
-         --azul: #162b4e;
-         --azul-oscuro: #07172d;
-         --azul-medio: #27456f;
-         --azul-claro: #edf2f8;
-         --naranja: #ffa500;
-         --blanco: #ffffff;
-         --gris: #f8fafc;
-         --gris-2: rgba(22, 43, 78, 0.06); 
-         --gris-3: #f0f4f8;
-         --texto: #243447;
-         --texto-suave: #66788a;
-         --sombra: 0 10px 30px rgba(7, 23, 45, 0.04);
-         --sombra-fuerte: 0 20px 50px rgba(7, 23, 45, 0.08);
-         --exito: #10b981;
-      }
-      
-      /* CONFIGURACIÓN ESTRUCTURAL */
-      html, body {
-         height: 100%;
-         margin: 0;
-         padding: 0;
-         box-sizing: border-box;
-      }
-      * {
-         margin: 0;
-         padding: 0;
-         box-sizing: border-box;
-      }
-      html {
-         scroll-behavior: smooth;
-      }
-      body {
-         font-family: "Inter", Arial, sans-serif;
-         background: #ffffff;
-         color: var(--texto);
-         line-height: 1.5;
-         overflow-x: hidden;
-         display: flex;
-         flex-direction: column;
-      }
-      main {
-         flex: 1 0 auto;
-      }
-      a {
-         text-decoration: none;
-         color: inherit;
-      }
-      button {
-         font: inherit;
-      }
-      .contenedor {
-         width: min(1160px, calc(100% - 40px));
-         margin: auto;
-      }
-
-      /* BOTONES PREMIUM */
-      .btn {
-         display: inline-flex;
-         align-items: center;
-         justify-content: center;
-         gap: 8px;
-         min-height: 46px;
-         padding: 12px 24px;
-         border-radius: 12px;
-         font-size: 13.5px;
-         font-weight: 600;
-         cursor: pointer;
-         transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-         white-space: nowrap;
-      }
-      .btn-principal {
-         background: var(--azul);
-         color: var(--blanco);
-         border: 1px solid var(--azul);
-         box-shadow: 0 4px 12px rgba(22, 43, 78, 0.12);
-      }
-      .btn-principal:hover {
-         background: var(--azul-oscuro);
-         border-color: var(--azul-oscuro);
-         transform: translateY(-1px);
-         box-shadow: 0 6px 20px rgba(22, 43, 78, 0.18);
-      }
-      .btn-principal span {
-         transition: transform 0.2s ease;
-      }
-      .btn-principal:hover span {
-         transform: translateX(3px);
-      }
-      .btn-whatsapp {
-         background: rgba(37, 211, 102, 0.1);
-         color: #1ebe5d;
-         border: 1px solid rgba(37, 211, 102, 0.25);
-         box-shadow: none;
-      }
-      .btn-whatsapp:hover {
-         background: #25D366;
-         color: #ffffff;
-         border-color: #25D366;
-         transform: translateY(-1px);
-         box-shadow: 0 6px 16px rgba(37, 211, 102, 0.2);
-      }
-      .btn-secundario {
-         background: transparent;
-         color: var(--azul);
-         border: 1px solid rgba(22, 43, 78, 0.15);
-      }
-      .btn-secundario:hover {
-         background: var(--azul-claro);
-         border-color: rgba(22, 43, 78, 0.3);
-         color: var(--azul-oscuro);
-         transform: translateY(-1px);
-      }
-
-      /* INTERFAZ GENERAL */
-      header {
-         position: fixed;
-         top: 0;
-         left: 0;
-         z-index: 100;
-         width: 100%;
-         background: rgba(255, 255, 255, 0.85);
-         backdrop-filter: blur(20px);
-         border-bottom: 1px solid var(--gris-2);
-      }
-      .navbar {
-         height: 70px;
-         display: flex;
-         align-items: center;
-         justify-content: space-between;
-         gap: 28px;
-      }
-      .logo {
-         display: flex;
-         align-items: center;
-         gap: 12px;
-      }
-      .logo-icono {
-         width: 140px;
-         height: 140px;
-         object-fit: contain;
-      }
-      nav ul {
-         list-style: none;
-         display: flex;
-         align-items: center;
-         gap: 4px;
-      }
-      nav a {
-         display: inline-flex;
-         padding: 8px 12px;
-         border-radius: 999px;
-         font-size: 13px;
-         font-weight: 750;
-         color: var(--azul);
-         transition: 0.2s ease;
-      }
-      nav a:hover,
-      nav a.actual {
-         background: var(--azul-claro);
-         color: var(--azul-oscuro);
-      }
-      .menu-toggle {
-         display: none;
-         width: 40px;
-         height: 40px;
-         border: 1px solid var(--gris-2);
-         border-radius: 10px;
-         background: var(--blanco);
-         color: var(--azul);
-         font-size: 22px;
-         cursor: pointer;
-      }
-
-      /* SECCIÓN HERO */
-      .hero {
-         position: relative;
-         padding: 130px 0 60px; 
-         background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
-         overflow: hidden;
-         display: flex;
-         align-items: center;
-      }
-      .hero::before {
-         content: "";
-         position: absolute;
-         inset: 0;
-         background-image:
-            linear-gradient(rgba(22, 43, 78, 0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(22, 43, 78, 0.03) 1px, transparent 1px);
-         background-size: 44px 44px;
-         mask-image: linear-gradient(180deg, black, transparent 85%);
-      }
-      .hero-grid {
-         position: relative;
-         z-index: 2;
-         display: grid;
-         grid-template-columns: 1.1fr 0.9fr;
-         gap: 50px;
-         align-items: center;
-      }
-      .marca-seccion {
-         display: flex;
-         align-items: center;
-         gap: 12px;
-         margin-bottom: 20px;
-      }
-      .marca-seccion span {
-         width: 36px;
-         height: 2px;
-         background: var(--naranja);
-      }
-      .marca-seccion strong {
-         color: var(--azul-medio);
-         font-size: 11px;
-         font-weight: 800;
-         letter-spacing: 1.5px;
-         text-transform: uppercase;
-      }
-      h1 {
-         margin-bottom: 22px;
-         color: var(--azul-oscuro);
-         font-size: clamp(38px, 4.5vw, 62px);
-         line-height: 1.05;
-         letter-spacing: -2px;
-      }
-      h1 span {
-         color: var(--azul);
-         position: relative;
-         display: inline-block;
-      }
-      .hero p {
-         max-width: 620px;
-         margin-bottom: 30px;
-         color: var(--texto-suave);
-         font-size: 17px;
-         line-height: 1.7;
-      }
-      .hero-acciones {
-         display: flex;
-         flex-wrap: wrap;
-         gap: 12px;
-      }
-
-      /* COMPONENTE PAIN-CARD (HERO ASIDE) */
-      .pain-card {
-         padding: 30px;
-         border: 1px solid var(--gris-2);
-         border-radius: 24px;
-         background: var(--blanco);
-         box-shadow: var(--sombra-fuerte);
-      }
-      .pain-card h2 {
-         margin-bottom: 20px;
-         color: var(--azul-oscuro);
-         font-size: 24px;
-         line-height: 1.2;
-         letter-spacing: -0.5px;
-      }
-      .pain-list {
-         display: grid;
-         gap: 12px;
-      }
-      .pain-item {
-         display: flex;
-         gap: 14px;
-         padding: 14px;
-         border-radius: 16px;
-         background: var(--gris);
-         border: 1px solid var(--gris-2);
-      }
-      .check {
-         width: 26px;
-         height: 26px;
-         flex: 0 0 auto;
-         display: grid;
-         place-items: center;
-         border-radius: 50%;
-         background: rgba(22, 43, 78, 0.08);
-         color: var(--azul);
-         font-size: 13px;
-         font-weight: 700;
-      }
-      .pain-item strong {
-         display: block;
-         margin-bottom: 2px;
-         color: var(--azul-oscuro);
-         font-size: 14.5px;
-         font-weight: 600;
-      }
-      .pain-item span {
-         color: var(--texto-suave);
-         font-size: 13.5px;
-      }
-
-      /* SECCIONES ESTÁNDAR */
-      .section {
-         padding: 80px 0;
-      }
-      .section.alt {
-         background: var(--gris);
-         border-top: 1px solid var(--gris-2);
-         border-bottom: 1px solid var(--gris-2);
-      }
-      .encabezado {
-         max-width: 800px;
-         margin: 0 auto 50px;
-         text-align: center;
-      }
-      .encabezado .marca-seccion {
-         justify-content: center;
-      }
-      .encabezado h2 {
-         margin-bottom: 16px;
-         color: var(--azul-oscuro);
-         font-size: clamp(28px, 3.5vw, 44px);
-         line-height: 1.15;
-         letter-spacing: -1.5px;
-      }
-      .encabezado p {
-         color: var(--texto-suave);
-         font-size: 16.5px;
-         line-height: 1.7;
-      }
-
-      /* GRID DE LOGROS / RESULTADOS */
-      .resultado-grid {
-         display: grid;
-         grid-template-columns: repeat(4, 1fr);
-         gap: 20px;
-      }
-      .resultado {
-         padding: 26px;
-         border: 1px solid var(--gris-2);
-         border-radius: 20px;
-         background: var(--blanco);
-         box-shadow: var(--sombra);
-         transition: transform 0.25s ease, box-shadow 0.25s ease;
-      }
-      .resultado:hover {
-         transform: translateY(-2px);
-         box-shadow: var(--sombra-fuerte);
-      }
-      .resultado-num {
-         margin-bottom: 16px;
-         color: var(--naranja);
-         font-size: 13px;
-         font-weight: 800;
-         letter-spacing: 1px;
-      }
-      .resultado h3 {
-         margin-bottom: 10px;
-         color: var(--azul-oscuro);
-         font-size: 19px;
-         line-height: 1.2;
-         letter-spacing: -0.3px;
-      }
-      .resultado p {
-         color: var(--texto-suave);
-         font-size: 14.5px;
-         line-height: 1.6;
-      }
-
-      /* GRID DE PASOS DEL MÉTODO */
-      .metodo-comercial {
-         display: grid;
-         grid-template-columns: 1fr 1fr;
-         gap: 24px;
-      }
-      .paso-card {
-         padding: 32px;
-         border-radius: 24px;
-         border: 1px solid var(--gris-2);
-         background: var(--blanco);
-         box-shadow: var(--sombra);
-         transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-      .paso-card:hover {
-         transform: translateY(-3px);
-         box-shadow: var(--sombra-fuerte);
-      }
-      .paso-top {
-         display: flex;
-         align-items: center;
-         justify-content: space-between;
-         gap: 16px;
-         margin-bottom: 20px;
-      }
-      .paso-num {
-         width: 52px;
-         height: 52px;
-         display: grid;
-         place-items: center;
-         border-radius: 14px;
-         background: linear-gradient(135deg, var(--azul), var(--azul-oscuro));
-         color: var(--blanco);
-         font-size: 18px;
-         font-weight: 800;
-      }
-      .paso-tag {
-         padding: 6px 12px;
-         border-radius: 999px;
-         background: var(--azul-claro);
-         color: var(--azul-medio);
-         font-size: 11px;
-         font-weight: 800;
-         text-transform: uppercase;
-         letter-spacing: 0.5px;
-      }
-      .paso-card h3 {
-         margin-bottom: 12px;
-         color: var(--azul-oscuro);
-         font-size: 24px;
-         line-height: 1.2;
-         letter-spacing: -0.5px;
-      }
-      .paso-card p {
-         margin-bottom: 20px;
-         color: var(--texto-suave);
-         font-size: 15px;
-         line-height: 1.6;
-      }
-      .paso-card ul {
-         display: grid;
-         gap: 8px;
-         padding-left: 16px;
-         list-style-type: square;
-      }
-      .paso-card li {
-         color: var(--texto);
-         font-size: 14px;
-      }
-      .paso-card li::marker {
-         color: var(--naranja);
-      }
-
-      /* GRID DE ENTREGABLES */
-      .entregables {
-         display: grid;
-         grid-template-columns: repeat(3, 1fr);
-         gap: 20px;
-      }
-      .entregable {
-         padding: 26px;
-         border-radius: 20px;
-         border: 1px solid var(--gris-2);
-         background: var(--blanco);
-         box-shadow: var(--sombra);
-         transition: transform 0.25s ease;
-      }
-      .entregable:hover {
-         transform: translateY(-2px);
-      }
-      .entregable strong {
-         display: block;
-         margin-bottom: 10px;
-         color: var(--azul);
-         font-size: 19px;
-         line-height: 1.2;
-         font-weight: 700;
-      }
-      .entregable span {
-         color: var(--texto-suave);
-         font-size: 14px;
-         line-height: 1.6;
-      }
-
-      /* LLAMADA A LA ACCIÓN (CTA) */
-      .cta {
-         padding: 80px 0;
-         background: linear-gradient(135deg, var(--azul), var(--azul-oscuro));
-         color: var(--blanco);
-         text-align: center;
-         position: relative;
-      }
-      .cta h2 {
-         max-width: 800px;
-         margin: 0 auto 16px;
-         color: var(--blanco);
-         font-size: clamp(28px, 3.8vw, 46px);
-         line-height: 1.1;
-         letter-spacing: -1.5px;
-      }
-      .cta p {
-         max-width: 700px;
-         margin: 0 auto 30px;
-         color: rgba(255, 255, 255, 0.8);
-         font-size: 17px;
-         line-height: 1.7;
-      }
-      .cta .btn-whatsapp {
-         background: var(--blanco);
-         color: var(--azul-oscuro);
-         border-color: var(--blanco);
-         font-weight: 700;
-      }
-      .cta .btn-whatsapp:hover {
-         background: var(--azul-claro);
-         color: var(--azul-oscuro);
-         box-shadow: 0 10px 24px rgba(0,0,0,0.15);
-      }
-
-      /* FOOTER - ADAPTADO EXACTAMENTE A TU IMAGEN */
-      .site-footer {
-         background: var(--azul-oscuro);
-         padding: 24px 0;
-         border-top: 1px solid rgba(255, 255, 255, 0.05);
-      }
-      .footer-bottom {
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         text-align: center;
-         font-size: 11px;
-         font-weight: 400;
-         color: rgba(255, 255, 255, 0.4);
-         letter-spacing: 0.2px;
-      }
-
-      /* DISPOSITIVOS MEDIANOS (RESPONSIVE) */
-      @media (max-width: 980px) {
-         .navbar {
-            height: 65px;
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Método | NeoDat Consultores</title>
+      <link rel="icon" type="image/png" sizes="32x32" href="Neo1.png">
+      <meta name="description" content="Conozca el Método NeoDat: Transformamos la información dispersa de su empresa en sistemas de decisión claros, rápidos y orientados a resultados." />
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+      <style>
+         :root {
+            --azul: #162b4e;
+            --azul-oscuro: #07172d;
+            --azul-medio: #27456f;
+            --azul-claro: #edf2f8;
+            --naranja: #ffa500;
+            --blanco: #ffffff;
+            --gris: #f8fafc;
+            --gris-2: rgba(22, 43, 78, 0.06); 
+            --gris-3: #f0f4f8;
+            --texto: #243447;
+            --texto-suave: #66788a;
+            --sombra: 0 10px 30px rgba(7, 23, 45, 0.04);
+            --sombra-fuerte: 0 20px 50px rgba(7, 23, 45, 0.08);
+            --exito: #10b981;
          }
-         .logo-icono {
-            width: 120px;
-            height: 120px;
+         
+         /* CONFIGURACIÓN ESTRUCTURAL */
+         html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
          }
-         .menu-toggle {
+         * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+         }
+         html {
+            scroll-behavior: smooth;
+         }
+         body {
+            font-family: "Inter", Arial, sans-serif;
+            background: #ffffff;
+            color: var(--texto);
+            line-height: 1.5;
+            overflow-x: hidden;
             display: flex;
-            align-items: center;
-            justify-content: center;
+            flex-direction: column;
          }
-         .whatsapp-desktop {
-            display: none;
+         main {
+            flex: 1 0 auto;
          }
-         nav.menu {
-            position: absolute;
-            top: 65px;
-            left: 0;
-            width: 100%;
-            display: none;
-            background: var(--blanco);
-            border-bottom: 1px solid var(--gris-2);
-            box-shadow: var(--sombra-fuerte);
+         a {
+            text-decoration: none;
+            color: inherit;
          }
-         nav.menu.activo {
-            display: block;
+         button {
+            font: inherit;
          }
-         nav.menu ul {
+         .contenedor {
             width: min(1160px, calc(100% - 40px));
             margin: auto;
-            padding: 16px 0;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 6px;
          }
-         nav.menu a {
-            width: 100%;
-            padding: 12px 16px;
-            border-radius: 10px;
-            background: var(--gris);
-         }
-         .hero {
-            padding: 110px 0 50px;
-         }
-         .hero-grid,
-         .metodo-comercial {
-            grid-template-columns: 1fr;
-            gap: 40px;
-         }
-         .resultado-grid {
-            grid-template-columns: repeat(2, 1fr);
-         }
-         .entregables {
-            grid-template-columns: repeat(2, 1fr);
-         }
-      }
 
-      /* DISPOSITIVOS MÓVILES */
-      @media (max-width: 680px) {
-         .contenedor {
-            width: min(100% - 32px, 1160px);
+         /* BOTONES PREMIUM */
+         .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            min-height: 46px;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-size: 13.5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            white-space: nowrap;
          }
+         .btn-principal {
+            background: var(--azul);
+            color: var(--blanco);
+            border: 1px solid var(--azul);
+            box-shadow: 0 4px 12px rgba(22, 43, 78, 0.12);
+         }
+         .btn-principal:hover {
+            background: var(--azul-oscuro);
+            border-color: var(--azul-oscuro);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(22, 43, 78, 0.18);
+         }
+         .btn-principal span {
+            transition: transform 0.2s ease;
+         }
+         .btn-principal:hover span {
+            transform: translateX(3px);
+         }
+         .btn-whatsapp {
+            background: rgba(37, 211, 102, 0.1);
+            color: #1ebe5d;
+            border: 1px solid rgba(37, 211, 102, 0.25);
+            box-shadow: none;
+         }
+         .btn-whatsapp:hover {
+            background: #25D366;
+            color: #ffffff;
+            border-color: #25D366;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(37, 211, 102, 0.2);
+         }
+         .btn-secundario {
+            background: transparent;
+            color: var(--azul);
+            border: 1px solid rgba(22, 43, 78, 0.15);
+         }
+         .btn-secundario:hover {
+            background: var(--azul-claro);
+            border-color: rgba(22, 43, 78, 0.3);
+            color: var(--azul-oscuro);
+            transform: translateY(-1px);
+         }
+
+         /* ESTILOS DE LA INTERFAZ */
+         header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--gris-2);
+         }
+         .navbar {
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 28px;
+         }
+         .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+         }
+         .logo-icono {
+            width: 140px;
+            height: 140px;
+            object-fit: contain;
+         }
+         nav ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+         }
+         nav a {
+            display: inline-flex;
+            padding: 8px 12px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 750;
+            color: var(--azul);
+            transition: 0.2s ease;
+         }
+         nav a:hover,
+         nav a.actual {
+            background: var(--azul-claro);
+            color: var(--azul-oscuro);
+         }
+         
+         /* HERO ADAPTADO */
          .hero {
-            padding: 100px 0 40px;
+            position: relative;
+            padding: 110px 0 40px; 
+            background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            margin-bottom: 0;
+         }
+         .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image:
+               linear-gradient(rgba(22, 43, 78, 0.03) 1px, transparent 1px),
+               linear-gradient(90deg, rgba(22, 43, 78, 0.03) 1px, transparent 1px);
+            background-size: 44px 44px;
+            mask-image: linear-gradient(180deg, black, transparent 85%);
+            pointer-events: none;
+         }
+         .hero-grid {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1.15fr;
+            gap: 40px;
+            align-items: center;
          }
          h1 {
-            font-size: 35px;
-            letter-spacing: -1px;
+            max-width: 720px;
+            margin-bottom: 20px;
+            color: var(--azul-oscuro);
+            font-size: clamp(22px, 2.4vw, 28px);
+            line-height: 1.3;
+            letter-spacing: -0.3px;
          }
-         .hero p,
-         .encabezado p,
-         .cta p {
-            font-size: 15px;
+         .hero p {
+            max-width: 640px;
+            margin-bottom: 28px;
+            color: var(--texto-suave);
+            font-size: 14px;
          }
-         .hero-acciones {
+         .acciones {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+         }
+
+         /* COMPONENTE PAIN-CARD (HERO ASIDE) */
+         .pain-card-shell {
+            padding: 10px;
+            border-radius: 24px; 
+            background: linear-gradient(145deg, rgba(22, 43, 78, 0.03), rgba(7, 23, 45, 0.05));
+            border: 1px solid var(--gris-2); 
+            position: relative;
+         }
+         .pain-card {
+            overflow: hidden;
+            border-radius: 16px;
+            background: #ffffff;
+            box-shadow: var(--sombra-fuerte);
+            border: 1px solid rgba(22, 43, 78, 0.08);
+            padding: 20px;
+         }
+         .pain-card h2 {
+            margin-bottom: 16px;
+            color: var(--azul-oscuro);
+            font-size: 16px;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+         }
+         .pain-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+         }
+         .pain-item {
+            display: flex;
+            gap: 12px;
+            padding: 12px;
+            border-radius: 12px;
+            background: var(--gris);
+            border: 1px solid var(--gris-2);
+         }
+         .check {
+            width: 22px;
+            height: 22px;
+            flex: 0 0 auto;
             display: grid;
-            grid-template-columns: 1fr;
+            place-items: center;
+            border-radius: 50%;
+            background: rgba(22, 43, 78, 0.05);
+            color: var(--azul);
+            font-size: 11px;
+            font-weight: 800;
          }
-         .hero-acciones .btn,
-         .cta .btn {
-            width: 100%;
+         .pain-item strong {
+            display: block;
+            margin-bottom: 2px;
+            color: var(--azul-oscuro);
+            font-size: 12.5px;
+            font-weight: 700;
          }
+         .pain-item span {
+            display: block;
+            color: var(--texto-suave);
+            font-size: 11.5px;
+            line-height: 1.4;
+         }
+
+         /* SECCIONES ESTÁNDAR */
          .section {
-            padding: 50px 0;
+            padding: 60px 0;
+            background: #ffffff;
          }
-         .resultado-grid,
+         .section.alt {
+            background: var(--gris);
+            border-top: 1px solid var(--gris-2);
+            border-bottom: 1px solid var(--gris-2);
+         }
+         .encabezado {
+            max-width: 720px;
+            margin: 0 auto 40px;
+            text-align: center;
+         }
+         .encabezado h2 {
+            margin-bottom: 12px;
+            color: var(--azul-oscuro);
+            font-size: clamp(20px, 2.2vw, 26px);
+            line-height: 1.3;
+            letter-spacing: -0.3px;
+         }
+         .encabezado p {
+            color: var(--texto-suave);
+            font-size: 13.5px;
+            line-height: 1.5;
+         }
+
+         /* GRID DE LOGROS / RESULTADOS */
+         .resultado-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+         }
+         .resultado {
+            padding: 20px;
+            border: 1px solid var(--gris-2);
+            border-radius: 16px;
+            background: var(--blanco);
+            box-shadow: var(--sombra);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+         }
+         .resultado:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--sombra-fuerte);
+         }
+         .resultado-num {
+            margin-bottom: 12px;
+            color: var(--naranja);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+         }
+         .resultado h3 {
+            margin-bottom: 8px;
+            color: var(--azul-oscuro);
+            font-size: 15px;
+            font-weight: 700;
+            line-height: 1.3;
+         }
+         .resultado p {
+            color: var(--texto-suave);
+            font-size: 12.5px;
+            line-height: 1.5;
+         }
+
+         /* GRID DE PASOS DEL MÉTODO */
+         .metodo-comercial {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+         }
+         .paso-card {
+            padding: 24px;
+            border-radius: 16px;
+            border: 1px solid var(--gris-2);
+            background: var(--blanco);
+            box-shadow: var(--sombra);
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+         }
+         .paso-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--sombra-fuerte);
+         }
+         .paso-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 16px;
+         }
+         .paso-num {
+            width: 42px;
+            height: 42px;
+            display: grid;
+            place-items: center;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--azul), var(--azul-oscuro));
+            color: var(--blanco);
+            font-size: 15px;
+            font-weight: 800;
+         }
+         .paso-tag {
+            padding: 4px 10px;
+            border-radius: 999px;
+            background: var(--azul-claro);
+            color: var(--azul-medio);
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+         }
+         .paso-card h3 {
+            margin-bottom: 8px;
+            color: var(--azul-oscuro);
+            font-size: 17px;
+            font-weight: 700;
+            line-height: 1.3;
+         }
+         .paso-card p {
+            margin-bottom: 16px;
+            color: var(--texto-suave);
+            font-size: 13px;
+            line-height: 1.5;
+         }
+         .paso-card ul {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            padding-left: 14px;
+            list-style-type: square;
+         }
+         .paso-card li {
+            color: var(--texto);
+            font-size: 12.5px;
+         }
+         .paso-card li::marker {
+            color: var(--naranja);
+         }
+
+         /* GRID DE ENTREGABLES */
          .entregables {
-            grid-template-columns: 1fr;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
          }
-         .paso-card,
-         .pain-card,
          .entregable {
-            padding: 22px;
+            padding: 20px;
+            border-radius: 16px;
+            border: 1px solid var(--gris-2);
+            background: var(--blanco);
+            box-shadow: var(--sombra);
+            transition: transform 0.25s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
          }
-      }
-   </style>
-</head>
+         .entregable:hover {
+            transform: translateY(-2px);
+         }
+         .entregable strong {
+            color: var(--azul);
+            font-size: 14.5px;
+            font-weight: 700;
+            line-height: 1.3;
+         }
+         .entregable span {
+            color: var(--texto-suave);
+            font-size: 12.5px;
+            line-height: 1.5;
+         }
 
-<body>
+         /* LLAMADA A LA ACCIÓN (CTA PREMIUM) */
+         .cta {
+            padding: 60px 0;
+            background: linear-gradient(135deg, var(--azul), var(--azul-oscuro));
+            color: var(--blanco);
+            text-align: center;
+            position: relative;
+         }
+         .cta h2 {
+            max-width: 720px;
+            margin: 0 auto 12px;
+            color: var(--blanco);
+            font-size: clamp(20px, 2.2vw, 26px);
+            line-height: 1.3;
+            letter-spacing: -0.3px;
+         }
+         .cta p {
+            max-width: 620px;
+            margin: 0 auto 24px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 13.5px;
+            line-height: 1.6;
+         }
+         .cta .btn-whatsapp {
+            background: var(--blanco);
+            color: var(--azul-oscuro);
+            border-color: var(--blanco);
+            font-weight: 700;
+         }
+         .cta .btn-whatsapp:hover {
+            background: var(--azul-claro);
+            color: var(--azul-oscuro);
+            box-shadow: 0 10px 24px rgba(0,0,0,0.15);
+         }
 
-   <header>
-      <div class="contenedor navbar">
-         <a href="index.html" class="logo" aria-label="NeoDat Consultores">
-            <img src="Neo1.png" class="logo-icono" alt="Logo NeoDat">
-         </a>
+         /* INTERFAZ DEL RESPONSIVO */
+         .menu-toggle {
+            display: none;
+            width: 42px;
+            height: 42px;
+            border: 1px solid var(--gris-2);
+            border-radius: 12px;
+            background: #ffffff;
+            color: var(--azul);
+            font-size: 22px;
+            font-weight: 900;
+            cursor: pointer;
+         }
+         
+         /* PIE DE PÁGINA ANGOSTO Y ESTILIZADO */
+         .site-footer {
+            background: #07172d;
+            color: rgba(255, 255, 255, .72);
+            padding: 12px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            width: 100%;
+            flex-shrink: 0;
+         }
+         .footer-bottom {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 11.5px;
+            color: rgba(255, 255, 255, .52);
+         }
+         
+         @media (max-width: 980px) {
+            .navbar { height: 64px; }
+            .logo-icono { width: 120px; height: 120px; }
+            .menu-toggle { display: flex; align-items: center; justify-content: center; }
+            .whatsapp-desktop { display: none; }
+            nav.menu {
+               position: absolute;
+               top: 64px;
+               left: 0;
+               width: 100%;
+               display: none;
+               background: #ffffff;
+               border-bottom: 1px solid rgba(22,43,78,.08);
+               box-shadow: 0 18px 40px rgba(7,23,45,.10);
+            }
+            nav.menu.activo { display: block; }
+            nav.menu ul {
+               width: min(1160px, calc(100% - 40px));
+               margin: auto;
+               padding: 14px 0;
+               display: grid;
+               grid-template-columns: 1fr;
+               gap: 6px;
+            }
+            nav.menu a {
+               width: 100%;
+               padding: 12px 14px;
+               border-radius: 12px;
+               background: var(--gris);
+               font-size: 13px;
+            }
+            .hero-grid, .metodo-comercial { grid-template-columns: 1fr; gap: 40px; }
+            .resultado-grid, .entregables { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+         }
+         @media (max-width: 680px) {
+            .hero { padding: 100px 0 30px; }
+            .resultado-grid, .entregables { grid-template-columns: 1fr; gap: 12px; }
+            h1 { font-size: clamp(19px, 5vw, 23px); line-height: 1.3; letter-spacing: normal; }
+            .acciones { display: grid; grid-template-columns: 1fr; width: 100%; gap: 10px; }
+            .acciones .btn, .cta .btn { width: 100%; }
+            .section { padding: 40px 0; }
+         }
+      </style>
+   </head>
 
-         <button class="menu-toggle" type="button" aria-label="Abrir menú">
-            ☰
-         </button>
-
-         <nav class="menu" aria-label="Navegación principal">
-            <ul>
-               <li><a href="index.html">Inicio</a></li>
-               <li><a href="servicios.html">Servicios</a></li>
-               <li><a href="metodo.html" class="actual">Método</a></li>
-               <li><a href="ambitos.html">Ámbitos</a></li>
-               <li><a href="quienes-somos.html">Quiénes somos</a></li>
-               <li><a href="contacto.html">Contacto</a></li>
-            </ul>
-         </nav>
-
-         <a
-            class="btn btn-whatsapp whatsapp-desktop"
-            href="https://wa.me/593988200116?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20NeoDat%20Consultores."
-            target="_blank"
-            rel="noopener"
-         >
-            WhatsApp
-         </a>
-      </div>
-   </header>
-
-   <main>
-      <section class="hero">
-         <div class="contenedor hero-grid">
-            <div>
-               <h1>De información dispersa a <span>decisiones claras</span>.</h1>
-
-               <p>
-                  Ayudamos a empresas que trabajan con reportes manuales, datos desordenados
-                  o poca visibilidad de su gestión a construir herramientas claras para controlar,
-                  analizar y decidir mejor.
-               </p>
-
-               <div class="hero-acciones">
-                  <a class="btn btn-principal" href="contacto.html">
-                     Solicitar diagnóstico <span>→</span>
-                  </a>
-                  <a
-                     class="btn btn-whatsapp"
-                     href="https://wa.me/593988200116?text=Hola,%20quiero%20solicitar%20un%20diagn%C3%B3stico%20con%20NeoDat."
-                     target="_blank"
-                     rel="noopener"
-                  >
-                     Contactar por WhatsApp
-                  </a>
-               </div>
-            </div>
-
-            <aside class="pain-card">
-               <h2>¿Esto pasa en su empresa?</h2>
-               <div class="pain-list">
-                  <div class="pain-item">
-                     <div class="check">✓</div>
-                     <div>
-                        <strong>Reportes que toman demasiado tiempo.</strong>
-                        <span>La información llega tarde o depende de trabajo manual.</span>
-                     </div>
-                  </div>
-                  <div class="pain-item">
-                     <div class="check">✓</div>
-                     <div>
-                        <strong>Datos repartidos en varios archivos.</strong>
-                        <span>No existe una fuente clara para analizar el negocio.</span>
-                     </div>
-                  </div>
-                  <div class="pain-item">
-                     <div class="check">✓</div>
-                     <div>
-                        <strong>Indicadores poco claros.</strong>
-                        <span>Hay información, pero no necesariamente sirve para decidir.</span>
-                     </div>
-                  </div>
-                  <div class="pain-item">
-                     <div class="check">✓</div>
-                     <div>
-                        <strong>Falta de control ejecutivo.</strong>
-                        <span>La gerencia no ve con rapidez ventas, costos, proyectos o resultados.</span>
-                     </div>
-                  </div>
-               </div>
-            </aside>
-         </div>
-      </section>
-
-      <section class="section">
-         <div class="contenedor">
-            <div class="encabezado">
-               <h2>No entregamos solo reportes. Construimos sistemas de decisión.</h2>
-               <p>
-                  Nuestro trabajo conecta datos, finanzas, procesos y tecnología para que la empresa
-                  tenga visibilidad, control y herramientas que se puedan usar en la gestión diaria.
-               </p>
-            </div>
-
-            <div class="resultado-grid">
-               <div class="resultado">
-                  <div class="resultado-num">01</div>
-                  <h3>Menos trabajo manual</h3>
-                  <p>Automatizamos reportes y procesos repetitivos para liberar tiempo operativo.</p>
-               </div>
-               <div class="resultado">
-                  <div class="resultado-num">02</div>
-                  <h3>Más claridad gerencial</h3>
-                  <p>Convertimos datos dispersos en indicadores comprensibles y accionables.</p>
-               </div>
-               <div class="resultado">
-                  <div class="resultado-num">03</div>
-                  <h3>Mejor control financiero</h3>
-                  <p>Ordenamos información económica para seguir ingresos, costos, márgenes y resultados.</p>
-               </div>
-               <div class="resultado">
-                  <div class="resultado-num">04</div>
-                  <h3>Decisiones con soporte</h3>
-                  <p>Diseñamos herramientas para decidir con evidencia, no solo con intuición.</p>
-               </div>
-            </div>
-         </div>
-      </section>
-
-      <section class="section alt">
-         <div class="contenedor">
-            <div class="encabezado">
-               <h2>Un proceso claro, rápido y orientado a resultados.</h2>
-               <p>
-                  Trabajamos con una ruta práctica: entender el problema, diseñar la solución,
-                  implementarla y dejarla funcionando con acompañamiento.
-               </p>
-            </div>
-
-            <div class="metodo-comercial">
-               <article class="paso-card">
-                  <div class="paso-top">
-                     <div class="paso-num">01</div>
-                     <div class="paso-tag">Diagnóstico</div>
-                  </div>
-                  <h3>Entendemos dónde está el bloqueo.</h3>
-                  <p>
-                     Revisamos información, reportes, procesos, archivos, indicadores y necesidades
-                     de decisión para identificar qué impide tener control y claridad.
-                  </p>
-                  <ul>
-                     <li>Revisión de fuentes de información.</li>
-                     <li>Identificación de brechas y duplicidades.</li>
-                     <li>Evaluación de procesos manuales.</li>
-                     <li>Priorización de problemas críticos.</li>
-                  </ul>
-               </article>
-
-               <article class="paso-card">
-                  <div class="paso-top">
-                     <div class="paso-num">02</div>
-                     <div class="paso-tag">Diseño</div>
-                  </div>
-                  <h3>Diseñamos una solución útil, no decorativa.</h3>
-                  <p>
-                     Definimos indicadores, estructura de datos, visualizaciones, reportes y herramientas
-                     que respondan a preguntas reales del negocio.
-                  </p>
-                  <ul>
-                     <li>Definición de KPI estratégicos.</li>
-                     <li>Diseño de tableros y reportes.</li>
-                     <li>Estructura financiera y operativa.</li>
-                     <li>Modelo de seguimiento gerencial.</li>
-                  </ul>
-               </article>
-
-               <article class="paso-card">
-                  <div class="paso-top">
-                     <div class="paso-num">03</div>
-                     <div class="paso-tag">Implementación</div>
-                  </div>
-                  <h3>Construimos la herramienta y la dejamos operativa.</h3>
-                  <p>
-                     Desarrollamos dashboards, automatizaciones, modelos financieros, reportes o soluciones
-                     digitales según el problema detectado.
-                  </p>
-                  <ul>
-                     <li>Dashboards ejecutivos.</li>
-                     <li>Reportes automatizados.</li>
-                     <li>Modelos de análisis y control.</li>
-                     <li>Soluciones web y formularios empresariales.</li>
-                  </ul>
-               </article>
-
-               <article class="paso-card">
-                  <div class="paso-top">
-                     <div class="paso-num">04</div>
-                     <div class="paso-tag">Acompañamiento</div>
-                  </div>
-                  <h3>Aseguramos que la solución se use.</h3>
-                  <p>
-                     No dejamos archivos aislados. Acompañamos la adopción para que la herramienta
-                     funcione dentro de la operación y genere valor real.
-                  </p>
-                  <ul>
-                     <li>Capacitación en uso de herramientas.</li>
-                     <li>Ajustes según retroalimentación.</li>
-                     <li>Seguimiento de indicadores.</li>
-                     <li>Mejora continua del sistema implementado.</li>
-                  </ul>
-               </article>
-            </div>
-         </div>
-      </section>
-
-      <section class="section">
-         <div class="contenedor">
-            <div class="encabezado">
-               <h2>Entregables concretos, utilizables y alineados al negocio.</h2>
-               <p>
-                  Cada solución se adapta a la necesidad de la empresa. El objetivo es que el cliente
-                  reciba herramientas que sirvan para operar, controlar y decidir.
-               </p>
-            </div>
-
-            <div class="entregables">
-               <div class="entregable">
-                  <strong>Dashboards ejecutivos</strong>
-                  <span>Tableros para monitorear ventas, finanzas, operaciones, proyectos o indicadores clave.</span>
-               </div>
-               <div class="entregable">
-                  <strong>Reportes automatizados</strong>
-                  <span>Información periódica estructurada para reducir tareas manuales y errores recurrentes.</span>
-               </div>
-               <div class="entregable">
-                  <strong>Modelos financieros</strong>
-                  <span>Presupuestos, proyecciones, análisis de rentabilidad y escenarios de decisión.</span>
-               </div>
-               <div class="entregable">
-                  <strong>Herramientas de control</strong>
-                  <span>Seguimiento de resultados, indicadores, cumplimiento, costos, avances y desempeño.</span>
-               </div>
-               <div class="entregable">
-                  <strong>Soluciones digitales</strong>
-                  <span>Páginas web, formularios, estructuras de captación y herramientas empresariales.</span>
-               </div>
-               <div class="entregable">
-                  <strong>Plan de mejora</strong>
-                  <span>Ruta clara para ordenar información, automatizar procesos y mejorar la gestión.</span>
-               </div>
-            </div>
-         </div>
-      </section>
-
-      <section class="cta">
-         <div class="contenedor">
-            <h2>Si su empresa tiene datos, pero no claridad, ahí empieza nuestro trabajo.</h2>
-            <p>Revisamos su situación actual y proponemos una ruta concreta para mejorar control, análisis y toma de decisiones.</p>
-            <a class="btn btn-whatsapp" href="contacto.html">
-               Solicitar diagnóstico
+   <body>
+      <header>
+         <div class="contenedor navbar">
+            <a href="index.html" class="logo" aria-label="NeoDat Consultores">
+               <img src="Neo1.png" class="logo-icono" alt="Logo NeoDat">
+            </a>
+            <button class="menu-toggle" type="button" aria-label="Abrir menú"> ☰ </button>
+            <nav class="menu" aria-label="Navegación principal">
+               <ul>
+                  <li><a href="index.html">Inicio</a></li>
+                  <li><a href="servicios.html">Servicios</a></li>
+                  <li><a href="metodo.html">Método</a></li>
+                  <li><a href="ambitos.html">Ámbitos</a></li>
+                  <li><a href="quienes-somos.html">Quiénes somos</a></li>
+                  <li><a href="contacto.html">Contacto</a></li>
+               </ul>
+            </nav>
+            <a class="btn btn-whatsapp whatsapp-desktop" href="https://wa.me/593988200116?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20NeoDat%20Consultores." target="_blank" rel="noopener">
+               WhatsApp
             </a>
          </div>
-      </section>
-   </main>
+      </header>
 
-   <footer class="site-footer">
-      <div class="contenedor footer-bottom">
-         <span>© 2026 NeoDat Consultores. Todos los derechos reservados.</span>
-      </div>
-   </footer>
+      <main>
+         <section class="hero">
+            <div class="contenedor hero-grid">
+               <div>
+                  <h1>De información dispersa a decisiones claras.</h1>
+                  <p>Ayudamos a empresas que trabajan con reportes manuales, datos desordenados o poca visibilidad de su gestión a construir herramientas claras para controlar, analizar y decidir mejor.</p>
+                  <div class="acciones">
+                     <a class="btn btn-principal" href="contacto.html">Solicitar diagnóstico <span>→</span></a>
+                     <a class="btn btn-whatsapp" href="https://wa.me/593988200116?text=Hola,%20quiero%20solicitar%20un%20diagn%C3%B3stico%20con%20NeoDat." target="_blank" rel="noopener">Contactar por WhatsApp</a>
+                  </div>
+               </div>
 
-   <script>
-      const menuToggle = document.querySelector(".menu-toggle");
-      const menu = document.querySelector(".menu");
+               <div class="pain-card-shell">
+                  <aside class="pain-card">
+                     <h2>¿Esto pasa en su empresa?</h2>
+                     <div class="pain-list">
+                        <div class="pain-item">
+                           <div class="check">✓</div>
+                           <div>
+                              <strong>Reportes que toman demasiado tiempo.</strong>
+                              <span>La información llega tarde o depende de trabajo manual.</span>
+                           </div>
+                        </div>
+                        <div class="pain-item">
+                           <div class="check">✓</div>
+                           <div>
+                              <strong>Datos repartidos en varios archivos.</strong>
+                              <span>No existe una fuente clara para analizar el negocio.</span>
+                           </div>
+                        </div>
+                        <div class="pain-item">
+                           <div class="check">✓</div>
+                           <div>
+                              <strong>Indicadores poco claros.</strong>
+                              <span>Hay información, pero no necesariamente sirve para decidir.</span>
+                           </div>
+                        </div>
+                        <div class="pain-item">
+                           <div class="check">✓</div>
+                           <div>
+                              <strong>Falta de control ejecutivo.</strong>
+                              <span>La gerencia no ve con rapidez ventas, costos, proyectos o resultados.</span>
+                           </div>
+                        </div>
+                     </div>
+                  </aside>
+               </div>
+            </div>
+         </section>
 
-      menuToggle.addEventListener("click", () => {
-         menu.classList.toggle("activo");
-      });
-   </script>
-</body>
+         <section class="section">
+            <div class="contenedor">
+               <div class="encabezado">
+                  <h2>No entregamos solo reportes. Construimos sistemas de decisión.</h2>
+                  <p>Nuestro trabajo conecta datos, finanzas, procesos y tecnología para que la empresa tenga visibilidad, control y herramientas que se puedan usar en la gestión diaria.</p>
+               </div>
+
+               <div class="resultado-grid">
+                  <div class="resultado">
+                     <div class="resultado-num">01</div>
+                     <h3>Menos trabajo manual</h3>
+                     <p>Automatizamos reportes y procesos repetitivos para liberar tiempo operativo.</p>
+                  </div>
+                  <div class="resultado">
+                     <div class="resultado-num">02</div>
+                     <h3>Más claridad gerencial</h3>
+                     <p>Convertimos datos dispersos en indicadores comprensibles y accionables.</p>
+                  </div>
+                  <div class="resultado">
+                     <div class="resultado-num">03</div>
+                     <h3>Mejor control financiero</h3>
+                     <p>Ordenamos información económica para seguir ingresos, costos, márgenes y resultados.</p>
+                  </div>
+                  <div class="resultado">
+                     <div class="resultado-num">04</div>
+                     <h3>Decisiones con soporte</h3>
+                     <p>Diseñamos herramientas para decidir con evidencia, no solo con intuición.</p>
+                  </div>
+               </div>
+            </div>
+         </section>
+
+         <section class="section alt">
+            <div class="contenedor">
+               <div class="encabezado">
+                  <h2>Un proceso claro, rápido y orientado a resultados.</h2>
+                  <p>Trabajamos con una ruta práctica: entender el problema, diseñar la solución, implementarla y dejarla funcionando con acompañamiento.</p>
+               </div>
+
+               <div class="metodo-comercial">
+                  <article class="paso-card">
+                     <div class="paso-top">
+                        <div class="paso-num">01</div>
+                        <div class="paso-tag">Diagnóstico</div>
+                     </div>
+                     <h3>Entendemos dónde está el bloqueo.</h3>
+                     <p>Revisamos información, reportes, procesos, archivos, indicadores y necesidades de decisión para identificar qué impide tener control y claridad.</p>
+                     <ul>
+                        <li>Revisión de fuentes de información.</li>
+                        <li>Identificación de brechas y duplicidades.</li>
+                        <li>Evaluación de procesos manuales.</li>
+                        <li>Priorización de problemas críticos.</li>
+                     </ul>
+                  </article>
+
+                  <article class="paso-card">
+                     <div class="paso-top">
+                        <div class="paso-num">02</div>
+                        <div class="paso-tag">Diseño</div>
+                     </div>
+                     <h3>Diseñamos una solución útil, no decorativa.</h3>
+                     <p>Definimos indicadores, estructura de datos, visualizaciones, reportes y herramientas que respondan a preguntas reales del negocio.</p>
+                     <ul>
+                        <li>Definición de KPI estratégicos.</li>
+                        <li>Diseño de tableros y reportes.</li>
+                        <li>Estructura financiera y operativa.</li>
+                        <li>Modelo de seguimiento gerencial.</li>
+                     </ul>
+                  </article>
+
+                  <article class="paso-card">
+                     <div class="paso-top">
+                        <div class="paso-num">03</div>
+                        <div class="paso-tag">Implementación</div>
+                     </div>
+                     <h3>Construimos la herramienta y la dejamos operativa.</h3>
+                     <p>Desarrollamos dashboards, automatizaciones, modelos financieros, reportes o soluciones digitales según el problema detectado.</p>
+                     <ul>
+                        <li>Dashboards ejecutivos.</li>
+                        <li>Reportes automatizados.</li>
+                        <li>Modelos de análisis y control.</li>
+                        <li>Soluciones web y formularios empresariales.</li>
+                     </ul>
+                  </article>
+
+                  <article class="paso-card">
+                     <div class="paso-top">
+                        <div class="paso-num">04</div>
+                        <div class="paso-tag">Acompañamiento</div>
+                     </div>
+                     <h3>Aseguramos que la solución se use.</h3>
+                     <p>No dejamos archivos aislados. Acompañamos la adopción para que la herramienta funcione dentro de la operación y genere valor real.</p>
+                     <ul>
+                        <li>Capacitación en uso de herramientas.</li>
+                        <li>Ajustes según retroalimentación.</li>
+                        <li>Seguimiento de indicadores.</li>
+                        <li>Mejora continua del sistema implementado.</li>
+                     </ul>
+                  </article>
+               </div>
+            </div>
+         </section>
+
+         <section class="section">
+            <div class="contenedor">
+               <div class="encabezado">
+                  <h2>Entregables concretos, utilizables y alineados al negocio.</h2>
+                  <p>Cada solución se adapta a la necesidad de la empresa. El objetivo es que el cliente reciba herramientas que sirvan para operar, controlar y decidir.</p>
+               </div>
+
+               <div class="entregables">
+                  <div class="entregable">
+                     <strong>Dashboards ejecutivos</strong>
+                     <span>Tableros para monitorear ventas, finanzas, operaciones, proyectos o indicadores clave.</span>
+                  </div>
+                  <div class="entregable">
+                     <strong>Reportes automatizados</strong>
+                     <span>Información periódica estructurada para reducir tareas manuales y errores recurrentes.</span>
+                  </div>
+                  <div class="entregable">
+                     <strong>Modelos financieros</strong>
+                     <span>Presupuestos, proyecciones, análisis de rentabilidad y escenarios de decisión.</span>
+                  </div>
+                  <div class="entregable">
+                     <strong>Herramientas de control</strong>
+                     <span>Seguimiento de resultados, indicadores, cumplimiento, costos, avances y desempeño.</span>
+                  </div>
+                  <div class="entregable">
+                     <strong>Soluciones digitales</strong>
+                     <span>Páginas web, formularios, estructuras de captación y herramientas empresariales.</span>
+                  </div>
+                  <div class="entregable">
+                     <strong>Plan de mejora</strong>
+                     <span>Ruta clara para ordenar información, automatizar procesos y mejorar la gestión.</span>
+                  </div>
+               </div>
+            </div>
+         </section>
+
+         <section class="cta">
+            <div class="contenedor">
+               <h2>Si su empresa tiene datos, pero no claridad, ahí empieza nuestro trabajo.</h2>
+               <p>Revisamos su situación actual y proponemos una ruta concreta para mejorar control, análisis y toma de decisiones.</p>
+               <a class="btn btn-whatsapp" href="contacto.html">Solicitar diagnóstico</a>
+            </div>
+         </section>
+      </main>
+
+      <footer class="site-footer">
+         <div class="contenedor footer-bottom">
+            <span>© 2026 NeoDat Consultores. Todos los derechos reservados.</span>
+         </div>
+      </footer>
+
+      <script>
+         // Menú móvil
+         const menuToggle = document.querySelector(".menu-toggle");
+         const menu = document.querySelector(".menu");
+         menuToggle.addEventListener("click", () => {
+            menu.classList.toggle("activo");
+         });
+
+         // Autodetección de página activa para resaltar el menú
+         const ubicacionActual = window.location.pathname.split("/").pop() || "index.html";
+         const enlacesMenu = document.querySelectorAll("nav.menu a");
+
+         enlacesMenu.forEach(enlace => {
+            if (enlace.getAttribute("href") === ubicacionActual) {
+               enlace.classList.add("actual");
+            }
+         });
+      </script>
+   </body>
 </html>
