@@ -8,7 +8,7 @@
       <meta name="description" content="NeoDat Consultores integra experiencia financiera, tecnológica y analítica. Conoce a nuestro equipo multidisciplinario de expertos." />
       
       <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
       <style>
          :root {
@@ -157,6 +157,7 @@
             font-size: 22px;
             font-weight: 900;
             cursor: pointer;
+            transition: background 0.2s ease, color 0.2s ease;
          }
          
          /* HERO ADAPTADO */
@@ -270,6 +271,11 @@
             width: 24px;
             height: 2px;
             background: var(--naranja);
+            transition: width 0.3s ease, background-color 0.3s ease;
+         }
+         .miembro:hover .linea {
+            width: 35px;
+            background: var(--azul);
          }
          .miembro h3 {
             color: var(--azul-oscuro);
@@ -394,14 +400,14 @@
             <a href="index.html" class="logo" aria-label="NeoDat Consultores">
                <img src="Neo1.png" class="logo-icono" alt="Logo NeoDat">
             </a>
-            <button class="menu-toggle" type="button" aria-label="Abrir menú"> ☰ </button>
+            <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false"> ☰ </button>
             <nav class="menu" aria-label="Navegación principal">
                <ul>
                   <li><a href="index.html">Inicio</a></li>
                   <li><a href="servicios.html">Servicios</a></li>                  
                   <li><a href="metodo.html">Método</a></li>
                   <li><a href="ambitos.html">Ámbitos</a></li>
-                  <li><a href="quienes-somos.html"class="actual">Quiénes somos</a></li>
+                  <li><a href="quienes-somos.html" class="actual">Quiénes somos</a></li>
                   <li><a href="contacto.html">Contacto</a></li>
                </ul>
             </nav>
@@ -428,7 +434,7 @@
                </div>
 
                <div class="equipo-grid">
-               <article class="miembro">
+                  <article class="miembro">
                      <div class="miembro-top">
                         <div class="linea"></div>
                         <span>Dirección de proyectos</span>
@@ -437,6 +443,7 @@
                      <div class="cargo">Directora Ejecutiva/Representante Legal (CEO)</div>
                      <p>Profesional en Administración de Empresas y Dirección de Proyectos, con experiencia en PMO, desarrollo institucional y financiamiento, orientada a la gestión financiera, análisis empresarial y toma de decisiones estratégicas.</p>
                   </article>
+                  
                   <article class="miembro">
                      <div class="miembro-top">
                         <div class="linea"></div>
@@ -505,16 +512,30 @@
       </footer>
 
       <script>
-         // Menú móvil funcional e idéntico al index
+         // Menú móvil funcional con accesibilidad mejorada e idéntico al index
          const menuToggle = document.querySelector(".menu-toggle");
          const menu = document.querySelector(".menu");
+         
          menuToggle.addEventListener("click", () => {
-            menu.classList.toggle("activo");
+            const estaActivo = menu.classList.toggle("activo");
+            menuToggle.setAttribute("aria-expanded", estaActivo);
+            menuToggle.textContent = estaActivo ? " ✕ " : " ☰ ";
+         });
+
+         // Cerrar el menú automáticamente al hacer clic en un enlace (útil en móviles)
+         const enlacesMenu = document.querySelectorAll("nav.menu a");
+         enlacesMenu.forEach(enlace => {
+            enlace.addEventListener("click", () => {
+               if (menu.classList.contains("activo")) {
+                  menu.classList.remove("activo");
+                  menuToggle.setAttribute("aria-expanded", "false");
+                  menuToggle.textContent = " ☰ ";
+               }
+            });
          });
 
          // Autodetección de página activa para resaltar la pestaña actual
          const ubicacionActual = window.location.pathname.split("/").pop() || "index.html";
-         const enlacesMenu = document.querySelectorAll("nav.menu a");
 
          enlacesMenu.forEach(enlace => {
             if (enlace.getAttribute("href") === ubicacionActual) {
