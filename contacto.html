@@ -11,501 +11,477 @@
    <link rel="preconnect" href="https://fonts.googleapis.com" />
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-   <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
-   />
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
    <style>
-      :root{
-         --azul:#162b4e;
-         --azul-oscuro:#07172d;
-         --azul-claro:#edf2f8;
-         --naranja:#ffa500;
-         --blanco:#ffffff;
-         --gris:#f6f8fb;
-         --gris-2:#e1e7f0;
-         --texto:#243447;
-         --texto-suave:#66788a;
+      :root {
+         --azul: #162b4e;
+         --azul-oscuro: #07172d;
+         --azul-medio: #27456f;
+         --azul-claro: #edf2f8;
+         --naranja: #ffa500;
+         --blanco: #ffffff;
+         --gris: #f8fafc;
+         --gris-2: rgba(22, 43, 78, 0.06); 
+         --gris-3: #f0f4f8;
+         --texto: #243447;
+         --texto-suave: #66788a;
+         --sombra: 0 10px 30px rgba(7, 23, 45, 0.04);
+         --sombra-fuerte: 0 20px 50px rgba(7, 23, 45, 0.08);
+         --exito: #10b981;
       }
 
-      *{
-         margin:0;
-         padding:0;
-         box-sizing:border-box;
+      /* CONFIGURACIÓN ESTRUCTURAL */
+      html, body {
+         height: 100%;
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
       }
-
-      body{
-         font-family:"Inter", Arial, sans-serif;
-         background:#ffffff;
-         color:var(--texto);
-         line-height:1.6;
-         overflow-x:hidden;
+      * {
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
       }
-
-      a{
-         text-decoration:none;
-         color:inherit;
+      html {
+         scroll-behavior: smooth;
       }
-
+      body {
+         font-family: "Inter", Arial, sans-serif;
+         background: #ffffff;
+         color: var(--texto);
+         line-height: 1.5;
+         overflow-x: hidden;
+         display: flex;
+         flex-direction: column;
+      }
+      main {
+         flex: 1 0 auto;
+      }
+      a {
+         text-decoration: none;
+         color: inherit;
+      }
       input,
       select,
       textarea,
-      button{
-         font:inherit;
+      button {
+         font: inherit;
+      }
+      .contenedor {
+         width: min(1160px, calc(100% - 40px));
+         margin: auto;
       }
 
-      .contenedor{
-         width:min(1160px, calc(100% - 40px));
-         margin:auto;
+      /* BOTONES PREMIUM */
+      .btn {
+         display: inline-flex;
+         align-items: center;
+         justify-content: center;
+         gap: 8px;
+         min-height: 46px;
+         padding: 12px 24px;
+         border-radius: 12px;
+         font-size: 13.5px;
+         font-weight: 600;
+         cursor: pointer;
+         transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+         white-space: nowrap;
+      }
+      .btn-principal {
+         background: var(--azul);
+         color: var(--blanco);
+         border: 1px solid var(--azul);
+         box-shadow: 0 4px 12px rgba(22, 43, 78, 0.12);
+      }
+      .btn-principal:hover {
+         background: var(--azul-oscuro);
+         border-color: var(--azul-oscuro);
+         transform: translateY(-1px);
+         box-shadow: 0 6px 20px rgba(22, 43, 78, 0.18);
+      }
+      .btn-principal span {
+         transition: transform 0.2s ease;
+      }
+      .btn-principal:hover span {
+         transform: translateX(3px);
+      }
+      .btn-whatsapp {
+         background: rgba(37, 211, 102, 0.1);
+         color: #1ebe5d;
+         border: 1px solid rgba(37, 211, 102, 0.25);
+         box-shadow: none;
+      }
+      .btn-whatsapp:hover {
+         background: #25D366;
+         color: #ffffff;
+         border-color: #25D366;
+         transform: translateY(-1px);
+         box-shadow: 0 6px 16px rgba(37, 211, 102, 0.2);
       }
 
-      header{
-         position:fixed;
-         top:0;
-         left:0;
-         z-index:100;
-         width:100%;
-         background:rgba(255,255,255,.94);
-         backdrop-filter:blur(18px);
-         border-bottom:1px solid rgba(22,43,78,.08);
+      /* ESTILOS DE LA INTERFAZ */
+      header {
+         position: fixed;
+         top: 0;
+         left: 0;
+         z-index: 100;
+         width: 100%;
+         background: rgba(255, 255, 255, 0.85);
+         backdrop-filter: blur(20px);
+         border-bottom: 1px solid var(--gris-2);
+      }
+      .navbar {
+         height: 70px;
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         gap: 28px;
+      }
+      .logo {
+         display: flex;
+         align-items: center;
+         gap: 12px;
+      }
+      .logo-icono {
+         width: 140px;
+         height: 140px;
+         object-fit: contain;
+      }
+      nav ul {
+         list-style: none;
+         display: flex;
+         align-items: center;
+         gap: 4px;
+      }
+      nav a {
+         display: inline-flex;
+         padding: 8px 12px;
+         border-radius: 999px;
+         font-size: 13px;
+         font-weight: 750;
+         color: var(--azul);
+         transition: 0.2s ease;
+      }
+      
+      nav a:hover,
+      nav a.actual {
+         background: var(--azul-claro);
+         color: var(--azul-oscuro);
       }
 
-      .navbar{
-         height:78px;
-         display:flex;
-         align-items:center;
-         justify-content:space-between;
-         gap:28px;
+      /* HERO CONFIGURACIÓN */
+      .hero {
+         position: relative;
+         padding: 130px 0 50px; 
+         background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+         overflow: hidden;
       }
-
-      .logo{
-         display:flex;
-         align-items:center;
-      }
-
-      .logo-icono{
-         width:160px;
-         height:160px;
-         object-fit:contain;
-      }
-
-      nav ul{
-         list-style:none;
-         display:flex;
-         align-items:center;
-         gap:8px;
-      }
-
-      nav a{
-         display:inline-flex;
-         padding:10px 15px;
-         border-radius:999px;
-         font-size:14px;
-         font-weight:750;
-         color:var(--azul);
-         transition:.2s ease;
-      }
-
-      nav a:hover{
-         background:var(--azul-claro);
-      }
-
-      .btn{
-         display:inline-flex;
-         align-items:center;
-         justify-content:center;
-         min-height:48px;
-         padding:13px 22px;
-         border-radius:999px;
-         border:0;
-         font-size:14px;
-         font-weight:800;
-         cursor:pointer;
-         transition:.2s ease;
-      }
-
-      .btn-whatsapp{
-         background:#25D366;
-         color:#ffffff;
-      }
-
-      .btn-whatsapp:hover{
-         background:#1ebe5d;
-         transform:translateY(-2px);
-      }
-
-      .btn-principal{
-         background:var(--azul);
-         color:#ffffff;
-      }
-
-      .btn-principal:hover{
-         background:var(--azul-oscuro);
-         transform:translateY(-2px);
-      }
-
-      .menu-toggle{
-         display:none;
-         width:46px;
-         height:46px;
-         border:1px solid var(--gris-2);
-         border-radius:14px;
-         background:#ffffff;
-         color:var(--azul);
-         font-size:26px;
-         font-weight:900;
-         cursor:pointer;
-      }
-
-      .hero{
-         position:relative;
-         padding:145px 0 70px;
-         background:linear-gradient(180deg,#ffffff 0%,#f8fbff 100%);
-         overflow:hidden;
-      }
-
-      .hero::before{
-         content:"";
-         position:absolute;
-         inset:0;
+      .hero::before {
+         content: "";
+         position: absolute;
+         inset: 0;
          background-image:
-         linear-gradient(rgba(22,43,78,.04) 1px, transparent 1px),
-         linear-gradient(90deg, rgba(22,43,78,.04) 1px, transparent 1px);
-         background-size:44px 44px;
-         mask-image:linear-gradient(180deg, black, transparent 76%);
+            linear-gradient(rgba(22, 43, 78, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(22, 43, 78, 0.03) 1px, transparent 1px);
+         background-size: 44px 44px;
+         mask-image: linear-gradient(180deg, black, transparent 85%);
+         pointer-events: none;
+      }
+      .hero-contenido {
+         position: relative;
+         z-index: 2;
+         max-width: 860px;
+         margin: auto;
+         text-align: center;
+      }
+      h1 {
+         margin-bottom: 20px;
+         color: var(--azul-oscuro);
+         font-size: clamp(32px, 4vw, 48px);
+         line-height: 1.2;
+         letter-spacing: -1px;
+      }
+      h1 span {
+         color: var(--azul);
+      }
+      .hero p {
+         max-width: 700px;
+         margin: 0 auto;
+         color: var(--texto-suave);
+         font-size: 15px;
       }
 
-      .hero-contenido{
-         position:relative;
-         z-index:2;
-         max-width:860px;
-         margin:auto;
-         text-align:center;
+      /* SECCIÓN CONTACTO */
+      .contacto-section {
+         padding: 50px 0 80px;
+         background: var(--gris);
       }
-
-      .eyebrow{
-         display:inline-flex;
-         align-items:center;
-         gap:10px;
-         margin-bottom:22px;
-         padding:8px 14px;
-         border:1px solid rgba(22,43,78,.1);
-         border-radius:999px;
-         background:#ffffff;
-         color:var(--azul);
-         font-size:12px;
-         font-weight:900;
-         letter-spacing:1px;
-         text-transform:uppercase;
+      .contacto-grid {
+         display: grid;
+         grid-template-columns: .85fr 1.15fr;
+         gap: 32px;
+         align-items: start;
       }
-
-      .eyebrow::before{
-         content:"";
-         width:8px;
-         height:8px;
-         border-radius:50%;
-         background:var(--naranja);
-      }
-
-      h1{
-         margin-bottom:24px;
-         color:var(--azul-oscuro);
-         font-size:clamp(44px,5vw,72px);
-         line-height:.98;
-         letter-spacing:-3px;
-      }
-
-      h1 span{
-         color:var(--azul);
-      }
-
-      .hero p{
-         max-width:760px;
-         margin:0 auto;
-         color:var(--texto-suave);
-         font-size:18px;
-      }
-
-      .contacto-section{
-         padding:70px 0 95px;
-      }
-
-      .contacto-grid{
-         display:grid;
-         grid-template-columns:.85fr 1.15fr;
-         gap:28px;
-         align-items:start;
-      }
-
       .info-card,
-      .form-card{
-         border:1px solid var(--gris-2);
-         border-radius:32px;
-         background:#ffffff;
-         box-shadow:0 18px 45px rgba(7,23,45,.07);
+      .form-card {
+         border: 1px solid var(--gris-2);
+         border-radius: 20px;
+         background: #ffffff;
+         box-shadow: var(--sombra);
       }
-
-      .info-card{
-         padding:34px;
+      .info-card {
+         padding: 30px;
       }
-
       .info-card h2,
-      .form-card h2{
-         margin-bottom:16px;
-         color:var(--azul-oscuro);
-         font-size:32px;
-         line-height:1.1;
-         letter-spacing:-1px;
+      .form-card h2 {
+         margin-bottom: 16px;
+         color: var(--azul-oscuro);
+         font-size: 24px;
+         line-height: 1.2;
+         letter-spacing: -0.5px;
       }
-
-      .info-card p{
-         margin-bottom:28px;
-         color:var(--texto-suave);
-         font-size:16px;
+      .info-card p {
+         margin-bottom: 24px;
+         color: var(--texto-suave);
+         font-size: 14.5px;
       }
-
-      .contacto-item{
-         display:flex;
-         gap:14px;
-         padding:18px 0;
-         border-top:1px solid var(--gris-2);
+      .contacto-item {
+         display: flex;
+         gap: 16px;
+         padding: 20px 0;
+         border-top: 1px solid var(--gris-2);
       }
-
-      .icono{
-         width:42px;
-         height:42px;
-         flex:0 0 auto;
-         display:grid;
-         place-items:center;
-         border-radius:14px;
-         background:var(--azul-claro);
-         color:var(--azul);
-         font-weight:900;
+      .icono {
+         width: 40px;
+         height: 40px;
+         flex: 0 0 auto;
+         display: grid;
+         place-items: center;
+         border-radius: 10px;
+         background: var(--azul-claro);
+         color: var(--azul);
+         font-weight: 800;
+         font-size: 14px;
       }
-
-      .contacto-item strong{
-         display:block;
-         margin-bottom:4px;
-         color:var(--azul);
-         font-size:15px;
+      .contacto-item strong {
+         display: block;
+         margin-bottom: 4px;
+         color: var(--azul);
+         font-size: 14.5px;
+         font-weight: 700;
       }
-
       .contacto-item span,
-      .contacto-item a{
-         color:var(--texto-suave);
-         font-size:15px;
+      .contacto-item a {
+         color: var(--texto-suave);
+         font-size: 14px;
+         transition: color 0.2s;
+      }
+      .contacto-item a:hover {
+         color: var(--azul-oscuro);
       }
 
-      .form-card{
-         padding:34px;
+      /* CONFIGURACIÓN DEL FORMULARIO */
+      .form-card {
+         padding: 30px;
       }
-
-      .form-card > p{
-         margin-bottom:28px;
-         color:var(--texto-suave);
-         font-size:16px;
+      .form-card > p {
+         margin-bottom: 24px;
+         color: var(--texto-suave);
+         font-size: 14.5px;
       }
-
-      .form-grid{
-         display:grid;
-         grid-template-columns:1fr 1fr;
-         gap:16px;
+      .form-grid {
+         display: grid;
+         grid-template-columns: 1fr 1fr;
+         gap: 16px;
       }
-
-      .campo{
-         display:grid;
-         gap:8px;
+      .campo {
+         display: grid;
+         gap: 6px;
       }
-
-      .campo.full{
-         grid-column:1 / -1;
+      .campo.full {
+         grid-column: 1 / -1;
       }
-
-      .campo label{
-         color:var(--azul);
-         font-size:13.5px;
-         font-weight:800;
+      .campo label {
+         color: var(--azul);
+         font-size: 13px;
+         font-weight: 700;
       }
-
       .campo input,
       .campo select,
-      .campo textarea{
-         width:100%;
-         border:1px solid var(--gris-2);
-         border-radius:16px;
-         background:#ffffff;
-         color:var(--texto);
-         outline:none;
-         padding:14px 15px;
-         font-size:14.5px;
-         transition:.2s ease;
+      .campo textarea {
+         width: 100%;
+         border: 1px solid var(--gris-2);
+         border-radius: 12px;
+         background: var(--gris);
+         color: var(--texto);
+         outline: none;
+         padding: 12px 14px;
+         font-size: 14px;
+         transition: all 0.2s ease;
       }
-
-      .campo textarea{
-         min-height:140px;
-         resize:vertical;
+      .campo textarea {
+         min-height: 120px;
+         resize: vertical;
+         background: var(--gris);
       }
-
       .campo input:focus,
       .campo select:focus,
-      .campo textarea:focus{
-         border-color:rgba(22,43,78,.55);
-         box-shadow:0 0 0 4px rgba(22,43,78,.08);
+      .campo textarea:focus {
+         border-color: rgba(22, 43, 78, 0.3);
+         background: #ffffff;
+         box-shadow: 0 0 0 4px rgba(22, 43, 78, 0.05);
+      }
+      .servicios-check {
+         display: grid;
+         grid-template-columns: 1fr 1fr;
+         gap: 10px;
+      }
+      .check-card {
+         display: flex;
+         align-items: center;
+         gap: 10px;
+         padding: 12px;
+         border: 1px solid var(--gris-2);
+         border-radius: 12px;
+         background: var(--gris);
+         color: var(--azul);
+         font-size: 13px;
+         font-weight: 600;
+         cursor: pointer;
+         transition: background 0.2s;
+      }
+      .check-card:hover {
+         background: var(--azul-claro);
+      }
+      .check-card input {
+         width: 16px;
+         height: 16px;
+         accent-color: var(--azul);
+      }
+      .form-actions {
+         display: flex;
+         flex-wrap: wrap;
+         gap: 12px;
+         margin-top: 24px;
+         padding-top: 20px;
+         border-top: 1px solid var(--gris-2);
+      }
+      .nota {
+         margin-top: 12px;
+         color: var(--texto-suave);
+         font-size: 12px;
       }
 
-      .servicios-check{
-         display:grid;
-         grid-template-columns:1fr 1fr;
-         gap:10px;
+      /* FOOTER */
+      .site-footer {
+         background: #07172d;
+         color: rgba(255, 255, 255, .72);
+         padding: 12px 0;
+         border-top: 1px solid rgba(255, 255, 255, 0.08);
+         width: 100%;
+         flex-shrink: 0;
+      }
+      .footer-bottom {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         text-align: center;
+         font-size: 11.5px;
+         color: rgba(255, 255, 255, .52);
       }
 
-      .check-card{
-         display:flex;
-         align-items:center;
-         gap:10px;
-         padding:12px 13px;
-         border:1px solid var(--gris-2);
-         border-radius:16px;
-         background:var(--gris);
-         color:var(--azul);
-         font-size:13.5px;
-         font-weight:750;
-         cursor:pointer;
+      /* RESPONSIVO */
+      .menu-toggle {
+         display: none;
+         width: 42px;
+         height: 42px;
+         border: 1px solid var(--gris-2);
+         border-radius: 12px;
+         background: #ffffff;
+         color: var(--azul);
+         font-size: 22px;
+         font-weight: 900;
+         cursor: pointer;
       }
 
-      .check-card input{
-         width:16px;
-         height:16px;
-         accent-color:var(--azul);
-      }
-
-      .form-actions{
-         display:flex;
-         flex-wrap:wrap;
-         gap:12px;
-         margin-top:24px;
-         padding-top:22px;
-         border-top:1px solid var(--gris-2);
-      }
-
-      .nota{
-         margin-top:14px;
-         color:var(--texto-suave);
-         font-size:12.5px;
-      }
-
-      .site-footer{
-         background:#07172d;
-         color:rgba(255,255,255,.72);
-         padding:10px 0;
-      }
-
-      .footer-bottom{
-         display:flex;
-         justify-content:center;
-         align-items:center;
-         text-align:center;
-         font-size:12.5px;
-         color:rgba(255,255,255,.52);
-      }
-
-      @media (max-width:980px){
-         .navbar{
-            height:72px;
+      @media (max-width: 980px) {
+         .navbar {
+            height: 64px;
          }
-
-         .logo-icono{
-            width:130px;
-            height:130px;
+         .logo-icono {
+            width: 120px;
+            height: 120px;
          }
-
-         .menu-toggle{
-            display:flex;
-            align-items:center;
-            justify-content:center;
+         .menu-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
          }
-
-         .whatsapp-desktop{
-            display:none;
+         .whatsapp-desktop {
+            display: none;
          }
-
-         nav.menu{
-            position:absolute;
-            top:72px;
-            left:0;
-            width:100%;
-            display:none;
-            background:#ffffff;
-            border-bottom:1px solid rgba(22,43,78,.08);
-            box-shadow:0 18px 40px rgba(7,23,45,.10);
+         nav.menu {
+            position: absolute;
+            top: 64px;
+            left: 0;
+            width: 100%;
+            display: none;
+            background: #ffffff;
+            border-bottom: 1px solid rgba(22,43,78,.08);
+            box-shadow: 0 18px 40px rgba(7,23,45,.10);
          }
-
-         nav.menu.activo{
-            display:block;
+         nav.menu.activo {
+            display: block;
          }
-
-         nav.menu ul{
-            width:min(1160px, calc(100% - 40px));
-            margin:auto;
-            padding:18px 0;
-            display:grid;
-            grid-template-columns:1fr;
-            gap:8px;
+         nav.menu ul {
+            width: min(1160px, calc(100% - 40px));
+            margin: auto;
+            padding: 14px 0;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 6px;
          }
-
-         nav.menu a{
-            width:100%;
-            padding:14px 16px;
-            border-radius:16px;
-            background:var(--gris);
+         nav.menu a {
+            width: 100%;
+            padding: 12px 14px;
+            border-radius: 12px;
+            background: var(--gris);
+            font-size: 13px;
          }
-
-         .contacto-grid{
-            grid-template-columns:1fr;
+         .contacto-grid {
+            grid-template-columns: 1fr;
+            gap: 24px;
          }
       }
 
-      @media (max-width:680px){
-         .contenedor{
-            width:min(100% - 30px, 1160px);
+      @media (max-width: 680px) {
+         .hero {
+            padding: 100px 0 30px;
          }
-
-         .hero{
-            padding:125px 0 56px;
+         h1 {
+            font-size: clamp(24px, 6vw, 32px);
+            letter-spacing: -0.5px;
          }
-
-         h1{
-            font-size:48px;
-            letter-spacing:-2px;
+         .contacto-section {
+            padding: 30px 0 50px;
          }
-
-         .hero p{
-            font-size:16px;
-         }
-
-         .contacto-section{
-            padding:48px 0 75px;
-         }
-
          .info-card,
-         .form-card{
-            padding:26px;
-            border-radius:26px;
+         .form-card {
+            padding: 20px;
+            border-radius: 16px;
          }
-
          .form-grid,
-         .servicios-check{
-            grid-template-columns:1fr;
+         .servicios-check {
+            grid-template-columns: 1fr;
          }
-
-         .form-actions{
-            display:grid;
-            grid-template-columns:1fr;
+         .form-actions {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
          }
-
-         .form-actions .btn{
-            width:100%;
+         .form-actions .btn {
+            width: 100%;
          }
       }
    </style>
@@ -517,7 +493,7 @@
       <div class="contenedor navbar">
 
          <a href="index.html" class="logo" aria-label="NeoDat Consultores">
-            <img src="Neo1.png" class="logo-icono">
+            <img src="Neo1.png" class="logo-icono" alt="Logo NeoDat">
          </a>
 
          <button class="menu-toggle" type="button" aria-label="Abrir menú">
@@ -531,7 +507,7 @@
                <li><a href="metodo.html">Método</a></li>
                <li><a href="ambitos.html">Ámbitos</a></li>
                <li><a href="quienes-somos.html">Quiénes somos</a></li>
-               <li><a href="contacto.html">Contacto</a></li>
+               <li><a href="contacto.html" class="actual">Contacto</a></li>
             </ul>
          </nav>
 
@@ -551,17 +527,12 @@
 
       <section class="hero">
          <div class="contenedor hero-contenido">
-
-            <h1>
-               Hablemos de su <span>proyecto</span>.
-            </h1>
-
+            <h1>Hablemos de su <span>proyecto</span>.</h1>
             <p>
                Cuéntenos qué necesita mejorar, automatizar, analizar o estructurar.
                En NeoDat Consultores revisaremos su requerimiento y le orientaremos
                con una solución clara y profesional.
             </p>
-
          </div>
       </section>
 
@@ -569,10 +540,7 @@
          <div class="contenedor contacto-grid">
 
             <aside class="info-card">
-               <h2>
-                  Canales de atención.
-               </h2>
-
+               <h2>Canales de atención.</h2>
                <p>
                   Puede comunicarse con nosotros para solicitar información,
                   coordinar una asesoría o plantear una necesidad empresarial específica.
@@ -614,17 +582,13 @@
             </aside>
 
             <section class="form-card">
-               <h2>
-                  Envíenos su requerimiento.
-               </h2>
-
+               <h2>Envíenos su requerimiento.</h2>
                <p>
                   Complete la información principal. Al enviar, se abrirá su aplicación
                   de correo con el mensaje listo para remitirlo a NeoDat Consultores.
                </p>
 
                <form id="contactoForm">
-
                   <div class="form-grid">
 
                      <div class="campo">
@@ -663,39 +627,31 @@
 
                      <div class="campo full">
                         <label>Servicio requerido</label>
-
                         <div class="servicios-check">
-
                            <label class="check-card">
                               <input type="checkbox" name="servicio" value="Análisis de datos" />
                               Análisis de datos
                            </label>
-
                            <label class="check-card">
                               <input type="checkbox" name="servicio" value="Consultoría financiera" />
                               Consultoría financiera
                            </label>
-
                            <label class="check-card">
                               <input type="checkbox" name="servicio" value="Dashboards y KPI" />
                               Dashboards y KPI
                            </label>
-
                            <label class="check-card">
                               <input type="checkbox" name="servicio" value="Creación de proyectos" />
                               Creación de proyectos
                            </label>
-
                            <label class="check-card">
                               <input type="checkbox" name="servicio" value="Página web corporativa" />
                               Página web corporativa
                            </label>
-
                            <label class="check-card">
                               <input type="checkbox" name="servicio" value="Control de gestión" />
                               Control de gestión
                            </label>
-
                         </div>
                      </div>
 
@@ -729,7 +685,6 @@
                   <p class="nota">
                      Al continuar, se abrirá su aplicación de correo para completar el envío.
                   </p>
-
                </form>
             </section>
 
@@ -787,4 +742,5 @@
       });
    </script>
 
-</body
+</body>
+</html>
