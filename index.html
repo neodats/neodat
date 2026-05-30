@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NeoDat Consultores | Inteligencia directiva basada en datos</title>
-  <link rel="icon" type="image/png" sizes="32x32" href="Portada.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="logo.png">
   <meta name="description" content="NeoDat Consultores acompaña a empresas en la organización, lectura y control de información para fortalecer decisiones ejecutivas basadas en datos confiables." />
   <meta name="keywords" content="NeoDat Consultores, inteligencia de negocios, analítica empresarial, business intelligence, gobierno de datos, control directivo, Ecuador" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -321,6 +321,23 @@
       font-size: 12px;
       font-weight: 760;
       box-shadow: 0 8px 22px rgba(7,19,33,.04);
+    }
+
+    .hero-portada {
+      position: relative;
+      z-index: 1;
+      border-radius: var(--radio-xl);
+      overflow: hidden;
+      background: #ffffff;
+      border: 1px solid var(--linea);
+      box-shadow: var(--sombra-media);
+    }
+
+    .hero-portada img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
     }
 
     .panel-directivo {
@@ -937,55 +954,8 @@
           </div>
         </div>
 
-        <aside class="executive-visual" aria-label="Visual institucional NeoDat">
-          <div class="executive-board">
-            <div class="board-toolbar">
-              <span>NeoDat Intelligence Office</span>
-              <em>Confidencial</em>
-            </div>
-
-            <div class="board-content">
-              <div class="board-heading">
-                <small>Lectura directiva</small>
-                <strong>Gobierno, control y decisión en una sola vista.</strong>
-              </div>
-
-              <div class="board-grid">
-                <div class="board-metric metric-primary">
-                  <span>Calidad de datos</span>
-                  <b>99.8%</b>
-                </div>
-                <div class="board-metric">
-                  <span>Control mensual</span>
-                  <b>Activo</b>
-                </div>
-                <div class="board-metric">
-                  <span>Riesgo operativo</span>
-                  <b>Bajo</b>
-                </div>
-              </div>
-
-              <div class="executive-line" aria-hidden="true">
-                <svg viewBox="0 0 520 150" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-                  <line x1="0" y1="120" x2="520" y2="120" />
-                  <line x1="0" y1="80" x2="520" y2="80" />
-                  <line x1="0" y1="40" x2="520" y2="40" />
-                  <path class="line-muted" d="M0 108 C70 96 108 118 170 88 C238 55 286 82 338 60 C404 32 462 45 520 28" />
-                  <path class="line-accent" d="M0 118 C82 106 124 110 184 78 C252 42 298 68 352 48 C418 24 470 32 520 18" />
-                  <circle cx="184" cy="78" r="4" />
-                  <circle cx="352" cy="48" r="4" />
-                  <circle cx="520" cy="18" r="4" />
-                </svg>
-              </div>
-
-              <div class="board-footer">
-                <span>Dirección</span>
-                <span>Control</span>
-                <span>Rentabilidad</span>
-                <span>Trazabilidad</span>
-              </div>
-            </div>
-          </div>
+        <aside class="hero-portada" aria-label="Portada institucional NeoDat">
+          <img src="Portada.png" alt="NeoDat Consultores - Dirección empresarial con datos claros">
         </aside>
       </div>
     </section>
