@@ -537,19 +537,49 @@
     }
 
     .criterio {
-      padding: 92px 0;
-      background: #ffffff;
+      position: relative;
+      padding: 54px 0 56px;
+      background:
+        linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+      border-top: 1px solid rgba(18,37,64,.06);
+      border-bottom: 1px solid rgba(18,37,64,.06);
+      overflow: hidden;
+    }
+
+    .criterio::before {
+      content: "";
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      right: -180px;
+      top: -210px;
+      background: radial-gradient(circle, rgba(191,145,64,.10), transparent 64%);
+      pointer-events: none;
+    }
+
+    .criterio::after {
+      content: "";
+      position: absolute;
+      width: 440px;
+      height: 440px;
+      left: -220px;
+      bottom: -260px;
+      background: radial-gradient(circle, rgba(18,37,64,.06), transparent 66%);
+      pointer-events: none;
     }
 
     .criterio-grid {
+      position: relative;
+      z-index: 1;
       display: grid;
-      grid-template-columns: .74fr 1.26fr;
-      gap: 72px;
-      align-items: start;
+      grid-template-columns: .86fr 1.14fr;
+      gap: 54px;
+      align-items: center;
     }
 
     .criterio .eyebrow {
       color: var(--azul-700);
+      margin-bottom: 16px;
     }
 
     .criterio .eyebrow::before {
@@ -557,58 +587,130 @@
     }
 
     .criterio h2 {
-      max-width: 450px;
+      max-width: 430px;
       color: var(--azul-950);
       font-family: "Sora", "Manrope", Arial, sans-serif;
-      font-size: clamp(29px, 3.1vw, 42px);
-      line-height: 1.1;
+      font-size: clamp(28px, 2.75vw, 38px);
+      line-height: 1.12;
       letter-spacing: -.03em;
       font-weight: 700;
     }
 
     .criterio-linea {
-      width: 82px;
+      width: 78px;
       height: 2px;
-      margin-top: 30px;
-      background: var(--oro-600);
+      margin-top: 24px;
+      background: linear-gradient(90deg, var(--oro-600), rgba(169,123,43,.15));
     }
 
     .criterio-texto {
       display: grid;
-      gap: 22px;
-      color: #4b5b6f;
-      font-size: 16px;
-      line-height: 1.82;
+      gap: 16px;
+      color: #3e4f66;
+      font-size: 15.5px;
+      line-height: 1.72;
       letter-spacing: -.01em;
       font-weight: 500;
+    }
+
+    .criterio-texto p {
+      max-width: 720px;
     }
 
     .criterio-resumen {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      margin-top: 14px;
+      gap: 12px;
+      margin-top: 6px;
     }
 
-    .criterio-resumen div {
-      padding: 18px;
-      border: 1px solid var(--linea);
+    .criterio-card {
+      position: relative;
+      min-height: 118px;
+      padding: 16px 16px 16px 18px;
+      border: 1px solid rgba(18,37,64,.10);
       border-radius: 18px;
-      background: var(--azul-050);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.94), rgba(244,247,251,.92));
+      box-shadow:
+        0 14px 34px rgba(7,19,33,.06),
+        inset 0 1px 0 rgba(255,255,255,.86);
+      overflow: hidden;
+      transition: .22s ease;
     }
 
-    .criterio-resumen b {
+    .criterio-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 92% 0%, rgba(191,145,64,.12), transparent 34%);
+      pointer-events: none;
+    }
+
+    .criterio-card::after {
+      content: "";
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--oro-500), rgba(191,145,64,.06));
+      border-radius: 999px 999px 0 0;
+    }
+
+    .criterio-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(169,123,43,.28);
+      box-shadow:
+        0 20px 44px rgba(7,19,33,.09),
+        inset 0 1px 0 rgba(255,255,255,.9);
+    }
+
+    .criterio-card-top {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .criterio-icono {
+      width: 30px;
+      height: 30px;
+      border-radius: 10px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(7,19,33,.06);
+      color: var(--oro-600);
+      flex: 0 0 30px;
+    }
+
+    .criterio-icono svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+
+    .criterio-card b {
+      position: relative;
+      z-index: 1;
       display: block;
-      margin-bottom: 8px;
       color: var(--azul-950);
       font-size: 14px;
-      font-weight: 700;
+      font-weight: 800;
+      letter-spacing: -.01em;
     }
 
-    .criterio-resumen span {
-      color: #657488;
-      font-size: 12px;
-      line-height: 1.5;
+    .criterio-card span {
+      position: relative;
+      z-index: 1;
+      display: block;
+      color: #5b6d83;
+      font-size: 12.5px;
+      line-height: 1.55;
       font-weight: 500;
     }
 
@@ -836,6 +938,14 @@
         grid-template-columns: 1fr;
       }
 
+      .criterio {
+        padding: 48px 0;
+      }
+
+      .criterio-resumen {
+        grid-template-columns: 1fr;
+      }
+
       .footer-main {
         grid-template-columns: 1fr 1fr;
       }
@@ -903,11 +1013,6 @@
         width: 100%;
       }
 
-      .criterio-resumen,
-      .footer-main {
-        grid-template-columns: 1fr;
-      }
-
       .banda {
         padding: 20px 0;
       }
@@ -917,12 +1022,24 @@
         padding: 20px;
       }
 
-      .criterio,
+      .criterio {
+        padding: 42px 0;
+      }
+
+      .criterio-grid {
+        gap: 28px;
+      }
+
+      .criterio-card {
+        min-height: auto;
+      }
+
       .contacto-final {
         padding: 62px 0;
       }
 
       .footer-main {
+        grid-template-columns: 1fr;
         gap: 26px;
       }
 
@@ -1088,18 +1205,39 @@
           </p>
 
           <div class="criterio-resumen">
-            <div>
-              <b>Lectura</b>
+            <div class="criterio-card">
+              <div class="criterio-card-top">
+                <span class="criterio-icono" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M4 5h16v3H4V5Zm0 5h16v3H4v-3Zm0 5h10v3H4v-3Z"/>
+                  </svg>
+                </span>
+                <b>Lectura</b>
+              </div>
               <span>Información comprensible para gerencia y comités.</span>
             </div>
 
-            <div>
-              <b>Precisión</b>
+            <div class="criterio-card">
+              <div class="criterio-card-top">
+                <span class="criterio-icono" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3Zm3.8 7.8-4.7 4.7-2.3-2.3 1.4-1.4.9.9 3.3-3.3 1.4 1.4Z"/>
+                  </svg>
+                </span>
+                <b>Precisión</b>
+              </div>
               <span>Datos consistentes para reducir ambigüedad operativa.</span>
             </div>
 
-            <div>
-              <b>Control</b>
+            <div class="criterio-card">
+              <div class="criterio-card-top">
+                <span class="criterio-icono" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M5 19h14v2H5v-2Zm1-3h3V9H6v7Zm5 0h3V4h-3v12Zm5 0h3v-5h-3v5Z"/>
+                  </svg>
+                </span>
+                <b>Control</b>
+              </div>
               <span>Seguimiento claro de variables relevantes del negocio.</span>
             </div>
           </div>
