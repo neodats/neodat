@@ -73,33 +73,34 @@
     }
 
     .barra-superior {
-      background: linear-gradient(90deg, #071321 0%, #0c1a2d 58%, #071321 100%);
-      color: rgba(255,255,255,.86);
+      background: #071321;
+      color: rgba(255,255,255,.88);
       border-bottom: 1px solid rgba(255,255,255,.08);
       font-size: 12px;
       letter-spacing: .01em;
     }
 
     .barra-superior-grid {
-      min-height: 34px;
+      min-height: 36px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 22px;
-      padding: 6px 0;
+      overflow: hidden;
     }
 
     .top-info {
       display: flex;
       align-items: center;
-      gap: 18px;
+      gap: 10px;
       min-width: 0;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
     }
 
     .top-info-derecha {
       justify-content: flex-end;
       color: rgba(255,255,255,.76);
+      flex: 0 0 auto;
     }
 
     .top-item {
@@ -109,13 +110,21 @@
       white-space: nowrap;
       font-size: 12px;
       font-weight: 600;
-      line-height: 1.2;
+      line-height: 1;
+    }
+
+    .top-item-contacto {
+      min-height: 24px;
+      padding: 0 9px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.055);
+      border: 1px solid rgba(255,255,255,.075);
     }
 
     .top-icon {
-      width: 14px;
-      height: 14px;
-      flex: 0 0 14px;
+      width: 13px;
+      height: 13px;
+      flex: 0 0 13px;
       fill: var(--oro-500);
     }
 
@@ -124,7 +133,7 @@
       height: 4px;
       border-radius: 50%;
       background: var(--oro-500);
-      opacity: .95;
+      opacity: .85;
     }
 
     header {
@@ -914,8 +923,8 @@
       }
 
       .barra-superior-grid {
-        min-height: auto;
-        padding: 7px 0;
+        min-height: 34px;
+        padding: 5px 0;
         display: block;
         overflow: hidden;
       }
@@ -926,10 +935,10 @@
         flex-wrap: nowrap;
         align-items: center;
         justify-content: flex-start;
-        gap: 18px;
+        gap: 8px;
         overflow-x: auto;
         overflow-y: hidden;
-        padding: 0 16px;
+        padding: 0 12px;
         scroll-snap-type: x proximity;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
@@ -944,9 +953,16 @@
         white-space: nowrap;
         text-align: left;
         justify-content: flex-start;
-        font-size: 11px;
-        line-height: 1.2;
+        font-size: 10.8px;
+        line-height: 1;
         scroll-snap-align: start;
+      }
+
+      .top-item-contacto {
+        min-height: 25px;
+        padding: 0 10px;
+        background: rgba(255,255,255,.07);
+        border-color: rgba(255,255,255,.10);
       }
 
       .top-email,
@@ -961,7 +977,7 @@
 
       .top-info::after {
         content: "";
-        flex: 0 0 8px;
+        flex: 0 0 4px;
       }
 
       .navbar {
@@ -1230,7 +1246,7 @@
       }
 
       .top-item {
-        font-size: 10.5px;
+        font-size: 10.4px;
       }
     }
   </style>
@@ -1240,21 +1256,21 @@
   <div class="barra-superior" aria-label="Información corporativa">
     <div class="contenedor barra-superior-grid">
       <div class="top-info">
-        <span class="top-item top-email">
+        <span class="top-item top-item-contacto top-email">
           <svg class="top-icon" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2Zm8 8.7L4.4 7.2V18h15.2V7.2L12 12.7Zm0-2.4L19.1 6H4.9L12 10.3Z"/>
           </svg>
           neodatconsultores@gmail.com
         </span>
 
-        <span class="top-item top-phone">
+        <span class="top-item top-item-contacto top-phone">
           <svg class="top-icon" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.8-.4 1.2-.3 1.3.4 2.6.6 4 .6.7 0 1.2.5 1.2 1.2v3.5c0 .7-.5 1.2-1.2 1.2C10.4 22 2 13.6 2 3.4 2 2.7 2.5 2.2 3.2 2.2h3.6c.7 0 1.2.5 1.2 1.2 0 1.4.2 2.7.6 4 .1.4 0 .8-.3 1.2l-1.7 2.2Z"/>
           </svg>
           +593 96 079 8571
         </span>
 
-        <span class="top-item top-location top-hide-sm">
+        <span class="top-item top-item-contacto top-location top-hide-sm">
           <svg class="top-icon" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z"/>
           </svg>
