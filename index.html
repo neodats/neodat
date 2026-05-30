@@ -11,6 +11,7 @@
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
       <style>
          :root {
             --azul: #162b4e;
@@ -466,22 +467,138 @@
             cursor: pointer;
          }
          
-         /* PIE DE PÁGINA */
-         .site-footer {
-            background: #07172d;
-            color: rgba(255, 255, 255, .72);
-            padding: 12px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
+         /* PIE DE PÁGINA - ESTILO HOMOLOGADO CON INDEX(14) */
+         .footer {
+            background:
+               radial-gradient(circle at 12% 0%, rgba(255, 165, 0, 0.09), transparent 30%),
+               linear-gradient(180deg, #f5f7fb 0%, #eef2f7 100%);
+            border-top: 1px solid rgba(22, 43, 78, 0.10);
             width: 100%;
             flex-shrink: 0;
          }
-         .footer-bottom {
+
+         .footer-main {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            gap: 32px;
+            padding: 42px 0 34px;
+         }
+
+         .footer-logo {
+            display: inline-flex;
             align-items: center;
+            line-height: 0;
+            margin-bottom: 14px;
+         }
+
+         .footer-logo img {
+            height: 46px;
+            width: auto;
+            object-fit: contain;
+            background: transparent;
+         }
+
+         .footer-col p {
+            color: #4a5b6e;
+            font-size: 0.82rem;
+            line-height: 1.6;
+            max-width: 310px;
+         }
+
+         .footer-col h4 {
+            font-size: 0.9rem;
+            font-weight: 850;
+            color: var(--azul-oscuro);
+            margin-bottom: 14px;
+            letter-spacing: -0.01em;
+         }
+
+         .footer-links,
+         .footer-contacto {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+         }
+
+         .footer-links a,
+         .footer-contacto a,
+         .footer-contacto span {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            color: #4f6f8f;
+            font-size: 0.82rem;
+            text-decoration: none;
+            transition: color 0.2s ease, transform 0.2s ease;
+         }
+
+         .footer-links a:hover,
+         .footer-contacto a:hover {
+            color: var(--naranja);
+            transform: translateX(2px);
+         }
+
+         .footer-links a i,
+         .footer-contacto a i,
+         .footer-contacto span i {
+            width: 18px;
+            color: var(--naranja);
+            font-size: 0.82rem;
             text-align: center;
-            font-size: 11.5px;
-            color: rgba(255, 255, 255, .52);
+            flex-shrink: 0;
+         }
+
+         .footer-social {
+            display: flex;
+            gap: 10px;
+            margin-top: 18px;
+         }
+
+         .footer-social a {
+            background: #e3ebf3;
+            color: var(--azul);
+            width: 34px;
+            height: 34px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 0.92rem;
+            transition: all 0.2s ease;
+         }
+
+         .footer-social a:hover {
+            background: var(--naranja);
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 18px rgba(255, 165, 0, 0.22);
+         }
+
+         .footer-bottom {
+            padding: 16px 0;
+            text-align: center;
+            font-size: 0.72rem;
+            color: #6c7e91;
+            border-top: 1px solid rgba(22, 43, 78, 0.10);
+         }
+
+         @media (min-width: 640px) {
+            .footer-main {
+               flex-direction: row;
+               flex-wrap: wrap;
+            }
+
+            .footer-col {
+               flex: 1;
+               min-width: 180px;
+            }
+         }
+
+         @media (max-width: 640px) {
+            .footer-main {
+               gap: 26px;
+               padding: 34px 0 28px;
+            }
          }
          
          @media (max-width: 980px) {
@@ -660,9 +777,57 @@
          </section>
       </main>
 
-      <footer class="site-footer">
-         <div class="contenedor footer-bottom">
-            <span>© 2026 NeoDat Consultores. Todos los derechos reservados.</span>
+      <footer class="footer">
+         <div class="contenedor">
+            <div class="footer-main">
+               <div class="footer-col">
+                  <a href="index.html" class="footer-logo" aria-label="NeoDat Consultores">
+                     <img src="Neo1.png" alt="NeoDat Consultores">
+                  </a>
+                  <p>Consultoría especializada en analítica avanzada, gobierno de datos, Business Intelligence y control de gestión para decisiones empresariales de alto impacto.</p>
+                  <div class="footer-social">
+                     <a href="https://wa.me/593960798571" target="_blank" rel="noopener" aria-label="WhatsApp NeoDat"><i class="fab fa-whatsapp"></i></a>
+                     <a href="contacto.html" aria-label="Contacto NeoDat"><i class="fas fa-envelope"></i></a>
+                  </div>
+               </div>
+
+               <div class="footer-col">
+                  <h4>Servicios</h4>
+                  <div class="footer-links">
+                     <a href="servicios.html"><i class="fas fa-chart-line"></i> Analítica avanzada</a>
+                     <a href="servicios.html"><i class="fas fa-chart-pie"></i> Business Intelligence</a>
+                     <a href="servicios.html"><i class="fas fa-database"></i> Gobierno de datos</a>
+                     <a href="servicios.html"><i class="fas fa-coins"></i> Arquitecturas financieras</a>
+                     <a href="servicios.html"><i class="fas fa-gears"></i> Optimización de procesos</a>
+                  </div>
+               </div>
+
+               <div class="footer-col">
+                  <h4>Más consultado</h4>
+                  <div class="footer-links">
+                     <a href="metodo.html"><i class="fas fa-diagram-project"></i> Método de trabajo</a>
+                     <a href="ambitos.html"><i class="fas fa-building-columns"></i> Ámbitos empresariales</a>
+                     <a href="quienes-somos.html"><i class="fas fa-user-tie"></i> Quiénes somos</a>
+                     <a href="contacto.html"><i class="fas fa-calendar-check"></i> Agendar reunión</a>
+                     <a href="contacto.html"><i class="fas fa-handshake"></i> Solicitar diagnóstico</a>
+                  </div>
+               </div>
+
+               <div class="footer-col">
+                  <h4>Nuestra Empresa</h4>
+                  <div class="footer-contacto">
+                     <a href="quienes-somos.html"><i class="fas fa-building"></i> NeoDat Consultores</a>
+                     <span><i class="fas fa-location-dot"></i> Atención empresarial en Ecuador</span>
+                     <span><i class="fas fa-shield-halved"></i> Decisiones basadas en datos confiables</span>
+                     <span><i class="fas fa-gauge-high"></i> Control ejecutivo y tableros corporativos</span>
+                     <a href="https://wa.me/593960798571" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> 096 079 8571</a>
+                  </div>
+               </div>
+            </div>
+
+            <div class="footer-bottom">
+               <span>© 2026 NeoDat Consultores · Todos los derechos reservados.</span>
+            </div>
          </div>
       </footer>
 
