@@ -459,14 +459,6 @@
       background: linear-gradient(90deg, var(--oro-500), rgba(191,145,64,.04));
     }
 
-    .banda-item:hover {
-      transform: translateY(-3px);
-      border-color: rgba(191,145,64,.30);
-      box-shadow:
-        0 22px 46px rgba(0,0,0,.22),
-        inset 0 1px 0 rgba(255,255,255,.10);
-    }
-
     .banda-top {
       position: relative;
       z-index: 1;
@@ -539,8 +531,7 @@
     .criterio {
       position: relative;
       padding: 54px 0 56px;
-      background:
-        linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+      background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
       border-top: 1px solid rgba(18,37,64,.06);
       border-bottom: 1px solid rgba(18,37,64,.06);
       overflow: hidden;
@@ -613,10 +604,6 @@
       font-weight: 500;
     }
 
-    .criterio-texto p {
-      max-width: 720px;
-    }
-
     .criterio-resumen {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -643,8 +630,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background:
-        radial-gradient(circle at 92% 0%, rgba(191,145,64,.12), transparent 34%);
+      background: radial-gradient(circle at 92% 0%, rgba(191,145,64,.12), transparent 34%);
       pointer-events: none;
     }
 
@@ -657,14 +643,6 @@
       height: 2px;
       background: linear-gradient(90deg, var(--oro-500), rgba(191,145,64,.06));
       border-radius: 999px 999px 0 0;
-    }
-
-    .criterio-card:hover {
-      transform: translateY(-3px);
-      border-color: rgba(169,123,43,.28);
-      box-shadow:
-        0 20px 44px rgba(7,19,33,.09),
-        inset 0 1px 0 rgba(255,255,255,.9);
     }
 
     .criterio-card-top {
@@ -965,12 +943,27 @@
         width: min(100% - 28px, var(--ancho));
       }
 
+      .barra-superior {
+        font-size: 11px;
+      }
+
       .barra-superior-grid {
         min-height: 32px;
+        justify-content: center;
       }
 
       .top-info {
-        gap: 12px;
+        width: 100%;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .top-info .top-item:first-child {
+        display: none;
+      }
+
+      .top-info .top-item:nth-child(2) {
+        font-size: 11px;
       }
 
       .top-hide-sm {
@@ -978,82 +971,269 @@
       }
 
       .navbar {
-        min-height: 64px;
+        min-height: 62px;
+        gap: 14px;
+      }
+
+      .marca {
+        min-width: auto;
+      }
+
+      .marca img {
+        width: 112px;
+      }
+
+      .menu-toggle {
+        width: 38px;
+        height: 38px;
+        font-size: 19px;
       }
 
       nav.menu {
-        top: 64px;
+        top: 62px;
+      }
+
+      nav.menu ul {
+        padding: 10px 0 12px;
+      }
+
+      nav.menu a {
+        min-height: 42px;
+        padding: 0 14px;
+        font-size: 13px;
       }
 
       .hero {
         min-height: auto;
-        padding: 42px 0 40px;
+        padding: 38px 0 36px;
         background:
-          linear-gradient(90deg, rgba(7,19,33,.97) 0%, rgba(7,19,33,.90) 100%),
+          linear-gradient(90deg, rgba(7,19,33,.97) 0%, rgba(7,19,33,.91) 100%),
           url("Portada.png") center center / cover no-repeat;
       }
 
+      .hero::before {
+        background-size: 44px 44px;
+        opacity: .24;
+      }
+
+      .hero-contenido {
+        max-width: 100%;
+      }
+
+      .eyebrow {
+        margin-bottom: 14px;
+        font-size: 9px;
+        letter-spacing: .14em;
+      }
+
+      .eyebrow::before {
+        width: 34px;
+      }
+
       h1 {
-        font-size: clamp(29px, 9vw, 39px);
-        line-height: 1.14;
+        max-width: 100%;
+        font-size: clamp(28px, 8.5vw, 36px);
+        line-height: 1.16;
+        letter-spacing: -.026em;
       }
 
-      .hero-texto,
-      .criterio-texto {
-        font-size: 15px;
+      .hero-texto {
+        max-width: 100%;
+        margin-top: 16px;
+        font-size: 14px;
+        line-height: 1.68;
       }
 
-      .acciones,
-      .contacto-grid .acciones {
+      .acciones {
         display: grid;
         grid-template-columns: 1fr;
+        gap: 10px;
+        margin-top: 22px;
       }
 
       .btn {
         width: 100%;
+        min-height: 42px;
+      }
+
+      .atributos {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 8px;
+        margin-top: 18px;
+      }
+
+      .atributos span {
+        width: 100%;
+        justify-content: center;
+        min-height: 30px;
+        font-size: 12px;
       }
 
       .banda {
-        padding: 20px 0;
+        padding: 18px 0;
+      }
+
+      .banda-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
       }
 
       .banda-item {
-        min-height: 132px;
-        padding: 20px;
+        min-height: auto;
+        padding: 18px;
+        border-radius: 16px;
+      }
+
+      .banda-top {
+        margin-bottom: 12px;
+      }
+
+      .banda-numero {
+        min-height: 24px;
+        font-size: 9.5px;
+      }
+
+      .banda-icono {
+        width: 30px;
+        height: 30px;
+        border-radius: 10px;
+      }
+
+      .banda-item strong {
+        font-size: 16px;
+        line-height: 1.32;
+      }
+
+      .banda-item p {
+        font-size: 12.5px;
+        line-height: 1.48;
       }
 
       .criterio {
-        padding: 42px 0;
+        padding: 34px 0 36px;
       }
 
       .criterio-grid {
-        gap: 28px;
+        grid-template-columns: 1fr;
+        gap: 24px;
+        align-items: start;
+      }
+
+      .criterio h2 {
+        max-width: 100%;
+        font-size: clamp(25px, 7.2vw, 32px);
+        line-height: 1.16;
+      }
+
+      .criterio-linea {
+        margin-top: 18px;
+      }
+
+      .criterio-texto {
+        gap: 14px;
+        font-size: 14px;
+        line-height: 1.68;
+      }
+
+      .criterio-resumen {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-top: 4px;
       }
 
       .criterio-card {
         min-height: auto;
+        padding: 15px;
+        border-radius: 16px;
+      }
+
+      .criterio-card-top {
+        margin-bottom: 8px;
+      }
+
+      .criterio-icono {
+        width: 28px;
+        height: 28px;
+      }
+
+      .criterio-card span {
+        font-size: 12.5px;
       }
 
       .contacto-final {
-        padding: 62px 0;
+        padding: 46px 0;
+      }
+
+      .contacto-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .contacto-final h2 {
+        font-size: clamp(26px, 7.4vw, 34px);
+      }
+
+      .contacto-final p {
+        font-size: 14px;
       }
 
       .footer-main {
         grid-template-columns: 1fr;
-        gap: 26px;
+        gap: 24px;
+        padding: 34px 0 28px;
+      }
+
+      .footer-logo img {
+        width: 112px;
+      }
+
+      .footer-bottom {
+        padding: 15px 16px;
+        font-size: 11.5px;
+        line-height: 1.45;
       }
 
       .whatsapp-flotante {
-        width: 50px;
-        height: 50px;
-        right: 16px;
-        bottom: 16px;
+        width: 48px;
+        height: 48px;
+        right: 14px;
+        bottom: 14px;
+      }
+
+      .whatsapp-flotante svg {
+        width: 24px;
+        height: 24px;
       }
     }
 
-    @media (max-width: 480px) {
-      .top-info .top-item:nth-child(1) {
-        display: none;
+    @media (max-width: 430px) {
+      .contenedor,
+      nav.menu ul {
+        width: min(100% - 24px, var(--ancho));
+      }
+
+      .marca img {
+        width: 106px;
+      }
+
+      .hero {
+        padding: 34px 0 34px;
+        background:
+          linear-gradient(90deg, rgba(7,19,33,.98) 0%, rgba(7,19,33,.92) 100%),
+          url("Portada.png") 60% center / cover no-repeat;
+      }
+
+      h1 {
+        font-size: clamp(26px, 8.8vw, 34px);
+      }
+
+      .hero-texto {
+        font-size: 13.5px;
+      }
+
+      .top-info .top-item:nth-child(2) {
+        font-size: 10.8px;
       }
     }
   </style>
