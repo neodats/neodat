@@ -135,7 +135,7 @@
     }
 
     .navbar {
-      min-height: 64px;
+      min-height: 68px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -145,11 +145,11 @@
     .marca {
       display: inline-flex;
       align-items: center;
-      min-width: 130px;
+      min-width: 142px;
     }
 
     .marca img {
-      width: 104px;
+      width: 118px;
       height: auto;
       display: block;
       object-fit: contain;
@@ -157,15 +157,15 @@
 
     .menu-toggle {
       display: none;
-      width: 38px;
-      height: 38px;
+      width: 42px;
+      height: 42px;
       align-items: center;
       justify-content: center;
       border: 1px solid var(--linea);
       border-radius: 999px;
       background: var(--blanco);
       color: var(--azul-900);
-      font-size: 19px;
+      font-size: 20px;
       cursor: pointer;
     }
 
@@ -179,8 +179,8 @@
     nav a {
       display: inline-flex;
       align-items: center;
-      min-height: 34px;
-      padding: 0 13px;
+      min-height: 38px;
+      padding: 0 14px;
       border-radius: 999px;
       color: #34465e;
       font-size: 13px;
@@ -198,8 +198,8 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 40px;
-      padding: 0 20px;
+      min-height: 44px;
+      padding: 0 22px;
       border-radius: 999px;
       border: 1px solid transparent;
       font-size: 13px;
@@ -249,8 +249,8 @@
 
     .hero {
       position: relative;
-      min-height: 405px;
-      padding: 48px 0 48px;
+      min-height: 430px;
+      padding: 52px 0 50px;
       display: flex;
       align-items: center;
       overflow: hidden;
@@ -295,7 +295,7 @@
       display: inline-flex;
       align-items: center;
       gap: 12px;
-      margin-bottom: 16px;
+      margin-bottom: 20px;
       color: var(--oro-200);
       font-family: "Sora", "Manrope", Arial, sans-serif;
       font-size: 10px;
@@ -315,7 +315,7 @@
       max-width: 610px;
       color: #ffffff;
       font-family: "Sora", "Manrope", Arial, sans-serif;
-      font-size: clamp(31px, 3.25vw, 43px);
+      font-size: clamp(32px, 3.35vw, 45px);
       line-height: 1.12;
       letter-spacing: -.032em;
       font-weight: 700;
@@ -330,10 +330,10 @@
 
     .hero-texto {
       max-width: 555px;
-      margin-top: 18px;
+      margin-top: 20px;
       color: rgba(255,255,255,.84);
-      font-size: 15px;
-      line-height: 1.72;
+      font-size: 15.2px;
+      line-height: 1.78;
       letter-spacing: -.006em;
       font-weight: 500;
     }
@@ -342,7 +342,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      margin-top: 24px;
+      margin-top: 26px;
     }
 
     .hero .btn-primario {
@@ -373,12 +373,12 @@
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-top: 22px;
+      margin-top: 24px;
     }
 
     .atributos span {
       display: inline-flex;
-      min-height: 30px;
+      min-height: 32px;
       align-items: center;
       padding: 0 13px;
       border: 1px solid rgba(255,255,255,.16);
@@ -392,9 +392,9 @@
 
     .banda {
       position: relative;
-      padding: 30px 0;
+      padding: 22px 0;
       background:
-        radial-gradient(circle at 8% 0%, rgba(191,145,64,.12), transparent 28%),
+        radial-gradient(circle at 8% 0%, rgba(191,145,64,.08), transparent 28%),
         linear-gradient(180deg, #071321 0%, #081727 100%);
       color: #ffffff;
       border-top: 1px solid rgba(255,255,255,.08);
@@ -406,10 +406,10 @@
       position: absolute;
       inset: 0;
       background-image:
-        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+        linear-gradient(rgba(255,255,255,.028) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.028) 1px, transparent 1px);
       background-size: 54px 54px;
-      opacity: .28;
+      opacity: .24;
       pointer-events: none;
     }
 
@@ -418,23 +418,23 @@
       z-index: 1;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
+      gap: 14px;
     }
 
     .banda-item {
       position: relative;
-      min-height: 170px;
-      padding: 24px;
-      border-radius: 24px;
+      min-height: 136px;
+      padding: 20px 22px;
+      border-radius: 18px;
       overflow: hidden;
       background:
-        linear-gradient(145deg, rgba(255,255,255,.095), rgba(255,255,255,.035)),
+        linear-gradient(145deg, rgba(255,255,255,.075), rgba(255,255,255,.025)),
         rgba(12,26,45,.88);
-      border: 1px solid rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.105);
       box-shadow:
-        0 22px 48px rgba(0,0,0,.20),
-        inset 0 1px 0 rgba(255,255,255,.08);
-      transition: .25s ease;
+        0 16px 34px rgba(0,0,0,.18),
+        inset 0 1px 0 rgba(255,255,255,.07);
+      transition: .22s ease;
     }
 
     .banda-item::before {
@@ -442,28 +442,28 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(circle at 88% 12%, rgba(191,145,64,.18), transparent 28%),
-        linear-gradient(180deg, rgba(255,255,255,.045), transparent 58%);
-      opacity: .95;
+        radial-gradient(circle at 94% 4%, rgba(191,145,64,.13), transparent 24%),
+        linear-gradient(180deg, rgba(255,255,255,.035), transparent 58%);
+      opacity: .9;
       pointer-events: none;
     }
 
     .banda-item::after {
       content: "";
       position: absolute;
-      left: 26px;
-      right: 26px;
+      left: 22px;
+      right: 22px;
       bottom: 0;
-      height: 3px;
+      height: 2px;
       border-radius: 999px 999px 0 0;
-      background: linear-gradient(90deg, var(--oro-500), rgba(191,145,64,.08));
+      background: linear-gradient(90deg, var(--oro-500), rgba(191,145,64,.04));
     }
 
     .banda-item:hover {
-      transform: translateY(-4px);
-      border-color: rgba(191,145,64,.35);
+      transform: translateY(-3px);
+      border-color: rgba(191,145,64,.30);
       box-shadow:
-        0 28px 62px rgba(0,0,0,.26),
+        0 22px 46px rgba(0,0,0,.22),
         inset 0 1px 0 rgba(255,255,255,.10);
     }
 
@@ -473,42 +473,42 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 20px;
+      gap: 14px;
+      margin-bottom: 15px;
     }
 
     .banda-numero {
       display: inline-flex;
       align-items: center;
-      min-height: 28px;
-      padding: 0 11px;
+      min-height: 26px;
+      padding: 0 10px;
       border-radius: 999px;
-      background: rgba(191,145,64,.12);
+      background: rgba(191,145,64,.10);
       color: var(--oro-200);
-      border: 1px solid rgba(191,145,64,.24);
+      border: 1px solid rgba(191,145,64,.22);
       font-family: "Sora", "Manrope", Arial, sans-serif;
       font-size: 10px;
       font-weight: 700;
-      letter-spacing: .12em;
+      letter-spacing: .11em;
       text-transform: uppercase;
     }
 
     .banda-icono {
-      width: 38px;
-      height: 38px;
-      border-radius: 14px;
+      width: 32px;
+      height: 32px;
+      border-radius: 11px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      background: rgba(255,255,255,.07);
+      background: rgba(255,255,255,.055);
       border: 1px solid rgba(255,255,255,.10);
       color: var(--oro-300);
-      flex: 0 0 38px;
+      flex: 0 0 32px;
     }
 
     .banda-icono svg {
-      width: 20px;
-      height: 20px;
+      width: 17px;
+      height: 17px;
       fill: currentColor;
     }
 
@@ -516,23 +516,23 @@
       position: relative;
       z-index: 1;
       display: block;
-      max-width: 310px;
+      max-width: 315px;
       color: #ffffff;
       font-family: "Sora", "Manrope", Arial, sans-serif;
-      font-size: 19px;
-      line-height: 1.32;
-      letter-spacing: -.022em;
+      font-size: 17px;
+      line-height: 1.34;
+      letter-spacing: -.018em;
       font-weight: 600;
     }
 
     .banda-item p {
       position: relative;
       z-index: 1;
-      max-width: 300px;
-      margin-top: 10px;
-      color: rgba(255,255,255,.66);
-      font-size: 13px;
-      line-height: 1.58;
+      max-width: 315px;
+      margin-top: 8px;
+      color: rgba(255,255,255,.62);
+      font-size: 12.5px;
+      line-height: 1.48;
       font-weight: 500;
     }
 
@@ -772,11 +772,11 @@
 
     @media (max-width: 1030px) {
       .navbar {
-        min-height: 62px;
+        min-height: 66px;
       }
 
       .marca img {
-        width: 98px;
+        width: 118px;
       }
 
       .menu-toggle {
@@ -789,7 +789,7 @@
 
       nav.menu {
         position: absolute;
-        top: 62px;
+        top: 66px;
         left: 0;
         display: none;
         width: 100%;
@@ -819,15 +819,15 @@
       }
 
       .hero {
-        min-height: 380px;
-        padding: 44px 0 44px;
+        min-height: 400px;
+        padding: 48px 0 46px;
         background:
           linear-gradient(90deg, rgba(7,19,33,.96) 0%, rgba(7,19,33,.88) 54%, rgba(7,19,33,.50) 100%),
           url("Portada.png") center center / cover no-repeat;
       }
 
       h1 {
-        font-size: clamp(30px, 5vw, 40px);
+        font-size: clamp(31px, 5vw, 42px);
       }
 
       .banda-grid,
@@ -868,23 +868,23 @@
       }
 
       .navbar {
-        min-height: 60px;
+        min-height: 64px;
       }
 
       nav.menu {
-        top: 60px;
+        top: 64px;
       }
 
       .hero {
         min-height: auto;
-        padding: 42px 0 42px;
+        padding: 42px 0 40px;
         background:
           linear-gradient(90deg, rgba(7,19,33,.97) 0%, rgba(7,19,33,.90) 100%),
           url("Portada.png") center center / cover no-repeat;
       }
 
       h1 {
-        font-size: clamp(28px, 9vw, 38px);
+        font-size: clamp(29px, 9vw, 39px);
         line-height: 1.14;
       }
 
@@ -909,12 +909,12 @@
       }
 
       .banda {
-        padding: 24px 0;
+        padding: 20px 0;
       }
 
       .banda-item {
-        min-height: 158px;
-        padding: 22px;
+        min-height: 132px;
+        padding: 20px;
       }
 
       .criterio,
