@@ -26,16 +26,12 @@
       --oro-600: #a97b2b;
       --oro-500: #bf9140;
       --oro-200: #ead7b2;
-      --marfil: #f8f5ee;
       --marfil-2: #fcfaf6;
       --blanco: #ffffff;
       --texto: #182538;
       --texto-2: #58667a;
       --linea: rgba(18, 37, 64, .12);
       --verde: #25D366;
-      --sombra-suave: 0 18px 48px rgba(7, 19, 33, .08);
-      --sombra-media: 0 28px 70px rgba(7, 19, 33, .14);
-      --radio-xl: 30px;
       --ancho: 1180px;
     }
 
@@ -73,34 +69,56 @@
     }
 
     .barra-superior {
-      background: var(--azul-950);
-      color: rgba(255,255,255,.76);
+      background: linear-gradient(90deg, #071321 0%, #0c1a2d 58%, #071321 100%);
+      color: rgba(255,255,255,.84);
       border-bottom: 1px solid rgba(255,255,255,.08);
       font-size: 12px;
       letter-spacing: .01em;
     }
 
-    .barra-superior .contenedor {
-      min-height: 36px;
+    .barra-superior-grid {
+      min-height: 38px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 18px;
+      gap: 22px;
     }
 
-    .barra-superior span {
+    .top-info {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      min-width: 0;
+    }
+
+    .top-info-derecha {
+      justify-content: flex-end;
+      color: rgba(255,255,255,.78);
+    }
+
+    .top-item {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
+      gap: 7px;
       white-space: nowrap;
+      font-size: 12px;
+      font-weight: 650;
+      line-height: 1;
     }
 
-    .barra-superior span::before {
-      content: "";
-      width: 6px;
-      height: 6px;
+    .top-icon {
+      width: 14px;
+      height: 14px;
+      flex: 0 0 14px;
+      fill: var(--oro-500);
+    }
+
+    .top-separador {
+      width: 4px;
+      height: 4px;
       border-radius: 50%;
       background: var(--oro-500);
+      opacity: .95;
     }
 
     header {
@@ -113,7 +131,7 @@
     }
 
     .navbar {
-      min-height: 78px;
+      min-height: 76px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -176,7 +194,7 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 46px;
+      min-height: 44px;
       padding: 0 20px;
       border-radius: 999px;
       border: 1px solid transparent;
@@ -197,7 +215,6 @@
     .btn-primario:hover {
       background: var(--azul-700);
       transform: translateY(-1px);
-      box-shadow: 0 18px 40px rgba(7,19,33,.24);
     }
 
     .btn-secundario {
@@ -230,14 +247,14 @@
 
     .hero {
       position: relative;
-      min-height: 520px;
-      padding: 88px 0 82px;
+      min-height: 440px;
+      padding: 68px 0 66px;
       display: flex;
       align-items: center;
       overflow: hidden;
       color: #ffffff;
       background:
-        linear-gradient(90deg, rgba(7,19,33,.94) 0%, rgba(7,19,33,.88) 35%, rgba(7,19,33,.64) 58%, rgba(7,19,33,.28) 100%),
+        linear-gradient(90deg, rgba(7,19,33,.95) 0%, rgba(7,19,33,.88) 38%, rgba(7,19,33,.58) 68%, rgba(7,19,33,.30) 100%),
         url("Portada.png") center center / cover no-repeat;
     }
 
@@ -246,19 +263,10 @@
       position: absolute;
       inset: 0;
       background-image:
-        linear-gradient(rgba(255,255,255,.055) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.055) 1px, transparent 1px);
+        linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
       background-size: 64px 64px;
-      opacity: .55;
-      pointer-events: none;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: auto 0 0 0;
-      height: 120px;
-      background: linear-gradient(180deg, transparent, rgba(7,19,33,.18));
+      opacity: .42;
       pointer-events: none;
     }
 
@@ -269,16 +277,16 @@
     }
 
     .hero-contenido {
-      max-width: 720px;
+      max-width: 650px;
     }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 12px;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
       color: var(--oro-200);
-      font-size: 11px;
+      font-size: 10.5px;
       font-weight: 900;
       letter-spacing: .18em;
       text-transform: uppercase;
@@ -292,13 +300,13 @@
     }
 
     h1 {
-      max-width: 720px;
+      max-width: 650px;
       color: #ffffff;
-      font-size: clamp(38px, 4.5vw, 60px);
-      line-height: 1.04;
-      letter-spacing: -.055em;
+      font-size: clamp(34px, 4vw, 50px);
+      line-height: 1.08;
+      letter-spacing: -.052em;
       font-weight: 900;
-      text-shadow: 0 18px 40px rgba(0,0,0,.28);
+      text-shadow: 0 14px 32px rgba(0,0,0,.32);
     }
 
     h1 span {
@@ -307,11 +315,11 @@
     }
 
     .hero-texto {
-      max-width: 600px;
-      margin-top: 24px;
+      max-width: 570px;
+      margin-top: 22px;
       color: rgba(255,255,255,.82);
-      font-size: 15.5px;
-      line-height: 1.78;
+      font-size: 15px;
+      line-height: 1.72;
       letter-spacing: -.012em;
     }
 
@@ -319,13 +327,13 @@
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      margin-top: 32px;
+      margin-top: 30px;
     }
 
     .hero .btn-primario {
       background: #ffffff;
       color: var(--azul-950);
-      box-shadow: 0 16px 34px rgba(0,0,0,.20);
+      box-shadow: 0 14px 32px rgba(0,0,0,.20);
     }
 
     .hero .btn-primario:hover {
@@ -334,9 +342,9 @@
     }
 
     .hero .btn-secundario {
-      background: rgba(255,255,255,.10);
+      background: rgba(255,255,255,.11);
       color: #ffffff;
-      border-color: rgba(255,255,255,.28);
+      border-color: rgba(255,255,255,.25);
       backdrop-filter: blur(10px);
     }
 
@@ -350,12 +358,12 @@
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-top: 32px;
+      margin-top: 28px;
     }
 
     .atributos span {
       display: inline-flex;
-      min-height: 34px;
+      min-height: 32px;
       align-items: center;
       padding: 0 13px;
       border: 1px solid rgba(255,255,255,.18);
@@ -382,7 +390,7 @@
     }
 
     .banda-item {
-      min-height: 150px;
+      min-height: 145px;
       padding: 30px;
       background:
         linear-gradient(135deg, rgba(255,255,255,.055), transparent 70%),
@@ -610,8 +618,8 @@
       right: 22px;
       bottom: 22px;
       z-index: 70;
-      width: 54px;
-      height: 54px;
+      width: 52px;
+      height: 52px;
       border-radius: 50%;
       display: inline-flex;
       align-items: center;
@@ -624,8 +632,8 @@
     }
 
     .whatsapp-flotante svg {
-      width: 27px;
-      height: 27px;
+      width: 26px;
+      height: 26px;
       display: block;
       fill: currentColor;
     }
@@ -684,11 +692,15 @@
       }
 
       .hero {
-        min-height: 500px;
-        padding: 78px 0 74px;
+        min-height: 420px;
+        padding: 64px 0 62px;
         background:
-          linear-gradient(90deg, rgba(7,19,33,.95) 0%, rgba(7,19,33,.86) 58%, rgba(7,19,33,.50) 100%),
+          linear-gradient(90deg, rgba(7,19,33,.95) 0%, rgba(7,19,33,.88) 55%, rgba(7,19,33,.52) 100%),
           url("Portada.png") center center / cover no-repeat;
+      }
+
+      h1 {
+        font-size: clamp(34px, 5.4vw, 48px);
       }
 
       .criterio-grid,
@@ -699,6 +711,14 @@
       .footer-main {
         grid-template-columns: 1fr 1fr;
       }
+
+      .top-info-derecha {
+        display: none;
+      }
+
+      .barra-superior-grid {
+        justify-content: center;
+      }
     }
 
     @media (max-width: 720px) {
@@ -707,25 +727,29 @@
         width: min(100% - 28px, var(--ancho));
       }
 
-      .barra-superior .contenedor {
-        justify-content: center;
+      .barra-superior-grid {
+        min-height: 36px;
       }
 
-      .barra-superior span:nth-child(2) {
+      .top-info {
+        gap: 12px;
+      }
+
+      .top-hide-sm {
         display: none;
       }
 
       .hero {
         min-height: auto;
-        padding: 66px 0 62px;
+        padding: 60px 0 58px;
         background:
           linear-gradient(90deg, rgba(7,19,33,.96) 0%, rgba(7,19,33,.88) 100%),
           url("Portada.png") center center / cover no-repeat;
       }
 
       h1 {
-        font-size: clamp(34px, 11vw, 48px);
-        line-height: 1.06;
+        font-size: clamp(31px, 10vw, 43px);
+        line-height: 1.08;
       }
 
       .hero-texto,
@@ -764,10 +788,11 @@
         right: 16px;
         bottom: 16px;
       }
+    }
 
-      .whatsapp-flotante svg {
-        width: 25px;
-        height: 25px;
+    @media (max-width: 480px) {
+      .top-info .top-item:nth-child(1) {
+        display: none;
       }
     }
   </style>
@@ -775,9 +800,37 @@
 
 <body>
   <div class="barra-superior" aria-label="Información corporativa">
-    <div class="contenedor">
-      <span>Consultoría ejecutiva basada en datos</span>
-      <span>Business Intelligence · Control directivo · Analítica empresarial</span>
+    <div class="contenedor barra-superior-grid">
+      <div class="top-info">
+        <span class="top-item">
+          <svg class="top-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2Zm8 8.7L4.4 7.2V18h15.2V7.2L12 12.7Zm0-2.4L19.1 6H4.9L12 10.3Z"/>
+          </svg>
+          neodatconsultores@gmail.com
+        </span>
+
+        <span class="top-item">
+          <svg class="top-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.8-.4 1.2-.3 1.3.4 2.6.6 4 .6.7 0 1.2.5 1.2 1.2v3.5c0 .7-.5 1.2-1.2 1.2C10.4 22 2 13.6 2 3.4 2 2.7 2.5 2.2 3.2 2.2h3.6c.7 0 1.2.5 1.2 1.2 0 1.4.2 2.7.6 4 .1.4 0 .8-.3 1.2l-1.7 2.2Z"/>
+          </svg>
+          +593 96 079 8571
+        </span>
+
+        <span class="top-item top-hide-sm">
+          <svg class="top-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z"/>
+          </svg>
+          Ecuador
+        </span>
+      </div>
+
+      <div class="top-info top-info-derecha">
+        <span class="top-item">Business Intelligence</span>
+        <span class="top-separador"></span>
+        <span class="top-item">Gobierno de datos</span>
+        <span class="top-separador"></span>
+        <span class="top-item">Control directivo</span>
+      </div>
     </div>
   </div>
 
