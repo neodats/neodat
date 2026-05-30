@@ -363,9 +363,12 @@
       border-color: rgba(255,255,255,.34);
     }
 
+    /* =========================
+       TARJETAS OSCURAS MEJORADAS
+       ========================= */
     .banda {
       position: relative;
-      padding: 22px 0;
+      padding: 28px 0 30px;
       background:
         radial-gradient(circle at 8% 0%, rgba(191,145,64,.08), transparent 28%),
         linear-gradient(180deg, #071321 0%, #081727 100%);
@@ -379,10 +382,10 @@
       position: absolute;
       inset: 0;
       background-image:
-        linear-gradient(rgba(255,255,255,.028) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.028) 1px, transparent 1px);
+        linear-gradient(rgba(255,255,255,.022) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.022) 1px, transparent 1px);
       background-size: 54px 54px;
-      opacity: .24;
+      opacity: .18;
       pointer-events: none;
     }
 
@@ -390,67 +393,74 @@
       position: relative;
       z-index: 1;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
     }
 
     .banda-item {
       position: relative;
-      min-height: 136px;
-      padding: 20px 22px;
-      border-radius: 18px;
+      min-height: 0;
+      padding: 24px 24px 22px;
+      border-radius: 22px;
       overflow: hidden;
       background:
-        linear-gradient(145deg, rgba(255,255,255,.075), rgba(255,255,255,.025)),
-        rgba(12,26,45,.88);
-      border: 1px solid rgba(255,255,255,.105);
+        linear-gradient(180deg, rgba(26,45,72,.96) 0%, rgba(10,24,42,.98) 100%);
+      border: 1px solid rgba(255,255,255,.08);
       box-shadow:
-        0 16px 34px rgba(0,0,0,.18),
-        inset 0 1px 0 rgba(255,255,255,.07);
-      transition: .22s ease;
+        0 18px 38px rgba(0,0,0,.16),
+        inset 0 1px 0 rgba(255,255,255,.05);
+      transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+    }
+
+    .banda-item:hover {
+      transform: translateY(-3px);
+      box-shadow:
+        0 22px 42px rgba(0,0,0,.20),
+        inset 0 1px 0 rgba(255,255,255,.06);
+      border-color: rgba(191,145,64,.30);
     }
 
     .banda-item::before {
       content: "";
       position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 94% 4%, rgba(191,145,64,.13), transparent 24%),
-        linear-gradient(180deg, rgba(255,255,255,.035), transparent 58%);
-      opacity: .9;
-      pointer-events: none;
+      top: 0;
+      left: 24px;
+      width: 64px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--oro-500), rgba(191,145,64,.18));
+      border-radius: 999px;
     }
 
     .banda-item::after {
       content: "";
       position: absolute;
-      left: 22px;
-      right: 22px;
-      bottom: 0;
-      height: 2px;
-      border-radius: 999px 999px 0 0;
-      background: linear-gradient(90deg, var(--oro-500), rgba(191,145,64,.04));
+      right: -40px;
+      top: -40px;
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle, rgba(191,145,64,.08), transparent 68%);
+      pointer-events: none;
     }
 
     .banda-top {
       position: relative;
       z-index: 1;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: space-between;
       gap: 14px;
-      margin-bottom: 15px;
+      margin-bottom: 18px;
     }
 
     .banda-numero {
       display: inline-flex;
       align-items: center;
       min-height: 26px;
-      padding: 0 10px;
+      padding: 0 11px;
       border-radius: 999px;
       background: rgba(191,145,64,.10);
       color: var(--oro-200);
-      border: 1px solid rgba(191,145,64,.22);
+      border: 1px solid rgba(191,145,64,.24);
       font-family: "Sora", "Manrope", Arial, sans-serif;
       font-size: 10px;
       font-weight: 700;
@@ -459,21 +469,21 @@
     }
 
     .banda-icono {
-      width: 32px;
-      height: 32px;
-      border-radius: 11px;
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      background: rgba(255,255,255,.055);
-      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.08);
       color: var(--oro-300);
-      flex: 0 0 32px;
+      flex: 0 0 34px;
     }
 
     .banda-icono svg {
-      width: 17px;
-      height: 17px;
+      width: 16px;
+      height: 16px;
       fill: currentColor;
     }
 
@@ -481,26 +491,29 @@
       position: relative;
       z-index: 1;
       display: block;
-      max-width: 315px;
+      max-width: 100%;
       color: #ffffff;
       font-family: "Sora", "Manrope", Arial, sans-serif;
-      font-size: 17px;
-      line-height: 1.34;
+      font-size: 16px;
+      line-height: 1.42;
       letter-spacing: -.018em;
-      font-weight: 600;
+      font-weight: 650;
     }
 
     .banda-item p {
       position: relative;
       z-index: 1;
-      max-width: 315px;
-      margin-top: 8px;
-      color: rgba(255,255,255,.62);
-      font-size: 12.5px;
-      line-height: 1.48;
+      max-width: 100%;
+      margin-top: 10px;
+      color: rgba(255,255,255,.70);
+      font-size: 13px;
+      line-height: 1.58;
       font-weight: 500;
     }
 
+    /* =========================
+       SECCIÓN CRITERIO
+       ========================= */
     .criterio {
       position: relative;
       padding: 46px 0 48px;
@@ -557,52 +570,73 @@
       font-weight: 500;
     }
 
+    /* =========================
+       TARJETAS CLARAS MEJORADAS
+       ========================= */
     .criterio-panel {
-      margin-top: 10px;
-      padding: 18px;
-      border-radius: 24px;
-      background:
-        linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.02)),
-        var(--azul-950);
-      border: 1px solid rgba(18,37,64,.12);
-      box-shadow: 0 24px 54px rgba(7,19,33,.16);
-      overflow: hidden;
+      margin-top: 14px;
+      padding: 0;
+      border-radius: 0;
+      background: transparent;
+      border: 0;
+      box-shadow: none;
+      overflow: visible;
     }
 
     .criterio-panel-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: rgba(255,255,255,.10);
-      border-radius: 18px;
-      overflow: hidden;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      background: transparent;
+      border-radius: 0;
+      overflow: visible;
     }
 
     .criterio-bloque {
       position: relative;
-      min-height: 132px;
-      padding: 20px;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.025)),
-        #0b1728;
+      min-height: 170px;
+      padding: 22px 22px 20px;
+      background: linear-gradient(180deg, #ffffff 0%, #fbfcfe 100%);
+      border: 1px solid rgba(18,37,64,.10);
+      border-radius: 22px;
+      box-shadow: 0 14px 30px rgba(10,27,51,.06);
+      transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+    }
+
+    .criterio-bloque:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 36px rgba(10,27,51,.10);
+      border-color: rgba(191,145,64,.28);
+    }
+
+    .criterio-bloque::before {
+      content: "";
+      position: absolute;
+      left: 22px;
+      top: 0;
+      width: 58px;
+      height: 3px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--oro-500), rgba(191,145,64,.18));
     }
 
     .criterio-bloque::after {
       content: "";
       position: absolute;
-      left: 20px;
-      right: 20px;
-      bottom: 0;
-      height: 2px;
-      background: linear-gradient(90deg, var(--oro-500), rgba(191,145,64,.05));
-      border-radius: 999px 999px 0 0;
+      right: 18px;
+      top: 18px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(191,145,64,.18);
+      box-shadow: 0 0 0 6px rgba(191,145,64,.06);
     }
 
     .criterio-numero {
       display: inline-flex;
       align-items: center;
-      margin-bottom: 16px;
-      color: var(--oro-200);
+      margin-bottom: 14px;
+      color: var(--oro-600);
       font-family: "Sora", "Manrope", Arial, sans-serif;
       font-size: 10px;
       font-weight: 700;
@@ -612,20 +646,20 @@
 
     .criterio-bloque b {
       display: block;
-      margin-bottom: 8px;
-      color: #ffffff;
+      margin-bottom: 10px;
+      color: var(--azul-950);
       font-family: "Sora", "Manrope", Arial, sans-serif;
       font-size: 16px;
-      line-height: 1.25;
+      line-height: 1.28;
       font-weight: 650;
       letter-spacing: -.015em;
     }
 
     .criterio-bloque span {
       display: block;
-      color: rgba(255,255,255,.68);
-      font-size: 12.8px;
-      line-height: 1.55;
+      color: #4d6077;
+      font-size: 13.2px;
+      line-height: 1.62;
       font-weight: 500;
     }
 
@@ -969,22 +1003,25 @@
       }
 
       .banda {
-        padding: 18px 0;
+        padding: 20px 0 22px;
       }
 
       .banda-grid {
         grid-template-columns: 1fr;
-        gap: 10px;
+        gap: 12px;
       }
 
       .banda-item {
-        min-height: auto;
-        padding: 18px;
-        border-radius: 16px;
+        padding: 20px 18px 18px;
+        border-radius: 18px;
+      }
+
+      .banda-item::before {
+        left: 18px;
       }
 
       .banda-top {
-        margin-bottom: 12px;
+        margin-bottom: 14px;
       }
 
       .banda-numero {
@@ -999,13 +1036,13 @@
       }
 
       .banda-item strong {
-        font-size: 16px;
-        line-height: 1.32;
+        font-size: 15px;
+        line-height: 1.34;
       }
 
       .banda-item p {
         font-size: 12.5px;
-        line-height: 1.48;
+        line-height: 1.52;
       }
 
       .criterio {
@@ -1035,19 +1072,27 @@
       }
 
       .criterio-panel {
-        margin-top: 8px;
-        padding: 12px;
-        border-radius: 20px;
+        margin-top: 10px;
       }
 
       .criterio-panel-grid {
         grid-template-columns: 1fr;
-        border-radius: 16px;
+        gap: 12px;
       }
 
       .criterio-bloque {
         min-height: auto;
-        padding: 18px;
+        padding: 20px 18px 18px;
+        border-radius: 18px;
+      }
+
+      .criterio-bloque::before {
+        left: 18px;
+      }
+
+      .criterio-bloque::after {
+        right: 16px;
+        top: 16px;
       }
 
       .criterio-numero {
@@ -1059,7 +1104,7 @@
       }
 
       .criterio-bloque span {
-        font-size: 12.5px;
+        font-size: 12.7px;
       }
 
       .contacto-final {
