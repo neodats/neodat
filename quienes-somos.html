@@ -442,31 +442,471 @@
             .valores-grid { grid-template-columns: 1fr; gap: 12px; }
             .bloque { padding: 50px 0 60px; }
          }
-      </style>
+      
+
+    /* =========================================================
+       AJUSTE FINAL: SOLO PARTE SUPERIOR, ENCABEZADO, MENÚ Y PIE
+       Basado en la estructura visual del index.html original.
+       ========================================================= */
+    :root {
+      --azul-950: #071321;
+      --azul-900: #0c1a2d;
+      --azul-700: #19355c;
+      --azul-100: #eaf0f7;
+      --oro-600: #a97b2b;
+      --oro-500: #bf9140;
+      --oro-300: #d6b06a;
+      --oro-200: #ead7b2;
+      --blanco: #ffffff;
+      --texto-footer: #58667a;
+      --linea: rgba(18, 37, 64, .12);
+      --verde: #25D366;
+      --sombra-btn: 0 16px 34px rgba(7,19,33,.16);
+      --ancho: 1180px;
+    }
+
+    .barra-superior {
+      background: #071321 !important;
+      color: rgba(255,255,255,.88) !important;
+      border-bottom: 1px solid rgba(255,255,255,.08) !important;
+      font-size: 12px !important;
+    }
+
+    .barra-superior .contenedor {
+      width: min(var(--ancho), calc(100% - 48px)) !important;
+      margin: 0 auto !important;
+      min-height: 34px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: flex-end !important;
+      gap: 22px !important;
+      overflow-x: auto !important;
+      overflow-y: hidden !important;
+      scrollbar-width: none !important;
+      -webkit-overflow-scrolling: touch !important;
+    }
+
+    .barra-superior .contenedor::-webkit-scrollbar {
+      display: none !important;
+    }
+
+    .barra-superior-grid,
+    .top-item {
+      display: inline-flex !important;
+      align-items: center !important;
+      white-space: nowrap !important;
+    }
+.barra-superior-grid {
+      justify-content: flex-end !important;
+      gap: 24px !important;
+      width: auto !important;
+      flex: 0 0 auto !important;
+    }
+
+    .top-item {
+      gap: 6px !important;
+      font-size: 12px !important;
+      font-weight: 600 !important;
+      line-height: 1 !important;
+    }
+
+    .top-icon {
+      width: 13px !important;
+      height: 13px !important;
+      flex: 0 0 13px !important;
+      fill: var(--oro-500) !important;
+    }
+
+    header {
+      position: sticky !important;
+      top: 0 !important;
+      left: auto !important;
+      z-index: 100 !important;
+      width: 100% !important;
+      background: rgba(255,255,255,.94) !important;
+      backdrop-filter: blur(16px) !important;
+      border-bottom: 1px solid var(--linea) !important;
+      box-shadow: none !important;
+    }
+
+    .navbar {
+      width: min(var(--ancho), calc(100% - 48px)) !important;
+      margin: 0 auto !important;
+      min-height: 68px !important;
+      height: auto !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: flex-end !important;
+      gap: 26px !important;
+    }
+
+    .marca {
+      display: inline-flex !important;
+      align-items: center !important;
+      min-width: 142px !important;
+      flex: 0 0 auto !important;
+    }
+
+    .marca img {
+      width: 118px !important;
+      height: auto !important;
+      max-height: 58px !important;
+      display: block !important;
+      object-fit: contain !important;
+    }
+
+    .menu-toggle {
+      display: none !important;
+      width: 42px !important;
+      height: 42px !important;
+      align-items: center !important;
+      justify-content: center !important;
+      border: 1px solid var(--linea) !important;
+      border-radius: 999px !important;
+      background: var(--blanco) !important;
+      color: var(--azul-900) !important;
+      font-size: 20px !important;
+      font-weight: 700 !important;
+      cursor: pointer !important;
+      line-height: 1 !important;
+      padding: 0 !important;
+    }
+
+    nav.menu ul {
+      display: flex !important;
+      align-items: center !important;
+      gap: 4px !important;
+      list-style: none !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    nav.menu a {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      min-height: 38px !important;
+      padding: 0 14px !important;
+      border-radius: 999px !important;
+      color: #34465e !important;
+      background: transparent !important;
+      font-size: 13px !important;
+      font-weight: 700 !important;
+      line-height: 1 !important;
+      transition: .2s ease !important;
+      text-decoration: none !important;
+    }
+
+    nav.menu a:hover,
+    nav.menu a.actual {
+      background: var(--azul-100) !important;
+      color: var(--azul-950) !important;
+    }
+
+    .btn.whatsapp-desktop,
+    .whatsapp-desktop {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      min-height: 44px !important;
+      padding: 0 22px !important;
+      border-radius: 999px !important;
+      background: rgba(37,211,102,.08) !important;
+      color: #169348 !important;
+      border: 1px solid rgba(37,211,102,.24) !important;
+      box-shadow: none !important;
+      font-size: 13px !important;
+      font-weight: 700 !important;
+      white-space: nowrap !important;
+      text-decoration: none !important;
+    }
+
+    .btn.whatsapp-desktop:hover,
+    .whatsapp-desktop:hover {
+      background: var(--verde) !important;
+      color: #ffffff !important;
+      transform: translateY(-1px) !important;
+    }
+
+    footer.site-footer,
+    footer {
+      background: #ffffff !important;
+      border-top: 1px solid var(--linea) !important;
+    }
+
+    .footer-main {
+      width: min(var(--ancho), calc(100% - 48px)) !important;
+      margin: 0 auto !important;
+      display: grid !important;
+      grid-template-columns: 1.35fr .8fr .8fr 1fr !important;
+      gap: 34px !important;
+      padding: 44px 0 36px !important;
+    }
+
+    .footer-logo img {
+      width: 116px !important;
+      height: auto !important;
+      display: block !important;
+      margin-bottom: 16px !important;
+    }
+
+    .footer-col p {
+      max-width: 330px !important;
+      color: var(--texto-footer) !important;
+      font-size: 13px !important;
+      line-height: 1.68 !important;
+      font-weight: 500 !important;
+      margin: 0 !important;
+    }
+
+    .footer-col h4 {
+      margin: 0 0 14px !important;
+      color: var(--azul-950) !important;
+      font-size: 12px !important;
+      font-weight: 700 !important;
+      letter-spacing: .10em !important;
+      text-transform: uppercase !important;
+      font-family: "Sora", "Manrope", Arial, sans-serif !important;
+    }
+
+    .footer-links,
+    .footer-contacto {
+      display: grid !important;
+      gap: 9px !important;
+    }
+
+    .footer-links a,
+    .footer-contacto a,
+    .footer-contacto span {
+      color: #536277 !important;
+      font-size: 13px !important;
+      line-height: 1.45 !important;
+      font-weight: 500 !important;
+      transition: .2s ease !important;
+      text-decoration: none !important;
+    }
+
+    .footer-links a:hover,
+    .footer-contacto a:hover {
+      color: var(--oro-600) !important;
+    }
+
+    .footer-bottom {
+      width: 100% !important;
+      padding: 17px 0 !important;
+      text-align: center !important;
+      border-top: 1px solid var(--linea) !important;
+      color: #6a778a !important;
+      font-size: 12px !important;
+      font-weight: 500 !important;
+    }
+
+    .whatsapp-flotante {
+      position: fixed !important;
+      right: 22px !important;
+      bottom: 22px !important;
+      z-index: 120 !important;
+      width: 54px !important;
+      height: 54px !important;
+      border-radius: 50% !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      background: linear-gradient(135deg, #25D366, #128C44) !important;
+      color: #ffffff !important;
+      box-shadow: 0 18px 36px rgba(18,140,68,.30) !important;
+      transition: .2s ease !important;
+      border: 1px solid rgba(255,255,255,.24) !important;
+    }
+
+    .whatsapp-flotante svg {
+      width: 26px !important;
+      height: 26px !important;
+      display: block !important;
+      fill: currentColor !important;
+    }
+
+    .whatsapp-flotante:hover {
+      transform: translateY(-3px) scale(1.03) !important;
+      box-shadow: 0 22px 42px rgba(18,140,68,.36) !important;
+    }
+
+    @media (max-width: 1030px) {
+      .navbar {
+        min-height: 66px !important;
+      }
+
+      .marca img {
+        width: 118px !important;
+      }
+
+      .menu-toggle {
+        display: inline-flex !important;
+      }
+
+      .whatsapp-desktop {
+        display: none !important;
+      }
+
+      nav.menu {
+        position: absolute !important;
+        top: 66px !important;
+        left: 0 !important;
+        display: none !important;
+        width: 100% !important;
+        background: #ffffff !important;
+        border-bottom: 1px solid var(--linea) !important;
+        box-shadow: 0 24px 42px rgba(7,19,33,.10) !important;
+      }
+
+      nav.menu.activo {
+        display: block !important;
+      }
+
+      nav.menu ul {
+        width: min(var(--ancho), calc(100% - 48px)) !important;
+        margin: 0 auto !important;
+        padding: 12px 0 14px !important;
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 6px !important;
+      }
+
+      nav.menu a {
+        justify-content: flex-start !important;
+        min-height: 40px !important;
+        border-radius: 14px !important;
+        background: #f6f7f9 !important;
+      }
+
+      nav.menu a:hover,
+      nav.menu a.actual {
+        background: var(--azul-100) !important;
+      }
+
+      .footer-main {
+        grid-template-columns: 1fr 1fr !important;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .barra-superior .contenedor,
+      .navbar,
+      .footer-main,
+      nav.menu ul {
+        width: min(100% - 28px, var(--ancho)) !important;
+      }
+
+      .barra-superior .contenedor {
+        min-height: 32px !important;
+        gap: 18px !important;
+        justify-content: flex-start !important;
+      }
+
+      .barra-superior-grid {
+        gap: 18px !important;
+      }
+
+      .top-item {
+        font-size: 10.8px !important;
+      }
+
+      .navbar {
+        min-height: 62px !important;
+        gap: 14px !important;
+      }
+
+      .marca {
+        min-width: auto !important;
+      }
+
+      .marca img {
+        width: 112px !important;
+      }
+
+      .menu-toggle {
+        width: 38px !important;
+        height: 38px !important;
+        font-size: 19px !important;
+      }
+
+      nav.menu {
+        top: 62px !important;
+      }
+
+      nav.menu ul {
+        padding: 10px 0 12px !important;
+      }
+
+      nav.menu a {
+        min-height: 42px !important;
+        padding: 0 14px !important;
+        font-size: 13px !important;
+      }
+
+      .footer-main {
+        grid-template-columns: 1fr !important;
+        gap: 24px !important;
+        padding: 34px 0 28px !important;
+      }
+
+      .footer-logo img {
+        width: 112px !important;
+      }
+
+      .footer-bottom {
+        padding: 15px 16px !important;
+        font-size: 11.5px !important;
+        line-height: 1.45 !important;
+      }
+    }
+
+</style>
    </head>
 
    <body>
-      <header>
-         <div class="contenedor navbar">
-            <a href="index.html" class="logo" aria-label="NeoDat Consultores">
-               <img src="Neo1.png" class="logo-icono" alt="Logo NeoDat">
-            </a>
-            <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false"> ☰ </button>
-            <nav class="menu" aria-label="Navegación principal">
-               <ul>
-                  <li><a href="index.html">Inicio</a></li>
-                  <li><a href="servicios.html">Servicios</a></li>                  
-                  <li><a href="metodo.html">Método</a></li>
-                  <li><a href="ambitos.html">Ámbitos</a></li>
-                  <li><a href="quienes-somos.html" class="actual">Quiénes somos</a></li>
-                  <li><a href="contacto.html">Contacto</a></li>
-               </ul>
-            </nav>
-            <a class="btn btn-whatsapp whatsapp-desktop" href="https://wa.me/593960798571?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20NeoDat%20Consultores." target="_blank" rel="noopener">
-               WhatsApp
-            </a>
-         </div>
-      </header>
+        <div class="barra-superior" aria-label="Información corporativa">
+    <div class="contenedor">
+      <div class="barra-superior-grid">
+        <span class="top-item">
+          <svg class="top-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2Zm8 8.7L4.4 7.2V18h15.2V7.2L12 12.7Zm0-2.4L19.1 6H4.9L12 10.3Z"/>
+          </svg>
+          neodatconsultores@gmail.com
+        </span>
+
+        <span class="top-item">
+          <svg class="top-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.8-.4 1.2-.3 1.3.4 2.6.6 4 .6.7 0 1.2.5 1.2 1.2v3.5c0 .7-.5 1.2-1.2 1.2C10.4 22 2 13.6 2 3.4 2 2.7 2.5 2.2 3.2 2.2h3.6c.7 0 1.2.5 1.2 1.2 0 1.4.2 2.7.6 4 .1.4 0 .8-.3 1.2l-1.7 2.2Z"/>
+          </svg>
+          +593 96 079 8571
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <header>
+    <div class="contenedor navbar">
+      <a href="index.html" class="marca" aria-label="NeoDat Consultores">
+        <img src="Neo1.png" alt="NeoDat Consultores">
+      </a>
+
+      <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false">☰</button>
+
+      <nav class="menu" aria-label="Navegación principal">
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a class="actual" href="quienes-somos.html">Quiénes somos</a></li>
+          <li><a href="servicios.html">Servicios</a></li>
+          <li><a href="metodo.html">Método</a></li>
+          <li><a href="ambitos.html">Ámbitos</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <a class="btn btn-whatsapp whatsapp-desktop" href="https://wa.me/593960798571?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20NeoDat%20Consultores." target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+  </header>
 
       <main>
          <section class="hero">
@@ -564,43 +1004,68 @@
          </section>
       </main>
 
-      <footer class="site-footer">
-         <div class="contenedor footer-bottom">
-            <span>© 2026 NeoDat Consultores. Todos los derechos reservados.</span>
-         </div>
-      </footer>
+        <footer class="site-footer">
+    <div class="footer-main">
+      <div class="footer-col">
+        <a href="index.html" class="footer-logo" aria-label="NeoDat Consultores">
+          <img src="Neo1.png" alt="NeoDat Consultores">
+        </a>
+
+        <p>
+          Consultoría empresarial para fortalecer la lectura, el control y la toma de decisiones basada en información confiable.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navegación</h4>
+        <div class="footer-links">
+          <a href="index.html">Inicio</a>
+          <a href="quienes-somos.html">Quiénes somos</a>
+          <a href="servicios.html">Servicios</a>
+          <a href="metodo.html">Método</a>
+          <a href="ambitos.html">Ámbitos</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Empresa</h4>
+        <div class="footer-links">
+          <a href="contacto.html">Contacto</a>
+          <a href="contacto.html">Agendar reunión</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <div class="footer-contacto">
+          <a href="mailto:neodatconsultores@gmail.com">neodatconsultores@gmail.com</a>
+          <a href="https://wa.me/593960798571" target="_blank" rel="noopener">+593 96 079 8571</a>
+</div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 NeoDat Consultores · Todos los derechos reservados.</span>
+    </div>
+  </footer>
+
+  <a class="whatsapp-flotante" href="https://wa.me/593960798571?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20NeoDat%20Consultores." target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 32 32" aria-hidden="true">
+      <path d="M16.02 3C8.85 3 3.03 8.75 3.03 15.83c0 2.26.6 4.47 1.74 6.41L3 29l6.95-1.79a13.1 13.1 0 0 0 6.07 1.49c7.17 0 12.99-5.75 12.99-12.83S23.19 3 16.02 3Zm0 23.53c-2.02 0-3.98-.54-5.7-1.57l-.41-.24-4.12 1.06 1.1-3.94-.27-.43a10.35 10.35 0 0 1-1.6-5.58c0-5.88 4.94-10.66 11-10.66s11 4.78 11 10.66-4.94 10.7-11 10.7Zm6.02-7.98c-.33-.16-1.95-.95-2.25-1.06-.3-.11-.52-.16-.74.16-.22.32-.85 1.06-1.04 1.27-.19.21-.38.24-.71.08-.33-.16-1.39-.51-2.65-1.62-.98-.86-1.64-1.93-1.83-2.25-.19-.32-.02-.5.14-.66.15-.14.33-.37.49-.56.16-.19.22-.32.33-.53.11-.21.05-.4-.03-.56-.08-.16-.74-1.77-1.01-2.42-.27-.64-.54-.55-.74-.56h-.63c-.22 0-.57.08-.87.4-.3.32-1.15 1.12-1.15 2.73s1.18 3.17 1.34 3.39c.16.21 2.33 3.53 5.65 4.95.79.34 1.41.54 1.89.69.79.25 1.51.21 2.09.13.64-.09 1.95-.79 2.23-1.56.27-.77.27-1.43.19-1.56-.08-.13-.3-.21-.63-.37Z"/>
+    </svg>
+  </a>
 
       <script>
-         // Menú móvil funcional con accesibilidad mejorada e idéntico al index
-         const menuToggle = document.querySelector(".menu-toggle");
-         const menu = document.querySelector(".menu");
-         
-         menuToggle.addEventListener("click", () => {
-            const estaActivo = menu.classList.toggle("activo");
-            menuToggle.setAttribute("aria-expanded", estaActivo);
-            menuToggle.textContent = estaActivo ? " ✕ " : " ☰ ";
-         });
+    const menuToggle = document.querySelector(".menu-toggle");
+    const menu = document.querySelector("nav.menu");
 
-         // Cerrar el menú automáticamente al hacer clic en un enlace (útil en móviles)
-         const enlacesMenu = document.querySelectorAll("nav.menu a");
-         enlacesMenu.forEach(enlace => {
-            enlace.addEventListener("click", () => {
-               if (menu.classList.contains("activo")) {
-                  menu.classList.remove("activo");
-                  menuToggle.setAttribute("aria-expanded", "false");
-                  menuToggle.textContent = " ☰ ";
-               }
-            });
-         });
-
-         // Autodetección de página activa para resaltar la pestaña actual
-         const ubicacionActual = window.location.pathname.split("/").pop() || "index.html";
-
-         enlacesMenu.forEach(enlace => {
-            if (enlace.getAttribute("href") === ubicacionActual) {
-               enlace.classList.add("actual");
-            }
-         });
-      </script>
-   </body>
+    if (menuToggle && menu) {
+      menuToggle.addEventListener("click", () => {
+        const abierto = menu.classList.toggle("activo");
+        menuToggle.setAttribute("aria-expanded", abierto ? "true" : "false");
+        menuToggle.textContent = abierto ? "×" : "☰";
+      });
+    }
+  </script>
+
 </html>
