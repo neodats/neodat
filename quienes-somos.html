@@ -1056,122 +1056,450 @@
 
   
 
-    /* ==========================================================
-       AJUSTE FINAL: PIE DE PÁGINA IGUAL AL INDEX.HTML
-       ========================================================== */
-    footer {
-      background: #ffffff !important;
-      color: var(--texto-2) !important;
-      padding: 0 !important;
-      border-top: 1px solid var(--linea) !important;
-      border-radius: 0 !important;
-      box-shadow: none !important;
-      width: 100% !important;
-      flex-shrink: 0 !important;
-    }
+/* =========================================================
+   AJUSTE FINAL: ENCABEZADO/MENÚ IGUAL AL INDEX VISIBLE
+   - Sin barra superior oscura.
+   - Header blanco visible, sin ocultarse sobre la portada.
+   - Misma alineación, alturas y comportamiento responsive.
+   ========================================================= */
+.barra-superior {
+  display: none !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: 0 !important;
+}
 
-    .footer-main {
-      display: grid !important;
-      grid-template-columns: 1.35fr .8fr .8fr 1fr !important;
-      gap: 34px !important;
-      padding: 44px 0 36px !important;
-    }
+body {
+  padding-top: 0 !important;
+  margin: 0 !important;
+}
 
-    .footer-logo img {
-      width: 116px !important;
-      height: auto !important;
-      display: block !important;
-      margin-bottom: 16px !important;
-    }
+header {
+  position: sticky !important;
+  top: 0 !important;
+  left: auto !important;
+  right: auto !important;
+  z-index: 9999 !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: rgba(255, 255, 255, .96) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border-bottom: 1px solid rgba(18, 37, 64, .12) !important;
+  box-shadow: none !important;
+  transform: none !important;
+  overflow: visible !important;
+}
 
-    .footer-col p {
-      max-width: 330px !important;
-      color: var(--texto-2) !important;
-      font-size: 13px !important;
-      line-height: 1.68 !important;
-      font-weight: 500 !important;
-    }
+header .navbar,
+.navbar {
+  width: min(var(--ancho, 1180px), calc(100% - 48px)) !important;
+  min-height: 72px !important;
+  height: 72px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 26px !important;
+  flex-wrap: nowrap !important;
+}
 
-    .footer-col h4 {
-      margin-bottom: 14px !important;
-      color: var(--azul-950) !important;
-      font-size: 12px !important;
-      font-weight: 700 !important;
-      letter-spacing: .10em !important;
-      text-transform: uppercase !important;
-      font-family: "Sora", "Manrope", Arial, sans-serif !important;
-    }
+.marca,
+.logo {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  min-width: 142px !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 0 !important;
+  flex: 0 0 auto !important;
+}
 
-    .footer-links,
-    .footer-contacto {
-      display: grid !important;
-      gap: 9px !important;
-    }
+.marca img,
+.logo img,
+.logo-icono,
+header .marca img,
+header .logo img {
+  width: 118px !important;
+  max-width: 118px !important;
+  height: auto !important;
+  max-height: 52px !important;
+  display: block !important;
+  object-fit: contain !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
 
-    .footer-links a,
-    .footer-contacto a,
-    .footer-contacto span {
-      color: #536277 !important;
-      font-size: 13px !important;
-      line-height: 1.45 !important;
-      font-weight: 500 !important;
-      transition: .2s ease !important;
-    }
+.menu-toggle {
+  display: none !important;
+  width: 42px !important;
+  height: 42px !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border: 1px solid rgba(18, 37, 64, .12) !important;
+  border-radius: 999px !important;
+  background: #ffffff !important;
+  color: #0c1a2d !important;
+  font-family: "Manrope", Arial, sans-serif !important;
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+}
 
-    .footer-links a:hover,
-    .footer-contacto a:hover {
-      color: var(--oro-600) !important;
-    }
+header nav.menu,
+header nav,
+nav.menu {
+  position: static !important;
+  inset: auto !important;
+  display: block !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+  flex: 0 1 auto !important;
+}
 
-    .footer-bottom {
-      display: block !important;
-      min-height: auto !important;
-      padding: 17px 0 !important;
-      text-align: center !important;
-      border-top: 1px solid var(--linea) !important;
-      color: #6a778a !important;
-      font-size: 12px !important;
-      font-weight: 500 !important;
-      background: #ffffff !important;
-    }
+header nav.menu ul,
+header nav ul,
+nav.menu ul,
+nav ul {
+  width: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 4px !important;
+  list-style: none !important;
+  flex-wrap: nowrap !important;
+}
 
-    @media (max-width: 900px) {
-      .footer-main {
-        grid-template-columns: 1fr 1fr !important;
-      }
-    }
+header nav.menu li,
+header nav li,
+nav.menu li,
+nav li {
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
 
-    @media (max-width: 620px) {
-      .footer-main {
-        grid-template-columns: 1fr !important;
-        gap: 26px !important;
-        padding: 34px 0 28px !important;
-      }
-    }
+header nav.menu a,
+header nav a,
+nav.menu a,
+nav a {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 38px !important;
+  height: 38px !important;
+  padding: 0 14px !important;
+  border-radius: 999px !important;
+  background: transparent !important;
+  color: #34465e !important;
+  font-family: "Manrope", Arial, sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  text-decoration: none !important;
+  transition: .2s ease !important;
+  white-space: nowrap !important;
+  box-shadow: none !important;
+  border: 0 !important;
+}
 
-  </style>
+header nav.menu a:hover,
+header nav.menu a.actual,
+header nav a:hover,
+header nav a.actual,
+nav.menu a:hover,
+nav.menu a.actual,
+nav a:hover,
+nav a.actual {
+  background: var(--azul-100, #eaf0f7) !important;
+  color: var(--azul-950, #071321) !important;
+}
+
+header .btn,
+header .btn-whatsapp,
+header .whatsapp-desktop {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 44px !important;
+  height: 44px !important;
+  padding: 0 22px !important;
+  border-radius: 999px !important;
+  border: 1px solid rgba(37, 211, 102, .24) !important;
+  background: rgba(37, 211, 102, .08) !important;
+  color: #169348 !important;
+  font-family: "Manrope", Arial, sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  letter-spacing: -.01em !important;
+  line-height: 1 !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+  box-shadow: none !important;
+}
+
+header .btn-whatsapp:hover,
+header .whatsapp-desktop:hover {
+  background: var(--verde, #25D366) !important;
+  color: #ffffff !important;
+  transform: translateY(-1px) !important;
+}
+
+main {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+.hero,
+.hero-interna {
+  margin-top: 0 !important;
+}
+
+@media (max-width: 1030px) {
+  header .navbar,
+  .navbar {
+    min-height: 66px !important;
+    height: 66px !important;
+  }
+
+  .marca,
+  .logo {
+    min-width: auto !important;
+  }
+
+  .marca img,
+  .logo img,
+  .logo-icono,
+  header .marca img,
+  header .logo img {
+    width: 118px !important;
+    max-width: 118px !important;
+  }
+
+  .menu-toggle {
+    display: inline-flex !important;
+  }
+
+  header .whatsapp-desktop {
+    display: none !important;
+  }
+
+  header nav.menu,
+  header nav,
+  nav.menu {
+    position: absolute !important;
+    top: 66px !important;
+    left: 0 !important;
+    right: 0 !important;
+    display: none !important;
+    width: 100% !important;
+    background: #ffffff !important;
+    border-bottom: 1px solid rgba(18, 37, 64, .12) !important;
+    box-shadow: 0 24px 42px rgba(7, 19, 33, .10) !important;
+    z-index: 9998 !important;
+  }
+
+  header nav.menu.activo,
+  header nav.activo,
+  nav.menu.activo {
+    display: block !important;
+  }
+
+  header nav.menu ul,
+  header nav ul,
+  nav.menu ul,
+  nav ul {
+    width: min(var(--ancho, 1180px), calc(100% - 48px)) !important;
+    margin: 0 auto !important;
+    padding: 12px 0 14px !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 6px !important;
+  }
+
+  header nav.menu a,
+  header nav a,
+  nav.menu a,
+  nav a {
+    justify-content: flex-start !important;
+    min-height: 40px !important;
+    height: 40px !important;
+    border-radius: 14px !important;
+    background: #f6f7f9 !important;
+  }
+}
+
+@media (max-width: 720px) {
+  header .navbar,
+  .navbar,
+  header nav.menu ul,
+  header nav ul,
+  nav.menu ul,
+  nav ul {
+    width: min(100% - 28px, var(--ancho, 1180px)) !important;
+  }
+
+  header .navbar,
+  .navbar {
+    min-height: 62px !important;
+    height: 62px !important;
+    gap: 14px !important;
+  }
+
+  .marca img,
+  .logo img,
+  .logo-icono,
+  header .marca img,
+  header .logo img {
+    width: 112px !important;
+    max-width: 112px !important;
+  }
+
+  .menu-toggle {
+    width: 38px !important;
+    height: 38px !important;
+    font-size: 19px !important;
+  }
+
+  header nav.menu,
+  header nav,
+  nav.menu {
+    top: 62px !important;
+  }
+}
+
+
+/* =========================================================
+   FOOTER IGUAL AL INDEX
+   ========================================================= */
+footer {
+  background: #ffffff !important;
+  border-top: 1px solid rgba(18, 37, 64, .12) !important;
+  color: var(--texto, #182538) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-family: "Manrope", Arial, sans-serif !important;
+}
+
+.footer-main {
+  width: min(var(--ancho, 1180px), calc(100% - 48px)) !important;
+  margin: 0 auto !important;
+  display: grid !important;
+  grid-template-columns: 1.35fr .8fr .8fr 1fr !important;
+  gap: 34px !important;
+  padding: 44px 0 36px !important;
+  align-items: start !important;
+}
+
+.footer-logo img {
+  width: 116px !important;
+  height: auto !important;
+  display: block !important;
+  margin: 0 0 16px !important;
+  object-fit: contain !important;
+}
+
+.footer-col p {
+  max-width: 330px !important;
+  color: var(--texto-2, #58667a) !important;
+  font-size: 13px !important;
+  line-height: 1.68 !important;
+  font-weight: 500 !important;
+  margin: 0 !important;
+}
+
+.footer-col h4 {
+  margin: 0 0 14px !important;
+  color: var(--azul-950, #071321) !important;
+  font-family: "Sora", "Manrope", Arial, sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
+  letter-spacing: .10em !important;
+  text-transform: uppercase !important;
+}
+
+.footer-links,
+.footer-contacto {
+  display: grid !important;
+  gap: 9px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.footer-links a,
+.footer-contacto a,
+.footer-contacto span {
+  color: #536277 !important;
+  font-size: 13px !important;
+  line-height: 1.45 !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  transition: .2s ease !important;
+}
+
+.footer-links a:hover,
+.footer-contacto a:hover {
+  color: var(--oro-600, #a97b2b) !important;
+}
+
+.footer-bottom {
+  padding: 17px 0 !important;
+  text-align: center !important;
+  border-top: 1px solid rgba(18, 37, 64, .12) !important;
+  color: #6a778a !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  line-height: 1.45 !important;
+}
+
+@media (max-width: 1030px) {
+  .footer-main {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+@media (max-width: 720px) {
+  .footer-main {
+    width: min(100% - 28px, var(--ancho, 1180px)) !important;
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+    padding: 34px 0 28px !important;
+  }
+
+  .footer-logo img {
+    width: 112px !important;
+  }
+
+  .footer-bottom {
+    padding: 15px 16px !important;
+    font-size: 11.5px !important;
+  }
+}
+
+</style>
    </head>
 
    <body>
-  <div class="barra-superior" aria-label="Información corporativa">
-    <div class="contenedor">
-      <div class="barra-superior-grid">
-        <span class="top-item">
-          <svg class="top-icon" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2Zm8 8.7L4.4 7.2V18h15.2V7.2L12 12.7Zm0-2.4L19.1 6H4.9L12 10.3Z"/>
-          </svg>
-          neodatconsultores@gmail.com
-        </span>
-        <span class="top-item">
-          <svg class="top-icon" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.8-.4 1.2-.3 1.3.4 2.6.6 4 .6.7 0 1.2.5 1.2 1.2v3.5c0 .7-.5 1.2-1.2 1.2C10.4 22 2 13.6 2 3.4 2 2.7 2.5 2.2 3.2 2.2h3.6c.7 0 1.2.5 1.2 1.2 0 1.4.2 2.7.6 4 .1.4 0 .8-.3 1.2l-1.7 2.2Z"/>
-          </svg>
-          +593 96 079 8571
-        </span>
-      </div>
-    </div>
-  </div>
-
   <header>
     <div class="contenedor navbar">
       <a href="index.html" class="marca" aria-label="NeoDat Consultores">
@@ -1301,14 +1629,9 @@
       </main>
   <footer>
     <div class="contenedor footer-main">
-      <div class="footer-col">
-        <a href="index.html" class="footer-logo" aria-label="NeoDat Consultores">
-          <img src="Neo1.png" alt="NeoDat Consultores">
-        </a>
-
-        <p>
-          Consultoría empresarial para fortalecer la lectura, el control y la toma de decisiones basada en información confiable.
-        </p>
+      <div class="footer-col footer-logo">
+        <img src="Neo1.png" alt="NeoDat Consultores">
+        <p>Consultoría empresarial para fortalecer la lectura, el control y la toma de decisiones basada en información confiable.</p>
       </div>
 
       <div class="footer-col">
@@ -1334,14 +1657,14 @@
         <h4>Contacto</h4>
         <div class="footer-contacto">
           <a href="mailto:neodatconsultores@gmail.com">neodatconsultores@gmail.com</a>
-          <a href="https://wa.me/593960798571" target="_blank" rel="noopener">+593 96 079 8571</a>
+          <a href="tel:+593960798571">+593 96 079 8571</a>
           <span>Loja-Ecuador</span>
         </div>
       </div>
     </div>
 
     <div class="footer-bottom">
-      <span>© 2026 NeoDat Consultores · Todos los derechos reservados.</span>
+      © 2026 NeoDat Consultores · Todos los derechos reservados.
     </div>
   </footer>
 
@@ -1384,5 +1707,17 @@
             }
          });
       </script>
-   </body>
+   
+<script>
+  const menuBtn = document.querySelector('.menu-toggle');
+  const menu = document.querySelector('.menu');
+
+  if (menuBtn && menu) {
+    menuBtn.addEventListener('click', () => {
+      const abierto = menu.classList.toggle('activo');
+      menuBtn.setAttribute('aria-expanded', abierto ? 'true' : 'false');
+    });
+  }
+</script>
+</body>
 </html>
