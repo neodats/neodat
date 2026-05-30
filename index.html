@@ -14,17 +14,20 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
       --azul-950: #071321;
       --azul-900: #0c1a2d;
+      --azul-850: #10233c;
       --azul-800: #122540;
       --azul-700: #19355c;
       --azul-100: #eaf0f7;
+      --azul-050: #f4f7fb;
       --oro-600: #a97b2b;
       --oro-500: #bf9140;
+      --oro-300: #d6b06a;
       --oro-200: #ead7b2;
       --marfil-2: #fcfaf6;
       --blanco: #ffffff;
@@ -32,6 +35,7 @@
       --texto-2: #58667a;
       --linea: rgba(18, 37, 64, .12);
       --verde: #25D366;
+      --sombra-btn: 0 16px 34px rgba(7,19,33,.16);
       --ancho: 1180px;
     }
 
@@ -47,7 +51,7 @@
 
     body {
       min-height: 100vh;
-      font-family: "Plus Jakarta Sans", Arial, sans-serif;
+      font-family: "Manrope", Arial, sans-serif;
       color: var(--texto);
       background: var(--marfil-2);
       line-height: 1.5;
@@ -70,14 +74,14 @@
 
     .barra-superior {
       background: linear-gradient(90deg, #071321 0%, #0c1a2d 58%, #071321 100%);
-      color: rgba(255,255,255,.84);
+      color: rgba(255,255,255,.86);
       border-bottom: 1px solid rgba(255,255,255,.08);
       font-size: 12px;
       letter-spacing: .01em;
     }
 
     .barra-superior-grid {
-      min-height: 38px;
+      min-height: 40px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -93,7 +97,7 @@
 
     .top-info-derecha {
       justify-content: flex-end;
-      color: rgba(255,255,255,.78);
+      color: rgba(255,255,255,.76);
     }
 
     .top-item {
@@ -125,13 +129,13 @@
       position: sticky;
       top: 0;
       z-index: 50;
-      background: rgba(252,250,246,.96);
-      backdrop-filter: blur(18px);
+      background: rgba(255,255,255,.94);
+      backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--linea);
     }
 
     .navbar {
-      min-height: 76px;
+      min-height: 78px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -175,8 +179,8 @@
     nav a {
       display: inline-flex;
       align-items: center;
-      min-height: 38px;
-      padding: 0 13px;
+      min-height: 40px;
+      padding: 0 14px;
       border-radius: 999px;
       color: #34465e;
       font-size: 13px;
@@ -194,8 +198,8 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 44px;
-      padding: 0 20px;
+      min-height: 46px;
+      padding: 0 22px;
       border-radius: 999px;
       border: 1px solid transparent;
       font-size: 13px;
@@ -209,7 +213,7 @@
     .btn-primario {
       background: var(--azul-950);
       color: var(--blanco);
-      box-shadow: 0 14px 30px rgba(7,19,33,.20);
+      box-shadow: var(--sombra-btn);
     }
 
     .btn-primario:hover {
@@ -220,18 +224,16 @@
     .btn-secundario {
       background: var(--blanco);
       color: var(--azul-900);
-      border-color: var(--linea);
+      border-color: rgba(255,255,255,.24);
     }
 
     .btn-secundario:hover {
-      border-color: rgba(169,123,43,.45);
-      color: var(--azul-950);
       transform: translateY(-1px);
     }
 
     .btn-whatsapp {
-      background: rgba(37,211,102,.10);
-      color: #128c44;
+      background: rgba(37,211,102,.08);
+      color: #169348;
       border-color: rgba(37,211,102,.24);
     }
 
@@ -247,14 +249,14 @@
 
     .hero {
       position: relative;
-      min-height: 420px;
-      padding: 62px 0 62px;
+      min-height: 470px;
+      padding: 76px 0 72px;
       display: flex;
       align-items: center;
       overflow: hidden;
       color: #ffffff;
       background:
-        linear-gradient(90deg, rgba(7,19,33,.96) 0%, rgba(7,19,33,.88) 39%, rgba(7,19,33,.58) 68%, rgba(7,19,33,.30) 100%),
+        linear-gradient(90deg, rgba(7,19,33,.96) 0%, rgba(7,19,33,.88) 34%, rgba(7,19,33,.56) 64%, rgba(7,19,33,.24) 100%),
         url("Portada.png") center center / cover no-repeat;
     }
 
@@ -263,10 +265,19 @@
       position: absolute;
       inset: 0;
       background-image:
-        linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
       background-size: 64px 64px;
-      opacity: .38;
+      opacity: .34;
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 120px;
+      background: linear-gradient(180deg, transparent, rgba(7,19,33,.10));
       pointer-events: none;
     }
 
@@ -277,18 +288,19 @@
     }
 
     .hero-contenido {
-      max-width: 620px;
+      max-width: 610px;
     }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 12px;
-      margin-bottom: 18px;
+      margin-bottom: 20px;
       color: var(--oro-200);
+      font-family: "Sora", "Manrope", Arial, sans-serif;
       font-size: 10px;
       font-weight: 700;
-      letter-spacing: .18em;
+      letter-spacing: .16em;
       text-transform: uppercase;
     }
 
@@ -300,28 +312,29 @@
     }
 
     h1 {
-      max-width: 620px;
+      max-width: 610px;
       color: #ffffff;
-      font-size: clamp(31px, 3.45vw, 44px);
-      line-height: 1.14;
-      letter-spacing: -.035em;
+      font-family: "Sora", "Manrope", Arial, sans-serif;
+      font-size: clamp(32px, 3.35vw, 45px);
+      line-height: 1.12;
+      letter-spacing: -.032em;
       font-weight: 700;
-      text-shadow: 0 12px 28px rgba(0,0,0,.30);
+      text-shadow: 0 12px 28px rgba(0,0,0,.28);
     }
 
     h1 span {
       display: inline-block;
-      color: var(--oro-500);
-      font-weight: 800;
+      color: var(--oro-300);
+      font-weight: 700;
     }
 
     .hero-texto {
-      max-width: 560px;
+      max-width: 555px;
       margin-top: 22px;
       color: rgba(255,255,255,.84);
-      font-size: 15px;
-      line-height: 1.75;
-      letter-spacing: -.008em;
+      font-size: 15.2px;
+      line-height: 1.78;
+      letter-spacing: -.006em;
       font-weight: 500;
     }
 
@@ -335,7 +348,7 @@
     .hero .btn-primario {
       background: #ffffff;
       color: var(--azul-950);
-      box-shadow: 0 14px 32px rgba(0,0,0,.20);
+      box-shadow: 0 16px 34px rgba(0,0,0,.18);
     }
 
     .hero .btn-primario:hover {
@@ -344,23 +357,23 @@
     }
 
     .hero .btn-secundario {
-      background: rgba(255,255,255,.11);
+      background: rgba(255,255,255,.10);
       color: #ffffff;
-      border-color: rgba(255,255,255,.25);
+      border: 1px solid rgba(255,255,255,.24);
       backdrop-filter: blur(10px);
     }
 
     .hero .btn-secundario:hover {
-      background: rgba(255,255,255,.18);
+      background: rgba(255,255,255,.16);
       color: #ffffff;
-      border-color: rgba(255,255,255,.40);
+      border-color: rgba(255,255,255,.34);
     }
 
     .atributos {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-top: 28px;
+      margin-top: 26px;
     }
 
     .atributos span {
@@ -368,13 +381,13 @@
       min-height: 32px;
       align-items: center;
       padding: 0 13px;
-      border: 1px solid rgba(255,255,255,.18);
+      border: 1px solid rgba(255,255,255,.16);
       border-radius: 999px;
-      background: rgba(255,255,255,.08);
-      color: rgba(255,255,255,.82);
+      background: rgba(255,255,255,.06);
+      color: rgba(255,255,255,.84);
       font-size: 12px;
       font-weight: 600;
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(8px);
     }
 
     .banda {
@@ -392,10 +405,10 @@
     }
 
     .banda-item {
-      min-height: 145px;
+      min-height: 146px;
       padding: 30px;
       background:
-        linear-gradient(135deg, rgba(255,255,255,.055), transparent 70%),
+        linear-gradient(135deg, rgba(255,255,255,.05), transparent 72%),
         var(--azul-950);
     }
 
@@ -413,10 +426,11 @@
       display: block;
       max-width: 280px;
       color: #ffffff;
+      font-family: "Sora", "Manrope", Arial, sans-serif;
       font-size: 20px;
-      line-height: 1.28;
-      letter-spacing: -.025em;
-      font-weight: 700;
+      line-height: 1.26;
+      letter-spacing: -.02em;
+      font-weight: 600;
     }
 
     .criterio {
@@ -440,11 +454,12 @@
     }
 
     .criterio h2 {
-      max-width: 440px;
+      max-width: 450px;
       color: var(--azul-950);
-      font-size: clamp(30px, 3.1vw, 44px);
+      font-family: "Sora", "Manrope", Arial, sans-serif;
+      font-size: clamp(29px, 3.1vw, 42px);
       line-height: 1.1;
-      letter-spacing: -.038em;
+      letter-spacing: -.03em;
       font-weight: 700;
     }
 
@@ -461,7 +476,7 @@
       color: #4b5b6f;
       font-size: 16px;
       line-height: 1.82;
-      letter-spacing: -.012em;
+      letter-spacing: -.01em;
       font-weight: 500;
     }
 
@@ -476,7 +491,7 @@
       padding: 18px;
       border: 1px solid var(--linea);
       border-radius: 18px;
-      background: var(--marfil-2);
+      background: var(--azul-050);
     }
 
     .criterio-resumen b {
@@ -495,7 +510,7 @@
     }
 
     .contacto-final {
-      padding: 76px 0;
+      padding: 78px 0;
       background: linear-gradient(135deg, var(--azul-950), var(--azul-800));
       color: #ffffff;
       position: relative;
@@ -507,7 +522,7 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(circle at 10% 18%, rgba(191,145,64,.20), transparent 36%),
+        radial-gradient(circle at 10% 18%, rgba(191,145,64,.18), transparent 36%),
         linear-gradient(90deg, rgba(255,255,255,.04), transparent 52%);
       pointer-events: none;
     }
@@ -528,20 +543,22 @@
       font-weight: 700;
       letter-spacing: .18em;
       text-transform: uppercase;
+      font-family: "Sora", "Manrope", Arial, sans-serif;
     }
 
     .contacto-final h2 {
       max-width: 760px;
-      font-size: clamp(30px, 3.1vw, 46px);
+      font-family: "Sora", "Manrope", Arial, sans-serif;
+      font-size: clamp(30px, 3vw, 44px);
       line-height: 1.1;
-      letter-spacing: -.038em;
+      letter-spacing: -.03em;
       font-weight: 700;
     }
 
     .contacto-final p {
       max-width: 650px;
       margin-top: 16px;
-      color: rgba(255,255,255,.72);
+      color: rgba(255,255,255,.74);
       font-size: 15px;
       line-height: 1.74;
       font-weight: 500;
@@ -587,6 +604,7 @@
       font-weight: 700;
       letter-spacing: .10em;
       text-transform: uppercase;
+      font-family: "Sora", "Manrope", Arial, sans-serif;
     }
 
     .footer-links,
@@ -624,17 +642,17 @@
       right: 22px;
       bottom: 22px;
       z-index: 70;
-      width: 52px;
-      height: 52px;
+      width: 54px;
+      height: 54px;
       border-radius: 50%;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       background: linear-gradient(135deg, #25D366, #128C44);
       color: #ffffff;
-      box-shadow: 0 18px 36px rgba(18,140,68,.32);
+      box-shadow: 0 18px 36px rgba(18,140,68,.30);
       transition: .2s ease;
-      border: 1px solid rgba(255,255,255,.26);
+      border: 1px solid rgba(255,255,255,.24);
     }
 
     .whatsapp-flotante svg {
@@ -646,7 +664,7 @@
 
     .whatsapp-flotante:hover {
       transform: translateY(-3px) scale(1.03);
-      box-shadow: 0 22px 42px rgba(18,140,68,.38);
+      box-shadow: 0 22px 42px rgba(18,140,68,.36);
     }
 
     @media (max-width: 1030px) {
@@ -698,10 +716,10 @@
       }
 
       .hero {
-        min-height: 400px;
-        padding: 60px 0 60px;
+        min-height: 430px;
+        padding: 66px 0 66px;
         background:
-          linear-gradient(90deg, rgba(7,19,33,.96) 0%, rgba(7,19,33,.88) 55%, rgba(7,19,33,.52) 100%),
+          linear-gradient(90deg, rgba(7,19,33,.96) 0%, rgba(7,19,33,.88) 54%, rgba(7,19,33,.50) 100%),
           url("Portada.png") center center / cover no-repeat;
       }
 
@@ -747,15 +765,15 @@
 
       .hero {
         min-height: auto;
-        padding: 56px 0 56px;
+        padding: 54px 0 54px;
         background:
           linear-gradient(90deg, rgba(7,19,33,.97) 0%, rgba(7,19,33,.90) 100%),
           url("Portada.png") center center / cover no-repeat;
       }
 
       h1 {
-        font-size: clamp(29px, 9vw, 40px);
-        line-height: 1.12;
+        font-size: clamp(29px, 9vw, 39px);
+        line-height: 1.14;
       }
 
       .hero-texto,
