@@ -220,6 +220,33 @@
       transform: translateY(-1px);
     }
 
+
+    .hero .btn-primario {
+      background: #ffffff;
+      color: var(--azul-950);
+      border-color: #ffffff;
+      box-shadow: 0 18px 38px rgba(0,0,0,.24);
+    }
+
+    .hero .btn-primario:hover {
+      background: var(--oro-500);
+      color: #ffffff;
+      border-color: var(--oro-500);
+    }
+
+    .hero .btn-secundario {
+      background: rgba(255,255,255,.10);
+      color: #ffffff;
+      border-color: rgba(255,255,255,.34);
+      backdrop-filter: blur(12px);
+    }
+
+    .hero .btn-secundario:hover {
+      border-color: rgba(255,255,255,.70);
+      color: #ffffff;
+      background: rgba(255,255,255,.16);
+    }
+
     main {
       background:
         radial-gradient(circle at 8% 7%, rgba(169,123,43,.11), transparent 28%),
@@ -228,8 +255,13 @@
 
     .hero {
       position: relative;
-      padding: 86px 0 78px;
+      min-height: 620px;
+      padding: 118px 0 112px;
       overflow: hidden;
+      color: #ffffff;
+      background:
+        linear-gradient(90deg, rgba(7,19,33,.94) 0%, rgba(7,19,33,.86) 39%, rgba(7,19,33,.58) 68%, rgba(7,19,33,.22) 100%),
+        url("Portada.png") center right / cover no-repeat;
     }
 
     .hero::before {
@@ -237,10 +269,21 @@
       position: absolute;
       inset: 0;
       background-image:
-        linear-gradient(rgba(18,37,64,.045) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(18,37,64,.045) 1px, transparent 1px);
+        linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
       background-size: 64px 64px;
-      mask-image: linear-gradient(90deg, transparent 0%, black 16%, black 70%, transparent 100%);
+      opacity: .55;
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 150px;
+      background: linear-gradient(180deg, transparent, rgba(7,19,33,.18));
       pointer-events: none;
     }
 
@@ -248,8 +291,8 @@
       position: relative;
       z-index: 1;
       display: grid;
-      grid-template-columns: 1.03fr .97fr;
-      gap: 74px;
+      grid-template-columns: minmax(0, 720px);
+      gap: 0;
       align-items: center;
     }
 
@@ -286,13 +329,32 @@
       color: var(--oro-600);
     }
 
+    .hero h1 {
+      max-width: 760px;
+      color: #ffffff;
+      text-shadow: 0 18px 42px rgba(0,0,0,.38);
+    }
+
+    .hero h1 span {
+      color: var(--oro-500);
+    }
+
+    .hero .eyebrow {
+      color: var(--oro-200);
+    }
+
+    .hero .eyebrow::before {
+      background: var(--oro-500);
+    }
+
     .hero-texto {
-      max-width: 570px;
+      max-width: 610px;
       margin-top: 28px;
-      color: #4d5c70;
+      color: rgba(255,255,255,.82);
       font-size: 16px;
       line-height: 1.82;
       letter-spacing: -.012em;
+      text-shadow: 0 10px 30px rgba(0,0,0,.32);
     }
 
     .acciones {
@@ -323,21 +385,12 @@
       box-shadow: 0 8px 22px rgba(7,19,33,.04);
     }
 
-    .hero-portada {
-      position: relative;
-      z-index: 1;
-      border-radius: var(--radio-xl);
-      overflow: hidden;
-      background: #ffffff;
-      border: 1px solid var(--linea);
-      box-shadow: var(--sombra-media);
-    }
-
-    .hero-portada img {
-      width: 100%;
-      height: auto;
-      display: block;
-      object-fit: cover;
+    .hero .atributos span {
+      border-color: rgba(255,255,255,.22);
+      background: rgba(255,255,255,.10);
+      color: rgba(255,255,255,.84);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(0,0,0,.16);
     }
 
     .panel-directivo {
@@ -826,7 +879,9 @@
       }
 
       .hero {
-        padding: 68px 0 62px;
+        min-height: 560px;
+        padding: 78px 0 72px;
+        background-position: center right;
       }
 
       .panel-directivo {
@@ -854,6 +909,14 @@
 
       h1 {
         font-size: clamp(39px, 13.4vw, 58px);
+      }
+
+      .hero {
+        min-height: 600px;
+        padding: 72px 0 66px;
+        background:
+          linear-gradient(90deg, rgba(7,19,33,.96) 0%, rgba(7,19,33,.88) 58%, rgba(7,19,33,.62) 100%),
+          url("Portada.png") center right / cover no-repeat;
       }
 
       .hero-texto,
@@ -954,9 +1017,6 @@
           </div>
         </div>
 
-        <aside class="hero-portada" aria-label="Portada institucional NeoDat">
-          <img src="Portada.png" alt="NeoDat Consultores - Dirección empresarial con datos claros">
-        </aside>
       </div>
     </section>
 
