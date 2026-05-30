@@ -34,8 +34,10 @@
       --texto: #182538;
       --texto-2: #58667a;
       --linea: rgba(18, 37, 64, .12);
+      --linea-2: rgba(18, 37, 64, .08);
       --verde: #25D366;
       --sombra-btn: 0 16px 34px rgba(7,19,33,.16);
+      --sombra-card: 0 14px 34px rgba(7,19,33,.07);
       --ancho: 1180px;
     }
 
@@ -86,6 +88,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 22px;
+      padding: 6px 0;
     }
 
     .top-info {
@@ -93,6 +96,7 @@
       align-items: center;
       gap: 18px;
       min-width: 0;
+      flex-wrap: wrap;
     }
 
     .top-info-derecha {
@@ -107,7 +111,7 @@
       white-space: nowrap;
       font-size: 12px;
       font-weight: 600;
-      line-height: 1;
+      line-height: 1.2;
     }
 
     .top-icon {
@@ -607,30 +611,28 @@
     .criterio-resumen {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-top: 6px;
+      gap: 14px;
+      margin-top: 8px;
     }
 
     .criterio-card {
       position: relative;
-      min-height: 118px;
-      padding: 16px 16px 16px 18px;
-      border: 1px solid rgba(18,37,64,.10);
+      min-height: 132px;
+      padding: 18px 18px 18px 18px;
+      border: 1px solid rgba(18,37,64,.09);
       border-radius: 18px;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.94), rgba(244,247,251,.92));
-      box-shadow:
-        0 14px 34px rgba(7,19,33,.06),
-        inset 0 1px 0 rgba(255,255,255,.86);
+      background: linear-gradient(180deg, #ffffff 0%, #f9fbfd 100%);
+      box-shadow: var(--sombra-card);
       overflow: hidden;
-      transition: .22s ease;
+      transition: .24s ease;
     }
 
     .criterio-card::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at 92% 0%, rgba(191,145,64,.12), transparent 34%);
+      background:
+        radial-gradient(circle at 92% 0%, rgba(191,145,64,.10), transparent 34%);
       pointer-events: none;
     }
 
@@ -641,8 +643,14 @@
       right: 18px;
       bottom: 0;
       height: 2px;
-      background: linear-gradient(90deg, var(--oro-500), rgba(191,145,64,.06));
+      background: linear-gradient(90deg, var(--oro-500), rgba(191,145,64,.04));
       border-radius: 999px 999px 0 0;
+    }
+
+    .criterio-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(169,123,43,.22);
+      box-shadow: 0 18px 42px rgba(7,19,33,.09);
     }
 
     .criterio-card-top {
@@ -650,20 +658,21 @@
       z-index: 1;
       display: flex;
       align-items: center;
-      gap: 10px;
-      margin-bottom: 10px;
+      gap: 12px;
+      margin-bottom: 12px;
     }
 
     .criterio-icono {
-      width: 30px;
-      height: 30px;
-      border-radius: 10px;
+      width: 34px;
+      height: 34px;
+      border-radius: 11px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      background: rgba(7,19,33,.06);
+      background: #f0f3f7;
       color: var(--oro-600);
-      flex: 0 0 30px;
+      flex: 0 0 34px;
+      border: 1px solid rgba(18,37,64,.06);
     }
 
     .criterio-icono svg {
@@ -687,8 +696,8 @@
       z-index: 1;
       display: block;
       color: #5b6d83;
-      font-size: 12.5px;
-      line-height: 1.55;
+      font-size: 13px;
+      line-height: 1.6;
       font-weight: 500;
     }
 
@@ -948,26 +957,35 @@
       }
 
       .barra-superior-grid {
-        min-height: 32px;
+        min-height: auto;
+        padding: 8px 0;
         justify-content: center;
       }
 
       .top-info {
         width: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 6px;
+        justify-items: center;
+      }
+
+      .top-item {
+        white-space: normal;
+        text-align: center;
         justify-content: center;
-        gap: 10px;
-      }
-
-      .top-info .top-item:first-child {
-        display: none;
-      }
-
-      .top-info .top-item:nth-child(2) {
         font-size: 11px;
+        line-height: 1.35;
+      }
+
+      .top-email,
+      .top-phone,
+      .top-location {
+        display: inline-flex;
       }
 
       .top-hide-sm {
-        display: none;
+        display: inline-flex;
       }
 
       .navbar {
@@ -1144,7 +1162,7 @@
 
       .criterio-card {
         min-height: auto;
-        padding: 15px;
+        padding: 16px;
         border-radius: 16px;
       }
 
@@ -1153,8 +1171,8 @@
       }
 
       .criterio-icono {
-        width: 28px;
-        height: 28px;
+        width: 30px;
+        height: 30px;
       }
 
       .criterio-card span {
@@ -1232,8 +1250,8 @@
         font-size: 13.5px;
       }
 
-      .top-info .top-item:nth-child(2) {
-        font-size: 10.8px;
+      .top-item {
+        font-size: 10.5px;
       }
     }
   </style>
@@ -1243,25 +1261,25 @@
   <div class="barra-superior" aria-label="Información corporativa">
     <div class="contenedor barra-superior-grid">
       <div class="top-info">
-        <span class="top-item">
+        <span class="top-item top-email">
           <svg class="top-icon" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2Zm8 8.7L4.4 7.2V18h15.2V7.2L12 12.7Zm0-2.4L19.1 6H4.9L12 10.3Z"/>
           </svg>
           neodatconsultores@gmail.com
         </span>
 
-        <span class="top-item">
+        <span class="top-item top-phone">
           <svg class="top-icon" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.8-.4 1.2-.3 1.3.4 2.6.6 4 .6.7 0 1.2.5 1.2 1.2v3.5c0 .7-.5 1.2-1.2 1.2C10.4 22 2 13.6 2 3.4 2 2.7 2.5 2.2 3.2 2.2h3.6c.7 0 1.2.5 1.2 1.2 0 1.4.2 2.7.6 4 .1.4 0 .8-.3 1.2l-1.7 2.2Z"/>
           </svg>
           +593 96 079 8571
         </span>
 
-        <span class="top-item top-hide-sm">
+        <span class="top-item top-location top-hide-sm">
           <svg class="top-icon" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z"/>
           </svg>
-          Ecuador
+          Loja-Ecuador
         </span>
       </div>
 
@@ -1479,7 +1497,7 @@
         <div class="footer-contacto">
           <a href="mailto:neodatconsultores@gmail.com">neodatconsultores@gmail.com</a>
           <a href="https://wa.me/593960798571" target="_blank" rel="noopener">+593 96 079 8571</a>
-          <span>Ecuador</span>
+          <span>Loja-Ecuador</span>
         </div>
       </div>
     </div>
