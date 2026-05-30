@@ -391,46 +391,149 @@
     }
 
     .banda {
-      background: var(--azul-950);
+      position: relative;
+      padding: 34px 0;
+      background:
+        radial-gradient(circle at 8% 0%, rgba(191,145,64,.12), transparent 28%),
+        linear-gradient(180deg, #071321 0%, #081727 100%);
       color: #ffffff;
-      border-top: 1px solid rgba(255,255,255,.06);
-      border-bottom: 1px solid rgba(255,255,255,.06);
+      border-top: 1px solid rgba(255,255,255,.08);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .banda::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+      background-size: 54px 54px;
+      opacity: .28;
+      pointer-events: none;
     }
 
     .banda-grid {
+      position: relative;
+      z-index: 1;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: rgba(255,255,255,.10);
+      gap: 18px;
     }
 
     .banda-item {
-      min-height: 146px;
-      padding: 30px;
+      position: relative;
+      min-height: 184px;
+      padding: 26px;
+      border-radius: 24px;
+      overflow: hidden;
       background:
-        linear-gradient(135deg, rgba(255,255,255,.05), transparent 72%),
-        var(--azul-950);
+        linear-gradient(145deg, rgba(255,255,255,.095), rgba(255,255,255,.035)),
+        rgba(12,26,45,.88);
+      border: 1px solid rgba(255,255,255,.10);
+      box-shadow:
+        0 22px 48px rgba(0,0,0,.20),
+        inset 0 1px 0 rgba(255,255,255,.08);
+      transition: .25s ease;
     }
 
-    .banda-item span {
-      display: block;
-      margin-bottom: 18px;
+    .banda-item::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 88% 12%, rgba(191,145,64,.18), transparent 28%),
+        linear-gradient(180deg, rgba(255,255,255,.045), transparent 58%);
+      opacity: .95;
+      pointer-events: none;
+    }
+
+    .banda-item::after {
+      content: "";
+      position: absolute;
+      left: 26px;
+      right: 26px;
+      bottom: 0;
+      height: 3px;
+      border-radius: 999px 999px 0 0;
+      background: linear-gradient(90deg, var(--oro-500), rgba(191,145,64,.08));
+    }
+
+    .banda-item:hover {
+      transform: translateY(-4px);
+      border-color: rgba(191,145,64,.35);
+      box-shadow:
+        0 28px 62px rgba(0,0,0,.26),
+        inset 0 1px 0 rgba(255,255,255,.10);
+    }
+
+    .banda-top {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .banda-numero {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 0 11px;
+      border-radius: 999px;
+      background: rgba(191,145,64,.12);
       color: var(--oro-200);
-      font-size: 11px;
+      border: 1px solid rgba(191,145,64,.24);
+      font-family: "Sora", "Manrope", Arial, sans-serif;
+      font-size: 10px;
       font-weight: 700;
-      letter-spacing: .16em;
+      letter-spacing: .12em;
       text-transform: uppercase;
     }
 
+    .banda-icono {
+      width: 38px;
+      height: 38px;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.10);
+      color: var(--oro-300);
+      flex: 0 0 38px;
+    }
+
+    .banda-icono svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
     .banda-item strong {
+      position: relative;
+      z-index: 1;
       display: block;
-      max-width: 280px;
+      max-width: 310px;
       color: #ffffff;
       font-family: "Sora", "Manrope", Arial, sans-serif;
       font-size: 20px;
-      line-height: 1.26;
-      letter-spacing: -.02em;
+      line-height: 1.32;
+      letter-spacing: -.022em;
       font-weight: 600;
+    }
+
+    .banda-item p {
+      position: relative;
+      z-index: 1;
+      max-width: 300px;
+      margin-top: 12px;
+      color: rgba(255,255,255,.66);
+      font-size: 13px;
+      line-height: 1.58;
+      font-weight: 500;
     }
 
     .criterio {
@@ -727,6 +830,7 @@
         font-size: clamp(31px, 5vw, 42px);
       }
 
+      .banda-grid,
       .criterio-grid,
       .contacto-grid {
         grid-template-columns: 1fr;
@@ -791,10 +895,18 @@
         width: 100%;
       }
 
-      .banda-grid,
       .criterio-resumen,
       .footer-main {
         grid-template-columns: 1fr;
+      }
+
+      .banda {
+        padding: 26px 0;
+      }
+
+      .banda-item {
+        min-height: 168px;
+        padding: 24px;
       }
 
       .criterio,
@@ -910,18 +1022,42 @@
     <section class="banda" aria-label="Pilares de valor NeoDat">
       <div class="contenedor banda-grid">
         <div class="banda-item">
-          <span>01 · Orden</span>
+          <div class="banda-top">
+            <span class="banda-numero">01 · Orden</span>
+            <span class="banda-icono" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M4 4h16v3H4V4Zm0 6h16v3H4v-3Zm0 6h10v3H4v-3Z"/>
+              </svg>
+            </span>
+          </div>
           <strong>Datos estructurados para entender la empresa.</strong>
+          <p>Organización clara de la información para reducir dispersión y facilitar lectura gerencial.</p>
         </div>
 
         <div class="banda-item">
-          <span>02 · Control</span>
+          <div class="banda-top">
+            <span class="banda-numero">02 · Control</span>
+            <span class="banda-icono" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M5 19h14v2H5v-2Zm1-3h3V8H6v8Zm5 0h3V3h-3v13Zm5 0h3v-6h-3v6Z"/>
+              </svg>
+            </span>
+          </div>
           <strong>Indicadores claros para seguimiento gerencial.</strong>
+          <p>Medición de variables críticas para monitorear desempeño, riesgos y oportunidades.</p>
         </div>
 
         <div class="banda-item">
-          <span>03 · Decisión</span>
+          <div class="banda-top">
+            <span class="banda-numero">03 · Decisión</span>
+            <span class="banda-icono" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 2 3 6v6c0 5 3.8 9.7 9 10 5.2-.3 9-5 9-10V6l-9-4Zm4.6 8.2-5.2 5.2-2.4-2.4 1.4-1.4 1 1 3.8-3.8 1.4 1.4Z"/>
+              </svg>
+            </span>
+          </div>
           <strong>Criterio ejecutivo para actuar con evidencia.</strong>
+          <p>Interpretación directiva de datos para tomar decisiones con mayor seguridad y oportunidad.</p>
         </div>
       </div>
     </section>
