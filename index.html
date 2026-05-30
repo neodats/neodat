@@ -870,26 +870,44 @@
         font-size: 11px;
       }
 
+      .barra-superior .contenedor {
+        width: 100%;
+      }
+
       .barra-superior-grid {
         min-height: auto;
-        padding: 8px 0;
-        justify-content: center;
+        padding: 7px 0;
+        display: block;
+        overflow: hidden;
       }
 
       .top-info {
         width: 100%;
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 6px;
-        justify-items: center;
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 18px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding: 0 16px;
+        scroll-snap-type: x proximity;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+
+      .top-info::-webkit-scrollbar {
+        display: none;
       }
 
       .top-item {
-        white-space: normal;
-        text-align: center;
-        justify-content: center;
+        flex: 0 0 auto;
+        white-space: nowrap;
+        text-align: left;
+        justify-content: flex-start;
         font-size: 11px;
-        line-height: 1.35;
+        line-height: 1.2;
+        scroll-snap-align: start;
       }
 
       .top-email,
@@ -900,6 +918,11 @@
 
       .top-hide-sm {
         display: inline-flex;
+      }
+
+      .top-info::after {
+        content: "";
+        flex: 0 0 8px;
       }
 
       .navbar {
