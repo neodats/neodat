@@ -533,7 +533,9 @@
     .criterio {
       position: relative;
       padding: 46px 0 48px;
-      background: #ffffff;
+      background:
+        radial-gradient(circle at 6% 8%, rgba(191,145,64,.07), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
       border-top: 1px solid rgba(18,37,64,.06);
       border-bottom: 1px solid rgba(18,37,64,.08);
       overflow: hidden;
@@ -584,37 +586,74 @@
       font-weight: 500;
     }
 
-    .criterio-lista {
-      margin-top: 8px;
-      border-top: 1px solid rgba(18,37,64,.11);
-      border-bottom: 1px solid rgba(18,37,64,.11);
+    .criterio-panel {
+      margin-top: 10px;
+      padding: 18px;
+      border-radius: 24px;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.02)),
+        var(--azul-950);
+      border: 1px solid rgba(18,37,64,.12);
+      box-shadow: 0 24px 54px rgba(7,19,33,.16);
+      overflow: hidden;
     }
 
-    .criterio-punto {
+    .criterio-panel-grid {
       display: grid;
-      grid-template-columns: 130px 1fr;
-      gap: 20px;
-      align-items: start;
-      padding: 13px 0;
-      border-bottom: 1px solid rgba(18,37,64,.085);
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,.10);
+      border-radius: 18px;
+      overflow: hidden;
     }
 
-    .criterio-punto:last-child {
-      border-bottom: none;
+    .criterio-bloque {
+      position: relative;
+      min-height: 132px;
+      padding: 20px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.025)),
+        #0b1728;
     }
 
-    .criterio-punto b {
-      color: var(--azul-950);
+    .criterio-bloque::after {
+      content: "";
+      position: absolute;
+      left: 20px;
+      right: 20px;
+      bottom: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--oro-500), rgba(191,145,64,.05));
+      border-radius: 999px 999px 0 0;
+    }
+
+    .criterio-numero {
+      display: inline-flex;
+      align-items: center;
+      margin-bottom: 16px;
+      color: var(--oro-200);
       font-family: "Sora", "Manrope", Arial, sans-serif;
-      font-size: 12px;
+      font-size: 10px;
       font-weight: 700;
-      letter-spacing: .08em;
+      letter-spacing: .14em;
       text-transform: uppercase;
     }
 
-    .criterio-punto span {
-      color: #566a80;
-      font-size: 13.5px;
+    .criterio-bloque b {
+      display: block;
+      margin-bottom: 8px;
+      color: #ffffff;
+      font-family: "Sora", "Manrope", Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.25;
+      font-weight: 650;
+      letter-spacing: -.015em;
+    }
+
+    .criterio-bloque span {
+      display: block;
+      color: rgba(255,255,255,.68);
+      font-size: 12.8px;
       line-height: 1.55;
       font-weight: 500;
     }
@@ -1091,22 +1130,32 @@
         line-height: 1.68;
       }
 
-      .criterio-lista {
-        margin-top: 6px;
+      .criterio-panel {
+        margin-top: 8px;
+        padding: 12px;
+        border-radius: 20px;
       }
 
-      .criterio-punto {
+      .criterio-panel-grid {
         grid-template-columns: 1fr;
-        gap: 4px;
-        padding: 12px 0;
+        border-radius: 16px;
       }
 
-      .criterio-punto b {
-        font-size: 11px;
+      .criterio-bloque {
+        min-height: auto;
+        padding: 18px;
       }
 
-      .criterio-punto span {
-        font-size: 13px;
+      .criterio-numero {
+        margin-bottom: 12px;
+      }
+
+      .criterio-bloque b {
+        font-size: 15px;
+      }
+
+      .criterio-bloque span {
+        font-size: 12.5px;
       }
 
       .contacto-final {
@@ -1332,20 +1381,25 @@
             El resultado esperado es una empresa con mayor control sobre sus cifras, sus procesos y sus puntos críticos de gestión.
           </p>
 
-          <div class="criterio-lista">
-            <div class="criterio-punto">
-              <b>Lectura</b>
-              <span>Información comprensible para gerencia y comités.</span>
-            </div>
+          <div class="criterio-panel">
+            <div class="criterio-panel-grid">
+              <div class="criterio-bloque">
+                <small class="criterio-numero">01 · Lectura</small>
+                <b>Información comprensible</b>
+                <span>Datos presentados con claridad para gerencia, dirección y comités.</span>
+              </div>
 
-            <div class="criterio-punto">
-              <b>Precisión</b>
-              <span>Datos consistentes para reducir ambigüedad operativa.</span>
-            </div>
+              <div class="criterio-bloque">
+                <small class="criterio-numero">02 · Precisión</small>
+                <b>Menos ambigüedad</b>
+                <span>Criterios consistentes para reducir errores de interpretación operativa.</span>
+              </div>
 
-            <div class="criterio-punto">
-              <b>Control</b>
-              <span>Seguimiento claro de variables relevantes del negocio.</span>
+              <div class="criterio-bloque">
+                <small class="criterio-numero">03 · Control</small>
+                <b>Seguimiento ejecutivo</b>
+                <span>Variables relevantes del negocio organizadas para tomar decisiones.</span>
+              </div>
             </div>
           </div>
         </div>
