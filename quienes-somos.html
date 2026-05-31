@@ -2378,6 +2378,32 @@ body.page-quienes main .hero {
     url("https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1800&q=80") center right / cover no-repeat !important;
 }
 
+
+
+/* AJUSTE SOLICITADO: SOLO MÓVIL - LOGO Y FOTO DEL EQUIPO */
+@media (max-width: 720px) {
+  body.page-quienes main .miembro-body {
+    align-items: center !important;
+  }
+
+  body.page-quienes main .miembro-foto {
+    justify-self: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  body.page-quienes main .miembro-foto > img:first-child {
+    object-position: center center !important;
+  }
+
+  body.page-quienes main .miembro-logo {
+    top: 10px !important;
+    right: 10px !important;
+    bottom: auto !important;
+    left: auto !important;
+  }
+}
+
 </style>
 </head>
 <body class="pagina-interna page-quienes">
@@ -2424,7 +2450,7 @@ body.page-quienes main .hero {
 <div class="contenedor hero-grid">
 <div class="hero-contenido centrado">
 <div class="eyebrow">Equipo directivo</div>
-<h1>Quiénes <span>somos</span>.</h1>
+<h1>Quiénes <span>somos</span></h1>
 <p>NeoDat Consultores integra experiencia financiera, tecnológica y analítica para ayudar a empresas a trabajar con información precisa, control estratégico y herramientas modernas de gestión.</p><p>Nuestro enfoque combina economía, desarrollo de software, dirección de proyectos, business intelligence y ciencia de datos para construir soluciones empresariales reales y medibles.</p>
 </div>
 </div>
