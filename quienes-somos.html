@@ -891,6 +891,15 @@
     }
 
     @media (max-width: 720px) {
+  .miembro-body {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .miembro-foto img {
+    height: 260px;
+  }
+
       .contenedor,
       nav.menu ul {
         width: min(100% - 28px, var(--ancho));
@@ -1488,7 +1497,8 @@ body.pagina-interna .hero .btn-secundario:hover {
 }
 
 .equipo-grid {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
 }
 
 .miembro,
@@ -1545,23 +1555,46 @@ body.pagina-interna .hero .btn-secundario:hover {
 }
 
 .miembro {
-  padding: 24px;
+  padding: 28px;
+}
+
+.miembro.destacado {
+  border-color: rgba(191,145,64,.26);
+  box-shadow: 0 18px 40px rgba(10,27,51,.08);
+}
+
+.miembro-body {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  gap: 22px;
+  align-items: start;
 }
 
 .miembro-foto {
   width: 100%;
-  margin: 0 0 16px;
+  margin: 0;
 }
 
 .miembro-foto img {
   display: block;
   width: 100%;
-  aspect-ratio: 4 / 3;
+  height: 220px;
   object-fit: cover;
-  border-radius: 16px;
+  object-position: center top;
+  border-radius: 18px;
   border: 1px solid rgba(18,37,64,.08);
-  box-shadow: 0 10px 24px rgba(10,27,51,.08);
+  box-shadow: 0 12px 28px rgba(10,27,51,.08);
   background: #f5f7fa;
+}
+
+.miembro-info {
+  min-width: 0;
+}
+
+.miembro-info h3,
+.miembro-info .cargo,
+.miembro-info p {
+  margin-top: 0;
 }
 
 .miembro-top {
@@ -1923,6 +1956,15 @@ body.pagina-interna .hero .btn-secundario:hover {
 }
 
 @media (max-width: 720px) {
+  .miembro-body {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .miembro-foto img {
+    height: 260px;
+  }
+
   body.pagina-interna .hero {
     min-height: auto;
     padding: 38px 0 38px;
@@ -2424,6 +2466,15 @@ main .impacto .btn {
 }
 
 @media (max-width: 720px) {
+  .miembro-body {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .miembro-foto img {
+    height: 260px;
+  }
+
   main .ambitos-grid,
   main .servicios-grid,
   main .resultado-grid,
@@ -2507,48 +2558,64 @@ main .impacto .btn {
 <div class="linea"></div>
 <span>Dirección de proyectos</span>
 </div>
+<div class="miembro-body">
 <figure class="miembro-foto">
 <img alt="Clara Guamán Jaramillo" src="imagenes/clara.png"/>
 </figure>
+<div class="miembro-info">
 <h3>Ing. Clara Guamán Jaramillo, Mgs.</h3>
 <div class="cargo">Directora Ejecutiva (CEO)</div>
 <p>Profesional en Administración de Empresas y Dirección de Proyectos, con experiencia en PMO, desarrollo institucional y financiamiento, orientada a la gestión financiera, análisis empresarial y toma de decisiones estratégicas.</p>
+</div>
+</div>
 </article>
 <article class="miembro">
 <div class="miembro-top">
 <div class="linea"></div>
 <span>Finanzas y estrategia comercial</span>
 </div>
+<div class="miembro-body">
 <figure class="miembro-foto">
 <img alt="Alfonso Abad Álvarez" src="imagenes/alfonso.png"/>
 </figure>
+<div class="miembro-info">
 <h3>Ing. Alfonso Abad Álvarez, Mgs.</h3>
 <div class="cargo">Director Financiero (CFO)</div>
 <p>Experto financiero con experiencia en banca y ventas, enfocado en análisis empresarial, gestión financiera y visión estratégica de negocio.</p>
+</div>
+</div>
 </article>
 <article class="miembro">
 <div class="miembro-top">
 <div class="linea"></div>
 <span>Tecnología y software</span>
 </div>
+<div class="miembro-body">
 <figure class="miembro-foto">
 <img alt="Roberto Jácome Galarza" src="imagenes/roberto.png"/>
 </figure>
+<div class="miembro-info">
 <h3>Ing. Roberto Jácome Galarza, Ph.D.</h3>
 <div class="cargo">Director de Tecnología y Desarrollo (CTO)</div>
 <p>Experto en programación, desarrollo de software e inteligencia artificial, orientado a automatización, soluciones digitales y construcción de herramientas tecnológicas empresariales.</p>
+</div>
+</div>
 </article>
 <article class="miembro destacado">
 <div class="miembro-top">
 <div class="linea"></div>
 <span>Economía, Big Data e inteligencia de negocios</span>
 </div>
+<div class="miembro-body">
 <figure class="miembro-foto">
 <img alt="Darío Hurtado Cuenca" src="imagenes/dario.png"/>
 </figure>
+<div class="miembro-info">
 <h3>Econ. Darío Hurtado Cuenca, Mgs.</h3>
 <div class="cargo">Director de Datos e Inteligencia de Negocios (CDO)</div>
 <p>Especialista en Big Data, Ciencia de Datos e Inteligencia de Negocios, con enfoque en análisis estratégico, modelamiento de información y toma de decisiones orientadas por datos.</p>
+</div>
+</div>
 </article>
 </div>
 </div>
