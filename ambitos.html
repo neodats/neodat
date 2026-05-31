@@ -2426,6 +2426,261 @@ main .impacto .btn {
 }
 
 
+  
+
+/* =========================================================
+   CORRECCIÓN FINAL SOLICITADA
+   1) Panel derecho traslúcido.
+   2) Hero sin cortes en escritorio, tablet y móvil.
+   ========================================================= */
+
+body.page-ambitos main .hero {
+  min-height: 640px;
+  height: auto;
+  padding: 76px 0 78px;
+  display: flex;
+  align-items: center;
+  overflow: visible;
+  background:
+    linear-gradient(90deg, rgba(7,19,33,.98) 0%, rgba(7,19,33,.93) 42%, rgba(7,19,33,.74) 72%, rgba(7,19,33,.54) 100%),
+    radial-gradient(circle at 82% 20%, rgba(191,145,64,.22), transparent 32%),
+    radial-gradient(circle at 12% 88%, rgba(25,53,92,.28), transparent 34%),
+    url("https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1800&q=80") center / cover no-repeat;
+}
+
+body.page-ambitos main .hero::before {
+  opacity: .15;
+  background-image:
+    linear-gradient(rgba(255,255,255,.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.055) 1px, transparent 1px);
+  background-size: 58px 58px;
+}
+
+body.page-ambitos main .hero::after {
+  height: 130px;
+  background: linear-gradient(180deg, transparent, rgba(7,19,33,.30));
+  pointer-events: none;
+}
+
+body.page-ambitos main .hero .contenedor {
+  width: min(1180px, calc(100% - 88px));
+}
+
+body.page-ambitos main .hero-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(420px, 470px);
+  gap: clamp(42px, 5.2vw, 76px);
+  align-items: center;
+}
+
+body.page-ambitos main .hero-contenido {
+  max-width: 690px;
+  min-width: 0;
+}
+
+body.page-ambitos main .hero-contenido::before {
+  width: 72px;
+  height: 3px;
+  margin-bottom: 20px;
+  background: linear-gradient(90deg, var(--oro-500), rgba(214,176,106,.14));
+}
+
+body.page-ambitos main .hero h1 {
+  max-width: 690px;
+  font-size: clamp(40px, 3.55vw, 54px);
+  line-height: 1.08;
+  letter-spacing: -.042em;
+  text-wrap: balance;
+}
+
+body.page-ambitos main .hero h1 span {
+  color: #f0c46f;
+}
+
+body.page-ambitos main .hero p {
+  max-width: 660px;
+  margin-top: 22px;
+  color: rgba(255,255,255,.88);
+  font-size: 16px;
+  line-height: 1.72;
+}
+
+body.page-ambitos main .hero .acciones {
+  margin-top: 30px;
+  gap: 14px;
+}
+
+body.page-ambitos main .hero .btn {
+  min-height: 46px;
+  padding: 0 24px;
+}
+
+body.page-ambitos main .hero-panel {
+  width: 100%;
+  max-width: 470px;
+  min-width: 0;
+  justify-self: end;
+  align-self: center;
+  padding: 14px;
+  border-radius: 32px;
+  background: rgba(255,255,255,.10);
+  border: 1px solid rgba(255,255,255,.25);
+  box-shadow:
+    0 34px 74px rgba(0,0,0,.36),
+    inset 0 1px 0 rgba(255,255,255,.18);
+  backdrop-filter: blur(22px) saturate(145%);
+  -webkit-backdrop-filter: blur(22px) saturate(145%);
+}
+
+body.page-ambitos main .hero-panel-interno {
+  border-radius: 24px;
+  padding: 28px;
+  background: linear-gradient(180deg, rgba(255,255,255,.72), rgba(255,255,255,.42));
+  border: 1px solid rgba(255,255,255,.62);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.58),
+    0 18px 42px rgba(0,0,0,.14);
+  backdrop-filter: blur(18px) saturate(150%);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+}
+
+body.page-ambitos main .hero-panel h2 {
+  margin-bottom: 18px;
+  color: #071321;
+  font-size: clamp(18px, 1.5vw, 22px);
+  line-height: 1.22;
+  letter-spacing: -.026em;
+}
+
+body.page-ambitos main .panel-lista {
+  display: grid;
+  gap: 14px;
+}
+
+body.page-ambitos main .panel-item {
+  position: relative;
+  display: block;
+  padding: 16px 17px 15px;
+  border-radius: 18px;
+  background: rgba(255,255,255,.52);
+  border: 1px solid rgba(255,255,255,.56);
+  border-left: 3px solid rgba(191,145,64,.80);
+  box-shadow:
+    0 13px 28px rgba(7,19,33,.10),
+    inset 0 1px 0 rgba(255,255,255,.48);
+  backdrop-filter: blur(14px) saturate(135%);
+  -webkit-backdrop-filter: blur(14px) saturate(135%);
+}
+
+body.page-ambitos main .panel-item strong {
+  display: block;
+  color: #071321;
+  font-size: 13.8px;
+  line-height: 1.35;
+  letter-spacing: -.008em;
+}
+
+body.page-ambitos main .panel-item span {
+  display: block;
+  margin-top: 7px;
+  color: #43566b;
+  font-size: 12.8px;
+  line-height: 1.55;
+}
+
+@media (max-width: 1120px) {
+  body.page-ambitos main .hero {
+    min-height: auto;
+    padding: 62px 0 66px;
+  }
+
+  body.page-ambitos main .hero .contenedor {
+    width: min(100% - 52px, var(--ancho));
+  }
+
+  body.page-ambitos main .hero-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(370px, 430px);
+    gap: 36px;
+  }
+
+  body.page-ambitos main .hero h1 {
+    font-size: clamp(36px, 4.5vw, 48px);
+  }
+}
+
+@media (max-width: 940px) {
+  body.page-ambitos main .hero {
+    padding: 50px 0 56px;
+    overflow: hidden;
+    background:
+      linear-gradient(90deg, rgba(7,19,33,.98) 0%, rgba(7,19,33,.91) 100%),
+      url("https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1800&q=80") center / cover no-repeat;
+  }
+
+  body.page-ambitos main .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  body.page-ambitos main .hero-contenido,
+  body.page-ambitos main .hero h1,
+  body.page-ambitos main .hero p {
+    max-width: 760px;
+  }
+
+  body.page-ambitos main .hero-panel {
+    max-width: 100%;
+    justify-self: stretch;
+  }
+}
+
+@media (max-width: 720px) {
+  body.page-ambitos main .hero .contenedor {
+    width: min(100% - 28px, var(--ancho));
+  }
+
+  body.page-ambitos main .hero {
+    padding: 38px 0 42px;
+  }
+
+  body.page-ambitos main .hero-contenido::before {
+    margin-bottom: 16px;
+  }
+
+  body.page-ambitos main .eyebrow {
+    margin-bottom: 14px;
+  }
+
+  body.page-ambitos main .hero h1 {
+    font-size: clamp(29px, 8.4vw, 38px);
+    line-height: 1.12;
+    letter-spacing: -.032em;
+  }
+
+  body.page-ambitos main .hero p {
+    margin-top: 16px;
+    font-size: 14px;
+    line-height: 1.64;
+  }
+
+  body.page-ambitos main .hero-panel {
+    padding: 10px;
+    border-radius: 26px;
+  }
+
+  body.page-ambitos main .hero-panel-interno {
+    padding: 20px;
+    border-radius: 20px;
+  }
+
+  body.page-ambitos main .panel-item {
+    padding: 14px 15px;
+  }
+}
+
+
   </style>
 </head>
 <body class="pagina-interna page-ambitos">
