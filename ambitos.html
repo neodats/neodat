@@ -1,814 +1,2261 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-   <meta charset="UTF-8" />
-   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   <title>Ámbitos | NeoDat Consultores</title>
-   <link rel="icon" type="image/png" sizes="32x32" href="logo.png">
-   <meta name="description" content="NeoDat Consultores ofrece soluciones en análisis de data, dashboards, finanzas, control de gestión, proyectos y desarrollo web empresarial." />
-   <link rel="preconnect" href="https://fonts.googleapis.com" />
-   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ámbitos | NeoDat Consultores</title>
+  <link rel="icon" type="image/png" sizes="48x48" href="logo.png">
+  <link rel="shortcut icon" type="image/png" href="logo.png">
+  <meta name="description" content="Ámbitos de intervención de NeoDat Consultores: finanzas, dirección, operaciones, ventas, proyectos, tecnología y datos." />
+  <meta name="keywords" content="NeoDat Consultores, inteligencia de negocios, analítica empresarial, business intelligence, finanzas, control de gestión, Ecuador" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
 
-   <style>
-      :root {
-         --azul: #162b4e;
-         --azul-oscuro: #07172d;
-         --azul-medio: #27456f;
-         --azul-claro: #edf2f8;
-         --naranja: #ffa500;
-         --naranja-brillo: rgba(255, 165, 0, 0.15);
-         --blanco: #ffffff;
-         --gris: #f8fafc;
-         --gris-2: rgba(22, 43, 78, 0.06); 
-         --gris-3: #f0f4f8;
-         --texto: #243447;
-         --texto-suave: #66788a;
-         --sombra: 0 10px 30px rgba(7, 23, 45, 0.04);
-         --sombra-fuerte: 0 20px 50px rgba(7, 23, 45, 0.15);
-         --exito: #10b981;
-      }
-      
-      /* CONFIGURACIÓN ESTRUCTURAL */
-      html, body {
-         height: 100%;
-         margin: 0;
-         padding: 0;
-         box-sizing: border-box;
-      }
-      * {
-         margin: 0;
-         padding: 0;
-         box-sizing: border-box;
-      }
-      html {
-         scroll-behavior: smooth;
-      }
-      body {
-         font-family: "Inter", Arial, sans-serif;
-         background: #ffffff;
-         color: var(--texto);
-         line-height: 1.5;
-         overflow-x: hidden;
-         display: flex;
-         flex-direction: column;
-      }
-      main {
-         flex: 1 0 auto;
-      }
-      a {
-         text-decoration: none;
-         color: inherit;
-      }
-      button {
-         font: inherit;
-      }
-      .contenedor {
-         width: min(1160px, calc(100% - 40px));
-         margin: auto;
-      }
+    :root {
+      --azul-950: #071321;
+      --azul-900: #0c1a2d;
+      --azul-850: #10233c;
+      --azul-800: #122540;
+      --azul-700: #19355c;
+      --azul-100: #eaf0f7;
+      --azul-050: #f4f7fb;
+      --oro-600: #a97b2b;
+      --oro-500: #bf9140;
+      --oro-300: #d6b06a;
+      --oro-200: #ead7b2;
+      --marfil-2: #fcfaf6;
+      --blanco: #ffffff;
+      --texto: #182538;
+      --texto-2: #58667a;
+      --linea: rgba(18, 37, 64, .12);
+      --verde: #25D366;
+      --sombra-btn: 0 16px 34px rgba(7,19,33,.16);
+      --ancho: 1180px;
+    }
 
-      /* BOTONES PREMIUM */
-      .btn {
-         display: inline-flex;
-         align-items: center;
-         justify-content: center;
-         gap: 8px;
-         min-height: 46px;
-         padding: 12px 24px;
-         border-radius: 12px;
-         font-size: 13.5px;
-         font-weight: 600;
-         cursor: pointer;
-         transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-         white-space: nowrap;
-      }
-      .btn-principal {
-         background: var(--azul);
-         color: var(--blanco);
-         border: 1px solid var(--azul);
-         box-shadow: 0 4px 12px rgba(22, 43, 78, 0.12);
-      }
-      .btn-principal:hover {
-         background: var(--azul-oscuro);
-         border-color: var(--azul-oscuro);
-         transform: translateY(-1px);
-         box-shadow: 0 6px 20px rgba(22, 43, 78, 0.18);
-      }
-      .btn-principal span {
-         transition: transform 0.2s ease;
-      }
-      .btn-principal:hover span {
-         transform: translateX(3px);
-      }
-      .btn-whatsapp {
-         background: rgba(37, 211, 102, 0.1);
-         color: #1ebe5d;
-         border: 1px solid rgba(37, 211, 102, 0.25);
-         box-shadow: none;
-      }
-      .btn-whatsapp:hover {
-         background: #25D366;
-         color: #ffffff;
-         border-color: #25D366;
-         transform: translateY(-1px);
-         box-shadow: 0 6px 16px rgba(37, 211, 102, 0.2);
-      }
-      .btn-secundario {
-         background: transparent;
-         color: var(--azul);
-         border: 1px solid rgba(22, 43, 78, 0.15);
-      }
-      .btn-secundario:hover {
-         background: var(--azul-claro);
-         border-color: rgba(22, 43, 78, 0.3);
-         color: var(--azul-oscuro);
-         transform: translateY(-1px);
-      }
-      
-      .btn-secundario-oscuro {
-         background: rgba(255, 255, 255, 0.08);
-         color: var(--blanco);
-         border: 1px solid rgba(255, 255, 255, 0.2);
-      }
-      .btn-secundario-oscuro:hover {
-         background: rgba(255, 255, 255, 0.15);
-         border-color: rgba(255, 255, 255, 0.4);
-         transform: translateY(-1px);
-      }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-      /* ESTILOS DE LA INTERFAZ */
-      header {
-         position: fixed;
-         top: 0;
-         left: 0;
-         z-index: 100;
-         width: 100%;
-         background: rgba(255, 255, 255, 0.85);
-         backdrop-filter: blur(20px);
-         border-bottom: 1px solid var(--gris-2);
-      }
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: "Manrope", Arial, sans-serif;
+      color: var(--texto);
+      background: var(--marfil-2);
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    .contenedor {
+      width: min(var(--ancho), calc(100% - 48px));
+      margin: 0 auto;
+    }
+
+    .barra-superior {
+      background: #071321;
+      color: rgba(255,255,255,.88);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      font-size: 12px;
+    }
+
+    .barra-superior .contenedor {
+      overflow-x: auto;
+      overflow-y: hidden;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .barra-superior .contenedor::-webkit-scrollbar {
+      display: none;
+    }
+
+    .barra-superior-grid {
+      min-height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 24px;
+      width: auto;
+      white-space: nowrap;
+    }
+
+    .top-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .top-icon {
+      width: 13px;
+      height: 13px;
+      flex: 0 0 13px;
+      fill: var(--oro-500);
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255,255,255,.94);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--linea);
+    }
+
+    .navbar {
+      min-height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 26px;
+    }
+
+    .marca {
+      display: inline-flex;
+      align-items: center;
+      min-width: 142px;
+    }
+
+    .marca img {
+      width: 118px;
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 42px;
+      height: 42px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--linea);
+      border-radius: 999px;
+      background: var(--blanco);
+      color: var(--azul-900);
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    nav ul {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      list-style: none;
+    }
+
+    nav a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 38px;
+      padding: 0 14px;
+      border-radius: 999px;
+      color: #34465e;
+      font-size: 13px;
+      font-weight: 700;
+      transition: .2s ease;
+    }
+
+    nav a:hover,
+    nav a.actual {
+      background: var(--azul-100);
+      color: var(--azul-950);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 22px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: -.01em;
+      transition: .2s ease;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .btn-primario {
+      background: var(--azul-950);
+      color: var(--blanco);
+      box-shadow: var(--sombra-btn);
+    }
+
+    .btn-primario:hover {
+      background: var(--azul-700);
+      transform: translateY(-1px);
+    }
+
+    .btn-secundario {
+      background: var(--blanco);
+      color: var(--azul-900);
+      border-color: rgba(255,255,255,.24);
+    }
+
+    .btn-secundario:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-whatsapp {
+      background: rgba(37,211,102,.08);
+      color: #169348;
+      border-color: rgba(37,211,102,.24);
+    }
+
+    .btn-whatsapp:hover {
+      background: var(--verde);
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    main {
+      background: var(--marfil-2);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 430px;
+      padding: 52px 0 50px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      color: #ffffff;
+      background:
+        linear-gradient(90deg, rgba(7,19,33,.96) 0%, rgba(7,19,33,.88) 34%, rgba(7,19,33,.56) 64%, rgba(7,19,33,.24) 100%);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+      background-size: 64px 64px;
+      opacity: .34;
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 90px;
+      background: linear-gradient(180deg, transparent, rgba(7,19,33,.10));
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: block;
+    }
+
+    .hero-contenido {
+      max-width: 610px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      color: var(--oro-200);
+      font-family: "Sora", "Manrope", Arial, sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 44px;
+      height: 1px;
+      background: var(--oro-500);
+    }
+
+    h1 {
+      max-width: 610px;
+      color: #ffffff;
+      font-family: "Sora", "Manrope", Arial, sans-serif;
+      font-size: clamp(32px, 3.35vw, 45px);
+      line-height: 1.12;
+      letter-spacing: -.032em;
+      font-weight: 700;
+      text-shadow: 0 12px 28px rgba(0,0,0,.28);
+    }
+
+    h1 span {
+      display: inline-block;
+      color: var(--oro-300);
+      font-weight: 700;
+    }
+
+    .hero-texto {
+      max-width: 555px;
+      margin-top: 20px;
+      color: rgba(255,255,255,.84);
+      font-size: 15.2px;
+      line-height: 1.78;
+      letter-spacing: -.006em;
+      font-weight: 500;
+    }
+
+    .acciones {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .hero .btn-primario {
+      background: #ffffff;
+      color: var(--azul-950);
+      box-shadow: 0 16px 34px rgba(0,0,0,.18);
+    }
+
+    .hero .btn-primario:hover {
+      background: var(--oro-500);
+      color: #ffffff;
+    }
+
+    .hero .btn-secundario {
+      background: rgba(255,255,255,.10);
+      color: #ffffff;
+      border: 1px solid rgba(255,255,255,.24);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero .btn-secundario:hover {
+      background: rgba(255,255,255,.16);
+      color: #ffffff;
+      border-color: rgba(255,255,255,.34);
+    }
+
+    /* =========================
+       TARJETAS OSCURAS MEJORADAS
+       ========================= */
+    .banda {
+      position: relative;
+      padding: 28px 0 30px;
+      background:
+        radial-gradient(circle at 8% 0%, rgba(191,145,64,.08), transparent 28%),
+        linear-gradient(180deg, #071321 0%, #081727 100%);
+      color: #ffffff;
+      border-top: 1px solid rgba(255,255,255,.08);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .banda::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.022) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.022) 1px, transparent 1px);
+      background-size: 54px 54px;
+      opacity: .18;
+      pointer-events: none;
+    }
+
+    .banda-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .banda-item {
+      position: relative;
+      min-height: 0;
+      padding: 24px 24px 22px;
+      border-radius: 22px;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(26,45,72,.96) 0%, rgba(10,24,42,.98) 100%);
+      border: 1px solid rgba(255,255,255,.08);
+      box-shadow:
+        0 18px 38px rgba(0,0,0,.16),
+        inset 0 1px 0 rgba(255,255,255,.05);
+      transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+    }
+
+    .banda-item:hover {
+      transform: translateY(-3px);
+      box-shadow:
+        0 22px 42px rgba(0,0,0,.20),
+        inset 0 1px 0 rgba(255,255,255,.06);
+      border-color: rgba(191,145,64,.30);
+    }
+
+    .banda-item::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 24px;
+      width: 64px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--oro-500), rgba(191,145,64,.18));
+      border-radius: 999px;
+    }
+
+    .banda-item::after {
+      content: "";
+      position: absolute;
+      right: -40px;
+      top: -40px;
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle, rgba(191,145,64,.08), transparent 68%);
+      pointer-events: none;
+    }
+
+    .banda-top {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .banda-numero {
+      display: inline-flex;
+      align-items: center;
+      min-height: 26px;
+      padding: 0 11px;
+      border-radius: 999px;
+      background: rgba(191,145,64,.10);
+      color: var(--oro-200);
+      border: 1px solid rgba(191,145,64,.24);
+      font-family: "Sora", "Manrope", Arial, sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .11em;
+      text-transform: uppercase;
+    }
+
+    .banda-icono {
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.08);
+      color: var(--oro-300);
+      flex: 0 0 34px;
+    }
+
+    .banda-icono svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+
+    .banda-item strong {
+      position: relative;
+      z-index: 1;
+      display: block;
+      max-width: 100%;
+      color: #ffffff;
+      font-family: "Sora", "Manrope", Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.42;
+      letter-spacing: -.018em;
+      font-weight: 650;
+    }
+
+    .banda-item p {
+      position: relative;
+      z-index: 1;
+      max-width: 100%;
+      margin-top: 10px;
+      color: rgba(255,255,255,.70);
+      font-size: 13px;
+      line-height: 1.58;
+      font-weight: 500;
+    }
+
+    /* =========================
+       SECCIÓN CRITERIO
+       ========================= */
+    .criterio {
+      position: relative;
+      padding: 46px 0 48px;
+      background:
+        radial-gradient(circle at 6% 8%, rgba(191,145,64,.07), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+      border-top: 1px solid rgba(18,37,64,.06);
+      border-bottom: 1px solid rgba(18,37,64,.08);
+      overflow: hidden;
+    }
+
+    .criterio-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: .82fr 1.18fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .criterio .eyebrow {
+      color: var(--azul-700);
+      margin-bottom: 14px;
+    }
+
+    .criterio .eyebrow::before {
+      background: var(--oro-600);
+    }
+
+    .criterio h2 {
+      max-width: 410px;
+      color: var(--azul-950);
+      font-family: "Sora", "Manrope", Arial, sans-serif;
+      font-size: clamp(27px, 2.65vw, 36px);
+      line-height: 1.14;
+      letter-spacing: -.032em;
+      font-weight: 700;
+    }
+
+    .criterio-linea {
+      width: 78px;
+      height: 2px;
+      margin-top: 22px;
+      background: linear-gradient(90deg, var(--oro-600), rgba(169,123,43,.10));
+    }
+
+    .criterio-texto {
+      display: grid;
+      gap: 14px;
+      color: #334861;
+      font-size: 15.5px;
+      line-height: 1.72;
+      letter-spacing: -.01em;
+      font-weight: 500;
+    }
+
+    /* =========================
+       TARJETAS CLARAS MEJORADAS
+       ========================= */
+    .criterio-panel {
+      margin-top: 14px;
+      padding: 0;
+      border-radius: 0;
+      background: transparent;
+      border: 0;
+      box-shadow: none;
+      overflow: visible;
+    }
+
+    .criterio-panel-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      background: transparent;
+      border-radius: 0;
+      overflow: visible;
+    }
+
+    .criterio-bloque {
+      position: relative;
+      min-height: 170px;
+      padding: 22px 22px 20px;
+      background: linear-gradient(180deg, #ffffff 0%, #fbfcfe 100%);
+      border: 1px solid rgba(18,37,64,.10);
+      border-radius: 22px;
+      box-shadow: 0 14px 30px rgba(10,27,51,.06);
+      transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+    }
+
+    .criterio-bloque:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 36px rgba(10,27,51,.10);
+      border-color: rgba(191,145,64,.28);
+    }
+
+    .criterio-bloque::before {
+      content: "";
+      position: absolute;
+      left: 22px;
+      top: 0;
+      width: 58px;
+      height: 3px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--oro-500), rgba(191,145,64,.18));
+    }
+
+    .criterio-bloque::after {
+      content: "";
+      position: absolute;
+      right: 18px;
+      top: 18px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(191,145,64,.18);
+      box-shadow: 0 0 0 6px rgba(191,145,64,.06);
+    }
+
+    .criterio-numero {
+      display: inline-flex;
+      align-items: center;
+      margin-bottom: 14px;
+      color: var(--oro-600);
+      font-family: "Sora", "Manrope", Arial, sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .criterio-bloque b {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--azul-950);
+      font-family: "Sora", "Manrope", Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.28;
+      font-weight: 650;
+      letter-spacing: -.015em;
+    }
+
+    .criterio-bloque span {
+      display: block;
+      color: #4d6077;
+      font-size: 13.2px;
+      line-height: 1.62;
+      font-weight: 500;
+    }
+
+    .contacto-final {
+      padding: 46px 0;
+      background: linear-gradient(135deg, var(--azul-950), var(--azul-800));
+      color: #ffffff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contacto-final::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 10% 18%, rgba(191,145,64,.16), transparent 34%),
+        linear-gradient(90deg, rgba(255,255,255,.035), transparent 52%);
+      pointer-events: none;
+    }
+
+    .contacto-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .contacto-final small {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--oro-200);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      font-family: "Sora", "Manrope", Arial, sans-serif;
+    }
+
+    .contacto-final h2 {
+      max-width: 760px;
+      font-family: "Sora", "Manrope", Arial, sans-serif;
+      font-size: clamp(30px, 3vw, 44px);
+      line-height: 1.1;
+      letter-spacing: -.03em;
+      font-weight: 700;
+    }
+
+    .contacto-final p {
+      max-width: 650px;
+      margin-top: 14px;
+      color: rgba(255,255,255,.74);
+      font-size: 15px;
+      line-height: 1.7;
+      font-weight: 500;
+    }
+
+    .contacto-final .btn-secundario {
+      background: #ffffff;
+      color: var(--azul-950);
+      border-color: #ffffff;
+    }
+
+    footer {
+      background: #ffffff;
+      border-top: 1px solid var(--linea);
+    }
+
+    .footer-main {
+      display: grid;
+      grid-template-columns: 1.35fr .8fr .8fr 1fr;
+      gap: 34px;
+      padding: 44px 0 36px;
+    }
+
+    .footer-logo img {
+      width: 116px;
+      height: auto;
+      display: block;
+      margin-bottom: 16px;
+    }
+
+    .footer-col p {
+      max-width: 330px;
+      color: var(--texto-2);
+      font-size: 13px;
+      line-height: 1.68;
+      font-weight: 500;
+    }
+
+    .footer-col h4 {
+      margin-bottom: 14px;
+      color: var(--azul-950);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+      font-family: "Sora", "Manrope", Arial, sans-serif;
+    }
+
+    .footer-links,
+    .footer-contacto {
+      display: grid;
+      gap: 9px;
+    }
+
+    .footer-links a,
+    .footer-contacto a,
+    .footer-contacto span {
+      color: #536277;
+      font-size: 13px;
+      line-height: 1.45;
+      font-weight: 500;
+      transition: .2s ease;
+    }
+
+    .footer-links a:hover,
+    .footer-contacto a:hover {
+      color: var(--oro-600);
+    }
+
+    .footer-bottom {
+      padding: 17px 0;
+      text-align: center;
+      border-top: 1px solid var(--linea);
+      color: #6a778a;
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .whatsapp-flotante {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 70;
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #25D366, #128C44);
+      color: #ffffff;
+      box-shadow: 0 18px 36px rgba(18,140,68,.30);
+      transition: .2s ease;
+      border: 1px solid rgba(255,255,255,.24);
+    }
+
+    .whatsapp-flotante svg {
+      width: 26px;
+      height: 26px;
+      display: block;
+      fill: currentColor;
+    }
+
+    .whatsapp-flotante:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 22px 42px rgba(18,140,68,.36);
+    }
+
+    @media (max-width: 1030px) {
       .navbar {
-         height: 70px;
-         display: flex;
-         align-items: center;
-         justify-content: space-between;
-         gap: 28px;
-      }
-      .logo {
-         display: flex;
-         align-items: center;
-         gap: 12px;
-      }
-      .logo-icono {
-         width: 140px;
-         height: 140px;
-         object-fit: contain;
-      }
-      nav ul {
-         list-style: none;
-         display: flex;
-         align-items: center;
-         gap: 4px;
-      }
-      nav a {
-         display: inline-flex;
-         padding: 8px 12px;
-         border-radius: 999px;
-         font-size: 13px;
-         font-weight: 750;
-         color: var(--azul);
-         transition: 0.2s ease;
-      }
-      
-      nav a:hover,
-      nav a.actual {
-         background: var(--azul-claro);
-         color: var(--azul-oscuro);
+        min-height: 66px;
       }
 
-      /* HERO REDISEÑADO (Fondo Oscuro Premium) */
+      .marca img {
+        width: 118px;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+      }
+
+      .whatsapp-desktop {
+        display: none;
+      }
+
+      nav.menu {
+        position: absolute;
+        top: 66px;
+        left: 0;
+        display: none;
+        width: 100%;
+        background: #ffffff;
+        border-bottom: 1px solid var(--linea);
+        box-shadow: 0 24px 42px rgba(7,19,33,.10);
+      }
+
+      nav.menu.activo {
+        display: block;
+      }
+
+      nav.menu ul {
+        width: min(var(--ancho), calc(100% - 48px));
+        margin: 0 auto;
+        padding: 12px 0 14px;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }
+
+      nav.menu a {
+        justify-content: flex-start;
+        min-height: 40px;
+        border-radius: 14px;
+        background: #f6f7f9;
+      }
+
       .hero {
-         position: relative;
-         padding: 140px 0 70px; 
-         background: radial-gradient(circle at 80% 20%, rgba(255, 165, 0, 0.15) 0%, transparent 50%),
-                     radial-gradient(circle at 15% 80%, rgba(39, 69, 111, 0.3) 0%, transparent 60%),
-                     linear-gradient(135deg, var(--azul-oscuro) 0%, #0f2544 100%);
-         overflow: hidden;
-         display: flex;
-         align-items: center;
-         margin-bottom: 0;
-      }
-
-      .hero::before {
-         content: "";
-         position: absolute;
-         inset: 0;
-         background-image:
-            linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-         background-size: 50px 50px;
-         mask-image: radial-gradient(circle at center, black, transparent 90%);
-         pointer-events: none;
-         z-index: 1;
-      }
-
-      /* FIGURAS GEOMÉTRICAS ABSTRACTAS BI */
-      .figura {
-         position: absolute;
-         border-radius: 50%;
-         pointer-events: none;
-         z-index: 1;
-         filter: blur(40px);
-         opacity: 0.6;
-      }
-      .figura-1 {
-         top: 10%;
-         right: 5%;
-         width: 250px;
-         height: 250px;
-         background: var(--naranja);
-         filter: blur(80px);
-         opacity: 0.25;
-      }
-      .figura-2 {
-         bottom: -5%;
-         left: 20%;
-         width: 300px;
-         height: 300px;
-         background: var(--azul-medio);
-         filter: blur(60px);
-         opacity: 0.4;
-      }
-      
-      .shapes-container {
-         position: absolute;
-         inset: 0;
-         overflow: hidden;
-         pointer-events: none;
-         z-index: 1;
-      }
-      .shape-circle {
-         position: absolute;
-         border: 2px solid rgba(255, 165, 0, 0.2);
-         border-radius: 50%;
-      }
-      .sc-1 { width: 400px; height: 400px; top: -100px; right: -50px; }
-      .sc-2 { width: 200px; height: 200px; top: 150px; right: 50px; border: 1px dashed rgba(255, 255, 255, 0.1); }
-      .sc-3 { width: 20px; height: 20px; bottom: 15%; left: 45%; background: rgba(255, 165, 0, 0.3); border: none; filter: blur(2px); }
-
-      .hero-grid {
-         position: relative;
-         z-index: 2;
-         display: grid;
-         grid-template-columns: 1.1fr 0.9fr;
-         gap: 50px;
-         align-items: center;
-      }
-      
-      .marca-seccion {
-         display: flex;
-         align-items: center;
-         gap: 12px;
-         margin-bottom: 16px;
-      }
-      .marca-seccion.centro {
-         justify-content: center;
-      }
-      .marca-seccion span {
-         width: 32px;
-         height: 2px;
-         background: var(--naranja);
-      }
-      .marca-seccion strong {
-         color: rgba(255, 255, 255, 0.6);
-         font-size: 11px;
-         font-weight: 800;
-         letter-spacing: 1.5px;
-         text-transform: uppercase;
+        min-height: 400px;
+        padding: 48px 0 46px;
+        background:
+          linear-gradient(90deg, rgba(7,19,33,.96) 0%, rgba(7,19,33,.88) 54%, rgba(7,19,33,.50) 100%);
       }
 
       h1 {
-         max-width: 720px;
-         margin-bottom: 20px;
-         color: var(--blanco);
-         font-size: clamp(24px, 2.8vw, 36px);
-         line-height: 1.25;
-         letter-spacing: -0.5px;
-         font-weight: 800;
-      }
-      h1 font {
-         color: var(--naranja);
-      }
-      
-      .hero p {
-         max-width: 640px;
-         margin-bottom: 32px;
-         color: rgba(255, 255, 255, 0.75);
-         font-size: 15px;
-         line-height: 1.6;
-      }
-      .hero-acciones {
-         display: flex;
-         flex-wrap: wrap;
-         gap: 12px;
+        font-size: clamp(31px, 5vw, 42px);
       }
 
-      .hero .btn-principal {
-         background: var(--naranja);
-         color: var(--azul-oscuro);
-         border-color: var(--naranja);
-         box-shadow: 0 4px 15px rgba(255, 165, 0, 0.2);
-      }
-      .hero .btn-principal:hover {
-         background: #e69500;
-         border-color: #e69500;
-         box-shadow: 0 6px 22px rgba(255, 165, 0, 0.3);
+      .banda-grid,
+      .criterio-grid,
+      .contacto-grid {
+        grid-template-columns: 1fr;
       }
 
-      /* PANEL HERO SIDE ASIDE (Estilo Shell Inteligente) */
-      .hero-panel {
-         padding: 12px;
-         border-radius: 26px; 
-         background: rgba(255, 255, 255, 0.04);
-         border: 1px solid rgba(255, 255, 255, 0.08); 
-         backdrop-filter: blur(10px);
-         position: relative;
-         box-shadow: var(--sombra-fuerte);
-      }
-      .hero-panel-interno {
-         overflow: hidden;
-         border-radius: 16px;
-         background: #ffffff;
-         border: 1px solid rgba(22, 43, 78, 0.08);
-         padding: 24px;
-      }
-      .hero-panel h2 {
-         margin-bottom: 18px;
-         color: var(--azul-oscuro);
-         font-size: 18px;
-         font-weight: 800;
-         letter-spacing: -0.5px;
-      }
-      .panel-lista {
-         display: grid;
-         gap: 12px;
-      }
-      .panel-item {
-         padding: 14px;
-         border-radius: 12px;
-         background: var(--gris);
-         border: 1px solid var(--gris-2);
-      }
-      .panel-item strong {
-         display: block;
-         margin-bottom: 4px;
-         color: var(--azul-oscuro);
-         font-size: 13.5px;
-         font-weight: 800;
-      }
-      .panel-item span {
-         color: var(--texto-suave);
-         font-size: 12.5px;
-         line-height: 1.5;
-         display: block;
+      .criterio {
+        padding: 44px 0;
       }
 
-      /* SECCIONES COMUNES */
-      .section {
-         padding: 70px 0;
+      .footer-main {
+        grid-template-columns: 1fr 1fr;
       }
-      .section.alt {
-         background: var(--gris);
-         border-top: 1px solid var(--gris-2);
-         border-bottom: 1px solid var(--gris-2);
-      }
-      .encabezado {
-         max-width: 760px;
-         margin: 0 auto 48px;
-         text-align: center;
-      }
-      .encabezado h2 {
-         margin-bottom: 14px;
-         color: var(--azul-oscuro);
-         font-size: clamp(24px, 3.2vw, 32px);
-         line-height: 1.25;
-         letter-spacing: -0.8px;
-         font-weight: 800;
-      }
-      .encabezado p {
-         color: var(--texto-suave);
-         font-size: 15px;
-         line-height: 1.6;
+    }
+
+    @media (max-width: 720px) {
+      .contenedor,
+      nav.menu ul {
+        width: min(100% - 28px, var(--ancho));
       }
 
-      /* GRILLA ÁMBITOS */
-      .ambitos-grid {
-         display: grid;
-         grid-template-columns: repeat(3, 1fr);
-         gap: 20px;
-      }
-      .ambito {
-         padding: 28px;
-         border-radius: 16px;
-         background: #ffffff;
-         border: 1px solid var(--gris-2);
-         box-shadow: var(--sombra);
-         transition: all 0.25s ease;
-      }
-      .ambito:hover {
-         transform: translateY(-3px);
-         box-shadow: var(--sombra-fuerte);
-         border-color: rgba(22, 43, 78, 0.15);
-      }
-      .ambito-num {
-         margin-bottom: 16px;
-         color: var(--naranja);
-         font-size: 11px;
-         font-weight: 800;
-         letter-spacing: 1px;
-      }
-      .ambito h3 {
-         margin-bottom: 12px;
-         color: var(--azul-oscuro);
-         font-size: 19px;
-         font-weight: 800;
-         letter-spacing: -0.3px;
-      }
-      .ambito p {
-         margin-bottom: 16px;
-         color: var(--texto-suave);
-         font-size: 13.5px;
-         line-height: 1.6;
-      }
-      .ambito ul {
-         display: grid;
-         gap: 8px;
-         padding-left: 16px;
-      }
-      .ambito li {
-         color: var(--texto);
-         font-size: 13px;
-         line-height: 1.5;
+      .barra-superior .contenedor {
+        width: 100%;
       }
 
-      /* GRILLA CASOS */
-      .casos-grid {
-         display: grid;
-         grid-template-columns: repeat(2, 1fr);
-         gap: 20px;
-      }
-      .caso {
-         padding: 28px;
-         border-radius: 16px;
-         background: #ffffff;
-         border: 1px solid var(--gris-2);
-         box-shadow: var(--sombra);
-         transition: all 0.25s ease;
-      }
-      .caso:hover {
-         transform: translateY(-2px);
-         box-shadow: var(--sombra-fuerte);
-      }
-      .caso strong {
-         display: block;
-         margin-bottom: 10px;
-         color: var(--azul-oscuro);
-         font-size: 16px;
-         font-weight: 800;
-         line-height: 1.35;
-      }
-      .caso span {
-         color: var(--texto-suave);
-         font-size: 13.5px;
-         line-height: 1.6;
-         display: block;
+      .barra-superior-grid {
+        min-height: 32px;
+        gap: 18px;
+        padding: 0 14px;
       }
 
-      /* SECCIÓN IMPACTO PREMIUM */
-      .impacto {
-         padding: 64px 0;
-         background: linear-gradient(135deg, var(--azul-oscuro) 0%, #0f2544 100%);
-         color: #ffffff;
-         text-align: center;
-         position: relative;
-      }
-      .impacto h2 {
-         max-width: 800px;
-         margin: 0 auto 16px;
-         color: #ffffff;
-         font-size: clamp(24px, 3.2vw, 34px);
-         line-height: 1.25;
-         letter-spacing: -0.8px;
-         font-weight: 800;
-      }
-      .impacto p {
-         max-width: 720px;
-         margin: 0 auto 28px;
-         color: rgba(255, 255, 255, 0.75);
-         font-size: 15px;
-         line-height: 1.6;
-      }
-      .impacto .btn-whatsapp {
-         background: #25D366;
-         color: #ffffff;
-         border-color: #25D366;
-      }
-      .impacto .btn-whatsapp:hover {
-         background: #1ebe5d;
-         border-color: #1ebe5d;
-         box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
+      .top-item {
+        font-size: 10.8px;
       }
 
-      /* RESPONSIVO Y MENÚ MÓVIL */
+      .navbar {
+        min-height: 62px;
+        gap: 14px;
+      }
+
+      .marca {
+        min-width: auto;
+      }
+
+      .marca img {
+        width: 112px;
+      }
+
       .menu-toggle {
-         display: none;
-         width: 42px;
-         height: 42px;
-         border: 1px solid var(--gris-2);
-         border-radius: 12px;
-         background: #ffffff;
-         color: var(--azul);
-         font-size: 22px;
-         font-weight: 900;
-         cursor: pointer;
+        width: 38px;
+        height: 38px;
+        font-size: 19px;
       }
-      
-      /* PIE DE PÁGINA */
-      .site-footer {
-         background: #07172d;
-         color: rgba(255, 255, 255, .72);
-         padding: 12px 0;
-         border-top: 1px solid rgba(255, 255, 255, 0.08);
-         width: 100%;
-         flex-shrink: 0;
+
+      nav.menu {
+        top: 62px;
       }
+
+      nav.menu ul {
+        padding: 10px 0 12px;
+      }
+
+      nav.menu a {
+        min-height: 42px;
+        padding: 0 14px;
+        font-size: 13px;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 38px 0 36px;
+        background:
+          linear-gradient(90deg, rgba(7,19,33,.97) 0%, rgba(7,19,33,.91) 100%);
+      }
+
+      .hero::before {
+        background-size: 44px 44px;
+        opacity: .24;
+      }
+
+      .hero-contenido {
+        max-width: 100%;
+      }
+
+      .eyebrow {
+        margin-bottom: 14px;
+        font-size: 9px;
+        letter-spacing: .14em;
+      }
+
+      .eyebrow::before {
+        width: 34px;
+      }
+
+      h1 {
+        max-width: 100%;
+        font-size: clamp(28px, 8.5vw, 36px);
+        line-height: 1.16;
+        letter-spacing: -.026em;
+      }
+
+      .hero-texto {
+        max-width: 100%;
+        margin-top: 16px;
+        font-size: 14px;
+        line-height: 1.68;
+      }
+
+      .acciones {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-top: 22px;
+      }
+
+      .btn {
+        width: 100%;
+        min-height: 42px;
+      }
+
+      .banda {
+        padding: 20px 0 22px;
+      }
+
+      .banda-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .banda-item {
+        padding: 20px 18px 18px;
+        border-radius: 18px;
+      }
+
+      .banda-item::before {
+        left: 18px;
+      }
+
+      .banda-top {
+        margin-bottom: 14px;
+      }
+
+      .banda-numero {
+        min-height: 24px;
+        font-size: 9.5px;
+      }
+
+      .banda-icono {
+        width: 30px;
+        height: 30px;
+        border-radius: 10px;
+      }
+
+      .banda-item strong {
+        font-size: 15px;
+        line-height: 1.34;
+      }
+
+      .banda-item p {
+        font-size: 12.5px;
+        line-height: 1.52;
+      }
+
+      .criterio {
+        padding: 34px 0 36px;
+      }
+
+      .criterio-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+        align-items: start;
+      }
+
+      .criterio h2 {
+        max-width: 100%;
+        font-size: clamp(25px, 7.2vw, 32px);
+        line-height: 1.16;
+      }
+
+      .criterio-linea {
+        margin-top: 18px;
+      }
+
+      .criterio-texto {
+        gap: 14px;
+        font-size: 14px;
+        line-height: 1.68;
+      }
+
+      .criterio-panel {
+        margin-top: 10px;
+      }
+
+      .criterio-panel-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .criterio-bloque {
+        min-height: auto;
+        padding: 20px 18px 18px;
+        border-radius: 18px;
+      }
+
+      .criterio-bloque::before {
+        left: 18px;
+      }
+
+      .criterio-bloque::after {
+        right: 16px;
+        top: 16px;
+      }
+
+      .criterio-numero {
+        margin-bottom: 12px;
+      }
+
+      .criterio-bloque b {
+        font-size: 15px;
+      }
+
+      .criterio-bloque span {
+        font-size: 12.7px;
+      }
+
+      .contacto-final {
+        padding: 34px 0;
+      }
+
+      .contacto-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+
+      .contacto-final small {
+        margin-bottom: 8px;
+      }
+
+      .contacto-final h2 {
+        font-size: clamp(26px, 7.4vw, 34px);
+      }
+
+      .contacto-final p {
+        margin-top: 12px;
+        font-size: 14px;
+        line-height: 1.62;
+      }
+
+      .footer-main {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 34px 0 28px;
+      }
+
+      .footer-logo img {
+        width: 112px;
+      }
+
       .footer-bottom {
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         text-align: center;
-         font-size: 11.5px;
-         color: rgba(255, 255, 255, .52);
+        padding: 15px 16px;
+        font-size: 11.5px;
+        line-height: 1.45;
       }
-      
-      @media (max-width: 980px) {
-         .navbar { height: 64px; }
-         .logo-icono { width: 120px; height: 120px; }
-         .menu-toggle { display: flex; align-items: center; justify-content: center; }
-         .whatsapp-desktop { display: none; }
-         nav.menu {
-            position: absolute;
-            top: 64px;
-            left: 0;
-            width: 100%;
-            display: none;
-            background: #ffffff;
-            border-bottom: 1px solid rgba(22,43,78,.08);
-            box-shadow: 0 18px 40px rgba(7,23,45,.10);
-         }
-         nav.menu.activo { display: block; }
-         nav.menu ul {
-            width: min(1160px, calc(100% - 40px));
-            margin: auto;
-            padding: 14px 0;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 6px;
-         }
-         nav.menu a {
-            width: 100%;
-            padding: 12px 14px;
-            border-radius: 12px;
-            background: var(--gris);
-            font-size: 13px;
-         }
-         .hero-grid, .casos-grid { grid-template-columns: 1fr; gap: 40px; }
-         .ambitos-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+
+      .whatsapp-flotante {
+        width: 48px;
+        height: 48px;
+        right: 14px;
+        bottom: 14px;
       }
-      @media (max-width: 680px) {
-         .hero { padding: 110px 0 40px; }
-         .ambitos-grid { grid-template-columns: 1fr; }
-         h1 { font-size: clamp(21px, 6vw, 28px); line-height: 1.3; letter-spacing: normal; }
-         .hero-acciones { display: grid; grid-template-columns: 1fr; width: 100%; gap: 10px; }
-         .hero-acciones .btn { width: 100%; }
-         .section { padding: 48px 0; }
-         .ambito, .hero-panel, .caso { padding: 22px; }
+
+      .whatsapp-flotante svg {
+        width: 24px;
+        height: 24px;
       }
-   </style>
+    }
+
+    @media (max-width: 430px) {
+      .contenedor,
+      nav.menu ul {
+        width: min(100% - 24px, var(--ancho));
+      }
+
+      .marca img {
+        width: 106px;
+      }
+
+      .hero {
+        padding: 34px 0 34px;
+        background:
+          linear-gradient(90deg, rgba(7,19,33,.98) 0%, rgba(7,19,33,.92) 100%);
+      }
+
+      h1 {
+        font-size: clamp(26px, 8.8vw, 34px);
+      }
+
+      .hero-texto {
+        font-size: 13.5px;
+      }
+
+      .top-item {
+        font-size: 10.4px;
+      }
+    }
+  
+
+
+/* =========================================================
+   AJUSTES PARA PÁGINAS INTERNAS BASADAS EN EL INDEX
+   ========================================================= */
+body.pagina-interna main {
+  background: #ffffff;
+}
+
+body.pagina-interna .hero {
+  min-height: 330px;
+  padding: 54px 0 56px;
+  background:
+    radial-gradient(circle at 88% 18%, rgba(191,145,64,.20), transparent 34%),
+    radial-gradient(circle at 10% 85%, rgba(25,53,92,.30), transparent 38%),
+    linear-gradient(90deg, rgba(7,19,33,.98) 0%, rgba(12,26,45,.95) 44%, rgba(18,37,64,.92) 100%);
+}
+
+body.pagina-interna .hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.032) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.032) 1px, transparent 1px);
+  background-size: 64px 64px;
+  opacity: .30;
+  pointer-events: none;
+}
+
+body.pagina-interna .hero::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 82px;
+  background: linear-gradient(180deg, transparent, rgba(7,19,33,.08));
+  pointer-events: none;
+}
+
+body.pagina-interna .hero-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, .72fr);
+  gap: 44px;
+  align-items: center;
+}
+
+body.pagina-interna .hero-contenido {
+  position: relative;
+  z-index: 1;
+  max-width: 740px;
+}
+
+body.pagina-interna .hero-contenido.centrado {
+  max-width: 820px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+body.pagina-interna h1 font,
+body.pagina-interna h1 span {
+  color: var(--oro-300);
+}
+
+body.pagina-interna .hero p {
+  max-width: 690px;
+  margin-top: 18px;
+  color: rgba(255,255,255,.82);
+  font-size: 15.2px;
+  line-height: 1.76;
+  font-weight: 500;
+}
+
+body.pagina-interna .hero-contenido.centrado p {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+body.pagina-interna .hero .acciones,
+body.pagina-interna .hero-acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 26px;
+}
+
+body.pagina-interna .hero .btn-principal,
+body.pagina-interna .hero .btn-primario {
+  background: #ffffff;
+  color: var(--azul-950);
+  border-color: #ffffff;
+  box-shadow: 0 16px 34px rgba(0,0,0,.18);
+}
+
+body.pagina-interna .hero .btn-principal:hover,
+body.pagina-interna .hero .btn-primario:hover {
+  background: var(--oro-500);
+  color: #ffffff;
+  border-color: var(--oro-500);
+  transform: translateY(-1px);
+}
+
+body.pagina-interna .hero .btn-whatsapp,
+body.pagina-interna .hero .btn-secundario {
+  background: rgba(255,255,255,.10);
+  color: #ffffff;
+  border: 1px solid rgba(255,255,255,.24);
+  backdrop-filter: blur(10px);
+}
+
+body.pagina-interna .hero .btn-whatsapp:hover,
+body.pagina-interna .hero .btn-secundario:hover {
+  background: rgba(255,255,255,.16);
+  color: #ffffff;
+  border-color: rgba(255,255,255,.34);
+}
+
+.btn-principal,
+.btn-cta-verde {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 22px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: -.01em;
+  transition: .2s ease;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-principal {
+  background: var(--azul-950);
+  color: #ffffff;
+  box-shadow: var(--sombra-btn);
+}
+
+.btn-principal:hover {
+  background: var(--azul-700);
+  transform: translateY(-1px);
+}
+
+.btn-cta-verde {
+  background: rgba(37,211,102,.10);
+  color: #169348;
+  border-color: rgba(37,211,102,.24);
+}
+
+.btn-cta-verde:hover {
+  background: var(--verde);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* Tarjetas laterales de héroe */
+.pain-card-shell,
+.hero-panel {
+  position: relative;
+  z-index: 1;
+  padding: 12px;
+  border-radius: 28px;
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.12);
+  box-shadow: 0 24px 46px rgba(0,0,0,.22);
+  backdrop-filter: blur(12px);
+}
+
+.pain-card,
+.hero-panel-interno {
+  border-radius: 20px;
+  padding: 24px;
+  background: rgba(255,255,255,.96);
+  border: 1px solid rgba(255,255,255,.40);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.6);
+}
+
+.pain-card h2,
+.hero-panel h2 {
+  color: var(--azul-950);
+  font-family: "Sora", "Manrope", Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.25;
+  letter-spacing: -.018em;
+  margin-bottom: 16px;
+}
+
+.pain-list,
+.panel-lista {
+  display: grid;
+  gap: 12px;
+}
+
+.pain-item,
+.panel-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px;
+  padding: 13px;
+  border-radius: 16px;
+  background: #f7f9fc;
+  border: 1px solid rgba(18,37,64,.08);
+}
+
+.panel-item {
+  display: block;
+}
+
+.check {
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(191,145,64,.12);
+  color: var(--oro-600);
+  font-weight: 800;
+}
+
+.pain-item strong,
+.panel-item strong {
+  display: block;
+  color: var(--azul-950);
+  font-size: 13.2px;
+  line-height: 1.35;
+  margin-bottom: 5px;
+}
+
+.pain-item span,
+.panel-item span {
+  display: block;
+  color: var(--texto-2);
+  font-size: 12.5px;
+  line-height: 1.55;
+}
+
+/* Secciones internas */
+.bloque,
+.section,
+.servicios-section,
+.contacto-section {
+  padding: 58px 0 66px;
+  background: #ffffff;
+}
+
+.bloque-gris,
+.section:nth-of-type(even) {
+  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+  border-top: 1px solid rgba(18,37,64,.06);
+  border-bottom: 1px solid rgba(18,37,64,.06);
+}
+
+.encabezado {
+  max-width: 800px;
+  margin: 0 auto 36px;
+  text-align: center;
+}
+
+.encabezado h2,
+.section h2,
+.bloque h2,
+.servicios-section h2,
+.contacto-section h2,
+.impacto h2,
+.cta h2,
+.bloque-final h2 {
+  color: var(--azul-950);
+  font-family: "Sora", "Manrope", Arial, sans-serif;
+  font-size: clamp(24px, 2.55vw, 34px);
+  line-height: 1.18;
+  letter-spacing: -.03em;
+  font-weight: 700;
+}
+
+.encabezado p,
+.section p,
+.bloque p,
+.servicios-section p,
+.contacto-section p {
+  color: var(--texto-2);
+  font-size: 14.6px;
+  line-height: 1.72;
+  font-weight: 500;
+}
+
+.encabezado p {
+  margin-top: 12px;
+}
+
+/* Quiénes somos */
+.equipo-grid,
+.servicios-grid,
+.areas-grid,
+.proceso-grid,
+.beneficios-grid,
+.entregables-grid,
+.valores-grid,
+.casos-grid {
+  display: grid;
+  gap: 18px;
+}
+
+.equipo-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.miembro,
+.valor-item,
+.beneficio,
+.paso,
+.entregable,
+.caso,
+.area-card,
+.servicio-card,
+.info-card,
+.form-card {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, #ffffff 0%, #fbfcfe 100%);
+  border: 1px solid rgba(18,37,64,.10);
+  border-radius: 22px;
+  box-shadow: 0 16px 34px rgba(10,27,51,.06);
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+}
+
+.miembro:hover,
+.valor-item:hover,
+.beneficio:hover,
+.paso:hover,
+.entregable:hover,
+.caso:hover,
+.area-card:hover,
+.servicio-card:hover,
+.info-card:hover,
+.form-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 42px rgba(10,27,51,.10);
+  border-color: rgba(191,145,64,.28);
+}
+
+.miembro::before,
+.valor-item::before,
+.beneficio::before,
+.paso::before,
+.entregable::before,
+.caso::before,
+.area-card::before,
+.info-card::before,
+.form-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 24px;
+  width: 62px;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--oro-500), rgba(191,145,64,.18));
+}
+
+.miembro {
+  padding: 24px;
+}
+
+.miembro-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.miembro-top .linea {
+  width: 34px;
+  height: 1px;
+  background: var(--oro-500);
+}
+
+.miembro-top span,
+.servicio-body span,
+.area-tag,
+.numero,
+.orden,
+.criterio-numero {
+  color: var(--oro-600);
+  font-family: "Sora", "Manrope", Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.miembro h3,
+.servicio-card h3,
+.area-card h3,
+.beneficio h3,
+.paso h3 {
+  color: var(--azul-950);
+  font-family: "Sora", "Manrope", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.34;
+  letter-spacing: -.018em;
+  margin-bottom: 10px;
+}
+
+.cargo {
+  margin-bottom: 12px;
+  color: var(--oro-600);
+  font-size: 12.5px;
+  font-weight: 800;
+}
+
+.miembro p {
+  font-size: 13px;
+}
+
+.valores-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.valor-item {
+  padding: 24px;
+}
+
+.valor-item strong,
+.entregable strong,
+.caso strong {
+  display: block;
+  color: var(--azul-950);
+  font-family: "Sora", "Manrope", Arial, sans-serif;
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+
+.valor-item span,
+.entregable span,
+.caso span {
+  display: block;
+  color: var(--texto-2);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* Servicios */
+.servicios-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.servicio-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.servicio-img {
+  height: 176px;
+  overflow: hidden;
+  background: #eef2f7;
+}
+
+.servicio-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(.92) contrast(1.03);
+}
+
+.servicio-body {
+  padding: 23px;
+}
+
+.servicio-body span {
+  display: inline-flex;
+  margin-bottom: 10px;
+}
+
+.servicio-body p {
+  font-size: 13.2px;
+}
+
+.servicio-body ul,
+.area-card ul {
+  display: grid;
+  gap: 7px;
+  margin-top: 14px;
+  padding-left: 17px;
+  color: var(--texto-2);
+  font-size: 12.8px;
+  line-height: 1.52;
+}
+
+.bloque-final-wrapper {
+  width: min(var(--ancho), calc(100% - 48px));
+  margin: 44px auto 0;
+}
+
+.bloque-final,
+.cta,
+.impacto {
+  position: relative;
+  overflow: hidden;
+  padding: 42px;
+  border-radius: 28px;
+  color: #ffffff;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(191,145,64,.18), transparent 35%),
+    linear-gradient(135deg, var(--azul-950), var(--azul-800));
+}
+
+.cta,
+.impacto {
+  border-radius: 0;
+  padding: 54px 0;
+  text-align: center;
+}
+
+.bloque-final h2,
+.cta h2,
+.impacto h2 {
+  color: #ffffff;
+}
+
+.bloque-final p,
+.cta p,
+.impacto p {
+  max-width: 760px;
+  margin: 14px auto 22px;
+  color: rgba(255,255,255,.76);
+}
+
+.bloque-final .btn-cta-verde,
+.cta .btn-whatsapp,
+.impacto .btn-whatsapp {
+  background: #ffffff;
+  color: var(--azul-950);
+  border-color: #ffffff;
+}
+
+/* Método y ámbitos */
+.beneficios-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.proceso-grid,
+.areas-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.entregables-grid,
+.casos-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.beneficio,
+.paso,
+.entregable,
+.caso,
+.area-card {
+  padding: 24px;
+}
+
+.icono,
+.area-icono {
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  margin-bottom: 16px;
+  background: rgba(191,145,64,.10);
+  color: var(--oro-600);
+  font-weight: 800;
+  border: 1px solid rgba(191,145,64,.22);
+}
+
+.numero,
+.orden {
+  display: inline-flex;
+  margin-bottom: 14px;
+}
+
+/* Contacto */
+.contacto-section .contacto-grid {
+  display: grid;
+  grid-template-columns: .86fr 1.14fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.info-card,
+.form-card {
+  padding: 28px;
+}
+
+.contacto-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 13px;
+  align-items: start;
+  padding: 15px 0;
+  border-top: 1px solid rgba(18,37,64,.08);
+}
+
+.contacto-item strong {
+  display: block;
+  color: var(--azul-950);
+  font-size: 13.5px;
+  margin-bottom: 4px;
+}
+
+.contacto-item a,
+.contacto-item span {
+  color: var(--texto-2);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.campo.full {
+  grid-column: 1 / -1;
+}
+
+.campo label {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--azul-950);
+  font-size: 12.5px;
+  font-weight: 800;
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+  width: 100%;
+  border: 1px solid rgba(18,37,64,.14);
+  border-radius: 15px;
+  padding: 12px 14px;
+  color: var(--texto);
+  background: #ffffff;
+  outline: none;
+  font: inherit;
+  font-size: 13.5px;
+  transition: .2s ease;
+}
+
+.campo textarea {
+  min-height: 132px;
+  resize: vertical;
+}
+
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+  border-color: rgba(191,145,64,.58);
+  box-shadow: 0 0 0 4px rgba(191,145,64,.11);
+}
+
+.checks {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.check-card {
+  display: flex !important;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 12px;
+  border-radius: 14px;
+  background: #f8fafc;
+  border: 1px solid rgba(18,37,64,.09);
+  color: var(--texto-2) !important;
+  font-weight: 650 !important;
+  cursor: pointer;
+}
+
+.check-card input {
+  width: auto;
+}
+
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.nota {
+  margin-top: 12px;
+  color: #7b8797;
+  font-size: 12.5px;
+}
+
+@media (max-width: 1030px) {
+  body.pagina-interna .hero-grid,
+  .equipo-grid,
+  .servicios-grid,
+  .beneficios-grid,
+  .proceso-grid,
+  .areas-grid,
+  .contacto-section .contacto-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  body.pagina-interna .hero-grid,
+  .contacto-section .contacto-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .entregables-grid,
+  .casos-grid,
+  .valores-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  body.pagina-interna .hero {
+    min-height: auto;
+    padding: 38px 0 38px;
+  }
+
+  body.pagina-interna .hero-grid,
+  .equipo-grid,
+  .servicios-grid,
+  .beneficios-grid,
+  .proceso-grid,
+  .areas-grid,
+  .entregables-grid,
+  .casos-grid,
+  .valores-grid,
+  .form-grid,
+  .checks {
+    grid-template-columns: 1fr;
+  }
+
+  body.pagina-interna .hero-contenido.centrado {
+    text-align: left;
+  }
+
+  body.pagina-interna .hero p {
+    font-size: 14px;
+    line-height: 1.66;
+  }
+
+  body.pagina-interna .hero .acciones,
+  body.pagina-interna .hero-acciones,
+  .form-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .bloque,
+  .section,
+  .servicios-section,
+  .contacto-section {
+    padding: 40px 0 46px;
+  }
+
+  .encabezado {
+    margin-bottom: 26px;
+    text-align: left;
+  }
+
+  .servicio-img {
+    height: 160px;
+  }
+
+  .bloque-final-wrapper {
+    width: min(100% - 28px, var(--ancho));
+    margin-top: 30px;
+  }
+
+  .bloque-final {
+    padding: 28px;
+    border-radius: 22px;
+  }
+
+  .cta,
+  .impacto {
+    padding: 40px 0;
+    text-align: left;
+  }
+}
+
+  </style>
 </head>
+<body class="pagina-interna page-ambitos">
+<div aria-label="Información corporativa" class="barra-superior">
+<div class="contenedor">
+<div class="barra-superior-grid">
+<span class="top-item">
+<svg aria-hidden="true" class="top-icon" viewbox="0 0 24 24">
+<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2Zm8 8.7L4.4 7.2V18h15.2V7.2L12 12.7Zm0-2.4L19.1 6H4.9L12 10.3Z"></path>
+</svg>
+          neodatconsultores@gmail.com
+        </span>
+<span class="top-item">
+<svg aria-hidden="true" class="top-icon" viewbox="0 0 24 24">
+<path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.8-.4 1.2-.3 1.3.4 2.6.6 4 .6.7 0 1.2.5 1.2 1.2v3.5c0 .7-.5 1.2-1.2 1.2C10.4 22 2 13.6 2 3.4 2 2.7 2.5 2.2 3.2 2.2h3.6c.7 0 1.2.5 1.2 1.2 0 1.4.2 2.7.6 4 .1.4 0 .8-.3 1.2l-1.7 2.2Z"></path>
+</svg>
+          +593 96 079 8571
+        </span>
+</div>
+</div>
+</div>
+<header>
+<div class="contenedor navbar">
+<a aria-label="NeoDat Consultores" class="marca" href="index.html">
+<img alt="NeoDat Consultores" src="Neo1.png"/>
+</a>
+<button aria-expanded="false" aria-label="Abrir menú" class="menu-toggle" type="button">☰</button>
+<nav aria-label="Navegación principal" class="menu">
+<ul>
+<li><a href="index.html">Inicio</a></li>
+<li><a href="quienes-somos.html">Quiénes somos</a></li>
+<li><a href="servicios.html">Servicios</a></li>
+<li><a href="metodo.html">Método</a></li>
+<li><a class="actual" href="ambitos.html">Ámbitos</a></li>
+<li><a href="contacto.html">Contacto</a></li>
+</ul>
+</nav>
+<a class="btn btn-whatsapp whatsapp-desktop" href="https://wa.me/593960798571?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20NeoDat%20Consultores." rel="noopener" target="_blank">WhatsApp</a>
+</div>
+</header>
 
-<body>
+<main>
+<section class="hero">
+<div class="contenedor hero-grid">
+<div class="hero-contenido">
+<div class="eyebrow">Ámbitos de intervención</div>
+<h1>Intervenimos donde la información afecta la <span>gestión del negocio</span>.</h1>
+<p>NeoDat trabaja en áreas donde la falta de control, datos dispersos, reportes manuales o procesos poco claros limitan la capacidad de decidir, ejecutar y crecer.</p>
+<div class="acciones"><a class="btn btn-primario" href="contacto.html">Solicitar análisis</a><a class="btn btn-secundario" href="servicios.html">Ver servicios</a></div>
+</div>
+<aside class="hero-panel">
+<div class="hero-panel-interno">
+<h2>¿Cuándo tiene sentido intervenir?</h2>
+<div class="panel-lista">
+<div class="panel-item">
+<strong>Cuando hay datos, pero no claridad.</strong>
+<span>La información existe, pero no se traduce en decisiones estratégicas eficientes.</span>
+</div>
+<div class="panel-item">
+<strong>Cuando los reportes dependen de trabajo manual.</strong>
+<span>La empresa pierde tiempo valioso preparando información operativa repetitiva.</span>
+</div>
+<div class="panel-item">
+<strong>Cuando la gerencia no tiene visibilidad suficiente.</strong>
+<span>Ventas, costos, proyectos o resultados no se monitorean con la debida oportunidad.</span>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</section>
 
-   <header>
-      <div class="contenedor navbar">
-         <a href="index.html" class="logo" aria-label="NeoDat Consultores">
-            <img src="Neo1.png" class="logo-icono" alt="Logo NeoDat">
-         </a>
-         <button class="menu-toggle" type="button" aria-label="Abrir menú"> ☰ </button>
-         <nav class="menu" aria-label="Navegación principal">
-            <ul>
-               <li><a href="index.html">Inicio</a></li>
-               <li><a href="servicios.html">Servicios</a></li>
-               <li><a href="metodo.html">Método</a></li>
-               <li><a href="ambitos.html"class="actual">Ámbitos</a></li>
-               <li><a href="quienes-somos.html">Quiénes somos</a></li>
-               <li><a href="contacto.html">Contacto</a></li>
-            </ul>
-         </nav>
-         <a class="btn btn-whatsapp whatsapp-desktop" href="https://wa.me/593960798571?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20NeoDat%20Consultores." target="_blank" rel="noopener">
-            WhatsApp
-         </a>
-      </div>
-   </header>
 
-   <main>
-      <section class="hero">
-         <div class="figura figura-1"></div>
-         <div class="figura figura-2"></div>
-         <div class="shapes-container">
-            <div class="shape-circle sc-1"></div>
-            <div class="shape-circle sc-2"></div>
-            <div class="shape-circle sc-3"></div>
-         </div>
-
-         <div class="contenedor hero-grid">
-            <div>
-               <div class="marca-seccion">
-                  <span></span>
-                  <strong>Ámbitos de intervención</strong>
-               </div>
-               <h1>Intervenimos donde la información afecta la <font>gestión del negocio</font>.</h1>
-               <p>NeoDat trabaja en áreas donde la falta de control, datos dispersos, reportes manuales o procesos poco claros limitan la capacidad de decidir, ejecutar y crecer.</p>
-               <div class="hero-acciones">
-                  <a class="btn btn-principal" href="contacto.html">Solicitar análisis <span>→</span></a>
-                  <a class="btn btn-whatsapp" href="https://wa.me/593960798571?text=Hola,%20quiero%20solicitar%20una%20asesor%C3%ADa%20con%20NeoDat." target="_blank" rel="noopener">Contactar por WhatsApp</a>
-               </div>
-            </div>
-
-            <aside class="hero-panel">
-               <div class="hero-panel-interno">
-                  <h2>¿Cuándo tiene sentido intervenir?</h2>
-                  <div class="panel-lista">
-                     <div class="panel-item">
-                        <strong>Cuando hay datos, pero no claridad.</strong>
-                        <span>La información existe, pero no se traduce en decisiones estratégicas eficientes.</span>
-                     </div>
-                     <div class="panel-item">
-                        <strong>Cuando los reportes dependen de trabajo manual.</strong>
-                        <span>La empresa pierde tiempo valioso preparando información operativa repetitiva.</span>
-                     </div>
-                     <div class="panel-item">
-                        <strong>Cuando la gerencia no tiene visibilidad suficiente.</strong>
-                        <span>Ventas, costos, proyectos o resultados no se monitorean con la debida oportunidad.</span>
-                     </div>
-                  </div>
-               </div>
-            </aside>
-         </div>
-      </section>
-
-      <section class="section">
-         <div class="contenedor">
-            <div class="encabezado">
-               <h2>Áreas donde ordenamos información, control y ejecución.</h2>
-               <p>Estos frentes empresariales son donde NeoDat puede aportar análisis, estructura y herramientas digitales avanzadas para mejorar la gestión y control gerencial.</p>
-            </div>
-
-            <div class="ambitos-grid">
-               <article class="ambito">
-                  <div class="ambito-num">01 / Finanzas</div>
-                  <h3>Finanzas y rentabilidad</h3>
-                  <p>Para empresas que necesitan entender mejor ingresos, costos, márgenes, presupuestos y resultados económicos.</p>
-                  <ul>
-                     <li>Rentabilidad por línea, cliente o unidad.</li>
-                     <li>Control de ingresos, gastos y márgenes.</li>
-                     <li>Seguimiento presupuestario.</li>
-                  </ul>
-               </article>
-
-               <article class="ambito">
-                  <div class="ambito-num">02 / Gerencia</div>
-                  <h3>Dirección y toma de decisiones</h3>
-                  <p>Para equipos directivos que requieren indicadores claros, reportes ejecutivos y lectura rápida del desempeño.</p>
-                  <ul>
-                     <li>Paneles gerenciales automatizados.</li>
-                     <li>Indicadores clave de gestión (KPIs).</li>
-                     <li>Visibilidad ejecutiva en tiempo real.</li>
-                  </ul>
-               </article>
-
-               <article class="ambito">
-                  <div class="ambito-num">03 / Operación</div>
-                  <h3>Operaciones y procesos</h3>
-                  <p>Para organizaciones con procesos manuales, información fragmentada o baja trazabilidad en su operación diaria.</p>
-                  <ul>
-                     <li>Mapeo de procesos críticos.</li>
-                     <li>Automatización estructurada de reportes.</li>
-                     <li>Seguimiento y control operativo.</li>
-                  </ul>
-               </article>
-
-               <article class="ambito">
-                  <div class="ambito-num">04 / Comercial</div>
-                  <h3>Comercial y ventas</h3>
-                  <p>Para negocios que necesitan analizar ventas, clientes, cumplimiento de metas y oportunidades comerciales.</p>
-                  <ul>
-                     <li>Seguimiento de ventas histórico y diario.</li>
-                     <li>Indicadores y tendencias comerciales.</li>
-                     <li>Análisis profundo de comportamiento de clientes.</li>
-                  </ul>
-               </article>
-
-               <article class="ambito">
-                  <div class="ambito-num">05 / Proyectos</div>
-                  <h3>Proyectos e instituciones</h3>
-                  <p>Para iniciativas que requieren planificación, seguimiento, documentación, control de avances y medición de resultados.</p>
-                  <ul>
-                     <li>Control de hitos clave y entregables.</li>
-                     <li>Gestión integral de PMO.</li>
-                     <li>Reportes dinámicos de avance de obra.</li>
-                  </ul>
-               </article>
-
-               <article class="ambito">
-                  <div class="ambito-num">06 / Datos</div>
-                  <h3>Tecnología y datos</h3>
-                  <p>Para empresas que buscan ordenar información, conectar herramientas digitales y convertir datos en activos de gestión.</p>
-                  <ul>
-                     <li>Estructuración avanzada de bases de datos.</li>
-                     <li>Integración inteligente de información dispersa.</li>
-                     <li>Herramientas dinámicas de control empresarial.</li>
-                  </ul>
-               </article>
-            </div>
-         </div>
-      </section>
-
-      <section class="section alt">
-         <div class="contenedor">
-            <div class="encabezado">
-               <h2>Situaciones donde una intervención técnica cambia la gestión.</h2>
-            </div>
-
-            <div class="casos-grid">
-               <div class="caso">
-                  <strong>La empresa vende, pero no sabe qué tan rentable es.</strong>
-                  <span>Ordenamos la información financiera para identificar márgenes, costos, líneas rentables y puntos críticos.</span>
-               </div>
-
-               <div class="caso">
-                  <strong>La gerencia recibe reportes tarde o incompletos.</strong>
-                  <span>Automatizamos información clave para que los indicadores estén disponibles con mayor oportunidad y consistencia.</span>
-               </div>
-
-               <div class="caso">
-                  <strong>Los proyectos avanzan, pero no existe control claro.</strong>
-                  <span>Diseñamos estructuras de seguimiento, hitos, responsables, cronogramas y reportes analíticos de avance.</span>
-               </div>
-
-               <div class="caso">
-                  <strong>La información está repartida en varios archivos.</strong>
-                  <span>Consolidamos datos y construimos modelos que permiten analizar, comparar y decidir con mayor precisión.</span>
-               </div>
-            </div>
-         </div>
-      </section>
-
-      <section class="impacto">
-         <div class="contenedor">
-            <h2>No trabajamos sobre áreas aisladas. Conectamos información, gestión y decisión.</h2>
-            <p>El valor de NeoDat está en integrar finanzas, datos, procesos, proyectos y tecnología para que la empresa pueda operar con absoluta claridad de objetivos.</p>
-            <a class="btn btn-whatsapp" href="https://wa.me/593960798571?text=Hola,%20quiero%20solicitar%20una%20evaluaci%C3%B3n%20con%20NeoDat." target="_blank" rel="noopener">
+<section class="section">
+<div class="contenedor">
+<div class="encabezado">
+<h2>Áreas donde ordenamos información, control y ejecución.</h2>
+<p>Estos frentes empresariales son donde NeoDat puede aportar análisis, estructura y herramientas digitales avanzadas para mejorar la gestión y control gerencial.</p>
+</div>
+<div class="ambitos-grid">
+<article class="ambito">
+<div class="ambito-num">01 / Finanzas</div>
+<h3>Finanzas y rentabilidad</h3>
+<p>Para empresas que necesitan entender mejor ingresos, costos, márgenes, presupuestos y resultados económicos.</p>
+<ul>
+<li>Rentabilidad por línea, cliente o unidad.</li>
+<li>Control de ingresos, gastos y márgenes.</li>
+<li>Seguimiento presupuestario.</li>
+</ul>
+</article>
+<article class="ambito">
+<div class="ambito-num">02 / Gerencia</div>
+<h3>Dirección y toma de decisiones</h3>
+<p>Para equipos directivos que requieren indicadores claros, reportes ejecutivos y lectura rápida del desempeño.</p>
+<ul>
+<li>Paneles gerenciales automatizados.</li>
+<li>Indicadores clave de gestión (KPIs).</li>
+<li>Visibilidad ejecutiva en tiempo real.</li>
+</ul>
+</article>
+<article class="ambito">
+<div class="ambito-num">03 / Operación</div>
+<h3>Operaciones y procesos</h3>
+<p>Para organizaciones con procesos manuales, información fragmentada o baja trazabilidad en su operación diaria.</p>
+<ul>
+<li>Mapeo de procesos críticos.</li>
+<li>Automatización estructurada de reportes.</li>
+<li>Seguimiento y control operativo.</li>
+</ul>
+</article>
+<article class="ambito">
+<div class="ambito-num">04 / Comercial</div>
+<h3>Comercial y ventas</h3>
+<p>Para negocios que necesitan analizar ventas, clientes, cumplimiento de metas y oportunidades comerciales.</p>
+<ul>
+<li>Seguimiento de ventas histórico y diario.</li>
+<li>Indicadores y tendencias comerciales.</li>
+<li>Análisis profundo de comportamiento de clientes.</li>
+</ul>
+</article>
+<article class="ambito">
+<div class="ambito-num">05 / Proyectos</div>
+<h3>Proyectos e instituciones</h3>
+<p>Para iniciativas que requieren planificación, seguimiento, documentación, control de avances y medición de resultados.</p>
+<ul>
+<li>Control de hitos clave y entregables.</li>
+<li>Gestión integral de PMO.</li>
+<li>Reportes dinámicos de avance de obra.</li>
+</ul>
+</article>
+<article class="ambito">
+<div class="ambito-num">06 / Datos</div>
+<h3>Tecnología y datos</h3>
+<p>Para empresas que buscan ordenar información, conectar herramientas digitales y convertir datos en activos de gestión.</p>
+<ul>
+<li>Estructuración avanzada de bases de datos.</li>
+<li>Integración inteligente de información dispersa.</li>
+<li>Herramientas dinámicas de control empresarial.</li>
+</ul>
+</article>
+</div>
+</div>
+</section>
+<section class="section alt">
+<div class="contenedor">
+<div class="encabezado">
+<h2>Situaciones donde una intervención técnica cambia la gestión.</h2>
+</div>
+<div class="casos-grid">
+<div class="caso">
+<strong>La empresa vende, pero no sabe qué tan rentable es.</strong>
+<span>Ordenamos la información financiera para identificar márgenes, costos, líneas rentables y puntos críticos.</span>
+</div>
+<div class="caso">
+<strong>La gerencia recibe reportes tarde o incompletos.</strong>
+<span>Automatizamos información clave para que los indicadores estén disponibles con mayor oportunidad y consistencia.</span>
+</div>
+<div class="caso">
+<strong>Los proyectos avanzan, pero no existe control claro.</strong>
+<span>Diseñamos estructuras de seguimiento, hitos, responsables, cronogramas y reportes analíticos de avance.</span>
+</div>
+<div class="caso">
+<strong>La información está repartida en varios archivos.</strong>
+<span>Consolidamos datos y construimos modelos que permiten analizar, comparar y decidir con mayor precisión.</span>
+</div>
+</div>
+</div>
+</section>
+<section class="impacto">
+<div class="contenedor">
+<h2>No trabajamos sobre áreas aisladas. Conectamos información, gestión y decisión.</h2>
+<p>El valor de NeoDat está en integrar finanzas, datos, procesos, proyectos y tecnología para que la empresa pueda operar con absoluta claridad de objetivos.</p>
+<a class="btn btn-whatsapp" href="https://wa.me/593960798571?text=Hola,%20quiero%20solicitar%20una%20evaluaci%C3%B3n%20con%20NeoDat." rel="noopener" target="_blank">
                Solicitar una evaluación
             </a>
-         </div>
-      </section>
-   </main>
+</div>
+</section>
+</main>
 
-   <footer class="site-footer">
-      <div class="contenedor footer-bottom">
-         <span>© 2026 NeoDat Consultores. Todos los derechos reservados.</span>
-      </div>
-   </footer>
+<footer>
+<div class="contenedor footer-main">
+<div class="footer-col">
+<a aria-label="NeoDat Consultores" class="footer-logo" href="index.html">
+<img alt="NeoDat Consultores" src="Neo1.png"/>
+</a>
+<p>
+          Consultoría empresarial para fortalecer la lectura, el control y la toma de decisiones basada en información confiable.
+        </p>
+</div>
+<div class="footer-col">
+<h4>Navegación</h4>
+<div class="footer-links">
+<a href="index.html">Inicio</a>
+<a href="quienes-somos.html">Quiénes somos</a>
+<a href="servicios.html">Servicios</a>
+<a href="metodo.html">Método</a>
+<a href="ambitos.html">Ámbitos</a>
+</div>
+</div>
+<div class="footer-col">
+<h4>Empresa</h4>
+<div class="footer-links">
+<a href="contacto.html">Contacto</a>
+<a href="contacto.html">Agendar reunión</a>
+</div>
+</div>
+<div class="footer-col">
+<h4>Contacto</h4>
+<div class="footer-contacto">
+<a href="mailto:neodatconsultores@gmail.com">neodatconsultores@gmail.com</a>
+<a href="https://wa.me/593960798571" rel="noopener" target="_blank">+593 96 079 8571</a>
+<span>Loja-Ecuador</span>
+</div>
+</div>
+</div>
+<div class="footer-bottom">
+<span>© 2026 NeoDat Consultores · Todos los derechos reservados.</span>
+</div>
+</footer>
 
-   <script>
-      // Menú móvil
-      const menuToggle = document.querySelector(".menu-toggle");
-      const menu = document.querySelector(".menu");
-      menuToggle.addEventListener("click", () => {
-         menu.classList.toggle("activo");
+<a aria-label="WhatsApp" class="whatsapp-flotante" href="https://wa.me/593960798571?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20NeoDat%20Consultores." rel="noopener" target="_blank">
+<svg aria-hidden="true" viewbox="0 0 32 32">
+<path d="M16.03 3.5C9.13 3.5 3.54 9.03 3.54 15.85c0 2.18.58 4.3 1.68 6.17L3.5 28.5l6.68-1.66a12.67 12.67 0 0 0 5.85 1.43c6.9 0 12.5-5.53 12.5-12.42S22.93 3.5 16.03 3.5Zm0 22.65c-1.87 0-3.69-.5-5.28-1.45l-.38-.23-3.96.98 1.04-3.82-.25-.39a10.05 10.05 0 0 1-1.54-5.39c0-5.65 4.65-10.24 10.37-10.24S26.4 10.2 26.4 15.85 21.75 26.15 16.03 26.15Z"></path>
+<path d="M21.92 18.63c-.32-.16-1.9-.93-2.2-1.04-.29-.11-.5-.16-.72.16-.21.31-.83 1.03-1.02 1.24-.18.21-.37.24-.69.08-.32-.16-1.34-.49-2.55-1.56-.94-.83-1.58-1.86-1.76-2.17-.19-.32-.02-.49.14-.65.14-.14.32-.37.48-.55.16-.19.21-.32.32-.53.11-.21.05-.4-.03-.56-.08-.16-.72-1.71-.99-2.35-.26-.62-.53-.54-.72-.55h-.62c-.21 0-.56.08-.85.4-.29.31-1.12 1.09-1.12 2.66s1.15 3.09 1.31 3.3c.16.21 2.27 3.43 5.5 4.81.77.33 1.37.53 1.83.68.77.24 1.47.21 2.03.13.62-.09 1.9-.77 2.17-1.52.27-.75.27-1.39.19-1.52-.08-.13-.29-.21-.61-.37Z"></path>
+</svg>
+</a>
+
+
+<script>
+  const menuToggle = document.querySelector('.menu-toggle');
+  const menu = document.querySelector('nav.menu');
+
+  if (menuToggle && menu) {
+    menuToggle.addEventListener('click', () => {
+      const abierto = menu.classList.toggle('activo');
+      menuToggle.setAttribute('aria-expanded', abierto ? 'true' : 'false');
+      menuToggle.textContent = abierto ? '×' : '☰';
+    });
+
+    document.querySelectorAll('nav.menu a').forEach((enlace) => {
+      enlace.addEventListener('click', () => {
+        if (menu.classList.contains('activo')) {
+          menu.classList.remove('activo');
+          menuToggle.setAttribute('aria-expanded', 'false');
+          menuToggle.textContent = '☰';
+        }
       });
+    });
+  }
 
-      // Autodetección de página activa para resaltar el menú
-      const ubicacionActual = window.location.pathname.split("/").pop() || "index.html";
-      const enlacesMenu = document.querySelectorAll("nav.menu a");
+  const contactoForm = document.getElementById('contactoForm');
 
-      enlacesMenu.forEach(enlace => {
-         if (enlace.getAttribute("href") === ubicacionActual) {
-            enlace.classList.add("actual");
-         }
-      });
-   </script>
+  if (contactoForm) {
+    contactoForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      const data = new FormData(contactoForm);
+      const servicios = data.getAll('servicio');
+      const cuerpo = [
+        'Hola NeoDat,',
+        '',
+        'Quiero solicitar información sobre los siguientes servicios:',
+        servicios.length ? servicios.map((item) => '- ' + item).join('\n') : '- No especificado',
+        '',
+        'Datos del solicitante:',
+        'Nombre: ' + (data.get('nombre') || ''),
+        'Empresa: ' + (data.get('empresa') || ''),
+        'Correo: ' + (data.get('correo') || ''),
+        'Teléfono: ' + (data.get('telefono') || ''),
+        'Ciudad: ' + (data.get('ciudad') || ''),
+        '',
+        'Descripción de la necesidad:',
+        data.get('mensaje') || ''
+      ].join('\n');
+
+      const asunto = encodeURIComponent('Solicitud de información - NeoDat Consultores');
+      const body = encodeURIComponent(cuerpo);
+      window.location.href = 'mailto:neodatconsultores@gmail.com?subject=' + asunto + '&body=' + body;
+    });
+  }
+</script>
+
 </body>
 </html>
