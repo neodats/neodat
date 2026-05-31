@@ -896,8 +896,8 @@
     gap: 18px;
   }
 
-  .miembro-foto img {
-    height: 260px;
+  .miembro-foto {
+    height: 240px;
   }
 
       .contenedor,
@@ -1571,20 +1571,55 @@ body.pagina-interna .hero .btn-secundario:hover {
 }
 
 .miembro-foto {
+  position: relative;
   width: 100%;
+  height: 220px;
   margin: 0;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px;
+  border: 1px solid rgba(18,37,64,.08);
+  box-shadow: 0 12px 28px rgba(10,27,51,.08);
+  background: linear-gradient(180deg, #f8fafc 0%, #f2f5f9 100%);
+  overflow: hidden;
 }
 
 .miembro-foto img {
   display: block;
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  object-position: center top;
-  border-radius: 18px;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  object-position: center center;
+  border: 0;
+  box-shadow: none;
+  border-radius: 0;
+  background: transparent;
+}
+
+.miembro-logo {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 34px;
+  height: 34px;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: rgba(255,255,255,.94);
   border: 1px solid rgba(18,37,64,.08);
-  box-shadow: 0 12px 28px rgba(10,27,51,.08);
-  background: #f5f7fa;
+  box-shadow: 0 8px 18px rgba(10,27,51,.08);
+}
+
+.miembro-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .miembro-info {
@@ -1961,8 +1996,8 @@ body.pagina-interna .hero .btn-secundario:hover {
     gap: 18px;
   }
 
-  .miembro-foto img {
-    height: 260px;
+  .miembro-foto {
+    height: 240px;
   }
 
   body.pagina-interna .hero {
@@ -2471,8 +2506,8 @@ main .impacto .btn {
     gap: 18px;
   }
 
-  .miembro-foto img {
-    height: 260px;
+  .miembro-foto {
+    height: 240px;
   }
 
   main .ambitos-grid,
@@ -2561,6 +2596,7 @@ main .impacto .btn {
 <div class="miembro-body">
 <figure class="miembro-foto">
 <img alt="Clara Guamán Jaramillo" src="imagenes/clara.png"/>
+<span class="miembro-logo"><img alt="NeoDat Consultores" src="logo.png"/></span>
 </figure>
 <div class="miembro-info">
 <h3>Ing. Clara Guamán Jaramillo, Mgs.</h3>
@@ -2577,6 +2613,7 @@ main .impacto .btn {
 <div class="miembro-body">
 <figure class="miembro-foto">
 <img alt="Alfonso Abad Álvarez" src="imagenes/alfonso.png"/>
+<span class="miembro-logo"><img alt="NeoDat Consultores" src="logo.png"/></span>
 </figure>
 <div class="miembro-info">
 <h3>Ing. Alfonso Abad Álvarez, Mgs.</h3>
@@ -2593,6 +2630,7 @@ main .impacto .btn {
 <div class="miembro-body">
 <figure class="miembro-foto">
 <img alt="Roberto Jácome Galarza" src="imagenes/roberto.png"/>
+<span class="miembro-logo"><img alt="NeoDat Consultores" src="logo.png"/></span>
 </figure>
 <div class="miembro-info">
 <h3>Ing. Roberto Jácome Galarza, Ph.D.</h3>
@@ -2609,6 +2647,7 @@ main .impacto .btn {
 <div class="miembro-body">
 <figure class="miembro-foto">
 <img alt="Darío Hurtado Cuenca" src="imagenes/dario.png"/>
+<span class="miembro-logo"><img alt="NeoDat Consultores" src="logo.png"/></span>
 </figure>
 <div class="miembro-info">
 <h3>Econ. Darío Hurtado Cuenca, Mgs.</h3>
