@@ -2530,40 +2530,59 @@ main .impacto .btn {
 
   
 
-/* AJUSTE FINAL - EQUIPO DIRECTIVO COMPACTO Y CORPORATIVO */
+/* VERSION PROFESIONAL DEFINITIVA - EQUIPO DIRECTIVO */
 body.page-quienes main .equipo-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-  gap: 24px !important;
+  gap: 22px !important;
 }
 
 body.page-quienes main .miembro {
-  padding: 26px 28px 24px !important;
-  min-height: auto !important;
+  min-height: 0 !important;
+  padding: 24px !important;
+  border-radius: 20px !important;
+  background: linear-gradient(180deg, #ffffff 0%, #fbfcfe 100%) !important;
+  border: 1px solid rgba(18,37,64,.10) !important;
+  box-shadow: 0 14px 30px rgba(10,27,51,.07) !important;
+}
+
+body.page-quienes main .miembro::before {
+  left: 24px !important;
+  width: 76px !important;
+  height: 3px !important;
 }
 
 body.page-quienes main .miembro-top {
-  min-height: 34px !important;
-  margin-bottom: 16px !important;
-  align-items: flex-start !important;
+  min-height: 0 !important;
+  margin-bottom: 18px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+}
+
+body.page-quienes main .miembro-top span {
+  line-height: 1.35 !important;
 }
 
 body.page-quienes main .miembro-body {
-  display: block !important;
+  display: grid !important;
+  grid-template-columns: 108px minmax(0, 1fr) !important;
+  gap: 20px !important;
+  align-items: start !important;
 }
 
 body.page-quienes main .miembro-foto {
   position: relative !important;
-  width: 126px !important;
-  height: 146px !important;
-  margin: 0 auto 18px !important;
-  padding: 8px 8px 0 !important;
+  width: 108px !important;
+  height: 122px !important;
+  margin: 0 !important;
+  padding: 0 !important;
   display: flex !important;
-  align-items: flex-end !important;
+  align-items: center !important;
   justify-content: center !important;
-  border-radius: 18px !important;
+  border-radius: 16px !important;
   border: 1px solid rgba(18,37,64,.10) !important;
-  background: linear-gradient(180deg, #ffffff 0%, #f4f7fb 100%) !important;
-  box-shadow: 0 12px 24px rgba(10,27,51,.08) !important;
+  background: linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%) !important;
+  box-shadow: 0 10px 22px rgba(10,27,51,.07) !important;
   overflow: hidden !important;
 }
 
@@ -2571,64 +2590,59 @@ body.page-quienes main .miembro-foto::before {
   content: "" !important;
   position: absolute !important;
   inset: 0 !important;
-  background: radial-gradient(circle at 85% 12%, rgba(191,145,64,.12), transparent 32%) !important;
+  background: radial-gradient(circle at 80% 10%, rgba(191,145,64,.10), transparent 36%) !important;
   pointer-events: none !important;
+}
+
+body.page-quienes main .miembro-foto::after {
+  content: attr(data-iniciales) !important;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: rgba(7,19,33,.55) !important;
+  font-family: "Sora", "Manrope", Arial, sans-serif !important;
+  font-weight: 800 !important;
+  letter-spacing: .06em !important;
 }
 
 body.page-quienes main .miembro-foto > img:first-child {
   position: relative !important;
   z-index: 1 !important;
   display: block !important;
-  max-width: 108px !important;
-  max-height: 128px !important;
-  width: auto !important;
-  height: auto !important;
-  object-fit: contain !important;
-  object-position: center bottom !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center top !important;
   border: 0 !important;
   border-radius: 0 !important;
   box-shadow: none !important;
   background: transparent !important;
+  color: transparent !important;
+  font-size: 0 !important;
 }
 
-body.page-quienes main .miembro-foto.foto-sin-imagen {
-  align-items: center !important;
-  padding: 8px !important;
-}
-
-body.page-quienes main .miembro-foto.foto-sin-imagen::after {
-  content: attr(data-iniciales) !important;
-  position: relative !important;
-  z-index: 1 !important;
-  width: 72px !important;
-  height: 72px !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  border-radius: 50% !important;
-  color: var(--azul-950) !important;
-  background: rgba(255,255,255,.92) !important;
-  border: 1px solid rgba(191,145,64,.22) !important;
-  font-family: "Sora", "Manrope", Arial, sans-serif !important;
-  font-weight: 800 !important;
-  letter-spacing: .04em !important;
+body.page-quienes main .miembro-foto.foto-sin-imagen > img:first-child {
+  display: none !important;
 }
 
 body.page-quienes main .miembro-logo {
   position: absolute !important;
-  top: 8px !important;
-  right: 8px !important;
-  bottom: auto !important;
-  width: 28px !important;
-  height: 28px !important;
-  padding: 5px !important;
+  right: 7px !important;
+  bottom: 7px !important;
+  top: auto !important;
+  width: 42px !important;
+  height: 22px !important;
+  padding: 4px 5px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  border-radius: 9px !important;
-  background: rgba(255,255,255,.96) !important;
+  border-radius: 8px !important;
+  background: rgba(255,255,255,.94) !important;
   border: 1px solid rgba(18,37,64,.08) !important;
-  box-shadow: 0 7px 16px rgba(7,19,33,.12) !important;
+  box-shadow: 0 6px 14px rgba(7,19,33,.13) !important;
   z-index: 3 !important;
 }
 
@@ -2642,16 +2656,21 @@ body.page-quienes main .miembro-logo img {
 }
 
 body.page-quienes main .miembro-info {
-  width: 100% !important;
+  min-width: 0 !important;
   text-align: left !important;
+  padding-top: 2px !important;
 }
 
 body.page-quienes main .miembro-info h3 {
-  margin-bottom: 9px !important;
+  margin: 0 0 8px !important;
 }
 
 body.page-quienes main .miembro-info .cargo {
-  margin-bottom: 10px !important;
+  margin: 0 0 10px !important;
+}
+
+body.page-quienes main .miembro-info p {
+  margin: 0 !important;
 }
 
 @media (max-width: 1030px) {
@@ -2665,15 +2684,21 @@ body.page-quienes main .miembro-info .cargo {
     padding: 22px !important;
   }
 
-  body.page-quienes main .miembro-foto {
-    width: 112px !important;
-    height: 132px !important;
-    margin-bottom: 16px !important;
+  body.page-quienes main .miembro-body {
+    grid-template-columns: 86px minmax(0, 1fr) !important;
+    gap: 16px !important;
   }
 
-  body.page-quienes main .miembro-foto > img:first-child {
-    max-width: 96px !important;
-    max-height: 114px !important;
+  body.page-quienes main .miembro-foto {
+    width: 86px !important;
+    height: 98px !important;
+  }
+
+  body.page-quienes main .miembro-logo {
+    width: 34px !important;
+    height: 18px !important;
+    right: 6px !important;
+    bottom: 6px !important;
   }
 }
 
@@ -2744,7 +2769,7 @@ body.page-quienes main .miembro-info .cargo {
 </div>
 <div class="miembro-body">
 <figure class="miembro-foto" data-iniciales="CGJ">
-<img alt="Clara Guamán Jaramillo" onerror="this.style.display='none'; this.parentElement.classList.add('foto-sin-imagen');" src="imagenes/clara.png"/>
+<img alt="" onerror="this.style.display='none'; this.parentElement.classList.add('foto-sin-imagen');" src="imagenes/clara.png"/>
 <span class="miembro-logo"><img alt="NeoDat Consultores" src="Neo1.png"/></span>
 </figure>
 <div class="miembro-info">
@@ -2761,7 +2786,7 @@ body.page-quienes main .miembro-info .cargo {
 </div>
 <div class="miembro-body">
 <figure class="miembro-foto" data-iniciales="AAA">
-<img alt="Alfonso Abad Álvarez" onerror="this.style.display='none'; this.parentElement.classList.add('foto-sin-imagen');" src="imagenes/alfonso.png"/>
+<img alt="" onerror="this.style.display='none'; this.parentElement.classList.add('foto-sin-imagen');" src="imagenes/alfonso.png"/>
 <span class="miembro-logo"><img alt="NeoDat Consultores" src="Neo1.png"/></span>
 </figure>
 <div class="miembro-info">
@@ -2778,7 +2803,7 @@ body.page-quienes main .miembro-info .cargo {
 </div>
 <div class="miembro-body">
 <figure class="miembro-foto" data-iniciales="RJG">
-<img alt="Roberto Jácome Galarza" onerror="this.style.display='none'; this.parentElement.classList.add('foto-sin-imagen');" src="imagenes/roberto.png"/>
+<img alt="" onerror="this.style.display='none'; this.parentElement.classList.add('foto-sin-imagen');" src="imagenes/roberto.png"/>
 <span class="miembro-logo"><img alt="NeoDat Consultores" src="Neo1.png"/></span>
 </figure>
 <div class="miembro-info">
@@ -2795,7 +2820,7 @@ body.page-quienes main .miembro-info .cargo {
 </div>
 <div class="miembro-body">
 <figure class="miembro-foto" data-iniciales="DHC">
-<img alt="Darío Hurtado Cuenca" onerror="this.style.display='none'; this.parentElement.classList.add('foto-sin-imagen');" src="imagenes/dario.png"/>
+<img alt="" onerror="this.style.display='none'; this.parentElement.classList.add('foto-sin-imagen');" src="imagenes/dario.png"/>
 <span class="miembro-logo"><img alt="NeoDat Consultores" src="Neo1.png"/></span>
 </figure>
 <div class="miembro-info">
