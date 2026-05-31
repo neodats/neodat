@@ -2528,7 +2528,110 @@ main .impacto .btn {
 }
 
 
-  </style>
+  
+
+/* AJUSTE PROFESIONAL - FOTOS EQUIPO DIRECTIVO */
+body.page-quienes main .miembro {
+  padding: 26px !important;
+}
+
+body.page-quienes main .miembro-body {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  gap: 18px !important;
+}
+
+body.page-quienes main .miembro-foto {
+  position: relative !important;
+  width: 100% !important;
+  height: 220px !important;
+  margin: 0 !important;
+  padding: 18px 18px 14px !important;
+  display: flex !important;
+  align-items: flex-end !important;
+  justify-content: center !important;
+  border-radius: 18px !important;
+  border: 1px solid rgba(18,37,64,.08) !important;
+  background: linear-gradient(180deg, #fafbfd 0%, #f1f5f9 100%) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.8), 0 10px 24px rgba(10,27,51,.05) !important;
+  overflow: hidden !important;
+}
+
+body.page-quienes main .miembro-foto::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background: radial-gradient(circle at top right, rgba(191,145,64,.08), transparent 34%) !important;
+  pointer-events: none !important;
+}
+
+body.page-quienes main .miembro-foto > img:first-child {
+  position: relative !important;
+  z-index: 1 !important;
+  display: block !important;
+  max-width: 100% !important;
+  max-height: 172px !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain !important;
+  object-position: center bottom !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+body.page-quienes main .miembro-logo {
+  position: absolute !important;
+  top: 12px !important;
+  right: 12px !important;
+  bottom: auto !important;
+  width: 34px !important;
+  height: 34px !important;
+  padding: 6px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 10px !important;
+  background: rgba(255,255,255,.94) !important;
+  border: 1px solid rgba(18,37,64,.08) !important;
+  box-shadow: 0 8px 18px rgba(7,19,33,.10) !important;
+  z-index: 3 !important;
+}
+
+body.page-quienes main .miembro-logo img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+}
+
+body.page-quienes main .miembro-info {
+  width: 100% !important;
+}
+
+body.page-quienes main .miembro-info h3 {
+  margin-bottom: 10px !important;
+}
+
+@media (max-width: 720px) {
+  body.page-quienes main .miembro {
+    padding: 22px !important;
+  }
+
+  body.page-quienes main .miembro-foto {
+    height: 200px !important;
+  }
+
+  body.page-quienes main .miembro-foto > img:first-child {
+    max-height: 154px !important;
+  }
+}
+
+</style>
 </head>
 <body class="pagina-interna page-quienes">
 <div aria-label="Información corporativa" class="barra-superior">
@@ -2596,7 +2699,7 @@ main .impacto .btn {
 <div class="miembro-body">
 <figure class="miembro-foto">
 <img alt="Clara Guamán Jaramillo" src="imagenes/clara.png"/>
-<span class="miembro-logo"><img alt="NeoDat Consultores" src="logo.png"/></span>
+<span class="miembro-logo"><img alt="NeoDat Consultores" src="Neo1.png"/></span>
 </figure>
 <div class="miembro-info">
 <h3>Ing. Clara Guamán Jaramillo, Mgs.</h3>
@@ -2613,7 +2716,7 @@ main .impacto .btn {
 <div class="miembro-body">
 <figure class="miembro-foto">
 <img alt="Alfonso Abad Álvarez" src="imagenes/alfonso.png"/>
-<span class="miembro-logo"><img alt="NeoDat Consultores" src="logo.png"/></span>
+<span class="miembro-logo"><img alt="NeoDat Consultores" src="Neo1.png"/></span>
 </figure>
 <div class="miembro-info">
 <h3>Ing. Alfonso Abad Álvarez, Mgs.</h3>
@@ -2630,7 +2733,7 @@ main .impacto .btn {
 <div class="miembro-body">
 <figure class="miembro-foto">
 <img alt="Roberto Jácome Galarza" src="imagenes/roberto.png"/>
-<span class="miembro-logo"><img alt="NeoDat Consultores" src="logo.png"/></span>
+<span class="miembro-logo"><img alt="NeoDat Consultores" src="Neo1.png"/></span>
 </figure>
 <div class="miembro-info">
 <h3>Ing. Roberto Jácome Galarza, Ph.D.</h3>
@@ -2647,7 +2750,7 @@ main .impacto .btn {
 <div class="miembro-body">
 <figure class="miembro-foto">
 <img alt="Darío Hurtado Cuenca" src="imagenes/dario.png"/>
-<span class="miembro-logo"><img alt="NeoDat Consultores" src="logo.png"/></span>
+<span class="miembro-logo"><img alt="NeoDat Consultores" src="Neo1.png"/></span>
 </figure>
 <div class="miembro-info">
 <h3>Econ. Darío Hurtado Cuenca, Mgs.</h3>
