@@ -7717,55 +7717,152 @@
       );
     }
 
-    function createExcelWorkbook(rows) {
-      const currencyColumns = new Set([10, 24, 25, 31, 32, 33, 37, 38, 39]);
-      const decimalTwoColumns = new Set([29]);
-      const decimalOneColumns = new Set([6, 16, 17, 19]);
-      const integerColumns = new Set([18, 26, 30, 41]);
+    function normalizeExcelText(value, preserveLineBreaks = false) {
+      let text = String(value ?? "")
+        .replace(/\t+/g, " · ")
+        .replace(/\r\n?/g, "\n")
+        .replace(/[ ]{2,}/g, " ");
+      if (!preserveLineBreaks) text = text.replace(/\n+/g, " · ");
+      return text.trim();
+    }
 
-      const columnWidths = [
-        16, 18, 12, 14, 14, 20, 16, 17, 24, 15, 17, 22,
-        14, 13, 14, 13, 17, 16, 14, 17, 17, 18, 18, 35,
-        20, 20, 23, 20, 20, 21, 14, 20, 20, 20, 20, 35,
-        22, 20, 20, 20, 20, 15, 42, 60
-      ];
+    function excelDateSerial(value) {
+      if (value instanceof Date && !Number.isNaN(value.getTime())) {
+        return Date.UTC(value.getFullYear(), value.getMonth(), value.getDate()) / 86400000 + 25569;
+      }
+      const text = String(value || "").trim();
+      let match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(text);
+      if (match) {
+        return Date.UTC(Number(match[1]), Number(match[2]) - 1, Number(match[3])) / 86400000 + 25569;
+      }
+      match = /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(text);
+      if (match) {
+        return Date.UTC(Number(match[3]), Number(match[2]) - 1, Number(match[1])) / 86400000 + 25569;
+      }
+      return NaN;
+    }
 
-      const cellXml = (value, rowIndex, columnIndex, styleId = 0) => {
-        const reference = `${excelColumnName(columnIndex)}${rowIndex + 1}`;
-        const style = styleId ? ` s="${styleId}"` : "";
-        if (value === "" || value === null || value === undefined) {
-          return `<c r="${reference}"${style}/>`;
-        }
-        if (typeof value === "number" && Number.isFinite(value)) {
-          return `<c r="${reference}"${style}><v>${value}</v></c>`;
-        }
-        return `<c r="${reference}" t="inlineStr"${style}><is><t xml:space="preserve">${escapeXmlValue(value)}</t></is></c>`;
+    function excelTimeSerial(value) {
+      if (value instanceof Date && !Number.isNaN(value.getTime())) {
+        return (value.getHours() * 3600 + value.getMinutes() * 60 + value.getSeconds()) / 86400;
+      }
+      const match = /^(\d{1,2}):(\d{2})(?::(\d{2}))?$/.exec(String(value || "").trim());
+      if (!match) return NaN;
+      const hours = Number(match[1]);
+      const minutes = Number(match[2]);
+      const seconds = Number(match[3] || 0);
+      if (hours > 23 || minutes > 59 || seconds > 59) return NaN;
+      return (hours * 3600 + minutes * 60 + seconds) / 86400;
+    }
+
+    function excelDateTimeSerial(value) {
+      if (value instanceof Date && !Number.isNaN(value.getTime())) {
+        return excelDateSerial(value) + excelTimeSerial(value);
+      }
+      const text = String(value || "").trim();
+      let match = /^(\d{2}\/\d{2}\/\d{4})\s+(\d{1,2}:\d{2}(?::\d{2})?)$/.exec(text);
+      if (match) return excelDateSerial(match[1]) + excelTimeSerial(match[2]);
+      match = /^(\d{4}-\d{2}-\d{2})[ T](\d{1,2}:\d{2}(?::\d{2})?)/.exec(text);
+      if (match) return excelDateSerial(match[1]) + excelTimeSerial(match[2]);
+      const parsed = new Date(text);
+      if (!Number.isNaN(parsed.getTime())) return excelDateSerial(parsed) + excelTimeSerial(parsed);
+      return NaN;
+    }
+
+    function safeExcelSheetName(value, fallback) {
+      const cleaned = String(value || fallback || "Hoja")
+        .replace(/[\\\/?*\[\]:]/g, " ")
+        .replace(/\s+/g, " ")
+        .trim()
+        .slice(0, 31);
+      return cleaned || fallback || "Hoja";
+    }
+
+    function createExcelWorkbook(sheets) {
+      const styleByType = {
+        currency: 2,
+        decimal2: 3,
+        decimal1: 4,
+        integer: 5,
+        percentage: 6,
+        date: 7,
+        time: 8,
+        datetime: 9,
+        wrap: 10
       };
 
-      const sheetRows = rows.map((row, rowIndex) => {
-        const cells = row.map((value, columnIndex) => {
-          if (rowIndex === 0) return cellXml(value, rowIndex, columnIndex, 1);
-          if (currencyColumns.has(columnIndex)) return cellXml(value, rowIndex, columnIndex, 2);
-          if (decimalTwoColumns.has(columnIndex)) return cellXml(value, rowIndex, columnIndex, 3);
-          if (decimalOneColumns.has(columnIndex)) return cellXml(value, rowIndex, columnIndex, 4);
-          if (integerColumns.has(columnIndex)) return cellXml(value, rowIndex, columnIndex, 5);
-          return cellXml(value, rowIndex, columnIndex, 0);
+      const usedNames = new Set();
+      const workbookSheets = sheets.map((sheet, index) => {
+        const baseName = safeExcelSheetName(sheet.name, `Hoja ${index + 1}`);
+        let name = baseName;
+        let suffix = 2;
+        while (usedNames.has(name.toLowerCase())) {
+          const ending = ` ${suffix}`;
+          name = `${baseName.slice(0, 31 - ending.length)}${ending}`;
+          suffix += 1;
+        }
+        usedNames.add(name.toLowerCase());
+        return {
+          name,
+          headers: Array.isArray(sheet.headers) ? sheet.headers : [],
+          rows: Array.isArray(sheet.rows) ? sheet.rows : [],
+          types: Array.isArray(sheet.types) ? sheet.types : [],
+          widths: Array.isArray(sheet.widths) ? sheet.widths : [],
+          dataRowHeight: Number(sheet.dataRowHeight) || 0
+        };
+      });
+
+      const cellXml = (value, rowIndex, columnIndex, type = "text", header = false) => {
+        const reference = `${excelColumnName(columnIndex)}${rowIndex + 1}`;
+        const styleId = header ? 1 : (styleByType[type] || 0);
+        const style = styleId ? ` s="${styleId}"` : "";
+        if (value === "" || value === null || value === undefined) return `<c r="${reference}"${style}/>`;
+
+        let numericValue = NaN;
+        if (type === "date") numericValue = excelDateSerial(value);
+        else if (type === "time") numericValue = excelTimeSerial(value);
+        else if (type === "datetime") numericValue = excelDateTimeSerial(value);
+        else if (["currency", "decimal2", "decimal1", "integer", "percentage"].includes(type)) {
+          numericValue = Number(value);
+          if (type === "percentage" && Number.isFinite(numericValue)) numericValue /= 100;
+        } else if (typeof value === "number" && Number.isFinite(value)) {
+          numericValue = value;
+        }
+
+        if (Number.isFinite(numericValue)) {
+          return `<c r="${reference}"${style}><v>${numericValue}</v></c>`;
+        }
+
+        const preserveLineBreaks = type === "wrap";
+        const textValue = normalizeExcelText(value, preserveLineBreaks);
+        return `<c r="${reference}" t="inlineStr"${style}><is><t xml:space="preserve">${escapeXmlValue(textValue)}</t></is></c>`;
+      };
+
+      const worksheetXmls = workbookSheets.map(sheet => {
+        const allRows = [sheet.headers, ...sheet.rows];
+        const columnCount = Math.max(1, sheet.headers.length, ...sheet.rows.map(row => row.length));
+        const lastColumn = excelColumnName(columnCount - 1);
+        const lastRow = Math.max(1, allRows.length);
+        const sheetRows = allRows.map((row, rowIndex) => {
+          const cells = Array.from({ length: columnCount }, (_, columnIndex) => (
+            cellXml(row[columnIndex], rowIndex, columnIndex, sheet.types[columnIndex] || "text", rowIndex === 0)
+          )).join("");
+          const height = rowIndex === 0
+            ? ' ht="30" customHeight="1"'
+            : (sheet.dataRowHeight ? ` ht="${sheet.dataRowHeight}" customHeight="1"` : "");
+          return `<row r="${rowIndex + 1}"${height}>${cells}</row>`;
         }).join("");
-        return `<row r="${rowIndex + 1}">${cells}</row>`;
-      }).join("");
 
-      const columnsXml = columnWidths.map((width, index) => (
-        `<col min="${index + 1}" max="${index + 1}" width="${width}" customWidth="1"/>`
-      )).join("");
+        const columnsXml = Array.from({ length: columnCount }, (_, index) => {
+          const width = Math.max(8, Number(sheet.widths[index]) || 15);
+          return `<col min="${index + 1}" max="${index + 1}" width="${width}" customWidth="1"/>`;
+        }).join("");
 
-      const lastColumn = excelColumnName(rows[0].length - 1);
-      const lastRow = rows.length;
-
-      const worksheetXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+        return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">
   <dimension ref="A1:${lastColumn}${lastRow}"/>
   <sheetViews>
-    <sheetView workbookViewId="0">
+    <sheetView workbookViewId="0" showGridLines="1">
       <pane ySplit="1" topLeftCell="A2" activePane="bottomLeft" state="frozen"/>
     </sheetView>
   </sheetViews>
@@ -7773,13 +7870,19 @@
   <cols>${columnsXml}</cols>
   <sheetData>${sheetRows}</sheetData>
   <autoFilter ref="A1:${lastColumn}${lastRow}"/>
+  <pageMargins left="0.3" right="0.3" top="0.5" bottom="0.5" header="0.2" footer="0.2"/>
 </worksheet>`;
+      });
 
       const stylesXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <styleSheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">
-  <numFmts count="2">
+  <numFmts count="6">
     <numFmt numFmtId="164" formatCode="[$$-409]#,##0.00;[Red]-[$$-409]#,##0.00"/>
     <numFmt numFmtId="165" formatCode="0.0"/>
+    <numFmt numFmtId="166" formatCode="0.00%"/>
+    <numFmt numFmtId="167" formatCode="dd/mm/yyyy"/>
+    <numFmt numFmtId="168" formatCode="hh:mm"/>
+    <numFmt numFmtId="169" formatCode="dd/mm/yyyy hh:mm"/>
   </numFmts>
   <fonts count="2">
     <font><sz val="11"/><name val="Calibri"/><family val="2"/></font>
@@ -7796,33 +7899,33 @@
   <cellStyleXfs count="1">
     <xf numFmtId="0" fontId="0" fillId="0" borderId="0"/>
   </cellStyleXfs>
-  <cellXfs count="6">
+  <cellXfs count="11">
     <xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0"/>
-    <xf numFmtId="0" fontId="1" fillId="2" borderId="0" xfId="0" applyFont="1" applyFill="1" applyAlignment="1">
-      <alignment horizontal="center" vertical="center" wrapText="1"/>
-    </xf>
+    <xf numFmtId="0" fontId="1" fillId="2" borderId="0" xfId="0" applyFont="1" applyFill="1" applyAlignment="1"><alignment horizontal="center" vertical="center" wrapText="1"/></xf>
     <xf numFmtId="164" fontId="0" fillId="0" borderId="0" xfId="0" applyNumberFormat="1"/>
     <xf numFmtId="2" fontId="0" fillId="0" borderId="0" xfId="0" applyNumberFormat="1"/>
     <xf numFmtId="165" fontId="0" fillId="0" borderId="0" xfId="0" applyNumberFormat="1"/>
     <xf numFmtId="1" fontId="0" fillId="0" borderId="0" xfId="0" applyNumberFormat="1"/>
+    <xf numFmtId="166" fontId="0" fillId="0" borderId="0" xfId="0" applyNumberFormat="1"/>
+    <xf numFmtId="167" fontId="0" fillId="0" borderId="0" xfId="0" applyNumberFormat="1"/>
+    <xf numFmtId="168" fontId="0" fillId="0" borderId="0" xfId="0" applyNumberFormat="1"/>
+    <xf numFmtId="169" fontId="0" fillId="0" borderId="0" xfId="0" applyNumberFormat="1"/>
+    <xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0" applyAlignment="1"><alignment vertical="top" wrapText="1"/></xf>
   </cellXfs>
-  <cellStyles count="1">
-    <cellStyle name="Normal" xfId="0" builtinId="0"/>
-  </cellStyles>
+  <cellStyles count="1"><cellStyle name="Normal" xfId="0" builtinId="0"/></cellStyles>
 </styleSheet>`;
 
       const workbookXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"
           xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">
-  <sheets>
-    <sheet name="Registros" sheetId="1" r:id="rId1"/>
-  </sheets>
+  <workbookPr date1904="0"/>
+  <sheets>${workbookSheets.map((sheet, index) => `<sheet name="${escapeXmlValue(sheet.name)}" sheetId="${index + 1}" r:id="rId${index + 1}"/>`).join("")}</sheets>
 </workbook>`;
 
       const workbookRelationshipsXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
-  <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet1.xml"/>
-  <Relationship Id="rId2" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/>
+  ${workbookSheets.map((_, index) => `<Relationship Id="rId${index + 1}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet${index + 1}.xml"/>`).join("\n  ")}
+  <Relationship Id="rId${workbookSheets.length + 1}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/>
 </Relationships>`;
 
       const packageRelationshipsXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -7835,18 +7938,21 @@
   <Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>
   <Default Extension="xml" ContentType="application/xml"/>
   <Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/>
-  <Override PartName="/xl/worksheets/sheet1.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/>
+  ${workbookSheets.map((_, index) => `<Override PartName="/xl/worksheets/sheet${index + 1}.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/>`).join("\n  ")}
   <Override PartName="/xl/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml"/>
 </Types>`;
 
-      return createStoredZip([
+      const files = [
         { name: "[Content_Types].xml", data: contentTypesXml },
         { name: "_rels/.rels", data: packageRelationshipsXml },
         { name: "xl/workbook.xml", data: workbookXml },
         { name: "xl/_rels/workbook.xml.rels", data: workbookRelationshipsXml },
-        { name: "xl/styles.xml", data: stylesXml },
-        { name: "xl/worksheets/sheet1.xml", data: worksheetXml }
-      ]);
+        { name: "xl/styles.xml", data: stylesXml }
+      ];
+      worksheetXmls.forEach((worksheetXml, index) => {
+        files.push({ name: `xl/worksheets/sheet${index + 1}.xml`, data: worksheetXml });
+      });
+      return createStoredZip(files);
     }
 
     function saveModel() {
@@ -7896,71 +8002,347 @@
         return Number.isFinite(number) ? number : "";
       };
 
-      const rows = [
-        [
-          "persona", "tipo_usuario", "con_cita", "prioridad", "canal", "revision_cumplimiento", "satisfaccion_1_5", "categoria_nps", "tramite_financiero", "codigo_tramite", "monto_usd", "tipo_credito",
-          "fecha_ingreso", "hora_ingreso", "fecha_salida", "hora_salida", "duracion_minutos", "espera_minutos", "eventos_demora", "atencion_minutos", "estado_emocional", "estado_final",
-          "resultado_credito", "motivo_credito", "ingreso_mensual_usd", "deuda_mensual_usd",
-          "antiguedad_laboral_meses", "documentos_completos", "historial_crediticio",
-          "tasa_interes_anual_pct", "plazo_meses", "cuota_mensual_usd", "interes_total_usd", "total_pagar_usd",
-          "resultado_operacion", "motivo_operacion", "direccion_transferencia",
-          "efecto_capital_usd", "capital_antes_usd", "capital_despues_usd", "movimiento_capital",
-          "areas_visitadas", "ruta", "detalle_etapas"
-        ]
+      const outcomeLabel = value => {
+        const labels = {
+          approved: "Aprobado",
+          rejected: "Rechazado",
+          completed: "Completado",
+          abandoned: "Abandonado",
+          current: "Vigente",
+          overdue: "En mora",
+          incoming: "Entrante",
+          outgoing: "Saliente"
+        };
+        return labels[String(value || "").toLowerCase()] || normalizeExcelText(value);
+      };
+
+      const timelineDate = (item, record) => {
+        if (item?.date) return item.date;
+        const text = String(item?.dateTime || "");
+        let match = /^(\d{2})\/(\d{2})\/(\d{4})/.exec(text);
+        if (match) return `${match[3]}-${match[2]}-${match[1]}`;
+        match = /^(\d{4}-\d{2}-\d{2})/.exec(text);
+        return match ? match[1] : (record.startDate || "");
+      };
+
+      const timelineClock = item => {
+        if (item?.clock) return item.clock;
+        const match = /(?:\s|T)(\d{1,2}:\d{2})(?::\d{2})?/.exec(String(item?.dateTime || ""));
+        return match ? match[1] : "";
+      };
+
+      const timelineDateTime = (item, record) => {
+        if (item?.dateTime) return item.dateTime;
+        const date = timelineDate(item, record);
+        const clock = timelineClock(item);
+        return date && clock ? `${date} ${clock}` : "";
+      };
+
+      const timelineKnownKeys = new Set([
+        "event", "date", "clock", "dateTime", "minute", "time", "area", "department", "procedure",
+        "movement", "amount", "effect", "capitalBefore", "capitalAfter", "creditType", "creditTypeLabel",
+        "outcome", "reason", "annualInterestRate", "termMonths", "monthlyPayment", "totalInterest",
+        "totalPayable", "projectedDebtRatio", "waitedMinutes", "targetMinutes"
+      ]);
+
+      const additionalTimelineData = item => Object.entries(item || {})
+        .filter(([key, value]) => !timelineKnownKeys.has(key) && value !== "" && value !== null && value !== undefined)
+        .map(([key, value]) => {
+          const display = typeof value === "object" ? JSON.stringify(value) : value;
+          return `${key}: ${normalizeExcelText(display)}`;
+        })
+        .join(" | ");
+
+      const timelineSummary = record => (record.timeline || []).map((item, index) => {
+        const parts = [
+          `${index + 1}.`,
+          timelineDateTime(item, record),
+          item.event,
+          item.area,
+          item.department,
+          item.procedure,
+          item.movement,
+          item.reason
+        ].filter(Boolean);
+        return normalizeExcelText(parts.join(" | "));
+      }).join("\n");
+
+      const recordColumns = [
+        ["persona", "text", 16, record => record.personId],
+        ["tipo_usuario", "text", 18, record => record.personType],
+        ["con_cita", "text", 12, record => record.hasAppointment || "No"],
+        ["prioridad", "text", 14, record => record.priorityLevel || "Regular"],
+        ["canal", "text", 14, record => record.serviceChannel || "Presencial"],
+        ["revision_cumplimiento", "text", 20, record => record.complianceFlag || "No"],
+        ["satisfaccion_1_5", "decimal1", 16, record => numberOrBlank(record.satisfactionScore)],
+        ["categoria_nps", "text", 17, record => record.satisfactionCategory || ""],
+        ["tramite_financiero", "text", 25, record => record.transactionLabel || "No especificado"],
+        ["codigo_tramite", "text", 15, record => record.transactionCode || ""],
+        ["monto_usd", "currency", 17, record => numberOrBlank(record.amountUsd)],
+        ["tipo_credito", "text", 22, record => record.creditTypeLabel || ""],
+        ["fecha_ingreso", "date", 14, record => record.startDate || formatDateIso(simulationDate(record.startTime))],
+        ["hora_ingreso", "time", 13, record => record.startClock || simulationClock(record.startTime)],
+        ["fecha_salida", "date", 14, record => record.endDate || formatDateIso(simulationDate(record.endTime))],
+        ["hora_salida", "time", 13, record => record.endClock || simulationClock(record.endTime)],
+        ["duracion_minutos", "decimal1", 17, record => numberOrBlank(record.durationMinutes)],
+        ["espera_minutos", "decimal1", 16, record => numberOrBlank(record.waitingMinutes)],
+        ["eventos_demora", "integer", 14, record => numberOrBlank(record.delayEvents)],
+        ["atencion_minutos", "decimal1", 17, record => numberOrBlank(record.serviceMinutes)],
+        ["estado_emocional", "text", 17, record => record.mood || "Tranquilo"],
+        ["estado_final", "text", 20, record => record.finalStatus || ""],
+        ["resultado_credito", "text", 18, record => outcomeLabel(record.creditOutcome)],
+        ["motivo_credito", "wrap", 38, record => record.creditReason || ""],
+        ["ingreso_mensual_usd", "currency", 20, record => numberOrBlank(record.monthlyIncome)],
+        ["deuda_mensual_usd", "currency", 20, record => numberOrBlank(record.currentMonthlyDebt)],
+        ["antiguedad_laboral_meses", "integer", 23, record => numberOrBlank(record.employmentMonths)],
+        ["documentos_completos", "text", 20, record => record.documentsComplete || ""],
+        ["historial_crediticio", "text", 20, record => record.creditHistory || ""],
+        ["tasa_interes_anual_pct", "percentage", 21, record => record.creditAnnualInterestRate ? numberOrBlank(record.creditAnnualInterestRate) : ""],
+        ["plazo_meses", "integer", 14, record => numberOrBlank(record.creditTermMonths)],
+        ["cuota_mensual_usd", "currency", 20, record => record.creditMonthlyPayment ? numberOrBlank(record.creditMonthlyPayment) : ""],
+        ["interes_total_usd", "currency", 20, record => record.creditTotalInterest ? numberOrBlank(record.creditTotalInterest) : ""],
+        ["total_pagar_usd", "currency", 20, record => record.creditTotalPayable ? numberOrBlank(record.creditTotalPayable) : ""],
+        ["resultado_operacion", "text", 20, record => outcomeLabel(record.operationOutcome)],
+        ["motivo_operacion", "wrap", 38, record => record.operationReason || ""],
+        ["direccion_transferencia", "text", 22, record => outcomeLabel(record.transferDirection)],
+        ["efecto_capital_usd", "currency", 20, record => record.capitalMovement ? numberOrBlank(record.capitalEffect) : ""],
+        ["capital_antes_usd", "currency", 20, record => numberOrBlank(record.capitalBefore)],
+        ["capital_despues_usd", "currency", 20, record => numberOrBlank(record.capitalAfter)],
+        ["movimiento_capital", "text", 22, record => record.capitalMovement || ""],
+        ["areas_visitadas", "integer", 15, record => numberOrBlank(record.areasVisited)],
+        ["ruta", "wrap", 48, record => record.route || ""],
+        ["total_etapas", "integer", 14, record => Array.isArray(record.timeline) ? record.timeline.length : 0],
+        ["detalle_etapas", "wrap", 75, record => timelineSummary(record)]
       ];
 
+      const recordRows = state.records.map(record => recordColumns.map(column => column[3](record)));
+
+      const stageHeaders = [
+        "persona", "numero_etapa", "evento", "fecha", "hora", "fecha_hora", "minuto_simulacion",
+        "area", "departamento", "procedimiento", "movimiento", "monto_usd", "efecto_capital_usd",
+        "capital_antes_usd", "capital_despues_usd", "tipo_credito", "resultado", "motivo",
+        "tasa_interes_anual_pct", "plazo_meses", "cuota_mensual_usd", "interes_total_usd",
+        "total_pagar_usd", "ratio_endeudamiento_pct", "espera_minutos", "objetivo_espera_minutos",
+        "datos_adicionales"
+      ];
+      const stageTypes = [
+        "text", "integer", "text", "date", "time", "datetime", "decimal1",
+        "text", "text", "wrap", "text", "currency", "currency", "currency", "currency",
+        "text", "text", "wrap", "percentage", "integer", "currency", "currency", "currency",
+        "percentage", "decimal1", "decimal1", "wrap"
+      ];
+      const stageWidths = [
+        16, 14, 27, 14, 12, 20, 18, 24, 22, 42, 24, 17, 20, 20, 20, 24, 16, 40,
+        22, 14, 20, 20, 20, 24, 17, 22, 45
+      ];
+      const stageRows = [];
       state.records.forEach(record => {
-        rows.push([
-          record.personId,
-          record.personType,
-          record.hasAppointment || "No",
-          record.priorityLevel || "Regular",
-          record.serviceChannel || "Presencial",
-          record.complianceFlag || "No",
-          numberOrBlank(record.satisfactionScore || 0),
-          record.satisfactionCategory || "",
-          record.transactionLabel || "No especificado",
-          record.transactionCode || "",
-          numberOrBlank(record.amountUsd || 0),
-          record.creditTypeLabel || "",
-          record.startDate || formatDateIso(simulationDate(record.startTime)),
-          record.startClock || simulationClock(record.startTime),
-          record.endDate || formatDateIso(simulationDate(record.endTime)),
-          record.endClock || simulationClock(record.endTime),
-          numberOrBlank(record.durationMinutes || 0),
-          numberOrBlank(record.waitingMinutes || 0),
-          numberOrBlank(record.delayEvents || 0),
-          numberOrBlank(record.serviceMinutes || 0),
-          record.mood || "Tranquilo",
-          record.finalStatus,
-          record.creditOutcome === "approved" ? "Aprobado" : (record.creditOutcome === "rejected" ? "Rechazado" : ""),
-          record.creditReason || "",
-          numberOrBlank(record.monthlyIncome),
-          numberOrBlank(record.currentMonthlyDebt),
-          numberOrBlank(record.employmentMonths),
-          record.documentsComplete,
-          record.creditHistory,
-          numberOrBlank(record.creditAnnualInterestRate || 0),
-          numberOrBlank(record.creditTermMonths),
-          numberOrBlank(record.creditMonthlyPayment || 0),
-          numberOrBlank(record.creditTotalInterest || 0),
-          numberOrBlank(record.creditTotalPayable || 0),
-          record.operationOutcome || "",
-          record.operationReason || "",
-          record.transferDirection || "",
-          numberOrBlank(record.capitalEffect || 0),
-          numberOrBlank(record.capitalBefore),
-          numberOrBlank(record.capitalAfter),
-          record.capitalMovement || "",
-          numberOrBlank(record.areasVisited || 0),
-          record.route,
-          JSON.stringify(record.timeline || [])
-        ]);
+        (record.timeline || []).forEach((item, index) => {
+          stageRows.push([
+            record.personId,
+            index + 1,
+            item.event || "",
+            timelineDate(item, record),
+            timelineClock(item),
+            timelineDateTime(item, record),
+            numberOrBlank(item.minute ?? item.time),
+            item.area || "",
+            item.department || "",
+            item.procedure || "",
+            item.movement || "",
+            numberOrBlank(item.amount),
+            numberOrBlank(item.effect),
+            numberOrBlank(item.capitalBefore),
+            numberOrBlank(item.capitalAfter),
+            item.creditTypeLabel || item.creditType || "",
+            outcomeLabel(item.outcome),
+            item.reason || "",
+            numberOrBlank(item.annualInterestRate),
+            numberOrBlank(item.termMonths),
+            numberOrBlank(item.monthlyPayment),
+            numberOrBlank(item.totalInterest),
+            numberOrBlank(item.totalPayable),
+            numberOrBlank(item.projectedDebtRatio),
+            numberOrBlank(item.waitedMinutes),
+            numberOrBlank(item.targetMinutes),
+            additionalTimelineData(item)
+          ]);
+        });
       });
 
-      const workbook = createExcelWorkbook(rows);
-      downloadBlob(workbook, "registros-simulacion.xlsx");
-      showToast(`${state.records.length.toLocaleString("es-EC")} registros exportados en Excel con formato monetario.`);
+      const ledgerRows = state.capitalLedger.map(item => [
+        item.personId || "",
+        getTransactionConfig(item.transactionType).label || item.transactionType || "",
+        item.movementType || "",
+        item.description || "",
+        numberOrBlank(item.amount),
+        numberOrBlank(item.before),
+        numberOrBlank(item.after),
+        item.date || "",
+        item.clock || "",
+        item.dateTime || "",
+        numberOrBlank(item.minute)
+      ]);
+
+      const loanRows = state.loanAccounts.map(loan => [
+        loan.id || "",
+        loan.personId || "",
+        CREDIT_TYPES[loan.creditType]?.label || loan.creditType || "",
+        numberOrBlank(loan.principal),
+        numberOrBlank(loan.outstandingPrincipal),
+        numberOrBlank(loan.annualRate),
+        numberOrBlank(loan.termMonths),
+        numberOrBlank(loan.monthlyPayment),
+        loan.startDate || "",
+        numberOrBlank(loan.installmentsProcessed),
+        numberOrBlank(loan.overdueAmount),
+        outcomeLabel(loan.status)
+      ]);
+
+      const recordsCount = state.records.length;
+      const averageWait = recordsCount
+        ? state.records.reduce((sum, record) => sum + Number(record.waitingMinutes || 0), 0) / recordsCount
+        : 0;
+      const satisfaction = state.metrics.satisfactionSamples
+        ? state.metrics.satisfactionTotal / state.metrics.satisfactionSamples
+        : 0;
+      const nps = state.metrics.satisfactionSamples
+        ? (state.metrics.promoters - state.metrics.detractors) / state.metrics.satisfactionSamples * 100
+        : 0;
+      const utilization = state.metrics.staffCapacityMinutes
+        ? state.metrics.staffBusyMinutes / state.metrics.staffCapacityMinutes * 100
+        : 0;
+      const currentSummary = {
+        name: "Ejecución actual",
+        savedAt: new Date(),
+        staff: totalStaff(),
+        completed: state.metrics.completed,
+        avgWait: averageWait,
+        angry: state.metrics.angryUsers,
+        abandoned: state.metrics.abandonedUsers,
+        capital: Number(state.scenario.currentCapital) || 0,
+        equity: estimatedEquity(),
+        creditApproved: state.metrics.creditApproved,
+        creditRejected: state.metrics.creditRejected,
+        overduePortfolio: state.financial.overduePortfolio,
+        staffCost: state.financial.staffCost,
+        satisfaction,
+        nps,
+        utilization
+      };
+      const summaryRows = [currentSummary, ...state.scenarioSnapshots].map((item, index) => [
+        index === 0 ? "Actual" : "Guardado",
+        item.name || `Escenario ${index + 1}`,
+        item.savedAt || new Date(),
+        numberOrBlank(item.staff),
+        numberOrBlank(item.completed),
+        numberOrBlank(item.avgWait),
+        numberOrBlank(item.angry),
+        numberOrBlank(item.abandoned),
+        numberOrBlank(item.capital),
+        numberOrBlank(item.equity),
+        numberOrBlank(item.creditApproved),
+        numberOrBlank(item.creditRejected),
+        numberOrBlank(item.overduePortfolio),
+        numberOrBlank(item.staffCost),
+        numberOrBlank(item.satisfaction),
+        numberOrBlank(item.nps),
+        numberOrBlank(item.utilization)
+      ]);
+
+      const configRows = [];
+      const addConfig = (section, parameter, { text = "", usd = "", pct = "", number = "", date = "", time = "" } = {}) => {
+        configRows.push([section, parameter, text, usd, pct, number, date, time]);
+      };
+      addConfig("Escenario", "Nombre de la entidad", { text: state.scenario.businessName });
+      addConfig("Escenario", "Capital inicial", { usd: state.scenario.initialCapital });
+      addConfig("Escenario", "Capital actual", { usd: state.scenario.currentCapital });
+      addConfig("Escenario", "Fecha inicial", { date: state.scenario.startDate });
+      addConfig("Escenario", "Fecha final", { date: state.scenario.endDate });
+      addConfig("Escenario", "Unidad de simulación", { text: state.scenario.simulationUnit });
+      addConfig("Escenario", "Duración de simulación", { number: state.scenario.simulationLength });
+      addConfig("Escenario", "Días operativos", { text: normalizedOperatingDays().map(day => ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"][day] || day).join(", ") });
+      addConfig("Escenario", "Hora de apertura", { time: state.scenario.openingTime });
+      addConfig("Escenario", "Hora de cierre", { time: state.scenario.closingTime });
+      addConfig("Escenario", "Reserva mínima", { usd: state.scenario.minimumReserve });
+      addConfig("Escenario", "Efectivo inicial en bóveda", { usd: state.scenario.initialVaultCash });
+      addConfig("Escenario", "Efectivo inicial en cajas", { usd: state.scenario.initialCashDesk });
+      addConfig("Escenario", "Tasa de comisión", { pct: state.scenario.commissionRate });
+      addConfig("Escenario", "Tasa mensual de mora", { pct: state.scenario.monthlyDefaultRate });
+      addConfig("Escenario", "Tasa de recuperación", { pct: state.scenario.recoveryRate });
+      addConfig("Escenario", "Usuarios con cita", { pct: state.scenario.appointmentRate });
+      addConfig("Escenario", "Usuarios prioritarios", { pct: state.scenario.priorityRate });
+      addConfig("Escenario", "Participación digital", { pct: state.scenario.digitalShare });
+      addConfig("Escenario", "Probabilidad diaria de interrupción", { pct: state.scenario.dailyOutageRate });
+      addConfig("Escenario", "Duración de interrupción en minutos", { number: state.scenario.outageMinutes });
+      addConfig("Escenario", "Umbral de cumplimiento", { usd: state.scenario.amlThreshold });
+      Object.entries(state.financial).forEach(([key, value]) => {
+        const labels = {
+          cashDesk: "Efectivo en cajas",
+          vaultCash: "Efectivo en bóveda",
+          clientDeposits: "Depósitos de clientes",
+          investmentLiability: "Obligaciones por inversiones",
+          loanPortfolio: "Cartera de crédito",
+          overduePortfolio: "Cartera en mora",
+          recoveredTotal: "Total recuperado",
+          commissionIncome: "Ingresos por comisiones",
+          interestCollected: "Intereses cobrados",
+          staffCost: "Costo de personal",
+          operatingCost: "Costo operativo"
+        };
+        addConfig("Situación financiera", labels[key] || key, { usd: value });
+      });
+
+      const workbook = createExcelWorkbook([
+        {
+          name: "Registros",
+          headers: recordColumns.map(column => column[0]),
+          rows: recordRows,
+          types: recordColumns.map(column => column[1]),
+          widths: recordColumns.map(column => column[2]),
+          dataRowHeight: 54
+        },
+        {
+          name: "Etapas",
+          headers: stageHeaders,
+          rows: stageRows,
+          types: stageTypes,
+          widths: stageWidths,
+          dataRowHeight: 36
+        },
+        {
+          name: "Movimientos",
+          headers: ["persona", "tramite", "tipo_movimiento", "descripcion", "monto_usd", "capital_antes_usd", "capital_despues_usd", "fecha", "hora", "fecha_hora", "minuto_simulacion"],
+          rows: ledgerRows,
+          types: ["text", "text", "text", "wrap", "currency", "currency", "currency", "date", "time", "datetime", "decimal1"],
+          widths: [16, 25, 20, 35, 18, 20, 20, 14, 12, 20, 18],
+          dataRowHeight: 30
+        },
+        {
+          name: "Creditos",
+          headers: ["id_credito", "persona", "tipo_credito", "principal_usd", "saldo_principal_usd", "tasa_anual_pct", "plazo_meses", "cuota_mensual_usd", "fecha_inicio", "cuotas_procesadas", "mora_usd", "estado"],
+          rows: loanRows,
+          types: ["text", "text", "text", "currency", "currency", "percentage", "integer", "currency", "date", "integer", "currency", "text"],
+          widths: [24, 16, 24, 18, 20, 18, 14, 20, 14, 18, 18, 16]
+        },
+        {
+          name: "Resumen",
+          headers: ["tipo", "escenario", "fecha_guardado", "personal", "tramites_finalizados", "espera_promedio_min", "usuarios_molestos", "abandonos", "capital_disponible_usd", "patrimonio_estimado_usd", "creditos_aprobados", "creditos_rechazados", "cartera_mora_usd", "costo_personal_usd", "satisfaccion_1_5", "nps_pct", "utilizacion_pct"],
+          rows: summaryRows,
+          types: ["text", "text", "datetime", "integer", "integer", "decimal1", "integer", "integer", "currency", "currency", "integer", "integer", "currency", "currency", "decimal1", "percentage", "percentage"],
+          widths: [12, 24, 20, 12, 20, 20, 18, 14, 22, 22, 20, 20, 20, 20, 18, 14, 16]
+        },
+        {
+          name: "Configuracion",
+          headers: ["seccion", "parametro", "valor_texto", "valor_usd", "valor_pct", "valor_numerico", "valor_fecha", "valor_hora"],
+          rows: configRows,
+          types: ["text", "text", "text", "currency", "percentage", "decimal2", "date", "time"],
+          widths: [22, 38, 28, 18, 16, 18, 14, 12]
+        }
+      ]);
+
+      downloadBlob(workbook, "registros-simulacion-completos.xlsx");
+      showToast(`${state.records.length.toLocaleString("es-EC")} registros exportados correctamente en Excel: dinero, fechas, horas, porcentajes y etapas.`);
     }
 
     function importModel(file) {
