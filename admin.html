@@ -129,6 +129,26 @@
               <strong id="metricRevenue">$0,00</strong>
               <small id="metricRevenueNote">Resultado neto del periodo</small>
             </article>
+            <article class="metric-card">
+              <div class="metric-heading"><span>Sesiones</span><i>◫</i></div>
+              <strong id="metricSessions">0</strong>
+              <small id="metricSessionsNote">Sesiones identificadas</small>
+            </article>
+            <article class="metric-card">
+              <div class="metric-heading"><span>Páginas / sesión</span><i>≡</i></div>
+              <strong id="metricPagesPerSession">0,0</strong>
+              <small id="metricPagesPerSessionNote">Profundidad media</small>
+            </article>
+            <article class="metric-card">
+              <div class="metric-heading"><span>Tiempo activo</span><i>◷</i></div>
+              <strong id="metricActiveTime">0 s</strong>
+              <small id="metricActiveTimeNote">Promedio por sesión</small>
+            </article>
+            <article class="metric-card">
+              <div class="metric-heading"><span>Interacción</span><i>◎</i></div>
+              <strong id="metricEngagement">0,0 %</strong>
+              <small id="metricEngagementNote">Sesiones con interacción</small>
+            </article>
           </div>
 
           <div class="dashboard-grid">
@@ -194,11 +214,54 @@
             </article>
           </div>
 
+          <div class="dashboard-grid lower-grid analytics-details-grid">
+            <article class="panel">
+              <div class="panel-header"><div><span class="panel-eyebrow">Canales</span><h2>Origen del tráfico</h2></div></div>
+              <div id="channelList" class="rank-list"></div>
+            </article>
+            <article class="panel">
+              <div class="panel-header"><div><span class="panel-eyebrow">Campañas</span><h2>UTM identificadas</h2></div></div>
+              <div id="campaignList" class="rank-list"></div>
+            </article>
+          </div>
+
+          <div class="dashboard-grid lower-grid analytics-details-grid">
+            <article class="panel">
+              <div class="panel-header"><div><span class="panel-eyebrow">Tecnología</span><h2>Navegadores</h2></div></div>
+              <div id="browserList" class="rank-list"></div>
+            </article>
+            <article class="panel">
+              <div class="panel-header"><div><span class="panel-eyebrow">Tecnología</span><h2>Sistemas operativos</h2></div></div>
+              <div id="osList" class="rank-list"></div>
+            </article>
+          </div>
+
+          <div class="dashboard-grid lower-grid analytics-details-grid">
+            <article class="panel">
+              <div class="panel-header"><div><span class="panel-eyebrow">Ubicación técnica</span><h2>Zonas horarias</h2></div></div>
+              <div id="timezoneList" class="rank-list"></div>
+            </article>
+            <article class="panel">
+              <div class="panel-header"><div><span class="panel-eyebrow">Audiencia</span><h2>Idiomas del navegador</h2></div></div>
+              <div id="languageList" class="rank-list"></div>
+            </article>
+          </div>
+
+          <article class="panel table-panel">
+            <div class="panel-header"><div><span class="panel-eyebrow">Sesiones</span><h2>Actividad por sesión</h2></div><span id="sessionsCount" class="panel-badge">0 sesiones</span></div>
+            <div class="table-scroll">
+              <table>
+                <thead><tr><th>Inicio</th><th>Visitante</th><th>Entrada</th><th>Fuente</th><th>Páginas</th><th>Tiempo activo</th><th>Scroll</th><th>Conversión</th></tr></thead>
+                <tbody id="sessionsBody"></tbody>
+              </table>
+            </div>
+          </article>
+
           <article class="panel table-panel">
             <div class="panel-header"><div><span class="panel-eyebrow">Registro detallado</span><h2>Eventos recientes</h2></div><span id="eventsCount" class="panel-badge">0 eventos</span></div>
             <div class="table-scroll">
               <table>
-                <thead><tr><th>Fecha</th><th>Evento</th><th>Página</th><th>Dispositivo</th><th>Fuente</th></tr></thead>
+                <thead><tr><th>Fecha</th><th>Evento</th><th>Página</th><th>Dispositivo</th><th>Navegador / SO</th><th>Fuente</th><th>Zona horaria</th><th>Detalle</th></tr></thead>
                 <tbody id="eventsBody"></tbody>
               </table>
             </div>
