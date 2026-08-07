@@ -7,6 +7,6 @@
  * Nunca coloque la service_role key en archivos públicos.
  */
 window.NEODAT_SUPABASE_CONFIG = Object.freeze({
-  url: 'https://TU-PROYECTO.supabase.co',
-  anonKey: 'TU_CLAVE_ANON_PUBLICA'
+  url: 'https://zljeevuqdfiurnwdcotu.supabase.co',
+  anonKey: 'sb_publishable_PDJViLzyqcaj_M3RsjqyPA_5EmLnQvZ'
 });
