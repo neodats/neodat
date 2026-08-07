@@ -48,7 +48,9 @@
     phone_click: 'Clic en teléfono',
     meeting_click: 'Interés en reunión',
     contact_form: 'Formulario enviado',
-    simulator_click: 'Acceso a simulador'
+    simulator_click: 'Acceso a simulador',
+    page_engagement: 'Interacción de página',
+    outbound_click: 'Clic externo'
   };
 
   const chartColors = ['#a77b2f', '#244766', '#16855d', '#7b6aa6', '#c16b44', '#5c87a5'];
@@ -132,6 +134,48 @@
     } catch (error) {
       return 'Otro';
     }
+  }
+
+  function metadataValue(event, key, fallback) {
+    const metadata = event && event.metadata && typeof event.metadata === 'object' ? event.metadata : {};
+    const value = metadata[key];
+    return value === undefined || value === null || value === '' ? fallback : value;
+  }
+
+  function trafficSource(event) {
+    return String(metadataValue(event, 'source_name', sourceName(event && event.referrer))).trim() || 'Directo';
+  }
+
+  function trafficChannel(event) {
+    return String(metadataValue(event, 'source_channel', 'Sin clasificar')).trim() || 'Sin clasificar';
+  }
+
+  function formatDecimal(value, digits) {
+    return new Intl.NumberFormat('es-EC', {
+      minimumFractionDigits: digits,
+      maximumFractionDigits: digits
+    }).format(Number(value) || 0);
+  }
+
+  function formatDuration(seconds) {
+    const total = Math.max(0, Math.round(Number(seconds) || 0));
+    if (total < 60) return `${total} s`;
+    const minutes = Math.floor(total / 60);
+    const remaining = total % 60;
+    if (minutes < 60) return `${minutes} min ${remaining}s`;
+    const hours = Math.floor(minutes / 60);
+    return `${hours} h ${minutes % 60} min`;
+  }
+
+  function countBy(rows, valueGetter) {
+    const map = new Map();
+    rows.forEach((row) => {
+      const key = String(valueGetter(row) || 'Sin identificar').trim() || 'Sin identificar';
+      map.set(key, (map.get(key) || 0) + 1);
+    });
+    return Array.from(map.entries())
+      .map(([name, value]) => ({ name, value }))
+      .sort((a, b) => b.value - a.value || a.name.localeCompare(b.name, 'es'));
   }
 
   function setMessage(element, message, success) {
@@ -290,7 +334,7 @@
       const [events, transactions, leads] = await Promise.all([
         fetchAll(() => client
           .from('analytics_events')
-          .select('id, created_at, event_type, page_path, page_title, referrer, visitor_id, session_id, device_type, browser, is_conversion, metadata')
+          .select('id, created_at, event_type, page_path, page_title, referrer, visitor_id, session_id, device_type, browser, language, screen_width, is_conversion, metadata')
           .gte('created_at', range.startIso)
           .lt('created_at', range.endExclusiveIso)
           .order('created_at', { ascending: false })),
@@ -324,9 +368,10 @@
 
   function processData(range) {
     const pageViews = state.events.filter((event) => event.event_type === 'page_view');
+    const engagementEvents = state.events.filter((event) => event.event_type === 'page_engagement');
     const conversions = state.events.filter((event) => event.is_conversion || ['contact_form', 'whatsapp_click', 'email_click', 'phone_click', 'meeting_click'].includes(event.event_type));
-    const uniqueVisitors = new Set(pageViews.map((event) => event.visitor_id).filter(Boolean));
-    const sessions = new Set(pageViews.map((event) => event.session_id).filter(Boolean));
+    const uniqueVisitorsSet = new Set(pageViews.map((event) => event.visitor_id).filter(Boolean));
+    const sessionsSet = new Set(pageViews.map((event) => event.session_id).filter(Boolean));
 
     const income = state.transactions
       .filter((row) => row.transaction_type === 'Ingreso')
@@ -366,30 +411,90 @@
       .map(([type, count]) => ({ type, label: eventLabels[type] || type, count }))
       .sort((a, b) => b.count - a.count);
 
-    const deviceMap = new Map();
-    pageViews.forEach((event) => {
-      const device = event.device_type || 'Sin identificar';
-      deviceMap.set(device, (deviceMap.get(device) || 0) + 1);
-    });
-    const devices = Array.from(deviceMap.entries())
-      .map(([name, value]) => ({ name, value }))
-      .sort((a, b) => b.value - a.value);
+    const devices = countBy(pageViews, (event) => event.device_type || 'Sin identificar');
+    const sources = countBy(pageViews, (event) => trafficSource(event));
+    const channels = countBy(pageViews, (event) => trafficChannel(event));
+    const browsers = countBy(pageViews, (event) => event.browser || 'Sin identificar');
+    const operatingSystems = countBy(pageViews, (event) => metadataValue(event, 'os', 'Sin identificar'));
+    const timezones = countBy(pageViews, (event) => metadataValue(event, 'timezone', 'Sin identificar'));
+    const languages = countBy(pageViews, (event) => event.language || 'Sin identificar');
+    const campaigns = countBy(
+      pageViews.filter((event) => metadataValue(event, 'utm_campaign', '')),
+      (event) => metadataValue(event, 'utm_campaign', 'Sin campaña')
+    );
 
-    const sourceMap = new Map();
+    const sessionMap = new Map();
     pageViews.forEach((event) => {
-      const source = sourceName(event.referrer);
-      sourceMap.set(source, (sourceMap.get(source) || 0) + 1);
+      const key = event.session_id || `sin_sesion_${event.id}`;
+      if (!sessionMap.has(key)) {
+        sessionMap.set(key, {
+          id: key,
+          visitorId: event.visitor_id || '',
+          startedAt: event.created_at,
+          lastAt: event.created_at,
+          landingPage: metadataValue(event, 'landing_page', event.page_path || '/'),
+          source: trafficSource(event),
+          channel: trafficChannel(event),
+          device: event.device_type || 'Sin identificar',
+          browser: event.browser || 'Sin identificar',
+          os: metadataValue(event, 'os', 'Sin identificar'),
+          timezone: metadataValue(event, 'timezone', 'Sin identificar'),
+          visitorStatus: metadataValue(event, 'visitor_status', 'Sin identificar'),
+          pageViews: 0,
+          activeSeconds: 0,
+          maxScroll: 0,
+          clicks: 0,
+          conversions: 0
+        });
+      }
+      const row = sessionMap.get(key);
+      row.pageViews += 1;
+      if (new Date(event.created_at) < new Date(row.startedAt)) row.startedAt = event.created_at;
+      if (new Date(event.created_at) > new Date(row.lastAt)) row.lastAt = event.created_at;
     });
-    const sources = Array.from(sourceMap.entries())
-      .map(([name, value]) => ({ name, value }))
-      .sort((a, b) => b.value - a.value);
+
+    engagementEvents.forEach((event) => {
+      const row = sessionMap.get(event.session_id);
+      if (!row) return;
+      row.activeSeconds += Number(metadataValue(event, 'active_seconds', 0)) || 0;
+      row.maxScroll = Math.max(row.maxScroll, Number(metadataValue(event, 'max_scroll_percent', 0)) || 0);
+      row.clicks += Number(metadataValue(event, 'click_count', 0)) || 0;
+      if (new Date(event.created_at) > new Date(row.lastAt)) row.lastAt = event.created_at;
+    });
+
+    conversions.forEach((event) => {
+      const row = sessionMap.get(event.session_id);
+      if (row) row.conversions += 1;
+    });
+
+    const sessions = Array.from(sessionMap.values()).sort((a, b) => new Date(b.startedAt) - new Date(a.startedAt));
+    const totalActiveSeconds = sessions.reduce((sum, row) => sum + row.activeSeconds, 0);
+    const engagedSessions = sessions.filter((row) => row.activeSeconds >= 10 || row.pageViews >= 2 || row.conversions > 0 || row.maxScroll >= 50).length;
+    const bouncedSessions = sessions.filter((row) => row.pageViews <= 1 && row.activeSeconds < 10 && row.conversions === 0 && row.maxScroll < 50).length;
+
+    const returningVisitorsSet = new Set(
+      pageViews
+        .filter((event) => metadataValue(event, 'visitor_status', '') === 'Recurrente')
+        .map((event) => event.visitor_id)
+        .filter(Boolean)
+    );
+    const newVisitors = Math.max(0, uniqueVisitorsSet.size - returningVisitorsSet.size);
 
     return {
       range,
       pageViews,
+      engagementEvents,
       conversions,
-      uniqueVisitors: uniqueVisitors.size,
-      sessions: sessions.size,
+      uniqueVisitors: uniqueVisitorsSet.size,
+      newVisitors,
+      returningVisitors: returningVisitorsSet.size,
+      sessionsCount: sessionsSet.size,
+      sessions,
+      totalActiveSeconds,
+      avgActiveSeconds: sessions.length ? totalActiveSeconds / sessions.length : 0,
+      pagesPerSession: sessions.length ? pageViews.length / sessions.length : 0,
+      engagementRate: sessions.length ? (engagedSessions / sessions.length) * 100 : 0,
+      bounceRate: sessions.length ? (bouncedSessions / sessions.length) * 100 : 0,
       income,
       expense,
       net: income - expense,
@@ -397,7 +502,13 @@
       pages,
       conversionBreakdown,
       devices,
-      sources
+      sources,
+      channels,
+      browsers,
+      operatingSystems,
+      timezones,
+      languages,
+      campaigns
     };
   }
 
@@ -415,13 +526,21 @@
     const conversionRate = data.uniqueVisitors ? (data.conversions.length / data.uniqueVisitors) * 100 : 0;
 
     byId('metricVisits').textContent = formatInteger(data.pageViews.length);
-    byId('metricVisitsNote').textContent = `${formatInteger(data.sessions)} sesiones registradas`;
+    byId('metricVisitsNote').textContent = `${formatInteger(data.sessionsCount)} sesiones registradas`;
     byId('metricUsers').textContent = formatInteger(data.uniqueVisitors);
-    byId('metricUsersNote').textContent = 'Visitantes únicos del periodo';
+    byId('metricUsersNote').textContent = `${formatInteger(data.newVisitors)} nuevos · ${formatInteger(data.returningVisitors)} recurrentes`;
     byId('metricConversions').textContent = formatInteger(data.conversions.length);
     byId('metricConversionsNote').textContent = `${formatPercent(conversionRate)} de conversión`;
     byId('metricRevenue').textContent = formatCurrency(data.income);
     byId('metricRevenueNote').textContent = `Neto: ${formatCurrency(data.net)}`;
+    byId('metricSessions').textContent = formatInteger(data.sessionsCount);
+    byId('metricSessionsNote').textContent = `${formatPercent(data.bounceRate)} de rebote estimado`;
+    byId('metricPagesPerSession').textContent = formatDecimal(data.pagesPerSession, 1);
+    byId('metricPagesPerSessionNote').textContent = 'Páginas vistas por sesión';
+    byId('metricActiveTime').textContent = formatDuration(data.avgActiveSeconds);
+    byId('metricActiveTimeNote').textContent = 'Tiempo activo medio por sesión';
+    byId('metricEngagement').textContent = formatPercent(data.engagementRate);
+    byId('metricEngagementNote').textContent = 'Sesiones con interacción relevante';
     byId('trendTotal').textContent = `${formatInteger(data.pageViews.length)} visitas`;
     byId('deviceTotal').textContent = formatInteger(data.pageViews.length);
   }
@@ -442,7 +561,13 @@
   function renderRankings() {
     const data = state.processed;
     byId('conversionList').innerHTML = rankRows(data.conversionBreakdown, 'label', 'count', 6);
-    byId('sourceList').innerHTML = rankRows(data.sources, 'name', 'value', 7);
+    byId('sourceList').innerHTML = rankRows(data.sources, 'name', 'value', 8);
+    byId('channelList').innerHTML = rankRows(data.channels, 'name', 'value', 8);
+    byId('campaignList').innerHTML = rankRows(data.campaigns, 'name', 'value', 8);
+    byId('browserList').innerHTML = rankRows(data.browsers, 'name', 'value', 8);
+    byId('osList').innerHTML = rankRows(data.operatingSystems, 'name', 'value', 8);
+    byId('timezoneList').innerHTML = rankRows(data.timezones, 'name', 'value', 8);
+    byId('languageList').innerHTML = rankRows(data.languages, 'name', 'value', 8);
 
     const total = Math.max(data.devices.reduce((sum, row) => sum + row.value, 0), 1);
     byId('deviceLegend').innerHTML = data.devices.length
@@ -460,6 +585,21 @@
     return `<tr><td colspan="${columns}"><div class="empty-state">${escapeHtml(message)}</div></td></tr>`;
   }
 
+  function eventDetail(event) {
+    if (event.event_type === 'page_engagement') {
+      return `${formatDuration(metadataValue(event, 'active_seconds', 0))} · ${formatInteger(metadataValue(event, 'max_scroll_percent', 0))}% scroll · ${formatInteger(metadataValue(event, 'click_count', 0))} clics`;
+    }
+    if (event.event_type === 'page_view') {
+      const viewport = `${formatInteger(metadataValue(event, 'viewport_width', 0))}×${formatInteger(metadataValue(event, 'viewport_height', 0))}`;
+      const connection = metadataValue(event, 'connection', '');
+      return connection ? `${viewport} · red ${connection}` : viewport;
+    }
+    const label = metadataValue(event, 'label', '');
+    const campaign = metadataValue(event, 'utm_campaign', '');
+    if (label && campaign) return `${label} · ${campaign}`;
+    return label || campaign || '—';
+  }
+
   function renderTables() {
     const data = state.processed;
     byId('topPagesBody').innerHTML = data.pages.length
@@ -472,18 +612,37 @@
         `).join('')
       : emptyRow(3, 'No existen páginas vistas en este periodo.');
 
+    byId('sessionsCount').textContent = `${formatInteger(data.sessions.length)} sesiones`;
+    byId('sessionsBody').innerHTML = data.sessions.length
+      ? data.sessions.slice(0, 200).map((session) => `
+          <tr>
+            <td>${escapeHtml(formatDateTime(session.startedAt))}</td>
+            <td><span class="table-title">${escapeHtml(session.visitorStatus)}</span><span class="table-subtitle">${escapeHtml(session.visitorId.slice(0, 22))}</span></td>
+            <td><span class="table-title">${escapeHtml(safePath(session.landingPage))}</span><span class="table-subtitle">${escapeHtml(session.landingPage)}</span></td>
+            <td><span class="table-title">${escapeHtml(session.source)}</span><span class="table-subtitle">${escapeHtml(session.channel)}</span></td>
+            <td>${formatInteger(session.pageViews)}</td>
+            <td>${escapeHtml(formatDuration(session.activeSeconds))}</td>
+            <td>${formatInteger(session.maxScroll)} %</td>
+            <td>${session.conversions ? `<span class="type-badge income">${formatInteger(session.conversions)}</span>` : '—'}</td>
+          </tr>
+        `).join('')
+      : emptyRow(8, 'No existen sesiones en el periodo seleccionado.');
+
     byId('eventsCount').textContent = `${formatInteger(state.events.length)} eventos`;
     byId('eventsBody').innerHTML = state.events.length
-      ? state.events.slice(0, 150).map((event) => `
+      ? state.events.slice(0, 250).map((event) => `
           <tr>
             <td>${escapeHtml(formatDateTime(event.created_at))}</td>
             <td><span class="status-badge">${escapeHtml(eventLabels[event.event_type] || event.event_type)}</span></td>
             <td><span class="table-title">${escapeHtml(safePath(event.page_path))}</span><span class="table-subtitle">${escapeHtml(event.page_path || '/')}</span></td>
             <td>${escapeHtml(event.device_type || '—')}</td>
-            <td>${escapeHtml(sourceName(event.referrer))}</td>
+            <td><span class="table-title">${escapeHtml(event.browser || '—')}</span><span class="table-subtitle">${escapeHtml(metadataValue(event, 'os', '—'))}</span></td>
+            <td><span class="table-title">${escapeHtml(trafficSource(event))}</span><span class="table-subtitle">${escapeHtml(trafficChannel(event))}</span></td>
+            <td>${escapeHtml(metadataValue(event, 'timezone', '—'))}</td>
+            <td><span class="table-subtitle detail-cell" title="${escapeHtml(eventDetail(event))}">${escapeHtml(eventDetail(event))}</span></td>
           </tr>
         `).join('')
-      : emptyRow(5, 'No existen eventos en el periodo seleccionado.');
+      : emptyRow(8, 'No existen eventos en el periodo seleccionado.');
   }
 
   function renderFinance() {
@@ -815,8 +974,37 @@
   function exportAnalytics() {
     downloadCsv(
       `neodat-analitica-${dateFrom.value}-${dateTo.value}.csv`,
-      ['Fecha', 'Evento', 'Página', 'Título', 'Visitante', 'Sesión', 'Dispositivo', 'Navegador', 'Fuente', 'Conversión'],
-      state.events.map((row) => [row.created_at, eventLabels[row.event_type] || row.event_type, row.page_path, row.page_title, row.visitor_id, row.session_id, row.device_type, row.browser, sourceName(row.referrer), row.is_conversion ? 'Sí' : 'No'])
+      ['Fecha', 'Evento', 'Página', 'Título', 'Visitante', 'Sesión', 'Dispositivo', 'Navegador', 'Sistema operativo', 'Plataforma', 'Idioma', 'Zona horaria', 'Conexión', 'Viewport', 'Pantalla', 'Canal', 'Fuente', 'UTM source', 'UTM medium', 'UTM campaign', 'UTM content', 'UTM term', 'Landing page', 'Estado visitante', 'Tiempo activo', 'Scroll máximo', 'Clics', 'Conversión'],
+      state.events.map((row) => [
+        row.created_at,
+        eventLabels[row.event_type] || row.event_type,
+        row.page_path,
+        row.page_title,
+        row.visitor_id,
+        row.session_id,
+        row.device_type,
+        row.browser,
+        metadataValue(row, 'os', ''),
+        metadataValue(row, 'platform', ''),
+        row.language,
+        metadataValue(row, 'timezone', ''),
+        metadataValue(row, 'connection', ''),
+        `${metadataValue(row, 'viewport_width', '')}x${metadataValue(row, 'viewport_height', '')}`,
+        `${metadataValue(row, 'screen_width', row.screen_width || '')}x${metadataValue(row, 'screen_height', '')}`,
+        trafficChannel(row),
+        trafficSource(row),
+        metadataValue(row, 'utm_source', ''),
+        metadataValue(row, 'utm_medium', ''),
+        metadataValue(row, 'utm_campaign', ''),
+        metadataValue(row, 'utm_content', ''),
+        metadataValue(row, 'utm_term', ''),
+        metadataValue(row, 'landing_page', ''),
+        metadataValue(row, 'visitor_status', ''),
+        metadataValue(row, 'active_seconds', ''),
+        metadataValue(row, 'max_scroll_percent', ''),
+        metadataValue(row, 'click_count', ''),
+        row.is_conversion ? 'Sí' : 'No'
+      ])
     );
   }
 
