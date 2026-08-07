@@ -233,3 +233,17 @@ tbody tr:hover { background: #fafbfd; }
   .icon-button { margin-left: auto; }
   .chart-wrap, .chart-wrap canvas { min-height: 250px; height: 250px; }
 }
+
+/* Analítica ampliada */
+.analytics-details-grid { margin-top: 15px; }
+.detail-cell { max-width: 220px; }
+#sessionsBody .table-title { max-width: 190px; }
+#eventsBody .table-title { max-width: 180px; }
+
+@media (max-width: 1180px) {
+  .analytics-details-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 720px) {
+  .analytics-details-grid { grid-template-columns: 1fr; }
+}
