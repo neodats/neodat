@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<title>Indicadores KPI | NeoDat Consultores</title>
+<style>
+
+:root{
+  --ink:#172237;--muted:#66758a;--paper:#eef3f8;--surface:#fff;--line:#dbe3ed;
+  --primary:#3a8bfd;--primary2:#176fe5;--success:#20b486;--warning:#f2a93b;
+  --danger:#ef5b67;--navy:#0b2035;--shadow:0 12px 30px rgba(24,45,73,.08);
+  --radius:16px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;min-height:100vh;background:radial-gradient(circle at 88% 3%,rgba(58,139,253,.075),transparent 29rem),var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-variant-numeric:tabular-nums}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+a{color:inherit;text-decoration:none}
+.topbar{position:sticky;top:0;z-index:50;display:grid;grid-template-columns:250px minmax(0,1fr) auto;align-items:center;min-height:68px;background:rgba(255,255,255,.98);border-bottom:1px solid var(--line);box-shadow:0 8px 28px rgba(20,42,72,.08);backdrop-filter:blur(16px)}
+.brand{display:flex;align-items:center;justify-content:center;height:68px;padding:6px 14px;border-right:1px solid #e1e7ef}
+.brand-link{display:flex;align-items:center;justify-content:center;width:100%;height:100%;padding:3px 8px;border-radius:10px;background:#fff;transition:.16s}
+.brand-link:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(20,42,72,.10)}
+.brand-logo{display:block;width:min(190px,100%);max-height:50px;object-fit:contain}
+.sim-title{min-width:0;padding:0 16px}
+.sim-title small{display:block;margin-bottom:3px;color:#748198;font-size:8px;font-weight:900;letter-spacing:.12em}
+.sim-title strong{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#172237;font-size:13px;line-height:1.25}
+.top-actions{display:flex;align-items:center;justify-content:flex-end;gap:8px;height:68px;padding:0 16px;border-left:1px solid #e1e7ef}
+.tool-btn,.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:36px;padding:0 11px;border:1px solid #d7e0ea;border-radius:10px;background:#fff;color:#172237;box-shadow:0 2px 7px rgba(21,41,68,.05);font-size:12px;font-weight:800;transition:.16s}
+.tool-btn:hover,.btn:hover{transform:translateY(-1px);border-color:rgba(58,139,253,.55);background:#eef5ff}
+.btn.primary,.tool-btn.primary{color:#fff;border-color:transparent;background:linear-gradient(145deg,var(--primary),var(--primary2));box-shadow:0 8px 18px rgba(23,111,229,.18)}
+.btn.success{color:#fff;border-color:transparent;background:linear-gradient(145deg,#24bd90,#138b69)}
+.page{width:min(1440px,calc(100% - 44px));margin:auto;padding:26px 0 62px}
+.hero{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(280px,.55fr);gap:20px;align-items:stretch;margin-bottom:18px}
+.hero-main,.hero-note{border:1px solid var(--line);border-radius:var(--radius);background:#fff;box-shadow:var(--shadow)}
+.hero-main{padding:24px 26px}
+.eyebrow{display:flex;align-items:center;gap:10px;margin:0 0 10px;color:var(--primary2);font-size:10px;font-weight:900;letter-spacing:.15em;text-transform:uppercase}
+.eyebrow:before{content:"";width:34px;height:2px;background:var(--primary)}
+h1{margin:0;color:#172237;font-size:clamp(31px,4.2vw,56px);line-height:1;letter-spacing:-.05em}
+.hero-main>p:last-child{max-width:780px;margin:15px 0 0;color:var(--muted);font-size:14px;line-height:1.7}
+.hero-note{padding:20px;border-left:4px solid var(--primary)}
+.hero-note strong{display:block;margin-bottom:7px;color:var(--primary2);font-size:12px}
+.hero-note p{margin:0;color:var(--muted);font-size:11px;line-height:1.6}
+.card{border:1px solid var(--line);border-radius:var(--radius);background:#fff;box-shadow:var(--shadow)}
+.card-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;padding:17px 18px;border-bottom:1px solid #e4e9f1}
+.card-head h2{margin:0;color:#172237;font-size:16px;letter-spacing:-.015em}
+.card-head p{margin:5px 0 0;color:#748198;font-size:10px;line-height:1.45}
+.body-pad{padding:18px}
+.grid{display:grid;gap:14px}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.kpi{min-width:0;padding:15px;border:1px solid #dfe6ef;border-radius:13px;background:#fff;box-shadow:0 5px 14px rgba(25,43,70,.05)}
+.kpi span{display:block;color:#718096;font-size:8px;font-weight:850;letter-spacing:.06em;text-transform:uppercase}
+.kpi b{display:block;margin-top:7px;overflow:hidden;text-overflow:ellipsis;color:#172237;font-size:24px;letter-spacing:-.04em;white-space:nowrap}
+.kpi small{display:block;margin-top:5px;color:#748198;font-size:9px;line-height:1.35}
+.kpi.accent{color:#fff;border-color:var(--primary2);background:linear-gradient(145deg,var(--primary),var(--primary2));box-shadow:0 12px 24px rgba(23,111,229,.18)}
+.kpi.accent span,.kpi.accent small{color:rgba(255,255,255,.78)}
+.kpi.accent b{color:#fff}
+.field label{display:block;margin-bottom:6px;color:#66758a;font-size:10px;font-weight:850;text-transform:uppercase;letter-spacing:.035em}
+.field input,.field select,.field textarea{width:100%;min-height:40px;padding:8px 10px;border:1px solid #d8e0eb;border-radius:9px;outline:0;background:#fff;color:#172237}
+.field textarea{min-height:80px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(58,139,253,.12)}
+.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.form-grid .wide{grid-column:1/-1}
+.helper{display:block;margin-top:5px;color:#7e8b9d;font-size:9px;line-height:1.4}
+.table-wrap{overflow:auto}
+table{width:100%;border-collapse:collapse}
+th{padding:9px 10px;color:#748198;border-bottom:1px solid var(--line);background:#f8fafc;text-align:left;font-size:8px;letter-spacing:.05em;text-transform:uppercase}
+td{padding:10px;border-bottom:1px solid #edf1f5;color:#526277;font-size:10px;vertical-align:middle}
+td input,td select{width:100%;min-width:70px;padding:6px;border:1px solid transparent;border-radius:6px;background:transparent;color:#172237}
+td input:focus,td select:focus{outline:0;border-color:#c9d6e3;background:#fff}
+.num{text-align:right}
+.pill{display:inline-flex;align-items:center;min-height:24px;padding:0 8px;border-radius:999px;background:#eaf3ff;color:#1764c0;font-size:8px;font-weight:850}
+.pill.green{background:#eafaf4;color:#137356}
+.pill.amber{background:#fff5dd;color:#9b6816}
+.pill.red{background:#fff0f1;color:#bf3c48}
+.notice{padding:12px 14px;border:1px solid #dbe3ed;border-left:4px solid var(--primary);border-radius:11px;background:#f7f9fc;color:#66758a;font-size:10px;line-height:1.55}
+.tabs{display:flex;gap:5px;overflow:auto;padding:5px;border:1px solid var(--line);border-radius:12px;background:#fff}
+.tab{flex:0 0 auto;min-height:36px;padding:0 12px;border:0;border-radius:9px;background:transparent;color:#66758a;font-size:10px;font-weight:850}
+.tab.active{color:#fff;background:linear-gradient(145deg,var(--primary),var(--primary2))}
+.actions-row{display:flex;flex-wrap:wrap;gap:8px}
+.progress{height:10px;overflow:hidden;border-radius:999px;background:#e8eef3}
+.progress>i{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--primary),var(--success))}
+canvas{max-width:100%}
+footer{padding:22px 0 0;color:#7d8b9c;text-align:center;font-size:9px}
+@media(max-width:1050px){.kpis{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:840px){.topbar{grid-template-columns:126px minmax(0,1fr) auto}.brand{height:66px;padding:5px 8px}.brand-logo{width:112px;max-height:42px}.sim-title{padding:0 10px}.sim-title strong{font-size:11px}.sim-title small{font-size:7px}.top-actions{height:66px;padding:0 8px;gap:5px}.top-actions .label{display:none}.top-actions .tool-btn{width:36px;padding:0}.page{width:calc(100% - 28px);padding-top:20px}.hero{grid-template-columns:1fr}}
+@media(max-width:620px){.topbar{grid-template-columns:98px minmax(0,1fr) auto;min-height:62px}.brand{height:62px;padding:5px 6px}.brand-logo{width:84px;max-height:38px}.sim-title small{display:none}.sim-title strong{font-size:10px}.top-actions{height:62px;padding:0 6px}.top-actions .tool-btn{width:32px;min-height:32px}.hero-main{padding:20px}.hero-note{padding:16px}.form-grid{grid-template-columns:1fr}.form-grid .wide{grid-column:auto}.kpis{grid-template-columns:1fr 1fr}.kpi b{font-size:21px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition-duration:.001ms!important}}
+@media print{.topbar,.no-print{display:none!important}.page{width:100%;padding:0}.card,.hero-main,.hero-note,.kpi{box-shadow:none}}
+
+
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><a class="brand-link" href="../index.html" aria-label="Volver a NeoDat Consultores"><img class="brand-logo" src="../Neo1.png" alt="NeoDat Consultores"></a></div>
+  <div class="sim-title"><small>NEODAT · SIMULADORES</small><strong>Indicadores KPI</strong></div>
+  <div class="top-actions">
+    <button class="tool-btn" type="button" onclick="window.print()" title="Imprimir"><span>⌑</span><span class="label">Imprimir</span></button>
+    <a class="tool-btn" href="../simuladores.html" title="Volver al catálogo"><span>←</span><span class="label">Catálogo</span></a>
+  </div>
+</header>
+
+<main class="page">
+<section class="hero">
+  <div class="hero-main"><p class="eyebrow">TABLERO FINANCIERO Y COMERCIAL</p><h1>Indicadores KPI para ventas y rentabilidad</h1><p>Ingrese los datos principales del período y obtenga una lectura ejecutiva de ventas, margen, eficiencia comercial, clientes y retorno.</p></div>
+  <aside class="hero-note"><strong>Lectura gerencial</strong><p>Los KPI se recalculan en tiempo real. Los resultados dependen de la calidad y consistencia de los datos ingresados.</p></aside>
+</section>
+<section class="grid" style="grid-template-columns:330px minmax(0,1fr);align-items:start">
+  <aside class="card no-print">
+    <div class="card-head"><div><h2>Datos del período</h2><p>Valores en USD salvo indicación.</p></div><span class="pill">01</span></div>
+    <div class="body-pad">
+      <div class="form-grid">
+        <div class="field wide"><label>Ventas actuales</label><input id="sales" type="number" min="0" value="85000"></div>
+        <div class="field wide"><label>Ventas período anterior</label><input id="prevSales" type="number" min="0" value="76000"></div>
+        <div class="field"><label>Costo de ventas</label><input id="cogs" type="number" min="0" value="49000"></div>
+        <div class="field"><label>Gastos operativos</label><input id="opex" type="number" min="0" value="22000"></div>
+        <div class="field"><label>Marketing</label><input id="marketing" type="number" min="0" value="6500"></div>
+        <div class="field"><label>Clientes nuevos</label><input id="newClients" type="number" min="0" value="130"></div>
+        <div class="field"><label>Clientes totales</label><input id="clients" type="number" min="1" value="620"></div>
+        <div class="field"><label>Transacciones</label><input id="transactions" type="number" min="1" value="940"></div>
+        <div class="field"><label>Leads</label><input id="leads" type="number" min="1" value="2100"></div>
+        <div class="field"><label>Capital invertido</label><input id="capital" type="number" min="0" value="50000"></div>
+        <div class="field"><label>Cuentas por cobrar</label><input id="receivables" type="number" min="0" value="18000"></div>
+        <div class="field wide"><label>Días del período</label><input id="days" type="number" min="1" value="30"></div>
+      </div>
+      <div class="actions-row" style="margin-top:14px"><button class="btn primary" id="csvBtn">Exportar CSV</button><button class="btn" id="resetBtn">Restablecer</button></div>
+    </div>
+  </aside>
+  <section class="grid">
+    <div class="kpis" id="kpiGrid"></div>
+    <section class="card">
+      <div class="card-head"><div><h2>Semáforo ejecutivo</h2><p>Comparación automática de métricas clave.</p></div><span class="pill green" id="healthBadge">—</span></div>
+      <div class="body-pad grid" id="readings"></div>
+    </section>
+    <section class="card">
+      <div class="card-head"><div><h2>Composición del resultado</h2><p>Ventas, costos y utilidad operativa.</p></div></div>
+      <div class="body-pad">
+        <div class="grid" id="bars"></div>
+      </div>
+    </section>
+  </section>
+</section>
+<footer>NeoDat Consultores · Simulador de indicadores KPI · Herramienta de análisis y apoyo a la decisión.</footer>
+</main>
+
+<script>
+
+const $=id=>document.getElementById(id), n=id=>Number($(id).value)||0;
+const usd=v=>new Intl.NumberFormat('es-EC',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(v||0);
+const pct=v=>`${(Number.isFinite(v)?v:0).toFixed(1)}%`;
+const defaults={sales:85000,prevSales:76000,cogs:49000,opex:22000,marketing:6500,newClients:130,clients:620,transactions:940,leads:2100,capital:50000,receivables:18000,days:30};
+let latest={};
+function calc(){
+  const sales=n('sales'), prev=n('prevSales'), cogs=n('cogs'), opex=n('opex'), marketing=n('marketing');
+  const clients=Math.max(1,n('clients')), trans=Math.max(1,n('transactions')), leads=Math.max(1,n('leads')), newClients=Math.max(1,n('newClients'));
+  const gross=sales-cogs, op=gross-opex, growth=prev?(sales/prev-1)*100:0, gm=sales?gross/sales*100:0, om=sales?op/sales*100:0;
+  const ticket=sales/trans, conversion=leads?newClients/leads*100:0, cac=marketing/newClients, revClient=sales/clients, roi=n('capital')?op/n('capital')*100:0;
+  const dso=sales? n('receivables')/(sales/Math.max(1,n('days'))):0, marketingRoi=marketing?(gross-marketing)/marketing*100:0;
+  const costRatio=sales?cogs/sales*100:0, opexRatio=sales?opex/sales*100:0, newShare=clients?newClients/clients*100:0;
+  latest={sales,prev,gross,op,growth,gm,om,ticket,conversion,cac,revClient,roi,dso,marketingRoi,costRatio,opexRatio,newShare};
+  const list=[
+    ['Ventas',usd(sales),'Actual'],['Crecimiento',pct(growth),'vs. período anterior'],['Margen bruto',pct(gm),usd(gross)],
+    ['Utilidad operativa',usd(op),pct(om)+' margen'],['Ticket promedio',usd(ticket),'por transacción'],['Conversión',pct(conversion),'lead → cliente'],
+    ['CAC',usd(cac),'costo adquisición'],['Ingreso / cliente',usd(revClient),'promedio'],['ROI operativo',pct(roi),'sobre capital'],
+    ['ROI marketing',pct(marketingRoi),'retorno estimado'],['DSO',`${dso.toFixed(1)} días`,'cobranza'],['Costo de ventas',pct(costRatio),'sobre ventas'],
+    ['Gasto operativo',pct(opexRatio),'sobre ventas'],['Clientes nuevos',String(n('newClients')),'período'],['Participación nuevos',pct(newShare),'clientes nuevos / total'],
+    ['Clientes totales',String(n('clients')),'base'],['Transacciones',String(n('transactions')),'período'],['Leads',String(n('leads')),'oportunidades']
+  ];
+  $('kpiGrid').innerHTML=list.map((x,i)=>`<article class="kpi ${i===3?'accent':''}"><span>${x[0]}</span><b>${x[1]}</b><small>${x[2]}</small></article>`).join('');
+  const score=[growth>=0,gm>=30,om>=10,conversion>=5,roi>=10,dso<=45].filter(Boolean).length;
+  $('healthBadge').textContent=score>=5?'Favorable':score>=3?'Atención':'Crítico';
+  $('healthBadge').className='pill '+(score>=5?'green':score>=3?'amber':'red');
+  const reads=[
+    ['Crecimiento',growth>=0?'Las ventas superan el período anterior.':'Las ventas están por debajo del período anterior.',growth>=0?'green':'red'],
+    ['Margen bruto',gm>=30?'El margen bruto mantiene una cobertura razonable.':'El margen bruto es reducido frente al nivel de ventas.',gm>=30?'green':'amber'],
+    ['Rentabilidad',om>=10?'La operación conserva margen operativo saludable.':'La utilidad operativa requiere revisión de costos y gastos.',om>=10?'green':'red'],
+    ['Cobranza',dso<=45?'El plazo estimado de cobro se mantiene controlado.':'El período de cobro es elevado y puede presionar liquidez.',dso<=45?'green':'amber']
+  ];
+  $('readings').innerHTML=reads.map(r=>`<div class="notice" style="border-left-color:${r[2]==='green'?'#20b486':r[2]==='red'?'#ef5b67':'#f2a93b'}"><strong style="color:#172237">${r[0]}</strong><br>${r[1]}</div>`).join('');
+  const components=[['Costo de ventas',cogs],['Gastos operativos',opex],['Utilidad operativa',Math.max(0,op)]];
+  $('bars').innerHTML=components.map(([lab,val])=>`<div><div style="display:flex;justify-content:space-between;gap:10px;margin-bottom:6px;color:#66758a;font-size:10px"><span>${lab}</span><b>${usd(val)}</b></div><div class="progress"><i style="width:${sales?Math.min(100,val/sales*100):0}%"></i></div></div>`).join('');
+}
+document.querySelectorAll('input').forEach(el=>el.addEventListener('input',calc));
+$('resetBtn').onclick=()=>{Object.entries(defaults).forEach(([k,v])=>$(k).value=v);calc()};
+$('csvBtn').onclick=()=>{calc();const rows=[['Indicador','Valor'],...Object.entries(latest)];const csv='\ufeff'+rows.map(r=>r.join(';')).join('\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));a.download='indicadores_kpi_neodat.csv';a.click();URL.revokeObjectURL(a.href)};
+calc();
+
+</script>
+</body>
+</html>
