@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<title>Costos y Rentabilidad | NeoDat Consultores</title>
+<style>
+
+:root{
+  --ink:#172237;--muted:#66758a;--paper:#eef3f8;--surface:#fff;--line:#dbe3ed;
+  --primary:#3a8bfd;--primary2:#176fe5;--success:#20b486;--warning:#f2a93b;
+  --danger:#ef5b67;--navy:#0b2035;--shadow:0 12px 30px rgba(24,45,73,.08);
+  --radius:16px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;min-height:100vh;background:radial-gradient(circle at 88% 3%,rgba(58,139,253,.075),transparent 29rem),var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-variant-numeric:tabular-nums}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+a{color:inherit;text-decoration:none}
+.topbar{position:sticky;top:0;z-index:50;display:grid;grid-template-columns:250px minmax(0,1fr) auto;align-items:center;min-height:68px;background:rgba(255,255,255,.98);border-bottom:1px solid var(--line);box-shadow:0 8px 28px rgba(20,42,72,.08);backdrop-filter:blur(16px)}
+.brand{display:flex;align-items:center;justify-content:center;height:68px;padding:6px 14px;border-right:1px solid #e1e7ef}
+.brand-link{display:flex;align-items:center;justify-content:center;width:100%;height:100%;padding:3px 8px;border-radius:10px;background:#fff;transition:.16s}
+.brand-link:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(20,42,72,.10)}
+.brand-logo{display:block;width:min(190px,100%);max-height:50px;object-fit:contain}
+.sim-title{min-width:0;padding:0 16px}
+.sim-title small{display:block;margin-bottom:3px;color:#748198;font-size:8px;font-weight:900;letter-spacing:.12em}
+.sim-title strong{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#172237;font-size:13px;line-height:1.25}
+.top-actions{display:flex;align-items:center;justify-content:flex-end;gap:8px;height:68px;padding:0 16px;border-left:1px solid #e1e7ef}
+.tool-btn,.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:36px;padding:0 11px;border:1px solid #d7e0ea;border-radius:10px;background:#fff;color:#172237;box-shadow:0 2px 7px rgba(21,41,68,.05);font-size:12px;font-weight:800;transition:.16s}
+.tool-btn:hover,.btn:hover{transform:translateY(-1px);border-color:rgba(58,139,253,.55);background:#eef5ff}
+.btn.primary,.tool-btn.primary{color:#fff;border-color:transparent;background:linear-gradient(145deg,var(--primary),var(--primary2));box-shadow:0 8px 18px rgba(23,111,229,.18)}
+.btn.success{color:#fff;border-color:transparent;background:linear-gradient(145deg,#24bd90,#138b69)}
+.page{width:min(1440px,calc(100% - 44px));margin:auto;padding:26px 0 62px}
+.hero{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(280px,.55fr);gap:20px;align-items:stretch;margin-bottom:18px}
+.hero-main,.hero-note{border:1px solid var(--line);border-radius:var(--radius);background:#fff;box-shadow:var(--shadow)}
+.hero-main{padding:24px 26px}
+.eyebrow{display:flex;align-items:center;gap:10px;margin:0 0 10px;color:var(--primary2);font-size:10px;font-weight:900;letter-spacing:.15em;text-transform:uppercase}
+.eyebrow:before{content:"";width:34px;height:2px;background:var(--primary)}
+h1{margin:0;color:#172237;font-size:clamp(31px,4.2vw,56px);line-height:1;letter-spacing:-.05em}
+.hero-main>p:last-child{max-width:780px;margin:15px 0 0;color:var(--muted);font-size:14px;line-height:1.7}
+.hero-note{padding:20px;border-left:4px solid var(--primary)}
+.hero-note strong{display:block;margin-bottom:7px;color:var(--primary2);font-size:12px}
+.hero-note p{margin:0;color:var(--muted);font-size:11px;line-height:1.6}
+.card{border:1px solid var(--line);border-radius:var(--radius);background:#fff;box-shadow:var(--shadow)}
+.card-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;padding:17px 18px;border-bottom:1px solid #e4e9f1}
+.card-head h2{margin:0;color:#172237;font-size:16px;letter-spacing:-.015em}
+.card-head p{margin:5px 0 0;color:#748198;font-size:10px;line-height:1.45}
+.body-pad{padding:18px}
+.grid{display:grid;gap:14px}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.kpi{min-width:0;padding:15px;border:1px solid #dfe6ef;border-radius:13px;background:#fff;box-shadow:0 5px 14px rgba(25,43,70,.05)}
+.kpi span{display:block;color:#718096;font-size:8px;font-weight:850;letter-spacing:.06em;text-transform:uppercase}
+.kpi b{display:block;margin-top:7px;overflow:hidden;text-overflow:ellipsis;color:#172237;font-size:24px;letter-spacing:-.04em;white-space:nowrap}
+.kpi small{display:block;margin-top:5px;color:#748198;font-size:9px;line-height:1.35}
+.kpi.accent{color:#fff;border-color:var(--primary2);background:linear-gradient(145deg,var(--primary),var(--primary2));box-shadow:0 12px 24px rgba(23,111,229,.18)}
+.kpi.accent span,.kpi.accent small{color:rgba(255,255,255,.78)}
+.kpi.accent b{color:#fff}
+.field label{display:block;margin-bottom:6px;color:#66758a;font-size:10px;font-weight:850;text-transform:uppercase;letter-spacing:.035em}
+.field input,.field select,.field textarea{width:100%;min-height:40px;padding:8px 10px;border:1px solid #d8e0eb;border-radius:9px;outline:0;background:#fff;color:#172237}
+.field textarea{min-height:80px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(58,139,253,.12)}
+.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.form-grid .wide{grid-column:1/-1}
+.helper{display:block;margin-top:5px;color:#7e8b9d;font-size:9px;line-height:1.4}
+.table-wrap{overflow:auto}
+table{width:100%;border-collapse:collapse}
+th{padding:9px 10px;color:#748198;border-bottom:1px solid var(--line);background:#f8fafc;text-align:left;font-size:8px;letter-spacing:.05em;text-transform:uppercase}
+td{padding:10px;border-bottom:1px solid #edf1f5;color:#526277;font-size:10px;vertical-align:middle}
+td input,td select{width:100%;min-width:70px;padding:6px;border:1px solid transparent;border-radius:6px;background:transparent;color:#172237}
+td input:focus,td select:focus{outline:0;border-color:#c9d6e3;background:#fff}
+.num{text-align:right}
+.pill{display:inline-flex;align-items:center;min-height:24px;padding:0 8px;border-radius:999px;background:#eaf3ff;color:#1764c0;font-size:8px;font-weight:850}
+.pill.green{background:#eafaf4;color:#137356}
+.pill.amber{background:#fff5dd;color:#9b6816}
+.pill.red{background:#fff0f1;color:#bf3c48}
+.notice{padding:12px 14px;border:1px solid #dbe3ed;border-left:4px solid var(--primary);border-radius:11px;background:#f7f9fc;color:#66758a;font-size:10px;line-height:1.55}
+.tabs{display:flex;gap:5px;overflow:auto;padding:5px;border:1px solid var(--line);border-radius:12px;background:#fff}
+.tab{flex:0 0 auto;min-height:36px;padding:0 12px;border:0;border-radius:9px;background:transparent;color:#66758a;font-size:10px;font-weight:850}
+.tab.active{color:#fff;background:linear-gradient(145deg,var(--primary),var(--primary2))}
+.actions-row{display:flex;flex-wrap:wrap;gap:8px}
+.progress{height:10px;overflow:hidden;border-radius:999px;background:#e8eef3}
+.progress>i{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--primary),var(--success))}
+canvas{max-width:100%}
+footer{padding:22px 0 0;color:#7d8b9c;text-align:center;font-size:9px}
+@media(max-width:1050px){.kpis{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:840px){.topbar{grid-template-columns:126px minmax(0,1fr) auto}.brand{height:66px;padding:5px 8px}.brand-logo{width:112px;max-height:42px}.sim-title{padding:0 10px}.sim-title strong{font-size:11px}.sim-title small{font-size:7px}.top-actions{height:66px;padding:0 8px;gap:5px}.top-actions .label{display:none}.top-actions .tool-btn{width:36px;padding:0}.page{width:calc(100% - 28px);padding-top:20px}.hero{grid-template-columns:1fr}}
+@media(max-width:620px){.topbar{grid-template-columns:98px minmax(0,1fr) auto;min-height:62px}.brand{height:62px;padding:5px 6px}.brand-logo{width:84px;max-height:38px}.sim-title small{display:none}.sim-title strong{font-size:10px}.top-actions{height:62px;padding:0 6px}.top-actions .tool-btn{width:32px;min-height:32px}.hero-main{padding:20px}.hero-note{padding:16px}.form-grid{grid-template-columns:1fr}.form-grid .wide{grid-column:auto}.kpis{grid-template-columns:1fr 1fr}.kpi b{font-size:21px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition-duration:.001ms!important}}
+@media print{.topbar,.no-print{display:none!important}.page{width:100%;padding:0}.card,.hero-main,.hero-note,.kpi{box-shadow:none}}
+
+@media(max-width:950px){main.page>section.grid{grid-template-columns:1fr!important}main.page section.grid[style*='1fr 1fr']{grid-template-columns:1fr!important}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><a class="brand-link" href="../index.html" aria-label="Volver a NeoDat Consultores"><img class="brand-logo" src="../Neo1.png" alt="NeoDat Consultores"></a></div>
+  <div class="sim-title"><small>NEODAT · SIMULADORES</small><strong>Costos y Rentabilidad</strong></div>
+  <div class="top-actions">
+    <button class="tool-btn" type="button" onclick="window.print()" title="Imprimir"><span>⌑</span><span class="label">Imprimir</span></button>
+    <a class="tool-btn" href="../simuladores.html" title="Volver al catálogo"><span>←</span><span class="label">Catálogo</span></a>
+  </div>
+</header>
+
+<main class="page">
+<section class="hero">
+  <div class="hero-main"><p class="eyebrow">ANÁLISIS EMPRESARIAL</p><h1>Costos, punto de equilibrio y rentabilidad</h1><p>Evalúe la estructura de costos, margen de contribución, utilidad, punto de equilibrio y sensibilidad ante cambios en precio o volumen.</p></div>
+  <aside class="hero-note"><strong>Modelo gerencial</strong><p>Trabaje con datos mensuales o anuales, pero mantenga la misma unidad temporal en todos los campos.</p></aside>
+</section>
+<section class="grid" style="grid-template-columns:310px minmax(0,1fr);align-items:start">
+  <aside class="card no-print">
+    <div class="card-head"><div><h2>Supuestos base</h2><p>Escenario empresarial.</p></div><span class="pill">01</span></div>
+    <div class="body-pad form-grid">
+      <div class="field wide"><label>Unidades vendidas</label><input id="units" type="number" value="1200"></div>
+      <div class="field"><label>Precio unitario</label><input id="price" type="number" step=".01" value="35"></div>
+      <div class="field"><label>Costo variable unitario</label><input id="varCost" type="number" step=".01" value="18"></div>
+      <div class="field wide"><label>Costos fijos</label><input id="fixed" type="number" value="12000"></div>
+      <div class="field"><label>Otros ingresos</label><input id="otherIncome" type="number" value="0"></div>
+      <div class="field"><label>Impuesto utilidad %</label><input id="tax" type="number" step=".1" value="15"></div>
+      <div class="field wide"><label>Capital invertido</label><input id="capital" type="number" value="45000"></div>
+      <div class="field wide"><label>Crecimiento de ventas escenario %</label><input id="growth" type="range" min="-30" max="50" value="10"><span class="helper" id="growthOut">10%</span></div>
+    </div>
+  </aside>
+  <section class="grid">
+    <div class="kpis" id="empKpis"></div>
+    <section class="grid" style="grid-template-columns:1fr 1fr">
+      <article class="card"><div class="card-head"><div><h2>Estructura de costos</h2><p>Participación sobre ventas.</p></div></div><div class="body-pad grid" id="costBars"></div></article>
+      <article class="card"><div class="card-head"><div><h2>Punto de equilibrio</h2><p>Umbral mínimo para cubrir costos.</p></div></div><div class="body-pad grid" id="beBox"></div></article>
+    </section>
+    <section class="card"><div class="card-head"><div><h2>Escenario de sensibilidad</h2><p>Impacto de la variación de volumen manteniendo precio y costos unitarios.</p></div><span class="pill green" id="scenarioBadge">—</span></div><div class="body-pad" id="scenario"></div></section>
+    <div class="notice" id="empReading"></div>
+  </section>
+</section>
+<footer>NeoDat Consultores · Simulador empresarial de costos y rentabilidad.</footer>
+</main>
+
+<script>
+
+const $=id=>document.getElementById(id),n=id=>Number($(id).value)||0,usd=v=>new Intl.NumberFormat('es-EC',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(v||0),pct=v=>`${(v||0).toFixed(1)}%`;
+function calc(){
+ const u=n('units'),p=n('price'),v=n('varCost'),f=n('fixed'),oi=n('otherIncome'),tax=n('tax')/100,cap=n('capital'),g=n('growth');
+ $('growthOut').textContent=`${g}%`;
+ const sales=u*p,vc=u*v,cm=p-v,cmr=p?cm/p:0,op=sales-vc-f+oi,taxVal=Math.max(0,op)*tax,net=op-taxVal,margin=sales?net/sales*100:0,roi=cap?net/cap*100:0;
+ const beUnits=cm>0?f/cm:Infinity,beSales=Number.isFinite(beUnits)?beUnits*p:Infinity,safety=sales?Math.max(0,(sales-beSales)/sales*100):0;
+ const su=u*(1+g/100),ss=su*p,svc=su*v,sop=ss-svc-f+oi,snet=sop-Math.max(0,sop)*tax;
+ const vals=[['Ventas',usd(sales),'Ingresos'],['Utilidad neta',usd(net),pct(margin)+' margen'],['Punto equilibrio',Number.isFinite(beUnits)?`${Math.ceil(beUnits)} u.`:'No alcanzable',Number.isFinite(beSales)?usd(beSales):'—'],['ROI',pct(roi),'sobre capital'],['Margen contribución',usd(cm),'por unidad'],['Índice contribución',pct(cmr*100),'sobre precio'],['Margen seguridad',pct(safety),'sobre ventas'],['Costo variable',usd(vc),'total']];
+ $('empKpis').innerHTML=vals.map((x,i)=>`<article class="kpi ${i===1?'accent':''}"><span>${x[0]}</span><b>${x[1]}</b><small>${x[2]}</small></article>`).join('');
+ const comps=[['Costos variables',vc],['Costos fijos',f],['Utilidad neta',Math.max(0,net)]];
+ $('costBars').innerHTML=comps.map(([lab,val])=>`<div><div style="display:flex;justify-content:space-between;margin-bottom:6px;color:#66758a;font-size:10px"><span>${lab}</span><b>${usd(val)}</b></div><div class="progress"><i style="width:${sales?Math.min(100,val/sales*100):0}%"></i></div></div>`).join('');
+ $('beBox').innerHTML=`<div class="kpi" style="box-shadow:none"><span>Unidades</span><b>${Number.isFinite(beUnits)?Math.ceil(beUnits):'—'}</b><small>para cubrir costos</small></div><div class="kpi" style="box-shadow:none"><span>Ventas</span><b>${Number.isFinite(beSales)?usd(beSales):'—'}</b><small>equilibrio</small></div><div class="notice">Cada unidad aporta <b>${usd(cm)}</b> para cubrir costos fijos y generar utilidad.</div>`;
+ $('scenarioBadge').textContent=`${g>=0?'+':''}${g}% volumen`;
+ $('scenario').innerHTML=`<div class="kpis" style="grid-template-columns:repeat(3,1fr)"><article class="kpi"><span>Unidades escenario</span><b>${Math.round(su)}</b></article><article class="kpi"><span>Ventas escenario</span><b>${usd(ss)}</b></article><article class="kpi ${snet>=net?'accent':''}"><span>Utilidad neta</span><b>${usd(snet)}</b><small>${net?`${((snet/net)-1)*100>=0?'+':''}${(((snet/net)-1)*100).toFixed(1)}% vs. base`:''}</small></article></div>`;
+ $('empReading').innerHTML=`<strong style="color:#172237">Lectura ejecutiva:</strong> ${net>=0?'La empresa genera utilidad con los supuestos actuales.':'La estructura actual produce pérdida.'} ${Number.isFinite(beUnits)?`El punto de equilibrio es de aproximadamente ${Math.ceil(beUnits)} unidades.`:'El costo variable unitario iguala o supera el precio, por lo que el punto de equilibrio no es alcanzable.'}`;
+}
+document.querySelectorAll('input').forEach(el=>el.addEventListener('input',calc));calc();
+
+</script>
+</body>
+</html>
