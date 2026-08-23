@@ -5102,8 +5102,56 @@
 
   <div class="toast-container" id="toastContainer"></div>
 
-  <script src="supabase-config.js?v=20260802-2"></script>
+  <script>
+    /* Configuración pública integrada para que index.html funcione de forma autónoma. */
+    window.SUPABASE_CONFIG = window.SUPABASE_CONFIG || Object.freeze({
+      url: "https://balvytaccwngchtyvllh.supabase.co",
+      publishableKey: "sb_publishable_2e0Pz4lUSRFR-SnABW736w_dvlDNbcn",
+      syncIntervalMs: 2000,
+      eventDebounceMs: 500,
+      fullSnapshotIntervalMs: 300000,
+      metricIntervalMs: 30000,
+      maxEventsPerSync: 1500,
+      requestTimeoutMs: 30000
+    });
+  </script>
   <script src="supabase-sync.js?v=20260802-2"></script>
+  <script>
+    /*
+      Si index.html se abre sin supabase-sync.js, el motor del simulador continúa
+      funcionando en modo local. En el repositorio, cuando el archivo existe,
+      se conserva la sincronización real con Supabase.
+    */
+    if (typeof supabaseSync === "undefined") {
+      window.__flowSimLocalRunId = "";
+      window.__flowSimSupabaseFallback = {
+        get runId() { return window.__flowSimLocalRunId || ""; },
+        initialize() {
+          const status = document.getElementById("supabaseStatus");
+          if (status) {
+            status.textContent = "Supabase: modo local";
+            status.classList.remove("connected", "syncing", "error");
+          }
+        },
+        beginRun() {
+          window.__flowSimLocalRunId =
+            (window.crypto && typeof window.crypto.randomUUID === "function")
+              ? window.crypto.randomUUID()
+              : "local-" + Date.now() + "-" + Math.random().toString(16).slice(2);
+          return window.__flowSimLocalRunId;
+        },
+        markStatus() {},
+        requestSync() {},
+        async finishRun() {
+          window.__flowSimLocalRunId = "";
+          return true;
+        },
+        async suspendForDeletion() { return true; },
+        async resumeAfterDeletion() { return true; }
+      };
+      (0, eval)("var supabaseSync = window.__flowSimSupabaseFallback;");
+    }
+  </script>
 
   <script>
     "use strict";
@@ -9921,12 +9969,23 @@
       const saved = safeStorage.get("simuladorBancarioNeodatV13") || safeStorage.get("simuladorBancarioNeodatV12");
       if (saved) {
         try {
-          applyModel(JSON.parse(saved));
-          showToast("Se cargó el último modelo guardado.");
-          return;
+          const savedModel = JSON.parse(saved);
+          const hasNodes = Array.isArray(savedModel?.nodes) && savedModel.nodes.length > 0;
+          const hasEdges = Array.isArray(savedModel?.edges) && savedModel.edges.length > 0;
+          const hasSource = hasNodes && savedModel.nodes.some(node => node?.type === "source");
+          const hasSink = hasNodes && savedModel.nodes.some(node => node?.type === "sink");
+
+          if (hasNodes && hasEdges && hasSource && hasSink) {
+            applyModel(savedModel);
+            showToast("Se cargó el último modelo guardado.");
+            return;
+          }
+
+          safeStorage.remove("simuladorBancarioNeodatV13");
+          safeStorage.remove("simuladorBancarioNeodatV12");
         } catch (error) {
           safeStorage.remove("simuladorBancarioNeodatV13");
-          loadExampleModel(false);
+          safeStorage.remove("simuladorBancarioNeodatV12");
         }
       }
       updateStatus("Modelo de demostración listo para ejecutar.");
