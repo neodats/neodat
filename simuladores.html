@@ -816,7 +816,100 @@
       box-shadow: 0 22px 42px rgba(18,140,68,.36);
     }
 
-    @media (max-width: 1030px) {
+    
+.marketplace-card-cover.cover-photo {
+  min-height: 250px;
+  padding: 0;
+  background: #0c1a2d;
+}
+
+.marketplace-card-cover.cover-photo::before {
+  display: none;
+}
+
+.marketplace-card-cover.cover-photo .marketplace-card-badges {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  right: 16px;
+  z-index: 3;
+  justify-content: space-between;
+}
+
+.marketplace-card-cover.cover-photo .marketplace-badge,
+.marketplace-card-cover.cover-photo .marketplace-category {
+  backdrop-filter: blur(10px);
+  box-shadow: 0 14px 32px rgba(7,19,33,.18);
+}
+
+.marketplace-card-visual {
+  position: relative;
+  width: 100%;
+  min-height: 250px;
+}
+
+.marketplace-card-visual img {
+  width: 100%;
+  height: 250px;
+  display: block;
+  object-fit: cover;
+}
+
+.marketplace-card-visual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(7,19,33,.06) 0%, rgba(7,19,33,.18) 40%, rgba(7,19,33,.84) 100%);
+}
+
+.marketplace-visual-copy {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 18px;
+  z-index: 2;
+  display: grid;
+  gap: 7px;
+}
+
+.marketplace-visual-copy strong {
+  display: block;
+  color: #ffffff;
+  font-family: "Sora", "Manrope", Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.2;
+  letter-spacing: -.02em;
+}
+
+.marketplace-visual-copy span {
+  display: block;
+  color: rgba(255,255,255,.84);
+  font-size: 12px;
+  line-height: 1.55;
+  font-weight: 500;
+}
+
+.marketplace-card-cover.cover-vainilla .marketplace-card-visual img {
+  object-position: center center;
+}
+
+.marketplace-card-cover.cover-finanzas .marketplace-card-visual img {
+  object-position: center center;
+}
+
+@media (max-width: 760px) {
+  .marketplace-card-cover.cover-photo,
+  .marketplace-card-visual {
+    min-height: 228px;
+  }
+
+  .marketplace-card-visual img {
+    height: 228px;
+  }
+}
+
+@media (max-width: 1030px) {
       .navbar {
         min-height: 66px;
       }
@@ -3402,34 +3495,17 @@ body.page-simuladores main .hero-contenido.centrado::before {
 
     <div class="marketplace-grid" id="marketplaceGrid">
       <article class="marketplace-card" data-category="finanzas" data-title="simulador financiero finanzas procesos escenarios indicadores">
-        <div class="marketplace-card-cover">
+        <div class="marketplace-card-cover cover-photo cover-finanzas">
           <div class="marketplace-card-badges">
             <span class="marketplace-badge">Disponible</span>
             <span class="marketplace-category">Finanzas</span>
           </div>
 
-          <div class="marketplace-preview" aria-hidden="true">
-            <div class="preview-topbar">
-              <div class="preview-dots"><i></i><i></i><i></i></div>
-              <span class="preview-label"></span>
-            </div>
-            <div class="preview-layout">
-              <div class="preview-sidebar">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-              <div class="preview-main">
-                <div class="preview-kpis">
-                  <span></span><span></span><span></span>
-                </div>
-                <div class="preview-chart">
-                  <svg viewBox="0 0 180 60" preserveAspectRatio="none">
-                    <path d="M2 48 C22 42, 34 48, 50 35 S82 42, 98 25 S130 33, 146 16 S166 18, 178 7"></path>
-                  </svg>
-                </div>
-              </div>
+          <div class="marketplace-card-visual" aria-hidden="true">
+            <img alt="Vista previa del simulador financiero con panel de indicadores y gráficos" src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80" />
+            <div class="marketplace-visual-copy">
+              <strong>Panel financiero e indicadores clave</strong>
+              <span>Escenarios, métricas operativas y lectura visual para apoyar la toma de decisiones.</span>
             </div>
           </div>
         </div>
@@ -3464,34 +3540,17 @@ body.page-simuladores main .hero-contenido.centrado::before {
       </article>
 
       <article class="marketplace-card" data-category="agroexportacion" data-title="simulador de vainilla agroexportacion exportacion ecuador china el pangui produccion clima rentabilidad comercio exterior">
-        <div class="marketplace-card-cover">
+        <div class="marketplace-card-cover cover-photo cover-vainilla">
           <div class="marketplace-card-badges">
             <span class="marketplace-badge">Disponible</span>
             <span class="marketplace-category">Agroexportación</span>
           </div>
 
-          <div class="marketplace-preview" aria-hidden="true">
-            <div class="preview-topbar">
-              <div class="preview-dots"><i></i><i></i><i></i></div>
-              <span class="preview-label"></span>
-            </div>
-            <div class="preview-layout">
-              <div class="preview-sidebar">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-              <div class="preview-main">
-                <div class="preview-kpis">
-                  <span></span><span></span><span></span>
-                </div>
-                <div class="preview-chart">
-                  <svg viewBox="0 0 180 60" preserveAspectRatio="none">
-                    <path d="M2 48 C20 44, 34 37, 50 41 S80 30, 98 24 S126 28, 145 15 S165 17, 178 8"></path>
-                  </svg>
-                </div>
-              </div>
+          <div class="marketplace-card-visual" aria-hidden="true">
+            <img alt="Vista previa del simulador de vainilla con producción agrícola y exportación" src="https://images.unsplash.com/photo-1519996529931-28324d5a630e?auto=format&fit=crop&w=1200&q=80" />
+            <div class="marketplace-visual-copy">
+              <strong>Producción, clima y exportación de vainilla</strong>
+              <span>Proyección de cosecha, costos y rentabilidad para la ruta El Pangui – China.</span>
             </div>
           </div>
         </div>
