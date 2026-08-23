@@ -3565,6 +3565,971 @@
       }
     }
 
+
+    /* Estado de sincronización con Supabase */
+    .supabase-status {
+      display: inline-flex;
+      align-items: center;
+      min-height: 22px;
+      padding: 0 8px;
+      border: 1px solid #d7e0ea;
+      border-radius: 999px;
+      background: #f7f9fc;
+      color: #64748b;
+      font-size: 9px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .supabase-status.connected {
+      border-color: rgba(32, 180, 134, 0.28);
+      background: #eefaf5;
+      color: #147557;
+    }
+
+    .supabase-status.syncing {
+      border-color: rgba(58, 139, 253, 0.28);
+      background: #eef5ff;
+      color: #1764c0;
+    }
+
+    .supabase-status.error {
+      border-color: rgba(239, 91, 103, 0.30);
+      background: #fff4f5;
+      color: #bf3c48;
+    }
+
+    @media (max-width: 700px) {
+      .supabase-status { display: none; }
+    }
+
+
+    /* ===== DATOS DE SUPABASE DENTRO DEL MISMO INDEX.HTML ===== */
+    .supabase-live-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 260;
+      display: none;
+      align-items: stretch;
+      justify-content: flex-end;
+      background: rgba(7, 16, 31, .52);
+      backdrop-filter: blur(4px);
+    }
+
+    .supabase-live-overlay.open {
+      display: flex;
+    }
+
+    .supabase-live-panel {
+      width: min(1120px, 94vw);
+      height: 100%;
+      display: grid;
+      grid-template-rows: auto auto auto minmax(0, 1fr);
+      background: #f7f9fc;
+      color: #172237;
+      box-shadow: -24px 0 70px rgba(0, 0, 0, .28);
+      overflow: hidden;
+    }
+
+    .supabase-live-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px 18px;
+      border-bottom: 1px solid #dde5ef;
+      background: #ffffff;
+    }
+
+    .supabase-live-title {
+      min-width: 0;
+    }
+
+    .supabase-live-title h3 {
+      margin: 0;
+      font-size: 16px;
+      color: #172237;
+    }
+
+    .supabase-live-title p {
+      margin: 4px 0 0;
+      color: #6a7890;
+      font-size: 10px;
+      line-height: 1.45;
+    }
+
+    .supabase-live-header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex: 0 0 auto;
+    }
+
+    .supabase-live-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      min-height: 32px;
+      padding: 0 11px;
+      border: 1px solid #cfe7dc;
+      border-radius: 999px;
+      background: #eefaf5;
+      color: #147557;
+      font-size: 9px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .supabase-live-status::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #20b486;
+      box-shadow: 0 0 0 4px rgba(32, 180, 134, .14);
+    }
+
+    .supabase-live-status.error {
+      border-color: #f1c7cc;
+      background: #fff4f5;
+      color: #bf3c48;
+    }
+
+    .supabase-live-status.error::before {
+      background: #ef5b67;
+      box-shadow: 0 0 0 4px rgba(239, 91, 103, .14);
+    }
+
+    .supabase-live-close {
+      width: 34px;
+      height: 34px;
+      border: 1px solid #d8e0eb;
+      border-radius: 10px;
+      background: #ffffff;
+      color: #26364d;
+      cursor: pointer;
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .supabase-live-summary {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+      padding: 12px 18px;
+      border-bottom: 1px solid #e1e7ef;
+      background: #f7f9fc;
+    }
+
+    .supabase-live-kpi {
+      min-width: 0;
+      padding: 11px 12px;
+      border: 1px solid #dfe6ef;
+      border-radius: 12px;
+      background: #ffffff;
+      box-shadow: 0 4px 13px rgba(25, 43, 70, .05);
+    }
+
+    .supabase-live-kpi span {
+      display: block;
+      color: #718096;
+      font-size: 9px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+
+    .supabase-live-kpi strong {
+      display: block;
+      margin-top: 5px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: #172237;
+      font-size: 18px;
+      white-space: nowrap;
+    }
+
+    .supabase-live-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 18px;
+      border-bottom: 1px solid #e1e7ef;
+      background: #ffffff;
+    }
+
+    .supabase-live-tabs {
+      display: flex;
+      gap: 6px;
+      min-width: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .supabase-live-tabs::-webkit-scrollbar {
+      display: none;
+    }
+
+    .supabase-live-tab {
+      flex: 0 0 auto;
+      min-height: 32px;
+      padding: 0 11px;
+      border: 1px solid #d8e0eb;
+      border-radius: 9px;
+      background: #ffffff;
+      color: #526177;
+      cursor: pointer;
+      font-size: 9px;
+      font-weight: 900;
+    }
+
+    .supabase-live-tab.active {
+      border-color: rgba(58, 139, 253, .42);
+      background: #eaf3ff;
+      color: #1764c0;
+    }
+
+    .supabase-live-meta {
+      flex: 0 0 auto;
+      color: #6c7a8f;
+      font-size: 9px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .supabase-live-table-wrap {
+      min-height: 0;
+      overflow: auto;
+      background: #ffffff;
+    }
+
+    .supabase-live-table {
+      width: 100%;
+      min-width: 900px;
+      border-collapse: separate;
+      border-spacing: 0;
+      font-size: 10px;
+    }
+
+    .supabase-live-table th,
+    .supabase-live-table td {
+      padding: 9px 10px;
+      border-right: 1px solid #e6ebf2;
+      border-bottom: 1px solid #e6ebf2;
+      text-align: left;
+      vertical-align: top;
+      white-space: nowrap;
+    }
+
+    .supabase-live-table th {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      background: #f4f7fb;
+      color: #43536a;
+      font-size: 9px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .035em;
+    }
+
+    .supabase-live-table td {
+      color: #26364d;
+      background: #ffffff;
+    }
+
+    .supabase-live-table tbody tr:hover td {
+      background: #f8fbff;
+    }
+
+    .supabase-live-empty {
+      display: grid;
+      place-items: center;
+      min-height: 280px;
+      padding: 30px;
+      color: #718096;
+      text-align: center;
+      font-size: 11px;
+      line-height: 1.6;
+    }
+
+    .supabase-live-money {
+      color: #0f6f55;
+      font-weight: 900;
+    }
+
+    @media (max-width: 900px) {
+      .supabase-live-panel {
+        width: 100vw;
+      }
+
+      .supabase-live-summary {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .supabase-live-toolbar {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .supabase-live-meta {
+        white-space: normal;
+      }
+    }
+
+
+    /* =========================================================
+       CABECERA FINAL: CONTROLES ORDENADOS Y SIN SUPERPOSICIONES
+       ========================================================= */
+    .topbar {
+      grid-template-columns: 112px minmax(0, 1fr) auto !important;
+      min-width: 0 !important;
+      padding: 0 8px 0 0 !important;
+      column-gap: 0 !important;
+      overflow: hidden !important;
+    }
+
+    .brand {
+      width: 112px !important;
+      min-width: 112px !important;
+      padding: 6px 8px !important;
+    }
+
+    .brand-logo {
+      width: 96px !important;
+      max-height: 42px !important;
+    }
+
+    .toolbar {
+      min-width: 0 !important;
+      height: 100% !important;
+      gap: 6px !important;
+      padding: 0 10px !important;
+      overflow-x: auto !important;
+      overflow-y: hidden !important;
+      scrollbar-width: none !important;
+    }
+
+    .toolbar::-webkit-scrollbar {
+      display: none !important;
+    }
+
+    .toolbar-group {
+      gap: 5px !important;
+      flex: 0 0 auto !important;
+    }
+
+    .toolbar-divider {
+      margin: 0 2px !important;
+      height: 26px !important;
+    }
+
+    .toolbar .tool-button {
+      min-width: 38px !important;
+      min-height: 38px !important;
+      padding: 0 11px !important;
+      border-radius: 10px !important;
+    }
+
+    .speed-control {
+      flex: 0 0 auto !important;
+      height: 38px !important;
+      min-width: 104px !important;
+      padding: 0 10px !important;
+    }
+
+    .top-actions {
+      grid-column: 3 !important;
+      width: auto !important;
+      min-width: 0 !important;
+      height: 100% !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: flex-end !important;
+      gap: 7px !important;
+      padding: 0 2px 0 8px !important;
+      border-left: 1px solid #e1e7ef !important;
+      overflow: visible !important;
+    }
+
+    .action-cluster {
+      display: flex !important;
+      align-items: center !important;
+      gap: 4px !important;
+      flex: 0 0 auto !important;
+      padding: 4px !important;
+      border: 1px solid #dce4ee !important;
+      border-radius: 12px !important;
+      background: #f7f9fc !important;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .75) !important;
+    }
+
+    .action-cluster-data {
+      background: #f2f7ff !important;
+      border-color: #d4e2f5 !important;
+    }
+
+    .top-actions .tool-button {
+      width: auto !important;
+      min-width: 38px !important;
+      min-height: 38px !important;
+      padding: 0 10px !important;
+      border-radius: 9px !important;
+      box-shadow: none !important;
+    }
+
+    .top-actions .action-icon {
+      display: inline-grid !important;
+      place-items: center !important;
+      min-width: 15px !important;
+      font-size: 13px !important;
+    }
+
+    .live-data-button {
+      color: #155fae !important;
+      background: #ffffff !important;
+    }
+
+    .delete-data-button {
+      color: #b63845 !important;
+      background: #fff8f8 !important;
+    }
+
+    @media (max-width: 1500px) {
+      .topbar {
+        grid-template-columns: 96px minmax(0, 1fr) auto !important;
+      }
+
+      .brand {
+        width: 96px !important;
+        min-width: 96px !important;
+      }
+
+      .brand-logo {
+        width: 82px !important;
+      }
+
+      #connectBtn,
+      #deleteBtn {
+        width: 38px !important;
+        padding: 0 !important;
+      }
+
+      #connectBtn .label,
+      #deleteBtn .label,
+      .top-actions .action-label {
+        display: none !important;
+      }
+
+      .top-actions .tool-button {
+        width: 38px !important;
+        padding: 0 !important;
+      }
+
+      .speed-control {
+        min-width: 88px !important;
+      }
+
+      .speed-control span {
+        display: none !important;
+      }
+    }
+
+    @media (max-width: 1180px) {
+      .topbar {
+        grid-template-columns: 84px minmax(0, 1fr) auto !important;
+      }
+
+      .brand {
+        width: 84px !important;
+        min-width: 84px !important;
+        padding: 5px !important;
+      }
+
+      .brand-logo {
+        width: 72px !important;
+      }
+
+      .toolbar {
+        padding: 0 6px !important;
+        gap: 4px !important;
+      }
+
+      .toolbar .tool-button {
+        min-width: 36px !important;
+        min-height: 36px !important;
+        padding: 0 9px !important;
+      }
+
+      .toolbar-divider {
+        display: none !important;
+      }
+
+      .speed-control {
+        height: 36px !important;
+        min-width: 72px !important;
+        padding: 0 6px !important;
+      }
+
+      .top-actions {
+        gap: 4px !important;
+        padding-left: 5px !important;
+      }
+
+      .action-cluster {
+        gap: 3px !important;
+        padding: 3px !important;
+        border-radius: 10px !important;
+      }
+
+      .top-actions .tool-button {
+        width: 36px !important;
+        min-width: 36px !important;
+        min-height: 36px !important;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .toolbar .tool-button .label {
+        display: none !important;
+      }
+
+      .toolbar .tool-button {
+        width: 36px !important;
+        padding: 0 !important;
+      }
+
+      .top-actions {
+        display: flex !important;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .topbar {
+        grid-template-columns: 72px minmax(0, 1fr) !important;
+        padding-right: 4px !important;
+      }
+
+      .brand {
+        width: 72px !important;
+        min-width: 72px !important;
+      }
+
+      .brand-logo {
+        width: 62px !important;
+      }
+
+      .top-actions {
+        display: none !important;
+      }
+
+      .toolbar {
+        grid-column: 2 !important;
+      }
+    }
+
+
+    /* ===== HERRAMIENTAS LEGIBLES Y SIN SUPERPOSICIONES ===== */
+    .topbar {
+      grid-template-columns: 98px minmax(0, 1fr) auto !important;
+      overflow: visible !important;
+    }
+
+    .toolbar {
+      min-width: 0 !important;
+      overflow-x: auto !important;
+      overflow-y: hidden !important;
+      scrollbar-width: none !important;
+    }
+
+    .toolbar::-webkit-scrollbar {
+      display: none !important;
+    }
+
+    .top-actions {
+      position: relative !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: flex-end !important;
+      width: auto !important;
+      min-width: 154px !important;
+      height: 100% !important;
+      padding: 0 8px !important;
+      border-left: 1px solid #e1e7ef !important;
+      overflow: visible !important;
+    }
+
+    .tools-menu-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .tools-menu-trigger {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-width: 138px;
+      min-height: 40px;
+      padding: 0 13px;
+      border: 1px solid #cfd9e7;
+      border-radius: 11px;
+      background: #ffffff;
+      color: #22324a;
+      box-shadow: 0 4px 14px rgba(31, 49, 75, .08);
+      cursor: pointer;
+      font: 900 10px/1 system-ui, sans-serif;
+    }
+
+    .tools-menu-trigger:hover,
+    .tools-menu-trigger[aria-expanded="true"] {
+      border-color: #8fb8ee;
+      background: #f4f8ff;
+      color: #155fae;
+    }
+
+    .tools-menu-trigger-icon {
+      font-size: 15px;
+    }
+
+    .tools-menu-chevron {
+      margin-left: auto;
+      font-size: 10px;
+      transition: transform .18s ease;
+    }
+
+    .tools-menu-trigger[aria-expanded="true"] .tools-menu-chevron {
+      transform: rotate(180deg);
+    }
+
+    .tools-menu {
+      position: absolute;
+      top: calc(100% + 8px);
+      right: 0;
+      z-index: 500;
+      width: 310px;
+      max-height: min(520px, calc(100vh - 90px));
+      overflow-y: auto;
+      padding: 9px;
+      border: 1px solid #d8e1ed;
+      border-radius: 14px;
+      background: #ffffff;
+      box-shadow: 0 22px 60px rgba(19, 34, 57, .24);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-6px);
+      pointer-events: none;
+      transition: opacity .16s ease, transform .16s ease, visibility .16s ease;
+    }
+
+    .tools-menu.open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .tools-menu-heading {
+      padding: 7px 9px 5px;
+      color: #7b8799;
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .tools-menu-separator {
+      height: 1px;
+      margin: 7px 4px;
+      background: #e6ebf2;
+    }
+
+    .tools-menu-item {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 34px minmax(0, 1fr);
+      gap: 10px;
+      align-items: center;
+      padding: 10px;
+      border: 0;
+      border-radius: 10px;
+      background: transparent;
+      color: #26364d;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .tools-menu-item:hover,
+    .tools-menu-item:focus-visible {
+      outline: none;
+      background: #f2f6fb;
+    }
+
+    .tools-menu-icon {
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border: 1px solid #dbe4ef;
+      border-radius: 9px;
+      background: #ffffff;
+      font-size: 15px;
+    }
+
+    .tools-menu-item strong,
+    .tools-menu-item small {
+      display: block;
+    }
+
+    .tools-menu-item strong {
+      color: #22324a;
+      font-size: 11px;
+      line-height: 1.3;
+    }
+
+    .tools-menu-item small {
+      margin-top: 2px;
+      color: #758398;
+      font-size: 9px;
+      line-height: 1.35;
+    }
+
+    .tools-menu-item-danger strong {
+      color: #b52f3e;
+    }
+
+    .tools-menu-item-danger .tools-menu-icon {
+      border-color: #f2ccd1;
+      background: #fff6f7;
+      color: #c23b49;
+    }
+
+    /* ===== MODAL DE BORRADO ===== */
+    .delete-data-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 700;
+      display: none;
+      place-items: center;
+      padding: 20px;
+      background: rgba(10, 20, 36, .60);
+      backdrop-filter: blur(5px);
+    }
+
+    .delete-data-overlay.open {
+      display: grid;
+    }
+
+    .delete-data-dialog {
+      width: min(540px, 96vw);
+      overflow: hidden;
+      border: 1px solid #dce3ed;
+      border-radius: 17px;
+      background: #ffffff;
+      box-shadow: 0 30px 90px rgba(4, 15, 32, .38);
+    }
+
+    .delete-data-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 20px 20px 16px;
+      border-bottom: 1px solid #e7ebf1;
+    }
+
+    .delete-data-kicker {
+      display: block;
+      margin-bottom: 5px;
+      color: #be3e4c;
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .delete-data-header h3 {
+      margin: 0;
+      color: #19283e;
+      font-size: 18px;
+    }
+
+    .delete-data-header p {
+      margin: 6px 0 0;
+      color: #69778c;
+      font-size: 10px;
+      line-height: 1.55;
+    }
+
+    .delete-data-close {
+      flex: 0 0 auto;
+      width: 34px;
+      height: 34px;
+      border: 1px solid #d9e0ea;
+      border-radius: 10px;
+      background: #ffffff;
+      color: #34445b;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .delete-data-warning {
+      margin: 16px 20px 4px;
+      padding: 12px 13px;
+      border: 1px solid #f0c5ca;
+      border-radius: 10px;
+      background: #fff5f6;
+      color: #8c2d39;
+      font-size: 10px;
+      line-height: 1.5;
+    }
+
+    .delete-data-field {
+      display: block;
+      margin: 14px 20px 0;
+    }
+
+    .delete-data-field > span {
+      display: block;
+      margin-bottom: 6px;
+      color: #33435a;
+      font-size: 10px;
+      font-weight: 900;
+    }
+
+    .delete-data-field input {
+      width: 100%;
+      height: 40px;
+      padding: 0 12px;
+      border: 1px solid #cfd8e5;
+      border-radius: 10px;
+      background: #ffffff;
+      color: #18283f;
+      font: 600 11px/1 system-ui, sans-serif;
+      outline: none;
+    }
+
+    .delete-data-field input:focus {
+      border-color: #5d9bea;
+      box-shadow: 0 0 0 3px rgba(57, 130, 222, .14);
+    }
+
+    .delete-data-field small {
+      display: block;
+      margin-top: 5px;
+      color: #78869a;
+      font-size: 9px;
+    }
+
+    .delete-data-remember {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 12px 20px 0;
+      color: #526177;
+      font-size: 9px;
+      font-weight: 700;
+    }
+
+    .delete-data-error {
+      margin: 12px 20px 0;
+      padding: 10px 12px;
+      border: 1px solid #efc2c7;
+      border-radius: 9px;
+      background: #fff3f4;
+      color: #a52f3b;
+      font-size: 10px;
+      line-height: 1.5;
+      white-space: pre-wrap;
+    }
+
+    .delete-data-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 9px;
+      margin-top: 18px;
+      padding: 14px 20px 18px;
+      border-top: 1px solid #e7ebf1;
+      background: #f8fafc;
+    }
+
+    .delete-data-cancel,
+    .delete-data-confirm {
+      min-height: 38px;
+      padding: 0 14px;
+      border-radius: 10px;
+      cursor: pointer;
+      font: 900 10px/1 system-ui, sans-serif;
+    }
+
+    .delete-data-cancel {
+      border: 1px solid #d3dbe6;
+      background: #ffffff;
+      color: #34445b;
+    }
+
+    .delete-data-confirm {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 1px solid #bc3442;
+      background: #c93d4b;
+      color: #ffffff;
+    }
+
+    .delete-data-confirm:disabled {
+      cursor: wait;
+      opacity: .68;
+    }
+
+    .delete-data-spinner {
+      display: none;
+      width: 13px;
+      height: 13px;
+      border: 2px solid rgba(255,255,255,.45);
+      border-top-color: #ffffff;
+      border-radius: 50%;
+      animation: delete-spin .7s linear infinite;
+    }
+
+    .delete-data-confirm.loading .delete-data-spinner {
+      display: inline-block;
+    }
+
+    @keyframes delete-spin {
+      to { transform: rotate(360deg); }
+    }
+
+    @media (max-width: 900px) {
+      .topbar {
+        grid-template-columns: 78px minmax(0, 1fr) auto !important;
+      }
+
+      .top-actions {
+        min-width: 50px !important;
+        padding: 0 5px !important;
+      }
+
+      .tools-menu-trigger {
+        min-width: 42px;
+        width: 42px;
+        padding: 0;
+      }
+
+      .tools-menu-trigger > span:nth-child(2),
+      .tools-menu-chevron {
+        display: none;
+      }
+
+      .tools-menu {
+        right: -2px;
+        width: min(310px, calc(100vw - 20px));
+      }
+    }
+
 </style>
 </head>
 <body>
@@ -3612,10 +4577,45 @@
       </div>
 
       <div class="top-actions">
-        <button class="tool-button" id="saveBtn" title="Guardar modelo" aria-label="Guardar modelo"><span class="action-icon">💾</span><span class="action-label">Guardar</span></button>
-        <button class="tool-button" id="exportBtn" title="Exportar modelo" aria-label="Exportar modelo"><span class="action-icon">⇩</span><span class="action-label">Exportar</span></button>
-        <button class="tool-button" id="exportRecordsBtn" title="Exportar registros" aria-label="Exportar registros"><span class="action-icon">▤</span><span class="action-label">Registros</span></button>
-        
+        <div class="tools-menu-wrap">
+          <button class="tools-menu-trigger" id="toolsMenuBtn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="toolsMenu">
+            <span class="tools-menu-trigger-icon">☰</span>
+            <span>Herramientas</span>
+            <span class="tools-menu-chevron">▾</span>
+          </button>
+
+          <div class="tools-menu" id="toolsMenu" role="menu" aria-hidden="true">
+            <div class="tools-menu-heading">Modelo y resultados</div>
+
+            <button class="tools-menu-item" id="saveBtn" type="button" role="menuitem">
+              <span class="tools-menu-icon">💾</span>
+              <span><strong>Guardar modelo</strong><small>Conserva el diseño actual</small></span>
+            </button>
+
+            <button class="tools-menu-item" id="exportBtn" type="button" role="menuitem">
+              <span class="tools-menu-icon">⇩</span>
+              <span><strong>Exportar modelo</strong><small>Descarga la configuración</small></span>
+            </button>
+
+            <button class="tools-menu-item" id="exportRecordsBtn" type="button" role="menuitem">
+              <span class="tools-menu-icon">▤</span>
+              <span><strong>Exportar registros</strong><small>Genera el archivo Excel</small></span>
+            </button>
+
+            <div class="tools-menu-separator"></div>
+            <div class="tools-menu-heading">Supabase</div>
+
+            <button class="tools-menu-item" id="liveSupabaseBtn" type="button" role="menuitem">
+              <span class="tools-menu-icon">◉</span>
+              <span><strong>Datos guardados</strong><small>Consulta automática en vivo</small></span>
+            </button>
+
+            <button class="tools-menu-item tools-menu-item-danger" id="deleteStoredDataBtn" type="button" role="menuitem">
+              <span class="tools-menu-icon">⌫</span>
+              <span><strong>Borrar datos guardados</strong><small>Elimina únicamente registros de FlowSim</small></span>
+            </button>
+          </div>
+        </div>
       </div>
     </header>
 
@@ -3995,6 +4995,7 @@
       <div class="status-center">
         <span id="statusMessage">Modelo listo.</span>
         <span id="statusSelection">0 bloques · 0 conexiones</span>
+        <span id="supabaseStatus" class="supabase-status" title="Estado de sincronización con Supabase">Supabase: sin configurar</span>
         <a class="developer-credit" href="https://neodat.net" target="_blank" rel="noopener noreferrer" aria-label="Visitar NeoDat Consultores">
           Desarrollado por <strong>NeoDat Consultores</strong> ↗
         </a>
@@ -4005,6 +5006,82 @@
         <span id="clockStatus">08:00 h</span>
       </div>
     </footer>
+  </div>
+
+
+
+  <div class="supabase-live-overlay" id="supabaseLiveOverlay" aria-hidden="true">
+    <section class="supabase-live-panel" role="dialog" aria-modal="true" aria-labelledby="supabaseLiveTitle">
+      <header class="supabase-live-header">
+        <div class="supabase-live-title">
+          <h3 id="supabaseLiveTitle">Datos guardados en Supabase</h3>
+          <p>La información histórica se acumula en PostgreSQL y se actualiza automáticamente cada segundo. Solo se elimina mediante Borrar datos.</p>
+        </div>
+        <div class="supabase-live-header-actions">
+          <span class="supabase-live-status" id="supabaseLiveStatus">Conectando</span>
+          <button class="supabase-live-close" id="closeSupabaseLiveBtn" type="button" aria-label="Cerrar datos en vivo">×</button>
+        </div>
+      </header>
+
+      <div class="supabase-live-summary">
+        <div class="supabase-live-kpi"><span>Personas</span><strong id="liveCountPersons">0</strong></div>
+        <div class="supabase-live-kpi"><span>Eventos</span><strong id="liveCountEvents">0</strong></div>
+        <div class="supabase-live-kpi"><span>Movimientos</span><strong id="liveCountMovements">0</strong></div>
+        <div class="supabase-live-kpi"><span>Métricas</span><strong id="liveCountMetrics">0</strong></div>
+        <div class="supabase-live-kpi"><span>Ejecuciones</span><strong id="liveCountSyncs">0</strong></div>
+      </div>
+
+      <div class="supabase-live-toolbar">
+        <div class="supabase-live-tabs" role="tablist" aria-label="Tablas de Supabase">
+          <button class="supabase-live-tab active" type="button" data-live-table="personas">Personas</button>
+          <button class="supabase-live-tab" type="button" data-live-table="eventos">Eventos</button>
+          <button class="supabase-live-tab" type="button" data-live-table="movimientos">Movimientos</button>
+          <button class="supabase-live-tab" type="button" data-live-table="metricas">Métricas</button>
+          <button class="supabase-live-tab" type="button" data-live-table="sincronizaciones">Sincronizaciones</button>
+        </div>
+        <div class="supabase-live-meta" id="supabaseLiveMeta">Esperando datos…</div>
+      </div>
+
+      <div class="supabase-live-table-wrap" id="supabaseLiveTableWrap">
+        <div class="supabase-live-empty">Abra una simulación para ver los datos almacenados automáticamente.</div>
+      </div>
+    </section>
+  </div>
+
+
+
+  <div class="delete-data-overlay" id="deleteDataOverlay" aria-hidden="true">
+    <section class="delete-data-dialog" role="dialog" aria-modal="true" aria-labelledby="deleteDataTitle">
+      <header class="delete-data-header">
+        <div>
+          <span class="delete-data-kicker">Administración de Supabase</span>
+          <h3 id="deleteDataTitle">Borrar datos guardados</h3>
+          <p>La operación elimina los registros de FlowSim, pero mantiene las tablas, vistas, funciones y configuración del proyecto. No se solicitará contraseña.</p>
+        </div>
+        <button class="delete-data-close" id="closeDeleteDataBtn" type="button" aria-label="Cerrar">×</button>
+      </header>
+
+      <div class="delete-data-warning">
+        <strong>Se eliminarán:</strong>
+        simulaciones, personas, eventos, movimientos financieros, créditos, cartera, métricas y sincronizaciones.
+      </div>
+
+      <label class="delete-data-field">
+        <span>Confirmación</span>
+        <input id="deleteConfirmationInput" type="text" autocomplete="off" placeholder="Escriba BORRAR TODO">
+        <small>Escriba exactamente <strong>BORRAR TODO</strong>.</small>
+      </label>
+
+      <div class="delete-data-error" id="deleteDataError" role="alert" hidden></div>
+
+      <footer class="delete-data-actions">
+        <button class="delete-data-cancel" id="cancelDeleteDataBtn" type="button">Cancelar</button>
+        <button class="delete-data-confirm" id="confirmDeleteDataBtn" type="button">
+          <span>Borrar definitivamente</span>
+          <span class="delete-data-spinner" aria-hidden="true"></span>
+        </button>
+      </footer>
+    </section>
   </div>
 
 
@@ -4024,6 +5101,9 @@
   </div>
 
   <div class="toast-container" id="toastContainer"></div>
+
+  <script src="supabase-config.js?v=20260802-2"></script>
+  <script src="supabase-sync.js?v=20260802-2"></script>
 
   <script>
     "use strict";
@@ -4113,6 +5193,91 @@
       business: { min: 500, max: 25000 },
       education: { min: 300, max: 12000 }
     };
+
+    /* Límites operativos de seguridad. Evitan que configuraciones antiguas o
+       valores mal ingresados conviertan una transacción individual en un saldo
+       de cientos de miles o millones de USD. */
+    const TRANSACTION_AMOUNT_LIMITS = Object.freeze({
+      credit: { min: 200, max: 200000 },
+      deposit: { min: 1, max: 5000 },
+      withdrawal: { min: 1, max: 3000 },
+      transfer: { min: 1, max: 15000 },
+      payment: { min: 1, max: 1500 },
+      inquiry: { min: 0, max: 0 },
+      account: { min: 0, max: 500 },
+      card: { min: 0, max: 200 },
+      insurance: { min: 5, max: 1000 },
+      investment: { min: 50, max: 25000 }
+    });
+
+    const CREDIT_AMOUNT_LIMITS = Object.freeze({
+      housing: { min: 10000, max: 200000 },
+      vehicle: { min: 3000, max: 80000 },
+      consumer: { min: 200, max: 40000 },
+      business: { min: 500, max: 150000 },
+      education: { min: 300, max: 50000 }
+    });
+
+    function roundUsd(value) {
+      const number = Number(value);
+      if (!Number.isFinite(number)) return 0;
+      const sign = number < 0 ? -1 : 1;
+      return Math.round((number + sign * Number.EPSILON) * 100) / 100;
+    }
+
+    function transactionLimit(type, creditType = "") {
+      if (type === "credit" && CREDIT_AMOUNT_LIMITS[creditType]) {
+        return CREDIT_AMOUNT_LIMITS[creditType];
+      }
+      return TRANSACTION_AMOUNT_LIMITS[type] || { min: 0, max: 200000 };
+    }
+
+    function sanitizeTransactionAmount(type, value, creditType = "") {
+      const limit = transactionLimit(type, creditType);
+      const number = Number(value);
+      if (!Number.isFinite(number)) return roundUsd(limit.min);
+      return roundUsd(clamp(number, limit.min, limit.max));
+    }
+
+    function rangeLimit(collectionName, type) {
+      if (collectionName === "creditAmountRanges") {
+        return CREDIT_AMOUNT_LIMITS[type] || { min: 0, max: 200000 };
+      }
+      return TRANSACTION_AMOUNT_LIMITS[type] || { min: 0, max: 200000 };
+    }
+
+    function sanitizeSourceAmountConfiguration(node) {
+      if (!node || node.type !== "source") return;
+      node.props = node.props || {};
+
+      const automaticConfigured = node.props.automaticAmountRanges || {};
+      node.props.automaticAmountRanges = {};
+      Object.entries(DEFAULT_AUTOMATIC_AMOUNT_RANGES).forEach(([type, fallback]) => {
+        const limit = transactionLimit(type);
+        node.props.automaticAmountRanges[type] = normalizeConfiguredRange(
+          automaticConfigured[type],
+          fallback,
+          Math.max(fallback.min, limit.min),
+          limit.max
+        );
+      });
+
+      const creditConfigured = node.props.creditAmountRanges || {};
+      node.props.creditAmountRanges = {};
+      Object.entries(DEFAULT_CREDIT_AMOUNT_RANGES).forEach(([type, fallback]) => {
+        const limit = CREDIT_AMOUNT_LIMITS[type];
+        node.props.creditAmountRanges[type] = normalizeConfiguredRange(
+          creditConfigured[type],
+          fallback,
+          limit.min,
+          limit.max
+        );
+      });
+
+      node.props.amountFixed = roundUsd(clamp(Number(node.props.amountFixed) || 0, 0, TRANSACTION_AMOUNT_LIMITS.credit.max));
+      node.props.amountMin = roundUsd(clamp(Number(node.props.amountMin) || 0, 0, TRANSACTION_AMOUNT_LIMITS.credit.max));
+      node.props.amountMax = roundUsd(clamp(Number(node.props.amountMax) || node.props.amountMin, node.props.amountMin, TRANSACTION_AMOUNT_LIMITS.credit.max));
+    }
 
     const NODE_TYPES = {
       source: {
@@ -4444,6 +5609,7 @@
       set(key, value) { try { window.localStorage.setItem(key, value); return true; } catch (error) { return false; } },
       remove(key) { try { window.localStorage.removeItem(key); return true; } catch (error) { return false; } }
     };
+
 
     function uid(prefix) {
       if (window.crypto && typeof window.crypto.randomUUID === "function") {
@@ -5027,9 +6193,14 @@
       return randomAmount(lastBand.min, lastBand.max);
     }
 
-    function normalizeConfiguredRange(config, fallback, minimumAllowed = 0) {
-      const min = Math.max(minimumAllowed, Number(config?.min ?? fallback.min) || 0);
-      const max = Math.max(min, Number(config?.max ?? fallback.max) || min);
+    function normalizeConfiguredRange(config, fallback, minimumAllowed = 0, maximumAllowed = Number.POSITIVE_INFINITY) {
+      const safeMaximum = Number.isFinite(Number(maximumAllowed)) ? Math.max(minimumAllowed, Number(maximumAllowed)) : Number.POSITIVE_INFINITY;
+      const fallbackMin = clamp(Number(fallback?.min) || minimumAllowed, minimumAllowed, safeMaximum);
+      const fallbackMax = clamp(Number(fallback?.max) || fallbackMin, fallbackMin, safeMaximum);
+      const configuredMin = Number(config?.min);
+      const configuredMax = Number(config?.max);
+      const min = roundUsd(clamp(Number.isFinite(configuredMin) ? configuredMin : fallbackMin, minimumAllowed, safeMaximum));
+      const max = roundUsd(clamp(Number.isFinite(configuredMax) ? configuredMax : fallbackMax, min, safeMaximum));
       return { min, max };
     }
 
@@ -5062,35 +6233,42 @@
 
       const fallbackRange = DEFAULT_AUTOMATIC_AMOUNT_RANGES[type];
       const profile = DEFAULT_AUTOMATIC_AMOUNT_PROFILES[type];
+      const limit = transactionLimit(type);
 
       if (fallbackRange && profile) {
-        const minimumAllowed = type === "deposit" ? 1 : 0;
         const configuredRange = normalizeConfiguredRange(
           props.automaticAmountRanges?.[type],
           fallbackRange,
-          minimumAllowed
+          limit.min,
+          limit.max
         );
-        return weightedAmount(scaleAmountProfile(profile, configuredRange));
+        return sanitizeTransactionAmount(type, weightedAmount(scaleAmountProfile(profile, configuredRange)));
       }
 
       const transaction = getTransactionConfig(type);
-      return randomAmount(transaction.minAmount, transaction.maxAmount);
+      return sanitizeTransactionAmount(type, randomAmount(transaction.minAmount, transaction.maxAmount));
     }
 
     function chooseTransactionAmount(type, props) {
       const mode = props.amountMode || "automatic";
+      const limit = transactionLimit(type);
       let amount = 0;
 
       if (mode === "fixed") {
-        amount = Math.max(0, Number(props.amountFixed) || 0);
+        amount = Number(props.amountFixed) || 0;
       } else if (mode === "random") {
-        amount = randomAmount(props.amountMin, props.amountMax);
+        const configuredRange = normalizeConfiguredRange(
+          { min: props.amountMin, max: props.amountMax },
+          { min: limit.min, max: Math.min(limit.max, Math.max(limit.min, Number(props.amountMax) || limit.max)) },
+          limit.min,
+          limit.max
+        );
+        amount = randomAmount(configuredRange.min, configuredRange.max);
       } else {
         amount = normalAutomaticAmount(type, props);
       }
 
-      if (type === "deposit") amount = Math.max(1, amount);
-      return Math.round(amount * 100) / 100;
+      return sanitizeTransactionAmount(type, amount);
     }
 
     function amountConfigurationSummary(props) {
@@ -6192,36 +7370,23 @@
     }
 
     function ensureSourceAmountRanges(node) {
-      const configured = node.props.automaticAmountRanges || {};
-      node.props.automaticAmountRanges = {};
-      Object.entries(DEFAULT_AUTOMATIC_AMOUNT_RANGES).forEach(([type, fallback]) => {
-        node.props.automaticAmountRanges[type] = {
-          ...fallback,
-          ...(configured[type] || {})
-        };
-      });
-
-      const creditConfigured = node.props.creditAmountRanges || {};
-      node.props.creditAmountRanges = {};
-      Object.entries(DEFAULT_CREDIT_AMOUNT_RANGES).forEach(([type, fallback]) => {
-        node.props.creditAmountRanges[type] = {
-          ...fallback,
-          ...(creditConfigured[type] || {})
-        };
-      });
+      sanitizeSourceAmountConfiguration(node);
     }
 
     function bindRangePair(node, prefix, collectionName, type, minimumAllowed = 0) {
       const minId = prefix + "Min";
       const maxId = prefix + "Max";
+      const limit = rangeLimit(collectionName, type);
+      const effectiveMinimum = Math.max(minimumAllowed, limit.min);
       bindNumericInput(minId, value => {
         const range = node.props[collectionName][type];
-        range.min = Math.max(minimumAllowed, value);
+        range.min = roundUsd(clamp(value, effectiveMinimum, limit.max));
         if ((Number(range.max) || 0) < range.min) range.max = range.min;
+        range.max = roundUsd(clamp(range.max, range.min, limit.max));
       });
       bindNumericInput(maxId, value => {
         const range = node.props[collectionName][type];
-        range.max = Math.max(Number(range.min) || minimumAllowed, value);
+        range.max = roundUsd(clamp(value, Number(range.min) || effectiveMinimum, limit.max));
       });
     }
 
@@ -6258,7 +7423,7 @@
         showToast("No hay ningún elemento seleccionado.", "warning");
         return;
       }
-      stopSimulation(false);
+      stopSimulation(false, false);
 
       if (state.selected.kind === "node") {
         const nodeId = state.selected.id;
@@ -6443,6 +7608,7 @@
     }
 
     function initializeRuntime() {
+      state.nodes.filter(node => node.type === "source").forEach(sanitizeSourceAmountConfiguration);
       state.nodeRuntime.clear();
       state.sourceSchedule.clear();
       state.nodes.forEach(node => {
@@ -6516,46 +7682,91 @@
       if (state.running && state.paused) {
         state.paused = false;
         state.lastFrame = performance.now();
+        supabaseSync.markStatus("ejecutando");
         updateRunStatus();
+        updateStatus("Simulación reanudada.");
         requestAnimationFrame(simulationFrame);
         return;
       }
+
       if (state.running) return;
+
       if (sessionEndMinutes() <= sessionStartMinutes()) {
         showToast("La hora de finalización debe ser posterior a la hora de entrada.", "warning");
         return;
       }
+
       if (simulationDaysCount() <= 0) {
         showToast("El rango de fechas no contiene ningún día habilitado para simular.", "warning");
         return;
       }
+
       if (!validateModel()) return;
-      initializeRuntime();
+
+      const continueExistingRun = Boolean(supabaseSync.runId);
+
+      if (continueExistingRun) {
+        // Continúa exactamente desde el minuto, colas, personas y capital actuales.
+        // No reinicia el runtime ni crea otro simulacion_id.
+        supabaseSync.markStatus("ejecutando");
+      } else {
+        // Solo una ejecución realmente nueva reinicia el runtime y obtiene UUID nuevo.
+        initializeRuntime();
+        supabaseSync.beginRun();
+      }
+
       state.running = true;
       state.paused = false;
       state.lastFrame = performance.now();
       updateRunStatus();
-      updateStatus("Simulación en ejecución.");
+      updateStatus(
+        continueExistingRun
+          ? "Simulación continuada desde el punto donde fue detenida."
+          : "Simulación en ejecución."
+      );
       requestAnimationFrame(simulationFrame);
     }
 
     function pauseSimulation() {
       if (!state.running) { showToast("La simulación no está en ejecución.", "warning"); return; }
       state.paused = true;
+      supabaseSync.markStatus("pausada");
       updateRunStatus();
       updateStatus("Simulación pausada.");
     }
 
-    function stopSimulation(resetTime = false) {
+    function stopSimulation(resetTime = false, preserveRun = true) {
       state.running = false;
       state.paused = false;
       state.lastFrame = 0;
+
+      if (supabaseSync.runId) {
+        if (preserveRun && !resetTime) {
+          // Detener no borra ni cierra la ejecución.
+          // Guarda el estado actual y permite continuar con el mismo UUID.
+          supabaseSync.markStatus("detenida");
+        } else {
+          // Reiniciar o sustituir el modelo cierra la ejecución actual,
+          // pero sus datos permanecen en Supabase.
+          void supabaseSync.finishRun(resetTime ? "reiniciada" : "detenida");
+        }
+      }
+
       if (resetTime) initializeRuntime();
+
       updateRunStatus();
-      updateStatus(resetTime ? "Simulación reiniciada." : "Simulación detenida.");
+      updateStatus(
+        resetTime
+          ? "Simulación reiniciada. La ejecución anterior permanece guardada."
+          : preserveRun
+            ? "Simulación detenida. Puede continuar sin perder información."
+            : "Simulación detenida y guardada."
+      );
     }
 
-    function resetSimulation() { stopSimulation(true); }
+    function resetSimulation() {
+      stopSimulation(true, false);
+    }
 
     function updateRunStatus() {
       if (state.running && !state.paused) {
@@ -6628,16 +7839,19 @@
           const amountUsd = chooseTransactionAmount(transactionType, node.props);
           const creditType = transactionType === "credit" ? chooseCreditType(node.props) : "";
           const creditConfig = creditType ? CREDIT_TYPES[creditType] : null;
+          const creditLimit = transactionType === "credit" ? transactionLimit("credit", creditType) : null;
           const configuredCreditRange = transactionType === "credit"
             ? normalizeConfiguredRange(
                 node.props.creditAmountRanges?.[creditType],
                 DEFAULT_CREDIT_AMOUNT_RANGES[creditType] || { min: creditConfig.minAmount, max: creditConfig.maxAmount },
-                0
+                creditLimit.min,
+                creditLimit.max
               )
             : null;
-          const effectiveAmount = transactionType === "credit" && (node.props.amountMode || "automatic") === "automatic"
+          const rawEffectiveAmount = transactionType === "credit" && (node.props.amountMode || "automatic") === "automatic"
             ? randomAmount(configuredCreditRange.min, configuredCreditRange.max)
             : amountUsd;
+          const effectiveAmount = sanitizeTransactionAmount(transactionType, rawEffectiveAmount, creditType);
           const creditProfile = transactionType === "credit" ? createCreditProfile() : null;
           const entity = {
             id: state.nextEntityId++,
@@ -6727,10 +7941,10 @@
 
     function postCapitalMovement(entity, amount, movementType, description) {
       if (entity.financialPosted) return true;
-      const effect = Number(amount) || 0;
-      const before = Math.max(0, Number(state.scenario.currentCapital) || 0);
-      if (effect < 0 && before + effect < 0) return false;
-      const after = Math.max(0, before + effect);
+      const effect = roundUsd(Number(amount) || 0);
+      const before = roundUsd(Math.max(0, Number(state.scenario.currentCapital) || 0));
+      if (effect < 0 && roundUsd(before + effect) < 0) return false;
+      const after = roundUsd(Math.max(0, before + effect));
       state.scenario.currentCapital = after;
       entity.financialPosted = true;
       entity.capitalEffect = effect;
@@ -6764,12 +7978,14 @@
       });
       updateScenarioUi();
       updateMetrics();
+      supabaseSync.requestSync();
       return true;
     }
 
     function processFinancialTransaction(entity, node) {
       if (entity.financialPosted || entity.transactionType === "credit" || entity.transactionType === "inquiry" || entity.transactionType === "account" || entity.transactionType === "card") return;
-      const amount = Math.max(0, Number(entity.amountUsd) || 0);
+      const amount = sanitizeTransactionAmount(entity.transactionType, entity.amountUsd, entity.creditType);
+      entity.amountUsd = amount;
       let effect = 0;
       let description = entity.transactionLabel || "Transacción";
 
@@ -6867,6 +8083,7 @@
       const creditType = CREDIT_TYPES[entity.creditType] ? entity.creditType : "consumer";
       const annualRate = clamp(Number(node.props.creditRates?.[creditType] ?? CREDIT_TYPES[creditType].defaultRate), 0, 100);
       const termMonths = clamp(Math.floor(Number(node.props.creditTerms?.[creditType] ?? CREDIT_TYPES[creditType].defaultTerm)), 1, 360);
+      entity.amountUsd = sanitizeTransactionAmount("credit", entity.amountUsd, entity.creditType);
       const terms = calculateCreditTerms(entity.amountUsd, annualRate, termMonths);
 
       entity.creditAnnualInterestRate = terms.annualRate;
@@ -6937,6 +8154,7 @@
         totalPayable: Number(terms.totalPayable.toFixed(2)),
         projectedDebtRatio: Number(projectedDebtRatio.toFixed(2))
       });
+      supabaseSync.requestSync();
     }
 
     function finalizeAtClosing() {
@@ -6977,6 +8195,7 @@
       });
       state.running = false;
       state.paused = false;
+      void supabaseSync.finishRun("finalizada");
       updateRunStatus();
       renderNodes();
       updateMetrics();
@@ -7204,6 +8423,8 @@
         minute: eventData.time,
         clock: eventData.clock
       });
+      // Guarda cada cambio de etapa en Supabase sin esperar al cierre.
+      supabaseSync.requestSync();
     }
 
     function acceptEntity(nodeId, entity) {
@@ -7285,7 +8506,7 @@
         transactionType: entity.transactionType,
         transactionLabel: entity.transactionLabel || getTransactionConfig(entity.transactionType).label,
         transactionCode: entity.transactionCode || getTransactionConfig(entity.transactionType).code,
-        amountUsd: Math.max(0, Number(entity.amountUsd) || 0),
+        amountUsd: sanitizeTransactionAmount(entity.transactionType, entity.amountUsd, entity.creditType),
         creditType: entity.creditType || "",
         creditTypeLabel: entity.creditTypeLabel || "",
         startTime: startMinute,
@@ -7333,6 +8554,7 @@
       // El panel visual muestra solo los últimos ocho, pero la exportación incluye el historial completo.
       state.records.unshift(record);
       renderRecords();
+      supabaseSync.requestSync();
     }
 
     function attemptDispatchQueue(queueNode) {
@@ -7383,6 +8605,8 @@
       runtime.busy += 1;
       entity.totalServiceMinutes = (Number(entity.totalServiceMinutes) || 0) + serviceTime;
       scheduleEvent(state.simTime + serviceTime, "processComplete", { nodeId: node.id, entity });
+      // Registra inmediatamente el inicio de la atención.
+      supabaseSync.requestSync();
     }
 
     function completeProcess(nodeId, entity) {
@@ -7431,6 +8655,8 @@
         minute: Number(state.simTime.toFixed(1)),
         clock: simulationClock()
       });
+      // Registra inmediatamente la finalización del proceso.
+      supabaseSync.requestSync();
       routeFromNode(node, entity);
 
       while (runtime.queue.length > 0 && processHasCapacity(node)) {
@@ -7588,373 +8814,6 @@
       URL.revokeObjectURL(url);
     }
 
-    function downloadBlob(blob, filename) {
-      const url = URL.createObjectURL(blob);
-      const anchor = document.createElement("a");
-      anchor.href = url;
-      anchor.download = filename;
-      document.body.appendChild(anchor);
-      anchor.click();
-      anchor.remove();
-      URL.revokeObjectURL(url);
-    }
-
-    function escapeXmlValue(value) {
-      return String(value ?? "")
-        .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g, "")
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&apos;");
-    }
-
-    function excelColumnName(index) {
-      let name = "";
-      let value = index + 1;
-      while (value > 0) {
-        value -= 1;
-        name = String.fromCharCode(65 + (value % 26)) + name;
-        value = Math.floor(value / 26);
-      }
-      return name;
-    }
-
-    function crc32Bytes(bytes) {
-      if (!crc32Bytes.table) {
-        crc32Bytes.table = Array.from({ length: 256 }, (_, index) => {
-          let current = index;
-          for (let bit = 0; bit < 8; bit += 1) {
-            current = (current & 1) ? (0xEDB88320 ^ (current >>> 1)) : (current >>> 1);
-          }
-          return current >>> 0;
-        });
-      }
-      let crc = 0xFFFFFFFF;
-      for (let index = 0; index < bytes.length; index += 1) {
-        crc = crc32Bytes.table[(crc ^ bytes[index]) & 0xFF] ^ (crc >>> 8);
-      }
-      return (crc ^ 0xFFFFFFFF) >>> 0;
-    }
-
-    function dosDateTime(date = new Date()) {
-      const year = Math.max(1980, date.getFullYear());
-      return {
-        date: ((year - 1980) << 9) | ((date.getMonth() + 1) << 5) | date.getDate(),
-        time: (date.getHours() << 11) | (date.getMinutes() << 5) | Math.floor(date.getSeconds() / 2)
-      };
-    }
-
-    function createStoredZip(files) {
-      const encoder = new TextEncoder();
-      const timestamp = dosDateTime();
-      const localParts = [];
-      const centralParts = [];
-      let localOffset = 0;
-      let centralSize = 0;
-
-      files.forEach(file => {
-        const nameBytes = encoder.encode(file.name);
-        const dataBytes = file.data instanceof Uint8Array ? file.data : encoder.encode(String(file.data));
-        const crc = crc32Bytes(dataBytes);
-
-        const localHeader = new Uint8Array(30 + nameBytes.length);
-        const localView = new DataView(localHeader.buffer);
-        localView.setUint32(0, 0x04034B50, true);
-        localView.setUint16(4, 20, true);
-        localView.setUint16(6, 0x0800, true);
-        localView.setUint16(8, 0, true);
-        localView.setUint16(10, timestamp.time, true);
-        localView.setUint16(12, timestamp.date, true);
-        localView.setUint32(14, crc, true);
-        localView.setUint32(18, dataBytes.length, true);
-        localView.setUint32(22, dataBytes.length, true);
-        localView.setUint16(26, nameBytes.length, true);
-        localView.setUint16(28, 0, true);
-        localHeader.set(nameBytes, 30);
-        localParts.push(localHeader, dataBytes);
-
-        const centralHeader = new Uint8Array(46 + nameBytes.length);
-        const centralView = new DataView(centralHeader.buffer);
-        centralView.setUint32(0, 0x02014B50, true);
-        centralView.setUint16(4, 20, true);
-        centralView.setUint16(6, 20, true);
-        centralView.setUint16(8, 0x0800, true);
-        centralView.setUint16(10, 0, true);
-        centralView.setUint16(12, timestamp.time, true);
-        centralView.setUint16(14, timestamp.date, true);
-        centralView.setUint32(16, crc, true);
-        centralView.setUint32(20, dataBytes.length, true);
-        centralView.setUint32(24, dataBytes.length, true);
-        centralView.setUint16(28, nameBytes.length, true);
-        centralView.setUint16(30, 0, true);
-        centralView.setUint16(32, 0, true);
-        centralView.setUint16(34, 0, true);
-        centralView.setUint16(36, 0, true);
-        centralView.setUint32(38, 0, true);
-        centralView.setUint32(42, localOffset, true);
-        centralHeader.set(nameBytes, 46);
-        centralParts.push(centralHeader);
-
-        localOffset += localHeader.length + dataBytes.length;
-        centralSize += centralHeader.length;
-      });
-
-      const endRecord = new Uint8Array(22);
-      const endView = new DataView(endRecord.buffer);
-      endView.setUint32(0, 0x06054B50, true);
-      endView.setUint16(4, 0, true);
-      endView.setUint16(6, 0, true);
-      endView.setUint16(8, files.length, true);
-      endView.setUint16(10, files.length, true);
-      endView.setUint32(12, centralSize, true);
-      endView.setUint32(16, localOffset, true);
-      endView.setUint16(20, 0, true);
-
-      return new Blob(
-        [...localParts, ...centralParts, endRecord],
-        { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" }
-      );
-    }
-
-    function normalizeExcelText(value, preserveLineBreaks = false) {
-      let text = String(value ?? "")
-        .replace(/\t+/g, " · ")
-        .replace(/\r\n?/g, "\n")
-        .replace(/[ ]{2,}/g, " ");
-      if (!preserveLineBreaks) text = text.replace(/\n+/g, " · ");
-      return text.trim();
-    }
-
-    function excelDateSerial(value) {
-      if (value instanceof Date && !Number.isNaN(value.getTime())) {
-        return Date.UTC(value.getFullYear(), value.getMonth(), value.getDate()) / 86400000 + 25569;
-      }
-      const text = String(value || "").trim();
-      let match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(text);
-      if (match) {
-        return Date.UTC(Number(match[1]), Number(match[2]) - 1, Number(match[3])) / 86400000 + 25569;
-      }
-      match = /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(text);
-      if (match) {
-        return Date.UTC(Number(match[3]), Number(match[2]) - 1, Number(match[1])) / 86400000 + 25569;
-      }
-      return NaN;
-    }
-
-    function excelTimeSerial(value) {
-      if (value instanceof Date && !Number.isNaN(value.getTime())) {
-        return (value.getHours() * 3600 + value.getMinutes() * 60 + value.getSeconds()) / 86400;
-      }
-      const match = /^(\d{1,2}):(\d{2})(?::(\d{2}))?$/.exec(String(value || "").trim());
-      if (!match) return NaN;
-      const hours = Number(match[1]);
-      const minutes = Number(match[2]);
-      const seconds = Number(match[3] || 0);
-      if (hours > 23 || minutes > 59 || seconds > 59) return NaN;
-      return (hours * 3600 + minutes * 60 + seconds) / 86400;
-    }
-
-    function excelDateTimeSerial(value) {
-      if (value instanceof Date && !Number.isNaN(value.getTime())) {
-        return excelDateSerial(value) + excelTimeSerial(value);
-      }
-      const text = String(value || "").trim();
-      let match = /^(\d{2}\/\d{2}\/\d{4})\s+(\d{1,2}:\d{2}(?::\d{2})?)$/.exec(text);
-      if (match) return excelDateSerial(match[1]) + excelTimeSerial(match[2]);
-      match = /^(\d{4}-\d{2}-\d{2})[ T](\d{1,2}:\d{2}(?::\d{2})?)/.exec(text);
-      if (match) return excelDateSerial(match[1]) + excelTimeSerial(match[2]);
-      const parsed = new Date(text);
-      if (!Number.isNaN(parsed.getTime())) return excelDateSerial(parsed) + excelTimeSerial(parsed);
-      return NaN;
-    }
-
-    function safeExcelSheetName(value, fallback) {
-      const cleaned = String(value || fallback || "Hoja")
-        .replace(/[\\\/?*\[\]:]/g, " ")
-        .replace(/\s+/g, " ")
-        .trim()
-        .slice(0, 31);
-      return cleaned || fallback || "Hoja";
-    }
-
-    function createExcelWorkbook(sheets) {
-      const styleByType = {
-        currency: 2,
-        decimal2: 3,
-        decimal1: 4,
-        integer: 5,
-        percentage: 6,
-        date: 7,
-        time: 8,
-        datetime: 9,
-        wrap: 10
-      };
-
-      const usedNames = new Set();
-      const workbookSheets = sheets.map((sheet, index) => {
-        const baseName = safeExcelSheetName(sheet.name, `Hoja ${index + 1}`);
-        let name = baseName;
-        let suffix = 2;
-        while (usedNames.has(name.toLowerCase())) {
-          const ending = ` ${suffix}`;
-          name = `${baseName.slice(0, 31 - ending.length)}${ending}`;
-          suffix += 1;
-        }
-        usedNames.add(name.toLowerCase());
-        return {
-          name,
-          headers: Array.isArray(sheet.headers) ? sheet.headers : [],
-          rows: Array.isArray(sheet.rows) ? sheet.rows : [],
-          types: Array.isArray(sheet.types) ? sheet.types : [],
-          widths: Array.isArray(sheet.widths) ? sheet.widths : [],
-          dataRowHeight: Number(sheet.dataRowHeight) || 0
-        };
-      });
-
-      const cellXml = (value, rowIndex, columnIndex, type = "text", header = false) => {
-        const reference = `${excelColumnName(columnIndex)}${rowIndex + 1}`;
-        const styleId = header ? 1 : (styleByType[type] || 0);
-        const style = styleId ? ` s="${styleId}"` : "";
-        if (value === "" || value === null || value === undefined) return `<c r="${reference}"${style}/>`;
-
-        let numericValue = NaN;
-        if (type === "date") numericValue = excelDateSerial(value);
-        else if (type === "time") numericValue = excelTimeSerial(value);
-        else if (type === "datetime") numericValue = excelDateTimeSerial(value);
-        else if (["currency", "decimal2", "decimal1", "integer", "percentage"].includes(type)) {
-          numericValue = Number(value);
-          if (type === "percentage" && Number.isFinite(numericValue)) numericValue /= 100;
-        } else if (typeof value === "number" && Number.isFinite(value)) {
-          numericValue = value;
-        }
-
-        if (Number.isFinite(numericValue)) {
-          return `<c r="${reference}"${style}><v>${numericValue}</v></c>`;
-        }
-
-        const preserveLineBreaks = type === "wrap";
-        const textValue = normalizeExcelText(value, preserveLineBreaks);
-        return `<c r="${reference}" t="inlineStr"${style}><is><t xml:space="preserve">${escapeXmlValue(textValue)}</t></is></c>`;
-      };
-
-      const worksheetXmls = workbookSheets.map(sheet => {
-        const allRows = [sheet.headers, ...sheet.rows];
-        const columnCount = Math.max(1, sheet.headers.length, ...sheet.rows.map(row => row.length));
-        const lastColumn = excelColumnName(columnCount - 1);
-        const lastRow = Math.max(1, allRows.length);
-        const sheetRows = allRows.map((row, rowIndex) => {
-          const cells = Array.from({ length: columnCount }, (_, columnIndex) => (
-            cellXml(row[columnIndex], rowIndex, columnIndex, sheet.types[columnIndex] || "text", rowIndex === 0)
-          )).join("");
-          const height = rowIndex === 0
-            ? ' ht="30" customHeight="1"'
-            : (sheet.dataRowHeight ? ` ht="${sheet.dataRowHeight}" customHeight="1"` : "");
-          return `<row r="${rowIndex + 1}"${height}>${cells}</row>`;
-        }).join("");
-
-        const columnsXml = Array.from({ length: columnCount }, (_, index) => {
-          const width = Math.max(8, Number(sheet.widths[index]) || 15);
-          return `<col min="${index + 1}" max="${index + 1}" width="${width}" customWidth="1"/>`;
-        }).join("");
-
-        return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">
-  <dimension ref="A1:${lastColumn}${lastRow}"/>
-  <sheetViews>
-    <sheetView workbookViewId="0" showGridLines="1">
-      <pane ySplit="1" topLeftCell="A2" activePane="bottomLeft" state="frozen"/>
-    </sheetView>
-  </sheetViews>
-  <sheetFormatPr defaultRowHeight="15"/>
-  <cols>${columnsXml}</cols>
-  <sheetData>${sheetRows}</sheetData>
-  <autoFilter ref="A1:${lastColumn}${lastRow}"/>
-  <pageMargins left="0.3" right="0.3" top="0.5" bottom="0.5" header="0.2" footer="0.2"/>
-</worksheet>`;
-      });
-
-      const stylesXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<styleSheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">
-  <numFmts count="6">
-    <numFmt numFmtId="164" formatCode="[$$-409]#,##0.00;[Red]-[$$-409]#,##0.00"/>
-    <numFmt numFmtId="165" formatCode="0.0"/>
-    <numFmt numFmtId="166" formatCode="0.00%"/>
-    <numFmt numFmtId="167" formatCode="dd/mm/yyyy"/>
-    <numFmt numFmtId="168" formatCode="hh:mm"/>
-    <numFmt numFmtId="169" formatCode="dd/mm/yyyy hh:mm"/>
-  </numFmts>
-  <fonts count="2">
-    <font><sz val="11"/><name val="Calibri"/><family val="2"/></font>
-    <font><b/><color rgb="FFFFFFFF"/><sz val="11"/><name val="Calibri"/><family val="2"/></font>
-  </fonts>
-  <fills count="3">
-    <fill><patternFill patternType="none"/></fill>
-    <fill><patternFill patternType="gray125"/></fill>
-    <fill><patternFill patternType="solid"><fgColor rgb="FF176FE5"/><bgColor indexed="64"/></patternFill></fill>
-  </fills>
-  <borders count="1">
-    <border><left/><right/><top/><bottom/><diagonal/></border>
-  </borders>
-  <cellStyleXfs count="1">
-    <xf numFmtId="0" fontId="0" fillId="0" borderId="0"/>
-  </cellStyleXfs>
-  <cellXfs count="11">
-    <xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0"/>
-    <xf numFmtId="0" fontId="1" fillId="2" borderId="0" xfId="0" applyFont="1" applyFill="1" applyAlignment="1"><alignment horizontal="center" vertical="center" wrapText="1"/></xf>
-    <xf numFmtId="164" fontId="0" fillId="0" borderId="0" xfId="0" applyNumberFormat="1"/>
-    <xf numFmtId="2" fontId="0" fillId="0" borderId="0" xfId="0" applyNumberFormat="1"/>
-    <xf numFmtId="165" fontId="0" fillId="0" borderId="0" xfId="0" applyNumberFormat="1"/>
-    <xf numFmtId="1" fontId="0" fillId="0" borderId="0" xfId="0" applyNumberFormat="1"/>
-    <xf numFmtId="166" fontId="0" fillId="0" borderId="0" xfId="0" applyNumberFormat="1"/>
-    <xf numFmtId="167" fontId="0" fillId="0" borderId="0" xfId="0" applyNumberFormat="1"/>
-    <xf numFmtId="168" fontId="0" fillId="0" borderId="0" xfId="0" applyNumberFormat="1"/>
-    <xf numFmtId="169" fontId="0" fillId="0" borderId="0" xfId="0" applyNumberFormat="1"/>
-    <xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0" applyAlignment="1"><alignment vertical="top" wrapText="1"/></xf>
-  </cellXfs>
-  <cellStyles count="1"><cellStyle name="Normal" xfId="0" builtinId="0"/></cellStyles>
-</styleSheet>`;
-
-      const workbookXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"
-          xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">
-  <workbookPr date1904="0"/>
-  <sheets>${workbookSheets.map((sheet, index) => `<sheet name="${escapeXmlValue(sheet.name)}" sheetId="${index + 1}" r:id="rId${index + 1}"/>`).join("")}</sheets>
-</workbook>`;
-
-      const workbookRelationshipsXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
-  ${workbookSheets.map((_, index) => `<Relationship Id="rId${index + 1}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet${index + 1}.xml"/>`).join("\n  ")}
-  <Relationship Id="rId${workbookSheets.length + 1}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/>
-</Relationships>`;
-
-      const packageRelationshipsXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
-  <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/>
-</Relationships>`;
-
-      const contentTypesXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">
-  <Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>
-  <Default Extension="xml" ContentType="application/xml"/>
-  <Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/>
-  ${workbookSheets.map((_, index) => `<Override PartName="/xl/worksheets/sheet${index + 1}.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/>`).join("\n  ")}
-  <Override PartName="/xl/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml"/>
-</Types>`;
-
-      const files = [
-        { name: "[Content_Types].xml", data: contentTypesXml },
-        { name: "_rels/.rels", data: packageRelationshipsXml },
-        { name: "xl/workbook.xml", data: workbookXml },
-        { name: "xl/_rels/workbook.xml.rels", data: workbookRelationshipsXml },
-        { name: "xl/styles.xml", data: stylesXml }
-      ];
-      worksheetXmls.forEach((worksheetXml, index) => {
-        files.push({ name: `xl/worksheets/sheet${index + 1}.xml`, data: worksheetXml });
-      });
-      return createStoredZip(files);
-    }
-
     function saveModel() {
       const payload = {
         version: 13,
@@ -7995,354 +8854,69 @@
         showToast("No existen registros para exportar.", "warning");
         return;
       }
-
-      const numberOrBlank = value => {
-        if (value === "" || value === null || value === undefined) return "";
-        const number = Number(value);
-        return Number.isFinite(number) ? number : "";
-      };
-
-      const outcomeLabel = value => {
-        const labels = {
-          approved: "Aprobado",
-          rejected: "Rechazado",
-          completed: "Completado",
-          abandoned: "Abandonado",
-          current: "Vigente",
-          overdue: "En mora",
-          incoming: "Entrante",
-          outgoing: "Saliente"
-        };
-        return labels[String(value || "").toLowerCase()] || normalizeExcelText(value);
-      };
-
-      const timelineDate = (item, record) => {
-        if (item?.date) return item.date;
-        const text = String(item?.dateTime || "");
-        let match = /^(\d{2})\/(\d{2})\/(\d{4})/.exec(text);
-        if (match) return `${match[3]}-${match[2]}-${match[1]}`;
-        match = /^(\d{4}-\d{2}-\d{2})/.exec(text);
-        return match ? match[1] : (record.startDate || "");
-      };
-
-      const timelineClock = item => {
-        if (item?.clock) return item.clock;
-        const match = /(?:\s|T)(\d{1,2}:\d{2})(?::\d{2})?/.exec(String(item?.dateTime || ""));
-        return match ? match[1] : "";
-      };
-
-      const timelineDateTime = (item, record) => {
-        if (item?.dateTime) return item.dateTime;
-        const date = timelineDate(item, record);
-        const clock = timelineClock(item);
-        return date && clock ? `${date} ${clock}` : "";
-      };
-
-      const timelineKnownKeys = new Set([
-        "event", "date", "clock", "dateTime", "minute", "time", "area", "department", "procedure",
-        "movement", "amount", "effect", "capitalBefore", "capitalAfter", "creditType", "creditTypeLabel",
-        "outcome", "reason", "annualInterestRate", "termMonths", "monthlyPayment", "totalInterest",
-        "totalPayable", "projectedDebtRatio", "waitedMinutes", "targetMinutes"
-      ]);
-
-      const additionalTimelineData = item => Object.entries(item || {})
-        .filter(([key, value]) => !timelineKnownKeys.has(key) && value !== "" && value !== null && value !== undefined)
-        .map(([key, value]) => {
-          const display = typeof value === "object" ? JSON.stringify(value) : value;
-          return `${key}: ${normalizeExcelText(display)}`;
-        })
-        .join(" | ");
-
-      const timelineSummary = record => (record.timeline || []).map((item, index) => {
-        const parts = [
-          `${index + 1}.`,
-          timelineDateTime(item, record),
-          item.event,
-          item.area,
-          item.department,
-          item.procedure,
-          item.movement,
-          item.reason
-        ].filter(Boolean);
-        return normalizeExcelText(parts.join(" | "));
-      }).join("\n");
-
-      const recordColumns = [
-        ["persona", "text", 16, record => record.personId],
-        ["tipo_usuario", "text", 18, record => record.personType],
-        ["con_cita", "text", 12, record => record.hasAppointment || "No"],
-        ["prioridad", "text", 14, record => record.priorityLevel || "Regular"],
-        ["canal", "text", 14, record => record.serviceChannel || "Presencial"],
-        ["revision_cumplimiento", "text", 20, record => record.complianceFlag || "No"],
-        ["satisfaccion_1_5", "decimal1", 16, record => numberOrBlank(record.satisfactionScore)],
-        ["categoria_nps", "text", 17, record => record.satisfactionCategory || ""],
-        ["tramite_financiero", "text", 25, record => record.transactionLabel || "No especificado"],
-        ["codigo_tramite", "text", 15, record => record.transactionCode || ""],
-        ["monto_usd", "currency", 17, record => numberOrBlank(record.amountUsd)],
-        ["tipo_credito", "text", 22, record => record.creditTypeLabel || ""],
-        ["fecha_ingreso", "date", 14, record => record.startDate || formatDateIso(simulationDate(record.startTime))],
-        ["hora_ingreso", "time", 13, record => record.startClock || simulationClock(record.startTime)],
-        ["fecha_salida", "date", 14, record => record.endDate || formatDateIso(simulationDate(record.endTime))],
-        ["hora_salida", "time", 13, record => record.endClock || simulationClock(record.endTime)],
-        ["duracion_minutos", "decimal1", 17, record => numberOrBlank(record.durationMinutes)],
-        ["espera_minutos", "decimal1", 16, record => numberOrBlank(record.waitingMinutes)],
-        ["eventos_demora", "integer", 14, record => numberOrBlank(record.delayEvents)],
-        ["atencion_minutos", "decimal1", 17, record => numberOrBlank(record.serviceMinutes)],
-        ["estado_emocional", "text", 17, record => record.mood || "Tranquilo"],
-        ["estado_final", "text", 20, record => record.finalStatus || ""],
-        ["resultado_credito", "text", 18, record => outcomeLabel(record.creditOutcome)],
-        ["motivo_credito", "wrap", 38, record => record.creditReason || ""],
-        ["ingreso_mensual_usd", "currency", 20, record => numberOrBlank(record.monthlyIncome)],
-        ["deuda_mensual_usd", "currency", 20, record => numberOrBlank(record.currentMonthlyDebt)],
-        ["antiguedad_laboral_meses", "integer", 23, record => numberOrBlank(record.employmentMonths)],
-        ["documentos_completos", "text", 20, record => record.documentsComplete || ""],
-        ["historial_crediticio", "text", 20, record => record.creditHistory || ""],
-        ["tasa_interes_anual_pct", "percentage", 21, record => record.creditAnnualInterestRate ? numberOrBlank(record.creditAnnualInterestRate) : ""],
-        ["plazo_meses", "integer", 14, record => numberOrBlank(record.creditTermMonths)],
-        ["cuota_mensual_usd", "currency", 20, record => record.creditMonthlyPayment ? numberOrBlank(record.creditMonthlyPayment) : ""],
-        ["interes_total_usd", "currency", 20, record => record.creditTotalInterest ? numberOrBlank(record.creditTotalInterest) : ""],
-        ["total_pagar_usd", "currency", 20, record => record.creditTotalPayable ? numberOrBlank(record.creditTotalPayable) : ""],
-        ["resultado_operacion", "text", 20, record => outcomeLabel(record.operationOutcome)],
-        ["motivo_operacion", "wrap", 38, record => record.operationReason || ""],
-        ["direccion_transferencia", "text", 22, record => outcomeLabel(record.transferDirection)],
-        ["efecto_capital_usd", "currency", 20, record => record.capitalMovement ? numberOrBlank(record.capitalEffect) : ""],
-        ["capital_antes_usd", "currency", 20, record => numberOrBlank(record.capitalBefore)],
-        ["capital_despues_usd", "currency", 20, record => numberOrBlank(record.capitalAfter)],
-        ["movimiento_capital", "text", 22, record => record.capitalMovement || ""],
-        ["areas_visitadas", "integer", 15, record => numberOrBlank(record.areasVisited)],
-        ["ruta", "wrap", 48, record => record.route || ""],
-        ["total_etapas", "integer", 14, record => Array.isArray(record.timeline) ? record.timeline.length : 0],
-        ["detalle_etapas", "wrap", 75, record => timelineSummary(record)]
+      const rows = [
+        [
+          "persona", "tipo_usuario", "con_cita", "prioridad", "canal", "revision_cumplimiento", "satisfaccion_1_5", "categoria_nps", "tramite_financiero", "codigo_tramite", "monto_usd", "tipo_credito",
+          "fecha_ingreso", "hora_ingreso", "fecha_salida", "hora_salida", "duracion_minutos", "espera_minutos", "eventos_demora", "atencion_minutos", "estado_emocional", "estado_final",
+          "resultado_credito", "motivo_credito", "ingreso_mensual_usd", "deuda_mensual_usd",
+          "antiguedad_laboral_meses", "documentos_completos", "historial_crediticio",
+          "tasa_interes_anual_pct", "plazo_meses", "cuota_mensual_usd", "interes_total_usd", "total_pagar_usd",
+          "resultado_operacion", "motivo_operacion", "direccion_transferencia",
+          "efecto_capital_usd", "capital_antes_usd", "capital_despues_usd", "movimiento_capital",
+          "areas_visitadas", "ruta", "detalle_etapas"
+        ]
       ];
-
-      const recordRows = state.records.map(record => recordColumns.map(column => column[3](record)));
-
-      const stageHeaders = [
-        "persona", "numero_etapa", "evento", "fecha", "hora", "fecha_hora", "minuto_simulacion",
-        "area", "departamento", "procedimiento", "movimiento", "monto_usd", "efecto_capital_usd",
-        "capital_antes_usd", "capital_despues_usd", "tipo_credito", "resultado", "motivo",
-        "tasa_interes_anual_pct", "plazo_meses", "cuota_mensual_usd", "interes_total_usd",
-        "total_pagar_usd", "ratio_endeudamiento_pct", "espera_minutos", "objetivo_espera_minutos",
-        "datos_adicionales"
-      ];
-      const stageTypes = [
-        "text", "integer", "text", "date", "time", "datetime", "decimal1",
-        "text", "text", "wrap", "text", "currency", "currency", "currency", "currency",
-        "text", "text", "wrap", "percentage", "integer", "currency", "currency", "currency",
-        "percentage", "decimal1", "decimal1", "wrap"
-      ];
-      const stageWidths = [
-        16, 14, 27, 14, 12, 20, 18, 24, 22, 42, 24, 17, 20, 20, 20, 24, 16, 40,
-        22, 14, 20, 20, 20, 24, 17, 22, 45
-      ];
-      const stageRows = [];
       state.records.forEach(record => {
-        (record.timeline || []).forEach((item, index) => {
-          stageRows.push([
-            record.personId,
-            index + 1,
-            item.event || "",
-            timelineDate(item, record),
-            timelineClock(item),
-            timelineDateTime(item, record),
-            numberOrBlank(item.minute ?? item.time),
-            item.area || "",
-            item.department || "",
-            item.procedure || "",
-            item.movement || "",
-            numberOrBlank(item.amount),
-            numberOrBlank(item.effect),
-            numberOrBlank(item.capitalBefore),
-            numberOrBlank(item.capitalAfter),
-            item.creditTypeLabel || item.creditType || "",
-            outcomeLabel(item.outcome),
-            item.reason || "",
-            numberOrBlank(item.annualInterestRate),
-            numberOrBlank(item.termMonths),
-            numberOrBlank(item.monthlyPayment),
-            numberOrBlank(item.totalInterest),
-            numberOrBlank(item.totalPayable),
-            numberOrBlank(item.projectedDebtRatio),
-            numberOrBlank(item.waitedMinutes),
-            numberOrBlank(item.targetMinutes),
-            additionalTimelineData(item)
-          ]);
-        });
+        rows.push([
+          record.personId,
+          record.personType,
+          record.hasAppointment || "No",
+          record.priorityLevel || "Regular",
+          record.serviceChannel || "Presencial",
+          record.complianceFlag || "No",
+          Number(record.satisfactionScore || 0).toFixed(1),
+          record.satisfactionCategory || "",
+          record.transactionLabel || "No especificado",
+          record.transactionCode || "",
+          Number(record.amountUsd || 0).toFixed(2),
+          record.creditTypeLabel || "",
+          record.startDate || formatDateIso(simulationDate(record.startTime)),
+          record.startClock || simulationClock(record.startTime),
+          record.endDate || formatDateIso(simulationDate(record.endTime)),
+          record.endClock || simulationClock(record.endTime),
+          Number(record.durationMinutes || 0).toFixed(1),
+          Number(record.waitingMinutes || 0).toFixed(1),
+          record.delayEvents || 0,
+          Number(record.serviceMinutes || 0).toFixed(1),
+          record.mood || "Tranquilo",
+          record.finalStatus,
+          record.creditOutcome === "approved" ? "Aprobado" : (record.creditOutcome === "rejected" ? "Rechazado" : ""),
+          record.creditReason || "",
+          record.monthlyIncome,
+          record.currentMonthlyDebt,
+          record.employmentMonths,
+          record.documentsComplete,
+          record.creditHistory,
+          Number(record.creditAnnualInterestRate || 0).toFixed(2),
+          record.creditTermMonths || "",
+          Number(record.creditMonthlyPayment || 0).toFixed(2),
+          Number(record.creditTotalInterest || 0).toFixed(2),
+          Number(record.creditTotalPayable || 0).toFixed(2),
+          record.operationOutcome || "",
+          record.operationReason || "",
+          record.transferDirection || "",
+          Number(record.capitalEffect || 0).toFixed(2),
+          record.capitalBefore === "" ? "" : Number(record.capitalBefore || 0).toFixed(2),
+          record.capitalAfter === "" ? "" : Number(record.capitalAfter || 0).toFixed(2),
+          record.capitalMovement || "",
+          record.areasVisited || 0,
+          record.route,
+          JSON.stringify(record.timeline || [])
+        ]);
       });
-
-      const ledgerRows = state.capitalLedger.map(item => [
-        item.personId || "",
-        getTransactionConfig(item.transactionType).label || item.transactionType || "",
-        item.movementType || "",
-        item.description || "",
-        numberOrBlank(item.amount),
-        numberOrBlank(item.before),
-        numberOrBlank(item.after),
-        item.date || "",
-        item.clock || "",
-        item.dateTime || "",
-        numberOrBlank(item.minute)
-      ]);
-
-      const loanRows = state.loanAccounts.map(loan => [
-        loan.id || "",
-        loan.personId || "",
-        CREDIT_TYPES[loan.creditType]?.label || loan.creditType || "",
-        numberOrBlank(loan.principal),
-        numberOrBlank(loan.outstandingPrincipal),
-        numberOrBlank(loan.annualRate),
-        numberOrBlank(loan.termMonths),
-        numberOrBlank(loan.monthlyPayment),
-        loan.startDate || "",
-        numberOrBlank(loan.installmentsProcessed),
-        numberOrBlank(loan.overdueAmount),
-        outcomeLabel(loan.status)
-      ]);
-
-      const recordsCount = state.records.length;
-      const averageWait = recordsCount
-        ? state.records.reduce((sum, record) => sum + Number(record.waitingMinutes || 0), 0) / recordsCount
-        : 0;
-      const satisfaction = state.metrics.satisfactionSamples
-        ? state.metrics.satisfactionTotal / state.metrics.satisfactionSamples
-        : 0;
-      const nps = state.metrics.satisfactionSamples
-        ? (state.metrics.promoters - state.metrics.detractors) / state.metrics.satisfactionSamples * 100
-        : 0;
-      const utilization = state.metrics.staffCapacityMinutes
-        ? state.metrics.staffBusyMinutes / state.metrics.staffCapacityMinutes * 100
-        : 0;
-      const currentSummary = {
-        name: "Ejecución actual",
-        savedAt: new Date(),
-        staff: totalStaff(),
-        completed: state.metrics.completed,
-        avgWait: averageWait,
-        angry: state.metrics.angryUsers,
-        abandoned: state.metrics.abandonedUsers,
-        capital: Number(state.scenario.currentCapital) || 0,
-        equity: estimatedEquity(),
-        creditApproved: state.metrics.creditApproved,
-        creditRejected: state.metrics.creditRejected,
-        overduePortfolio: state.financial.overduePortfolio,
-        staffCost: state.financial.staffCost,
-        satisfaction,
-        nps,
-        utilization
-      };
-      const summaryRows = [currentSummary, ...state.scenarioSnapshots].map((item, index) => [
-        index === 0 ? "Actual" : "Guardado",
-        item.name || `Escenario ${index + 1}`,
-        item.savedAt || new Date(),
-        numberOrBlank(item.staff),
-        numberOrBlank(item.completed),
-        numberOrBlank(item.avgWait),
-        numberOrBlank(item.angry),
-        numberOrBlank(item.abandoned),
-        numberOrBlank(item.capital),
-        numberOrBlank(item.equity),
-        numberOrBlank(item.creditApproved),
-        numberOrBlank(item.creditRejected),
-        numberOrBlank(item.overduePortfolio),
-        numberOrBlank(item.staffCost),
-        numberOrBlank(item.satisfaction),
-        numberOrBlank(item.nps),
-        numberOrBlank(item.utilization)
-      ]);
-
-      const configRows = [];
-      const addConfig = (section, parameter, { text = "", usd = "", pct = "", number = "", date = "", time = "" } = {}) => {
-        configRows.push([section, parameter, text, usd, pct, number, date, time]);
-      };
-      addConfig("Escenario", "Nombre de la entidad", { text: state.scenario.businessName });
-      addConfig("Escenario", "Capital inicial", { usd: state.scenario.initialCapital });
-      addConfig("Escenario", "Capital actual", { usd: state.scenario.currentCapital });
-      addConfig("Escenario", "Fecha inicial", { date: state.scenario.startDate });
-      addConfig("Escenario", "Fecha final", { date: state.scenario.endDate });
-      addConfig("Escenario", "Unidad de simulación", { text: state.scenario.simulationUnit });
-      addConfig("Escenario", "Duración de simulación", { number: state.scenario.simulationLength });
-      addConfig("Escenario", "Días operativos", { text: normalizedOperatingDays().map(day => ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"][day] || day).join(", ") });
-      addConfig("Escenario", "Hora de apertura", { time: state.scenario.openingTime });
-      addConfig("Escenario", "Hora de cierre", { time: state.scenario.closingTime });
-      addConfig("Escenario", "Reserva mínima", { usd: state.scenario.minimumReserve });
-      addConfig("Escenario", "Efectivo inicial en bóveda", { usd: state.scenario.initialVaultCash });
-      addConfig("Escenario", "Efectivo inicial en cajas", { usd: state.scenario.initialCashDesk });
-      addConfig("Escenario", "Tasa de comisión", { pct: state.scenario.commissionRate });
-      addConfig("Escenario", "Tasa mensual de mora", { pct: state.scenario.monthlyDefaultRate });
-      addConfig("Escenario", "Tasa de recuperación", { pct: state.scenario.recoveryRate });
-      addConfig("Escenario", "Usuarios con cita", { pct: state.scenario.appointmentRate });
-      addConfig("Escenario", "Usuarios prioritarios", { pct: state.scenario.priorityRate });
-      addConfig("Escenario", "Participación digital", { pct: state.scenario.digitalShare });
-      addConfig("Escenario", "Probabilidad diaria de interrupción", { pct: state.scenario.dailyOutageRate });
-      addConfig("Escenario", "Duración de interrupción en minutos", { number: state.scenario.outageMinutes });
-      addConfig("Escenario", "Umbral de cumplimiento", { usd: state.scenario.amlThreshold });
-      Object.entries(state.financial).forEach(([key, value]) => {
-        const labels = {
-          cashDesk: "Efectivo en cajas",
-          vaultCash: "Efectivo en bóveda",
-          clientDeposits: "Depósitos de clientes",
-          investmentLiability: "Obligaciones por inversiones",
-          loanPortfolio: "Cartera de crédito",
-          overduePortfolio: "Cartera en mora",
-          recoveredTotal: "Total recuperado",
-          commissionIncome: "Ingresos por comisiones",
-          interestCollected: "Intereses cobrados",
-          staffCost: "Costo de personal",
-          operatingCost: "Costo operativo"
-        };
-        addConfig("Situación financiera", labels[key] || key, { usd: value });
-      });
-
-      const workbook = createExcelWorkbook([
-        {
-          name: "Registros",
-          headers: recordColumns.map(column => column[0]),
-          rows: recordRows,
-          types: recordColumns.map(column => column[1]),
-          widths: recordColumns.map(column => column[2]),
-          dataRowHeight: 54
-        },
-        {
-          name: "Etapas",
-          headers: stageHeaders,
-          rows: stageRows,
-          types: stageTypes,
-          widths: stageWidths,
-          dataRowHeight: 36
-        },
-        {
-          name: "Movimientos",
-          headers: ["persona", "tramite", "tipo_movimiento", "descripcion", "monto_usd", "capital_antes_usd", "capital_despues_usd", "fecha", "hora", "fecha_hora", "minuto_simulacion"],
-          rows: ledgerRows,
-          types: ["text", "text", "text", "wrap", "currency", "currency", "currency", "date", "time", "datetime", "decimal1"],
-          widths: [16, 25, 20, 35, 18, 20, 20, 14, 12, 20, 18],
-          dataRowHeight: 30
-        },
-        {
-          name: "Creditos",
-          headers: ["id_credito", "persona", "tipo_credito", "principal_usd", "saldo_principal_usd", "tasa_anual_pct", "plazo_meses", "cuota_mensual_usd", "fecha_inicio", "cuotas_procesadas", "mora_usd", "estado"],
-          rows: loanRows,
-          types: ["text", "text", "text", "currency", "currency", "percentage", "integer", "currency", "date", "integer", "currency", "text"],
-          widths: [24, 16, 24, 18, 20, 18, 14, 20, 14, 18, 18, 16]
-        },
-        {
-          name: "Resumen",
-          headers: ["tipo", "escenario", "fecha_guardado", "personal", "tramites_finalizados", "espera_promedio_min", "usuarios_molestos", "abandonos", "capital_disponible_usd", "patrimonio_estimado_usd", "creditos_aprobados", "creditos_rechazados", "cartera_mora_usd", "costo_personal_usd", "satisfaccion_1_5", "nps_pct", "utilizacion_pct"],
-          rows: summaryRows,
-          types: ["text", "text", "datetime", "integer", "integer", "decimal1", "integer", "integer", "currency", "currency", "integer", "integer", "currency", "currency", "decimal1", "percentage", "percentage"],
-          widths: [12, 24, 20, 12, 20, 20, 18, 14, 22, 22, 20, 20, 20, 20, 18, 14, 16]
-        },
-        {
-          name: "Configuracion",
-          headers: ["seccion", "parametro", "valor_texto", "valor_usd", "valor_pct", "valor_numerico", "valor_fecha", "valor_hora"],
-          rows: configRows,
-          types: ["text", "text", "text", "currency", "percentage", "decimal2", "date", "time"],
-          widths: [22, 38, 28, 18, 16, 18, 14, 12]
-        }
-      ]);
-
-      downloadBlob(workbook, "registros-simulacion-completos.xlsx");
-      showToast(`${state.records.length.toLocaleString("es-EC")} registros exportados correctamente en Excel: dinero, fechas, horas, porcentajes y etapas.`);
+      const csv = rows.map(row => row.map(cell => `"${String(cell).replaceAll('"', '""')}"`).join(",")).join("\n");
+      downloadText(csv, "registros-simulacion.csv", "text/csv;charset=utf-8");
+      showToast(`${state.records.length.toLocaleString("es-EC")} registros exportados.`);
     }
 
     function importModel(file) {
@@ -8580,36 +9154,14 @@
 
     function upgradeNormalDollarRanges(payload) {
       const upgraded = clone(payload);
-      const legacyAutomaticMax = { deposit: 5000, withdrawal: 2000, transfer: 7000, payment: 600, account: 100, card: 30, insurance: 250, investment: 10000 };
-      const legacyCreditMax = { housing: 120000, vehicle: 50000, consumer: 25000, business: 60000, education: 30000 };
-      const normalAutomatic = clone(DEFAULT_AUTOMATIC_AMOUNT_RANGES);
-      const normalCredit = clone(DEFAULT_CREDIT_AMOUNT_RANGES);
-
       if (Array.isArray(upgraded.nodes)) {
         upgraded.nodes.forEach(node => {
           if (node.type !== "source") return;
-          node.props = node.props || {};
-          const automatic = node.props.automaticAmountRanges || {};
-          Object.keys(normalAutomatic).forEach(type => {
-            const current = automatic[type];
-            if (!current || Number(current.max) === legacyAutomaticMax[type]) {
-              automatic[type] = clone(normalAutomatic[type]);
-            }
-          });
-          node.props.automaticAmountRanges = automatic;
-
-          const credits = node.props.creditAmountRanges || {};
-          Object.keys(normalCredit).forEach(type => {
-            const current = credits[type];
-            if (!current || Number(current.max) === legacyCreditMax[type]) {
-              credits[type] = clone(normalCredit[type]);
-            }
-          });
-          node.props.creditAmountRanges = credits;
-          if (Number(node.props.amountFixed) === 500) node.props.amountFixed = 200;
-          if (Number(node.props.amountMax) === 5000) node.props.amountMax = 2000;
+          node.props = { ...clone(NODE_TYPES.source.props), ...(node.props || {}) };
+          sanitizeSourceAmountConfiguration(node);
         });
       }
+      upgraded.version = Math.max(17, Number(upgraded.version) || 0);
       return upgraded;
     }
 
@@ -8618,7 +9170,7 @@
       payload = upgradeDirectCashierRouting(payload);
       payload = upgradeRealisticCashierFlow(payload);
       payload = upgradeNormalDollarRanges(payload);
-      stopSimulation(false);
+      stopSimulation(false, false);
       state.scenario = {
         businessName: String(payload.scenario?.businessName || "Entidad financiera"),
         initialCapital: Math.max(0, Number(payload.scenario?.initialCapital ?? 1000000) || 0),
@@ -8658,6 +9210,10 @@
           y: clamp(Number(node.y) || 0, 0, 1400 - 108),
           props: { ...clone(NODE_TYPES[node.type].props), ...(node.props || {}) }
         }));
+
+      state.nodes.forEach(node => {
+        if (node.type === "source") sanitizeSourceAmountConfiguration(node);
+      });
 
       const validNodeIds = new Set(state.nodes.map(node => node.id));
       state.edges = payload.edges
@@ -8901,7 +9457,7 @@
     }
 
     function clearModel() {
-      stopSimulation(false);
+      stopSimulation(false, false);
       state.nodes = [];
       state.edges = [];
       state.selected = null;
@@ -9343,6 +9899,7 @@
     document.getElementById("mobileDockLandscape")?.addEventListener("click", requestLandscapeMode);
 
     function initializeApp() {
+      supabaseSync.initialize();
       updateAutomaticLandscape();
       const leftHidden = safeStorage.get("simuladorBancarioPanelIzquierdoOculto") === "true";
       const rightHidden = safeStorage.get("simuladorBancarioPanelDerechoOculto") === "true";
@@ -9396,8 +9953,617 @@
       exportRecords,
       saveScenarioSnapshot,
       compareScenarios: () => { renderScenarioComparison(); dom.comparisonModal?.classList.add("open"); },
-      loadExample: loadExampleModel
+      loadExample: loadExampleModel,
+      supabase: supabaseSync
     };
   </script>
+
+  <script>
+    (() => {
+      "use strict";
+
+      const POLL_MS = 1000;
+      const stateLive = {
+        open: false,
+        table: "personas",
+        timer: null,
+        loading: false,
+        lastRunId: ""
+      };
+
+      const tableDefinitions = {
+        personas: {
+          table: "personas_simuladas",
+          select: "id,simulacion_id,persona_codigo,tipo_usuario,con_cita,tramite_nombre,monto_usd,moneda,estado_final,fecha_ingreso,fecha_salida,updated_at",
+          order: "updated_at.desc",
+          columns: [
+            ["simulacion_id", "Ejecución"],
+            ["persona_codigo", "Persona"],
+            ["tipo_usuario", "Usuario"],
+            ["con_cita", "Con cita"],
+            ["tramite_nombre", "Trámite"],
+            ["monto_usd", "Monto USD"],
+            ["estado_final", "Estado"],
+            ["fecha_ingreso", "Ingreso"],
+            ["fecha_salida", "Salida"],
+            ["updated_at", "Actualizado"]
+          ]
+        },
+        eventos: {
+          table: "eventos_simulacion",
+          select: "id,simulacion_id,persona_codigo,evento,area,departamento,procedimiento,fecha_hora,minuto_simulado,created_at",
+          order: "id.desc",
+          columns: [
+            ["simulacion_id", "Ejecución"],
+            ["id", "ID"],
+            ["persona_codigo", "Persona"],
+            ["evento", "Evento"],
+            ["area", "Área"],
+            ["departamento", "Departamento"],
+            ["procedimiento", "Procedimiento"],
+            ["fecha_hora", "Fecha y hora"],
+            ["minuto_simulado", "Minuto"]
+          ]
+        },
+        movimientos: {
+          table: "movimientos_financieros",
+          select: "id,simulacion_id,persona_codigo,tipo_movimiento,descripcion,moneda,monto_usd,efecto_capital_usd,capital_antes_usd,capital_despues_usd,fecha_hora",
+          order: "id.desc",
+          columns: [
+            ["simulacion_id", "Ejecución"],
+            ["id", "ID"],
+            ["persona_codigo", "Persona"],
+            ["tipo_movimiento", "Movimiento"],
+            ["descripcion", "Descripción"],
+            ["monto_usd", "Monto USD"],
+            ["efecto_capital_usd", "Efecto USD"],
+            ["capital_antes_usd", "Capital antes"],
+            ["capital_despues_usd", "Capital después"],
+            ["fecha_hora", "Fecha y hora"]
+          ]
+        },
+        metricas: {
+          table: "metricas_simulacion",
+          select: "id,simulacion_id,minuto_simulado,personas_ingresadas,personas_finalizadas,personas_en_sistema,cola_maxima,espera_promedio_minutos,capital_disponible_usd,creditos_aprobados,creditos_rechazados,fecha_hora,created_at",
+          order: "id.desc",
+          columns: [
+            ["simulacion_id", "Ejecución"],
+            ["id", "ID"],
+            ["minuto_simulado", "Minuto"],
+            ["personas_ingresadas", "Ingresadas"],
+            ["personas_finalizadas", "Finalizadas"],
+            ["personas_en_sistema", "En sistema"],
+            ["cola_maxima", "Cola máxima"],
+            ["espera_promedio_minutos", "Espera promedio"],
+            ["capital_disponible_usd", "Capital USD"],
+            ["creditos_aprobados", "Créditos aprobados"],
+            ["creditos_rechazados", "Créditos rechazados"],
+            ["fecha_hora", "Fecha y hora"]
+          ]
+        },
+        sincronizaciones: {
+          table: "sincronizaciones_simulador",
+          select: "simulacion_id,sync_id,estado,es_snapshot_completo,filas_personas,filas_pasos,filas_eventos,filas_movimientos,filas_creditos,filas_cartera,filas_variables,filas_metricas,created_at,completed_at",
+          order: "created_at.desc",
+          columns: [
+            ["simulacion_id", "Ejecución"],
+            ["sync_id", "Sincronización"],
+            ["estado", "Estado"],
+            ["es_snapshot_completo", "Snapshot"],
+            ["filas_personas", "Personas"],
+            ["filas_pasos", "Pasos"],
+            ["filas_eventos", "Eventos"],
+            ["filas_movimientos", "Movimientos"],
+            ["filas_creditos", "Créditos"],
+            ["filas_metricas", "Métricas"],
+            ["completed_at", "Completada"]
+          ]
+        }
+      };
+
+      const domLive = {
+        button: document.getElementById("liveSupabaseBtn"),
+        overlay: document.getElementById("supabaseLiveOverlay"),
+        close: document.getElementById("closeSupabaseLiveBtn"),
+        status: document.getElementById("supabaseLiveStatus"),
+        meta: document.getElementById("supabaseLiveMeta"),
+        tableWrap: document.getElementById("supabaseLiveTableWrap"),
+        countPersons: document.getElementById("liveCountPersons"),
+        countEvents: document.getElementById("liveCountEvents"),
+        countMovements: document.getElementById("liveCountMovements"),
+        countMetrics: document.getElementById("liveCountMetrics"),
+        countSyncs: document.getElementById("liveCountSyncs"),
+        tabs: [...document.querySelectorAll("[data-live-table]")]
+      };
+
+      function escapeHtml(value) {
+        return String(value ?? "")
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+
+      function money(value) {
+        const number = Number(value);
+        if (!Number.isFinite(number)) return "—";
+        return new Intl.NumberFormat("es-EC", {
+          style: "currency",
+          currency: "USD",
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2
+        }).format(number);
+      }
+
+      function dateTime(value) {
+        if (!value) return "—";
+        const date = new Date(value);
+        if (Number.isNaN(date.getTime())) return String(value);
+        return new Intl.DateTimeFormat("es-EC", {
+          dateStyle: "short",
+          timeStyle: "medium"
+        }).format(date);
+      }
+
+      function currentRunId() {
+        return String(window.FlowSimTramites?.supabase?.runId || "");
+      }
+
+      function configReady() {
+        const config = window.SUPABASE_CONFIG || {};
+        return Boolean(
+          config.url &&
+          config.publishableKey &&
+          !String(config.publishableKey).includes("PEGUE_AQUI")
+        );
+      }
+
+      function apiHeaders(count = false) {
+        const headers = {
+          apikey: window.SUPABASE_CONFIG.publishableKey,
+          Authorization: `Bearer ${window.SUPABASE_CONFIG.publishableKey}`,
+          Accept: "application/json"
+        };
+        if (count) headers.Prefer = "count=exact";
+        return headers;
+      }
+
+      async function resolveRunId() {
+        const activeRun = currentRunId();
+        if (activeRun) return activeRun;
+
+        const url = new URL(
+          `${window.SUPABASE_CONFIG.url.replace(/\/$/, "")}/rest/v1/simulaciones`
+        );
+        url.searchParams.set("select", "id");
+        url.searchParams.set("order", "created_at.desc");
+        url.searchParams.set("limit", "1");
+
+        const response = await fetch(url, { headers: apiHeaders(false), cache: "no-store" });
+        if (!response.ok) throw new Error(`No se pudo obtener la simulación (${response.status}).`);
+        const rows = await response.json();
+        return String(rows?.[0]?.id || "");
+      }
+
+      async function fetchRows(definition, limit = 100) {
+        const base = window.SUPABASE_CONFIG.url.replace(/\/$/, "");
+        const url = new URL(`${base}/rest/v1/${definition.table}`);
+        url.searchParams.set("select", definition.select);
+        url.searchParams.set("order", definition.order);
+        url.searchParams.set("limit", String(limit));
+
+        const response = await fetch(url, {
+          headers: apiHeaders(false),
+          cache: "no-store"
+        });
+
+        if (!response.ok) {
+          const detail = await response.text();
+          throw new Error(`${definition.table}: ${response.status} ${detail}`);
+        }
+
+        return response.json();
+      }
+
+      async function fetchCount(table) {
+        const base = window.SUPABASE_CONFIG.url.replace(/\/$/, "");
+        const url = new URL(`${base}/rest/v1/${table}`);
+        url.searchParams.set("select", "simulacion_id");
+        url.searchParams.set("limit", "1");
+
+        const response = await fetch(url, {
+          headers: {
+            ...apiHeaders(true),
+            Range: "0-0"
+          },
+          cache: "no-store"
+        });
+
+        if (!response.ok) return 0;
+        const contentRange = response.headers.get("content-range") || "";
+        const total = contentRange.split("/")[1];
+        return total && total !== "*" ? Number(total) || 0 : 0;
+      }
+
+      function formatCell(key, value) {
+        if (value === null || value === undefined || value === "") return "—";
+        if (key === "simulacion_id") {
+          const fullId = String(value);
+          return `<span title="${escapeHtml(fullId)}">${escapeHtml(fullId.slice(0, 8))}…</span>`;
+        }
+        if (key.endsWith("_usd") || key === "monto_usd" || key === "capital_disponible_usd") {
+          return `<span class="supabase-live-money">${escapeHtml(money(value))}</span>`;
+        }
+        if (
+          key.includes("fecha") ||
+          key.endsWith("_at") ||
+          key === "completed_at" ||
+          key === "created_at" ||
+          key === "updated_at"
+        ) {
+          return escapeHtml(dateTime(value));
+        }
+        if (typeof value === "boolean") return value ? "Sí" : "No";
+        if (typeof value === "object") return escapeHtml(JSON.stringify(value));
+        return escapeHtml(value);
+      }
+
+      function renderTable(definition, rows) {
+        if (!rows.length) {
+          domLive.tableWrap.innerHTML =
+            '<div class="supabase-live-empty">Todavía no existen registros históricos para esta tabla.</div>';
+          return;
+        }
+
+        const head = definition.columns
+          .map(([, label]) => `<th>${escapeHtml(label)}</th>`)
+          .join("");
+
+        const body = rows
+          .map(row => {
+            const cells = definition.columns
+              .map(([key]) => `<td>${formatCell(key, row[key])}</td>`)
+              .join("");
+            return `<tr>${cells}</tr>`;
+          })
+          .join("");
+
+        domLive.tableWrap.innerHTML = `
+          <table class="supabase-live-table">
+            <thead><tr>${head}</tr></thead>
+            <tbody>${body}</tbody>
+          </table>
+        `;
+      }
+
+      async function refreshLiveData() {
+        if (!stateLive.open || stateLive.loading) return;
+        if (!configReady()) {
+          domLive.status.textContent = "Supabase sin configurar";
+          domLive.status.classList.add("error");
+          domLive.meta.textContent = "Coloque la Publishable key en supabase-config.js.";
+          return;
+        }
+
+        stateLive.loading = true;
+        try {
+          const definition = tableDefinitions[stateLive.table];
+
+          const [rows, persons, events, movements, metrics, runs] = await Promise.all([
+            fetchRows(definition, 100),
+            fetchCount("personas_simuladas"),
+            fetchCount("eventos_simulacion"),
+            fetchCount("movimientos_financieros"),
+            fetchCount("metricas_simulacion"),
+            fetchCount("simulaciones")
+          ]);
+
+          domLive.countPersons.textContent = persons.toLocaleString("es-EC");
+          domLive.countEvents.textContent = events.toLocaleString("es-EC");
+          domLive.countMovements.textContent = movements.toLocaleString("es-EC");
+          domLive.countMetrics.textContent = metrics.toLocaleString("es-EC");
+          domLive.countSyncs.textContent = runs.toLocaleString("es-EC");
+
+          renderTable(definition, rows);
+
+          const now = new Intl.DateTimeFormat("es-EC", {
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit"
+          }).format(new Date());
+
+          domLive.status.textContent = "Actualización automática";
+          domLive.status.classList.remove("error");
+          domLive.meta.textContent =
+            `Historial acumulado · ${runs.toLocaleString("es-EC")} ejecuciones · ${rows.length} filas visibles · actualizado ${now}`;
+        } catch (error) {
+          console.error("Error al consultar Supabase:", error);
+          domLive.status.textContent = "Error de lectura";
+          domLive.status.classList.add("error");
+          domLive.meta.textContent = error.message || "No se pudo consultar Supabase.";
+        } finally {
+          stateLive.loading = false;
+        }
+      }
+
+      function startPolling() {
+        window.clearInterval(stateLive.timer);
+        stateLive.timer = window.setInterval(refreshLiveData, POLL_MS);
+        void refreshLiveData();
+      }
+
+      function stopPolling() {
+        window.clearInterval(stateLive.timer);
+        stateLive.timer = null;
+      }
+
+      function openPanel() {
+        stateLive.open = true;
+        domLive.overlay.classList.add("open");
+        domLive.overlay.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+        startPolling();
+      }
+
+      function closePanel() {
+        stateLive.open = false;
+        domLive.overlay.classList.remove("open");
+        domLive.overlay.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+        stopPolling();
+      }
+
+      domLive.button?.addEventListener("click", openPanel);
+      domLive.close?.addEventListener("click", closePanel);
+      domLive.overlay?.addEventListener("click", event => {
+        if (event.target === domLive.overlay) closePanel();
+      });
+
+      domLive.tabs.forEach(tab => {
+        tab.addEventListener("click", () => {
+          stateLive.table = tab.dataset.liveTable;
+          domLive.tabs.forEach(item => item.classList.toggle("active", item === tab));
+          domLive.tableWrap.innerHTML =
+            '<div class="supabase-live-empty">Consultando Supabase…</div>';
+          void refreshLiveData();
+        });
+      });
+
+      document.addEventListener("keydown", event => {
+        if (event.key === "Escape" && stateLive.open) closePanel();
+      });
+    })();
+  </script>
+
+
+
+
+
+  <script>
+    (() => {
+      "use strict";
+
+      const dom = {
+        toolsButton: document.getElementById("toolsMenuBtn"),
+        toolsMenu: document.getElementById("toolsMenu"),
+        deleteButton: document.getElementById("deleteStoredDataBtn"),
+        overlay: document.getElementById("deleteDataOverlay"),
+        closeButton: document.getElementById("closeDeleteDataBtn"),
+        cancelButton: document.getElementById("cancelDeleteDataBtn"),
+        confirmButton: document.getElementById("confirmDeleteDataBtn"),
+        confirmation: document.getElementById("deleteConfirmationInput"),
+        error: document.getElementById("deleteDataError")
+      };
+
+      function closeToolsMenu() {
+        dom.toolsMenu?.classList.remove("open");
+        dom.toolsMenu?.setAttribute("aria-hidden", "true");
+        dom.toolsButton?.setAttribute("aria-expanded", "false");
+      }
+
+      function toggleToolsMenu() {
+        const open = !dom.toolsMenu?.classList.contains("open");
+        dom.toolsMenu?.classList.toggle("open", open);
+        dom.toolsMenu?.setAttribute("aria-hidden", String(!open));
+        dom.toolsButton?.setAttribute("aria-expanded", String(open));
+      }
+
+      function showDeleteError(message) {
+        if (!dom.error) return;
+        dom.error.hidden = !message;
+        dom.error.textContent = message || "";
+      }
+
+      function configured() {
+        const config = window.SUPABASE_CONFIG || {};
+        return Boolean(
+          config.url &&
+          config.publishableKey &&
+          !String(config.publishableKey).includes("PEGUE_AQUI")
+        );
+      }
+
+      function openDeleteDialog() {
+        closeToolsMenu();
+        showDeleteError("");
+
+        dom.confirmation.value = "";
+        dom.overlay.classList.add("open");
+        dom.overlay.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+        window.setTimeout(() => dom.confirmation.focus(), 50);
+      }
+
+      function closeDeleteDialog() {
+        if (dom.confirmButton?.disabled) return;
+        dom.overlay.classList.remove("open");
+        dom.overlay.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+        showDeleteError("");
+      }
+
+      function setDeleting(deleting) {
+        dom.confirmButton.disabled = deleting;
+        dom.confirmButton.classList.toggle("loading", deleting);
+        dom.confirmation.disabled = deleting;
+        dom.cancelButton.disabled = deleting;
+        dom.closeButton.disabled = deleting;
+      }
+
+      function clearLivePanel() {
+        [
+          "liveCountPersons",
+          "liveCountEvents",
+          "liveCountMovements",
+          "liveCountMetrics",
+          "liveCountSyncs"
+        ].forEach(id => {
+          const element = document.getElementById(id);
+          if (element) element.textContent = "0";
+        });
+
+        const meta = document.getElementById("supabaseLiveMeta");
+        if (meta) meta.textContent = "No existen datos guardados.";
+
+        const wrap = document.getElementById("supabaseLiveTableWrap");
+        if (wrap) {
+          wrap.innerHTML =
+            '<div class="supabase-live-empty">Todos los registros de FlowSim fueron eliminados de Supabase.</div>';
+        }
+
+        const status = document.getElementById("supabaseLiveStatus");
+        if (status) {
+          status.textContent = "Base limpia";
+          status.classList.remove("error");
+        }
+      }
+
+      async function deleteAllStoredData() {
+        showDeleteError("");
+
+        if (!configured()) {
+          showDeleteError("Supabase no está configurado. Revise supabase-config.js.");
+          return;
+        }
+
+        if (dom.confirmation.value.trim() !== "BORRAR TODO") {
+          showDeleteError('La confirmación no coincide. Escriba exactamente: BORRAR TODO');
+          dom.confirmation.focus();
+          return;
+        }
+
+        setDeleting(true);
+        const syncApi = window.FlowSimTramites?.supabase;
+
+        try {
+          await syncApi?.suspendForDeletion?.();
+
+          const config = window.SUPABASE_CONFIG;
+          const endpoint =
+            `${String(config.url).replace(/\/$/, "")}/rest/v1/rpc/borrar_datos_flowsim`;
+
+          const response = await fetch(endpoint, {
+            method: "POST",
+            headers: {
+              apikey: config.publishableKey,
+              Authorization: `Bearer ${config.publishableKey}`,
+              "Content-Type": "application/json",
+              Accept: "application/json"
+            },
+            mode: "cors",
+            cache: "no-store",
+            body: JSON.stringify({
+              p_confirmacion: "BORRAR TODO"
+            })
+          });
+
+          const responseText = await response.text();
+          let result = null;
+
+          try {
+            result = responseText ? JSON.parse(responseText) : null;
+          } catch (error) {}
+
+          if (!response.ok || result?.ok === false) {
+            const message =
+              result?.message ||
+              result?.details ||
+              result?.hint ||
+              responseText ||
+              `Supabase respondió con el estado ${response.status}.`;
+            throw new Error(message);
+          }
+
+          await syncApi?.discardAllLocalData?.();
+          window.FlowSimTramites?.reset?.();
+
+          clearLivePanel();
+          closeDeleteDialog();
+
+          if (typeof window.showToast === "function") {
+            window.showToast("Todos los datos guardados fueron eliminados.", "success");
+          } else {
+            window.alert("Todos los datos guardados fueron eliminados.");
+          }
+        } catch (error) {
+          console.error("Error al borrar datos de Supabase:", error);
+          syncApi?.resumeAfterDeletionFailure?.();
+
+          let message = error?.message || String(error);
+
+          if (/function.*does not exist|404|PGRST202/i.test(message)) {
+            message =
+              "La función de borrado no está instalada. Ejecute ACTIVAR_BORRADO_DEFINITIVO.sql en Supabase SQL Editor.";
+          }
+
+          showDeleteError(message);
+        } finally {
+          setDeleting(false);
+        }
+      }
+
+      dom.toolsButton?.addEventListener("click", event => {
+        event.stopPropagation();
+        toggleToolsMenu();
+      });
+
+      dom.toolsMenu?.addEventListener("click", event => {
+        const item = event.target.closest(".tools-menu-item");
+        if (item && item.id !== "deleteStoredDataBtn") {
+          closeToolsMenu();
+        }
+      });
+
+      dom.deleteButton?.addEventListener("click", openDeleteDialog);
+      dom.closeButton?.addEventListener("click", closeDeleteDialog);
+      dom.cancelButton?.addEventListener("click", closeDeleteDialog);
+      dom.confirmButton?.addEventListener("click", () => void deleteAllStoredData());
+
+      dom.overlay?.addEventListener("click", event => {
+        if (event.target === dom.overlay) closeDeleteDialog();
+      });
+
+      document.addEventListener("click", event => {
+        if (
+          !dom.toolsMenu?.contains(event.target) &&
+          !dom.toolsButton?.contains(event.target)
+        ) {
+          closeToolsMenu();
+        }
+      });
+
+      document.addEventListener("keydown", event => {
+        if (event.key !== "Escape") return;
+
+        if (dom.overlay?.classList.contains("open")) {
+          closeDeleteDialog();
+        } else {
+          closeToolsMenu();
+        }
+      });
+    })();
+  </script>
+
 </body>
 </html>
