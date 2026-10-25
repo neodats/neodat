@@ -1,0 +1,22 @@
+{
+  "name": "neodat",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Web y simuladores de NeoDat Consultores",
+  "scripts": {
+    "check": "node scripts/check.mjs",
+    "test": "node --test --test-concurrency=1 tests/*.test.mjs",
+    "serve": "node scripts/serve.mjs",
+    "build": "node scripts/build-pages.mjs",
+    "format": "prettier --write \"assets/**/*.js\" \"assets/*.css\" \"scripts/*.mjs\" \"tests/*.mjs\" \"supabase/functions/**/*.ts\""
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "happy-dom": "21.0.4",
+    "@electric-sql/pglite": "0.5.11",
+    "typescript": "5.9.3",
+    "prettier": "3.9.10"
+  }
+}
