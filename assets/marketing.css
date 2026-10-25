@@ -284,18 +284,13 @@ textarea {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  color: var(--gold-dark);
-  font-size: 10px;
-  letter-spacing: 0.13em;
+  color: #536278;
+  font-size: 11px;
+  line-height: 1.5;
+  letter-spacing: 0.09em;
   font-weight: 600;
   text-transform: uppercase;
-  margin-bottom: 20px;
-}
-.eyebrow:before {
-  content: "";
-  height: 1px;
-  width: 25px;
-  background: var(--gold);
+  margin-bottom: 18px;
 }
 .eyebrow.centered {
   display: flex;
