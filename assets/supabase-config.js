@@ -1,9 +1,9 @@
-/*
- * CONFIGURACIÓN PÚBLICA DE SUPABASE · NEODAT
- * Esta URL y la Publishable Key son datos públicos para el cliente web.
- * Nunca coloque aquí una Secret Key, service_role ni sb_secret_...
- */
+/* Public browser configuration. Never put a secret/service_role key here. */
 window.NEODAT_SUPABASE_CONFIG = Object.freeze({
-  url: 'https://zljeevuqdfiurnwdcotu.supabase.co',
-  anonKey: 'sb_publishable_PDJViLzyqcaj_M3RsjqyPA_5EmLnQvZ'
+  url: "https://zljeevuqdfiurnwdcotu.supabase.co",
+  anonKey: "sb_publishable_PDJViLzyqcaj_M3RsjqyPA_5EmLnQvZ",
+  contactEndpoint:
+    "https://zljeevuqdfiurnwdcotu.supabase.co/functions/v1/submit-contact",
+  // Set the public Cloudflare Turnstile site key after following README.md.
+  turnstileSiteKey: "",
 });
