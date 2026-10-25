@@ -1,9 +1,9 @@
 /* Shared NeoDat branding for the six compact financial tools. */
 body.simple-simulator {
-  --primary: #244d60;
-  --primary2: #112c3e;
-  --bg: #f3f6f4;
-  --radius: 16px;
+  --primary: #244364;
+  --primary2: #102344;
+  --bg: #f5f7fa;
+  --radius: 4px;
   --shadow: 0 8px 22px rgba(17, 40, 58, 0.04);
 }
 .simple-simulator .topbar {
@@ -31,11 +31,11 @@ body.simple-simulator {
 }
 .simple-simulator .hero-note p,
 .simple-simulator .notice {
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.7;
 }
 .simple-simulator .field label {
-  font-size: 11px;
+  font-size: 13px;
 }
 .simple-simulator .field input,
 .simple-simulator .field select,
@@ -44,38 +44,38 @@ body.simple-simulator {
   min-height: 43px;
 }
 .simple-simulator .helper {
-  font-size: 11px;
+  font-size: 13px;
 }
 .simple-simulator .kpi span {
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1.5;
 }
 .simple-simulator .kpi small,
 .simple-simulator .card-head p {
-  font-size: 11px;
+  font-size: 13px;
 }
 .simple-simulator td {
-  font-size: 12px;
+  font-size: 14px;
 }
 .simple-simulator th {
-  font-size: 10px;
+  font-size: 12px;
 }
 .simple-simulator td input {
-  font-size: 12px;
+  font-size: 14px;
   min-height: 35px;
 }
 .simple-simulator .btn,
 .simple-simulator .tab {
-  font-size: 12px;
+  font-size: 14px;
 }
 .simple-simulator .pill {
-  font-size: 10px;
+  font-size: 12px;
 }
 .simple-simulator .table-wrap {
   scrollbar-width: thin;
 }
 .simple-simulator footer {
-  font-size: 11px;
+  font-size: 13px;
 }
 @media (max-width: 620px) {
   .simple-simulator .hero-main {

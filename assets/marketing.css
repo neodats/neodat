@@ -188,7 +188,7 @@ textarea {
   gap: 14px;
   padding: 10px 17px;
   color: #fff;
-  font-size: 12px;
+  font-size: 14px;
   white-space: nowrap;
   transition:
     background 0.2s,
@@ -226,7 +226,7 @@ textarea {
   border-radius: 30px;
   min-height: 48px;
   padding: 12px 23px;
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.5;
   font-weight: 500;
   transition:
@@ -285,7 +285,7 @@ textarea {
   align-items: center;
   gap: 12px;
   color: #536278;
-  font-size: 11px;
+  font-size: 13px;
   line-height: 1.5;
   letter-spacing: 0.09em;
   font-weight: 600;
@@ -353,7 +353,7 @@ textarea {
 }
 .hero-kicker {
   display: inline-block;
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.22em;
   color: #f3b642;
   font-weight: 500;
@@ -458,7 +458,7 @@ textarea {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 550;
   line-height: 1.6;
 }
@@ -492,7 +492,7 @@ textarea {
 }
 .solution-overview {
   padding-top: 35px;
-  background: linear-gradient(#fff, #f5f7fa);
+  background: #f5f7fa;
 }
 .home-solutions {
   display: grid;
@@ -519,11 +519,11 @@ textarea {
   width: 45px;
   height: 45px;
   border: 1px solid #d5e0ed;
-  border-radius: 50%;
+  border-radius: 0;
   display: flex;
   align-items: center;
-  justify-content: center;
-  background: #f5f8fc;
+  justify-content: flex-start;
+  background: transparent;
   color: #2b507a;
   margin-bottom: 25px;
 }
@@ -533,7 +533,7 @@ textarea {
   margin-bottom: 17px;
 }
 .home-solution p {
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.9;
   margin-bottom: 27px;
 }
@@ -583,7 +583,7 @@ textarea {
   letter-spacing: -0.015em;
 }
 .method-steps p {
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.85;
   margin-top: 10px;
 }
@@ -634,7 +634,7 @@ textarea {
   margin-bottom: 15px;
 }
 .tool-card > p {
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.85;
   margin-bottom: 25px;
 }
@@ -644,7 +644,7 @@ textarea {
   justify-content: space-between;
   padding-top: 20px;
   border-top: 1px solid var(--line);
-  font-size: 11px;
+  font-size: 13px;
   margin-top: auto;
 }
 .tool-access .icon {
@@ -653,7 +653,7 @@ textarea {
   color: #b47b00;
 }
 .tool-disclaimer {
-  font-size: 10px;
+  font-size: 12px;
   margin-top: 23px;
   color: #748299;
 }
@@ -711,7 +711,7 @@ textarea {
   line-height: 1.28;
 }
 .cta-grid p {
-  font-size: 13px;
+  font-size: 15px;
   margin-top: 18px;
 }
 .cta-grid .button {
@@ -732,20 +732,20 @@ textarea {
 }
 .footer-brand p {
   color: #adbed5;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.9;
   max-width: 320px;
   margin-top: 20px;
 }
 .footer-location {
   display: block;
-  font-size: 10px;
+  font-size: 12px;
   color: #96aac5;
   margin-top: 20px;
 }
 .footer-col h2 {
   font-family: Inter, Arial, sans-serif;
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 550;
   color: #fff;
   letter-spacing: 0;
@@ -753,7 +753,7 @@ textarea {
 }
 .footer-col a {
   display: block;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.7;
   color: #b6c6dc;
   margin-top: 12px;
@@ -800,7 +800,7 @@ textarea {
   color: #284363;
   background: #fffffff5;
   box-shadow: 0 3px 14px #09192f12;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 550;
 }
 .contact-float .icon {
@@ -879,7 +879,7 @@ textarea {
   margin-bottom: 16px;
 }
 .service-card > p {
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.9;
   margin-bottom: 20px;
 }
@@ -891,7 +891,7 @@ textarea {
 }
 .service-card li,
 .area-card li {
-  font-size: 11px;
+  font-size: 13px;
   color: #64758e;
   line-height: 1.8;
   margin: 8px 0;
@@ -913,7 +913,7 @@ textarea {
   width: 100%;
   padding-top: 20px;
   border-top: 1px solid #e5ebf2;
-  font-size: 11px;
+  font-size: 13px;
 }
 .intro-note {
   max-width: 800px;
@@ -954,14 +954,14 @@ textarea {
   font-weight: 450;
 }
 .team-role {
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 500;
   color: #3f5878;
   margin-top: 13px;
   line-height: 1.7;
 }
 .team-info p {
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.9;
   margin-top: 18px;
 }
@@ -982,7 +982,7 @@ textarea {
   margin: 20px 0 13px;
 }
 .value-grid p {
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.85;
 }
 .timeline-step {
@@ -995,7 +995,7 @@ textarea {
 .timeline-stage {
   display: flex;
   gap: 16px;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 500;
   align-items: start;
 }
@@ -1010,7 +1010,7 @@ textarea {
   line-height: 1.3;
 }
 .timeline-step p {
-  font-size: 13px;
+  font-size: 15px;
   margin-top: 18px;
   line-height: 1.85;
 }
@@ -1022,7 +1022,7 @@ textarea {
 .timeline-step li {
   padding: 9px 0;
   border-bottom: 1px solid #e4ebf3;
-  font-size: 11px;
+  font-size: 13px;
   color: #6d7d92;
   line-height: 1.8;
 }
@@ -1041,7 +1041,7 @@ textarea {
   margin-top: 17px;
 }
 .area-card p {
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.9;
   margin: 18px 0;
 }
@@ -1059,7 +1059,7 @@ textarea {
   line-height: 1.4;
 }
 .situation-card p {
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.9;
   margin-top: 16px;
 }
@@ -1092,7 +1092,7 @@ textarea {
   outline: 0;
   background: transparent;
   color: var(--ink);
-  font-size: 13px;
+  font-size: 15px;
 }
 .marketplace-filters {
   display: flex;
@@ -1105,7 +1105,7 @@ textarea {
   border-radius: 22px;
   background: #fff;
   color: #677b96;
-  font-size: 11px;
+  font-size: 13px;
   line-height: 1.6;
 }
 .marketplace-filter.active {
@@ -1114,7 +1114,7 @@ textarea {
   border-color: var(--navy);
 }
 .catalog-count {
-  font-size: 11px;
+  font-size: 13px;
   color: #6b7b92;
   margin-bottom: 27px;
 }
@@ -1175,7 +1175,7 @@ textarea {
   font-size: 22px;
 }
 .catalog-body p {
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.85;
   margin: 18px 0 26px;
 }
@@ -1184,7 +1184,7 @@ textarea {
   width: 100%;
   padding-top: 20px;
   border-top: 1px solid var(--line);
-  font-size: 11px;
+  font-size: 13px;
 }
 .empty-state {
   padding: 60px 25px;
@@ -1196,7 +1196,7 @@ textarea {
   font-size: 30px;
 }
 .empty-state p {
-  font-size: 13px;
+  font-size: 15px;
   margin-top: 15px;
 }
 .contact-layout {
@@ -1210,7 +1210,7 @@ textarea {
   line-height: 1.25;
 }
 .contact-aside > p {
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.9;
   margin: 22px 0 31px;
 }
@@ -1237,7 +1237,7 @@ textarea {
 }
 .contact-channel a,
 .contact-channel b {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 500;
   overflow-wrap: anywhere;
 }
@@ -1247,7 +1247,7 @@ textarea {
   margin-left: 5px;
 }
 .contact-aside .contact-notice {
-  font-size: 12px;
+  font-size: 14px;
   background: #f1f5fa;
   border-left: 2px solid #d5a846;
   padding: 20px;
@@ -1264,7 +1264,7 @@ textarea {
   font-size: 29px;
 }
 .form-card > p {
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.9;
   margin: 15px 0 28px;
 }
@@ -1281,7 +1281,7 @@ textarea {
 }
 .campo > label {
   display: block;
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 550;
   margin-bottom: 8px;
   color: #3b516f;
@@ -1294,7 +1294,7 @@ textarea {
   border: 1px solid #cbd7e6;
   border-radius: 3px;
   padding: 12px;
-  font-size: 13px;
+  font-size: 15px;
   color: #1a3556;
   background: #fcfdff;
 }
@@ -1320,7 +1320,7 @@ textarea {
   padding: 12px 10px;
   border: 1px solid #d6e0ed;
   border-radius: 3px;
-  font-size: 10px;
+  font-size: 12px;
   color: #6a7d96;
   line-height: 1.6;
   cursor: pointer;
@@ -1339,7 +1339,7 @@ textarea {
   color: #25476f;
 }
 .form-privacy {
-  font-size: 11px;
+  font-size: 13px;
   line-height: 1.8;
 }
 .form-privacy a {
@@ -1356,7 +1356,7 @@ textarea {
   color: #22654a;
 }
 .form-card .nota {
-  font-size: 11px;
+  font-size: 13px;
   margin-top: 18px;
   line-height: 1.8;
 }
@@ -1364,7 +1364,7 @@ textarea {
   text-decoration: underline;
 }
 .form-status {
-  font-size: 12px;
+  font-size: 14px;
 }
 .privacy-document {
   max-width: 850px;
@@ -1377,7 +1377,7 @@ textarea {
   margin: 35px 0 15px;
 }
 .privacy-document p {
-  font-size: 13px;
+  font-size: 15px;
   margin-top: 15px;
 }
 .privacy-document a {
@@ -1418,7 +1418,7 @@ textarea {
     gap: 23px;
   }
   .menu a {
-    font-size: 12px;
+    font-size: 14px;
   }
   .brand-mark {
     width: 148px;
@@ -1426,7 +1426,7 @@ textarea {
   }
   .header-contact {
     padding: 9px 14px;
-    font-size: 11px;
+    font-size: 13px;
   }
   .method-feature {
     gap: 60px;
@@ -1567,7 +1567,7 @@ textarea {
     height: 55px;
   }
   .header-contact {
-    font-size: 10px;
+    font-size: 12px;
     padding: 9px 13px;
     gap: 9px;
   }
@@ -1610,7 +1610,7 @@ textarea {
   }
   .button,
   .btn {
-    font-size: 12px;
+    font-size: 14px;
     min-height: 45px;
     padding: 11px 19px;
   }
@@ -1641,7 +1641,7 @@ textarea {
     max-width: 600px;
   }
   .section-head p {
-    font-size: 13px;
+    font-size: 15px;
   }
   .section-head h2 {
     font-size: 33px;
@@ -1660,7 +1660,7 @@ textarea {
     line-height: 1.35;
   }
   .home-intro p {
-    font-size: 13px;
+    font-size: 15px;
     line-height: 1.9;
     max-width: 560px;
     margin-top: 23px;
@@ -1682,12 +1682,12 @@ textarea {
     font-size: 25px;
   }
   .home-solution p {
-    font-size: 13px;
+    font-size: 15px;
     max-width: 590px;
     margin-bottom: 21px;
   }
   .home-solution .text-link {
-    font-size: 12px;
+    font-size: 14px;
   }
   .solution-index {
     right: 0;
@@ -1702,7 +1702,7 @@ textarea {
     line-height: 1.3;
   }
   .method-copy > p {
-    font-size: 13px;
+    font-size: 15px;
     max-width: 600px;
   }
   .method-steps {
@@ -1717,7 +1717,7 @@ textarea {
     font-size: 21px;
   }
   .method-steps p {
-    font-size: 12px;
+    font-size: 14px;
   }
   .home-tools {
     grid-template-columns: 1fr;
@@ -1747,11 +1747,11 @@ textarea {
   }
   .tool-card > p {
     grid-column: 1/-1;
-    font-size: 13px;
+    font-size: 15px;
   }
   .tool-access {
     grid-column: 1/-1;
-    font-size: 12px;
+    font-size: 14px;
   }
   .team-preview {
     grid-template-columns: 1fr;
@@ -1762,7 +1762,7 @@ textarea {
     max-width: 600px;
   }
   .team-preview > div:first-child > p {
-    font-size: 13px;
+    font-size: 15px;
     max-width: 600px;
   }
   .team-triptych {
@@ -1798,7 +1798,7 @@ textarea {
     max-width: 400px;
   }
   .footer-col a {
-    font-size: 11px;
+    font-size: 13px;
   }
   .footer-bottom {
     align-items: start;
@@ -1828,7 +1828,7 @@ textarea {
     font-size: 48px;
   }
   .interior-copy p {
-    font-size: 13px;
+    font-size: 15px;
     line-height: 1.9;
   }
   .team-grid {
@@ -1856,11 +1856,11 @@ textarea {
     margin-bottom: 12px;
   }
   .team-role {
-    font-size: 10px;
+    font-size: 12px;
     margin-top: 11px;
   }
   .team-info p {
-    font-size: 11px;
+    font-size: 13px;
     margin-top: 15px;
   }
   .value-grid {
@@ -1897,7 +1897,7 @@ textarea {
     font-size: 21px;
   }
   .situation-card p {
-    font-size: 12px;
+    font-size: 14px;
   }
   .marketplace-toolbar {
     align-items: stretch;
@@ -1912,7 +1912,7 @@ textarea {
     min-width: 0;
   }
   .marketplace-filter {
-    font-size: 10px;
+    font-size: 12px;
     padding: 8px 12px;
   }
   .catalog-cover {
@@ -1934,7 +1934,7 @@ textarea {
   }
   .contact-aside > p {
     max-width: 580px;
-    font-size: 13px;
+    font-size: 15px;
   }
   .contact-channel {
     padding: 20px 0;
@@ -1974,7 +1974,7 @@ textarea {
   }
   .header-contact {
     padding: 8px 11px;
-    font-size: 10px;
+    font-size: 12px;
     min-height: 35px;
     gap: 0;
   }
@@ -1998,7 +1998,7 @@ textarea {
     padding-bottom: 102px;
   }
   .hero-home .hero-center > p {
-    font-size: 13px;
+    font-size: 15px;
     max-width: 345px;
     line-height: 1.85;
   }
@@ -2010,7 +2010,7 @@ textarea {
   }
   .hero-actions .button {
     min-height: 44px;
-    font-size: 11px;
+    font-size: 13px;
     padding: 11px 19px;
     min-width: 212px;
   }
@@ -2077,7 +2077,7 @@ textarea {
     height: 60px;
   }
   .footer-col a {
-    font-size: 12px;
+    font-size: 14px;
   }
   .contact-float span {
     display: none;
@@ -2097,7 +2097,7 @@ textarea {
     padding-bottom: 39px;
   }
   .interior-copy p {
-    font-size: 12px;
+    font-size: 14px;
   }
   .breadcrumb {
     font-size: 7px;
@@ -2114,10 +2114,10 @@ textarea {
     font-size: 24px;
   }
   .service-card > p {
-    font-size: 13px;
+    font-size: 15px;
   }
   .service-card li {
-    font-size: 12px;
+    font-size: 14px;
   }
   .team-card {
     display: block;
@@ -2133,10 +2133,10 @@ textarea {
     font-size: 26px;
   }
   .team-info p {
-    font-size: 13px;
+    font-size: 15px;
   }
   .team-role {
-    font-size: 11px;
+    font-size: 13px;
   }
   .specialty {
     font-size: 9px;
@@ -2148,13 +2148,13 @@ textarea {
     font-size: 21px;
   }
   .value-grid p {
-    font-size: 11px;
+    font-size: 13px;
   }
   .situation-grid {
     grid-template-columns: 1fr;
   }
   .situation-card p {
-    font-size: 13px;
+    font-size: 15px;
   }
   .form-grid {
     grid-template-columns: 1fr;
@@ -2169,7 +2169,7 @@ textarea {
     grid-template-columns: 1fr;
   }
   .check-card {
-    font-size: 11px;
+    font-size: 13px;
     padding: 11px 12px;
   }
   .form-actions .btn {
@@ -2181,7 +2181,7 @@ textarea {
     font-size: 16px;
   }
   .form-privacy {
-    font-size: 10px;
+    font-size: 12px;
   }
   .privacy-document {
     padding: 0;
@@ -2209,7 +2209,7 @@ textarea {
     font-size: 37px;
   }
   .hero-home .hero-center > p {
-    font-size: 12px;
+    font-size: 14px;
   }
   .hero-kicker {
     font-size: 7px;
@@ -2281,4 +2281,36 @@ textarea {
 .page-privacidad .privacy-document {
   padding: 0;
   font-family: Inter, Arial, sans-serif;
+}
+
+/* Editorial hierarchy shared across the corporate website. */
+.section-head h2, .method-copy h2, .team-preview h2 {
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+.home-intro p, .section-head p, .intro-note p { max-width: 66ch; }
+.home-solution .icon-box, .service-card .icon-box {
+  border: 0;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  margin-bottom: 24px;
+  color: #244364;
+}
+.home-solution .solution-index { display: none; }
+.service-card, .area-card, .tool-card { box-shadow: none; border-radius: 2px; }
+.service-card h3, .area-card h3, .tool-card h3 { font-weight: 550; letter-spacing: -0.025em; }
+.service-card p, .area-card p, .tool-card p, .home-solution p { line-height: 1.75; }
+.service-card li:before, .area-card li:before { background: #6d7e92; }
+.eyebrow, .category, .tool-type { letter-spacing: 0.065em; }
+.button { border-radius: 4px; }
+.hero-home .button { border-radius: 4px; }
+.breadcrumb { font-size: 13px; }
+@media (max-width: 760px) {
+  .section { padding-top: 64px; padding-bottom: 64px; }
+  .section-head { gap: 24px; margin-bottom: 32px; }
+  .home-intro h2 { font-size: 30px; line-height: 1.3; }
+  .home-intro h2 br { display: none; }
+  .home-solution p, .service-card p, .tool-card p { font-size: 15px; }
 }
