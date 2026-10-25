@@ -1,0 +1,320 @@
+{
+  "services": [
+    {
+      "title": "Consultoría financiera",
+      "category": "Finanzas",
+      "description": "Evaluamos la situación económica del negocio y estructuramos herramientas para mejorar planificación, control y rentabilidad.",
+      "items": [
+        "Presupuestos y proyecciones.",
+        "Análisis de rentabilidad y costos.",
+        "Evaluación financiera de proyectos.",
+        "Control de ingresos, gastos y márgenes."
+      ],
+      "icon": "chart-no-axes-combined"
+    },
+    {
+      "title": "Dashboards y KPI",
+      "category": "Business Intelligence",
+      "description": "Construimos tableros ejecutivos para visualizar información clave y monitorear resultados financieros, comerciales y operativos.",
+      "items": [
+        "Indicadores KPI personalizados.",
+        "Dashboards ejecutivos integrados.",
+        "Reportes automatizados dinámicos.",
+        "Visualización clara para gerencia."
+      ],
+      "icon": "chart-pie"
+    },
+    {
+      "title": "Análisis de datos",
+      "category": "Analítica",
+      "description": "Convertimos bases de datos, reportes y archivos dispersos en información estructurada para análisis, seguimiento y toma de decisiones.",
+      "items": [
+        "Limpieza y consolidación de datos.",
+        "Análisis descriptivo y exploratorio.",
+        "Modelos de información empresarial.",
+        "Reportes técnicos y gerenciales."
+      ],
+      "icon": "database"
+    },
+    {
+      "title": "Desarrollo web empresarial",
+      "category": "Tecnología",
+      "description": "Diseñamos páginas y soluciones digitales para mejorar presencia, comunicación, captación de clientes y operación empresarial.",
+      "items": [
+        "Páginas web corporativas.",
+        "Formularios y flujos de contacto.",
+        "Diseño altamente responsivo.",
+        "Estructura visual profesional."
+      ],
+      "icon": "layers"
+    },
+    {
+      "title": "Gestión de proyectos",
+      "category": "Proyectos",
+      "description": "Estructuramos proyectos empresariales e institucionales con enfoque técnico, seguimiento de entregables y orientación a resultados.",
+      "items": [
+        "Formulación estructurada de proyectos.",
+        "Hojas de ruta y cronogramas.",
+        "Seguimiento exhaustivo de avances.",
+        "Soporte y células PMO."
+      ],
+      "icon": "briefcase-business"
+    },
+    {
+      "title": "Planeación y control de gestión",
+      "category": "Estrategia",
+      "description": "Acompañamos la organización de objetivos, indicadores y procesos para mejorar seguimiento, control y desempeño empresarial.",
+      "items": [
+        "Indicadores de gestión avanzados.",
+        "Control presupuestario continuo.",
+        "Seguimiento operativo integral.",
+        "Tableros de control gerencial."
+      ],
+      "icon": "target"
+    },
+    {
+      "title": "Automatización de reportes",
+      "category": "Automatización",
+      "description": "Reducimos trabajo manual mediante procesos automatizados para generar información periódica, ordenada y disponible.",
+      "items": [
+        "Automatización de archivos complejos.",
+        "Integración limpia de fuentes.",
+        "Optimización de flujos repetitivos.",
+        "Estructuración de flujos de trabajo."
+      ],
+      "icon": "workflow"
+    },
+    {
+      "title": "Diagnóstico empresarial",
+      "category": "Consultoría",
+      "description": "Revisamos procesos, información, indicadores y necesidades para proponer una ruta clara de mejora y ejecución.",
+      "items": [
+        "Diagnóstico financiero integral.",
+        "Identificación de brechas operativas.",
+        "Priorización de soluciones críticas.",
+        "Plan de acción inmediato."
+      ],
+      "icon": "shield-check"
+    },
+    {
+      "title": "Capacitación y acompañamiento",
+      "category": "Formación",
+      "description": "Transferimos conocimiento para que los equipos comprendan, utilicen y sostengan las herramientas implementadas.",
+      "items": [
+        "Capacitación experta en dashboards.",
+        "Uso estratégico de reportes.",
+        "Acompañamiento en el despliegue.",
+        "Planes de mejora continua."
+      ],
+      "icon": "users"
+    }
+  ],
+  "method": [
+    {
+      "title": "Diagnóstico",
+      "heading": "Entendemos dónde está el bloqueo.",
+      "description": "Revisamos información, reportes, procesos, archivos, indicadores y necesidades de decisión para identificar qué impide tener control y claridad.",
+      "items": [
+        "Revisión de fuentes de información.",
+        "Identificación de brechas y duplicidades.",
+        "Evaluación de procesos manuales.",
+        "Priorización de problemas críticos."
+      ]
+    },
+    {
+      "title": "Diseño",
+      "heading": "Diseñamos una solución útil, no decorativa.",
+      "description": "Definimos indicadores, estructura de datos, visualizaciones, reportes y herramientas que respondan a preguntas reales del negocio.",
+      "items": [
+        "Definición de KPI estratégicos.",
+        "Diseño de tableros y reportes.",
+        "Estructura financiera y operativa.",
+        "Modelo de seguimiento gerencial."
+      ]
+    },
+    {
+      "title": "Implementación",
+      "heading": "Construimos la herramienta y la dejamos operativa.",
+      "description": "Desarrollamos dashboards, automatizaciones, modelos financieros, reportes o soluciones digitales según el problema detectado.",
+      "items": [
+        "Dashboards ejecutivos.",
+        "Reportes automatizados.",
+        "Modelos de análisis y control.",
+        "Soluciones web y formularios empresariales."
+      ]
+    },
+    {
+      "title": "Acompañamiento",
+      "heading": "Aseguramos que la solución se use.",
+      "description": "No dejamos archivos aislados. Acompañamos la adopción para que la herramienta funcione dentro de la operación y genere valor real.",
+      "items": [
+        "Capacitación en uso de herramientas.",
+        "Ajustes según retroalimentación.",
+        "Seguimiento de indicadores.",
+        "Mejora continua del sistema implementado."
+      ]
+    }
+  ],
+  "areas": [
+    {
+      "title": "Finanzas y rentabilidad",
+      "category": "01 / Finanzas",
+      "description": "Para empresas que necesitan entender mejor ingresos, costos, márgenes, presupuestos y resultados económicos.",
+      "items": [
+        "Rentabilidad por línea, cliente o unidad.",
+        "Control de ingresos, gastos y márgenes.",
+        "Seguimiento presupuestario."
+      ]
+    },
+    {
+      "title": "Dirección y toma de decisiones",
+      "category": "02 / Gerencia",
+      "description": "Para equipos directivos que requieren indicadores claros, reportes ejecutivos y lectura rápida del desempeño.",
+      "items": [
+        "Paneles gerenciales automatizados.",
+        "Indicadores clave de gestión (KPIs).",
+        "Visibilidad ejecutiva en tiempo real."
+      ]
+    },
+    {
+      "title": "Operaciones y procesos",
+      "category": "03 / Operación",
+      "description": "Para organizaciones con procesos manuales, información fragmentada o baja trazabilidad en su operación diaria.",
+      "items": [
+        "Mapeo de procesos críticos.",
+        "Automatización estructurada de reportes.",
+        "Seguimiento y control operativo."
+      ]
+    },
+    {
+      "title": "Comercial y ventas",
+      "category": "04 / Comercial",
+      "description": "Para negocios que necesitan analizar ventas, clientes, cumplimiento de metas y oportunidades comerciales.",
+      "items": [
+        "Seguimiento de ventas histórico y diario.",
+        "Indicadores y tendencias comerciales.",
+        "Análisis profundo de comportamiento de clientes."
+      ]
+    },
+    {
+      "title": "Proyectos e instituciones",
+      "category": "05 / Proyectos",
+      "description": "Para iniciativas que requieren planificación, seguimiento, documentación, control de avances y medición de resultados.",
+      "items": [
+        "Control de hitos clave y entregables.",
+        "Gestión integral de PMO.",
+        "Reportes dinámicos de avance de obra."
+      ]
+    },
+    {
+      "title": "Tecnología y datos",
+      "category": "06 / Datos",
+      "description": "Para empresas que buscan ordenar información, conectar herramientas digitales y convertir datos en activos de gestión.",
+      "items": [
+        "Estructuración avanzada de bases de datos.",
+        "Integración inteligente de información dispersa.",
+        "Herramientas dinámicas de control empresarial."
+      ]
+    }
+  ],
+  "team": [
+    {
+      "name": "Ing. Clara Guamán Jaramillo, Mgs.",
+      "role": "Directora Ejecutiva (CEO)",
+      "specialty": "Dirección de proyectos",
+      "description": "Profesional en Administración de Empresas y Dirección de Proyectos, con experiencia en PMO, desarrollo institucional y financiamiento, orientada a la gestión financiera, análisis empresarial y toma de decisiones estratégicas.",
+      "photo": "imagenes/sara.webp",
+      "alt": "Clara Guamán Jaramillo"
+    },
+    {
+      "name": "Ing. Alfonso Abad Álvarez, Mgs.",
+      "role": "Director Financiero (CFO)",
+      "specialty": "Finanzas y estrategia comercial",
+      "description": "Experto financiero con experiencia en banca y ventas, enfocado en análisis empresarial, gestión financiera y visión estratégica de negocio.",
+      "photo": "imagenes/alfonso.webp",
+      "alt": "Alfonso Abad Álvarez"
+    },
+    {
+      "name": "Econ. Darío Hurtado Cuenca, Mgs.",
+      "role": "Director de Datos e Inteligencia de Negocios (CDO)",
+      "specialty": "Economía, Big Data e inteligencia de negocios",
+      "description": "Especialista en Big Data, Ciencia de Datos e Inteligencia de Negocios, con enfoque en análisis estratégico, modelamiento de información y toma de decisiones orientadas por datos.",
+      "photo": "imagenes/dario.webp",
+      "alt": "Darío Hurtado Cuenca"
+    }
+  ],
+  "catalog": [
+    {
+      "title": "Simulador de procesos y trámites",
+      "description": "Modele áreas, trámites y flujos de atención. Configure parámetros, ejecute escenarios y analice métricas operativas desde una interfaz visual.",
+      "category": "gestion",
+      "href": "simuladores/finanzas.html",
+      "tags": [],
+      "icon": "workflow"
+    },
+    {
+      "title": "Simulador de vainilla",
+      "description": "Proyecte la producción mensual de vainilla en El Pangui, analice el efecto del clima y estime costos, ingresos, rentabilidad y llegada del producto al mercado de China.",
+      "category": "agroexportacion",
+      "href": "simuladores/vainilla.html",
+      "tags": [],
+      "icon": "sprout"
+    },
+    {
+      "title": "Indicadores KPI",
+      "description": "Analice indicadores de ventas, crecimiento, margen, rentabilidad, conversión, clientes y desempeño financiero desde una lectura ejecutiva.",
+      "category": "finanzas",
+      "href": "simuladores/indicadores.html",
+      "tags": [],
+      "icon": "chart-pie"
+    },
+    {
+      "title": "Comparador bancario",
+      "description": "Compare tasas, cuotas, cargos, plazos, retornos y capacidad de pago para evaluar diferentes alternativas financieras.",
+      "category": "finanzas",
+      "href": "simuladores/bancos.html",
+      "tags": [],
+      "icon": "wallet"
+    },
+    {
+      "title": "Proformas e IVA",
+      "description": "Cree proformas, agregue productos, aplique descuentos y calcule automáticamente base imponible, IVA y valor total.",
+      "category": "gestion",
+      "href": "simuladores/proforma.html",
+      "tags": [],
+      "icon": "calculator"
+    },
+    {
+      "title": "Costos y rentabilidad",
+      "description": "Calcule costos variables, costos fijos, margen de contribución, utilidad, punto de equilibrio, ROI y escenarios de sensibilidad.",
+      "category": "finanzas",
+      "href": "simuladores/empresas.html",
+      "tags": [],
+      "icon": "chart-no-axes-combined"
+    },
+    {
+      "title": "Ahorro diario",
+      "description": "Registre gastos frecuentes, determine una reducción posible y proyecte el ahorro mensual y anual que podría destinar a una meta.",
+      "category": "ahorro",
+      "href": "simuladores/ahorro-diario.html",
+      "tags": [],
+      "icon": "target"
+    },
+    {
+      "title": "Meta de ahorro",
+      "description": "Calcule cuánto necesita aportar para alcanzar una meta o proyecte cuánto acumulará con aportes periódicos e interés compuesto.",
+      "category": "ahorro",
+      "href": "simuladores/ahorro.html",
+      "tags": [],
+      "icon": "wallet"
+    },
+    {
+      "title": "Sistema de cobranzas",
+      "description": "Gestione estudiantes, cuotas, pagos, vencimientos y cartera pendiente mediante un sistema de seguimiento y control de cobranzas.",
+      "category": "gestion",
+      "href": "simuladores/cobranzas.html",
+      "tags": [],
+      "icon": "users"
+    }
+  ]
+}

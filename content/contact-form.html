@@ -1,0 +1,73 @@
+
+<h2>Envíenos su requerimiento.</h2>
+<p>Complete su solicitud. Confirmaremos aquí cuando se registre; también puede preparar un correo o escribirnos por WhatsApp.</p>
+<form id="contactoForm">
+<div class="honeypot" aria-hidden="true"><label for="website">Dejar vacío</label><input id="website" name="website" tabindex="-1" autocomplete="off"></div>
+<div class="form-grid">
+<div class="campo">
+<label for="nombre">Nombre</label>
+<input id="nombre" minlength="2" maxlength="180" autocomplete="name" name="nombre" placeholder="Nombre y apellido" required="" type="text">
+</div>
+<div class="campo">
+<label for="empresa">Empresa</label>
+<input id="empresa" minlength="0" maxlength="180" autocomplete="organization" name="empresa" placeholder="Nombre de la empresa" type="text">
+</div>
+<div class="campo">
+<label for="correo">Correo</label>
+<input id="correo" minlength="5" maxlength="250" autocomplete="email" name="correo" placeholder="correo@empresa.com" required="" type="email">
+</div>
+<div class="campo">
+<label for="telefono">Teléfono</label>
+<input id="telefono" minlength="0" maxlength="80" autocomplete="tel" name="telefono" placeholder="0987123456" type="tel">
+</div>
+<div class="campo">
+<label for="ciudad">Ciudad</label>
+<input id="ciudad" minlength="0" maxlength="150" autocomplete="address-level2" name="ciudad" placeholder="Ciudad" type="text">
+</div>
+<div class="campo">
+<label for="urgencia">Nivel de prioridad</label>
+<select id="urgencia" name="urgencia">
+<option value="Consulta general">Consulta general</option>
+<option value="Requerimiento prioritario">Requerimiento prioritario</option>
+<option value="Proyecto próximo a iniciar">Proyecto próximo a iniciar</option>
+</select>
+</div>
+<div class="campo full">
+<label>Servicio requerido</label>
+<div class="servicios-check">
+<label class="check-card">
+<input name="servicio" type="checkbox" value="Análisis de datos"> Análisis de datos
+                           </label>
+<label class="check-card">
+<input name="servicio" type="checkbox" value="Consultoría financiera"> Consultoría financiera
+                           </label>
+<label class="check-card">
+<input name="servicio" type="checkbox" value="Dashboards y KPI"> Dashboards y KPI
+                           </label>
+<label class="check-card">
+<input name="servicio" type="checkbox" value="Creación de proyectos"> Creación de proyectos
+                           </label>
+<label class="check-card">
+<input name="servicio" type="checkbox" value="Página web corporativa"> Página web corporativa
+                           </label>
+<label class="check-card">
+<input name="servicio" type="checkbox" value="Control de gestión"> Control de gestión
+                           </label>
+</div>
+</div>
+<div class="campo full">
+<label for="mensaje">Descripción de la necesidad</label>
+<textarea id="mensaje" minlength="2" maxlength="4000" autocomplete="off" name="mensaje" placeholder="Describa brevemente qué necesita, qué problema busca resolver o qué resultado espera obtener." required=""></textarea>
+</div>
+</div>
+<label class="form-privacy"><input type="checkbox" name="privacy" required=""><span>He leído la <a href="privacidad.html">información de privacidad</a> y solicito que NeoDat atienda mi consulta.</span></label>
+<div id="contactCaptcha"></div>
+<p id="contactStatus" class="form-status" role="status" aria-live="polite"></p>
+<div class="form-actions">
+<button class="btn btn-principal" type="submit">Enviar requerimiento</button>
+<a class="btn btn-whatsapp" href="https://wa.me/593960798571?text=Hola,%20quiero%20solicitar%20una%20asesor%C3%ADa%20con%20NeoDat." rel="noopener" target="_blank">
+                        Contactar por WhatsApp
+                     </a>
+</div>
+<p class="nota"><a id="contactEmailFallback" href="mailto:neodatconsultores@gmail.com">Preparar correo como alternativa</a></p>
+</form>
